@@ -3,7 +3,7 @@
         <naive-navbar v-if="user" :routes="routes" drawer-closable>
             <template #start>
                 <NuxtLink to="/home" class="flex items-center gap-3">
-                    <NaiveIcon name="logos:nuxt-icon" :size="25"></NaiveIcon>
+                    <NaiveIcon name="simple-icons:espressif" :size="25" icon-color="red"></NaiveIcon>
                     <n-text strong>ESP Admin</n-text>
                 </NuxtLink>
             </template>

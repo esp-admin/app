@@ -1,5 +1,5 @@
 # ESP Admin
-An open source platform to manage ESP32 microcontrollers for IoT applications. 
+An open source platform to remotly manage ESP microcontrollers for IoT applications. 
 
 ## Features
 - Multi-tenant architecture
@@ -8,15 +8,16 @@ An open source platform to manage ESP32 microcontrollers for IoT applications.
 - Remote configuration
 - Error reporting to Bugsnag
 - Realtime logging
-- Remote software updates manually
-- Database agnostic, MongoDB or SQL
-- File storage to S3 compatible storage
+- Remote software updates
+- Database agnostic, MongoDB & SQL
+- File storage to S3 compatible storage provider
 - Stateless backend for serverless deployment
 
 ## Future features
 - Integration with CI/CD tools
 - Integration with Node RED
-- Reporting via Push notifications 
+- Reporting via Push notifications
+- Support for ESP8266 
 
 ## Architecture
 ![architecture](https://pub-52f7e6f21f164b9e9f3f9c2df16ece76.r2.dev/architecture.jpg)
@@ -25,34 +26,36 @@ An open source platform to manage ESP32 microcontrollers for IoT applications.
 The platform is composed of the following key components:
 
 1. Projects
- - Projects are an optional feature meaning it can be omitted.
+ - Are an optional feature meaning it can be omitted.
  - A project represents an ESP firmware and has multiple releases. 
  - Each release is identified by a unique version string in format `v-x.x.x` and has a public download URL.
- - A project can be linked to a Github repo for CI/CD integration.
  - A project has one to many devices
 
 2. Devices
-- A device represent an ESP32.
+- A device represent an ESP.
 - It can be linked to a project for OTA.
  
 2. Commands
-- Are MQTT messages sent by the Frontend or Backend.
-- They trigger specific actions on target: `restart`, `config`, `update`, `debug`
+- Are MQTT messages sent by the Frontend.
+- They trigger specific actions on target: `restart`, `config`, `update`, `debug`.
 
 3. Reports
-- Are MQTT messages sent by the target.
-- They trigger specific actions on the Frontend (update data) or Backend (repoting): `status`, `metadata`, `error`
+- Are MQTT messages sent by the device.
+- They trigger specific actions on the Frontend for data updates `status`, `metadata`.
+- They trigger specific actions on the Backend for repoting `error`.
 
 5. Config
- - Are key-value pairs stored on target's non-Volatile storage in encrypted manner. 
+ - Are key-value pairs stored on device's non-Volatile storage in encrypted format. 
  - It includes MQTT credentials and SSL certificate, project related variables and custom properties.
- - Refreshed on target boot and on `config` command.
+ - Refreshed on device boot and on `config` command.
 
 5. Logging
-- Are MQTT messages sent by the target to the Frontend.
-- Not stored to database
+- Are MQTT messages sent by the device to the Frontend.
+- Start upon receiving `debug` command on.
+- Stop upon receiving `debug` command off.
+- Not stored to database.
 
 7. Updates
-- Triggered on creating new release either manually or via CI/CD workflow.
+- Triggered on creating new release from Frontend.
 - Store executable to S3 bucket.
 - Send `update` command.

@@ -2,6 +2,7 @@
 An open source platform to remotly manage ESP microcontrollers for IoT applications. 
 
 ## Features
+- Supported devices: ESP32
 - Multi-tenant architecture
 - Authentication via email/password & Oauth providers
 - User defined MQTT broker
@@ -9,7 +10,7 @@ An open source platform to remotly manage ESP microcontrollers for IoT applicati
 - Error reporting to Bugsnag
 - Realtime logging
 - Remote software updates
-- Database agnostic, MongoDB & SQL
+- Database agnostic: MongoDB & SQL
 - File storage to S3 compatible storage provider
 - Stateless backend for serverless deployment
 
@@ -35,11 +36,11 @@ The platform is composed of the following key components:
 - A device represent an ESP.
 - It can be linked to a project for OTA.
  
-2. Commands
+3. Commands
 - Are MQTT messages sent by the Frontend.
 - They trigger specific actions on target: `restart`, `config`, `update`, `debug`.
 
-3. Reports
+4. Reports
 - Are MQTT messages sent by the device.
 - They trigger specific actions on the Frontend for data updates `status`, `metadata`.
 - They trigger specific actions on the Backend for repoting `error`.
@@ -49,7 +50,7 @@ The platform is composed of the following key components:
  - It includes MQTT credentials and SSL certificate, project related variables and custom properties.
  - Refreshed on device boot and on `config` command.
 
-5. Logging
+6. Logging
 - Are MQTT messages sent by the device to the Frontend.
 - Start upon receiving `debug` command on.
 - Stop upon receiving `debug` command off.

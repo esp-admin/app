@@ -16,7 +16,7 @@
                 </NuxtLink>
 
                 <NuxtLink to="/auth/login" aria-label="get-started">
-                    <n-button type="primary">
+                    <n-button>
                         Get started
                     </n-button>
                 </NuxtLink>

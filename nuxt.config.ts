@@ -3,7 +3,7 @@ import { auth, naiveui, tailwindcss, s3 } from "./config";
 export default defineNuxtConfig({
   app: {
     head: {
-      title: "Nuxt starter",
+      title: "ESP Admin",
       htmlAttrs: {
         lang: "en",
       },
@@ -42,6 +42,14 @@ export default defineNuxtConfig({
           "https://www.googletagmanager.com",
           process.env.S3_PUBLIC_BUCKET_URL || "",
         ],
+      },
+    },
+  },
+
+  routeRules: {
+    "api/s3/object/create": {
+      security: {
+        xssValidator: false,
       },
     },
   },

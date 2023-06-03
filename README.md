@@ -4,11 +4,11 @@ An open source platform to remotely manage ESP microcontrollers for IoT applicat
 
 ## ⚠️ Under development
 
-This project is under developement, planning can be found under `Projects` tab. Changes are made on `dev` branch. Any contribution you make is highly appreciated.
+This project is under developement, planning can be found under `Projects` tab. Any contribution you make is highly appreciated.
 
 ## ✔️ Features
 
-- Supported devices ESP32
+- Supported devices *ESP32*
 - Multi-tenant architecture
 - Authentication via email/password & Oauth providers
 - User defined MQTT broker
@@ -16,7 +16,7 @@ This project is under developement, planning can be found under `Projects` tab. 
 - Error reporting via Webhook and Bugsnag
 - Realtime logging
 - Remote software updates
-- Database agnostic MongoDB & SQL
+- Database agnostic (Prisma based)
 - File storage to S3 compatible storage provider
 - Stateless backend for serverless deployment
 
@@ -25,15 +25,15 @@ This project is under developement, planning can be found under `Projects` tab. 
 - Integration with Github Actions for automated releases
 - Integration with Node RED for handling apps logic
 - Reporting via Firebase Cloud Messaging
-- Support for ESP8266
+- Support for *ESP8266*
 
 ## 🛠️ Frameworks & Tools
 
-- Nuxt 3 for Fullstack app dev
-- NaiveUI & TailwindCSS for UI dev
+- Nuxt 3 for Fullstack web development
+- NaiveUI & TailwindCSS for UI styling
 - Figma for UI design
 - PlatformIO as firmware IDE
-- Arduino as ESP framework
+- Arduino as firmware framework
 
 ## 🧱 Architecture
 
@@ -78,7 +78,7 @@ This is based on an initial conceptual design
 
 7. Updates
 
-- Triggered on creating new release from Frontend.
+- Triggered on creating new project release from Frontend.
 - Store executable to S3 bucket.
 - Send `update` command.
 

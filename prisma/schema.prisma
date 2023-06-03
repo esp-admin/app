@@ -6,13 +6,12 @@ generator client {
 }
 
 datasource db {
-  provider          = "postgresql"
-  url               = env("DATABASE_URL")
-  // shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
 }
 
 model User {
-  id            Int            @id @default(autoincrement())
+  id            String         @id @default(auto()) @map("_id") @db.ObjectId
   name          String
   email         String         @unique
   picture       String
@@ -30,9 +29,9 @@ model User {
 }
 
 model RefreshToken {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   uid       String
-  userId    Int
+  userId    String   @db.ObjectId
   user      User     @relation(fields: [userId], references: [id])
   userAgent String?
   createdAt DateTime @default(now())

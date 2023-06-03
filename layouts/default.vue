@@ -4,7 +4,7 @@
             <template #start>
                 <NuxtLink to="/home" class="flex items-center gap-3">
                     <NaiveIcon name="logos:nuxt-icon" :size="25"></NaiveIcon>
-                    <n-text strong>Nuxt starter</n-text>
+                    <n-text strong>ESP Admin</n-text>
                 </NuxtLink>
             </template>
 

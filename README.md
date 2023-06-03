@@ -3,18 +3,23 @@ An open source platform to manage ESP32 microcontrollers for IoT applications.
 
 ## Features
 - Multi-tenant architecture
-- Authentication via email/password or Oauth providers
+- Authentication via email/password & Oauth providers
 - User defined MQTT broker
 - Remote configuration
-- Error reporting
+- Error reporting to Bugsnag
 - Realtime logging
-- Remote software updates manually or via CI/CD pipeline
+- Remote software updates manually
 - Database agnostic, MongoDB or SQL
 - File storage to S3 compatible storage
 - Stateless backend for serverless deployment
 
+## Future features
+- Integration with CI/CD tools
+- Integration with Node RED
+- Reporting via Push notifications 
+
 ## Architecture
-![architecture](https://pub-0632a7a592ef490489f3a5bb81a7fd05.r2.dev/img.jpg)
+![architecture](https://pub-52f7e6f21f164b9e9f3f9c2df16ece76.r2.dev/architecture.jpg)
 
 ## Components
 The platform is composed of the following key components:

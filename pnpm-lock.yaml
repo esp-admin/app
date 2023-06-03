@@ -12,6 +12,7 @@ specifiers:
   dayjs: ^1.11.8
   highcharts-vue: ^1.4.2
   nuxt: ^3.5.2
+  nuxt-gtag: ^0.5.7
   nuxt-security: ^0.13.0
   prisma: ^4.15.0
   ua-parser-js: ^1.0.35
@@ -31,6 +32,7 @@ devDependencies:
   '@types/ua-parser-js': 0.7.36
   changelogen: 0.5.3
   nuxt: 3.5.2_@types+node@20.2.5
+  nuxt-gtag: 0.5.7
   nuxt-security: 0.13.0
   prisma: 4.15.0
 
@@ -5284,6 +5286,17 @@ packages:
     dependencies:
       '@nuxt/kit': 3.5.2
       defu: 6.1.2
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: true
+
+  /nuxt-gtag/0.5.7:
+    resolution: {integrity: sha512-Q6NRndEJ0phEfKdS4uLy3hpVBkgWGnG5KJ2dhVyCmbLXcfakkmf19f2WJ5uM2yUOg8rAkYgDjRb9XyAfE+okuA==}
+    dependencies:
+      '@nuxt/kit': 3.5.2
+      defu: 6.1.2
+      pathe: 1.1.1
     transitivePeerDependencies:
       - rollup
       - supports-color

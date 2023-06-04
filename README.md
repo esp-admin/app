@@ -10,7 +10,7 @@ This project is under developement, planning can be found under `Projects` tab. 
 
 - Supported devices *ESP32*
 - Multi-tenant architecture
-- Authentication via email/password & Oauth providers
+- Built-in authentication
 - User defined MQTT broker
 - Remote configuration
 - Error reporting via Webhook and Bugsnag

@@ -18,7 +18,7 @@ This project is under developement, planning can be found under `Projects` tab. 
 - Remote software updates
 - Database agnostic (Prisma based)
 - File storage to S3 compatible storage provider
-- Stateless backend for serverless deployment
+- Serverless deployment
 
 ## ⌛ Future features
 

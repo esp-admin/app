@@ -1,7 +1,11 @@
 <template>
     <div>
         <div class="flex justify-between mb-4">
-            <n-h2>{{ $route.params.id }}</n-h2>
+            <div class="flex flex-col">
+                <n-text class="text-xl font-semibold">{{ $route.params.id }}</n-text>
+                <n-text depth="3" class="text-sm">Connected</n-text>
+            </div>
+
             <n-button type="error" secondary @click="deleteModalVisible = true">Delete device</n-button>
         </div>
 

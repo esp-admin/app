@@ -1,8 +1,8 @@
 <template>
     <div>
-        <n-h2>Projects</n-h2>
-
         <div class="grid md:grid-cols-3 gap-6">
+            <n-text class="col-span-full text-xl font-semibold">Projects</n-text>
+
             <div class="col-span-full flex gap-4">
                 <n-input>
                     <template #prefix>

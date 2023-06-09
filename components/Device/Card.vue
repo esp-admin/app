@@ -11,6 +11,10 @@
             <n-button v-if="showUnlink" secondary @click="unlinkModalVisible = true">Unlink</n-button>
         </div>
 
+        <template #header-extra>
+            <DeviceStatus></DeviceStatus>
+        </template>
+
         <n-modal preset="card" v-model:show="unlinkModalVisible" size="small" :closable="false" class="max-w-xs">
             <DeviceUnlink />
         </n-modal>

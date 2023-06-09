@@ -7,7 +7,7 @@
                 </template>
             </n-input>
 
-            <n-button type="primary">
+            <n-button type="primary" @click="linkModalVisible = true">
                 Link device
             </n-button>
         </div>
@@ -15,5 +15,13 @@
         <DeviceCard show-unlink></DeviceCard>
         <DeviceCard show-unlink></DeviceCard>
         <DeviceCard show-unlink></DeviceCard>
+
+        <n-modal preset="card" v-model:show="linkModalVisible" size="small" :closable="false" class="max-w-xs">
+            <DeviceLink />
+        </n-modal>
     </div>
 </template>
+
+<script setup>
+const linkModalVisible = ref(false)
+</script>

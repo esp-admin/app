@@ -10,7 +10,7 @@
                     </template>
                 </n-input>
 
-                <n-button type="primary">
+                <n-button type="primary" @click="createModalVisible = true">
                     Create device
                 </n-button>
             </div>
@@ -22,5 +22,13 @@
             <DeviceCard></DeviceCard>
             <DeviceCard></DeviceCard>
         </div>
+
+        <n-modal preset="card" v-model:show="createModalVisible" size="small" :closable="false" class="max-w-xs">
+            <DeviceCreate></DeviceCreate>
+        </n-modal>
     </div>
 </template>
+
+<script setup>
+const createModalVisible = ref(false)
+</script>

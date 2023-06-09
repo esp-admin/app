@@ -10,7 +10,7 @@
                     </template>
                 </n-input>
 
-                <n-button type="primary">
+                <n-button type="primary" @click="createModalVisible = true">
                     Create project
                 </n-button>
             </div>
@@ -22,5 +22,13 @@
             <ProjectCard></ProjectCard>
             <ProjectCard></ProjectCard>
         </div>
+
+        <n-modal preset="card" v-model:show="createModalVisible" size="small" :closable="false" class="max-w-xs">
+            <ProjectCreate />
+        </n-modal>
     </div>
 </template>
+
+<script setup>
+const createModalVisible = ref(false)
+</script>

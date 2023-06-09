@@ -45,7 +45,7 @@ const user = useUser()
 const routes = ref<NavbarRoute[]>([
     {
         label: "Projects",
-        icon: "ph:app-window",
+        icon: "ph:code",
         path: "/projects"
     },
     {

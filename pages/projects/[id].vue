@@ -2,7 +2,7 @@
     <div>
         <div class="flex justify-between mb-4">
             <n-h2>{{ $route.params.id }}</n-h2>
-            <n-button type="error" secondary>Delete project</n-button>
+            <n-button type="error" secondary @click="deleteModalVisible = true">Delete project</n-button>
         </div>
 
         <n-tabs type="line" animated>
@@ -26,5 +26,13 @@
                 <ProjectReleases class="mt-4"></ProjectReleases>
             </n-tab-pane>
         </n-tabs>
+
+        <n-modal preset="card" v-model:show="deleteModalVisible" size="small" :closable="false" class="max-w-xs">
+            <ProjectDelete />
+        </n-modal>
     </div>
 </template>
+
+<script setup>
+const deleteModalVisible = ref(false)
+</script>

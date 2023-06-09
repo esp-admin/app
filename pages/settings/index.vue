@@ -1,6 +1,8 @@
 <template>
     <div>
-        <n-h2>Settings</n-h2>
+        <div class="mb-4">
+            <n-text class="text-xl font-semibold">Settings</n-text>
+        </div>
 
         <n-tabs type="line" animated>
             <n-tab-pane name="mqtt" tab="MQTT">

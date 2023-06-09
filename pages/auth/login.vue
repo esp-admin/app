@@ -1,37 +1,33 @@
 <template>
-    <div class="flex flex-col gap-4">
-        <n-card>
-            <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
-                <n-form-item label="Email" path="email" :show-require-mark="false">
-                    <n-input v-model:value="model.email"></n-input>
-                </n-form-item>
+    <n-card>
+        <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
+            <n-form-item label="Email" path="email" :show-require-mark="false">
+                <n-input v-model:value="model.email"></n-input>
+            </n-form-item>
 
-                <n-form-item path="password" label="Password" :show-require-mark="false">
-                    <n-input v-model:value="model.password" type="password" show-password-on="mousedown"></n-input>
-                </n-form-item>
+            <n-form-item path="password" label="Password" :show-require-mark="false">
+                <n-input v-model:value="model.password" type="password" show-password-on="mousedown"></n-input>
+            </n-form-item>
 
-                <div class="grid grid-cols-1 gap-4">
-                    <NuxtLink to="/auth/request-password-reset" class="no-underline">
-                        <n-text type="primary">Forgot password?</n-text>
-                    </NuxtLink>
-                    <n-button attr-type="submit" block :loading="pending" :disabled="pending">Login</n-button>
-                    <n-button @click="() => loginWithProvider('google')" block>
-                        <template #icon>
-                            <NaiveIcon name="logos:google-icon"></NaiveIcon>
-                        </template>
-                        Continue with Google
-                    </n-button>
-                </div>
-            </n-form>
-        </n-card>
+            <div class="grid grid-cols-1 gap-4">
+                <NuxtLink to="/auth/request-password-reset" class="no-underline">
+                    <n-text type="primary">Forgot password?</n-text>
+                </NuxtLink>
+                <n-button attr-type="submit" block :loading="pending" :disabled="pending" type="primary">Login</n-button>
+                <n-button @click="() => loginWithProvider('google')" block>
+                    <template #icon>
+                        <NaiveIcon name="logos:google-icon"></NaiveIcon>
+                    </template>
+                    Continue with Google
+                </n-button>
 
-        <n-card class="text-center" size="small">
-            Do not have account?
-            <NuxtLink to="/auth/register" class="no-underline">
-                <n-text type="primary"> Create one</n-text>
-            </NuxtLink>
-        </n-card>
-    </div>
+                <nuxt-link to="/auth/register">
+                    <n-button attr-type="button" block>Create Account</n-button>
+                </nuxt-link>
+            </div>
+
+        </n-form>
+    </n-card>
 </template>
 
 <script setup lang="ts">

@@ -1,36 +1,27 @@
 <template>
-    <div class="flex flex-col gap-4">
-        <n-result v-if="success" status="success" title="Done"
-            description="We've sent you a secure link to reset your password">
-            <template #footer>
-                <NuxtLink to="/auth/login" class="no-underline">
-                    <n-button type="primary">Go back to login</n-button>
-                </NuxtLink>
-            </template>
-        </n-result>
-
-        <n-card v-else>
-            <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
-                <n-form-item label="Email" path="email" :show-require-mark="false">
-                    <n-input v-model:value="model.email"></n-input>
-                </n-form-item>
-
-                <n-button block attr-type="submit" :loading="pending" type="primary">
-                    <template #icon>
-                        <NaiveIcon name="ph:arrows-counter-clockwise-duotone"></NaiveIcon>
-                    </template>
-                    Reset password
-                </n-button>
-            </n-form>
-        </n-card>
-
-        <n-card v-if="!success" class="text-center" size="small">
-            No need for that?
+    <n-result v-if="success" status="success" title="Done"
+        description="We've sent you a secure link to reset your password">
+        <template #footer>
             <NuxtLink to="/auth/login" class="no-underline">
-                <n-text type="primary">Go back</n-text>
+                <n-button type="primary">Go back to login</n-button>
             </NuxtLink>
-        </n-card>
-    </div>
+        </template>
+    </n-result>
+
+    <n-card v-else>
+        <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
+            <n-form-item label="Email" path="email" :show-require-mark="false">
+                <n-input v-model:value="model.email"></n-input>
+            </n-form-item>
+
+            <n-button block attr-type="submit" :loading="pending" type="primary">
+                <template #icon>
+                    <NaiveIcon name="ph:arrows-counter-clockwise-duotone"></NaiveIcon>
+                </template>
+                Reset password
+            </n-button>
+        </n-form>
+    </n-card>
 </template>
 
 <script setup lang="ts">

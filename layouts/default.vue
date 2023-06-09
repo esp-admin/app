@@ -1,6 +1,6 @@
 <template>
     <div>
-        <naive-navbar v-if="user" :routes="routes" drawer-closable>
+        <naive-navbar v-if="user" :routes="routes" drawer-closable menu-placement="right">
             <template #start>
                 <NuxtLink to="/home" class="flex items-center gap-3">
                     <NaiveIcon name="simple-icons:espressif" :size="25" icon-color="red"></NaiveIcon>
@@ -26,7 +26,9 @@
             </template>
         </naive-navbar>
 
-        <slot></slot>
+        <div class="container mx-auto my-8 px-4">
+            <slot></slot>
+        </div>
     </div>
 </template>
 
@@ -40,7 +42,23 @@ const { logout } = useAuth()
 const { isMobileOrTablet } = useNaiveDevice()
 const user = useUser()
 
-const routes = ref<NavbarRoute[]>([])
+const routes = ref<NavbarRoute[]>([
+    {
+        label: "Projects",
+        icon: "ph:app-window",
+        path: "/projects"
+    },
+    {
+        label: "Devices",
+        icon: "ph:cpu",
+        path: "/devices"
+    },
+    {
+        label: "Settings",
+        icon: "ph:gear",
+        path: "/settings"
+    },
+])
 
 if (isMobileOrTablet) {
     routes.value.push({
@@ -66,6 +84,11 @@ watch(user, (newUser, oldUser) => {
         {
             key: 'divider',
             type: 'divider',
+        },
+        {
+            label: 'About',
+            key: 'about',
+            icon: () => h(NaiveIcon, { name: 'ph:question' }),
         },
         {
             label: 'Account',
@@ -98,13 +121,16 @@ watch(user, (newUser, oldUser) => {
 
 
 async function handleSelect(key: string) {
-    if (key === 'logout') {
-        await logout()
-    }
-    else if (key === 'account') {
-        return navigateTo('/account')
-    } else if (key === 'management') {
-        return navigateTo('/management')
+    switch (key) {
+        case 'logout':
+            await logout()
+            break
+        case 'account':
+            return navigateTo('/account')
+        case 'management':
+            return navigateTo('/management')
+        case 'about':
+            return window.open('https://github.com/becem-gharbi/esp-admin')
     }
 }
 </script>

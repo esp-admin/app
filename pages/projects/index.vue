@@ -28,8 +28,9 @@
             <ProjectCard></ProjectCard>
         </div>
 
-        <n-modal preset="card" v-model:show="createModalVisible" size="small" :closable="false" class="max-w-xs">
-            <ProjectCreate />
+        <n-modal preset="card" v-model:show="createModalVisible" size="small" :closable="false" :mask-closable="false"
+            class="max-w-xs">
+            <ProjectCreate @cancel="createModalVisible = false" />
         </n-modal>
     </div>
 </template>

@@ -29,8 +29,9 @@
             <DeviceCard></DeviceCard>
         </div>
 
-        <n-modal preset="card" v-model:show="createModalVisible" size="small" :closable="false" class="max-w-xs">
-            <DeviceCreate></DeviceCreate>
+        <n-modal preset="card" v-model:show="createModalVisible" size="small" :closable="false" :mask-closable="false"
+            class="max-w-xs">
+            <DeviceCreate @cancel="createModalVisible = false"></DeviceCreate>
         </n-modal>
     </div>
 </template>

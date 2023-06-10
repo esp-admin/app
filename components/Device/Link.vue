@@ -4,6 +4,13 @@
             <n-select></n-select>
         </n-form-item>
 
-        <n-button type="primary" block>Link device</n-button>
+        <div class="flex gap-2">
+            <n-button secondary class="flex-1" attr-type="button" @click="$emit('cancel')">Cancel</n-button>
+            <n-button type="primary" class="flex-1">Link device</n-button>
+        </div>
     </n-form>
 </template>
+
+<script setup>
+defineEmits(["cancel", "done"])
+</script>

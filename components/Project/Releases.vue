@@ -16,8 +16,9 @@
         <ReleaseCard></ReleaseCard>
         <ReleaseCard></ReleaseCard>
 
-        <n-modal preset="card" v-model:show="createModalVisible" size="small" :closable="false" class="max-w-xs">
-            <ReleaseCreate />
+        <n-modal preset="card" v-model:show="createModalVisible" size="small" :closable="false" :mask-closable="false"
+            class="max-w-xs">
+            <ReleaseCreate @cancel="createModalVisible = false" />
         </n-modal>
     </div>
 </template>

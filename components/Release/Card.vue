@@ -11,12 +11,19 @@
         <template #header-extra>
             <div class="flex gap-2">
                 <n-button secondary>Trigger</n-button>
-                <n-button secondary>Delete</n-button>
+                <n-button secondary @click="deleteModalVisible = true">Delete</n-button>
             </div>
         </template>
+
+        <n-modal preset="card" v-model:show="deleteModalVisible" size="small" :closable="false" :mask-closable="false"
+            class="max-w-xs">
+            <ReleaseDelete @cancel="deleteModalVisible = false" />
+        </n-modal>
     </n-card>
 </template>
 
 <script setup>
 const version = ref("v1.0.0")
+
+const deleteModalVisible = ref(false)
 </script>

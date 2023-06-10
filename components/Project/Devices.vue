@@ -16,8 +16,9 @@
         <DeviceCard show-unlink></DeviceCard>
         <DeviceCard show-unlink></DeviceCard>
 
-        <n-modal preset="card" v-model:show="linkModalVisible" size="small" :closable="false" class="max-w-xs">
-            <DeviceLink />
+        <n-modal preset="card" v-model:show="linkModalVisible" size="small" :closable="false" :mask-closable="false"
+            class="max-w-xs">
+            <DeviceLink @cancel="linkModalVisible = false" />
         </n-modal>
     </div>
 </template>

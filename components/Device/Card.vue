@@ -15,8 +15,9 @@
             <DeviceStatus></DeviceStatus>
         </template>
 
-        <n-modal preset="card" v-model:show="unlinkModalVisible" size="small" :closable="false" class="max-w-xs">
-            <DeviceUnlink />
+        <n-modal preset="card" v-model:show="unlinkModalVisible" size="small" :closable="false" :mask-closable="false"
+            class="max-w-xs">
+            <DeviceUnlink @cancel="unlinkModalVisible = false" />
         </n-modal>
     </n-card>
 </template>

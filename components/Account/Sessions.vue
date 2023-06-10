@@ -3,7 +3,7 @@
         <n-list-item v-for="session of data">
             <n-thing>
                 <template #avatar>
-                    <n-tag :type="session.current ? 'success' : 'warning'" size="small">
+                    <n-tag :type="session.current ? 'success' : 'warning'">
                         {{ session.current ? 'Current' : 'Active' }}
                     </n-tag>
                 </template>
@@ -19,7 +19,7 @@
                 </template>
 
                 <template #description>
-                    {{ dayjs(session.updatedAt).fromNow() }}
+                    <n-text :depth="3">{{ dayjs(session.updatedAt).fromNow() }}</n-text>
                 </template>
 
                 <template #header-extra>

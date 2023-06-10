@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
       throw new Error("unauthorized");
     }
 
-    const { name, picture, birthday } = await readBody(event);
+    const { name, picture } = await readBody(event);
 
     const user = await prisma.user.update({
       where: {
@@ -17,7 +17,6 @@ export default defineEventHandler(async (event) => {
       data: {
         name,
         picture,
-        birthday: new Date(birthday),
       },
     });
 

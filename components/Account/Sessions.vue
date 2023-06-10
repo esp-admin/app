@@ -46,7 +46,7 @@ const { getAllSessions, revokeSession } = useAuthSession()
 
 const { data } = await useAsyncData(getAllSessions)
 
-async function handleSessionRevoke(id: number) {
+async function handleSessionRevoke(id: string) {
     await revokeSession(id)
 
     data.value = data.value!.filter(el => el.id !== id)

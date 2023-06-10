@@ -23,9 +23,6 @@ model User {
   refreshTokens RefreshToken[]
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
-
-  // Custom fields
-  birthday DateTime?
 }
 
 model RefreshToken {

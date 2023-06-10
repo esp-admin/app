@@ -58,6 +58,12 @@ const themeConfig = ref<ThemeConfig>({
       borderColor: theme.colors.gray[800]
     }
   },
+
+  mobileOrTablet: {
+    Tabs: {
+      tabFontSizeMedium: "16px"
+    }
+  }
 })
 </script>
 

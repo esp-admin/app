@@ -1,5 +1,5 @@
 <template>
-    <n-tag round type="success" :bordered="false" size="small">
+    <n-tag round type="success" :bordered="false">
         Connected
         <template #icon>
             <naive-icon name="ph:check"></naive-icon>

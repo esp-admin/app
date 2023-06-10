@@ -52,20 +52,21 @@ const routes = ref<NavbarRoute[]>([
         label: "Devices",
         icon: "ph:cpu",
         path: "/devices"
-    },
-    {
-        label: "Settings",
-        icon: "ph:gear",
-        path: "/settings"
-    },
+    }
 ])
 
 if (isMobileOrTablet) {
-    routes.value.push({
-        label: "Account",
-        path: "/account",
-        icon: 'ph:user'
-    })
+    routes.value.push(
+        {
+            label: "Settings",
+            icon: "ph:gear",
+            path: "/settings"
+        },
+        {
+            label: "Account",
+            path: "/account",
+            icon: 'ph:user'
+        })
 }
 
 const dropdownOptions = ref<DropdownOption[]>([])
@@ -86,14 +87,19 @@ watch(user, (newUser, oldUser) => {
             type: 'divider',
         },
         {
-            label: 'About',
-            key: 'about',
-            icon: () => h(NaiveIcon, { name: 'ph:question' }),
+            label: 'Settings',
+            key: 'settings',
+            icon: () => h(NaiveIcon, { name: 'ph:gear' }),
         },
         {
             label: 'Account',
             key: 'account',
             icon: () => h(NaiveIcon, { name: 'ph:user' }),
+        },
+        {
+            label: 'About',
+            key: 'about',
+            icon: () => h(NaiveIcon, { name: 'ph:question' }),
         },
         {
             label: 'Logout',
@@ -103,7 +109,7 @@ watch(user, (newUser, oldUser) => {
     ]
 
     if (newUser.role === "admin") {
-        dropdownOptions.value.splice(3, 0, {
+        dropdownOptions.value.splice(2, 0, {
             label: 'Management',
             key: 'management',
             icon: () => h(NaiveIcon, { name: 'ph:users' }),
@@ -129,6 +135,8 @@ async function handleSelect(key: string) {
             return navigateTo('/account')
         case 'management':
             return navigateTo('/management')
+        case 'settings':
+            return navigateTo('/settings')
         case 'about':
             return window.open('https://github.com/becem-gharbi/esp-admin')
     }

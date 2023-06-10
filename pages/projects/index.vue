@@ -1,7 +1,12 @@
 <template>
     <div>
         <div class="grid md:grid-cols-3 gap-6">
-            <n-text class="col-span-full text-xl font-semibold">Projects</n-text>
+            <div class="flex gap-2 items-center">
+                <naive-icon name="ph:code"></naive-icon>
+                <n-text class="col-span-full text-xl font-semibold">
+                    Projects
+                </n-text>
+            </div>
 
             <div class="col-span-full flex gap-4">
                 <n-input>

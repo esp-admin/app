@@ -20,9 +20,12 @@ model User {
   password      String?
   verified      Boolean        @default(false)
   suspended     Boolean        @default(false)
-  refreshTokens RefreshToken[]
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
+  refreshTokens RefreshToken[]
+  Projects      Project[]
+  Settings      Settings?
+  Devices       Device[]
 }
 
 model RefreshToken {
@@ -37,6 +40,91 @@ model RefreshToken {
   @@index([userId])
 }
 
+model Settings {
+  id     String  @id @default(auto()) @map("_id") @db.ObjectId
+  Mqtt   Mqtt?
+  Report Report?
+  userId String  @unique @db.ObjectId
+  user   User    @relation(fields: [userId], references: [id])
+}
+
+model Mqtt {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  host        String
+  portMqtt    Int?
+  portWs      Int
+  username    String
+  password    String
+  certificate String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  settingsId  String   @unique @db.ObjectId
+  settings    Settings @relation(fields: [settingsId], references: [id])
+}
+
+model Report {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  bagsnagKey String?
+  webhookUrl String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  settingsId String   @unique @db.ObjectId
+  settings   Settings @relation(fields: [settingsId], references: [id])
+}
+
+model Project {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  name        String    @unique
+  repository  String?
+  description String?
+  variables   Json?
+  commands    Json?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  userId      String    @db.ObjectId
+  user        User      @relation(fields: [userId], references: [id])
+  Releases    Release[]
+  Devices     Device[]
+}
+
+model Release {
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+  downloadUrl String
+  version     String
+  createdAt   DateTime     @default(now())
+  projectId   String       @db.ObjectId
+  project     Project      @relation(fields: [projectId], references: [id])
+  Deployment  Deployment[]
+}
+
+model Device {
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+  name        String       @unique
+  mac         String       @unique
+  apiKey      String
+  description String?
+  variables   String?
+  status      DeviceStatus @default(unregistered)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  projectId   String?      @db.ObjectId
+  project     Project?     @relation(fields: [projectId], references: [id])
+  userId      String       @db.ObjectId
+  user        User         @relation(fields: [userId], references: [id])
+  Deployment  Deployment[]
+}
+
+model Deployment {
+  id        String           @id @default(auto()) @map("_id") @db.ObjectId
+  status    DeploymentStatus @default(active)
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+  deviceId  String           @db.ObjectId
+  device    Device           @relation(fields: [releaseId], references: [id])
+  releaseId String           @db.ObjectId
+  release   Release          @relation(fields: [releaseId], references: [id])
+}
+
 enum Role {
   user
   admin
@@ -45,4 +133,16 @@ enum Role {
 enum Provider {
   default
   google
+}
+
+enum DeviceStatus {
+  connected
+  disconnected
+  unregistered
+}
+
+enum DeploymentStatus {
+  active
+  failed
+  succeded
 }

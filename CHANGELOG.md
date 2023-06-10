@@ -1,7 +1,7 @@
 # Changelog
 
 
-## v0.0.1
+## v0.0.1-alpha
 
 
 ### 🚀 Enhancements
@@ -51,5 +51,4 @@
 ### ❤️  Contributors
 
 - Becem Gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
-- Becem ([@becem-gharbi](http://github.com/becem-gharbi))
 

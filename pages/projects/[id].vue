@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div v-if="project">
         <div class="flex justify-between mb-4">
             <div class="flex flex-col">
-                <n-text class="text-xl font-semibold">{{ $route.params.id }}</n-text>
-                <n-text depth="3" class="text-sm">Created 3 days ago</n-text>
+                <n-text class="text-xl font-semibold">{{ project.name }}</n-text>
+                <n-text depth="3" class="text-sm"> Created {{ formatDate(project.createdAt) }}</n-text>
             </div>
 
             <n-button type="error" secondary @click="deleteModalVisible = true">Delete project</n-button>
@@ -33,11 +33,26 @@
 
         <n-modal preset="card" v-model:show="deleteModalVisible" size="small" :closable="false" :mask-closable="false"
             class="max-w-xs">
-            <ProjectDelete @cancel="deleteModalVisible = false" />
+            <ProjectDelete @cancel="deleteModalVisible = false" @done="onDelete" :project="project" />
         </n-modal>
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { Project } from '@prisma/client';
+import dayjs from "dayjs"
+import relativeTime from "dayjs/plugin/relativeTime"
+
+dayjs.extend(relativeTime)
+
 const deleteModalVisible = ref(false)
+
+const route = useRoute()
+
+const { data: project } = await useAsyncData<Project>(() => useAuthFetch(`/api/projects/${route.params.id}`))
+
+function onDelete() {
+    deleteModalVisible.value = false
+    navigateTo("/projects")
+}
 </script>

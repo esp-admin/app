@@ -20,21 +20,25 @@
                 </n-button>
             </div>
 
-            <ProjectCard></ProjectCard>
-            <ProjectCard></ProjectCard>
-            <ProjectCard></ProjectCard>
-            <ProjectCard></ProjectCard>
-            <ProjectCard></ProjectCard>
-            <ProjectCard></ProjectCard>
+            <ProjectCard v-for="project of projects" :project="project"></ProjectCard>
         </div>
 
         <n-modal preset="card" v-model:show="createModalVisible" size="small" :closable="false" :mask-closable="false"
             class="max-w-xs">
-            <ProjectCreate @cancel="createModalVisible = false" />
+            <ProjectCreate @cancel="createModalVisible = false" @done="onCreate" />
         </n-modal>
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { Project } from '@prisma/client';
+
 const createModalVisible = ref(false)
+
+const { data: projects } = await useAsyncData<Project[]>(() => useAuthFetch("/api/projects"))
+
+function onCreate(project: Project) {
+    createModalVisible.value = false;
+    navigateTo(`/projects/${project.id}`)
+}
 </script>

@@ -1,16 +1,60 @@
 <template>
-    <n-form>
-        <n-form-item label="Name">
-            <n-input></n-input>
+    <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
+        <n-form-item label="Name" path="name">
+            <n-input v-model:value="model.name"></n-input>
         </n-form-item>
 
         <div class="flex gap-2">
             <n-button secondary class="flex-1" attr-type="button" @click="$emit('cancel')">Cancel</n-button>
-            <n-button type="primary" class="flex-1">Create project</n-button>
+            <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending" class="flex-1">Create
+                project</n-button>
         </div>
     </n-form>
 </template>
 
-<script setup>
-defineEmits(["cancel", "done"])
+<script setup lang="ts">
+import type { Project } from "@prisma/client"
+import type { H3Error } from "h3"
+
+const emits = defineEmits(["cancel", "done"])
+
+const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm()
+
+apiErrors.value = {
+    alreadyExists: false,
+}
+
+const model = ref({
+    name: "",
+});
+
+rules.value = {
+    name: [
+        {
+            required: true,
+            message: "Please input project name",
+            trigger: "blur",
+        },
+        {
+            message: "Name already used",
+            validator: () => !apiErrors.value.alreadyExists
+        },
+    ],
+}
+
+async function handleSubmit() {
+    const { data, error } = await useAsyncData<Project, H3Error>(() => useAuthFetch("/api/projects", {
+        method: "POST",
+        body: {
+            name: model.value.name
+        }
+    }))
+
+    if (error.value) {
+        apiErrors.value.alreadyExists = error.value.data?.message.includes("Unique constraint failed")
+    }
+    else {
+        emits("done", data.value)
+    }
+}
 </script>

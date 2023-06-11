@@ -12,17 +12,34 @@
             </n-button>
         </div>
 
-        <DeviceCard show-unlink></DeviceCard>
-        <DeviceCard show-unlink></DeviceCard>
-        <DeviceCard show-unlink></DeviceCard>
+        <DeviceCard v-for="device of devices" :device="device" @unlink="onUnlink" show-unlink></DeviceCard>
 
         <n-modal preset="card" v-model:show="linkModalVisible" size="small" :closable="false" :mask-closable="false"
             class="max-w-xs">
-            <DeviceLink @cancel="linkModalVisible = false" />
+            <DeviceLink @cancel="linkModalVisible = false" @done="onLink" :project="project" />
         </n-modal>
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { Project, Device } from "@prisma/client"
+
 const linkModalVisible = ref(false)
+
+const props = defineProps<{ project: Project }>()
+
+const { data: devices, refresh } = await useAsyncData<Device[]>(() => useAuthFetch("/api/devices", {
+    query: {
+        projectId: props.project.id
+    }
+}))
+
+function onLink() {
+    linkModalVisible.value = false
+    refresh()
+}
+
+function onUnlink() {
+    refresh()
+}
 </script>

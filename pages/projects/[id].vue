@@ -23,7 +23,7 @@
             </n-tab-pane>
 
             <n-tab-pane name="devices" tab="Devices">
-                <ProjectDevices class="mt-4"></ProjectDevices>
+                <ProjectDevices class="mt-4" :project="project"></ProjectDevices>
             </n-tab-pane>
 
             <n-tab-pane name="releases" tab="Releases">

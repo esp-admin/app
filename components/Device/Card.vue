@@ -15,7 +15,7 @@
 
         <n-modal preset="card" v-model:show="unlinkModalVisible" size="small" :closable="false" :mask-closable="false"
             class="max-w-xs">
-            <DeviceUnlink @cancel="unlinkModalVisible = false" />
+            <DeviceUnlink @cancel="unlinkModalVisible = false" @done="onUnlink" :device="device" />
         </n-modal>
     </n-card>
 </template>
@@ -23,7 +23,14 @@
 <script setup lang="ts">
 import type { Device } from "@prisma/client"
 
-defineProps<{ device: Device, showUnlink?: boolean }>()
+const props = defineProps<{ device: Device, showUnlink?: boolean }>()
+
+const emits = defineEmits(["unlink"])
 
 const unlinkModalVisible = ref(false)
+
+function onUnlink() {
+    unlinkModalVisible.value = false
+    emits("unlink", props.device)
+}
 </script>

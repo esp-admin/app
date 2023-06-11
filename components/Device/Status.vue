@@ -1,22 +1,22 @@
 <template>
-    <n-tag v-if="device.status === 'connected'"  type="success" :bordered="false">
+    <n-tag v-if="device.status === 'connected'" round size="small" type="success" :bordered="false">
         Connected
         <template #icon>
-            <naive-icon name="ph:check"></naive-icon>
+            <naive-icon name="ph:check" :size="16"></naive-icon>
         </template>
     </n-tag>
 
-    <n-tag v-else-if="device.status === 'disconnected'"  type="error" :bordered="false">
+    <n-tag v-else-if="device.status === 'disconnected'" round size="small" type="error" :bordered="false">
         Disconnected
         <template #icon>
-            <naive-icon name="ph:x"></naive-icon>
+            <naive-icon name="ph:x" :size="16"></naive-icon>
         </template>
     </n-tag>
 
-    <n-tag v-else-if="device.status === 'unregistered'"  type="warning" :bordered="false">
+    <n-tag v-else-if="device.status === 'unregistered'" round size="small" type="warning" :bordered="false">
         Unregistered
         <template #icon>
-            <naive-icon name="ph:warning"></naive-icon>
+            <naive-icon name="ph:warning" :size="16"></naive-icon>
         </template>
     </n-tag>
 </template>

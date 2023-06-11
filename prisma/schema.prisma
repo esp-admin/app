@@ -23,9 +23,9 @@ model User {
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
   refreshTokens RefreshToken[]
-  Projects      Project[]
-  Settings      Settings?
-  Devices       Device[]
+  projects      Project[]
+  settings      Settings?
+  devices       Device[]
 }
 
 model RefreshToken {
@@ -42,8 +42,8 @@ model RefreshToken {
 
 model Settings {
   id     String  @id @default(auto()) @map("_id") @db.ObjectId
-  Mqtt   Mqtt?
-  Report Report?
+  mqtt   Mqtt?
+  report Report?
   userId String  @unique @db.ObjectId
   user   User    @relation(fields: [userId], references: [id])
 }
@@ -83,8 +83,8 @@ model Project {
   updatedAt   DateTime  @updatedAt
   userId      String    @db.ObjectId
   user        User      @relation(fields: [userId], references: [id])
-  Releases    Release[]
-  Devices     Device[]
+  releases    Release[]
+  devices     Device[]
 }
 
 model Release {
@@ -94,7 +94,7 @@ model Release {
   createdAt   DateTime     @default(now())
   projectId   String       @db.ObjectId
   project     Project      @relation(fields: [projectId], references: [id])
-  Deployment  Deployment[]
+  deployments  Deployment[]
 }
 
 model Device {
@@ -111,7 +111,7 @@ model Device {
   project     Project?     @relation(fields: [projectId], references: [id])
   userId      String       @db.ObjectId
   user        User         @relation(fields: [userId], references: [id])
-  Deployment  Deployment[]
+  deployments  Deployment[]
 }
 
 model Deployment {

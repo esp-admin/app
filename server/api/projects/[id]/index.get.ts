@@ -10,13 +10,21 @@ export default defineEventHandler(async (event) => {
 
     const id = event.context.params?.id;
 
-    const device = await prisma.device.findUnique({
+    const project = await prisma.project.findUnique({
       where: {
         id,
       },
+      include: {
+        releases: {
+          select: {
+            id: true,
+            version: true,
+          },
+        },
+      },
     });
 
-    return device;
+    return project;
   } catch (error) {
     await handleError(error);
   }

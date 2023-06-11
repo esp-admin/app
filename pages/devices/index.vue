@@ -21,21 +21,26 @@
                 </n-button>
             </div>
 
-            <DeviceCard></DeviceCard>
-            <DeviceCard></DeviceCard>
-            <DeviceCard></DeviceCard>
-            <DeviceCard></DeviceCard>
-            <DeviceCard></DeviceCard>
-            <DeviceCard></DeviceCard>
+            <DeviceCard v-for="device of devices" :device="device"></DeviceCard>
+
         </div>
 
         <n-modal preset="card" v-model:show="createModalVisible" size="small" :closable="false" :mask-closable="false"
             class="max-w-xs">
-            <DeviceCreate @cancel="createModalVisible = false"></DeviceCreate>
+            <DeviceCreate @cancel="createModalVisible = false" @done="onCreate"></DeviceCreate>
         </n-modal>
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { Device } from '@prisma/client';
+
 const createModalVisible = ref(false)
+
+const { data: devices } = await useAsyncData<Device[]>(() => useAuthFetch("/api/devices"))
+
+function onCreate(device: Device) {
+    createModalVisible.value = false;
+    navigateTo(`/devices/${device.id}`)
+}
 </script>

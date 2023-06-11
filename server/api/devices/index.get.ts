@@ -1,5 +1,4 @@
 import { handleError, prisma } from "#auth";
-import type { Project } from "@prisma/client";
 
 export default defineEventHandler(async (event) => {
   try {
@@ -9,17 +8,14 @@ export default defineEventHandler(async (event) => {
       throw new Error("unauthorized");
     }
 
-    const { name } = await readBody<Project>(event);
-
-    const project = await prisma.project.create({
-      data: {
-        name,
+    const devices = await prisma.device.findMany({
+      where: {
         userId,
       },
     });
 
-    return project;
+    return devices;
   } catch (error) {
-    await handleError(error);
+    handleError(error);
   }
 });

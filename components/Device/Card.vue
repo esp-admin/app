@@ -1,10 +1,8 @@
 <template>
-    <n-card :title="name" size="small" hoverable>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt, distinctio ullam! Eveniet, ipsam dolorum aperiam
-        accusantium ab fuga nam. Impedit eos in velit id saepe sed pariatur a neque minus.
+    <n-card :title="device.name" size="small" hoverable>
 
         <div class="mt-4 flex gap-2">
-            <nuxt-link :to="`/devices/${id}`">
+            <nuxt-link :to="`/devices/${device.id}`">
                 <n-button secondary>View</n-button>
             </nuxt-link>
 
@@ -23,11 +21,9 @@
 </template>
 
 <script setup lang="ts">
-const name = ref("A device")
-const id = ref("id_1")
+import type { Device } from "@prisma/client"
 
-const props = defineProps<{ showUnlink?: boolean }>()
+defineProps<{ device: Device, showUnlink?: boolean }>()
 
 const unlinkModalVisible = ref(false)
-
 </script>

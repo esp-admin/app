@@ -21,7 +21,7 @@ const emits = defineEmits(["cancel", "done"])
 const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm()
 
 apiErrors.value = {
-    alreadyExists: false,
+    nameAlreadyExists: false,
 }
 
 const model = ref({
@@ -37,24 +37,22 @@ rules.value = {
         },
         {
             message: "Name already used",
-            validator: () => !apiErrors.value.alreadyExists
+            validator: () => !apiErrors.value.nameAlreadyExists
         },
     ],
 }
 
 async function handleSubmit() {
-    const { data, error } = await useAsyncData<Project, H3Error>(() => useAuthFetch("/api/projects", {
+    const { data: project, error } = await useAsyncData<Project, H3Error>(() => useAuthFetch("/api/projects", {
         method: "POST",
-        body: {
-            name: model.value.name
-        }
+        body: model.value
     }))
 
     if (error.value) {
-        apiErrors.value.alreadyExists = error.value.data?.message.includes("Unique constraint failed")
+        apiErrors.value.nameAlreadyExists = error.value.data?.message.includes("Unique constraint failed on the constraint: `Project_name_key`")
     }
     else {
-        emits("done", data.value)
+        emits("done", project.value)
     }
 }
 </script>

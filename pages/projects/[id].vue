@@ -40,10 +40,6 @@
 
 <script setup lang="ts">
 import type { Project } from '@prisma/client';
-import dayjs from "dayjs"
-import relativeTime from "dayjs/plugin/relativeTime"
-
-dayjs.extend(relativeTime)
 
 const deleteModalVisible = ref(false)
 

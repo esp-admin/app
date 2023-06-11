@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div v-if="device">
         <div class="flex justify-between mb-4">
             <div class="flex flex-col">
-                <n-text class="text-xl font-semibold">{{ $route.params.id }}</n-text>
-                <n-text depth="3" class="text-sm">Connected</n-text>
+                <n-text class="text-xl font-semibold">{{ device.name }}</n-text>
+                <n-text depth="3" class="text-sm">{{ device.status }}</n-text>
             </div>
 
             <n-button type="error" secondary @click="deleteModalVisible = true">Delete device</n-button>
@@ -29,11 +29,22 @@
 
         <n-modal preset="card" v-model:show="deleteModalVisible" size="small" :closable="false" :mask-closable="false"
             class="max-w-xs">
-            <DeviceDelete @cancel="deleteModalVisible = false" />
+            <DeviceDelete @cancel="deleteModalVisible = false" @done="onDelete" :device="device" />
         </n-modal>
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { Device } from '@prisma/client';
+
 const deleteModalVisible = ref(false)
+
+const route = useRoute()
+
+const { data: device } = await useAsyncData<Device>(() => useAuthFetch(`/api/devices/${route.params.id}`))
+
+function onDelete() {
+    deleteModalVisible.value = false
+    navigateTo("/devices")
+}
 </script>

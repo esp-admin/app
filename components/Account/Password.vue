@@ -53,13 +53,11 @@ rules.value = {
 }
 
 async function handleChangePassword() {
-    await changePassword({
-        currentPassword: model.value.currentPassword,
-        newPassword: model.value.newPassword
-    }).then(() => {
-        message.success("Your password is changed")
-    }).catch((e) => {
-        apiErrors.value.wrongPassword = e.data.message === "wrong-password"
-    })
+    await changePassword(model.value)
+        .then(() => {
+            message.success("Your password is changed")
+        }).catch((error) => {
+            apiErrors.value.wrongPassword = error.data.message === "wrong-password"
+        })
 }
 </script>

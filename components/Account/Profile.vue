@@ -2,18 +2,17 @@
     <div>
         <n-upload class="overflow-hidden w-min mx-auto my-4" list-type="image-card" :max="1" accept="image/*"
             :custom-request="(e) => file = e.file.file">
-            <S3Image v-if="formModel.picture" :src="formModel.picture" class="object-contain" />
+            <S3Image v-if="model.picture" :src="model.picture" class="object-contain" />
         </n-upload>
 
         <n-form @submit.prevent="updateAccount" class="flex-1">
             <n-form-item label="Name">
-                <n-input v-model:value="formModel.name"></n-input>
+                <n-input v-model:value="model.name"></n-input>
             </n-form-item>
 
             <n-button attr-type="submit" :loading="loading" :disabled="loading" type="primary" class="float-right">Update
                 profile</n-button>
         </n-form>
-
     </div>
 </template>
 
@@ -24,7 +23,7 @@ const { fetchUser } = useAuth()
 
 const user = useUser()
 
-const formModel = ref({
+const model = ref({
     name: user.value?.name,
     picture: user.value?.picture,
 })
@@ -42,18 +41,18 @@ async function updateAccount() {
 
             const { data } = await upload({
                 files: [file.value],
-                url: formModel.value.picture,
+                url: model.value.picture,
                 authorization: `Bearer ${accessToken}`
             })
 
             if (data.value) {
-                formModel.value.picture = data.value[0].url
+                model.value.picture = data.value[0].url
             }
         }
 
         await useAuthFetch("/api/user", {
-            method: "post",
-            body: formModel.value,
+            method: "POST",
+            body: model.value,
         })
 
         file.value = null

@@ -1,6 +1,6 @@
 <template>
     <n-list>
-        <n-list-item v-for="session of data">
+        <n-list-item v-for="session of sessions">
             <n-thing>
                 <template #avatar>
                     <n-tag :type="session.current ? 'success' : 'warning'">
@@ -40,11 +40,15 @@ import { UAParser } from "ua-parser-js"
 
 const { getAllSessions, revokeSession } = useAuthSession()
 
-const { data } = await useAsyncData(getAllSessions)
+const { data: sessions } = await useAsyncData(getAllSessions)
 
 async function handleSessionRevoke(id: string) {
-    await revokeSession(id)
+    try {
+        await revokeSession(id)
 
-    data.value = data.value!.filter(el => el.id !== id)
+        sessions.value = sessions.value!.filter(el => el.id !== id)
+    } catch (error) {
+        console.error(error)
+    }
 }
 </script>

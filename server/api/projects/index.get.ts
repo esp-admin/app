@@ -16,6 +16,6 @@ export default defineEventHandler(async (event) => {
 
     return projects;
   } catch (error) {
-    handleError(error);
+    await handleError(error);
   }
 });

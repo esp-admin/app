@@ -43,6 +43,10 @@ const route = useRoute()
 
 const { data: device } = await useAsyncData<Device>(() => useAuthFetch(`/api/devices/${route.params.id}`))
 
+if (!device.value) {
+    navigateTo("404")
+}
+
 function onDelete() {
     deleteModalVisible.value = false
     navigateTo("/devices")

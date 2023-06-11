@@ -47,6 +47,10 @@ const route = useRoute()
 
 const { data: project } = await useAsyncData<Project>(() => useAuthFetch(`/api/projects/${route.params.id}`))
 
+if (!project.value) {
+    navigateTo("404")
+}
+
 function onDelete() {
     deleteModalVisible.value = false
     navigateTo("/projects")

@@ -18,6 +18,6 @@ export default defineEventHandler(async (event) => {
 
     return project;
   } catch (error) {
-    handleError(error);
+    await handleError(error);
   }
 });

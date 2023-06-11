@@ -10,7 +10,7 @@
         </div>
 
         <template #header-extra>
-            <DeviceStatus></DeviceStatus>
+            <DeviceStatus :device="device"></DeviceStatus>
         </template>
 
         <n-modal preset="card" v-model:show="unlinkModalVisible" size="small" :closable="false" :mask-closable="false"

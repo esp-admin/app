@@ -1,8 +1,8 @@
 <template>
     <div :style="{ width: `${width}px`, height: `${height}px` }">
-        <ClientOnly>
+        <client-only>
             <Chart :options="highchartsOptions"></Chart>
-        </ClientOnly>
+        </client-only>
     </div>
 </template>
 

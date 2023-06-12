@@ -2,24 +2,24 @@
     <div>
         <naive-navbar>
             <template #start>
-                <NuxtLink to="/" class="flex items-center gap-3">
-                    <NaiveIcon name="simple-icons:espressif" :size="25" icon-color="red"></NaiveIcon>
+                <nuxt-link to="/" class="flex items-center gap-3">
+                    <naive-icon name="simple-icons:espressif" :size="25" icon-color="red"></naive-icon>
                     <n-text strong>ESP Admin</n-text>
-                </NuxtLink>
+                </nuxt-link>
             </template>
 
             <template #end>
-                <NuxtLink to="https://github.com/becem-gharbi/esp-admin" aria-label="github" target="_blank">
+                <nuxt-link to="https://github.com/becem-gharbi/esp-admin" aria-label="github" target="_blank">
                     <n-button type="default">
-                        <NaiveIcon name="mdi:github"></NaiveIcon>
+                        <naive-icon name="mdi:github"></naive-icon>
                     </n-button>
-                </NuxtLink>
+                </nuxt-link>
 
-                <NuxtLink to="/auth/login" aria-label="get-started">
+                <nuxt-link to="/auth/login" aria-label="get-started">
                     <n-button>
                         Get started
                     </n-button>
-                </NuxtLink>
+                </nuxt-link>
             </template>
         </naive-navbar>
     </div>

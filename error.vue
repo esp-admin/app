@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <div class="page-center">
+         <div class="page-center">
             <n-result :status="error.statusCode?.toString()" :builtin-theme-overrides="{ titleFontSizeMedium: '24px' }"
                 :title="error.statusMessage || 'Oops, something went wrong'" :description="error.message">
 
@@ -9,8 +8,7 @@
                 </template>
             </n-result>
         </div>
-    </div>
-</template>
+ </template>
 
   
 <script setup>

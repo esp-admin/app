@@ -1,5 +1,5 @@
 <template>
-    <chart-base :options="chartOptions" :height="300"></chart-base>
+    <ChartBase :options="chartOptions" :height="300"></ChartBase>
 </template>
 
 <script setup lang="ts">

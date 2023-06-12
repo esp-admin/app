@@ -5,7 +5,7 @@
 
             <n-card class="mt-4" size="small">
                 <div class="flex items-center justify-center gap-2">
-                    <NaiveIcon name="ph:house"></NaiveIcon>
+                    <naive-icon name="ph:house"></naive-icon>
                     <div>
                         Go to
                         <NuxtLink to="/" class="no-underline">

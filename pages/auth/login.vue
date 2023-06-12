@@ -10,13 +10,13 @@
             </n-form-item>
 
             <div class="grid grid-cols-1 gap-4">
-                <NuxtLink to="/auth/request-password-reset" class="no-underline">
+                <nuxt-link to="/auth/request-password-reset" class="no-underline">
                     <n-text type="primary">Forgot password?</n-text>
-                </NuxtLink>
+                </nuxt-link>
                 <n-button attr-type="submit" block :loading="pending" :disabled="pending" type="primary">Login</n-button>
                 <n-button @click="() => loginWithProvider('google')" block>
                     <template #icon>
-                        <NaiveIcon name="logos:google-icon"></NaiveIcon>
+                        <naive-icon name="logos:google-icon"></naive-icon>
                     </template>
                     Continue with Google
                 </n-button>

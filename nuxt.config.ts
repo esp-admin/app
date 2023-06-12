@@ -1,6 +1,8 @@
 import { auth, naiveui, tailwindcss, s3 } from "./config";
 
 export default defineNuxtConfig({
+  ssr: false,
+
   app: {
     head: {
       title: "ESP Admin",
@@ -8,7 +10,7 @@ export default defineNuxtConfig({
         lang: "en",
       },
     },
-    pageTransition: { name: 'page', mode: 'out-in' }
+    pageTransition: { name: "page", mode: "out-in" },
   },
 
   css: ["~/assets/styles/main.css"],
@@ -63,7 +65,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       bugsnag: {
-        enabled: true,
+        enabled: false,
         apiKey: process.env.BUGSNAG_API_KEY,
       },
     },

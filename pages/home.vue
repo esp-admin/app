@@ -1,5 +1,6 @@
 <template>
     <div>
+        <n-text>Welcome</n-text>
     </div>
 </template>
 

@@ -2,7 +2,7 @@
     <div>
         <n-upload class="overflow-hidden w-min mx-auto my-4" list-type="image-card" :max="1" accept="image/*"
             :custom-request="(e) => file = e.file.file">
-            <S3Image v-if="model.picture" :src="model.picture" class="object-contain" />
+            <s3-image v-if="model.picture" :src="model.picture" class="object-contain" />
         </n-upload>
 
         <n-form @submit.prevent="updateAccount" class="flex-1">

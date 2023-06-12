@@ -2,15 +2,15 @@
     <div>
         <naive-navbar v-if="user" :routes="routes" drawer-closable menu-placement="right">
             <template #start>
-                <NuxtLink to="/home" class="flex items-center gap-3">
-                    <NaiveIcon name="simple-icons:espressif" :size="25" icon-color="red"></NaiveIcon>
+                <nuxt-link to="/home" class="flex items-center gap-3">
+                    <naive-icon name="simple-icons:espressif" :size="25" icon-color="red"></naive-icon>
                     <n-text strong>ESP Admin</n-text>
-                </NuxtLink>
+                </nuxt-link>
             </template>
 
             <template #end v-if="!isMobileOrTablet">
                 <n-dropdown trigger="click" :options="dropdownOptions" :style="{ padding: '8px' }" @select="handleSelect">
-                    <S3Image v-if="user?.picture" :src="user.picture"
+                    <s3-image v-if="user?.picture" :src="user.picture"
                         class="w-7 h-7 object-contain rounded-full ring-2 cursor-pointer" />
                 </n-dropdown>
             </template>
@@ -26,9 +26,11 @@
             </template>
         </naive-navbar>
 
-        <div class="container mx-auto my-8 px-4">
+        <n-text>DEFAULT</n-text>
+
+        <!-- <div class="container mx-auto my-8 px-4">
             <slot></slot>
-        </div>
+        </div> -->
     </div>
 </template>
 

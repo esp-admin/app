@@ -1,32 +1,34 @@
 <template>
-    <n-result v-if="success" status="success" title="Email verification is sent" description="Please check your inbox">
-    </n-result>
+    <div>
+        <n-result v-if="success" status="success" title="Email verification is sent" description="Please check your inbox">
+        </n-result>
 
-    <n-card v-else>
-        <n-form ref="formRef" :model="model" :rules="rules" @submit.prevent="() => onSubmit(handleSubmit)">
-            <n-form-item label="First name" path="firstName">
-                <n-input v-model:value="model.firstName"></n-input>
-            </n-form-item>
+        <n-card v-else>
+            <n-form ref="formRef" :model="model" :rules="rules" @submit.prevent="() => onSubmit(handleSubmit)">
+                <n-form-item label="First name" path="firstName">
+                    <n-input v-model:value="model.firstName"></n-input>
+                </n-form-item>
 
-            <n-form-item label="Last name" path="lastName">
-                <n-input v-model:value="model.lastName"></n-input>
-            </n-form-item>
+                <n-form-item label="Last name" path="lastName">
+                    <n-input v-model:value="model.lastName"></n-input>
+                </n-form-item>
 
-            <n-form-item label="Email" path="email">
-                <n-input v-model:value="model.email"></n-input>
-            </n-form-item>
+                <n-form-item label="Email" path="email">
+                    <n-input v-model:value="model.email"></n-input>
+                </n-form-item>
 
-            <n-form-item label="Password" path="password">
-                <n-input v-model:value="model.password" type="password" show-password-on="mousedown"></n-input>
-            </n-form-item>
+                <n-form-item label="Password" path="password">
+                    <n-input v-model:value="model.password" type="password" show-password-on="mousedown"></n-input>
+                </n-form-item>
 
-            <n-form-item label="Confirm Password" path="passwordConfirm">
-                <n-input v-model:value="model.passwordConfirm" type="password" show-password-on="mousedown"></n-input>
-            </n-form-item>
+                <n-form-item label="Confirm Password" path="passwordConfirm">
+                    <n-input v-model:value="model.passwordConfirm" type="password" show-password-on="mousedown"></n-input>
+                </n-form-item>
 
-            <n-button type="primary" attr-type="submit" block :disabled="pending" :loading="pending">Register</n-button>
-        </n-form>
-    </n-card>
+                <n-button type="primary" attr-type="submit" block :disabled="pending" :loading="pending">Register</n-button>
+            </n-form>
+        </n-card>
+    </div>
 </template>
 
 

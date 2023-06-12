@@ -1,21 +1,21 @@
 <template>
-  <NaiveConfig :theme-config="themeConfig">
+  <naive-config :theme-config="themeConfig">
 
-    <ClientOnly>
+    <client-only>
       <n-notification-provider placement="bottom-right">
         <NotificationNetwork />
       </n-notification-provider>
-    </ClientOnly>
+    </client-only>
 
-    <NuxtLayout :name="layout">
-      <NuxtLoadingIndicator :color="themeConfig.light?.common?.primaryColor" />
+    <nuxt-layout :name="layout">
+      <!-- <nuxt-loading-indicator :color="themeConfig.light?.common?.primaryColor" /> -->
 
       <n-message-provider>
-        <NuxtPage />
+        <nuxt-page />
       </n-message-provider>
-    </NuxtLayout>
+    </nuxt-layout>
 
-  </NaiveConfig>
+  </naive-config>
 </template>
 
 <script setup lang="ts">
@@ -29,6 +29,7 @@ const layout = computed(() => route.path.startsWith("/auth") ? "auth" : "default
 const themeConfig = ref<ThemeConfig>({
   shared: {
     common: {
+      //@ts-ignore
       fontFamily: theme.fontFamily.sans,
       lineHeight: theme.lineHeight.normal,
       borderRadius: "4px"

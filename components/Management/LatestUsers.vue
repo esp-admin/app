@@ -38,12 +38,11 @@
                 <n-popconfirm v-else @positive-click="() => suspendAccount(user.id)">
                     <template #trigger>
                         <n-button circle size="small" type="success" secondary>
-                            <NaiveIcon name="ph:check-circle-bold" />
+                            <naive-icon name="ph:check-circle-bold" />
                         </n-button>
                     </template>
                     {{ 'Suspend account ' + user.email }}
                 </n-popconfirm>
-
 
             </template>
 
@@ -77,7 +76,7 @@ const { data: users, refresh } = await useAsyncData(() => listUsers({
     take: 10
 }))
 
-async function suspendAccount(userId: number) {
+async function suspendAccount(userId: string) {
     await editUser({
         id: userId,
         data: {
@@ -92,7 +91,7 @@ async function suspendAccount(userId: number) {
     })
 }
 
-async function unsuspendAccount(userId: number) {
+async function unsuspendAccount(userId: string) {
     await editUser({
         id: userId,
         data: {

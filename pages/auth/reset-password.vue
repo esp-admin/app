@@ -1,37 +1,40 @@
 <template>
-    <n-result v-if="success" status="success" title="Done" description="Your password is successfully reset">
-        <template #footer>
-            <NuxtLink to="/auth/login" class="no-underline">
-                <n-button type="primary">Go back to login</n-button>
-            </NuxtLink>
-        </template>
-    </n-result>
+    <div>
+        <n-result v-if="success" status="success" title="Done" description="Your password is successfully reset">
+            <template #footer>
+                <nuxt-link to="/auth/login" class="no-underline">
+                    <n-button type="primary">Go back to login</n-button>
+                </nuxt-link>
+            </template>
+        </n-result>
 
-    <n-result v-else-if="failure" status="error" title="Failed to reset password" description="You do not have permission">
-        <template #footer>
-            <NuxtLink to="/auth/login" class="no-underline">
-                <n-button type="primary">Go back to login</n-button>
-            </NuxtLink>
-        </template>
-    </n-result>
+        <n-result v-else-if="failure" status="error" title="Failed to reset password"
+            description="You do not have permission">
+            <template #footer>
+                <nuxt-link to="/auth/login" class="no-underline">
+                    <n-button type="primary">Go back to login</n-button>
+                </nuxt-link>
+            </template>
+        </n-result>
 
-    <n-card v-else>
-        <n-form ref="formRef" :model="model" :rules="rules" @submit.prevent="() => onSubmit(handleSubmit)">
-            <n-form-item label="Password" path="password" :show-require-mark="false">
-                <n-input v-model:value="model.password" type="password" show-password-on="mousedown"></n-input>
-            </n-form-item>
+        <n-card v-else>
+            <n-form ref="formRef" :model="model" :rules="rules" @submit.prevent="() => onSubmit(handleSubmit)">
+                <n-form-item label="Password" path="password" :show-require-mark="false">
+                    <n-input v-model:value="model.password" type="password" show-password-on="mousedown"></n-input>
+                </n-form-item>
 
-            <n-form-item label="Confirm Password" path="passwordConfirm" :show-require-mark="false">
-                <n-input v-model:value="model.passwordConfirm" type="password" show-password-on="mousedown"></n-input>
-            </n-form-item>
+                <n-form-item label="Confirm Password" path="passwordConfirm" :show-require-mark="false">
+                    <n-input v-model:value="model.passwordConfirm" type="password" show-password-on="mousedown"></n-input>
+                </n-form-item>
 
-            <n-button attr-type="submit" block :disabled="pending" :loading="pending" type="primary">
-                <template #icon>
-                    <NaiveIcon name="ph:arrows-counter-clockwise-duotone"></NaiveIcon>
-                </template>
-                Change password</n-button>
-        </n-form>
-    </n-card>
+                <n-button attr-type="submit" block :disabled="pending" :loading="pending" type="primary">
+                    <template #icon>
+                        <naive-icon name="ph:arrows-counter-clockwise-duotone"></naive-icon>
+                    </template>
+                    Change password</n-button>
+            </n-form>
+        </n-card>
+    </div>
 </template>
 
 

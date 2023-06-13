@@ -42,11 +42,11 @@ rules.value = {
     ],
 }
 
+
 async function handleSubmit() {
-    const { data: project, error } = await useAsyncData<Project, H3Error>(() => useAuthFetch("/api/projects", {
-        method: "POST",
-        body: model.value
-    }))
+    const { add } = useProject()
+
+    const { data: project, error } = await add(model.value)
 
     if (error.value) {
         apiErrors.value.nameAlreadyExists = error.value.data?.message.includes("Unique constraint failed on the constraint: `Project_name_key`")

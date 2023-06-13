@@ -42,23 +42,22 @@
 </template>
 
 <script setup lang="ts">
-import type { Project } from '@prisma/client';
 
 const deleteModalVisible = ref(false)
 
 const route = useRoute()
 
-const { data: project } = await useAsyncData<Project>(`project-${route.params.id}`,
-    () => useAuthFetch(`/api/projects/${route.params.id}`)
-)
+const id = route.params.id as string
 
+const { findOne } = useProject()
+
+const { data: project } = await findOne(id)
 // if (!project.value) {
 //     navigateTo("404")
 // }
 
 async function onDelete() {
     deleteModalVisible.value = false
-    await refreshNuxtData("projects")
     navigateTo("/projects")
 }
 </script>

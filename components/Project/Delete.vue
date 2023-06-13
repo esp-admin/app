@@ -40,9 +40,9 @@ rules.value = {
 }
 
 async function handleSubmit() {
-    const { data, error } = await useAsyncData<Project>(() => useAuthFetch(`/api/projects/${props.project.id}`, {
-        method: "DELETE"
-    }))
+    const { remove } = useProject()
+
+    const { data, error } = await remove(props.project.id)
 
     if (error.value) {
 

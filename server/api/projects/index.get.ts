@@ -1,9 +1,4 @@
 import { handleError, prisma } from "#auth";
-import type { Project } from "@prisma/client";
-
-interface IQuery {
-  name?: Project["name"];
-}
 
 export default defineEventHandler(async (event) => {
   try {
@@ -13,13 +8,8 @@ export default defineEventHandler(async (event) => {
       throw new Error("unauthorized");
     }
 
-    const query = getQuery(event) as IQuery;
-
     const projects = await prisma.project.findMany({
       where: {
-        name: {
-          contains: query.name,
-        },
         userId,
       },
     });

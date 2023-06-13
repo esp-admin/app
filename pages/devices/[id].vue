@@ -37,7 +37,6 @@
 </template>
 
 <script setup lang="ts">
-import type { Device } from '@prisma/client';
 
 const deleteModalVisible = ref(false)
 
@@ -48,10 +47,6 @@ const id = route.params.id as string
 const { findOne } = useDevice()
 
 const { data: device } = await findOne(id)
-
-// if (!device.value) {
-//     navigateTo("404")
-// }
 
 function onDelete() {
     deleteModalVisible.value = false

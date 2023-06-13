@@ -23,13 +23,12 @@ const props = defineProps<{ project: Project }>()
 
 const emits = defineEmits(["cancel", "done"])
 
-const { data: devices } = await useAsyncData<Device[]>(() => useAuthFetch("/api/devices", {
-    query: {
-        unlinked: true
-    }
-}))
+const { find } = useDevice()
+const { data: devices } = await find()
 
-const options = computed<SelectOption[]>(() => devices.value ? devices.value.map(device => ({
+const unlinkedDevices = computed(() => devices.value?.filter(device => device.projectId === null))
+
+const options = computed<SelectOption[]>(() => unlinkedDevices.value ? unlinkedDevices.value.map(device => ({
     label: device.name,
     value: device.id
 })) : [])
@@ -37,12 +36,9 @@ const options = computed<SelectOption[]>(() => devices.value ? devices.value.map
 const selectedDeviceId = ref()
 
 async function handleSubmit() {
-    const { data: device, error } = await useAsyncData<Device, H3Error>(() => useAuthFetch(`/api/devices/${selectedDeviceId.value}/link`, {
-        method: "PATCH",
-        body: {
-            projectId: props.project.id
-        }
-    }))
+    const { link } = useDevice()
+
+    const { data: device, error } = await link(selectedDeviceId.value, props.project.id)
 
     if (error.value) {
     }

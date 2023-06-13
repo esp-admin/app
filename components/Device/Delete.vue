@@ -39,9 +39,8 @@ rules.value = {
     ],
 }
 
-const { remove } = useDevice()
-
 async function handleSubmit() {
+    const { remove } = useDevice()
 
     const { data: device, error } = await remove(props.device.id)
 

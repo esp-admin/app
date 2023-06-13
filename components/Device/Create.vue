@@ -71,6 +71,7 @@ rules.value = {
 
 async function handleSubmit() {
     const { add } = useDevice()
+
     const { data: device, error } = await add(model.value)
 
     if (error.value) {

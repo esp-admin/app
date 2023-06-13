@@ -52,9 +52,6 @@ const id = route.params.id as string
 const { findOne } = useProject()
 
 const { data: project } = await findOne(id)
-// if (!project.value) {
-//     navigateTo("404")
-// }
 
 async function onDelete() {
     deleteModalVisible.value = false

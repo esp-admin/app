@@ -13,8 +13,6 @@
 </template>
 
 <script setup lang="ts">
-import type { Project } from "@prisma/client"
-import type { H3Error } from "h3"
 
 const emits = defineEmits(["cancel", "done"])
 

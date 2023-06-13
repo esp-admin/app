@@ -1,4 +1,4 @@
-import type { Device } from "@prisma/client";
+import type { Device, Project } from "@prisma/client";
 import type { H3Error } from "h3";
 
 export default function useDevice() {
@@ -9,10 +9,14 @@ export default function useDevice() {
   }
 
   function find() {
-    return useAsyncData("devices", () => useAuthFetch("/api/devices"), {
-      default: () => devices.value,
-      immediate: devices.value ? false : true,
-    });
+    return useAsyncData(
+      "devices",
+      () => useAuthFetch<Device[]>("/api/devices"),
+      {
+        default: () => devices.value,
+        immediate: devices.value ? false : true,
+      }
+    );
   }
 
   function findOne(id: Device["id"]) {
@@ -65,5 +69,48 @@ export default function useDevice() {
     );
   }
 
-  return { find, findOne, remove, add };
+  function link(deviceId: Device["id"], projectId: Project["id"]) {
+    return useAsyncData<Device, H3Error>(() =>
+      useAuthFetch(`/api/devices/${deviceId}/link`, {
+        method: "PATCH",
+        body: {
+          projectId,
+        },
+
+        onResponse: ({ response }) => {
+          const { data: devices } = useNuxtData<Device[]>("devices");
+
+          if (response.ok) {
+            const deviceIndex = devices.value?.findIndex(
+              (device) => device.id === deviceId
+            );
+            if (deviceIndex !== undefined && devices.value) {
+              devices.value[deviceIndex].projectId = projectId;
+            }
+          }
+        },
+      })
+    );
+  }
+
+  function unlink(deviceId: Device["id"]) {
+    return useAsyncData<Device, H3Error>(() =>
+      useAuthFetch(`/api/devices/${deviceId}/unlink`, {
+        method: "PATCH",
+
+        onResponse: ({ response }) => {
+          if (response.ok) {
+            const deviceIndex = devices.value?.findIndex(
+              (device) => device.id === deviceId
+            );
+            if (deviceIndex !== undefined && devices.value) {
+              devices.value[deviceIndex].projectId = null;
+            }
+          }
+        },
+      })
+    );
+  }
+
+  return { find, findOne, remove, add, link, unlink };
 }

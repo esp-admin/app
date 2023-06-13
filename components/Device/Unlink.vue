@@ -40,9 +40,9 @@ rules.value = {
 }
 
 async function handleSubmit() {
-    const { data: device, error } = await useAsyncData<Device>(() => useAuthFetch(`/api/devices/${props.device.id}/unlink`, {
-        method: "PATCH",
-    }))
+    const { unlink } = useDevice()
+
+    const { data: device, error } = await unlink(props.device.id)
 
     if (error.value) {
 

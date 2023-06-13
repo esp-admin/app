@@ -25,12 +25,9 @@ import type { Device } from "@prisma/client"
 
 const props = defineProps<{ device: Device, showUnlink?: boolean }>()
 
-const emits = defineEmits(["unlink"])
-
 const unlinkModalVisible = ref(false)
 
 function onUnlink() {
     unlinkModalVisible.value = false
-    emits("unlink", props.device)
 }
 </script>

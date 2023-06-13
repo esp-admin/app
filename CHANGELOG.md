@@ -1,6 +1,43 @@
 # Changelog
 
 
+## v0.0.2
+
+[compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.1...v0.0.2)
+
+
+### 🚀 Enhancements
+
+  - **models:** Update prisma schema ([e2b92b6](https://github.com/becem-gharbi/esp-admin/commit/e2b92b6))
+  - Implement project get & create & delete ([d8473f0](https://github.com/becem-gharbi/esp-admin/commit/d8473f0))
+  - Implement device get & create & delete ([d85fb96](https://github.com/becem-gharbi/esp-admin/commit/d85fb96))
+  - Implement device link & unlink ([d79243c](https://github.com/becem-gharbi/esp-admin/commit/d79243c))
+  - Implement devices & projects search ([ac92a77](https://github.com/becem-gharbi/esp-admin/commit/ac92a77))
+  - Implement device  state management ([00ffe64](https://github.com/becem-gharbi/esp-admin/commit/00ffe64))
+  - Implement project state management ([dc120c9](https://github.com/becem-gharbi/esp-admin/commit/dc120c9))
+  - Implement device link & unlink state management ([f128165](https://github.com/becem-gharbi/esp-admin/commit/f128165))
+
+### 🩹 Fixes
+
+  - Handle device & project not found ([1d25c07](https://github.com/becem-gharbi/esp-admin/commit/1d25c07))
+  - Hide dropdown navigation responsivly ([8c7df23](https://github.com/becem-gharbi/esp-admin/commit/8c7df23))
+
+### 💅 Refactors
+
+  - Apply changes for consistency ([dd2cdc6](https://github.com/becem-gharbi/esp-admin/commit/dd2cdc6))
+  - Format builtin components to snakeCase ([698ebac](https://github.com/becem-gharbi/esp-admin/commit/698ebac))
+  - Move default layout to app.vue ([af89b73](https://github.com/becem-gharbi/esp-admin/commit/af89b73))
+  - Add home to main navbar ([332c590](https://github.com/becem-gharbi/esp-admin/commit/332c590))
+
+### 🏡 Chore
+
+  - **design:** Add backend design rev-3 ([39f5e35](https://github.com/becem-gharbi/esp-admin/commit/39f5e35))
+  - Set version to 0.0.1 ([aaec598](https://github.com/becem-gharbi/esp-admin/commit/aaec598))
+
+### ❤️  Contributors
+
+- Becem Gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v0.0.1
 
 

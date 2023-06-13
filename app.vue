@@ -1,30 +1,39 @@
 <template>
-  <NaiveConfig :theme-config="themeConfig">
+  <naive-config :theme-config="themeConfig">
 
-    <ClientOnly>
+    <client-only>
       <n-notification-provider placement="bottom-right">
         <NotificationNetwork />
       </n-notification-provider>
-    </ClientOnly>
+    </client-only>
 
-    <NuxtLayout :name="layout">
-      <NuxtLoadingIndicator :color="themeConfig.light?.common?.primaryColor" />
+    <nuxt-layout>
+      <nuxt-loading-indicator :color="themeConfig.light?.common?.primaryColor" />
 
       <n-message-provider>
-        <NuxtPage />
-      </n-message-provider>
-    </NuxtLayout>
 
-  </NaiveConfig>
+        <div v-if="loggedIn">
+          <NavbarMain></NavbarMain>
+          <div class="container mx-auto my-8 px-4">
+            <nuxt-page></nuxt-page>
+          </div>
+        </div>
+
+        <nuxt-page v-else></nuxt-page>
+
+      </n-message-provider>
+    </nuxt-layout>
+
+  </naive-config>
 </template>
 
 <script setup lang="ts">
 import { ThemeConfig } from "@bg-dev/nuxt-naiveui"
 import { theme } from "#tailwind-config";
 
-const route = useRoute()
-
-const layout = computed(() => route.path.startsWith("/auth") ? "auth" : "default")
+const { useUser } = useAuthSession()
+const user = useUser()
+const loggedIn = computed(() => !!user.value)
 
 const themeConfig = ref<ThemeConfig>({
   shared: {

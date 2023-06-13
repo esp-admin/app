@@ -1,35 +1,29 @@
 <template>
-    <div>
-        <naive-navbar v-if="user" :routes="routes" drawer-closable menu-placement="right">
-            <template #start>
-                <NuxtLink to="/home" class="flex items-center gap-3">
-                    <NaiveIcon name="simple-icons:espressif" :size="25" icon-color="red"></NaiveIcon>
-                    <n-text strong>ESP Admin</n-text>
-                </NuxtLink>
-            </template>
+    <naive-navbar v-if="user" :routes="routes" drawer-closable menu-placement="right">
+        <template #start>
+            <NuxtLink to="/home" class="flex items-center gap-3">
+                <NaiveIcon name="simple-icons:espressif" :size="25" icon-color="red"></NaiveIcon>
+                <n-text strong>ESP Admin</n-text>
+            </NuxtLink>
+        </template>
 
-            <template #end v-if="!isMobileOrTablet">
-                <n-dropdown trigger="click" :options="dropdownOptions" :style="{ padding: '8px' }" @select="handleSelect">
-                    <S3Image v-if="user?.picture" :src="user.picture"
-                        class="w-7 h-7 object-contain rounded-full ring-2 cursor-pointer" />
-                </n-dropdown>
-            </template>
+        <template #end v-if="!isMobileOrTablet">
+            <n-dropdown trigger="click" :options="dropdownOptions" :style="{ padding: '8px' }" @select="handleSelect">
+                <S3Image v-if="user?.picture" :src="user.picture"
+                    class="w-7 h-7 object-contain rounded-full ring-2 cursor-pointer" />
+            </n-dropdown>
+        </template>
 
-            <template #drawer-header>
-                <AccountInfo class="mx-2" />
-            </template>
+        <template #drawer-header>
+            <AccountInfo class="mx-2" />
+        </template>
 
-            <template #drawer-footer>
-                <n-button secondary block @click="async () => await logout()">
-                    Logout
-                </n-button>
-            </template>
-        </naive-navbar>
-
-        <div class="container mx-auto my-8 px-4">
-            <slot></slot>
-        </div>
-    </div>
+        <template #drawer-footer>
+            <n-button secondary block @click="async () => await logout()">
+                Logout
+            </n-button>
+        </template>
+    </naive-navbar>
 </template>
 
 <script setup lang="ts">

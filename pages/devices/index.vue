@@ -38,20 +38,13 @@ import type { Device } from '@prisma/client';
 const createModalVisible = ref(false)
 const nameSearch = ref("")
 
-const { data: devices } = await useAsyncData(
-    () => useAuthFetch("/api/devices", {
-        query: {
-            name: nameSearch.value
-        }
-    }),
-    {
-        watch: [nameSearch]
-    }
-)
+const { find } = useDevice()
+
+const { data: devices } = await find()
 
 const searchDebounce = inputDebounce((value: string) => nameSearch.value = value, 1000)
 
-function onCreate(device: Device) {
+async function onCreate(device: Device) {
     createModalVisible.value = false;
     navigateTo(`/devices/${device.id}`)
 }

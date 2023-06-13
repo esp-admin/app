@@ -43,7 +43,11 @@ const deleteModalVisible = ref(false)
 
 const route = useRoute()
 
-const { data: device } = await useAsyncData<Device>(() => useAuthFetch(`/api/devices/${route.params.id}`))
+const id = route.params.id as string
+
+const { findOne } = useDevice()
+
+const { data: device } = await findOne(id)
 
 // if (!device.value) {
 //     navigateTo("404")

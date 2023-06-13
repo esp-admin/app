@@ -39,10 +39,11 @@ rules.value = {
     ],
 }
 
+const { remove } = useDevice()
+
 async function handleSubmit() {
-    const { data: device, error } = await useAsyncData<Device>(() => useAuthFetch(`/api/devices/${props.device.id}`, {
-        method: "DELETE"
-    }))
+
+    const { data: device, error } = await remove(props.device.id)
 
     if (error.value) {
 

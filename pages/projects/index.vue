@@ -36,21 +36,15 @@ import type { Project } from '@prisma/client';
 const createModalVisible = ref(false)
 const nameSearch = ref()
 
-const { data: projects } = await useAsyncData(
-    () => useAuthFetch("/api/projects", {
-        query: {
-            name: nameSearch.value
-        }
-    }),
-    {
-        watch: [nameSearch]
-    }
+const { data: projects } = await useAsyncData("projects",
+    () => useAuthFetch("/api/projects"),
 )
 
 const searchDebounce = inputDebounce((value: string) => nameSearch.value = value, 1000)
 
-function onCreate(project: Project) {
+async function onCreate(project: Project) {
     createModalVisible.value = false;
+    await refreshNuxtData("projects")
     navigateTo(`/projects/${project.id}`)
 }
 </script>

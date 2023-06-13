@@ -7,11 +7,20 @@
       </n-notification-provider>
     </client-only>
 
-    <nuxt-layout :name="layout">
-      <!-- <nuxt-loading-indicator :color="themeConfig.light?.common?.primaryColor" /> -->
+    <nuxt-layout>
+      <nuxt-loading-indicator :color="themeConfig.light?.common?.primaryColor" />
 
       <n-message-provider>
-        <nuxt-page />
+
+        <div v-if="loggedIn">
+          <NavbarMain></NavbarMain>
+          <div class="container mx-auto my-8 px-4">
+            <nuxt-page></nuxt-page>
+          </div>
+        </div>
+
+        <nuxt-page v-else></nuxt-page>
+
       </n-message-provider>
     </nuxt-layout>
 
@@ -22,9 +31,9 @@
 import { ThemeConfig } from "@bg-dev/nuxt-naiveui"
 import { theme } from "#tailwind-config";
 
-const route = useRoute()
-
-const layout = computed(() => route.path.startsWith("/auth") ? "auth" : "default")
+const { useUser } = useAuthSession()
+const user = useUser()
+const loggedIn = computed(() => !!user.value)
 
 const themeConfig = ref<ThemeConfig>({
   shared: {

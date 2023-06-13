@@ -1,6 +1,6 @@
 <template>
     <div>
-        <n-text>Welcome</n-text>
+        <n-text class="text-xl font-semibold">Welcome</n-text>
     </div>
 </template>
 

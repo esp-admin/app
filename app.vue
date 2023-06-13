@@ -33,7 +33,7 @@ import { theme } from "#tailwind-config";
 
 const { useUser } = useAuthSession()
 const user = useUser()
-const loggedIn = computed(() => !!user.value)
+const loggedIn = computed(() => user.value !== null)
 
 const themeConfig = ref<ThemeConfig>({
   shared: {

@@ -1,15 +1,13 @@
 <template>
-    <naive-navbar v-if="user" :routes="routes" drawer-closable menu-placement="right">
+    <naive-navbar v-if="user" :routes="routes" drawer-closable menu-placement="center">
         <template #start>
-            <NuxtLink to="/home" class="flex items-center gap-3">
-                <NaiveIcon name="simple-icons:espressif" :size="25" icon-color="red"></NaiveIcon>
-                <n-text strong>ESP Admin</n-text>
-            </NuxtLink>
+            <NaiveIcon name="simple-icons:espressif" :size="25" icon-color="red"></NaiveIcon>
+            <n-text strong>ESP Admin</n-text>
         </template>
 
         <template #end v-if="!isMobileOrTablet">
             <n-dropdown trigger="click" :options="dropdownOptions" :style="{ padding: '8px' }" @select="handleSelect">
-                <S3Image v-if="user?.picture" :src="user.picture"
+                <s3-image v-if="user?.picture" :src="user.picture"
                     class="w-7 h-7 object-contain rounded-full ring-2 cursor-pointer" />
             </n-dropdown>
         </template>
@@ -37,6 +35,11 @@ const { isMobileOrTablet } = useNaiveDevice()
 const user = useUser()
 
 const routes = ref<NavbarRoute[]>([
+    {
+        label: "Home",
+        icon: "ph:house",
+        path: "/home"
+    },
     {
         label: "Projects",
         icon: "ph:code",

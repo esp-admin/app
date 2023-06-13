@@ -1,6 +1,7 @@
 <template>
     <div v-if="project">
         <div class="flex justify-between mb-4">
+            
             <div class="flex flex-col">
                 <n-text class="text-xl font-semibold">{{ project.name }}</n-text>
                 <n-text depth="3" class="text-sm"> Created {{ formatDate(project.createdAt) }}</n-text>
@@ -36,6 +37,8 @@
             <ProjectDelete @cancel="deleteModalVisible = false" @done="onDelete" :project="project" />
         </n-modal>
     </div>
+
+    <n-text v-else>Not found</n-text>
 </template>
 
 <script setup lang="ts">
@@ -47,9 +50,9 @@ const route = useRoute()
 
 const { data: project } = await useAsyncData<Project>(() => useAuthFetch(`/api/projects/${route.params.id}`))
 
-if (!project.value) {
-    navigateTo("404")
-}
+// if (!project.value) {
+//     navigateTo("404")
+// }
 
 function onDelete() {
     deleteModalVisible.value = false

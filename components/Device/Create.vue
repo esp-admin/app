@@ -72,10 +72,12 @@ rules.value = {
 }
 
 async function handleSubmit() {
-    const { data: device, error } = await useAsyncData<Device, H3Error>(() => useAuthFetch("/api/devices", {
-        method: "POST",
-        body: model.value
-    }))
+    const { data: device, error } = await useAsyncData<Device, H3Error>(
+        () => useAuthFetch("/api/devices", {
+            method: "POST",
+            body: model.value
+        })
+    )
 
     if (error.value) {
         apiErrors.value.nameAlreadyExists = error.value.data?.message.includes("Unique constraint failed on the constraint: `Device_name_key`")

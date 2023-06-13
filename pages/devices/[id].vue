@@ -32,6 +32,8 @@
             <DeviceDelete @cancel="deleteModalVisible = false" @done="onDelete" :device="device" />
         </n-modal>
     </div>
+
+    <n-text v-else>Not found</n-text>
 </template>
 
 <script setup lang="ts">
@@ -43,9 +45,9 @@ const route = useRoute()
 
 const { data: device } = await useAsyncData<Device>(() => useAuthFetch(`/api/devices/${route.params.id}`))
 
-if (!device.value) {
-    navigateTo("404")
-}
+// if (!device.value) {
+//     navigateTo("404")
+// }
 
 function onDelete() {
     deleteModalVisible.value = false

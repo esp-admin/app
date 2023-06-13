@@ -1,12 +1,13 @@
 <template>
-    <n-form @submit.prevent="handleSubmit">
+    <n-form ref="formRef" @submit.prevent="() => onSubmit(handleSubmit)">
         <n-form-item label="Name">
             <n-select :options="options" v-model:value="selectedDeviceId"></n-select>
         </n-form-item>
 
         <div class="flex gap-2">
             <n-button secondary class="flex-1" attr-type="button" @click="$emit('cancel')">Cancel</n-button>
-            <n-button type="primary" class="flex-1" attr-type="submit">Link device</n-button>
+            <n-button type="primary" class="flex-1" attr-type="submit" :loading="pending" :disabled="pending">Link
+                device</n-button>
         </div>
     </n-form>
 </template>
@@ -15,6 +16,8 @@
 import type { Device, Project } from "@prisma/client"
 import type { SelectOption } from "naive-ui"
 import type { H3Error } from "h3"
+
+const { formRef, onSubmit, pending } = useNaiveForm()
 
 const props = defineProps<{ project: Project }>()
 

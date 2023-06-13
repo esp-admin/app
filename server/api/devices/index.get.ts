@@ -3,6 +3,7 @@ import type { Project } from "@prisma/client";
 interface IQuery {
   unlinked?: boolean;
   projectId?: Project["id"];
+  name?: Project["name"];
 }
 
 export default defineEventHandler(async (event) => {
@@ -19,6 +20,9 @@ export default defineEventHandler(async (event) => {
       where: {
         projectId: query.projectId,
         project: query.unlinked ? null : undefined,
+        name: {
+          contains: query.name,
+        },
         userId,
       },
     });

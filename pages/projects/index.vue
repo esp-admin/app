@@ -9,7 +9,7 @@
             </div>
 
             <div class="col-span-full flex gap-4">
-                <n-input v-model:value="nameSearch">
+                <n-input @input="searchDebounce">
                     <template #prefix>
                         <naive-icon name="ph:magnifying-glass" :size="16"></naive-icon>
                     </template>
@@ -34,15 +34,15 @@
 import type { Project } from '@prisma/client';
 
 const createModalVisible = ref(false)
-
-const { data: projects } = await useAsyncData<Project[]>(() => useAuthFetch("/api/projects", {
-    method: "GET",
-    query: {
-        name: nameSearch.value
-    }
-}))
-
 const nameSearch = ref()
+
+const { data: projects } = await useCustomFetch("/api/projects", {
+    query: {
+        name: nameSearch
+    },
+})
+
+const searchDebounce = inputDebounce((value: string) => nameSearch.value = value, 1000)
 
 function onCreate(project: Project) {
     createModalVisible.value = false;

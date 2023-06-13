@@ -17,7 +17,9 @@ export default defineEventHandler(async (event) => {
 
     const projects = await prisma.project.findMany({
       where: {
-        name: query.name,
+        name: {
+          contains: query.name,
+        },
         userId,
       },
     });

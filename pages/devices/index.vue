@@ -10,7 +10,7 @@
             </div>
 
             <div class="col-span-full flex gap-4">
-                <n-input>
+                <n-input @input="searchDebounce">
                     <template #prefix>
                         <naive-icon name="ph:magnifying-glass" :size="16"></naive-icon>
                     </template>
@@ -36,8 +36,15 @@
 import type { Device } from '@prisma/client';
 
 const createModalVisible = ref(false)
+const nameSearch = ref("")
 
-const { data: devices } = await useAsyncData<Device[]>(() => useAuthFetch("/api/devices"))
+const { data: devices } = await useCustomFetch("/api/devices", {
+    query: {
+        name: nameSearch
+    },
+})
+
+const searchDebounce = inputDebounce((value: string) => nameSearch.value = value, 1000)
 
 function onCreate(device: Device) {
     createModalVisible.value = false;

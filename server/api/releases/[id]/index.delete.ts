@@ -10,23 +10,13 @@ export default defineEventHandler(async (event) => {
 
     const id = event.context.params?.id;
 
-    const data = await readBody<Release>(event);
-
-    const project = await prisma.project.update({
+    const release = await prisma.release.delete({
       where: {
         id,
       },
-      data: {
-        releases: {
-          create: data,
-        },
-      },
-      include: {
-        releases: true,
-      },
     });
 
-    return project;
+    return release;
   } catch (error) {
     await handleError(error);
   }

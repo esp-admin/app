@@ -12,7 +12,7 @@ export default function useDevice() {
   function find() {
     const request = `/api/projects`;
 
-    return useAsyncData(key, () => useAuthFetch(request), {
+    return useAsyncData(key, () => useAuthFetch<Project[]>(request), {
       default: () => projects.value,
       immediate: projects.value ? false : true,
     });
@@ -118,5 +118,27 @@ export default function useDevice() {
       })
     );
   }
-  return { find, findOne, remove, add, update, addRelease };
+
+  function removeRelease(projectId: Project["id"], releaseId: Release["id"]) {
+    const key = `project-${projectId}`;
+    const request = `/api/projects/${projectId}/releases/${releaseId}`;
+
+    return useAsyncData<Project, H3Error>(key, () =>
+      useAuthFetch(request, {
+        method: "DELETE",
+
+        onResponse: ({ response }) => {
+          if (response.ok && projects.value) {
+            const projectIndex = projects.value.findIndex(
+              (project) => project.id === projectId
+            );
+            if (projectIndex !== undefined) {
+              projects.value[projectIndex] = response._data;
+            }
+          }
+        },
+      })
+    );
+  }
+  return { find, findOne, remove, add, update, addRelease, removeRelease };
 }

@@ -8,15 +8,15 @@ export default defineEventHandler(async (event) => {
       throw new Error("unauthorized");
     }
 
-    const id = event.context.params?.id;
+    const { projectId } = getQuery(event) as { projectId: Project["id"] };
 
-    const project = await prisma.project.findUnique({
+    const releases = await prisma.release.findMany({
       where: {
-        id,
+        projectId,
       },
     });
 
-    return project;
+    return releases;
   } catch (error) {
     await handleError(error);
   }

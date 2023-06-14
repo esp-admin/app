@@ -40,7 +40,7 @@ apiErrors.value = {
 
 const model = ref<Partial<Release>>({
     version: "",
-    downloadUrl: "",
+    downloadUrl: "some_url",
 });
 
 rules.value = {
@@ -59,15 +59,15 @@ rules.value = {
 
 
 async function handleSubmit() {
-    const { addRelease } = useProject()
+    const { add } = useRelease(props.project.id)
 
-    const { data: project, error } = await addRelease(props.project.id, model.value)
+    const { data: release, error } = await add(model.value)
 
     if (error.value) {
         apiErrors.value.versionAlreadyExists = error.value.data?.message.includes("Unique constraint failed on the constraint: `Project_name_key`")
     }
     else {
-        emits("done", project.value)
+        emits("done", release.value)
     }
 }
 </script>

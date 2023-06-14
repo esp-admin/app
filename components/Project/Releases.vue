@@ -12,9 +12,7 @@
             </n-button>
         </div>
 
-        <ReleaseCard v-for="release of project.releases"></ReleaseCard>
-        <ReleaseCard></ReleaseCard>
-        <ReleaseCard></ReleaseCard>
+        <ReleaseCard v-for="release of releases" :release="release" :projectId="project.id"></ReleaseCard>
 
         <n-modal preset="card" v-model:show="createModalVisible" size="small" :closable="false" :mask-closable="false"
             class="max-w-xs">
@@ -26,7 +24,11 @@
 <script setup lang="ts">
 const createModalVisible = ref(false)
 
-defineProps<{ project: Project }>()
+const props = defineProps<{ project: Project }>()
+
+const { find } = useRelease(props.project.id)
+
+const { data: releases } = await find()
 
 function onCreate() {
     createModalVisible.value = false

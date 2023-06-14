@@ -75,9 +75,10 @@ export default function useDevice() {
   }
 
   function link(deviceId: Device["id"], projectId: Project["id"]) {
+    const key = `device-${deviceId}`;
     const request = `/api/devices/${deviceId}/link`;
 
-    return useAsyncData<Device, H3Error>(() =>
+    return useAsyncData<Device, H3Error>(key, () =>
       useAuthFetch(request, {
         method: "PATCH",
         body: {
@@ -99,9 +100,10 @@ export default function useDevice() {
   }
 
   function unlink(id: Device["id"]) {
+    const key = `device-${id}`;
     const request = `/api/devices/${id}/unlink`;
 
-    return useAsyncData<Device, H3Error>(() =>
+    return useAsyncData<Device, H3Error>(key, () =>
       useAuthFetch(request, {
         method: "PATCH",
 

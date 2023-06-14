@@ -12,7 +12,7 @@
             </n-button>
         </div>
 
-        <DeviceCard v-for="device of linkedDevices" :device="device" show-unlink></DeviceCard>
+        <DeviceCard v-for="device of linkedDevices" :device="device"></DeviceCard>
 
         <n-modal preset="card" v-model:show="linkModalVisible" size="small" :closable="false" :mask-closable="false"
             class="max-w-xs">

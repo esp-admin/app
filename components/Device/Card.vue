@@ -5,29 +5,16 @@
             <nuxt-link :to="`/devices/${device.id}`">
                 <n-button secondary>View</n-button>
             </nuxt-link>
-
-            <n-button v-if="showUnlink" secondary @click="unlinkModalVisible = true">Unlink</n-button>
         </div>
 
         <template #header-extra>
             <DeviceStatus :device="device"></DeviceStatus>
         </template>
-
-        <n-modal preset="card" v-model:show="unlinkModalVisible" size="small" :closable="false" :mask-closable="false"
-            class="max-w-xs">
-            <DeviceUnlink @cancel="unlinkModalVisible = false" @done="onUnlink" :device="device" />
-        </n-modal>
     </n-card>
 </template>
 
 <script setup lang="ts">
 import type { Device } from "@prisma/client"
 
-const props = defineProps<{ device: Device, showUnlink?: boolean }>()
-
-const unlinkModalVisible = ref(false)
-
-function onUnlink() {
-    unlinkModalVisible.value = false
-}
+defineProps<{ device: Device }>()
 </script>

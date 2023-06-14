@@ -17,6 +17,7 @@ export default defineEventHandler(async (event) => {
         name: true,
         description: true,
         status: true,
+        projectId: true,
       },
     });
 

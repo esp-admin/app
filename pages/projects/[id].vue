@@ -58,7 +58,23 @@ const { findOne } = useProject()
 const { data: project } = await findOne(id)
 
 async function onDelete() {
+
+    // Unlink all devices linked to the deleted project
+
+    const { find, findOne } = useDevice()
+    const { data: devices } = await find()
+    devices.value?.forEach(async (device) => {
+        if (device.projectId === id) {
+            device.projectId = null
+            const { data } = await findOne(device.id)
+            if (data.value) {
+                data.value.projectId = null
+            }
+        }
+    })
+
     deleteModalVisible.value = false
+
     navigateTo("/projects")
 }
 </script>

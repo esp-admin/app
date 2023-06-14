@@ -21,15 +21,15 @@
 
         <n-tabs type="line" animated>
             <n-tab-pane name="metadata" tab="Metadata">
-                <DeviceMetadata class="mt-4"></DeviceMetadata>
+                <DeviceMetadata class="mt-4" :device="device"></DeviceMetadata>
             </n-tab-pane>
 
             <n-tab-pane name="variables" tab="Variables">
-                <DeviceVariables class="mt-4"></DeviceVariables>
+                <DeviceVariables class="mt-4" :device="device"></DeviceVariables>
             </n-tab-pane>
 
             <n-tab-pane name="realtime" tab="Realtime">
-                <DeviceRealtime class="mt-4"></DeviceRealtime>
+                <DeviceRealtime class="mt-4" :device="device"></DeviceRealtime>
             </n-tab-pane>
 
             <n-tab-pane name="deployments" tab="Deployments">

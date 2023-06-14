@@ -121,5 +121,28 @@ export default function useDevice() {
     );
   }
 
-  return { find, findOne, remove, add, link, unlink };
+  function update(id: Device["id"], data: Partial<Device>) {
+    const key = `device-${id}`;
+    const request = `/api/devices/${id}`;
+
+    return useAsyncData<Device, H3Error>(key, () =>
+      useAuthFetch(request, {
+        method: "PATCH",
+        body: data,
+
+        onResponse: ({ response }) => {
+          if (response.ok && devices.value) {
+            const deviceIndex = devices.value.findIndex(
+              (device) => device.id === id
+            );
+            if (deviceIndex !== undefined) {
+              devices.value[deviceIndex] = response._data;
+            }
+          }
+        },
+      })
+    );
+  }
+
+  return { find, findOne, remove, add, link, unlink, update };
 }

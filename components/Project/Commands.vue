@@ -1,6 +1,6 @@
 <template>
     <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
-        <n-dynamic-input v-model:value="model.commands" preset="pair" key-placeholder="Key" value-placeholder="Description"
+        <n-dynamic-input v-model:value="model.commands" preset="pair" key-placeholder="Name" value-placeholder="Payload"
             class="mb-4" />
 
         <div class="flex gap-4">

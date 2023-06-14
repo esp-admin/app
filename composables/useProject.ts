@@ -2,6 +2,8 @@ import type { Project } from "@prisma/client";
 import type { H3Error } from "h3";
 
 export default function useDevice() {
+  const key = `projects`;
+
   const { data: projects } = useNuxtData<Project[]>("projects");
 
   if (projects.value === null) {
@@ -9,7 +11,9 @@ export default function useDevice() {
   }
 
   function find() {
-    return useAsyncData("projects", () => useAuthFetch("/api/projects"), {
+    const request = `/api/projects`;
+
+    return useAsyncData(key, () => useAuthFetch(request), {
       default: () => projects.value,
       immediate: projects.value ? false : true,
     });
@@ -17,6 +21,7 @@ export default function useDevice() {
 
   function findOne(id: Project["id"]) {
     const key = `project-${id}`;
+    const request = `/api/projects/${id}`;
 
     const { data: project } = useNuxtData(key);
 
@@ -24,25 +29,27 @@ export default function useDevice() {
       clearNuxtData(key);
     }
 
-    return useAsyncData<Project>(key, () => useAuthFetch(`/api/projects/${id}`), {
+    return useAsyncData<Project>(key, () => useAuthFetch(request), {
       default: () => project.value,
       immediate: project.value ? false : true,
     });
   }
 
   function remove(id: Project["id"]) {
-    return useAsyncData<Project>(() =>
-      useAuthFetch(`/api/projects/${id}`, {
+    const key = `project-${id}`;
+    const request = `/api/projects/${id}`;
+
+    return useAsyncData<Project>(key, () =>
+      useAuthFetch(request, {
         method: "DELETE",
 
         onResponse: ({ response }) => {
-          if (response.ok) {
-            const deviceIndex = projects.value?.findIndex(
+          if (response.ok && projects.value) {
+            const projectIndex = projects.value.findIndex(
               (project) => project.id === id
             );
-
-            if (deviceIndex !== undefined) {
-              projects.value?.splice(deviceIndex, 1);
+            if (projectIndex !== undefined) {
+              projects.value.splice(projectIndex, 1);
             }
           }
         },
@@ -50,20 +57,45 @@ export default function useDevice() {
     );
   }
 
-  function add(project: any) {
+  function add(data: Partial<Project>) {
+    const request = `/api/projects`;
+
     return useAsyncData<Project, H3Error>(() =>
-      useAuthFetch("/api/projects", {
+      useAuthFetch(request, {
         method: "POST",
-        body: project,
+        body: data,
 
         onResponse: ({ response }) => {
-          if (response.ok) {
-            projects.value?.unshift(response._data);
+          if (response.ok && projects.value) {
+            projects.value.push(response._data);
           }
         },
       })
     );
   }
 
-  return { find, findOne, remove, add };
+  function update(id: Project["id"], data: Partial<Project>) {
+    const key = `project-${id}`;
+    const request = `/api/projects/${id}`;
+
+    return useAsyncData<Project, H3Error>(key, () =>
+      useAuthFetch(request, {
+        method: "PATCH",
+        body: data,
+
+        onResponse: ({ response }) => {
+          if (response.ok && projects.value) {
+            const projectIndex = projects.value.findIndex(
+              (project) => project.id === id
+            );
+            if (projectIndex !== undefined) {
+              projects.value[projectIndex] = response._data;
+            }
+          }
+        },
+      })
+    );
+  }
+
+  return { find, findOne, remove, add, update };
 }

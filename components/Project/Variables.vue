@@ -1,15 +1,28 @@
 <template>
-    <n-form>
-        <n-dynamic-input v-model:value="value" preset="pair" key-placeholder="Key" value-placeholder="Description"
+    <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
+        <n-dynamic-input v-model:value="model.variables" preset="pair" key-placeholder="Key" value-placeholder="Description"
             class="mb-4" />
 
         <div class="flex gap-4">
-            <n-button type="primary">Save</n-button>
-            <n-button secondary>Reset</n-button>
+            <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending">Save</n-button>
+            <n-button secondary attr-type="reset">Reset</n-button>
         </div>
     </n-form>
 </template>
 
-<script setup>
-const value = ref()
+<script setup lang="ts">
+import type { Project } from "@prisma/client"
+const { formRef, onSubmit, pending, rules } = useNaiveForm()
+
+const props = defineProps<{ project: Project }>()
+
+const model = ref({
+    variables: props.project.variables as { key: string, value: string }[]
+});
+
+async function handleSubmit() {
+    const { update } = useProject()
+
+    const { data, error } = await update(props.project.id, model.value)
+}
 </script>

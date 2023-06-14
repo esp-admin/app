@@ -13,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+import type { Project } from "@prisma/client"
 
 const emits = defineEmits(["cancel", "done"])
 
@@ -22,7 +23,7 @@ apiErrors.value = {
     nameAlreadyExists: false,
 }
 
-const model = ref({
+const model = ref<Partial<Project>>({
     name: "",
 });
 

@@ -16,15 +16,15 @@
 
         <n-tabs type="line" animated>
             <n-tab-pane name="metadata" tab="Metadata">
-                <ProjectMetadata class="mt-4"></ProjectMetadata>
+                <ProjectMetadata class="mt-4" :project="project"></ProjectMetadata>
             </n-tab-pane>
 
             <n-tab-pane name="variables" tab="Variables">
-                <ProjectVariables class="mt-4"></ProjectVariables>
+                <ProjectVariables class="mt-4" :project="project"></ProjectVariables>
             </n-tab-pane>
 
             <n-tab-pane name="commands" tab="Commands">
-                <ProjectCommands class="mt-4"></ProjectCommands>
+                <ProjectCommands class="mt-4" :project="project"></ProjectCommands>
             </n-tab-pane>
 
             <n-tab-pane name="devices" tab="Devices">

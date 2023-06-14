@@ -1,7 +1,7 @@
 import { auth, naiveui, tailwindcss, s3 } from "./config";
 
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: true,
 
   app: {
     head: {

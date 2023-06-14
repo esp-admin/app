@@ -94,7 +94,7 @@ model Release {
   createdAt   DateTime     @default(now())
   projectId   String       @db.ObjectId
   project     Project      @relation(fields: [projectId], references: [id])
-  deployments  Deployment[]
+  deployments Deployment[]
 }
 
 model Device {
@@ -103,7 +103,7 @@ model Device {
   mac         String       @unique
   apiKey      String
   description String?
-  variables   String?
+  variables   Json?
   status      DeviceStatus @default(unregistered)
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
@@ -111,7 +111,7 @@ model Device {
   project     Project?     @relation(fields: [projectId], references: [id])
   userId      String       @db.ObjectId
   user        User         @relation(fields: [userId], references: [id])
-  deployments  Deployment[]
+  deployments Deployment[]
 }
 
 model Deployment {

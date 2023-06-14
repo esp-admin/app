@@ -2,25 +2,25 @@ import type { Device, Project } from "@prisma/client";
 import type { H3Error } from "h3";
 
 export default function useDevice() {
-  const { data: devices } = useNuxtData<Device[]>("devices");
+  const key = `devices`;
+  const { data: devices } = useNuxtData<Device[]>(key);
 
   if (devices.value === null) {
-    clearNuxtData("devices");
+    clearNuxtData(key);
   }
 
   function find() {
-    return useAsyncData(
-      "devices",
-      () => useAuthFetch<Device[]>("/api/devices"),
-      {
-        default: () => devices.value,
-        immediate: devices.value ? false : true,
-      }
-    );
+    const request = "/api/devices";
+
+    return useAsyncData(key, () => useAuthFetch<Device[]>(request), {
+      default: () => devices.value,
+      immediate: devices.value ? false : true,
+    });
   }
 
   function findOne(id: Device["id"]) {
     const key = `device-${id}`;
+    const request = `/api/devices/${id}`;
 
     const { data: device } = useNuxtData(key);
 
@@ -28,25 +28,28 @@ export default function useDevice() {
       clearNuxtData(key);
     }
 
-    return useAsyncData<Device>(key, () => useAuthFetch(`/api/devices/${id}`), {
+    return useAsyncData<Device>(key, () => useAuthFetch(request), {
       default: () => device.value,
       immediate: device.value ? false : true,
     });
   }
 
   function remove(id: Device["id"]) {
-    return useAsyncData<Device>(() =>
-      useAuthFetch(`/api/devices/${id}`, {
+    const key = `device-${id}`;
+    const request = `/api/devices/${id}`;
+
+    return useAsyncData<Device>(key, () =>
+      useAuthFetch(request, {
         method: "DELETE",
 
         onResponse: ({ response }) => {
-          if (response.ok) {
-            const deviceIndex = devices.value?.findIndex(
+          if (response.ok && devices.value) {
+            const deviceIndex = devices.value.findIndex(
               (device) => device.id === id
             );
 
             if (deviceIndex !== undefined) {
-              devices.value?.splice(deviceIndex, 1);
+              devices.value.splice(deviceIndex, 1);
             }
           }
         },
@@ -54,11 +57,13 @@ export default function useDevice() {
     );
   }
 
-  function add(device: any) {
+  function add(data: Partial<Device>) {
+    const request = "/api/devices";
+
     return useAsyncData<Device, H3Error>(() =>
-      useAuthFetch("/api/devices", {
+      useAuthFetch(request, {
         method: "POST",
-        body: device,
+        body: data,
 
         onResponse: ({ response }) => {
           if (response.ok) {
@@ -70,21 +75,21 @@ export default function useDevice() {
   }
 
   function link(deviceId: Device["id"], projectId: Project["id"]) {
+    const request = `/api/devices/${deviceId}/link`;
+
     return useAsyncData<Device, H3Error>(() =>
-      useAuthFetch(`/api/devices/${deviceId}/link`, {
+      useAuthFetch(request, {
         method: "PATCH",
         body: {
           projectId,
         },
 
         onResponse: ({ response }) => {
-          const { data: devices } = useNuxtData<Device[]>("devices");
-
-          if (response.ok) {
-            const deviceIndex = devices.value?.findIndex(
+          if (response.ok && devices.value) {
+            const deviceIndex = devices.value.findIndex(
               (device) => device.id === deviceId
             );
-            if (deviceIndex !== undefined && devices.value) {
+            if (deviceIndex !== undefined) {
               devices.value[deviceIndex].projectId = projectId;
             }
           }
@@ -93,17 +98,19 @@ export default function useDevice() {
     );
   }
 
-  function unlink(deviceId: Device["id"]) {
+  function unlink(id: Device["id"]) {
+    const request = `/api/devices/${id}/unlink`;
+
     return useAsyncData<Device, H3Error>(() =>
-      useAuthFetch(`/api/devices/${deviceId}/unlink`, {
+      useAuthFetch(request, {
         method: "PATCH",
 
         onResponse: ({ response }) => {
-          if (response.ok) {
-            const deviceIndex = devices.value?.findIndex(
-              (device) => device.id === deviceId
+          if (response.ok && devices.value) {
+            const deviceIndex = devices.value.findIndex(
+              (device) => device.id === id
             );
-            if (deviceIndex !== undefined && devices.value) {
+            if (deviceIndex !== undefined) {
               devices.value[deviceIndex].projectId = null;
             }
           }

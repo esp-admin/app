@@ -4,10 +4,10 @@ import type { H3Error } from "h3";
 export default function useDevice() {
   const key = `projects`;
 
-  const { data: projects } = useNuxtData<Project[]>("projects");
+  const { data: projects } = useNuxtData<Project[]>(key);
 
   if (projects.value === null) {
-    clearNuxtData("projects");
+    clearNuxtData(key);
   }
 
   function find() {

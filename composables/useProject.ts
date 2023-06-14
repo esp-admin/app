@@ -1,4 +1,3 @@
-import type { Project } from "@prisma/client";
 import type { H3Error } from "h3";
 
 export default function useDevice() {
@@ -97,5 +96,27 @@ export default function useDevice() {
     );
   }
 
-  return { find, findOne, remove, add, update };
+  function addRelease(id: Project["id"], data: Partial<Release>) {
+    const key = `project-${id}`;
+    const request = `/api/projects/${id}/releases`;
+
+    return useAsyncData<Project, H3Error>(key, () =>
+      useAuthFetch(request, {
+        method: "POST",
+        body: data,
+
+        onResponse: ({ response }) => {
+          if (response.ok && projects.value) {
+            const projectIndex = projects.value.findIndex(
+              (project) => project.id === id
+            );
+            if (projectIndex !== undefined) {
+              projects.value[projectIndex] = response._data;
+            }
+          }
+        },
+      })
+    );
+  }
+  return { find, findOne, remove, add, update, addRelease };
 }

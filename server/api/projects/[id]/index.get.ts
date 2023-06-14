@@ -15,12 +15,7 @@ export default defineEventHandler(async (event) => {
         id,
       },
       include: {
-        releases: {
-          select: {
-            id: true,
-            version: true,
-          },
-        },
+        releases: true,
       },
     });
 

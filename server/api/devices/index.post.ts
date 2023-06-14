@@ -1,5 +1,4 @@
 import { handleError, prisma } from "#auth";
-import type { Device } from "@prisma/client";
 
 export default defineEventHandler(async (event) => {
   try {

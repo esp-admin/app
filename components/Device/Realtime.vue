@@ -15,15 +15,13 @@
 </template>
 
 <script setup lang="ts">
-import type { Device } from "@prisma/client"
-
-interface ICommand {
+interface Command {
     key: string, value: string
 }
 
 const props = defineProps<{ device: Device }>()
 
-const projectCommands = ref<ICommand[]>([])
+const projectCommands = ref<Command[]>([])
 
 if (props.device.projectId) {
     const { findOne } = useProject()
@@ -37,7 +35,7 @@ if (props.device.projectId) {
 const log = ref("log 1 \nlog 2 \nlog 3 \nlog 4 \nlog 5 \nlog 6 \nlog 7 \nlog 8 \nlog 9 \nlog 10 \nlog 11 \nlog 12 \nlog 13 \nlog 14 \nlog 15 \nlog 16 \n")
 
 
-function handleCommand(command: ICommand) {
+function handleCommand(command: Command) {
     alert(JSON.stringify(command))
 }
 </script>

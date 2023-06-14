@@ -22,7 +22,6 @@
 </template>
 
 <script setup lang="ts">
-import type { Project } from "@prisma/client"
 
 const linkModalVisible = ref(false)
 

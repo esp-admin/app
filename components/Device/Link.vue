@@ -13,9 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Device, Project } from "@prisma/client"
 import type { SelectOption } from "naive-ui"
-import type { H3Error } from "h3"
 
 const { formRef, onSubmit, pending } = useNaiveForm()
 

@@ -1,4 +1,3 @@
-import type { Device, Project } from "@prisma/client";
 import type { H3Error } from "h3";
 
 export default function useDevice() {

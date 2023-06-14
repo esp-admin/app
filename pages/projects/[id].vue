@@ -32,7 +32,7 @@
             </n-tab-pane>
 
             <n-tab-pane name="releases" tab="Releases">
-                <ProjectReleases class="mt-4"></ProjectReleases>
+                <ProjectReleases class="mt-4" :project="project"></ProjectReleases>
             </n-tab-pane>
         </n-tabs>
 

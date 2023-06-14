@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Project } from "@prisma/client"
+
 const { formRef, onSubmit, pending, rules } = useNaiveForm()
 
 const props = defineProps<{ project: Project }>()

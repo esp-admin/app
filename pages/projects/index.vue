@@ -31,7 +31,6 @@
 </template>
 
 <script setup lang="ts">
-import type { Project } from '@prisma/client';
 
 const createModalVisible = ref(false)
 const nameSearch = ref()

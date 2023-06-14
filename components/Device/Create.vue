@@ -21,7 +21,6 @@
 </template>
 
 <script setup lang="ts">
-
 const emits = defineEmits(["cancel", "done"])
 
 const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm()

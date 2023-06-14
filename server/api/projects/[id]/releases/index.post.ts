@@ -8,12 +8,21 @@ export default defineEventHandler(async (event) => {
       throw new Error("unauthorized");
     }
 
-    const { name } = await readBody<Project>(event);
+    const id = event.context.params?.id;
 
-    const project = await prisma.project.create({
+    const data = await readBody<Release>(event);
+
+    const project = await prisma.project.update({
+      where: {
+        id,
+      },
       data: {
-        name,
-        userId,
+        releases: {
+          create: data,
+        },
+      },
+      include: {
+        releases: true,
       },
     });
 

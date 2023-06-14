@@ -13,7 +13,6 @@
 </template>
 
 <script setup lang="ts">
-import type { Project } from "@prisma/client"
 
 const emits = defineEmits(["cancel", "done"])
 

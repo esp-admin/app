@@ -16,7 +16,5 @@
 </template>
 
 <script setup lang="ts">
-import type { Device } from "@prisma/client"
-
 defineProps<{ device: Device }>()
 </script>

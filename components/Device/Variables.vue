@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Device } from "@prisma/client"
+
 const { formRef, onSubmit, pending, rules } = useNaiveForm()
 
 const props = defineProps<{ device: Device }>()

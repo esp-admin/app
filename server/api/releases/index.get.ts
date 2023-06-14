@@ -10,9 +10,19 @@ export default defineEventHandler(async (event) => {
 
     const { projectId } = getQuery(event) as { projectId: Project["id"] };
 
+    if (!projectId) {
+      throw new Error("<projectId> is required");
+    }
+
     const releases = await prisma.release.findMany({
       where: {
         projectId,
+      },
+      select: {
+        id: true,
+        version: true,
+        downloadUrl: true,
+        createdAt: true,
       },
     });
 

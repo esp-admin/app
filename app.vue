@@ -12,7 +12,7 @@
 
       <n-message-provider>
 
-        <div v-if="loggedIn">
+        <div v-if="user">
           <NavbarMain></NavbarMain>
           <div class="container mx-auto my-8 px-4">
             <nuxt-page></nuxt-page>
@@ -33,7 +33,6 @@ import { theme } from "#tailwind-config";
 
 const { useUser } = useAuthSession()
 const user = useUser()
-const loggedIn = computed(() => user.value !== null)
 
 const themeConfig = ref<ThemeConfig>({
   shared: {

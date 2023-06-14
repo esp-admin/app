@@ -7,7 +7,11 @@
                 <n-text depth="3" class="text-sm"> Created {{ formatDate(project.createdAt) }}</n-text>
             </div>
 
-            <n-button type="error" secondary @click="deleteModalVisible = true">Delete project</n-button>
+            <n-button type="error" secondary circle @click="deleteModalVisible = true">
+                <template #icon>
+                    <naive-icon name="ph:trash"></naive-icon>
+                </template>
+            </n-button>
         </div>
 
         <n-tabs type="line" animated>

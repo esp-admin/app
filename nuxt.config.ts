@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@bg-dev/nuxt-s3",
     "nuxt-security",
-    "nuxt-gtag",
+    process.env.NODE_ENV === "production" && "nuxt-gtag",
     "@nuxt/devtools",
   ],
 

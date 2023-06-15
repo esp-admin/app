@@ -1,7 +1,7 @@
 <template>
     <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
         <n-form-item>
-            <n-upload>
+            <n-upload :custom-request="(e) => file = e.file.file">
                 <n-upload-dragger>
                     <div>
                         <naive-icon name="ph:upload" :size="28"></naive-icon>
@@ -30,6 +30,8 @@
 
 const props = defineProps<{ project: Project }>()
 
+const file = ref<File | null>()
+
 const emits = defineEmits(["cancel", "done"])
 
 const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm()
@@ -40,7 +42,7 @@ apiErrors.value = {
 
 const model = ref<Partial<Release>>({
     version: "",
-    downloadUrl: "some_url",
+    downloadUrl: "",
 });
 
 rules.value = {
@@ -59,6 +61,27 @@ rules.value = {
 
 
 async function handleSubmit() {
+    if (file.value) {
+        const { upload, getPublicUrl } = useS3Object()
+
+        const { getAccessToken } = useAuthSession()
+
+        const accessToken = await getAccessToken()
+
+        const { data } = await upload({
+            files: [file.value],
+            authorization: `Bearer ${accessToken}`
+        })
+
+        if (data.value) {
+            model.value.downloadUrl = getPublicUrl(data.value[0].url)
+        }
+    }
+
+    if (!model.value.downloadUrl) {
+        return
+    }
+
     const { add } = useRelease(props.project.id)
 
     const { data: release, error } = await add(model.value)

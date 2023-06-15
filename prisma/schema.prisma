@@ -24,8 +24,9 @@ model User {
   updatedAt     DateTime       @updatedAt
   refreshTokens RefreshToken[]
   projects      Project[]
-  settings      Settings?
   devices       Device[]
+  mqtt          Mqtt?
+  report        Report?
 }
 
 model RefreshToken {
@@ -40,26 +41,17 @@ model RefreshToken {
   @@index([userId])
 }
 
-model Settings {
-  id     String  @id @default(auto()) @map("_id") @db.ObjectId
-  mqtt   Mqtt?
-  report Report?
-  userId String  @unique @db.ObjectId
-  user   User    @relation(fields: [userId], references: [id])
-}
-
 model Mqtt {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   uriTCP      String?
   uriWS       String
-  secured     Boolean  @default(true)
   username    String
   password    String
   certificate String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  settingsId  String   @unique @db.ObjectId
-  settings    Settings @relation(fields: [settingsId], references: [id])
+  userId      String   @unique @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id])
 }
 
 model Report {
@@ -68,8 +60,8 @@ model Report {
   webhookUrl String?
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
-  settingsId String   @unique @db.ObjectId
-  settings   Settings @relation(fields: [settingsId], references: [id])
+  userId     String   @unique @db.ObjectId
+  user       User     @relation(fields: [userId], references: [id])
 }
 
 model Project {

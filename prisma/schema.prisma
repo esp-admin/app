@@ -50,12 +50,12 @@ model Settings {
 
 model Mqtt {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  host        String
-  portMqtt    Int?
-  portWs      Int
+  uriTCP      String?
+  uriWS       String
+  secured     Boolean  @default(true)
   username    String
   password    String
-  certificate String
+  certificate String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   settingsId  String   @unique @db.ObjectId

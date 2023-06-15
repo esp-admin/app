@@ -1,7 +1,7 @@
 import { auth, naiveui, tailwindcss, s3 } from "./config";
 
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: process.env.NODE_ENV === "production",
 
   app: {
     head: {

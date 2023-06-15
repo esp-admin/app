@@ -34,10 +34,9 @@ export default function useDevice() {
   }
 
   function remove(id: Device["id"]) {
-    const key = `device-${id}`;
     const request = `/api/devices/${id}`;
 
-    return useAsyncData<Device>(key, () =>
+    return useAsyncData<Device>(() =>
       useAuthFetch(request, {
         method: "DELETE",
 

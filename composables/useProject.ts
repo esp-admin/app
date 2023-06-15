@@ -35,10 +35,9 @@ export default function useDevice() {
   }
 
   function remove(id: Project["id"]) {
-    const key = `project-${id}`;
     const request = `/api/projects/${id}`;
 
-    return useAsyncData<Project>(key, () =>
+    return useAsyncData<Project, H3Error>(() =>
       useAuthFetch(request, {
         method: "DELETE",
 

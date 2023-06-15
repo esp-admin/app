@@ -18,7 +18,11 @@ const emits = defineEmits(["cancel", "done"])
 
 const props = defineProps<{ project: Project }>()
 
-const { formRef, onSubmit, pending, rules } = useNaiveForm()
+const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm()
+
+apiErrors.value = {
+    containsReleases: false,
+}
 
 const model = ref({
     name: "",
@@ -35,6 +39,10 @@ rules.value = {
             message: `Name should be ${props.project.name}`,
             validator: (rule, value) => value === props.project.name
         },
+        {
+            message: `Make sure to remove related releases first`,
+            validator: () => !apiErrors.value.containsReleases
+        },
     ],
 }
 
@@ -44,9 +52,23 @@ async function handleSubmit() {
     const { data, error } = await remove(props.project.id)
 
     if (error.value) {
-
+        apiErrors.value.containsReleases = error.value.data?.message.includes("The change you are trying to make would violate the required relation")
     }
     else {
+        // Unlink all devices linked to the deleted project
+
+        const { find, findOne } = useDevice()
+        const { data: devices } = await find()
+        devices.value?.forEach(async (device) => {
+            if (device.projectId === props.project.id) {
+                device.projectId = null
+                const { data } = await findOne(device.id)
+                if (data.value) {
+                    data.value.projectId = null
+                }
+            }
+        })
+
         emits("done", data.value)
     }
 }

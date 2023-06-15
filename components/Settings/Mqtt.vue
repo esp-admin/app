@@ -1,23 +1,23 @@
 <template>
     <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
         <n-form-item label="URI WS" path="uriWS">
-            <n-input></n-input>
+            <n-input v-model:value="model.uriWS"></n-input>
         </n-form-item>
 
         <n-form-item label="URI TCP" path="uriTCP">
-            <n-input></n-input>
+            <n-input v-model:value="model.uriTCP"></n-input>
         </n-form-item>
 
         <n-form-item label="Username" path="username">
-            <n-input></n-input>
+            <n-input v-model:value="model.username"></n-input>
         </n-form-item>
 
         <n-form-item label="Password" path="password">
-            <n-input></n-input>
+            <n-input v-model:value="model.password"></n-input>
         </n-form-item>
 
         <n-form-item label="Certificate" path="certificate">
-            <n-input type="textarea" autosize></n-input>
+            <n-input type="textarea" autosize v-model:value="model.certificate"></n-input>
         </n-form-item>
 
         <div class="flex gap-4">
@@ -31,16 +31,20 @@
 
 const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm()
 
+const { find } = useMqtt()
+
+const { data: mqtt } = await find()
+
 apiErrors.value = {
     unableToConnect: false,
 }
 
 const model = ref<Partial<Mqtt>>({
-    password: "",
-    username: "",
-    uriTCP: "",
-    uriWS: "",
-    certificate: ""
+    password: mqtt.value?.password,
+    username: mqtt.value?.username,
+    uriTCP: mqtt.value?.uriTCP,
+    uriWS: mqtt.value?.uriWS,
+    certificate: mqtt.value?.certificate
 });
 
 rules.value = {
@@ -73,5 +77,15 @@ rules.value = {
 
 
 async function handleSubmit() {
+    const { add, update } = useMqtt()
+
+    if (mqtt.value) {
+        const { data, error } = await update(model.value)
+
+    }
+    else {
+        const { data, error } = await add(model.value)
+
+    }
 }
 </script>

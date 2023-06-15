@@ -5,16 +5,16 @@ export default defineEventHandler((event) => {
 
   setPermissions(event, {
     bucket: {
-      create: role === "admin",
-      delete: role === "admin",
-      list: role === "admin",
+      create: false,
+      delete: false,
+      list: false,
     },
     object: {
       create: role === "admin" || role === "user",
       delete: role === "admin" || role === "user",
-      list: role === "admin",
-      read: true,
+      list: false,
+      read: role === "admin" || role === "user",
       update: role === "admin" || role === "user",
-    }
+    },
   });
 });

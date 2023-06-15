@@ -20,7 +20,7 @@
                 </n-button>
             </div>
 
-            <ProjectCard v-for="project of projects" :project="project"></ProjectCard>
+            <ProjectCard v-for="project of nameSearch ? filteredProjects : projects" :project="project"></ProjectCard>
         </div>
 
         <n-modal preset="card" v-model:show="createModalVisible" size="small" :closable="false" :mask-closable="false"
@@ -38,7 +38,9 @@ const nameSearch = ref()
 const { find } = useProject()
 const { data: projects } = await find()
 
-const searchDebounce = inputDebounce((value: string) => nameSearch.value = value, 1000)
+const searchDebounce = inputDebounce((value: string) => nameSearch.value = value, 500)
+
+const filteredProjects = computed(() => projects.value?.filter(project => project.name.includes(nameSearch.value)))
 
 async function onCreate(project: Project) {
     createModalVisible.value = false;

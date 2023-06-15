@@ -47,6 +47,18 @@ async function handleSubmit() {
 
     }
     else {
+        const { remove } = useS3Object()
+
+
+        const { getAccessToken } = useAuthSession()
+
+        const accessToken = await getAccessToken()
+
+        await remove({
+            url: props.release.downloadUrl,
+            authorization: `Bearer ${accessToken}`
+        })
+
         emits("done", release.value)
     }
 }

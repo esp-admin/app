@@ -16,32 +16,20 @@ export default function useMqtt() {
   }
 
   function update(data: Partial<Mqtt>) {
-    return useAsyncData(
-      key,
-      () =>
-        useAuthFetch<Mqtt>(request, {
-          method: "PATCH",
-          body: data,
-        }),
-      {
-        default: () => mqtt.value,
-        immediate: true,
-      }
+    return useAsyncData(key, () =>
+      useAuthFetch<Mqtt>(request, {
+        method: "PATCH",
+        body: data,
+      })
     );
   }
 
   function add(data: Partial<Mqtt>) {
-    return useAsyncData(
-      key,
-      () =>
-        useAuthFetch<Mqtt>(request, {
-          method: "POST",
-          body: data,
-        }),
-      {
-        default: () => mqtt.value,
-        immediate: mqtt.value ? false : true,
-      }
+    return useAsyncData(key, () =>
+      useAuthFetch<Mqtt>(request, {
+        method: "POST",
+        body: data,
+      })
     );
   }
 

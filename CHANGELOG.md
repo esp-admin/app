@@ -1,6 +1,58 @@
 # Changelog
 
 
+## v0.0.4
+
+[compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.2...v0.0.4)
+
+
+### 🚀 Enhancements
+
+  - Implement project metadata & variables & commands ([3a1ffeb](https://github.com/becem-gharbi/esp-admin/commit/3a1ffeb))
+  - Implement device metadata & variables & commands ([860f389](https://github.com/becem-gharbi/esp-admin/commit/860f389))
+  - Implement Release state management ([b330fbc](https://github.com/becem-gharbi/esp-admin/commit/b330fbc))
+  - Implement firmware upload ([aed98cb](https://github.com/becem-gharbi/esp-admin/commit/aed98cb))
+  - Implement firmware delete ([c96d41c](https://github.com/becem-gharbi/esp-admin/commit/c96d41c))
+  - Implement mqtt & report state management ([eb78886](https://github.com/becem-gharbi/esp-admin/commit/eb78886))
+  - Implement mqtt settings update ([e36e3a8](https://github.com/becem-gharbi/esp-admin/commit/e36e3a8))
+  - Implement report settings update ([4cb2fbe](https://github.com/becem-gharbi/esp-admin/commit/4cb2fbe))
+
+### 🔥 Performance
+
+  - Select only needed fields on findMany ([2d563fb](https://github.com/becem-gharbi/esp-admin/commit/2d563fb))
+
+### 🩹 Fixes
+
+  - **models:** Change variables type to Json in Device ([1168306](https://github.com/becem-gharbi/esp-admin/commit/1168306))
+  - Unlink devices on project delete ([80502b2](https://github.com/becem-gharbi/esp-admin/commit/80502b2))
+  - Fix input search by name ([087a941](https://github.com/becem-gharbi/esp-admin/commit/087a941))
+  - **models:** Update MQTT schema ([ded5722](https://github.com/becem-gharbi/esp-admin/commit/ded5722))
+  - **models:** Rename bagsnagKey to bugsnagKey in Report ([2221b5f](https://github.com/becem-gharbi/esp-admin/commit/2221b5f))
+
+### 💅 Refactors
+
+  - Move device unlink to device page ([0b22737](https://github.com/becem-gharbi/esp-admin/commit/0b22737))
+  - Display error message on delete project having release(s) ([5711333](https://github.com/becem-gharbi/esp-admin/commit/5711333))
+  - Update s3 permissions ([e7672fd](https://github.com/becem-gharbi/esp-admin/commit/e7672fd))
+  - Set form feedback padding to 8px ([8e2e53e](https://github.com/becem-gharbi/esp-admin/commit/8e2e53e))
+
+### 🌊 Types
+
+  - Expose prisma types globally ([b7350b2](https://github.com/becem-gharbi/esp-admin/commit/b7350b2))
+
+### 🏡 Chore
+
+  - Add example.env ([eb36048](https://github.com/becem-gharbi/esp-admin/commit/eb36048))
+  - Enable ssr ([30c95a5](https://github.com/becem-gharbi/esp-admin/commit/30c95a5))
+  - Disable GTAG in development ([d6ab785](https://github.com/becem-gharbi/esp-admin/commit/d6ab785))
+  - Enable SSR ([10594c1](https://github.com/becem-gharbi/esp-admin/commit/10594c1))
+  - Enable ssr only in production ([b93760d](https://github.com/becem-gharbi/esp-admin/commit/b93760d))
+  - **release:** V0.0.3 ([ee60667](https://github.com/becem-gharbi/esp-admin/commit/ee60667))
+
+### ❤️  Contributors
+
+- Becem Gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v0.0.3
 
 [compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.2...v0.0.3)

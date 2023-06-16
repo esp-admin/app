@@ -1,7 +1,7 @@
 <template>
     <div class="page-center">
         <div class="w-full sm:max-w-xs p-4">
-            <slot></slot>
+            <slot />
 
             <n-card class="mt-4" size="small">
                 <div class="flex items-center justify-center gap-2">

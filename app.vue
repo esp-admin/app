@@ -7,22 +7,15 @@
       </n-notification-provider>
     </client-only>
 
-    <nuxt-layout>
-      <nuxt-loading-indicator :color="themeConfig.light?.common?.primaryColor" />
+    <nuxt-loading-indicator :color="themeConfig.light?.common?.primaryColor" />
 
-      <n-message-provider>
+    <n-message-provider>
 
-        <div v-if="user">
-          <NavbarMain></NavbarMain>
-          <div class="container mx-auto my-8 px-4">
-            <nuxt-page></nuxt-page>
-          </div>
-        </div>
+      <nuxt-layout>
+        <nuxt-page />
+      </nuxt-layout>
 
-        <nuxt-page v-else></nuxt-page>
-
-      </n-message-provider>
-    </nuxt-layout>
+    </n-message-provider>
 
   </naive-config>
 </template>
@@ -30,9 +23,6 @@
 <script setup lang="ts">
 import { ThemeConfig } from "@bg-dev/nuxt-naiveui"
 import { theme } from "#tailwind-config";
-
-const { useUser } = useAuthSession()
-const user = useUser()
 
 const themeConfig = ref<ThemeConfig>({
   shared: {

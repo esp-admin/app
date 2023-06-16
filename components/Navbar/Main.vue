@@ -1,27 +1,29 @@
 <template>
-    <naive-navbar v-if="user" :routes="routes" drawer-closable menu-placement="center">
-        <template #start>
-            <NaiveIcon name="simple-icons:espressif" :size="25" icon-color="red"></NaiveIcon>
-            <n-text strong>ESP Admin</n-text>
-        </template>
+    <div>
+        <naive-navbar :routes="routes" drawer-closable menu-placement="center">
+            <template #start>
+                <NaiveIcon name="simple-icons:espressif" :size="25" icon-color="red"></NaiveIcon>
+                <n-text strong>ESP Admin</n-text>
+            </template>
 
-        <template #end v-if="!isMobileOrTablet">
-            <n-dropdown trigger="click" :options="dropdownOptions" :style="{ padding: '8px' }" @select="handleSelect">
-                <s3-image v-if="user.picture" :src="user.picture"
-                    class="notMobileOrTablet w-7 h-7 object-contain rounded-full ring-2 cursor-pointer" />
-            </n-dropdown>
-        </template>
+            <template #end v-if="!isMobileOrTablet">
+                <n-dropdown trigger="click" :options="dropdownOptions" :style="{ padding: '8px' }" @select="handleSelect">
+                    <s3-image v-if="user.picture" :src="user.picture"
+                        class="notMobileOrTablet w-7 h-7 object-contain rounded-full ring-2 cursor-pointer" />
+                </n-dropdown>
+            </template>
 
-        <template #drawer-header>
-            <AccountInfo class="mx-2" />
-        </template>
+            <template #drawer-header>
+                <AccountInfo class="mx-2" />
+            </template>
 
-        <template #drawer-footer>
-            <n-button secondary block @click="async () => await logout()">
-                Logout
-            </n-button>
-        </template>
-    </naive-navbar>
+            <template #drawer-footer>
+                <n-button secondary block @click="async () => await logout()">
+                    Logout
+                </n-button>
+            </template>
+        </naive-navbar>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -29,10 +31,10 @@ import { NaiveIcon, AccountInfo } from "#components"
 import { NavbarRoute } from "@bg-dev/nuxt-naiveui"
 import type { DropdownOption } from "naive-ui"
 
-const { useUser } = useAuthSession()
+const props = defineProps<{ user: User }>()
+
 const { logout } = useAuth()
 const { isMobileOrTablet } = useNaiveDevice()
-const user = useUser()
 
 const routes = ref<NavbarRoute[]>([
     {
@@ -68,7 +70,7 @@ if (isMobileOrTablet) {
 
 const dropdownOptions = ref<DropdownOption[]>([])
 
-watch(user, (newUser, oldUser) => {
+watch(props.user, (newUser, oldUser) => {
     if (!newUser || newUser.role === oldUser?.role) {
         return
     }

@@ -3,8 +3,8 @@ import type {
   Release as ReleaseRaw,
   Device as DeviceRaw,
   Mqtt as MqttRaw,
-  Settings as SettingsRaw,
   Report as ReportRaw,
+  User as UserRaw,
 } from "@prisma/client";
 
 declare global {
@@ -16,7 +16,7 @@ declare global {
 
   interface Mqtt extends MqttRaw {}
 
-  interface Settings extends SettingsRaw {}
+  interface User extends UserRaw {}
 
   interface Report extends ReportRaw {}
 }

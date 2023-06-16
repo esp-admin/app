@@ -1,7 +1,7 @@
 import { auth, naiveui, tailwindcss, s3 } from "./config";
 
 export default defineNuxtConfig({
-  ssr: process.env.NODE_ENV === "production",
+  ssr: true,
 
   app: {
     head: {
@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@bg-dev/nuxt-s3",
     "nuxt-security",
-    process.env.NODE_ENV === "production" && "nuxt-gtag",
+    "nuxt-gtag",
     "@nuxt/devtools",
   ],
 

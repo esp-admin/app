@@ -42,12 +42,12 @@ const themeConfig = ref<ThemeConfig>({
       fontWeight: theme.fontWeight.medium,
       fontWeightStrong: theme.fontWeight.semibold,
 
-      heightMini: "16px",
-      heightTiny: "22px",
-      heightSmall: "28px",
-      heightMedium: "34px",
-      heightLarge: "40px",
-      heightHuge: "46px",
+      heightMini: theme.height[5],
+      heightTiny: theme.height[6],
+      heightSmall: theme.height[7],
+      heightMedium: theme.height[9],
+      heightLarge: theme.height[9],
+      heightHuge: theme.height[10],
 
       lineHeight: theme.lineHeight.normal,
 
@@ -56,7 +56,7 @@ const themeConfig = ref<ThemeConfig>({
     },
     Form: {
       feedbackPadding: theme.padding[2],
-    }
+    },
   },
 
   light: {
@@ -85,7 +85,7 @@ const themeConfig = ref<ThemeConfig>({
     },
     Card: {
       borderColor: theme.colors.gray[300]
-    }
+    },
   },
 
   dark: {

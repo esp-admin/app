@@ -7,7 +7,7 @@
       </n-notification-provider>
     </client-only>
 
-    <nuxt-loading-indicator :color="themeConfig.light?.common?.primaryColor" :height="2" />
+    <nuxt-loading-indicator :color="themeConfig.light?.common?.primaryColor" :height="3" />
 
     <n-message-provider>
 
@@ -57,10 +57,19 @@ const themeConfig = ref<ThemeConfig>({
     Form: {
       feedbackPadding: theme.padding[2],
     },
+    Tabs: {
+      tabFontSizeMedium: theme.fontSize.base,
+    }
   },
 
   light: {
     common: {
+      textColorBase: theme.colors.zinc[800],
+      textColor1: theme.colors.zinc[800],
+      textColor2: theme.colors.zinc[700],
+      textColor3: theme.colors.zinc[600],
+      textColorDisabled: theme.colors.zinc[600],
+
       primaryColor: theme.colors.blue[600],
       primaryColorHover: theme.colors.blue[500],
       primaryColorPressed: theme.colors.blue[700],
@@ -130,12 +139,6 @@ const themeConfig = ref<ThemeConfig>({
       color: theme.colors.zinc[800],
     }
   },
-
-  mobileOrTablet: {
-    Tabs: {
-      tabFontSizeMedium: "16px"
-    }
-  }
 })
 
 useSeoMeta({

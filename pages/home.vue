@@ -1,6 +1,11 @@
 <template>
     <div>
-        <n-text class="text-xl font-semibold">Welcome</n-text>
+        <div class="flex gap-2 items-centerZ">
+            <naive-icon name="ph:hands-clapping"></naive-icon>
+            <n-text class="text-lg font-semibold">
+                Welcome
+            </n-text>
+        </div>
     </div>
 </template>
 

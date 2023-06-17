@@ -1,5 +1,5 @@
 <template>
-    <n-card>
+    <div>
         <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
             <n-form-item label="Email" path="email" :show-require-mark="false">
                 <n-input v-model:value="model.email"></n-input>
@@ -27,7 +27,7 @@
             </div>
 
         </n-form>
-    </n-card>
+    </div>
 </template>
 
 <script setup lang="ts">

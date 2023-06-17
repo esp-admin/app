@@ -17,7 +17,7 @@
             </template>
         </n-result>
 
-        <n-card v-else>
+        <div v-else>
             <n-form ref="formRef" :model="model" :rules="rules" @submit.prevent="() => onSubmit(handleSubmit)">
                 <n-form-item label="Password" path="password" :show-require-mark="false">
                     <n-input v-model:value="model.password" type="password" show-password-on="mousedown"></n-input>
@@ -33,7 +33,7 @@
                     </template>
                     Change password</n-button>
             </n-form>
-        </n-card>
+        </div>
     </div>
 </template>
 

@@ -1,7 +1,10 @@
 <template>
     <div>
-        <div class="mb-4">
-            <n-text class="text-xl font-semibold">Settings</n-text>
+        <div class="flex gap-2 items-center mb-4">
+            <naive-icon name="ph:gear"></naive-icon>
+            <n-text class="col-span-full text-lg font-semibold">
+                Settings
+            </n-text>
         </div>
 
         <n-tabs type="line" animated>

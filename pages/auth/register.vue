@@ -3,7 +3,7 @@
         <n-result v-if="success" status="success" title="Email verification is sent" description="Please check your inbox">
         </n-result>
 
-        <n-card v-else>
+        <div v-else>
             <n-form ref="formRef" :model="model" :rules="rules" @submit.prevent="() => onSubmit(handleSubmit)">
                 <n-form-item label="First name" path="firstName">
                     <n-input v-model:value="model.firstName"></n-input>
@@ -27,7 +27,7 @@
 
                 <n-button type="primary" attr-type="submit" block :disabled="pending" :loading="pending">Register</n-button>
             </n-form>
-        </n-card>
+        </div>
     </div>
 </template>
 

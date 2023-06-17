@@ -3,7 +3,7 @@
         <div class="flex justify-between mb-4 gap-2">
             <div class="flex flex-col flex-grow">
                 <n-text class="text-xl font-semibold">{{ device.name }}</n-text>
-                <n-text depth="3" class="text-sm">Created {{ formatDate(device.createdAt) }}</n-text>
+                <n-text depth="3">Created <n-time :time="new Date(device.createdAt)" type="relative" /></n-text>
             </div>
 
             <n-button type="error" secondary circle @click="deleteModalVisible = true">

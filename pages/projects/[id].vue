@@ -4,7 +4,7 @@
 
             <div class="flex flex-col">
                 <n-text class="text-xl font-semibold">{{ project.name }}</n-text>
-                <n-text depth="3" class="text-sm"> Created {{ formatDate(project.createdAt) }}</n-text>
+                <n-text depth="3">Created <n-time :time="new Date(project.createdAt)" type="relative" /></n-text>
             </div>
 
             <n-button type="error" secondary circle @click="deleteModalVisible = true">

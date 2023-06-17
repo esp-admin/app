@@ -7,7 +7,7 @@
       </n-notification-provider>
     </client-only>
 
-    <nuxt-loading-indicator :color="themeConfig.light?.common?.primaryColor" />
+    <nuxt-loading-indicator :color="themeConfig.light?.common?.primaryColor" :height="2" />
 
     <n-message-provider>
 

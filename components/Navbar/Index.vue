@@ -6,17 +6,15 @@
         </template>
 
         <template #end>
-            <NuxtLink to="https://github.com/becem-gharbi/esp-admin" aria-label="github" target="_blank">
-                <n-button type="default" size="small">
-                    <NaiveIcon name="mdi:github"></NaiveIcon>
-                </n-button>
-            </NuxtLink>
-
             <NuxtLink to="/auth/login" aria-label="get-started">
-                <n-button size="small" type="primary">
+                <n-button type="primary">
                     Get started
                 </n-button>
             </NuxtLink>
         </template>
     </naive-navbar>
 </template>
+
+<script setup>
+import { repository } from "../../package.json"
+</script>

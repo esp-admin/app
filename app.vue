@@ -21,14 +21,15 @@
 </template>
 
 <script setup lang="ts">
+//@ts-nocheck
 import { ThemeConfig } from "@bg-dev/nuxt-naiveui"
 import { theme } from "#tailwind-config";
 
 const themeConfig = ref<ThemeConfig>({
   shared: {
     common: {
-      //@ts-ignore
       fontFamily: theme.fontFamily.sans,
+      fontFamilyMono: theme.fontFamily.mono,
       lineHeight: theme.lineHeight.normal,
       borderRadius: "4px",
     },

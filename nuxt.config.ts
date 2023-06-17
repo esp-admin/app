@@ -22,7 +22,7 @@ export default defineNuxtConfig({
     "@bg-dev/nuxt-s3",
     "nuxt-security",
     "nuxt-gtag",
-    "@nuxt/devtools",
+    //"@nuxt/devtools",
   ],
 
   auth,

@@ -1,29 +1,27 @@
 <template>
-    <div>
-        <naive-navbar :routes="routes" drawer-closable menu-placement="center">
-            <template #start>
-                <NaiveIcon name="simple-icons:espressif" :size="25" icon-color="red"></NaiveIcon>
-                <n-text strong>ESP Admin</n-text>
-            </template>
+    <naive-navbar class="font-semibold" :routes="routes" drawer-closable menu-placement="left">
+        <template #start>
+            <NaiveIcon name="simple-icons:espressif" :size="25" icon-color="red"></NaiveIcon>
+            <n-text strong>ESP Admin</n-text>
+        </template>
 
-            <template #end v-if="!isMobileOrTablet">
-                <n-dropdown trigger="click" :options="dropdownOptions" :style="{ padding: '8px' }" @select="handleSelect">
-                    <s3-image v-if="user.picture" :src="user.picture"
-                        class="notMobileOrTablet w-7 h-7 object-contain rounded-full ring-2 cursor-pointer" />
-                </n-dropdown>
-            </template>
+        <template #end v-if="!isMobileOrTablet">
+            <n-dropdown trigger="click" :options="dropdownOptions" :style="{ padding: '8px' }" @select="handleSelect">
+                <s3-image v-if="user.picture" :src="user.picture"
+                    class="notMobileOrTablet w-7 h-7 object-contain rounded-full ring-2 cursor-pointer" />
+            </n-dropdown>
+        </template>
 
-            <template #drawer-header>
-                <AccountInfo class="mx-2" />
-            </template>
+        <template #drawer-header>
+            <AccountInfo class="mx-2" />
+        </template>
 
-            <template #drawer-footer>
-                <n-button secondary block @click="async () => await logout()">
-                    Logout
-                </n-button>
-            </template>
-        </naive-navbar>
-    </div>
+        <template #drawer-footer>
+            <n-button secondary block @click="async () => await logout()">
+                Logout
+            </n-button>
+        </template>
+    </naive-navbar>
 </template>
 
 <script setup lang="ts">
@@ -96,11 +94,6 @@ watch(props.user, (newUser, oldUser) => {
             icon: () => h(NaiveIcon, { name: 'ph:user' }),
         },
         {
-            label: 'About',
-            key: 'about',
-            icon: () => h(NaiveIcon, { name: 'ph:question' }),
-        },
-        {
             label: 'Logout',
             key: 'logout',
             icon: () => h(NaiveIcon, { name: 'ph:sign-out' }),
@@ -128,16 +121,13 @@ watch(props.user, (newUser, oldUser) => {
 async function handleSelect(key: string) {
     switch (key) {
         case 'logout':
-            await logout()
-            break
+            return logout()
         case 'account':
             return navigateTo('/account')
         case 'management':
             return navigateTo('/management')
         case 'settings':
             return navigateTo('/settings')
-        case 'about':
-            return window.open('https://github.com/becem-gharbi/esp-admin')
     }
 }
 </script>

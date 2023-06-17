@@ -30,7 +30,7 @@ const themeConfig = ref<ThemeConfig>({
       //@ts-ignore
       fontFamily: theme.fontFamily.sans,
       lineHeight: theme.lineHeight.normal,
-      borderRadius: "4px"
+      borderRadius: "4px",
     },
     Form: {
       feedbackPadding: "8px",

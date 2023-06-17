@@ -1,11 +1,12 @@
 <template>
-    <div>
-        <div v-if="user">
+    <div class="page flex flex-col">
+        <template v-if="user">
             <NavbarMain :user="user"></NavbarMain>
-            <div class="container mx-auto my-8 px-4">
+            <div class="flex-1 container mx-auto my-8 px-4">
                 <slot />
             </div>
-        </div>
+            <Footer></Footer>
+        </template>
     </div>
 </template>
 

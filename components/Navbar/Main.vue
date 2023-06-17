@@ -1,5 +1,5 @@
 <template>
-    <naive-navbar class="font-semibold" :routes="routes" drawer-closable menu-placement="left">
+    <naive-navbar :routes="routes" drawer-closable menu-placement="left">
         <template #start>
             <NaiveIcon name="simple-icons:espressif" :size="25" icon-color="red"></NaiveIcon>
             <n-text strong>ESP Admin</n-text>

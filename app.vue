@@ -30,12 +30,33 @@ const themeConfig = ref<ThemeConfig>({
     common: {
       fontFamily: theme.fontFamily.sans,
       fontFamilyMono: theme.fontFamily.mono,
+
+      fontSizeMini: theme.fontSize.xs,
+      fontSizeTiny: theme.fontSize.xs,
+      fontSizeSmall: theme.fontSize.sm,
+      fontSizeMedium: theme.fontSize.base,
+      fontSizeLarge: theme.fontSize.lg,
+      fontSizeHuge: theme.fontSize.xl,
+      fontSize: theme.fontSize.base,
+
+      fontWeight: theme.fontWeight.medium,
+      fontWeightStrong: theme.fontWeight.semibold,
+
+      heightMini: "16px",
+      heightTiny: "22px",
+      heightSmall: "28px",
+      heightMedium: "34px",
+      heightLarge: "40px",
+      heightHuge: "46px",
+
       lineHeight: theme.lineHeight.normal,
-      borderRadius: "4px",
+
+      borderRadius: theme.borderRadius.md,
+      borderRadiusSmall: theme.borderRadius.sm,
     },
     Form: {
-      feedbackPadding: "8px",
-    },
+      feedbackPadding: theme.padding[2],
+    }
   },
 
   light: {
@@ -43,6 +64,23 @@ const themeConfig = ref<ThemeConfig>({
       primaryColor: theme.colors.blue[600],
       primaryColorHover: theme.colors.blue[500],
       primaryColorPressed: theme.colors.blue[700],
+      primaryColorSuppl: theme.colors.blue[800],
+
+      errorColor: theme.colors.red[600],
+      errorColorHover: theme.colors.red[500],
+      errorColorPressed: theme.colors.red[700],
+      errorColorSuppl: theme.colors.red[800],
+
+      successColor: theme.colors.green[600],
+      successColorHover: theme.colors.green[500],
+      successColorPressed: theme.colors.green[700],
+      successColorSuppl: theme.colors.green[800],
+
+      warningColor: theme.colors.amber[600],
+      warningColorHover: theme.colors.amber[500],
+      warningColorPressed: theme.colors.amber[700],
+      warningColorSuppl: theme.colors.amber[800],
+
       borderColor: theme.colors.gray[300],
     },
     Card: {
@@ -52,13 +90,44 @@ const themeConfig = ref<ThemeConfig>({
 
   dark: {
     common: {
-      primaryColor: theme.colors.blue[500],
-      primaryColorHover: theme.colors.blue[400],
-      primaryColorPressed: theme.colors.blue[600],
-      borderColor: theme.colors.gray[800],
+      textColorBase: theme.colors.zinc[200],
+      textColor1: theme.colors.zinc[200],
+      textColor2: theme.colors.zinc[300],
+      textColor3: theme.colors.zinc[400],
+      textColorDisabled: theme.colors.zinc[500],
+
+      bodyColor: theme.colors.zinc[900],
+      borderColor: theme.colors.zinc[700],
+      cardColor: theme.colors.zinc[800],
+      inputColor: theme.colors.zinc[800],
+
+
+      primaryColor: theme.colors.blue[600],
+      primaryColorHover: theme.colors.blue[500],
+      primaryColorPressed: theme.colors.blue[700],
+      primaryColorSuppl: theme.colors.blue[800],
+
+      errorColor: theme.colors.red[600],
+      errorColorHover: theme.colors.red[500],
+      errorColorPressed: theme.colors.red[700],
+      errorColorSuppl: theme.colors.red[800],
+
+      successColor: theme.colors.green[600],
+      successColorHover: theme.colors.green[500],
+      successColorPressed: theme.colors.green[700],
+      successColorSuppl: theme.colors.green[800],
+
+      warningColor: theme.colors.amber[600],
+      warningColorHover: theme.colors.amber[500],
+      warningColorPressed: theme.colors.amber[700],
+      warningColorSuppl: theme.colors.amber[800],
+
     },
     Card: {
-      borderColor: theme.colors.gray[800]
+      borderColor: theme.colors.zinc[700]
+    },
+    Tooltip: {
+      color: theme.colors.zinc[800],
     }
   },
 

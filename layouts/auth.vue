@@ -3,7 +3,7 @@
         <div class="w-full sm:max-w-xs p-4">
             <slot />
 
-            <n-card class="mt-4" size="small">
+            <!-- <n-card class="mt-4" size="small">
                 <div class="flex items-center justify-center gap-2">
                     <naive-icon name="ph:house"></naive-icon>
                     <div>
@@ -13,7 +13,7 @@
                         </NuxtLink>
                     </div>
                 </div>
-            </n-card>
+            </n-card> -->
         </div>
     </div>
 </template>

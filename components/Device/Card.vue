@@ -9,9 +9,9 @@
             </nuxt-link>
         </div>
 
-        <template #header-extra>
+        <!-- <template #header-extra>
             <DeviceStatus :device="device"></DeviceStatus>
-        </template>
+        </template> -->
     </n-card>
 </template>
 

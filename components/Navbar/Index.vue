@@ -15,6 +15,4 @@
     </naive-navbar>
 </template>
 
-<script setup>
-import { repository } from "../../package.json"
-</script>
+ 

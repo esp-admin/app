@@ -39,8 +39,8 @@ const themeConfig = ref<ThemeConfig>({
       fontSizeHuge: theme.fontSize.xl,
       fontSize: theme.fontSize.base,
 
-      fontWeight: theme.fontWeight.extralight,
-      fontWeightStrong: theme.fontWeight.medium,
+      fontWeight: theme.fontWeight.medium,
+      fontWeightStrong: theme.fontWeight.semibold,
 
       heightMini: theme.height[5],
       heightTiny: theme.height[6],
@@ -53,55 +53,55 @@ const themeConfig = ref<ThemeConfig>({
 
       borderRadius: theme.borderRadius.md,
       borderRadiusSmall: theme.borderRadius.sm,
-
-      Form: {
-        labelFontSizeTopMedium: theme.fontSize.base
-      },
-      Input: {
-        heightMedium: theme.height[9],
-        fontSizeMedium: theme.fontSize.base,
-      },
-      Button: {
-        heightMedium: theme.height[9],
-        fontSizeMedium: theme.fontSize.base,
-      },
-      Card: {
-        fontSizeMedium: theme.fontSize.base,
-      },
-      Avatar: {
-        heightMedium: theme.height[9],
-        fontSize: theme.fontSize.base,
-      },
-      ColorPicker: {
-        heightMedium: theme.height[9],
-        fontSizeMedium: theme.fontSize.base,
-      },
-      Dropdown: {
-        optionHeightMedium: theme.height[9],
-        fontSizeMedium: theme.fontSize.base,
-      },
-      Radio: {
-        buttonHeightMedium: theme.height[9],
-        fontSizeMedium: theme.fontSize.base,
-      },
-      Skeleton: {
-        heightMedium: theme.height[9],
-      },
-      Tag: {
-        heightMedium: theme.height[9],
-        fontSizeMedium: theme.fontSize.base,
-      },
-      Result: {
-        fontSizeMedium: theme.fontSize.base,
-      }
-    },
-    Form: {
-      feedbackPadding: theme.padding[2],
-      labelFontWeight: theme.fontWeight.medium
     },
     Tabs: {
       tabFontSizeMedium: theme.fontSize.base,
     },
+    Form: {
+      labelFontSizeTopMedium: theme.fontSize.base,
+      feedbackPadding: theme.padding[2],
+      labelFontWeight: theme.fontWeight.medium
+    },
+    Input: {
+      heightMedium: theme.height[9],
+      fontSizeMedium: theme.fontSize.base,
+    },
+    Button: {
+      heightMedium: theme.height[9],
+      fontSizeMedium: theme.fontSize.base,
+    },
+    Card: {
+      fontSizeMedium: theme.fontSize.base,
+    },
+    Avatar: {
+      heightMedium: theme.height[9],
+      fontSize: theme.fontSize.base,
+    },
+    ColorPicker: {
+      heightMedium: theme.height[9],
+      fontSizeMedium: theme.fontSize.base,
+    },
+    Dropdown: {
+      optionHeightMedium: theme.height[9],
+      fontSizeMedium: theme.fontSize.base,
+    },
+    Radio: {
+      buttonHeightMedium: theme.height[9],
+      fontSizeMedium: theme.fontSize.base,
+    },
+    Skeleton: {
+      heightMedium: theme.height[9],
+    },
+    Tag: {
+      heightMedium: theme.height[9],
+      fontSizeMedium: theme.fontSize.base,
+    },
+    Result: {
+      fontSizeMedium: theme.fontSize.base,
+    },
+    Menu: {
+      fontSize: theme.fontSize.base,
+    }
   },
 
   light: {

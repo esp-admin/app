@@ -4,7 +4,7 @@
 
             <div class="flex gap-2 items-center">
                 <naive-icon name="ph:cpu"></naive-icon>
-                <n-text class="col-span-full text-lg font-medium">
+                <n-text class="col-span-full text-lg" strong>
                     Devices
                 </n-text>
             </div>

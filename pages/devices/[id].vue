@@ -2,7 +2,7 @@
     <div v-if="device">
         <div class="flex justify-between mb-4 gap-2">
             <div class="flex flex-col flex-grow">
-                <n-text class="text-lg font-medium">{{ device.name }}</n-text>
+                <n-text class="text-lg" strong>{{ device.name }}</n-text>
                 <n-text depth="3">Created <n-time :time="new Date(device.createdAt)" type="relative" /></n-text>
             </div>
 

@@ -2,7 +2,7 @@
     <div>
         <div class="flex gap-2 items-center mb-4">
             <naive-icon name="ph:gear"></naive-icon>
-            <n-text class="col-span-full text-lg font-medium">
+            <n-text class="col-span-full text-lg" strong>
                 Settings
             </n-text>
         </div>

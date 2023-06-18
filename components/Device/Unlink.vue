@@ -4,7 +4,7 @@
             <n-input v-model:value="model.name"></n-input>
         </n-form-item>
 
-        <div class="flex gap-2">
+        <div class="flex gap-4">
             <n-button secondary class="flex-1" attr-type="button" @click="$emit('cancel')"
                 :disabled="pending">Cancel</n-button>
             <n-button type="primary" class="flex-1" attr-type="submit" :disabled="pending"

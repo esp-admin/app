@@ -3,7 +3,7 @@
         <div class="flex justify-between mb-4">
 
             <div class="flex flex-col">
-                <n-text class="text-lg font-medium">{{ project.name }}</n-text>
+                <n-text class="text-lg" strong>{{ project.name }}</n-text>
                 <n-text depth="3">Created <n-time :time="new Date(project.createdAt)" type="relative" /></n-text>
             </div>
 

@@ -5,10 +5,13 @@
             <n-input v-model:value="model[projectVariable.key]"></n-input>
         </FormItem>
 
-        <div class="flex gap-4">
+        <div v-if="projectVariables.length" class="flex gap-4">
             <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending">Save</n-button>
             <n-button secondary attr-type="reset" :disabled="pending">Reset</n-button>
         </div>
+
+        <n-result v-else class="col-span-full my-5" status="info" title="No variables defined">
+        </n-result>
     </n-form>
 </template>
 

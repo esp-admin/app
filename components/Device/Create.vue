@@ -60,6 +60,11 @@ rules.value = {
             message: "MAC already used",
             validator: () => !apiErrors.value.macAlreadyExists
         },
+        {
+            validator: (rule, value) => new RegExp("^([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}$").test(value),
+            message: "Should be in format XX:XX:XX:XX:XX:XX",
+            trigger: "blur"
+        }
     ],
     apiKey: [
         {
@@ -67,6 +72,11 @@ rules.value = {
             message: "Please input api key",
             trigger: "blur",
         },
+        {
+            validator: (rule, value) => new RegExp("(?=.*[a-z])(?=.*[0-9])(?=.{6,})").test(value),
+            message: "At least 6 characters, 1 lowercase, 1 number",
+            trigger: "blur"
+        }
     ],
 }
 

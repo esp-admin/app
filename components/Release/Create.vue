@@ -58,6 +58,11 @@ rules.value = {
             message: "Version already used",
             validator: () => !apiErrors.value.versionAlreadyExists
         },
+        {
+            validator: (rule, value) => new RegExp("/^\d+\.\d+\.\d+(-\w+)?$/").test(value),
+            message: "Should be in format x.y.z-suffix",
+            trigger: "blur"
+        }
     ],
 }
 

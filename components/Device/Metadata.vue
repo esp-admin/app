@@ -52,6 +52,11 @@ rules.value = {
             message: "Please input API key",
             trigger: "blur",
         },
+        {
+            validator: (rule, value) => new RegExp("(?=.*[a-z])(?=.*[0-9])(?=.{6,})").test(value),
+            message: "At least 6 characters, 1 lowercase, 1 number",
+            trigger: "blur"
+        }
     ],
 }
 

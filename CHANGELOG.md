@@ -1,6 +1,55 @@
 # Changelog
 
 
+## v0.0.5
+
+[compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.4...v0.0.5)
+
+
+### 🚀 Enhancements
+
+  - Add Footer ([077c633](https://github.com/becem-gharbi/esp-admin/commit/077c633))
+
+### 🩹 Fixes
+
+  - Fix layouts conflict ([0b7f811](https://github.com/becem-gharbi/esp-admin/commit/0b7f811))
+  - Add missing SEO tags ([61ee112](https://github.com/becem-gharbi/esp-admin/commit/61ee112))
+  - Disallow project remove having linked devices ([78eb6ab](https://github.com/becem-gharbi/esp-admin/commit/78eb6ab))
+  - Specify extension in firmware upload ([5d71a82](https://github.com/becem-gharbi/esp-admin/commit/5d71a82))
+  - Add missing client side regex validations ([ddd801f](https://github.com/becem-gharbi/esp-admin/commit/ddd801f))
+  - Check if names starts or ends with spaces ([6f62496](https://github.com/becem-gharbi/esp-admin/commit/6f62496))
+  - Fix tailwind fontSize get ([2210180](https://github.com/becem-gharbi/esp-admin/commit/2210180))
+
+### 💅 Refactors
+
+  - Disable default layout on landing page ([296d89a](https://github.com/becem-gharbi/esp-admin/commit/296d89a))
+  - Use naive n-time for date display ([109a489](https://github.com/becem-gharbi/esp-admin/commit/109a489))
+  - Display Footer on landing page ([a71c70c](https://github.com/becem-gharbi/esp-admin/commit/a71c70c))
+  - Change font family to Inter ([ddd7051](https://github.com/becem-gharbi/esp-admin/commit/ddd7051))
+  - Update naive colors ([2bc6d35](https://github.com/becem-gharbi/esp-admin/commit/2bc6d35))
+  - Replace view btn with card click ([cda33a5](https://github.com/becem-gharbi/esp-admin/commit/cda33a5))
+  - Use responsive instead of fixed heights ([7dfed55](https://github.com/becem-gharbi/esp-admin/commit/7dfed55))
+  - Remove card on auth forms ([16f4da4](https://github.com/becem-gharbi/esp-admin/commit/16f4da4))
+  - Implement  minor UI changes ([ef36bc8](https://github.com/becem-gharbi/esp-admin/commit/ef36bc8))
+  - Apply minor UI refactoring ([3c8b8a9](https://github.com/becem-gharbi/esp-admin/commit/3c8b8a9))
+  - Aplly minor UI refactoring ([e551df2](https://github.com/becem-gharbi/esp-admin/commit/e551df2))
+  - Apply minor UI refactoring ([8b47b32](https://github.com/becem-gharbi/esp-admin/commit/8b47b32))
+  - Add logos light & dark ([35ac3fb](https://github.com/becem-gharbi/esp-admin/commit/35ac3fb))
+  - Add empty projects & devices & releases UI ([24f1955](https://github.com/becem-gharbi/esp-admin/commit/24f1955))
+  - Set modal size to default ([7c105b3](https://github.com/becem-gharbi/esp-admin/commit/7c105b3))
+  - Change footer height to 48px ([0179aca](https://github.com/becem-gharbi/esp-admin/commit/0179aca))
+
+### 🏡 Chore
+
+  - **design:** Add backend design rev-4 ([9bf2ff7](https://github.com/becem-gharbi/esp-admin/commit/9bf2ff7))
+  - Configure Renovate ([9f07506](https://github.com/becem-gharbi/esp-admin/commit/9f07506))
+  - Move logos to assets directory ([eb29b0b](https://github.com/becem-gharbi/esp-admin/commit/eb29b0b))
+
+### ❤️  Contributors
+
+- Becem Gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+- Becem ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v0.0.4
 
 [compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.2...v0.0.4)

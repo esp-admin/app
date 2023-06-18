@@ -72,20 +72,6 @@ async function handleSubmit() {
     }
 
     else {
-        // Unlink all devices linked to the deleted project
-
-        // const { find, findOne } = useDevice()
-        // const { data: devices } = await find()
-        // devices.value?.forEach(async (device) => {
-        //     if (device.projectId === props.project.id) {
-        //         device.projectId = null
-        //         const { data } = await findOne(device.id)
-        //         if (data.value) {
-        //             data.value.projectId = null
-        //         }
-        //     }
-        // })
-
         emits("done", data.value)
     }
 }

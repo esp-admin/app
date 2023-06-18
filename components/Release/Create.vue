@@ -1,7 +1,7 @@
 <template>
     <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
         <n-form-item>
-            <n-upload :custom-request="(e) => file = e.file.file">
+            <n-upload :custom-request="(e) => file = e.file.file" accept=".bin">
                 <n-upload-dragger>
                     <div>
                         <naive-icon name="ph:upload" :size="28"></naive-icon>

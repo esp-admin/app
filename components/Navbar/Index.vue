@@ -1,8 +1,9 @@
 <template>
     <naive-navbar>
         <template #start>
-            <NaiveIcon name="simple-icons:espressif" :size="25" icon-color="red"></NaiveIcon>
-            <n-text strong>ESP Admin</n-text>
+            <nuxt-link to="/">
+                <Logo />
+            </nuxt-link>
         </template>
 
         <template #end>

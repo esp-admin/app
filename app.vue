@@ -21,23 +21,21 @@
 </template>
 
 <script setup lang="ts">
-//@ts-nocheck
 import { ThemeConfig } from "@bg-dev/nuxt-naiveui"
 import { theme } from "#tailwind-config";
 
 const themeConfig = ref<ThemeConfig>({
   shared: {
     common: {
-      fontFamily: theme.fontFamily.sans,
-      fontFamilyMono: theme.fontFamily.mono,
+      fontFamily: theme.fontFamily.sans[0],
 
-      fontSizeMini: theme.fontSize.xs,
-      fontSizeTiny: theme.fontSize.xs,
-      fontSizeSmall: theme.fontSize.sm,
-      fontSizeMedium: theme.fontSize.base,
-      fontSizeLarge: theme.fontSize.lg,
-      fontSizeHuge: theme.fontSize.xl,
-      fontSize: theme.fontSize.base,
+      fontSizeMini: theme.fontSize.xs[0],
+      fontSizeTiny: theme.fontSize.xs[0],
+      fontSizeSmall: theme.fontSize.sm[0],
+      fontSizeMedium: theme.fontSize.base[0],
+      fontSizeLarge: theme.fontSize.lg[0],
+      fontSizeHuge: theme.fontSize.xl[0],
+      fontSize: theme.fontSize.base[0],
 
       fontWeight: theme.fontWeight.light,
       fontWeightStrong: theme.fontWeight.medium,
@@ -55,53 +53,54 @@ const themeConfig = ref<ThemeConfig>({
       borderRadiusSmall: theme.borderRadius.sm,
     },
     Tabs: {
-      tabFontSizeMedium: theme.fontSize.base,
+      tabFontSizeMedium: theme.fontSize.base[0],
     },
     Form: {
-      labelFontSizeTopMedium: theme.fontSize.base,
+      labelFontSizeTopMedium: theme.fontSize.base[0],
       feedbackPadding: theme.padding[2],
       labelFontWeight: theme.fontWeight.medium
     },
     Input: {
       heightMedium: theme.height[9],
-      fontSizeMedium: theme.fontSize.base,
+      fontSizeMedium: theme.fontSize.base[0],
     },
     Button: {
       heightMedium: theme.height[9],
-      fontSizeMedium: theme.fontSize.base,
+      fontSizeMedium: theme.fontSize.base[0],
     },
     Card: {
-      fontSizeMedium: theme.fontSize.base,
+      fontSizeMedium: theme.fontSize.base[0],
     },
     Avatar: {
       heightMedium: theme.height[9],
-      fontSize: theme.fontSize.base,
+      fontSize: theme.fontSize.base[0],
     },
     ColorPicker: {
       heightMedium: theme.height[9],
-      fontSizeMedium: theme.fontSize.base,
+      fontSizeMedium: theme.fontSize.base[0],
     },
     Dropdown: {
       optionHeightMedium: theme.height[9],
-      fontSizeMedium: theme.fontSize.base,
+      fontSizeMedium: theme.fontSize.base[0],
     },
     Radio: {
       buttonHeightMedium: theme.height[9],
-      fontSizeMedium: theme.fontSize.base,
+      fontSizeMedium: theme.fontSize.base[0],
     },
     Skeleton: {
       heightMedium: theme.height[9],
     },
     Tag: {
       heightMedium: theme.height[9],
-      fontSizeMedium: theme.fontSize.base,
+      fontSizeMedium: theme.fontSize.base[0],
     },
     Result: {
-      fontSizeMedium: theme.fontSize.base,
-      titleFontSizeMedium: "18px"
+      fontSizeMedium: theme.fontSize.base[0],
+      titleFontSizeMedium: theme.fontSize.lg[0],
     },
     Menu: {
-      fontSize: theme.fontSize.base,
+      fontSize: theme.fontSize.base[0],
+      titleFontSizeMedium: theme.fontSize.base[0]
     },
   },
 
@@ -114,7 +113,7 @@ const themeConfig = ref<ThemeConfig>({
       textColorDisabled: theme.colors.zinc[600],
 
       bodyColor: theme.colors.white,
-      borderColor: theme.colors.zinc[100],
+      borderColor: theme.colors.zinc[300],
       cardColor: theme.colors.zinc[50],
       inputColor: theme.colors.zinc[50],
 
@@ -137,11 +136,9 @@ const themeConfig = ref<ThemeConfig>({
       warningColorHover: theme.colors.amber[500],
       warningColorPressed: theme.colors.amber[700],
       warningColorSuppl: theme.colors.amber[800],
-
-      borderColor: theme.colors.gray[300],
     },
     Card: {
-      borderColor: theme.colors.gray[300]
+      borderColor: theme.colors.zinc[300],
     },
     List: {
       color: theme.colors.white,
@@ -184,7 +181,6 @@ const themeConfig = ref<ThemeConfig>({
       warningColorHover: theme.colors.amber[300],
       warningColorPressed: theme.colors.amber[600],
       warningColorSuppl: theme.colors.amber[700],
-
     },
     Card: {
       borderColor: theme.colors.zinc[700],

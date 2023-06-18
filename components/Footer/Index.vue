@@ -16,7 +16,7 @@ const naiveTheme = useNaiveTheme()
 
 <style scoped>
 footer {
-    height: 56px;
+    height: 48px;
     padding: 16px;
     box-shadow: 0px 0px 2px 0px #a3a3a3;
     display: flex;

@@ -20,8 +20,7 @@
 
         <ReleaseCard v-for="release of releases" :release="release" :projectId="project.id"></ReleaseCard>
 
-        <n-modal preset="card" v-model:show="createModalVisible" :closable="false" :mask-closable="false"
-            class="max-w-xs" title="Create release" segmented>
+        <n-modal preset="card" v-model:show="createModalVisible" :closable="false" :mask-closable="false" class="max-w-xs">
             <ReleaseCreate @cancel="createModalVisible = false" @done="onCreate" :project="project" />
         </n-modal>
     </div>

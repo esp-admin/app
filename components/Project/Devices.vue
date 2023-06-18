@@ -21,7 +21,7 @@
 
         <DeviceCard v-for="device of nameSearch ? filteredDevices : linkedDevices" :device="device"></DeviceCard>
 
-        <n-modal preset="card" v-model:show="linkModalVisible" size="small" :closable="false" :mask-closable="false"
+        <n-modal preset="card" v-model:show="linkModalVisible" :closable="false" :mask-closable="false"
             class="max-w-xs" title="Link device" segmented>
             <DeviceLink @cancel="linkModalVisible = false" @done="onLink" :project="project" />
         </n-modal>

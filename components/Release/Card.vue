@@ -3,7 +3,7 @@
         <template #header>
             <div class="flex flex-col">
                 <n-text class="text-base">{{ release.version }}</n-text>
-                <n-text depth="3" class="text-sm font-semibold">{{ formatDate(release.createdAt) }}</n-text>
+                <n-text depth="3">Created <n-time :time="new Date(release.createdAt)" type="relative" /></n-text>
             </div>
 
         </template>
@@ -15,8 +15,7 @@
             </div>
         </template>
 
-        <n-modal preset="card" v-model:show="deleteModalVisible" size="small" :closable="false" :mask-closable="false"
-            class="max-w-xs">
+        <n-modal preset="card" v-model:show="deleteModalVisible" :closable="false" :mask-closable="false" class="max-w-xs">
             <ReleaseDelete @cancel="deleteModalVisible = false" @done="onDelete" :release="release"
                 :projectId="projectId" />
         </n-modal>

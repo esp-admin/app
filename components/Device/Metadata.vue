@@ -45,6 +45,11 @@ rules.value = {
             message: "Name already used",
             validator: () => !apiErrors.value.nameAlreadyExists
         },
+        {
+            validator: (rule, value) => new RegExp("^\s|\s$").test(value),
+            message: "Should not start or end with spaces",
+            trigger: "blur"
+        }
     ],
     apiKey: [
         {

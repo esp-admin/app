@@ -1,6 +1,6 @@
 <template>
     <div class="grid md:grid-cols-3 gap-6">
-        <div class="col-span-full flex gap-4">
+        <div v-if="linkedDevices?.length" class="col-span-full flex gap-4">
             <n-input @input="searchDebounce">
                 <template #prefix>
                     <naive-icon name="ph:magnifying-glass" :size="16"></naive-icon>
@@ -11,6 +11,13 @@
                 Link device
             </n-button>
         </div>
+
+
+        <n-result v-else class="col-span-full my-5" status="info" title="You have no linked devices">
+            <template #footer>
+                <n-button type="primary" @click="linkModalVisible = true">Link first device</n-button>
+            </template>
+        </n-result>
 
         <DeviceCard v-for="device of nameSearch ? filteredDevices : linkedDevices" :device="device"></DeviceCard>
 

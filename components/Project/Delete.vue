@@ -22,7 +22,8 @@ const props = defineProps<{ project: Project }>()
 const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm()
 
 apiErrors.value = {
-    containsReleases: false,
+    hasReleases: false,
+    hasDevices: false
 }
 
 const model = ref({
@@ -42,33 +43,48 @@ rules.value = {
         },
         {
             message: `Make sure to remove related releases first`,
-            validator: () => !apiErrors.value.containsReleases
+            validator: () => !apiErrors.value.hasReleases
+        },
+        {
+            message: `Make sure to unlink devices first`,
+            validator: () => !apiErrors.value.hasDevices
         },
     ],
 }
 
 async function handleSubmit() {
+    const { find } = useDevice()
+    const { data: devices } = await find()
+
+    const linkedDevices = devices.value?.filter(device => device.projectId === props.project.id)
+
+    if (linkedDevices?.length) {
+        apiErrors.value.hasDevices = true
+        return
+    }
+
     const { remove } = useProject()
 
     const { data, error } = await remove(props.project.id)
 
     if (error.value) {
-        apiErrors.value.containsReleases = error.value.data?.message.includes("The change you are trying to make would violate the required relation")
+        apiErrors.value.hasReleases = error.value.data?.message.includes("The change you are trying to make would violate the required relation")
     }
+
     else {
         // Unlink all devices linked to the deleted project
 
-        const { find, findOne } = useDevice()
-        const { data: devices } = await find()
-        devices.value?.forEach(async (device) => {
-            if (device.projectId === props.project.id) {
-                device.projectId = null
-                const { data } = await findOne(device.id)
-                if (data.value) {
-                    data.value.projectId = null
-                }
-            }
-        })
+        // const { find, findOne } = useDevice()
+        // const { data: devices } = await find()
+        // devices.value?.forEach(async (device) => {
+        //     if (device.projectId === props.project.id) {
+        //         device.projectId = null
+        //         const { data } = await findOne(device.id)
+        //         if (data.value) {
+        //             data.value.projectId = null
+        //         }
+        //     }
+        // })
 
         emits("done", data.value)
     }

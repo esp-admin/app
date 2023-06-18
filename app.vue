@@ -39,8 +39,8 @@ const themeConfig = ref<ThemeConfig>({
       fontSizeHuge: theme.fontSize.xl,
       fontSize: theme.fontSize.base,
 
-      fontWeight: theme.fontWeight.medium,
-      fontWeightStrong: theme.fontWeight.semibold,
+      fontWeight: theme.fontWeight.light,
+      fontWeightStrong: theme.fontWeight.medium,
 
       heightMini: theme.height[5],
       heightTiny: theme.height[6],
@@ -112,7 +112,7 @@ const themeConfig = ref<ThemeConfig>({
       textColor3: theme.colors.zinc[400],
       textColorDisabled: theme.colors.zinc[600],
 
-      bodyColor: theme.colors.zinc[0],
+      bodyColor: theme.colors.white,
       borderColor: theme.colors.zinc[100],
       cardColor: theme.colors.zinc[50],
       inputColor: theme.colors.zinc[50],
@@ -139,9 +139,15 @@ const themeConfig = ref<ThemeConfig>({
 
       borderColor: theme.colors.gray[300],
     },
-
     Card: {
       borderColor: theme.colors.gray[300]
+    },
+    List: {
+      color: theme.colors.white,
+    },
+    Tooltip: {
+      color: theme.colors.zinc[50],
+      textColor: theme.colors.zinc[700],
     },
   },
 
@@ -180,10 +186,14 @@ const themeConfig = ref<ThemeConfig>({
 
     },
     Card: {
-      borderColor: theme.colors.zinc[700]
+      borderColor: theme.colors.zinc[700],
+      textColor: theme.colors.zinc[200],
     },
     Tooltip: {
       color: theme.colors.zinc[800],
+    },
+    List: {
+      color: theme.colors.zinc[900],
     }
   },
 })

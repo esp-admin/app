@@ -5,13 +5,15 @@
             <s3-image v-if="model.picture" :src="model.picture" class="object-contain" />
         </n-upload>
 
-        <n-form @submit.prevent="updateAccount" class="flex-1">
+        <n-form ref="formRef" @submit.prevent="onSubmit(updateAccount)">
             <n-form-item label="Name">
                 <n-input v-model:value="model.name"></n-input>
             </n-form-item>
 
-            <n-button attr-type="submit" :loading="loading" :disabled="loading" type="primary">Update
-                profile</n-button>
+            <div class="flex gap-4">
+                <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending">Save</n-button>
+                <n-button secondary attr-type="reset" :disabled="pending">Reset</n-button>
+            </div>
         </n-form>
     </div>
 </template>
@@ -20,6 +22,8 @@
 const { useUser, getAccessToken } = useAuthSession()
 const { upload } = useS3Object()
 const { fetchUser } = useAuth()
+
+const { formRef, pending, onSubmit } = useNaiveForm()
 
 const user = useUser()
 

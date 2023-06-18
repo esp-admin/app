@@ -10,7 +10,10 @@
             <n-button secondary attr-type="reset" :disabled="pending">Reset</n-button>
         </div>
 
-        <n-result v-else class="col-span-full my-5" status="info" title="No variables defined">
+        <n-result v-else class="col-span-full my-5" title="No variables defined">
+            <template #icon>
+                <img src="~/assets/images/no-results.png" alt="no-results" width="200">
+            </template>
         </n-result>
     </n-form>
 </template>

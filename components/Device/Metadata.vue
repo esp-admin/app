@@ -9,7 +9,7 @@
         </n-form-item>
 
         <n-form-item label="Description" path="description">
-            <n-input type="textarea" v-model:value="model.description"></n-input>
+            <n-input type="textarea" autosize v-model:value="model.description"></n-input>
         </n-form-item>
 
         <div class="flex gap-4">

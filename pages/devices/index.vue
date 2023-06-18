@@ -21,7 +21,10 @@
                 </n-button>
             </div>
 
-            <n-result v-else class="col-span-full my-5" status="info" title="You have no devices">
+            <n-result v-else class="col-span-full my-5" title="You have no devices">
+                <template #icon>
+                    <img src="~/assets/images/no-results.png" alt="no-results" width="200">
+                </template>
                 <template #footer>
                     <n-button type="primary" @click="createModalVisible = true">Create first device</n-button>
                 </template>

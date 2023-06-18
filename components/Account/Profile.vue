@@ -10,7 +10,7 @@
                 <n-input v-model:value="model.name"></n-input>
             </n-form-item>
 
-            <n-button attr-type="submit" :loading="loading" :disabled="loading" type="primary" class="float-right">Update
+            <n-button attr-type="submit" :loading="loading" :disabled="loading" type="primary">Update
                 profile</n-button>
         </n-form>
     </div>

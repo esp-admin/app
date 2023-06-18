@@ -3,7 +3,7 @@
         <n-dynamic-input v-model:value="model.commands" preset="pair" key-placeholder="Name" value-placeholder="Payload"
             class="mb-4" />
 
-        <div class="flex gap-4">
+        <div class="flex gap-4" v-if="model.commands?.length > 0">
             <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending">Save</n-button>
             <n-button secondary attr-type="reset">Reset</n-button>
         </div>

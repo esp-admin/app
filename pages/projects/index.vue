@@ -3,7 +3,7 @@
         <div class="grid md:grid-cols-3 gap-6">
             <div class="flex gap-2 items-center">
                 <naive-icon name="ph:code"></naive-icon>
-                <n-text class="col-span-full text-lg font-semibold">
+                <n-text class="col-span-full text-lg font-medium">
                     Projects
                 </n-text>
             </div>
@@ -24,7 +24,7 @@
         </div>
 
         <n-modal preset="card" v-model:show="createModalVisible" size="small" :closable="false" :mask-closable="false"
-            class="max-w-xs">
+            class="max-w-xs" title="Create project" segmented>
             <ProjectCreate @cancel="createModalVisible = false" @done="onCreate" />
         </n-modal>
     </div>

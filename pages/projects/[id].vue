@@ -3,7 +3,7 @@
         <div class="flex justify-between mb-4">
 
             <div class="flex flex-col">
-                <n-text class="text-xl font-semibold">{{ project.name }}</n-text>
+                <n-text class="text-lg font-medium">{{ project.name }}</n-text>
                 <n-text depth="3">Created <n-time :time="new Date(project.createdAt)" type="relative" /></n-text>
             </div>
 
@@ -37,7 +37,7 @@
         </n-tabs>
 
         <n-modal preset="card" v-model:show="deleteModalVisible" size="small" :closable="false" :mask-closable="false"
-            class="max-w-xs">
+            class="max-w-xs" title="Delete project" segmented>
             <ProjectDelete @cancel="deleteModalVisible = false" @done="onDelete" :project="project" />
         </n-modal>
     </div>

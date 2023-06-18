@@ -1,7 +1,7 @@
 <template>
     <n-list>
         <n-list-item v-for="session of sessions">
-            <n-thing>
+            <n-thing class="px-2">
                 <template #avatar>
                     <n-tag :type="session.current ? 'success' : 'warning'">
                         {{ session.current ? 'Current' : 'Active' }}
@@ -19,7 +19,7 @@
                 </template>
 
                 <template #description>
-                    <!-- <n-text depth="3"><n-time :time="new Date(session.updatedAt)" type="relative" /></n-text> -->
+                    <n-text depth="3"><n-time :time="new Date(session.updatedAt)" type="relative" /></n-text>
                 </template>
 
                 <template #header-extra>

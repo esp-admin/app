@@ -5,9 +5,11 @@
         </n-form-item>
 
         <div class="flex gap-2">
-            <n-button secondary class="flex-1" attr-type="button" @click="$emit('cancel')">Cancel</n-button>
-            <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending" class="flex-1">Create
-                project</n-button>
+            <n-button secondary class="flex-1" attr-type="button" @click="$emit('cancel')"
+                :disabled="pending">Cancel</n-button>
+            <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending" class="flex-1">
+                Create
+            </n-button>
         </div>
     </n-form>
 </template>

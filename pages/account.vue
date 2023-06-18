@@ -1,20 +1,29 @@
 <template>
-    <div class="md:w-1/2 md:mx-auto my-4 mx-3 flex flex-col gap-4">
-        <n-card title="Profile" segmented size="small">
-            <AccountProfile />
-        </n-card>
+    <div>
+        <div class="flex gap-2 items-center mb-4">
+            <naive-icon name="ph:user"></naive-icon>
+            <n-text class="col-span-full text-lg font-medium">
+                Account
+            </n-text>
+        </div>
 
-        <n-card v-if="user?.provider === 'default'" title="Password" segmented size="small">
-            <AccountPassword />
-        </n-card>
+        <n-tabs type="line" animated>
+            <n-tab-pane name="profile" tab="Profile">
+                <AccountProfile />
+            </n-tab-pane>
 
-        <n-card title="Preferences" segmented size="small">
-            <AccountPreferences />
-        </n-card>
+            <n-tab-pane v-if="user?.provider === 'default'" name="security" tab="Security">
+                <AccountPassword />
+            </n-tab-pane>
 
-        <n-card title="Sessions" segmented size="small">
-            <AccountSessions />
-        </n-card>
+            <n-tab-pane name="preferences" tab="Preferences">
+                <AccountPreferences />
+            </n-tab-pane>
+
+            <n-tab-pane name="Sessions" tab="Sessions">
+                <AccountSessions />
+            </n-tab-pane>
+        </n-tabs>
     </div>
 </template>
 

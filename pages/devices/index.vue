@@ -4,7 +4,7 @@
 
             <div class="flex gap-2 items-center">
                 <naive-icon name="ph:cpu"></naive-icon>
-                <n-text class="col-span-full text-lg font-semibold">
+                <n-text class="col-span-full text-lg font-medium">
                     Devices
                 </n-text>
             </div>
@@ -26,7 +26,7 @@
         </div>
 
         <n-modal preset="card" v-model:show="createModalVisible" size="small" :closable="false" :mask-closable="false"
-            class="max-w-xs">
+            class="max-w-xs" title="Create device" segmented>
             <DeviceCreate @cancel="createModalVisible = false" @done="onCreate"></DeviceCreate>
         </n-modal>
     </div>

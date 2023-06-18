@@ -5,7 +5,7 @@ export default <Partial<Config>>{
   darkMode: "class",
   theme: {
     fontFamily: {
-      sans: ["Inter"],
+      sans: ["Roboto"],
     },
   },
 };

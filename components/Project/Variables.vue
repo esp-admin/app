@@ -3,9 +3,9 @@
         <n-dynamic-input v-model:value="model.variables" preset="pair" key-placeholder="Key" value-placeholder="Description"
             class="mb-4" />
 
-        <div class="flex gap-4">
+        <div class="flex gap-4" v-if="model.variables?.length > 0">
             <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending">Save</n-button>
-            <n-button secondary attr-type="reset">Reset</n-button>
+            <n-button secondary attr-type="reset" :disabled="pending">Reset</n-button>
         </div>
     </n-form>
 </template>

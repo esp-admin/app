@@ -1,10 +1,10 @@
 <template>
     <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
-        <n-form-item label="URI WS" path="uriWS">
+        <n-form-item label="Websockets uri" path="uriWS">
             <n-input v-model:value="model.uriWS"></n-input>
         </n-form-item>
 
-        <n-form-item label="URI TCP" path="uriTCP">
+        <n-form-item label="Mqtt uri" path="uriTCP">
             <n-input v-model:value="model.uriTCP"></n-input>
         </n-form-item>
 
@@ -22,7 +22,7 @@
 
         <div class="flex gap-4">
             <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending">Save</n-button>
-            <n-button secondary attr-type="reset">Reset</n-button>
+            <n-button secondary attr-type="reset" :disabled="pending">Reset</n-button>
         </div>
     </n-form>
 </template>

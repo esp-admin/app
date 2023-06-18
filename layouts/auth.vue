@@ -1,6 +1,6 @@
 <template>
-    <div class="page-center">
-        <div class="w-full sm:max-w-xs p-4">
+    <div class="page justify-center items-center">
+        <div class="w-full sm:max-w-xs p-8">
             <slot />
 
             <!-- <n-card class="mt-4" size="small">

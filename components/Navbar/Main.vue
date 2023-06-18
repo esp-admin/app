@@ -1,5 +1,5 @@
 <template>
-    <naive-navbar :routes="routes" drawer-closable menu-placement="left">
+    <naive-navbar :routes="routes" drawer-closable menu-placement="left" class="font-medium">
         <template #start>
             <NaiveIcon name="simple-icons:espressif" :size="25" icon-color="red"></NaiveIcon>
             <n-text strong>ESP Admin</n-text>
@@ -36,8 +36,8 @@ const { isMobileOrTablet } = useNaiveDevice()
 
 const routes = ref<NavbarRoute[]>([
     {
-        label: "Home",
-        icon: "ph:house",
+        label: "Dashboard",
+        icon: "ph:activity",
         path: "/home"
     },
     {

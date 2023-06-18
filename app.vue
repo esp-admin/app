@@ -39,8 +39,8 @@ const themeConfig = ref<ThemeConfig>({
       fontSizeHuge: theme.fontSize.xl,
       fontSize: theme.fontSize.base,
 
-      fontWeight: theme.fontWeight.medium,
-      fontWeightStrong: theme.fontWeight.semibold,
+      fontWeight: theme.fontWeight.extralight,
+      fontWeightStrong: theme.fontWeight.medium,
 
       heightMini: theme.height[5],
       heightTiny: theme.height[6],
@@ -53,22 +53,69 @@ const themeConfig = ref<ThemeConfig>({
 
       borderRadius: theme.borderRadius.md,
       borderRadiusSmall: theme.borderRadius.sm,
+
+      Form: {
+        labelFontSizeTopMedium: theme.fontSize.base
+      },
+      Input: {
+        heightMedium: theme.height[9],
+        fontSizeMedium: theme.fontSize.base,
+      },
+      Button: {
+        heightMedium: theme.height[9],
+        fontSizeMedium: theme.fontSize.base,
+      },
+      Card: {
+        fontSizeMedium: theme.fontSize.base,
+      },
+      Avatar: {
+        heightMedium: theme.height[9],
+        fontSize: theme.fontSize.base,
+      },
+      ColorPicker: {
+        heightMedium: theme.height[9],
+        fontSizeMedium: theme.fontSize.base,
+      },
+      Dropdown: {
+        optionHeightMedium: theme.height[9],
+        fontSizeMedium: theme.fontSize.base,
+      },
+      Radio: {
+        buttonHeightMedium: theme.height[9],
+        fontSizeMedium: theme.fontSize.base,
+      },
+      Skeleton: {
+        heightMedium: theme.height[9],
+      },
+      Tag: {
+        heightMedium: theme.height[9],
+        fontSizeMedium: theme.fontSize.base,
+      },
+      Result: {
+        fontSizeMedium: theme.fontSize.base,
+      }
     },
     Form: {
       feedbackPadding: theme.padding[2],
+      labelFontWeight: theme.fontWeight.medium
     },
     Tabs: {
       tabFontSizeMedium: theme.fontSize.base,
-    }
+    },
   },
 
   light: {
     common: {
       textColorBase: theme.colors.zinc[800],
-      textColor1: theme.colors.zinc[800],
-      textColor2: theme.colors.zinc[700],
-      textColor3: theme.colors.zinc[600],
+      textColor1: theme.colors.zinc[700],
+      textColor2: theme.colors.zinc[600],
+      textColor3: theme.colors.zinc[400],
       textColorDisabled: theme.colors.zinc[600],
+
+      bodyColor: theme.colors.zinc[0],
+      borderColor: theme.colors.zinc[100],
+      cardColor: theme.colors.zinc[50],
+      inputColor: theme.colors.zinc[50],
 
       primaryColor: theme.colors.blue[600],
       primaryColorHover: theme.colors.blue[500],
@@ -92,6 +139,7 @@ const themeConfig = ref<ThemeConfig>({
 
       borderColor: theme.colors.gray[300],
     },
+
     Card: {
       borderColor: theme.colors.gray[300]
     },
@@ -110,26 +158,25 @@ const themeConfig = ref<ThemeConfig>({
       cardColor: theme.colors.zinc[800],
       inputColor: theme.colors.zinc[800],
 
+      primaryColor: theme.colors.blue[400],
+      primaryColorHover: theme.colors.blue[300],
+      primaryColorPressed: theme.colors.blue[600],
+      primaryColorSuppl: theme.colors.blue[700],
 
-      primaryColor: theme.colors.blue[600],
-      primaryColorHover: theme.colors.blue[500],
-      primaryColorPressed: theme.colors.blue[700],
-      primaryColorSuppl: theme.colors.blue[800],
+      errorColor: theme.colors.red[400],
+      errorColorHover: theme.colors.red[300],
+      errorColorPressed: theme.colors.red[600],
+      errorColorSuppl: theme.colors.red[700],
 
-      errorColor: theme.colors.red[600],
-      errorColorHover: theme.colors.red[500],
-      errorColorPressed: theme.colors.red[700],
-      errorColorSuppl: theme.colors.red[800],
+      successColor: theme.colors.green[400],
+      successColorHover: theme.colors.green[300],
+      successColorPressed: theme.colors.green[600],
+      successColorSuppl: theme.colors.green[700],
 
-      successColor: theme.colors.green[600],
-      successColorHover: theme.colors.green[500],
-      successColorPressed: theme.colors.green[700],
-      successColorSuppl: theme.colors.green[800],
-
-      warningColor: theme.colors.amber[600],
-      warningColorHover: theme.colors.amber[500],
-      warningColorPressed: theme.colors.amber[700],
-      warningColorSuppl: theme.colors.amber[800],
+      warningColor: theme.colors.amber[400],
+      warningColorHover: theme.colors.amber[300],
+      warningColorPressed: theme.colors.amber[600],
+      warningColorSuppl: theme.colors.amber[700],
 
     },
     Card: {

@@ -2,7 +2,7 @@
     <div v-if="device">
         <div class="flex justify-between mb-4 gap-2">
             <div class="flex flex-col flex-grow">
-                <n-text class="text-xl font-semibold">{{ device.name }}</n-text>
+                <n-text class="text-lg font-medium">{{ device.name }}</n-text>
                 <n-text depth="3">Created <n-time :time="new Date(device.createdAt)" type="relative" /></n-text>
             </div>
 
@@ -38,12 +38,12 @@
         </n-tabs>
 
         <n-modal preset="card" v-model:show="deleteModalVisible" size="small" :closable="false" :mask-closable="false"
-            class="max-w-xs">
+            class="max-w-xs" title="Delete device" segmented>
             <DeviceDelete @cancel="deleteModalVisible = false" @done="onDelete" :device="device" />
         </n-modal>
 
         <n-modal preset="card" v-model:show="unlinkModalVisible" size="small" :closable="false" :mask-closable="false"
-            class="max-w-xs">
+            class="max-w-xs" title="Unlink device" segmented>
             <DeviceUnlink @cancel="unlinkModalVisible = false" @done="onUnlink" :device="device" />
         </n-modal>
     </div>

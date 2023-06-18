@@ -9,12 +9,12 @@
         </n-form-item>
 
         <n-form-item label="Description" path="description">
-            <n-input type="textarea" autosize v-model:value="model.description"></n-input>
+            <n-input type="textarea" v-model:value="model.description"></n-input>
         </n-form-item>
 
         <div class="flex gap-4">
             <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending">Save</n-button>
-            <n-button secondary attr-type="reset">Reset</n-button>
+            <n-button secondary attr-type="reset" :disabled="pending">Reset</n-button>
         </div>
     </n-form>
 </template>

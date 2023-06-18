@@ -101,7 +101,7 @@ const themeConfig = ref<ThemeConfig>({
     },
     Menu: {
       fontSize: theme.fontSize.base,
-    }
+    },
   },
 
   light: {

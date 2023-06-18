@@ -1,21 +1,24 @@
 <template>
     <n-list>
         <n-list-item v-for="session of sessions">
-            <n-thing class="px-2">
+            <n-thing>
                 <template #avatar>
-                    <n-tag :type="session.current ? 'success' : 'warning'">
+                    <n-tag size="small" :type="session.current ? 'success' : 'warning'">
                         {{ session.current ? 'Current' : 'Active' }}
                     </n-tag>
                 </template>
 
                 <template #header>
-                    {{
-                        [
-                            session.ua && UAParser(session.ua).browser.name,
-                            session.ua && UAParser(session.ua).os.name,
-                            session.ua && UAParser(session.ua).device.model
-                        ]
-                            .join(' ') }}
+                    <n-text class="text-sm">
+                        {{
+                            [
+                                session.ua && UAParser(session.ua).browser.name,
+                                session.ua && UAParser(session.ua).os.name,
+                                session.ua && UAParser(session.ua).device.model
+                            ]
+                                .join(' ')
+                        }}
+                    </n-text>
                 </template>
 
                 <template #description>

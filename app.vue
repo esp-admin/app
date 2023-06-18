@@ -98,6 +98,7 @@ const themeConfig = ref<ThemeConfig>({
     },
     Result: {
       fontSizeMedium: theme.fontSize.base,
+      titleFontSizeMedium: "18px"
     },
     Menu: {
       fontSize: theme.fontSize.base,

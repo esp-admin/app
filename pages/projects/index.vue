@@ -8,7 +8,7 @@
                 </n-text>
             </div>
 
-            <div class="col-span-full flex gap-4">
+            <div v-if="projects?.length" class="col-span-full flex gap-4">
                 <n-input @input="searchDebounce">
                     <template #prefix>
                         <naive-icon name="ph:magnifying-glass" :size="16"></naive-icon>
@@ -20,7 +20,13 @@
                 </n-button>
             </div>
 
-            <ProjectCard v-for="project of nameSearch ? filteredProjects : projects" :project="project"></ProjectCard>
+            <n-result v-else class="col-span-full my-5" status="info" title="You have no projects">
+                <template #footer>
+                    <n-button type="primary" @click="createModalVisible = true">Create first project</n-button>
+                </template>
+            </n-result>
+
+            <ProjectCard v-for=" project  of  nameSearch ? filteredProjects : projects " :project="project"></ProjectCard>
         </div>
 
         <n-modal preset="card" v-model:show="createModalVisible" size="small" :closable="false" :mask-closable="false"

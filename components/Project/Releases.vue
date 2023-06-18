@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col gap-4">
-        <div class="col-span-full flex gap-4">
+        <div v-if="releases?.length" class="col-span-full flex gap-4">
             <n-input>
                 <template #prefix>
                     <naive-icon name="ph:magnifying-glass" :size="16"></naive-icon>
@@ -11,6 +11,12 @@
                 Create release
             </n-button>
         </div>
+
+        <n-result v-else class="col-span-full my-5" status="info" title="You have no releases">
+            <template #footer>
+                <n-button type="primary" @click="createModalVisible = true">Create first release</n-button>
+            </template>
+        </n-result>
 
         <ReleaseCard v-for="release of releases" :release="release" :projectId="project.id"></ReleaseCard>
 

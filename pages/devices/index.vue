@@ -9,7 +9,7 @@
                 </n-text>
             </div>
 
-            <div class="col-span-full flex gap-4">
+            <div v-if="devices?.length" class="col-span-full flex gap-4">
                 <n-input @input="searchDebounce">
                     <template #prefix>
                         <naive-icon name="ph:magnifying-glass" :size="16"></naive-icon>
@@ -20,6 +20,12 @@
                     Create device
                 </n-button>
             </div>
+
+            <n-result v-else class="col-span-full my-5" status="info" title="You have no devices">
+                <template #footer>
+                    <n-button type="primary" @click="createModalVisible = true">Create first device</n-button>
+                </template>
+            </n-result>
 
             <DeviceCard v-for="device of nameSearch ? filteredDevices : devices" :device="device"></DeviceCard>
 

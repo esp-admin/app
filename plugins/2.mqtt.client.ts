@@ -1,7 +1,7 @@
-import type { Client } from "paho-mqtt";
+import Paho from "paho-mqtt";
 
 export default defineNuxtPlugin(async () => {
-  let mqttClient: Client | undefined;
+  let mqttClient: Paho.Client | undefined;
 
   const { useUser } = useAuthSession();
   const user = useUser();

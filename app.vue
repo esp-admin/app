@@ -4,6 +4,7 @@
     <client-only>
       <n-notification-provider placement="bottom-right">
         <NotificationNetwork></NotificationNetwork>
+        <NotificationMqtt></NotificationMqtt>
       </n-notification-provider>
     </client-only>
 

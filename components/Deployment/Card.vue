@@ -9,7 +9,7 @@
         </template>
 
         <template #header-extra>
-            <div class="flex gap-2">
+            <div class="flex gap-4">
                 <n-button secondary>Project</n-button>
             </div>
         </template>

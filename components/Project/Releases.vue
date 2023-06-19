@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-6">
         <div v-if="releases?.length" class="col-span-full flex gap-4">
             <n-input>
                 <template #prefix>

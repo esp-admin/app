@@ -10,7 +10,6 @@
 
         <template #header-extra>
             <div class="flex gap-2">
-                <n-button secondary>Trigger</n-button>
                 <n-button secondary>Project</n-button>
             </div>
         </template>

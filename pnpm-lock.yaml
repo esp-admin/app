@@ -8,6 +8,7 @@ specifiers:
   '@nuxt/devtools': ^0.6.0
   '@nuxtjs/tailwindcss': ^6.7.2
   '@prisma/client': ^4.15.0
+  '@types/paho-mqtt': ^1.0.7
   '@types/ua-parser-js': ^0.7.36
   changelogen: ^0.5.3
   dayjs: ^1.11.8
@@ -15,6 +16,7 @@ specifiers:
   nuxt: ^3.5.3
   nuxt-gtag: ^0.5.7
   nuxt-security: ^0.13.0
+  paho-mqtt: ^1.1.0
   prisma: ^4.15.0
   ua-parser-js: ^1.0.35
 
@@ -23,6 +25,7 @@ dependencies:
   '@prisma/client': 4.15.0_prisma@4.15.0
   dayjs: 1.11.8
   highcharts-vue: 1.4.2_yjiwbbndwz2wvjrfre4f44xsb4
+  paho-mqtt: 1.1.0
   ua-parser-js: 1.0.35
 
 devDependencies:
@@ -31,6 +34,7 @@ devDependencies:
   '@bg-dev/nuxt-s3': 0.2.2
   '@nuxt/devtools': 0.6.0_nuxt@3.5.3+vite@4.3.9
   '@nuxtjs/tailwindcss': 6.7.2_webpack@5.86.0
+  '@types/paho-mqtt': 1.0.7
   '@types/ua-parser-js': 0.7.36
   changelogen: 0.5.3
   nuxt: 3.5.3_@types+node@20.3.0
@@ -2476,6 +2480,10 @@ packages:
 
   /@types/node/20.3.0:
     resolution: {integrity: sha512-cumHmIAf6On83X7yP+LrsEyUOf/YlociZelmpRYaGFydoaPdxdt80MAbu6vWerQT2COCp2nPvHdsbD7tHn/YlQ==}
+    dev: true
+
+  /@types/paho-mqtt/1.0.7:
+    resolution: {integrity: sha512-ag3umjQzJNrXa1D/jNaHMYEZ4a7L9V56Y4lHvr95WvvjTZaW4ss9cYcnmPsCfMVeP9pWyyc5g8tq4NUw+Vb6nQ==}
     dev: true
 
   /@types/parse-json/4.0.0:
@@ -6624,6 +6632,10 @@ packages:
       - bluebird
       - supports-color
     dev: true
+
+  /paho-mqtt/1.1.0:
+    resolution: {integrity: sha512-KPbL9KAB0ASvhSDbOrZBaccXS+/s7/LIofbPyERww8hM5Ko71GUJQ6Nmg0BWqj8phAIT8zdf/Sd/RftHU9i2HA==}
+    dev: false
 
   /parent-module/1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}

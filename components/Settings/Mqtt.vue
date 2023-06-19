@@ -35,10 +35,6 @@ const { find } = useMqtt()
 
 const { data: mqtt } = await find()
 
-apiErrors.value = {
-    unableToConnect: false,
-}
-
 const model = ref<Partial<Mqtt>>({
     password: mqtt.value?.password,
     username: mqtt.value?.username,
@@ -53,10 +49,6 @@ rules.value = {
             required: true,
             message: "Please enter borker's Websockets URI",
             trigger: "blur",
-        },
-        {
-            message: "Unable to connect",
-            validator: () => !apiErrors.value.unableToConnect
         },
     ],
     username: [

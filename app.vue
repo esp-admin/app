@@ -3,7 +3,7 @@
 
     <client-only>
       <n-notification-provider placement="bottom-right">
-        <NotificationNetwork />
+        <NotificationNetwork></NotificationNetwork>
       </n-notification-provider>
     </client-only>
 

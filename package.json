@@ -17,6 +17,7 @@
     "@bg-dev/nuxt-s3": "^0.2.2",
     "@nuxt/devtools": "^0.6.0",
     "@nuxtjs/tailwindcss": "^6.7.2",
+    "@types/paho-mqtt": "^1.0.7",
     "@types/ua-parser-js": "^0.7.36",
     "changelogen": "^0.5.3",
     "nuxt": "^3.5.3",
@@ -29,6 +30,7 @@
     "@prisma/client": "^4.15.0",
     "dayjs": "^1.11.8",
     "highcharts-vue": "^1.4.2",
+    "paho-mqtt": "^1.1.0",
     "ua-parser-js": "^1.0.35"
   }
 }

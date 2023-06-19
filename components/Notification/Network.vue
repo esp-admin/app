@@ -16,6 +16,8 @@ addEventListener('online', () => {
 })
 
 addEventListener('offline', () => {
+    notification.destroyAll()
+
     notification.error({
         title: "Network offline",
         closable: false,

@@ -1,4 +1,4 @@
-import { Client } from "paho-mqtt";
+import type { Client } from "paho-mqtt";
 
 export default defineNuxtPlugin(async () => {
   let mqttClient: Client | undefined;

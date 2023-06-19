@@ -1,4 +1,4 @@
-import { Client } from "paho-mqtt";
+import Paho from "paho-mqtt";
 
 const CLIENT_ID = "admin";
 
@@ -49,7 +49,7 @@ export default function useMqtt() {
 
       const { port, hostname } = new URL(mqtt.uri);
 
-      $mqttClient = new Client(hostname, parseInt(port), CLIENT_ID);
+      $mqttClient = new Paho.Client(hostname, parseInt(port), CLIENT_ID);
 
       $mqttClient.onConnectionLost = () => (connected.value = false);
 

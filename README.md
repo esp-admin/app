@@ -44,7 +44,7 @@ This is based on an initial conceptual design
 1. Projects
 
 - A project represents an ESP firmware and has multiple releases.
-- Each release is identified by a unique version string in format `v-x.x.x` and has a public download URL.
+- Each release is identified by a unique version string in format `vx.x.x-prefix` and has a public download URL.
 - A project has one to many devices.
 
 2. Devices

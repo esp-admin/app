@@ -43,7 +43,7 @@ const themeConfig = ref<ThemeConfig>({
       heightMini: theme.height[5],
       heightTiny: theme.height[6],
       heightSmall: theme.height[7],
-      heightMedium: theme.height[9],
+      heightMedium: theme.height[11],
       heightLarge: theme.height[9],
       heightHuge: theme.height[10],
 

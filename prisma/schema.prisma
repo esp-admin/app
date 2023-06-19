@@ -66,7 +66,7 @@ model Report {
 
 model Project {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  name        String    @unique
+  name        String
   repository  String?
   description String?
   variables   Json?
@@ -77,6 +77,8 @@ model Project {
   user        User      @relation(fields: [userId], references: [id])
   releases    Release[]
   devices     Device[]
+
+  @@unique([name, userId])
 }
 
 model Release {
@@ -87,11 +89,13 @@ model Release {
   projectId   String       @db.ObjectId
   project     Project      @relation(fields: [projectId], references: [id])
   deployments Deployment[]
+
+  @@unique([version, projectId])
 }
 
 model Device {
   id          String       @id @default(auto()) @map("_id") @db.ObjectId
-  name        String       @unique
+  name        String
   mac         String       @unique
   apiKey      String
   description String?
@@ -104,6 +108,8 @@ model Device {
   userId      String       @db.ObjectId
   user        User         @relation(fields: [userId], references: [id])
   deployments Deployment[]
+
+  @@unique([name, userId])
 }
 
 model Deployment {

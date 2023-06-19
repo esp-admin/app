@@ -1,6 +1,35 @@
 # Changelog
 
 
+## v0.0.6
+
+[compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.5...v0.0.6)
+
+
+### 🩹 Fixes
+
+  - **models:** Set project & device names unique per user ([7ecf928](https://github.com/becem-gharbi/esp-admin/commit/7ecf928))
+
+### 💅 Refactors
+
+  - Set root fontSize to 16px on 768px ([1045a76](https://github.com/becem-gharbi/esp-admin/commit/1045a76))
+  - Apply minor UI refactoring ([c54ea34](https://github.com/becem-gharbi/esp-admin/commit/c54ea34))
+  - **ui:** Increase heights ([5465997](https://github.com/becem-gharbi/esp-admin/commit/5465997))
+  - Remve trigger btn in deployment card ([a52a0a0](https://github.com/becem-gharbi/esp-admin/commit/a52a0a0))
+  - Aplly minor UI changes ([dae46df](https://github.com/becem-gharbi/esp-admin/commit/dae46df))
+
+### 📖 Documentation
+
+  - **readme:** Add Flows section ([c3a1877](https://github.com/becem-gharbi/esp-admin/commit/c3a1877))
+
+### 🏡 Chore
+
+  - **design:** Add ui design rev-5 ([7b39cb1](https://github.com/becem-gharbi/esp-admin/commit/7b39cb1))
+
+### ❤️  Contributors
+
+- Becem Gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v0.0.5
 
 [compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.4...v0.0.5)

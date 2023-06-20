@@ -31,6 +31,10 @@
 
 const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm()
 
+apiErrors.value = {
+    unableToConnect: false
+}
+
 const { find } = useMqtt()
 
 const { data: mqtt } = await find()
@@ -49,6 +53,10 @@ rules.value = {
             required: true,
             message: "Please enter borker's Websockets URI",
             trigger: "blur",
+        },
+        {
+            message: "Unable to connect",
+            validator: () => !apiErrors.value.unableToConnect
         },
     ],
     username: [
@@ -69,14 +77,27 @@ rules.value = {
 
 
 async function handleSubmit() {
-    const { add, update } = useMqtt()
+    try {
 
-    if (mqtt.value) {
-        const { data, error } = await update(model.value)
+        const { add, update, connect } = useMqtt()
 
-    }
-    else {
-        const { data, error } = await add(model.value)
+        await connect({
+            password: model.value.password!,
+            uri: model.value.uriWS!,
+            username: model.value.username!
+        })
+
+        if (mqtt.value) {
+            const { data, error } = await update(model.value)
+
+        }
+        else {
+            const { data, error } = await add(model.value)
+
+        }
+
+    } catch (error) {
+        apiErrors.value.unableToConnect = true
 
     }
 }

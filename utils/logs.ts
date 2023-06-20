@@ -1,1 +1,4 @@
-export function handleLogs(message: LoggingMessage) {}
+export function handleLogs(message: LoggingMessage) {
+  const { logs } = useDevice();
+  logs.value.push(message);
+}

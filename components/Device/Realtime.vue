@@ -9,7 +9,7 @@
         </div>
 
         <n-card class="mt-4">
-            <n-log :loading="false" :log="log" :line-height="1.4" />
+            <n-log :loading="false" :log="logsString" :line-height="1.4" />
         </n-card>
     </div>
 </template>
@@ -32,10 +32,16 @@ if (props.device.projectId) {
     }
 }
 
-const log = ref("log 1 \nlog 2 \nlog 3 \nlog 4 \nlog 5 \nlog 6 \nlog 7 \nlog 8 \nlog 9 \nlog 10 \nlog 11 \nlog 12 \nlog 13 \nlog 14 \nlog 15 \nlog 16 \n")
+const { logs } = useDevice()
+
+logs.value = []
+
+const logsString = computed(() => logs.value.map(log => `${log.type} - ${log.payload}`).join("\n"))
 
 
 function handleCommand(command: Command) {
     alert(JSON.stringify(command))
 }
+
+onUnmounted(() => logs.value = [])
 </script>

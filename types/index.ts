@@ -37,7 +37,7 @@ declare global {
   interface LoggingMessage {
     deviceId: Device["id"];
     action: "logs";
-    type: undefined;
+    type: "info" | "error" | "warn" | "success";
     payload: string;
   }
 

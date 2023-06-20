@@ -142,5 +142,7 @@ export default function useDevice() {
     );
   }
 
-  return { find, findOne, remove, add, link, unlink, update };
+  const logs = useState<LoggingMessage[]>("device_logs", () => []);
+
+  return { find, findOne, remove, add, link, unlink, update, logs };
 }

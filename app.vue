@@ -1,6 +1,5 @@
 <template>
-  <naive-config :theme-config="themeConfig">
-
+  <naive-config :theme-config="themeConfig" :hljs="hljs">
     <client-only>
       <n-notification-provider placement="bottom-right">
         <NotificationNetwork></NotificationNetwork>
@@ -22,6 +21,30 @@
 <script setup lang="ts">
 import { ThemeConfig } from "@bg-dev/nuxt-naiveui"
 import { theme } from "#tailwind-config";
+import hljs from 'highlight.js/lib/core'
+
+hljs.configure({ classPrefix: "" })
+
+hljs.registerLanguage('realtime', () => ({
+  contains: [
+    {
+      className: 'text-blue-500',
+      begin: /info/,
+    },
+    {
+      className: 'text-red-500',
+      begin: /error/,
+    },
+    {
+      className: 'text-amber-500',
+      begin: /warn/,
+    },
+    {
+      className: 'text-green-500',
+      begin: /success/,
+    }
+  ],
+}))
 
 const themeConfig = ref<ThemeConfig>({
   shared: {

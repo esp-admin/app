@@ -50,11 +50,14 @@ export default function useMqtt() {
 
       mqttClient.onConnectionLost = () => (connected.value = false);
 
+      mqttClient.onMessageArrived = onMessageArrived;
+
       mqttClient.connect({
         userName: mqtt.username,
         password: mqtt.password,
         onSuccess: () => {
           connected.value = true;
+          subscribe();
           resolve("connected");
         },
         onFailure: (e) => {
@@ -70,6 +73,41 @@ export default function useMqtt() {
       mqttClient.disconnect();
     }
   }
+
+  function subscribe() {
+    if (mqttClient?.isConnected) {
+      mqttClient?.subscribe("device/+/report/status");
+    }
+  }
+
+  function onMessageArrived(message: Paho.Message) {
+    const splittedMessage = message.destinationName.split("/");
+
+    const mqttMessage = {
+      deviceId: splittedMessage[1],
+      action: splittedMessage[2],
+      type: splittedMessage[3],
+      payload: JSON.parse(message.payloadString),
+    } as MqttMessage;
+
+    switch (mqttMessage.action) {
+      case "report":
+        handleReport(mqttMessage);
+        break;
+      case "command":
+        handleCommand(mqttMessage);
+        break;
+      case "logs":
+        handleLogs(mqttMessage);
+        break;
+    }
+  }
+
+  function handleReport(message: ReportMessage) {}
+
+  function handleCommand(message: CommandMessage) {}
+
+  function handleLogs(message: LoggingMessage) {}
 
   return { find, add, update, connect, disconnect, connected };
 }

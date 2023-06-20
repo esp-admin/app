@@ -4,7 +4,7 @@ An open source platform to remotely manage ESP microcontrollers for IoT applicat
 
 ## ⚠️ Under development
 
-This project is under developement, planning can be found under `Projects` tab. Any contribution you make is highly appreciated.
+This project is under developement, planning can be found under `Projects` tab. Any contribution you make is greatly appreciated.
 
 ## ✔️ Features
 

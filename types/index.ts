@@ -24,21 +24,21 @@ declare global {
     deviceId: Device["id"];
     action: "command";
     type: "config" | "debug" | "restart" | "update" | string;
-    payload: Object;
+    payload: string;
   }
 
   interface ReportMessage {
     deviceId: Device["id"];
     action: "report";
     type: "status" | "update" | "debug";
-    payload: Object;
+    payload: string;
   }
 
   interface LoggingMessage {
     deviceId: Device["id"];
     action: "logs";
     type: undefined;
-    payload: Object;
+    payload: string;
   }
 
   type MqttMessage = CommandMessage | LoggingMessage | ReportMessage;

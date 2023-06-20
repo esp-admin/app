@@ -87,7 +87,7 @@ export default function useMqtt() {
       deviceId: splittedMessage[1],
       action: splittedMessage[2],
       type: splittedMessage[3],
-      payload: JSON.parse(message.payloadString),
+      payload: message.payloadString,
     } as MqttMessage;
 
     switch (mqttMessage.action) {
@@ -102,12 +102,6 @@ export default function useMqtt() {
         break;
     }
   }
-
-  function handleReport(message: ReportMessage) {}
-
-  function handleCommand(message: CommandMessage) {}
-
-  function handleLogs(message: LoggingMessage) {}
 
   return { find, add, update, connect, disconnect, connected };
 }

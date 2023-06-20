@@ -4,9 +4,9 @@
             <n-text depth="3"> {{ device.description }}</n-text>
             <n-text depth="3">Created <n-time :time="new Date(device.createdAt)" type="relative" /></n-text>
 
-            <!-- <template #header-extra>
-            <DeviceStatus :device="device"></DeviceStatus>
-        </template> -->
+            <template #header-extra>
+                <DeviceStatus :device="device"></DeviceStatus>
+            </template>
         </n-card>
     </nuxt-link>
 </template>

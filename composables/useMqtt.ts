@@ -1,6 +1,7 @@
 import Paho from "paho-mqtt";
 
 const CLIENT_ID = "admin";
+var mqttClient: Paho.Client | undefined;
 
 export default function useMqtt() {
   const key = "mqtt";
@@ -40,20 +41,16 @@ export default function useMqtt() {
   const connected = useState("mqtt_connected");
 
   function connect(mqtt: { uri: string; username: string; password: string }) {
-    let { $mqttClient } = useNuxtApp();
-
     return new Promise((resolve, reject) => {
-      if ($mqttClient?.isConnected) {
-        $mqttClient.disconnect();
-      }
+      disconnect();
 
       const { port, hostname } = new URL(mqtt.uri);
 
-      $mqttClient = new Paho.Client(hostname, parseInt(port), CLIENT_ID);
+      mqttClient = new Paho.Client(hostname, parseInt(port), CLIENT_ID);
 
-      $mqttClient.onConnectionLost = () => (connected.value = false);
+      mqttClient.onConnectionLost = () => (connected.value = false);
 
-      $mqttClient.connect({
+      mqttClient.connect({
         userName: mqtt.username,
         password: mqtt.password,
         onSuccess: () => {
@@ -68,5 +65,11 @@ export default function useMqtt() {
     });
   }
 
-  return { find, add, update, connect, connected };
+  function disconnect() {
+    if (mqttClient?.isConnected) {
+      mqttClient.disconnect();
+    }
+  }
+
+  return { find, add, update, connect, disconnect, connected };
 }

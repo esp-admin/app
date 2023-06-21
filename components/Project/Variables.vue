@@ -9,7 +9,8 @@
                 </n-form-item>
                 <n-form-item class="flex-1" ignore-path-change :show-label="false" :path="`variables[${index}].value`"
                     :rule="rules.value">
-                    <n-input v-model:value="model.variables[index].value" placeholder="Value" @keydown.enter.prevent />
+                    <n-input v-model:value="model.variables[index].value" placeholder="Description"
+                        @keydown.enter.prevent />
                 </n-form-item>
             </div>
         </n-dynamic-input>
@@ -44,14 +45,7 @@ rules.value = {
                 return !value.includes(" ")
             }
         }
-    ],
-    value:
-        [
-            {
-                required: true,
-                message: "Please set the value"
-            }
-        ]
+    ]
 }
 
 async function handleSubmit() {

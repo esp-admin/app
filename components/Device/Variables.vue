@@ -24,7 +24,7 @@ const { formRef, onSubmit, pending, rules } = useNaiveForm()
 
 const props = defineProps<{ device: Device }>()
 
-const model = ref<Record<string, string>>({});
+const model = ref(props.device.variables as Record<string, string>);
 
 const projectVariables = ref<{ key: string, value: string }[]>([])
 

@@ -50,7 +50,7 @@ rules.value = {
             validator: () => !apiErrors.value.nameAlreadyExists
         },
         {
-            validator: (rule, value) => /(^\S$)/.test(value),
+            validator: (rule, value) => !/^\s|\s$/.test(value),
             message: "Should not start or end with a whitespace",
             trigger: "blur"
         }

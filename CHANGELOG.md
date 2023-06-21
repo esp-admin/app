@@ -1,6 +1,54 @@
 # Changelog
 
 
+## v0.0.7
+
+[compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.6...v0.0.7)
+
+
+### 🚀 Enhancements
+
+  - Add mqtt client connection with reactive state ([ff2b509](https://github.com/becem-gharbi/esp-admin/commit/ff2b509))
+  - Add MQTT status notification ([379341b](https://github.com/becem-gharbi/esp-admin/commit/379341b))
+  - Add mqtt on message receive handler ([6ad6b9f](https://github.com/becem-gharbi/esp-admin/commit/6ad6b9f))
+  - Implement status handler ([ef0988f](https://github.com/becem-gharbi/esp-admin/commit/ef0988f))
+  - Implement logs handler ([4630d0e](https://github.com/becem-gharbi/esp-admin/commit/4630d0e))
+  - Implement realtime logs highlighting ([8c2abab](https://github.com/becem-gharbi/esp-admin/commit/8c2abab))
+  - Implement debug enable/disable ([865a96d](https://github.com/becem-gharbi/esp-admin/commit/865a96d))
+  - Implement sending custom commands ([7f70afb](https://github.com/becem-gharbi/esp-admin/commit/7f70afb))
+  - Add sending restart ([852ac8d](https://github.com/becem-gharbi/esp-admin/commit/852ac8d))
+  - Implement sending variables ([b055271](https://github.com/becem-gharbi/esp-admin/commit/b055271))
+  - Implement sending releases ([b932287](https://github.com/becem-gharbi/esp-admin/commit/b932287))
+  - Implement sending release trigger ([e2f6c77](https://github.com/becem-gharbi/esp-admin/commit/e2f6c77))
+
+### 🩹 Fixes
+
+  - Use default import for paho-mqtt ([d02a5e0](https://github.com/becem-gharbi/esp-admin/commit/d02a5e0))
+  - Initialize variables update form ([69e49c6](https://github.com/becem-gharbi/esp-admin/commit/69e49c6))
+
+### 💅 Refactors
+
+  - **ui:** Reduce heights ([4c43cf7](https://github.com/becem-gharbi/esp-admin/commit/4c43cf7))
+  - **ui:** Disable responsive root fontSize ([379ea96](https://github.com/becem-gharbi/esp-admin/commit/379ea96))
+  - Call mqtt connect on user logged in hook ([bd249ef](https://github.com/becem-gharbi/esp-admin/commit/bd249ef))
+  - Diallow mqtt settings update on invalid connection ([90110ce](https://github.com/becem-gharbi/esp-admin/commit/90110ce))
+  - Add input validation on setting commands ([54060ae](https://github.com/becem-gharbi/esp-admin/commit/54060ae))
+  - Refactor regex validations ([a8812ef](https://github.com/becem-gharbi/esp-admin/commit/a8812ef))
+  - Reduce DeviceStatus size ([dcd8075](https://github.com/becem-gharbi/esp-admin/commit/dcd8075))
+
+### 📖 Documentation
+
+  - Update README.md ([c8f622b](https://github.com/becem-gharbi/esp-admin/commit/c8f622b))
+
+### 🏡 Chore
+
+  - Upgrade dependencies ([2f9c16e](https://github.com/becem-gharbi/esp-admin/commit/2f9c16e))
+
+### ❤️  Contributors
+
+- Becem Gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+- Becem ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v0.0.6
 
 [compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.5...v0.0.6)

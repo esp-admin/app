@@ -61,7 +61,7 @@ const model = ref({
 rules.value = {
     password: [
         {
-            validator: (rule, value) => new RegExp("(?=.*[a-z])(?=.*[0-9])(?=.{6,})").test(value),
+            validator: (rule, value) => /(?=.*[a-z])(?=.*[0-9])(?=.{6,})/.test(value),
             message: "At least 6 characters, 1 lowercase, 1 number",
             trigger: "blur"
         }

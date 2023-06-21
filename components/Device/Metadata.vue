@@ -46,8 +46,8 @@ rules.value = {
             validator: () => !apiErrors.value.nameAlreadyExists
         },
         {
-            validator: (rule, value) => new RegExp("^\s|\s$").test(value),
-            message: "Should not start or end with spaces",
+            validator: (rule, value) => /(^\S$)/.test(value),
+            message: "Should not start or end with a whitespace",
             trigger: "blur"
         }
     ],
@@ -58,7 +58,7 @@ rules.value = {
             trigger: "blur",
         },
         {
-            validator: (rule, value) => new RegExp("(?=.*[a-z])(?=.*[0-9])(?=.{6,})").test(value),
+            validator: (rule, value) => /(?=.*[a-z])(?=.*[0-9])(?=.{6,})/.test(value),
             message: "At least 6 characters, 1 lowercase, 1 number",
             trigger: "blur"
         }

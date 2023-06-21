@@ -47,8 +47,8 @@ rules.value = {
             validator: () => !apiErrors.value.nameAlreadyExists
         },
         {
-            validator: (rule, value) => new RegExp("^\s|\s$").test(value),
-            message: "Should not start or end with spaces",
+            validator: (rule, value) => /(^\S$)/.test(value),
+            message: "Should not start or end with a whitespace",
             trigger: "blur"
         }
     ],

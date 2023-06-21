@@ -111,7 +111,11 @@ async function handleSubmit() {
                 action: "command",
                 type: "update",
                 retained: true,
-                payload: JSON.stringify({ ...model.value, projectId: props.project.id })
+                payload: JSON.stringify({
+                    downloadUrl: model.value.downloadUrl,
+                    version: model.value.version,
+                    projectId: props.project.id
+                })
             })
         }
 

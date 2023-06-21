@@ -10,7 +10,7 @@
 
         <template #header-extra>
             <div class="flex gap-2">
-                <n-button secondary>Trigger</n-button>
+                <n-button secondary @click="onTrigger">Trigger</n-button>
                 <n-button secondary @click="deleteModalVisible = true">Delete</n-button>
             </div>
         </template>
@@ -26,9 +26,33 @@
 
 const deleteModalVisible = ref(false)
 
-defineProps<{ release: Release, projectId: Project["id"] }>()
+const props = defineProps<{ release: Release, projectId: Project["id"] }>()
 
 function onDelete() {
     deleteModalVisible.value = false
+}
+
+async function onTrigger() {
+    const { publish } = useMqtt()
+
+    const { find } = useDevice()
+
+    const { data: devices } = await find()
+
+    const linkedDevices = devices.value?.filter(device => device.projectId === props.projectId) || []
+
+    for (let device of linkedDevices) {
+        publish({
+            deviceId: device.id,
+            action: "command",
+            type: "update",
+            retained: true,
+            payload: JSON.stringify({
+                downloadUrl: props.release.downloadUrl,
+                version: props.release.version,
+                projectId: props.projectId
+            })
+        })
+    }
 }
 </script>

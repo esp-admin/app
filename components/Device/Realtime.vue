@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="flex gap-4">
-            <n-button secondary>Restart</n-button>
+            <n-button secondary @click="handleCommand({ key: 'restart', value: '' })">restart</n-button>
 
             <n-button v-for="projectCommand of projectCommands" secondary @click="handleCommand(projectCommand)">
                 {{ projectCommand.key }}
@@ -37,7 +37,6 @@ if (props.device.projectId) {
 const { logs } = useDevice()
 
 const logsString = computed(() => logs.value.map(log => `${log.type} - ${log.payload}`).join("\n"))
-
 
 function handleCommand(command: Command) {
     const message: CommandMessage<string> = {

@@ -59,8 +59,8 @@ rules.value = {
             validator: () => !apiErrors.value.versionAlreadyExists
         },
         {
-            validator: (rule, value) => new RegExp("/^\d+\.\d+\.\d+(-\w+)?$/").test(value),
-            message: "Should be in format x.y.z-suffix",
+            validator: (rule, value) => /^(\d+)\.(\d+)\.(\d+)(?:-([\w-.]+))?(?:\+([\w-.]+))?$/.test(value),
+            message: "Should be in format x.y.z or x.y.z-suffix",
             trigger: "blur"
         }
     ],
@@ -97,6 +97,24 @@ async function handleSubmit() {
         apiErrors.value.versionAlreadyExists = error.value.data?.message.includes("Unique constraint failed on the constraint: `Project_name_key`")
     }
     else {
+        const { publish } = useMqtt()
+
+        const { find } = useDevice()
+
+        const { data: devices } = await find()
+
+        const linkedDevices = devices.value?.filter(device => device.projectId === props.project.id) || []
+
+        for (let device of linkedDevices) {
+            publish({
+                deviceId: device.id,
+                action: "command",
+                type: "update",
+                retained: true,
+                payload: JSON.stringify({ ...model.value, projectId: props.project.id })
+            })
+        }
+
         emits("done", release.value)
     }
 }

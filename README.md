@@ -44,7 +44,7 @@ This is based on an initial conceptual design
 1. Projects
 
 - A project represents an ESP firmware and has multiple releases.
-- Each release is identified by a unique version string in format `vx.x.x-prefix` and has a public download URL.
+- Each release is identified by a unique version string in format `x.x.x-suffix` and has a public download URL.
 - A project has one to many devices.
 
 2. Devices
@@ -161,7 +161,7 @@ This is based on an initial conceptual design
 | **Topics**                          | **Retained** | **Sent by** | **Notes**                       |
 | ----------------------------------- | ------------ | ----------- | ------------------------------- |
 | /device/<device_id>/command/config  | true         | Frontend    | Send new variables              |
-| /device/<device_id>/command/<key>   | false        | Frontend    | Send project commands           |
+| /device/<device_id>/command/custom  | false        | Frontend    | Send project commands           |
 | /device/<device_id>/command/debug   | false        | Frontend    | Enable/disable logging          |
 | /device/<device_id>/command/restart | false        | Frontend    | Trigger device restart          |
 | /device/<device_id>/command/update  | true         | Device      | Trigger new or existing release |

@@ -28,19 +28,19 @@ hljs.configure({ classPrefix: "" })
 hljs.registerLanguage('realtime', () => ({
   contains: [
     {
-      className: 'text-blue-500',
+      className: 'text-blue-500 font-bold',
       begin: /info/,
     },
     {
-      className: 'text-red-500',
+      className: 'text-red-500 font-bold',
       begin: /error/,
     },
     {
-      className: 'text-amber-500',
+      className: 'text-amber-500 font-bold',
       begin: /warn/,
     },
     {
-      className: 'text-green-500',
+      className: 'text-green-500 font-bold',
       begin: /success/,
     }
   ],

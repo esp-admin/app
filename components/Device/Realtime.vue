@@ -21,6 +21,8 @@ interface Command {
 
 const props = defineProps<{ device: Device }>()
 
+const { publish } = useMqtt()
+
 const projectCommands = ref<Command[]>([])
 
 if (props.device.projectId) {
@@ -38,12 +40,18 @@ const logsString = computed(() => logs.value.map(log => `${log.type} - ${log.pay
 
 
 function handleCommand(command: Command) {
-    alert(JSON.stringify(command))
+    const message: CommandMessage<string> = {
+        deviceId: props.device.id,
+        action: "command",
+        type: command.key,
+        retained: false,
+        payload: command.value
+    }
+    publish(message)
 }
 
 onMounted(() => {
     logs.value = []
-    const { publish } = useMqtt()
     publish({
         deviceId: props.device.id,
         action: "command",
@@ -55,7 +63,6 @@ onMounted(() => {
 
 onUnmounted(() => {
     logs.value = []
-    const { publish } = useMqtt()
     publish({
         deviceId: props.device.id,
         action: "command",

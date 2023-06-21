@@ -1,7 +1,7 @@
 <template>
     <n-form ref="formRef" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
 
-        <n-dynamic-input v-model:value="model.variables" #="{ index, value }" :on-create="() => ({ key: '', value: '' })"
+        <n-dynamic-input v-model:value="model.variables" #="{ index }" :on-create="() => ({ key: '', value: '' })"
             class="mb-4">
             <div class="flex gap-4 flex-1">
                 <n-form-item class="flex-1" ignore-path-change :show-label="false" :path="`variables[${index}].key`"
@@ -9,8 +9,7 @@
                     <n-input v-model:value="model.variables[index].key" placeholder="Key" @keydown.enter.prevent />
                 </n-form-item>
 
-                <n-form-item class="flex-1" ignore-path-change :show-label="false" :path="`variables[${index}].value`"
-                    :rule="rules.value">
+                <n-form-item class="flex-1" ignore-path-change :show-label="false">
                     <n-input v-model:value="model.variables[index].value" placeholder="Description"
                         @keydown.enter.prevent />
                 </n-form-item>
@@ -19,7 +18,7 @@
 
         <div class="flex gap-4" v-if="model.variables?.length > 0">
             <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending">Save</n-button>
-            <n-button secondary attr-type="reset">Reset</n-button>
+            <n-button secondary attr-type="button" @click="reset">Reset</n-button>
         </div>
     </n-form>
 </template>
@@ -31,8 +30,10 @@ const { formRef, onSubmit, pending, rules } = useNaiveForm()
 const props = defineProps<{ project: Project }>()
 
 const model = ref({
-    variables: props.project.variables as { key: string, value: string }[]
+    variables: [] as { key: string, value: string }[]
 });
+
+reset()
 
 rules.value = {
     key: [
@@ -43,9 +44,7 @@ rules.value = {
         {
             trigger: 'input',
             message: "Should not contain spaces",
-            validator(rule, value) {
-                return !value.includes(" ")
-            }
+            validator: (rule, value) => !/\s/.test(value)
         }
     ]
 }
@@ -54,5 +53,9 @@ async function handleSubmit() {
     const { update } = useProject()
 
     const { data, error } = await update(props.project.id, model.value)
+}
+
+function reset() {
+    model.value.variables = JSON.parse(JSON.stringify(props.project.variables))
 }
 </script>

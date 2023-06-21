@@ -1,5 +1,5 @@
 <template>
-    <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
+    <n-form :key="1" ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
         <n-form-item label="Name" path="name">
             <n-input v-model:value="model.name"></n-input>
         </n-form-item>
@@ -14,13 +14,12 @@
 
         <div class="flex gap-4">
             <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending">Save</n-button>
-            <n-button secondary attr-type="reset" :disabled="pending">Reset</n-button>
+            <n-button secondary attr-type="button" @click="reset" :disabled="pending">Reset</n-button>
         </div>
     </n-form>
 </template>
 
 <script setup lang="ts">
-
 const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm()
 
 const props = defineProps<{ project: Project }>()
@@ -29,11 +28,9 @@ apiErrors.value = {
     nameAlreadyExists: false,
 }
 
-const model = ref<Partial<Project>>({
-    name: props.project.name,
-    repository: props.project.repository,
-    description: props.project.description
-});
+const model = ref<Partial<Project>>({});
+
+reset()
 
 rules.value = {
     name: [
@@ -47,7 +44,7 @@ rules.value = {
             validator: () => !apiErrors.value.nameAlreadyExists
         },
         {
-            validator: (rule, value) => /(^\S$)/.test(value),
+            validator: (rule, value) => !/^\s|\s$/.test(value),
             message: "Should not start or end with a whitespace",
             trigger: "blur"
         }
@@ -58,5 +55,13 @@ async function handleSubmit() {
     const { update } = useProject()
 
     const { data, error } = await update(props.project.id, model.value)
+}
+
+function reset() {
+    model.value = {
+        name: props.project.name,
+        repository: props.project.repository,
+        description: props.project.description
+    }
 }
 </script>

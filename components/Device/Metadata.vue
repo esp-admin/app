@@ -14,7 +14,7 @@
 
         <div class="flex gap-4">
             <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending">Save</n-button>
-            <n-button secondary attr-type="reset" :disabled="pending">Reset</n-button>
+            <n-button secondary attr-type="button" @click="reset" :disabled="pending">Reset</n-button>
         </div>
     </n-form>
 </template>
@@ -28,11 +28,9 @@ apiErrors.value = {
     nameAlreadyExists: false,
 }
 
-const model = ref<Partial<Device>>({
-    name: props.device.name,
-    apiKey: props.device.apiKey,
-    description: props.device.description
-});
+const model = ref<Partial<Device>>({});
+
+reset()
 
 rules.value = {
     name: [
@@ -46,7 +44,7 @@ rules.value = {
             validator: () => !apiErrors.value.nameAlreadyExists
         },
         {
-            validator: (rule, value) => /(^\S$)/.test(value),
+            validator: (rule, value) => !/^\s|\s$/.test(value),
             message: "Should not start or end with a whitespace",
             trigger: "blur"
         }
@@ -69,5 +67,13 @@ async function handleSubmit() {
     const { update } = useDevice()
 
     const { data, error } = await update(props.device.id, model.value)
+}
+
+function reset() {
+    model.value = {
+        name: props.device.name,
+        apiKey: props.device.apiKey,
+        description: props.device.description
+    }
 }
 </script>

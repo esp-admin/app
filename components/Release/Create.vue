@@ -40,6 +40,7 @@ const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm()
 
 apiErrors.value = {
     versionAlreadyExists: false,
+    uploadFailed: false
 }
 
 const model = ref<Partial<Release>>({
@@ -57,6 +58,10 @@ rules.value = {
         {
             message: "Version already used",
             validator: () => !apiErrors.value.versionAlreadyExists
+        },
+        {
+            message: "Unable to upload firmware",
+            validator: () => !apiErrors.value.uploadFailed
         },
         {
             validator: (rule, value) => /^(\d+)\.(\d+)\.(\d+)(?:-([\w-.]+))?(?:\+([\w-.]+))?$/.test(value),
@@ -86,7 +91,7 @@ async function handleSubmit() {
     }
 
     if (!model.value.downloadUrl) {
-        return
+        apiErrors.value.uploadFailed = true
     }
 
     const { add } = useRelease(props.project.id)
@@ -99,11 +104,9 @@ async function handleSubmit() {
     else {
         const { publish } = useMqtt()
 
-        const { find } = useDevice()
+        const { findLinked } = useDevice()
 
-        const { data: devices } = await find()
-
-        const linkedDevices = devices.value?.filter(device => device.projectId === props.project.id) || []
+        const linkedDevices = await findLinked(props.project.id)
 
         for (let device of linkedDevices) {
             publish({

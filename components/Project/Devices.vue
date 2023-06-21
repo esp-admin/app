@@ -36,16 +36,15 @@ const linkModalVisible = ref(false)
 
 const props = defineProps<{ project: Project }>()
 
-const { find } = useDevice()
-const { data: devices } = await find()
+const { findLinked } = useDevice()
+
+const linkedDevices = await findLinked(props.project.id)
 
 const nameSearch = ref()
 
 const searchDebounce = inputDebounce((value: string) => nameSearch.value = value, 500)
 
-const linkedDevices = computed(() => devices.value?.filter(device => device.projectId === props.project.id))
-
-const filteredDevices = computed(() => linkedDevices.value?.filter(device => device.name.includes(nameSearch.value)))
+const filteredDevices = computed(() => linkedDevices.filter(device => device.name.includes(nameSearch.value)))
 
 function onLink() {
     linkModalVisible.value = false

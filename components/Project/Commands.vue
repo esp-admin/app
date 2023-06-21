@@ -3,8 +3,9 @@
 
         <n-dynamic-input v-model:value="model.commands" #="{ index, value }" :on-create="() => ({ key: '', value: '' })"
             class="mb-4">
-            <div class="flex gap-4">
-                <n-form-item ignore-path-change :show-label="false" :path="`commands[${index}].key`" :rule="rules.key">
+            <div class="flex gap-4 flex-1">
+                <n-form-item class="flex-1" ignore-path-change :show-label="false" :path="`commands[${index}].key`"
+                    :rule="rules.key">
                     <n-input v-model:value="model.commands[index].key" placeholder="Name" @keydown.enter.prevent />
                 </n-form-item>
                 <n-form-item class="flex-1" ignore-path-change :show-label="false" :path="`commands[${index}].value`"

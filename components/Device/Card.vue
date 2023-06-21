@@ -5,7 +5,7 @@
             <n-text depth="3">Created <n-time :time="new Date(device.createdAt)" type="relative" /></n-text>
 
             <template #header-extra>
-                <DeviceStatus :device="device"></DeviceStatus>
+                <DeviceStatus :device="device" :size="24"></DeviceStatus>
             </template>
         </n-card>
     </nuxt-link>

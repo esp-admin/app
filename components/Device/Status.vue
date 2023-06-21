@@ -1,26 +1,17 @@
 <template>
-    <n-tag v-if="device.status === 'connected'" round type="success" :bordered="false">
-        Connected
-        <template #icon>
-            <naive-icon name="ph:check" :size="16"></naive-icon>
+    <n-tooltip trigger="hover">
+        <template #trigger>
+            <naive-icon v-if="device.status === 'connected'" name="ph:check-circle-duotone" :size="size"
+                icon-color="#22c55e"></naive-icon>
+            <naive-icon v-if="device.status === 'disconnected'" name="ph:x-circle-duotone" :size="size"
+                icon-color="#ef4444"></naive-icon>
+            <naive-icon v-if="device.status === 'unregistered'" name="ph:warning-circle-duotone" :size="size"
+                icon-color="#f59e0b"></naive-icon>
         </template>
-    </n-tag>
-
-    <n-tag v-else-if="device.status === 'disconnected'" round type="error" :bordered="false">
-        Disconnected
-        <template #icon>
-            <naive-icon name="ph:x" :size="16"></naive-icon>
-        </template>
-    </n-tag>
-
-    <n-tag v-else-if="device.status === 'unregistered'" round type="warning" :bordered="false">
-        Unregistered
-        <template #icon>
-            <naive-icon name="ph:warning" :size="16"></naive-icon>
-        </template>
-    </n-tag>
+        {{ device.status }}
+    </n-tooltip>
 </template>
 
 <script setup lang="ts">
-defineProps<{ device: Device }>()
+defineProps<{ device: Device, size?: number }>()
 </script>

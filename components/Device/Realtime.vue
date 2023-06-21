@@ -34,8 +34,6 @@ if (props.device.projectId) {
 
 const { logs } = useDevice()
 
-logs.value = []
-
 const logsString = computed(() => logs.value.map(log => `${log.type} - ${log.payload}`).join("\n"))
 
 
@@ -43,5 +41,27 @@ function handleCommand(command: Command) {
     alert(JSON.stringify(command))
 }
 
-onUnmounted(() => logs.value = [])
+onMounted(() => {
+    logs.value = []
+    const { publish } = useMqtt()
+    publish({
+        deviceId: props.device.id,
+        action: "command",
+        type: "debug",
+        payload: "on",
+        retained: false,
+    })
+})
+
+onUnmounted(() => {
+    logs.value = []
+    const { publish } = useMqtt()
+    publish({
+        deviceId: props.device.id,
+        action: "command",
+        type: "debug",
+        payload: "off",
+        retained: false,
+    })
+})
 </script>

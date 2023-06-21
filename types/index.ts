@@ -20,11 +20,12 @@ declare global {
 
   interface Report extends ReportRaw {}
 
-  interface CommandMessage {
+  interface CommandMessage<Type = void> {
     deviceId: Device["id"];
     action: "command";
-    type: "config" | "debug" | "restart" | "update" | string;
+    type: "config" | "debug" | "restart" | "update" | Type;
     payload: string;
+    retained: boolean;
   }
 
   interface ReportMessage {
@@ -32,6 +33,7 @@ declare global {
     action: "report";
     type: "status" | "update" | "debug";
     payload: string;
+    retained: boolean;
   }
 
   interface LoggingMessage {
@@ -39,6 +41,7 @@ declare global {
     action: "logs";
     type: "info" | "error" | "warn" | "success";
     payload: string;
+    retained: boolean;
   }
 
   type MqttMessage = CommandMessage | LoggingMessage | ReportMessage;

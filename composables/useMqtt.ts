@@ -75,10 +75,8 @@ export default function useMqtt() {
   }
 
   function subscribe() {
-    if (mqttClient?.isConnected) {
-      mqttClient?.subscribe("device/+/report/status");
-      mqttClient?.subscribe("device/+/logs/+");
-    }
+    mqttClient?.subscribe("device/+/report/status");
+    mqttClient?.subscribe("device/+/logs/+");
   }
 
   function onMessageArrived(message: Paho.Message) {
@@ -104,5 +102,15 @@ export default function useMqtt() {
     }
   }
 
-  return { find, add, update, connect, disconnect, connected };
+  function publish(message: CommandMessage) {
+    const topic = `device/${message.deviceId}/${message.action}/${message.type}`;
+
+    const _message = new Paho.Message(message.payload);
+    _message.destinationName = topic;
+    _message.retained = message.retained;
+
+    mqttClient?.send(_message);
+  }
+
+  return { find, add, update, connect, disconnect, publish, connected };
 }

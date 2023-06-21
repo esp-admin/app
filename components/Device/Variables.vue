@@ -41,5 +41,15 @@ async function handleSubmit() {
     const { update } = useDevice()
 
     const { data, error } = await update(props.device.id, { variables: model.value })
+
+    const { publish } = useMqtt()
+
+    publish({
+        deviceId: props.device.id,
+        action: "command",
+        type: "config",
+        payload: JSON.stringify(model.value),
+        retained: true
+    })
 }
 </script>

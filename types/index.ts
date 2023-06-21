@@ -20,10 +20,10 @@ declare global {
 
   interface Report extends ReportRaw {}
 
-  interface CommandMessage<Type = void | string> {
+  interface CommandMessage {
     deviceId: Device["id"];
     action: "command";
-    type: "config" | "debug" | "restart" | "update" | Type;
+    type: "config" | "debug" | "restart" | "update" | "custom";
     payload: string;
     retained: boolean;
   }

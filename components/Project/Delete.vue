@@ -7,7 +7,8 @@
         <div class="flex gap-4">
             <n-button secondary class="flex-1" attr-type="button" @click="$emit('cancel')"
                 :disabled="pending">Cancel</n-button>
-            <n-button type="error" class="flex-1" attr-type="submit" :disabled="pending" :loading="pending">Delete
+            <n-button type="error" class="flex-1" attr-type="submit" :disabled="pending || !edited"
+                :loading="pending">Delete
             </n-button>
         </div>
     </n-form>
@@ -19,16 +20,16 @@ const emits = defineEmits(["cancel", "done"])
 
 const props = defineProps<{ project: Project }>()
 
-const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm()
+const model = ref({
+    name: "",
+});
+
+const { apiErrors, formRef, onSubmit, pending, rules, edited } = useNaiveForm(model)
 
 apiErrors.value = {
     hasReleases: false,
     hasDevices: false
 }
-
-const model = ref({
-    name: "",
-});
 
 rules.value = {
     name: [

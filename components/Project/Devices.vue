@@ -46,7 +46,7 @@ const searchDebounce = inputDebounce((value: string) => nameSearch.value = value
 
 const filteredDevices = computed(() => linkedDevices.filter(device => device.name.includes(nameSearch.value)))
 
-function onLink() {
+async function onLink() {
     linkModalVisible.value = false
 }
 </script>

@@ -8,16 +8,12 @@
             <n-input v-model:value="model.bugsnagKey"></n-input>
         </n-form-item>
 
-        <div class="flex gap-4">
-            <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending">Save</n-button>
-            <n-button secondary attr-type="reset" :disabled="pending">Reset</n-button>
-        </div>
+        <FormButtons @reset="reset" :loading="pending" :disabled="!edited || pending"></FormButtons>
+
     </n-form>
 </template>
 
 <script setup lang="ts">
-
-const { formRef, onSubmit, pending, rules } = useNaiveForm()
 
 const { find } = useReport()
 
@@ -28,6 +24,7 @@ const model = ref<Partial<Report>>({
     webhookUrl: report.value?.webhookUrl
 });
 
+const { formRef, onSubmit, pending, rules, edited, reset } = useNaiveForm(model)
 
 async function handleSubmit() {
     const { add, update } = useReport()

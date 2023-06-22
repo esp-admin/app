@@ -10,10 +10,7 @@
                 <n-input v-model:value="model.name"></n-input>
             </n-form-item>
 
-            <div class="flex gap-4">
-                <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending">Save</n-button>
-                <n-button secondary attr-type="reset" :disabled="pending">Reset</n-button>
-            </div>
+            <FormButtons @reset="reset" :loading="pending" :disabled="!edited || pending"></FormButtons>
         </n-form>
     </div>
 </template>
@@ -23,14 +20,14 @@ const { useUser, getAccessToken } = useAuthSession()
 const { upload } = useS3Object()
 const { fetchUser } = useAuth()
 
-const { formRef, pending, onSubmit } = useNaiveForm()
-
 const user = useUser()
 
 const model = ref({
     name: user.value?.name,
     picture: user.value?.picture,
 })
+
+const { formRef, pending, onSubmit, edited, reset } = useNaiveForm(model)
 
 const file = ref<File | null>()
 

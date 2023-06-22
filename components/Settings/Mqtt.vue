@@ -20,21 +20,11 @@
             <n-input type="textarea" autosize v-model:value="model.certificate"></n-input>
         </n-form-item>
 
-        <div class="flex gap-4">
-            <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending">Save</n-button>
-            <n-button secondary attr-type="reset" :disabled="pending">Reset</n-button>
-        </div>
+        <FormButtons @reset="reset" :loading="pending" :disabled="!edited || pending"></FormButtons>
     </n-form>
 </template>
 
 <script setup lang="ts">
-
-const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm()
-
-apiErrors.value = {
-    unableToConnect: false
-}
-
 const { find } = useMqtt()
 
 const { data: mqtt } = await find()
@@ -46,6 +36,12 @@ const model = ref<Partial<Mqtt>>({
     uriWS: mqtt.value?.uriWS,
     certificate: mqtt.value?.certificate
 });
+
+const { apiErrors, formRef, onSubmit, pending, rules, edited, reset } = useNaiveForm(model)
+
+apiErrors.value = {
+    unableToConnect: false
+}
 
 rules.value = {
     uriWS: [

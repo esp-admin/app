@@ -144,15 +144,5 @@ export default function useDevice() {
 
   const logs = useState<LoggingMessage[]>("device_logs", () => []);
 
-  async function findLinked(projectId: Project["id"]) {
-    const { data: devices } = await find();
-
-    const linked = devices.value?.filter(
-      (device) => device.projectId === projectId
-    );
-
-    return linked || [];
-  }
-
-  return { find, findOne, findLinked, remove, add, link, unlink, update, logs };
+  return { find, findOne, remove, add, link, unlink, update, logs };
 }

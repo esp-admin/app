@@ -104,9 +104,11 @@ async function handleSubmit() {
     else {
         const { publish } = useMqtt()
 
-        const { findLinked } = useDevice()
+        const { find } = useDevice()
 
-        const linkedDevices = await findLinked(props.project.id)
+        const { data: devices } = await find()
+
+        const linkedDevices = devices.value?.filter(device => device.projectId === props.project.id) || []
 
         for (let device of linkedDevices) {
             publish({

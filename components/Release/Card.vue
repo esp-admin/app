@@ -35,9 +35,11 @@ function onDelete() {
 async function onTrigger() {
     const { publish } = useMqtt()
 
-    const { findLinked } = useDevice()
+    const { find } = useDevice()
 
-    const linkedDevices = await findLinked(props.projectId)
+    const { data: devices } = await find()
+
+    const linkedDevices = devices.value?.filter(device => device.projectId === props.projectId) || []
 
     for (let device of linkedDevices) {
         publish({

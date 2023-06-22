@@ -16,24 +16,20 @@
             </div>
         </n-dynamic-input>
 
-        <div class="flex gap-4" v-if="model.variables?.length > 0">
-            <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending">Save</n-button>
-            <n-button secondary attr-type="button" @click="reset">Reset</n-button>
-        </div>
+        <FormButtons v-if="model.variables?.length" @reset="reset" :loading="pending" :disabled="!edited || pending">
+        </FormButtons>
     </n-form>
 </template>
 
 <script setup lang="ts">
 
-const { formRef, onSubmit, pending, rules } = useNaiveForm()
-
 const props = defineProps<{ project: Project }>()
 
 const model = ref({
-    variables: [] as { key: string, value: string }[]
+    variables: props.project.variables as { key: string, value: string }[]
 });
 
-reset()
+const { formRef, onSubmit, pending, rules, reset, edited } = useNaiveForm(model)
 
 rules.value = {
     key: [
@@ -53,9 +49,5 @@ async function handleSubmit() {
     const { update } = useProject()
 
     const { data, error } = await update(props.project.id, model.value)
-}
-
-function reset() {
-    model.value.variables = JSON.parse(JSON.stringify(props.project.variables))
 }
 </script>

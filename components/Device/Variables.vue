@@ -5,10 +5,8 @@
             <n-input v-model:value="model[projectVariable.key]"></n-input>
         </FormItem>
 
-        <div v-if="projectVariables.length" class="flex gap-4">
-            <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending">Save</n-button>
-            <n-button secondary attr-type="button" @click="reset" :disabled="pending">Reset</n-button>
-        </div>
+        <FormButtons v-if="projectVariables?.length" @reset="reset" :loading="pending" :disabled="!edited || pending">
+        </FormButtons>
 
         <n-result v-else class="col-span-full my-5" title="No variables defined">
             <template #icon>
@@ -19,14 +17,11 @@
 </template>
 
 <script setup lang="ts">
-
-const { formRef, onSubmit, pending } = useNaiveForm()
-
 const props = defineProps<{ device: Device }>()
 
-const model = ref();
+const model = ref(props.device.variables as Record<string, string>);
 
-reset()
+const { formRef, onSubmit, pending, edited, reset } = useNaiveForm(model)
 
 const projectVariables = ref<{ key: string, value: string }[]>([])
 
@@ -53,9 +48,5 @@ async function handleSubmit() {
         payload: JSON.stringify(model.value),
         retained: true
     })
-}
-
-function reset() {
-    model.value = JSON.parse(JSON.stringify(props.device.variables))
 }
 </script>

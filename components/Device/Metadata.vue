@@ -12,25 +12,24 @@
             <n-input type="textarea" autosize v-model:value="model.description"></n-input>
         </n-form-item>
 
-        <div class="flex gap-4">
-            <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending">Save</n-button>
-            <n-button secondary attr-type="button" @click="reset" :disabled="pending">Reset</n-button>
-        </div>
+        <FormButtons @reset="reset" :loading="pending" :disabled="!edited || pending"></FormButtons>
     </n-form>
 </template>
 
 <script setup lang="ts">
-const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm()
-
 const props = defineProps<{ device: Device }>()
+
+const model = ref({
+    name: props.device.name,
+    apiKey: props.device.apiKey,
+    description: props.device.description
+});
+
+const { apiErrors, formRef, onSubmit, pending, rules, edited, reset } = useNaiveForm(model)
 
 apiErrors.value = {
     nameAlreadyExists: false,
 }
-
-const model = ref<Partial<Device>>({});
-
-reset()
 
 rules.value = {
     name: [
@@ -67,13 +66,5 @@ async function handleSubmit() {
     const { update } = useDevice()
 
     const { data, error } = await update(props.device.id, model.value)
-}
-
-function reset() {
-    model.value = {
-        name: props.device.name,
-        apiKey: props.device.apiKey,
-        description: props.device.description
-    }
 }
 </script>

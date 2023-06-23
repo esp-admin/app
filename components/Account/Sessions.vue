@@ -9,7 +9,7 @@
                 </template>
 
                 <template #header>
-                    <n-text class="text-sm">
+                    <n-text strong class="text-base">
                         {{
                             [
                                 session.ua && UAParser(session.ua).browser.name,
@@ -19,10 +19,9 @@
                                 .join(' ')
                         }}
                     </n-text>
-                </template>
 
-                <template #description>
-                    <n-text depth="3"><n-time :time="new Date(session.updatedAt)" type="relative" /></n-text>
+                    <n-text depth="3" class="text-base"><n-time :time="new Date(session.updatedAt)"
+                            type="relative" /></n-text>
                 </template>
 
                 <template #header-extra>

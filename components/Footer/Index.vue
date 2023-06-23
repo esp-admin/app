@@ -1,11 +1,17 @@
 <template>
     <footer :style="{ backgroundColor: naiveTheme.common.bodyColor }">
         <n-text :depth="2">
-            Alpha ~
-            {{ version }} ~
-            <nuxt-link :to="repository" target="_blank"> Github</nuxt-link>
+            Alpha ~ {{ version }}
         </n-text>
 
+        <n-text>-</n-text>
+
+        <nuxt-link :to="repository" target="_blank">
+            <span class="flex gap-2 items-center">
+                <n-text>Github</n-text>
+                <naive-icon name="ph:arrow-square-out" :size="18"></naive-icon>
+            </span>
+        </nuxt-link>
     </footer>
 </template>
 

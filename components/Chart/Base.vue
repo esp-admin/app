@@ -34,7 +34,7 @@ const highchartsOptions = computed<HighchartsOptions>(() => defu(
         },
 
         accessibility: {
-            enabled: true
+            enabled: false
         },
 
         title: {

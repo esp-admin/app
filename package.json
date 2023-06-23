@@ -20,7 +20,6 @@
     "@types/paho-mqtt": "^1.0.7",
     "@types/ua-parser-js": "^0.7.36",
     "changelogen": "^0.5.3",
-    "i": "^0.3.7",
     "npm": "^9.7.2",
     "nuxt": "^3.6.0",
     "nuxt-gtag": "^0.5.7",

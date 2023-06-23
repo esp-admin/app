@@ -1,6 +1,45 @@
 # Changelog
 
 
+## v0.0.8
+
+[compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.7...v0.0.8)
+
+
+### 🚀 Enhancements
+
+  - Implement deployment state management ([dac581a](https://github.com/becem-gharbi/esp-admin/commit/dac581a))
+  - Implemenent deployment update ([62af379](https://github.com/becem-gharbi/esp-admin/commit/62af379))
+  - Add basic dashboard ([f019907](https://github.com/becem-gharbi/esp-admin/commit/f019907))
+  - Add device [GET]  settings ([0c981ba](https://github.com/becem-gharbi/esp-admin/commit/0c981ba))
+
+### 🩹 Fixes
+
+  - Set initial values on form reset ([8ead75d](https://github.com/becem-gharbi/esp-admin/commit/8ead75d))
+  - Fix check for whitespaces Regex ([0bfab7a](https://github.com/becem-gharbi/esp-admin/commit/0bfab7a))
+
+### 💅 Refactors
+
+  - Set dynamic input width to full ([1154640](https://github.com/becem-gharbi/esp-admin/commit/1154640))
+  - Use built-in naive form reset ([b316ce3](https://github.com/becem-gharbi/esp-admin/commit/b316ce3))
+  - Disable submit btn on unedited form ([7dace61](https://github.com/becem-gharbi/esp-admin/commit/7dace61))
+  - Remove findLinked method ([021b846](https://github.com/becem-gharbi/esp-admin/commit/021b846))
+  - Create checkDevice for device authorization ([6477e59](https://github.com/becem-gharbi/esp-admin/commit/6477e59))
+  - Add checkUser for user authorization ([a72c6aa](https://github.com/becem-gharbi/esp-admin/commit/a72c6aa))
+  - Minor UI refactoring ([439d452](https://github.com/becem-gharbi/esp-admin/commit/439d452))
+
+### 📖 Documentation
+
+  - Add sdk link to readme ([7c16e32](https://github.com/becem-gharbi/esp-admin/commit/7c16e32))
+
+### 🌊 Types
+
+  - Downgrade Highcharts to v10 for typed options ([66d3d3c](https://github.com/becem-gharbi/esp-admin/commit/66d3d3c))
+
+### ❤️  Contributors
+
+- Becem Gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v0.0.7
 
 [compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.6...v0.0.7)

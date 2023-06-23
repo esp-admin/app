@@ -1,5 +1,5 @@
 import type { H3Event } from "H3";
-import { prisma } from "#auth";
+import { prisma, getAccessTokenFromHeader, verifyAccessToken } from "#auth";
 
 export async function checkDevice(event: H3Event) {
   const deviceId = event.context.params?.id;
@@ -19,4 +19,11 @@ export async function checkDevice(event: H3Event) {
   return device;
 }
 
-function checkUser(event: H3Event) {}
+export function checkUser(event: H3Event) {
+  try {
+    const accessToken = getAccessTokenFromHeader(event) || "";
+    return verifyAccessToken(accessToken);
+  } catch (error) {
+    throw new Error("unauthorized");
+  }
+}

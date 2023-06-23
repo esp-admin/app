@@ -2,11 +2,7 @@ import { handleError, prisma } from "#auth";
 
 export default defineEventHandler(async (event) => {
   try {
-    const userId = event.context.auth?.userId;
-
-    if (!userId) {
-      throw new Error("unauthorized");
-    }
+    const { userId } = checkUser(event);
 
     const data = await readBody<Release>(event);
 

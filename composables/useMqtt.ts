@@ -94,9 +94,6 @@ export default function useMqtt() {
       case "report":
         handleReport(mqttMessage);
         break;
-      case "command":
-        handleCommand(mqttMessage);
-        break;
       case "logs":
         handleLogs(mqttMessage);
         break;

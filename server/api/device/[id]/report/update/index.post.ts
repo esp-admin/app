@@ -2,18 +2,16 @@ import { handleError, prisma } from "#auth";
 
 export default defineEventHandler(async (event) => {
   try {
-    // Check API key !
-
-    const deviceId = event.context.params!.id;
+    const device = await checkDevice(event);
 
     const data = await readBody<Deployment>(event);
 
     const deployment = await prisma.deployment.create({
       data: {
-        deviceId,
+        deviceId: device.id,
         device: {
           connect: {
-            id: deviceId,
+            id: device.id,
           },
         },
         release: {

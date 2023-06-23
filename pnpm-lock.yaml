@@ -12,7 +12,7 @@ specifiers:
   '@types/ua-parser-js': ^0.7.36
   changelogen: ^0.5.3
   dayjs: ^1.11.8
-  highcharts: '10'
+  highcharts: '11'
   highcharts-vue: ^1.4.2
   highlight.js: ^11.8.0
   i: ^0.3.7
@@ -28,8 +28,8 @@ dependencies:
   '@bugsnag/js': 7.20.2
   '@prisma/client': 4.16.1_prisma@4.16.1
   dayjs: 1.11.8
-  highcharts: 10.3.3
-  highcharts-vue: 1.4.2_cpnxvdl44u5kszoqnisyxpjsae
+  highcharts: 11.1.0
+  highcharts-vue: 1.4.2_yjiwbbndwz2wvjrfre4f44xsb4
   highlight.js: 11.8.0
   paho-mqtt: 1.1.0
   ua-parser-js: 1.0.35
@@ -5169,18 +5169,18 @@ packages:
     resolution: {integrity: sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==}
     dev: true
 
-  /highcharts-vue/1.4.2_cpnxvdl44u5kszoqnisyxpjsae:
+  /highcharts-vue/1.4.2_yjiwbbndwz2wvjrfre4f44xsb4:
     resolution: {integrity: sha512-B84d2Me0w1G7euPC3WNxhpq2/+t1nxLGa9sa0LUzYNXrWw7Es0n2aXst7ZGb/m3vI7VjFKstDitS8fEFuDNwWg==}
     peerDependencies:
       highcharts: '>=5.0.0'
       vue: '>=1.0.0'
     dependencies:
-      highcharts: 10.3.3
+      highcharts: 11.1.0
       vue: 3.3.4
     dev: false
 
-  /highcharts/10.3.3:
-    resolution: {integrity: sha512-r7wgUPQI9tr3jFDn3XT36qsNwEIZYcfgz4mkKEA6E4nn5p86y+u1EZjazIG4TRkl5/gmGRtkBUiZW81g029RIw==}
+  /highcharts/11.1.0:
+    resolution: {integrity: sha512-vhmqq6/frteWMx0GKYWwEFL25g4OYc7+m+9KQJb/notXbNtIb8KVy+ijOF7XAFqF165cq0pdLIePAmyFY5ph3g==}
     dev: false
 
   /highlight.js/11.8.0:

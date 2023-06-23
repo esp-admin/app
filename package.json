@@ -31,7 +31,7 @@
     "@bugsnag/js": "^7.20.2",
     "@prisma/client": "^4.16.1",
     "dayjs": "^1.11.8",
-    "highcharts": "10",
+    "highcharts": "11",
     "highcharts-vue": "^1.4.2",
     "highlight.js": "^11.8.0",
     "paho-mqtt": "^1.1.0",

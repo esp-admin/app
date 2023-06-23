@@ -24,10 +24,12 @@ const highchartsOptions = computed<HighchartsOptions>(() => defu(
         chart: {
             height: props.height,
             width: props.width,
-            backgroundColor: naiveTheme.value.common?.bodyColor,
-            plotBackgroundColor: naiveTheme.value.common?.bodyColor,
+            backgroundColor: "transparent",
+            plotBackgroundColor: "transparent",
             style: {
                 fontFamily: naiveTheme.value.common?.fontFamily,
+                borderRadius: naiveTheme.value.common?.borderRadius,
+                fontSize: naiveTheme.value.common?.fontSize,
             },
         },
 
@@ -37,7 +39,8 @@ const highchartsOptions = computed<HighchartsOptions>(() => defu(
 
         title: {
             style: {
-                color: naiveTheme.value?.common?.textColor1
+                color: naiveTheme.value?.common?.textColor1,
+                fontSize: naiveTheme.value.common?.fontSize,
             }
         },
 
@@ -80,6 +83,7 @@ const highchartsOptions = computed<HighchartsOptions>(() => defu(
         },
 
         credits: {
+            enabled: false,
             style: {
                 fontSize: naiveTheme.value?.common?.fontSizeSmall,
             }

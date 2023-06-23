@@ -1,7 +1,6 @@
 <template>
     <nuxt-link :to="`/devices/${device.id}`">
         <n-card :title="device.name" size="small" hoverable>
-            <n-text depth="3"> {{ device.description }}</n-text>
             <n-text depth="3">Created <n-time :time="new Date(device.createdAt)" type="relative" /></n-text>
 
             <template #header-extra>

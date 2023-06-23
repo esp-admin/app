@@ -20,15 +20,18 @@
     "@types/paho-mqtt": "^1.0.7",
     "@types/ua-parser-js": "^0.7.36",
     "changelogen": "^0.5.3",
-    "nuxt": "^3.5.3",
+    "i": "^0.3.7",
+    "npm": "^9.7.2",
+    "nuxt": "^3.6.0",
     "nuxt-gtag": "^0.5.7",
     "nuxt-security": "^0.13.1",
-    "prisma": "^4.16.0"
+    "prisma": "^4.16.1"
   },
   "dependencies": {
     "@bugsnag/js": "^7.20.2",
-    "@prisma/client": "^4.16.0",
+    "@prisma/client": "^4.16.1",
     "dayjs": "^1.11.8",
+    "highcharts": "10",
     "highcharts-vue": "^1.4.2",
     "highlight.js": "^11.8.0",
     "paho-mqtt": "^1.1.0",

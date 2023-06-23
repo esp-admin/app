@@ -2,10 +2,8 @@
     <n-card size="small" hoverable :header-extra-style="{ padding: 0 }">
         <template #header>
             <div class="flex flex-col">
-                <n-text class="text-base">{{ release.version }}</n-text>
-                <n-text depth="3">{{ release.id }}</n-text>
-                <n-text depth="3">Created <n-time :time="new Date(release.createdAt)" type="relative" /></n-text>
-
+                <n-text>{{ release.version }}</n-text>
+                <n-text depth="3" class="text-base">Created <n-time :time="new Date(release.createdAt)" type="relative" /></n-text>
             </div>
 
         </template>

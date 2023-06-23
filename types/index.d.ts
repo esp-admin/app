@@ -8,7 +8,11 @@ import type {
   Deployment as DeploymentRaw,
 } from "@prisma/client";
 
+import { Options } from "highcharts";
+
 declare global {
+  interface HighchartsOptions extends Options {}
+
   interface Project extends ProjectRaw {}
 
   interface Release extends ReleaseRaw {}

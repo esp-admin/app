@@ -1,5 +1,5 @@
 <template>
-    <div class="grid md:grid-cols-4 grid-cols-2">
+    <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
         <n-statistic label="Total users" :value="totalUsers?.toString()" />
         <n-statistic label="Email" :value="emailUsers?.toString()" />
         <n-statistic label="Google" :value="googleUsers?.toString()" />

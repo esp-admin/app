@@ -124,6 +124,12 @@ const themeConfig = ref<ThemeConfig>({
       fontSize: theme.fontSize.base[0],
       titleFontSizeMedium: theme.fontSize.base[0]
     },
+    Alert: {
+      fontSize: theme.fontSize.base[0],
+    },
+    Statistic: {
+      valueFontSize: theme.fontSize.base[0],
+    }
   },
 
   light: {

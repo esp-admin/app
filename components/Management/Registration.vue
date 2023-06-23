@@ -4,7 +4,6 @@
 
 <script setup lang="ts">
 import dayjs from "dayjs"
-import type { Options as HighchartsOptions } from "highcharts";
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 
 dayjs.extend(customParseFormat)
@@ -20,37 +19,37 @@ const { data: users } = await useAsyncData(() => listUsers({
     }
 }))
 
-const chartOptions = computed<HighchartsOptions>(() => {
-    return {
-        chart: {
-            zooming: {
-                type: "x"
-            }
-        },
-        title: {
-            text: "",
-        },
-        yAxis: {
-            title: false
-        },
-        xAxis: {
-            type: "datetime",
-        },
-        series: [{
-            type: 'column',
-            data: chartData.value,
-            marker: {
-                enabled: false
-            },
-        }],
-        legend: {
-            enabled: false
-        },
-        tooltip: {
-            enabled: false
+const chartOptions = computed<HighchartsOptions>(() => ({
+    chart: {
+        zooming: {
+            type: "x"
         }
+    },
+    title: {
+        text: "",
+    },
+    yAxis: {
+        title: {
+            text: ""
+        }
+    },
+    xAxis: {
+        type: "datetime",
+    },
+    series: [{
+        type: 'column',
+        data: chartData.value,
+        marker: {
+            enabled: false
+        },
+    }],
+    legend: {
+        enabled: false
+    },
+    tooltip: {
+        enabled: false
     }
-})
+}))
 
 const chartData = computed(() => {
     const counts = users.value?.reduce((acc: Record<string, number>, curr) => {

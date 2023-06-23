@@ -37,7 +37,7 @@
             </n-tab-pane>
 
             <n-tab-pane name="deployments" tab="Deployments">
-                <DeviceDeployments class="mt-4"></DeviceDeployments>
+                <DeviceDeployments class="mt-4" :device="device"></DeviceDeployments>
             </n-tab-pane>
         </n-tabs>
 

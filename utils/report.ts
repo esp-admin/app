@@ -1,3 +1,5 @@
+import { destr } from "destr";
+
 export function handleReport(message: ReportMessage) {
   switch (message.type) {
     case "status":
@@ -12,9 +14,19 @@ export function handleReport(message: ReportMessage) {
 async function handleStatus(message: ReportMessage) {
   const { update } = useDevice();
 
+  const device = destr<Device>(message.payload);
+
   await update(message.deviceId, {
-    status: message.payload as Device["status"],
+    status: device.status,
   });
 }
 
-async function handleUpdate(message: ReportMessage) {}
+async function handleUpdate(message: ReportMessage) {
+  const { update } = useDeployment(message.deviceId);
+
+  const deployment = destr<Deployment>(message.payload);
+
+  await update(deployment.id, {
+    status: deployment.status,
+  });
+}

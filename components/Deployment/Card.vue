@@ -2,24 +2,24 @@
     <n-card size="small" hoverable :header-extra-style="{ padding: 0 }">
         <template #header>
             <div class="flex flex-col">
-                <n-text class="text-base">{{ deployment.id }}</n-text>
+                <div class="flex items-center gap-2">
+                    <n-text class="text-lg" strong>{{ deployment.release?.version }}</n-text>
+                    <DeploymentStatus :deployment="deployment"></DeploymentStatus>
+                </div>
                 <n-text depth="3">Created <n-time :time="new Date(deployment.createdAt)" type="relative" /></n-text>
             </div>
         </template>
 
         <template #header-extra>
             <div class="flex gap-2">
-                <n-button secondary @click="onTrigger">Trigger</n-button>
+                <nuxt-link :to="`/projects/${deployment.release?.projectId}`">
+                    <n-button secondary>Project</n-button>
+                </nuxt-link>
             </div>
         </template>
     </n-card>
 </template>
 
 <script setup lang="ts">
-
-const props = defineProps<{ deployment: Deployment }>()
-
-async function onTrigger() {
-
-}
+defineProps<{ deployment: Deployment }>()
 </script>

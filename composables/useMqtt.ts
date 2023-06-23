@@ -76,6 +76,7 @@ export default function useMqtt() {
 
   function subscribe() {
     mqttClient?.subscribe("device/+/report/status");
+    mqttClient?.subscribe("device/+/report/update");
     mqttClient?.subscribe("device/+/logs/+");
   }
 

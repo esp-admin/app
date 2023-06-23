@@ -18,6 +18,14 @@ export default defineEventHandler(async (event) => {
       where: {
         deviceId,
       },
+      include: {
+        release: {
+          select: {
+            version: true,
+            projectId: true,
+          },
+        },
+      },
     });
 
     return deployments;

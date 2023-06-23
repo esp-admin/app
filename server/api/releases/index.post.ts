@@ -24,7 +24,6 @@ export default defineEventHandler(async (event) => {
 
     return release;
   } catch (error) {
-    console.log(error);
     await handleError(error);
   }
 });

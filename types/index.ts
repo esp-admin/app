@@ -21,7 +21,9 @@ declare global {
 
   interface Report extends ReportRaw {}
 
-  interface Deployment extends DeploymentRaw {}
+  interface Deployment extends DeploymentRaw {
+    release?: ReleaseRaw;
+  }
 
   interface CommandMessage {
     deviceId: Device["id"];
@@ -35,8 +37,8 @@ declare global {
     deviceId: Device["id"];
     action: "report";
     type: "status" | "update" | "debug";
-    payload: string;
     retained: boolean;
+    payload: string;
   }
 
   interface LoggingMessage {

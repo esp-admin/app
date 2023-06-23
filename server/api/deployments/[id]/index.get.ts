@@ -10,13 +10,18 @@ export default defineEventHandler(async (event) => {
 
     const id = event.context.params?.id;
 
-    const data = await readBody<Partial<Deployment>>(event);
-
-    const deployment = await prisma.deployment.update({
+    const deployment = await prisma.deployment.findUnique({
       where: {
         id,
       },
-      data,
+      include: {
+        release: {
+          select: {
+            version: true,
+            projectId: true,
+          },
+        },
+      },
     });
 
     return deployment;

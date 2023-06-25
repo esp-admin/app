@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
 
     const user = await prisma.user.update({
       where: {
-        id: event.context.auth.userId,
+        id: userId,
       },
       data: {
         name,

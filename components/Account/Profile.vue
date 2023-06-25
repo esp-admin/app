@@ -52,7 +52,7 @@ async function updateAccount() {
         }
 
         await useAuthFetch("/api/user", {
-            method: "POST",
+            method: "PATCH",
             body: model.value,
         })
 

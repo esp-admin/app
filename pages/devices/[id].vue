@@ -4,7 +4,7 @@
             <div class="flex flex-col flex-grow">
                 <div class="flex items-center gap-2">
                     <n-text class="text-lg" strong>{{ device.name }}</n-text>
-                    <DeviceStatus :device="device"></DeviceStatus>
+                    <!-- <DeviceStatus :device="device"></DeviceStatus> -->
                 </div>
 
                 <n-text depth="3">Created <n-time :time="new Date(device.createdAt)" type="relative" /></n-text>

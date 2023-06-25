@@ -45,6 +45,12 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+    validate: (route) => {
+        const params = route.params as { id: string }
+        return /^[a-fA-F0-9]{24}$/.test(params.id)
+    }
+})
 
 const deleteModalVisible = ref(false)
 

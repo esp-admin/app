@@ -87,7 +87,7 @@ This is based on an initial conceptual design
 ### General
 
 - All REST API calls initiated by the device must be done on `/device/<device_id>` path with API key as authorization header
-- All mqtt topics must be prefixed with `/device/<device_id>`
+- All mqtt topics must be prefixed with `device/<device_id>`
 - The mqtt client_id of the device is equals to the device_id
 - Commands are mqtt messages sent by the Frontend to `/command` topic
 - Reports are mqtt messages sent by the device on `/report` topic
@@ -160,15 +160,15 @@ This is based on an initial conceptual design
 
 | **Topics**                          | **Retained** | **Sent by** | **Notes**                       |
 | ----------------------------------- | ------------ | ----------- | ------------------------------- |
-| /device/<device_id>/command/config  | true         | Frontend    | Send new variables              |
-| /device/<device_id>/command/custom  | false        | Frontend    | Send project commands           |
-| /device/<device_id>/command/debug   | false        | Frontend    | Enable/disable logging          |
-| /device/<device_id>/command/restart | false        | Frontend    | Trigger device restart          |
-| /device/<device_id>/command/update  | true         | Device      | Trigger new or existing release |
-| /device/<device_id>/logs            | false        | Device      | Send logs                       |
-| /device/<device_id>/report/debug    | false        | Device      | Send logging status             |
-| /device/<device_id>/report/status   | true         | Device      | Send device status              |
-| /device/<device_id>/report/update   | false        | Device      | Send update status              |
+| device/<device_id>/command/config  | true         | Frontend    | Send new variables              |
+| device/<device_id>/command/custom  | false        | Frontend    | Send project commands           |
+| device/<device_id>/command/debug   | false        | Frontend    | Enable/disable logging          |
+| device/<device_id>/command/restart | false        | Frontend    | Trigger device restart          |
+| device/<device_id>/command/update  | true         | Device      | Trigger new or existing release |
+| device/<device_id>/logs            | false        | Device      | Send logs                       |
+| device/<device_id>/report/debug    | false        | Device      | Send logging status             |
+| device/<device_id>/report/status   | true         | Device      | Send device status              |
+| device/<device_id>/report/update   | false        | Device      | Send update status              |
 
 ## License
 

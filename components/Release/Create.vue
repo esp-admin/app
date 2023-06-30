@@ -117,9 +117,9 @@ async function handleSubmit() {
                 type: "update",
                 retained: true,
                 payload: JSON.stringify({
-                    downloadUrl: model.value.downloadUrl,
-                    version: model.value.version,
-                    projectId: props.project.id
+                    releaseId: release.value!.id,
+                    version: release.value!.version,
+                    downloadUrl: release.value!.downloadUrl,
                 })
             })
         }

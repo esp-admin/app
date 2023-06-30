@@ -3,7 +3,8 @@
         <template #header>
             <div class="flex flex-col">
                 <n-text>{{ release.version }}</n-text>
-                <n-text depth="3" class="text-base">Created <n-time :time="new Date(release.createdAt)" type="relative" /></n-text>
+                <n-text depth="3" class="text-base">Created <n-time :time="new Date(release.createdAt)"
+                        type="relative" /></n-text>
             </div>
 
         </template>
@@ -48,9 +49,9 @@ async function onTrigger() {
             type: "update",
             retained: true,
             payload: JSON.stringify({
+                releaseId: props.release.id,
                 downloadUrl: props.release.downloadUrl,
                 version: props.release.version,
-                projectId: props.projectId
             })
         })
     }

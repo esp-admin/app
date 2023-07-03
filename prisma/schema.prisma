@@ -47,7 +47,6 @@ model Mqtt {
   uriWS       String
   username    String
   password    String
-  certificate String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   userId      String   @unique @db.ObjectId

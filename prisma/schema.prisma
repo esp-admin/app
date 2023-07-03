@@ -96,7 +96,6 @@ model Release {
 model Device {
   id          String       @id @default(auto()) @map("_id") @db.ObjectId
   name        String
-  mac         String       @unique
   apiKey      String
   description String?
   variables   Json?
@@ -114,7 +113,7 @@ model Device {
 
 model Deployment {
   id        String           @id @default(auto()) @map("_id") @db.ObjectId
-  status    DeploymentStatus @default(active)
+  status    DeploymentStatus @default(started)
   createdAt DateTime         @default(now())
   updatedAt DateTime         @updatedAt
   deviceId  String           @db.ObjectId
@@ -140,7 +139,7 @@ enum DeviceStatus {
 }
 
 enum DeploymentStatus {
-  active
+  started
   failed
   succeded
 }

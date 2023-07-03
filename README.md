@@ -8,7 +8,7 @@ This project is under developement, planning can be found under `Projects` tab. 
 
 ## ✔️ Features
 
-- Supported devices _ESP32_
+- Support for _ESP32_
 - Multi-tenant architecture
 - Built-in authentication
 - User defined MQTT broker
@@ -50,7 +50,7 @@ This is based on an initial conceptual design
 2. Devices
 
 - A device represent an ESP microcontroller.
-- It can be linked to a project for OTA.
+- It can be linked to a project.
 
 3. Commands
 
@@ -59,14 +59,14 @@ This is based on an initial conceptual design
 
 4. Reports
 
-- Are MQTT messages sent by the device.
+- Are messages sent by the device over MQTT and HTTP.
 - They trigger specific actions on the Frontend for data updates `status`, `metadata`.
-- They trigger specific actions on the Backend for reporting `error`.
+- They trigger specific actions on the Backend for reporting, e.g `error`.
 
 5. Config
 
 - Are key-value pairs stored on device's non-Volatile storage in encrypted format.
-- It includes MQTT credentials and SSL certificate, project related variables and custom properties.
+- It includes MQTT credentials, project related variables and custom properties.
 - Refreshed on device boot and on `config` command.
 
 6. Logging
@@ -86,18 +86,17 @@ This is based on an initial conceptual design
 
 ### General
 
-- All REST API calls initiated by the device must be done on `/device/<device_id>` path with API key as authorization header
+- All REST API calls initiated by the device must be done on `/device/<device_id>` path with API key on `API-KEY` header.
 - All mqtt topics must be prefixed with `device/<device_id>`
-- The mqtt client_id of the device is equals to the device_id
+- The mqtt client_id of the device is the same as it's device_id
 - Commands are mqtt messages sent by the Frontend to `/command` topic
 - Reports are mqtt messages sent by the device on `/report` topic
-  and REST API calls made to _[POST] `/report`_ endpoint (at the same time)
+  and REST API calls made to _`/report`_ endpoint (sequentially)
 
 ### Add mqtt settings
 
 - Mqtt broker is defined by the user for security and scalability considerations
-- The user should have a running mqtt broker with support for websockets with version 3.1 or 3.1.1, it's recommended to be a secure connection
-- If the connection is secured, the user should enter the CA certificate
+- The user should have a running mqtt broker with support for websockets with version 3.1 or 3.1.1, the connection should be secured
 - The user enters the websockets URI of the broker. This is required for the Frontend to connect to the broker
 - The user can enter the raw mqtt connection URI of the broker.This is used by the device as the main broker uri. If not defined the websockets uri will be used
 - The user enters username/password. These are secrets that permits the connection to the broker
@@ -110,7 +109,6 @@ This is based on an initial conceptual design
 ### Create new device
 
 - Assign a unique name
-- Enter the device's MAC, should be displayed via serial terminal on device boot
 - Assign an API key. This is a secret used for authorization in REST API calls to the Backend
 
 ### Add variables
@@ -129,7 +127,7 @@ This is based on an initial conceptual design
 ### Run commands
 
 - Commands are run on device scope. The device should be linked to a project where the commands were added.
-- On command click a `<key>` command is sent with the value as payload
+- On command click a `custom` command is sent with the value as payload
 
 ### Logging
 
@@ -141,15 +139,15 @@ This is based on an initial conceptual design
 ### Status update
 
 - The status of the device can be _connected_, _disconnected_ or _unregistered_
-- Upon status change the device or borker (last will) should sends a `status` report
+- Upon status change the device or borker (LWT) should sends a `status` report
 - The Frontend then updates the status property of the device
 
 ### Create release
 
 - Releases are created on project scope with a unique version.
 - The executable is uploaded to an S3 bucket.
-- Upon release, an `update` command is sent to all linked devices with version, projectId and downloadUrl as payload (retained message)
-- The device(s) checks the version and projectId
+- Upon release, an `update` command is sent to all linked devices with version, releaseId and downloadUrl as payload (retained message)
+- The device(s) checks the version and releaseId
 - On deployment change the device sends `update` report
 
 ### Trigger release
@@ -158,14 +156,15 @@ This is based on an initial conceptual design
 
 ### Summary
 
-| **Topics**                          | **Retained** | **Sent by** | **Notes**                       |
-| ----------------------------------- | ------------ | ----------- | ------------------------------- |
+| **Topics**                         | **Retained** | **Sent by** | **Notes**                       |
+| ---------------------------------- | ------------ | ----------- | ------------------------------- |
 | device/<device_id>/command/config  | true         | Frontend    | Send new variables              |
 | device/<device_id>/command/custom  | false        | Frontend    | Send project commands           |
 | device/<device_id>/command/debug   | false        | Frontend    | Enable/disable logging          |
 | device/<device_id>/command/restart | false        | Frontend    | Trigger device restart          |
 | device/<device_id>/command/update  | true         | Device      | Trigger new or existing release |
 | device/<device_id>/logs            | false        | Device      | Send logs                       |
+| device/<device_id>/report/custom   | false        | Device      | Send custom reports             |
 | device/<device_id>/report/debug    | false        | Device      | Send logging status             |
 | device/<device_id>/report/status   | true         | Device      | Send device status              |
 | device/<device_id>/report/update   | false        | Device      | Send update status              |

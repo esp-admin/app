@@ -4,7 +4,7 @@ import { prisma, getAccessTokenFromHeader, verifyAccessToken } from "#auth";
 export async function checkDevice(event: H3Event) {
   const deviceId = event.context.params?.id;
 
-  const apiKey = getHeader(event, "Authorization");
+  const apiKey = getHeader(event, "API-KEY");
 
   const device = await prisma.device.findUnique({
     where: {

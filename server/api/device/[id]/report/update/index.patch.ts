@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
       },
     });
 
-    return deployment;
+    return deployment.id;
   } catch (error) {
     await handleError(error);
   }

@@ -16,10 +16,6 @@
             <n-input v-model:value="model.password"></n-input>
         </n-form-item>
 
-        <n-form-item label="Certificate" path="certificate">
-            <n-input type="textarea" autosize v-model:value="model.certificate"></n-input>
-        </n-form-item>
-
         <FormButtons @reset="reset" :loading="pending" :disabled="!edited || pending"></FormButtons>
     </n-form>
 </template>
@@ -34,7 +30,6 @@ const model = ref<Partial<Mqtt>>({
     username: mqtt.value?.username,
     uriTCP: mqtt.value?.uriTCP,
     uriWS: mqtt.value?.uriWS,
-    certificate: mqtt.value?.certificate
 });
 
 const { apiErrors, formRef, onSubmit, pending, rules, edited, reset } = useNaiveForm(model)
@@ -54,6 +49,11 @@ rules.value = {
             message: "Unable to connect",
             validator: () => !apiErrors.value.unableToConnect
         },
+        {
+            validator: (rule, value) => /^wss/.test(value),
+            message: "Should start with wss",
+            trigger: "input"
+        }
     ],
     username: [
         {
@@ -69,6 +69,13 @@ rules.value = {
             trigger: "blur",
         },
     ],
+    uriTCP: [
+        {
+            validator: (rule, value) => value && /^mqtts/.test(value),
+            message: "Should start with mqtts",
+            trigger: "input"
+        }
+    ]
 }
 
 

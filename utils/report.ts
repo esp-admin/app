@@ -22,9 +22,10 @@ async function handleStatus(message: ReportMessage) {
 async function handleUpdate(message: ReportMessage) {
   const { update } = useDeployment(message.deviceId);
 
-  const deployment = JSON.parse(message.payload) as Deployment;
+  const { deploymentId, status } = JSON.parse(message.payload) as {
+    deploymentId: Deployment["id"];
+    status: Deployment["status"];
+  };
 
-  await update(deployment.id, {
-    status: deployment.status,
-  });
+  await update(deploymentId, status);
 }

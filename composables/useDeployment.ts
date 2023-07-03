@@ -41,13 +41,13 @@ export default function useDeployment(deviceId: Device["id"]) {
     });
   }
 
-  async function update(id: Deployment["id"], data: Partial<Deployment>) {
+  async function update(id: Deployment["id"], status: Deployment["status"]) {
     if (deployments.value) {
       const deploymentIndex = deployments.value.findIndex(
         (deployment) => deployment.id === id
       );
       if (deploymentIndex !== undefined) {
-        deployments.value[deploymentIndex].status = data.status!;
+        deployments.value[deploymentIndex].status = status;
       } else {
         const { data: deployment } = await findOne(id);
         if (deployment.value) {

@@ -1,5 +1,9 @@
 <template>
     <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
+        <n-form-item label="Identifier">
+            <n-input v-model:value="device.id" disabled></n-input>
+        </n-form-item>
+
         <n-form-item label="Name" path="name">
             <n-input v-model:value="model.name"></n-input>
         </n-form-item>

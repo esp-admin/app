@@ -65,7 +65,7 @@ This is based on an initial conceptual design
 
 5. Config
 
-- Are key-value pairs stored on device's non-Volatile storage in encrypted format.
+- Are key-value pairs stored on device's non-Volatile storage.
 - It includes MQTT credentials, project related variables and custom properties.
 - Refreshed on device boot and on `config` command.
 

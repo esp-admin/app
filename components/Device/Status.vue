@@ -6,7 +6,7 @@
             <naive-icon v-if="device.status === 'disconnected'" name="ph:x-circle-duotone" :size="size"
                 icon-color="#ef4444"></naive-icon>
             <naive-icon v-if="device.status === 'unregistered'" name="ph:warning-circle-duotone" :size="size"
-                icon-color="#f59e0b"></naive-icon>
+                icon-color="#a3a3a3"></naive-icon>
         </template>
         {{ device.status }}
     </n-tooltip>

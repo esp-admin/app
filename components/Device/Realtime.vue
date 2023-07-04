@@ -9,7 +9,7 @@
         </div>
 
         <n-card class="mt-4">
-            <n-log language="realtime" :loading="false" :log="logsString" :line-height="1.5" />
+            <n-log language="realtime" :loading="false" :log="logsString" :line-height="1.7" :rows="10" />
         </n-card>
     </div>
 </template>

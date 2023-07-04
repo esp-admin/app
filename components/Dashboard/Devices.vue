@@ -24,7 +24,7 @@ const chartOptions = computed<HighchartsOptions>(() => ({
             }, {
                 name: 'Unregistered',
                 y: devices.value?.filter(device => device.status === 'unregistered').length,
-                color: "#a8a29e"
+                color: "#a3a3a3"
             }, {
                 name: 'Disconnected',
                 y: devices.value?.filter(device => device.status === 'disconnected').length,

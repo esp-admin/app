@@ -6,8 +6,6 @@ export async function checkDevice(event: H3Event) {
 
   const apiKey = getHeader(event, "Api-Key");
 
-  console.log({ deviceId, apiKey });
-
   const device = await prisma.device.findUnique({
     where: {
       id: deviceId,

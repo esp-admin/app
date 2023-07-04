@@ -1,7 +1,7 @@
 <template>
     <n-tooltip trigger="hover">
         <template #trigger>
-            <naive-icon v-if="deployment.status === 'started'" name="ph:caret-circle-double-down-duotone" :size="size"
+            <naive-icon v-if="deployment.status === 'started'" name="svg-spinners:90-ring-with-bg" :size="size"
                 icon-color="#3b82f6"></naive-icon>
             <naive-icon v-if="deployment.status === 'failed'" name="ph:x-circle-duotone" :size="size"
                 icon-color="#ef4444"></naive-icon>

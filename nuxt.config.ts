@@ -37,7 +37,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@bg-dev/nuxt-s3",
     "nuxt-security",
-    //"nuxt-gtag",
+    "nuxt-gtag",
     // "@nuxt/devtools",
   ],
 
@@ -46,9 +46,9 @@ export default defineNuxtConfig({
   tailwindcss,
   s3,
 
-  // gtag: {
-  //   id: process.env.GTAG_MEASUREMENT_ID,
-  // },
+  gtag: {
+    id: process.env.GTAG_MEASUREMENT_ID,
+  },
 
   security: {
     corsHandler: {

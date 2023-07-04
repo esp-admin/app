@@ -21,13 +21,15 @@ export default defineEventHandler(async (event) => {
       },
     });
 
-    if (user?.email) {
-      sendMail({
-        subject: `[${message.type}] ${message.subject}`,
-        to: user.email,
-        html: `<p>${message.body}</p>`,
-      });
+    if (!user) {
+      throw new Error("unauthorized");
     }
+
+    sendMail({
+      subject: `[${message.type}] ${message.subject}`,
+      to: user.email,
+      html: `<p>${message.body}</p>`,
+    });
 
     return "ok";
   } catch (error) {

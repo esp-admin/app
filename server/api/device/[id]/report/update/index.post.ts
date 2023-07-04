@@ -24,6 +24,9 @@ export default defineEventHandler(async (event) => {
           },
         },
       },
+      select: {
+        id: true,
+      },
     });
 
     return deployment.id;

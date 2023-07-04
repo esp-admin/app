@@ -8,6 +8,12 @@ export default defineEventHandler(async (event) => {
       where: {
         userId,
       },
+      select: {
+        uriTCP: true,
+        uriWS: true,
+        username: true,
+        password: true,
+      },
     });
 
     return mqtt;

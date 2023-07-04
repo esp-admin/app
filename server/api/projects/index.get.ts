@@ -14,6 +14,9 @@ export default defineEventHandler(async (event) => {
         description: true,
         createdAt: true,
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
 
     return projects;

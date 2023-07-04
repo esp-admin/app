@@ -16,6 +16,9 @@ export default defineEventHandler(async (event) => {
         projectId: true,
         createdAt: true,
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
 
     return devices;

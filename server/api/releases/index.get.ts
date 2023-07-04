@@ -20,6 +20,9 @@ export default defineEventHandler(async (event) => {
         downloadUrl: true,
         createdAt: true,
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
 
     return releases;

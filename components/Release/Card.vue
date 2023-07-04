@@ -5,7 +5,6 @@
                 <n-text>{{ release.version }}</n-text>
                 <n-text depth="3" class="text-base">Created <n-time :time="new Date(release.createdAt)"
                         type="relative" /></n-text>
-                <n-text depth="3" class="text-base">{{ release.id }}</n-text>
             </div>
 
         </template>

@@ -9,15 +9,19 @@
         </div>
 
         <n-card class="mt-4">
-            <n-log language="realtime" :loading="false" :log="logsString" :line-height="1.7" :rows="10" />
+            <n-log ref="logInst" language="realtime" :loading="false" :log="logsString" :line-height="1.7" :rows="10" />
         </n-card>
     </div>
 </template>
 
 <script setup lang="ts">
+import { LogInst } from 'naive-ui'
+
 interface Command {
     key: string, value: string
 }
+
+const logInst = ref<LogInst>()
 
 const props = defineProps<{ device: Device }>()
 
@@ -60,6 +64,7 @@ function handleCommand(command: Command) {
 
 onMounted(() => {
     logs.value = []
+
     publish({
         deviceId: props.device.id,
         action: "command",
@@ -67,6 +72,10 @@ onMounted(() => {
         payload: "on",
         retained: false,
     })
+
+    watch(logsString, () =>
+        nextTick(() => logInst.value?.scrollTo({ position: 'bottom', slient: true }))
+    )
 })
 
 onUnmounted(() => {

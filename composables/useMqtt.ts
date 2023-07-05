@@ -1,7 +1,8 @@
-import Paho from "paho-mqtt";
+//@ts-ignore
+import * as MQTT from "mqtt/dist/mqtt";
+import type { Client } from "mqtt";
 
-const CLIENT_ID = "admin";
-var mqttClient: Paho.Client | undefined;
+var mqttClient: Client | undefined;
 
 export default function useMqtt() {
   const key = "mqtt";
@@ -49,51 +50,50 @@ export default function useMqtt() {
     return new Promise((resolve, reject) => {
       disconnect();
 
-      const { port, hostname } = new URL(mqtt.uri);
-
-      mqttClient = new Paho.Client(hostname, parseInt(port), CLIENT_ID);
-
-      mqttClient.onConnectionLost = () => (connected.value = false);
-
-      mqttClient.onMessageArrived = onMessageArrived;
-
-      mqttClient.connect({
-        userName: mqtt.username,
+      mqttClient = MQTT.connect(mqtt.uri, {
+        username: mqtt.username,
         password: mqtt.password,
-        reconnect: true,
-        onSuccess: () => {
-          connected.value = true;
-          subscribe();
-          resolve("connected");
-        },
-        onFailure: (e) => {
-          connected.value = false;
-          reject(e);
-        },
       });
+
+      mqttClient?.on("error", (e) => {
+        connected.value = false;
+        reject(e);
+      });
+
+      mqttClient?.on("disconnect", () => (connected.value = false));
+
+      mqttClient?.on("connect", () => {
+        connected.value = true;
+        subscribe();
+        resolve("connected");
+      });
+
+      mqttClient?.on("message", onMessageArrived);
     });
   }
 
   function disconnect() {
-    if (mqttClient?.isConnected) {
-      mqttClient.disconnect();
+    if (mqttClient?.connected) {
+      mqttClient.end();
     }
   }
 
   function subscribe() {
-    mqttClient?.subscribe("device/+/report/status");
-    mqttClient?.subscribe("device/+/report/update");
-    mqttClient?.subscribe("device/+/logs/+");
+    mqttClient?.subscribe([
+      "device/+/report/status",
+      "device/+/report/update",
+      "device/+/logs/+",
+    ]);
   }
 
-  function onMessageArrived(message: Paho.Message) {
-    const splittedMessage = message.destinationName.split("/");
+  function onMessageArrived(topic: string, message: string) {
+    const splittedTopic = topic.split("/");
 
     const mqttMessage = {
-      deviceId: splittedMessage[1],
-      action: splittedMessage[2],
-      type: splittedMessage[3],
-      payload: message.payloadString,
+      deviceId: splittedTopic[1],
+      action: splittedTopic[2],
+      type: splittedTopic[3],
+      payload: message,
     } as MqttMessage;
 
     switch (mqttMessage.action) {
@@ -109,11 +109,10 @@ export default function useMqtt() {
   function publish(message: CommandMessage) {
     const topic = `device/${message.deviceId}/${message.action}/${message.type}`;
 
-    const _message = new Paho.Message(message.payload);
-    _message.destinationName = topic;
-    _message.retained = message.retained;
-
-    mqttClient?.send(_message);
+    mqttClient?.publish(topic, message.payload, {
+      retain: message.retained,
+      qos: 1,
+    });
   }
 
   return { find, add, update, connect, disconnect, publish, connected };

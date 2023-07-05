@@ -7,35 +7,40 @@ export default function useMqtt() {
   const key = "mqtt";
   const request = `/api/mqtt`;
 
-  const { data: mqtt } = useNuxtData<Mqtt>(key);
+  const mqtt = useState<Mqtt>(key);
 
-  if (mqtt.value === null) {
-    clearNuxtData(key);
-  }
+  async function find() {
+    if (mqtt.value === undefined) {
+      mqtt.value = await useAuthFetch<Mqtt>(request);
+    }
 
-  function find() {
-    return useAsyncData(key, () => useAuthFetch<Mqtt>(request), {
-      default: () => mqtt.value,
-      immediate: mqtt.value ? false : true,
-    });
+    return mqtt;
   }
 
   function update(data: Partial<Mqtt>) {
-    return useAsyncData(key, () =>
-      useAuthFetch<Mqtt>(request, {
-        method: "PATCH",
-        body: data,
-      })
-    );
+    return useAuthFetch<Mqtt>(request, {
+      method: "PATCH",
+      body: data,
+
+      onResponse: ({ response }) => {
+        if (response.ok) {
+          mqtt.value = response._data;
+        }
+      },
+    });
   }
 
   function add(data: Partial<Mqtt>) {
-    return useAsyncData(key, () =>
-      useAuthFetch<Mqtt>(request, {
-        method: "POST",
-        body: data,
-      })
-    );
+    return useAuthFetch<Mqtt>(request, {
+      method: "POST",
+      body: data,
+
+      onResponse: ({ response }) => {
+        if (response.ok) {
+          mqtt.value = response._data;
+        }
+      },
+    });
   }
 
   const connected = useState("mqtt_connected");

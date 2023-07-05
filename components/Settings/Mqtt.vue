@@ -23,7 +23,7 @@
 <script setup lang="ts">
 const { find } = useMqtt()
 
-const { data: mqtt } = await find()
+const mqtt = await find()
 
 const model = ref<Partial<Mqtt>>({
     password: mqtt.value?.password,
@@ -91,12 +91,11 @@ async function handleSubmit() {
         })
 
         if (mqtt.value) {
-            const { data, error } = await update(model.value)
+            await update(model.value)
 
         }
         else {
-            const { data, error } = await add(model.value)
-
+            await add(model.value)
         }
 
     } catch (error) {

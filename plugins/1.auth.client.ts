@@ -5,7 +5,7 @@ export default defineNuxtPlugin({
       const { find, connect, disconnect } = useMqtt();
 
       if (loggedIn) {
-        const { data: mqtt } = await find();
+        const mqtt = await find();
 
         if (mqtt.value) {
           connect({

@@ -40,7 +40,7 @@ declare global {
   interface ReportMessage {
     deviceId: Device["id"];
     action: "report";
-    type: "status" | "update" | "debug";
+    type: "status" | "update" | "custom";
     retained: boolean;
     payload: string;
   }

@@ -80,6 +80,7 @@ export default function useMqtt() {
     mqttClient?.subscribe([
       "device/+/report/status",
       "device/+/report/update",
+      "device/+/report/custom",
       "device/+/logs/+",
     ]);
   }

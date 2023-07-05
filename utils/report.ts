@@ -6,10 +6,12 @@ export function handleReport(message: ReportMessage) {
     case "update":
       handleUpdate(message);
       break;
+    case "custom":
+      handleCustom(message);
   }
 }
 
-async function handleStatus(message: ReportMessage) {
+export async function handleStatus(message: ReportMessage) {
   const { update } = useDevice();
 
   const device = JSON.parse(message.payload) as Device;
@@ -19,7 +21,7 @@ async function handleStatus(message: ReportMessage) {
   });
 }
 
-async function handleUpdate(message: ReportMessage) {
+export async function handleUpdate(message: ReportMessage) {
   const { update } = useDeployment(message.deviceId);
 
   const { deploymentId, status } = JSON.parse(message.payload) as {
@@ -29,3 +31,5 @@ async function handleUpdate(message: ReportMessage) {
 
   await update(deploymentId, status);
 }
+
+export function handleCustom(message: ReportMessage) {}

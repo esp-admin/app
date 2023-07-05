@@ -10,7 +10,7 @@
                 <n-input v-model:value="model.name"></n-input>
             </n-form-item>
 
-            <FormButtons @reset="reset" :loading="pending" :disabled="!edited || pending"></FormButtons>
+            <FormButtons @reset="reset" :loading="pending" :disabled="pending"></FormButtons>
         </n-form>
     </div>
 </template>

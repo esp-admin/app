@@ -96,7 +96,7 @@ This is based on an initial conceptual design
 ### Add mqtt settings
 
 - Mqtt broker is defined by the user for security and scalability considerations
-- The user should have a running mqtt broker with support for websockets with version 3.1 or 3.1.1, the connection should be secured
+- The user should have a running mqtt broker with support for websockets, the connection should be secured
 - The user enters the websockets URI of the broker. This is required for the Frontend to connect to the broker
 - The user can enter the raw mqtt connection URI of the broker.This is used by the device as the main broker uri. If not defined the websockets uri will be used
 - The user enters username/password. These are secrets that permits the connection to the broker

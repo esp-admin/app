@@ -47,7 +47,7 @@ const nameSearch = ref("")
 
 const { find } = useDevice()
 
-const { data: devices } = await find()
+const devices = await find()
 
 const searchDebounce = inputDebounce((value: string) => nameSearch.value = value, 500)
 

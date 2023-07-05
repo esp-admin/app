@@ -1,5 +1,3 @@
-import type { H3Error } from "h3";
-
 export default function useProject() {
   const key = `projects`;
   const projects = useState<Project[]>(key);
@@ -55,7 +53,7 @@ export default function useProject() {
 
       onResponse: ({ response }) => {
         if (response.ok && projects.value) {
-          projects.value.push(response._data);
+          projects.value.unshift(response._data);
         }
       },
     });

@@ -42,14 +42,8 @@ rules.value = {
 async function handleSubmit() {
     const { unlink } = useDevice()
 
-    const { data: device, error } = await unlink(props.device.id)
-
-    if (error.value) {
-
-    }
-    else {
-        emits("done", device.value)
-    }
+    await unlink(props.device.id)
+        .then((device) => emits("done", device))
 }
 
 </script>

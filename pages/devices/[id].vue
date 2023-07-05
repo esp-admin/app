@@ -70,7 +70,7 @@ const id = route.params.id as string
 
 const { findOne } = useDevice()
 
-const { data: device } = await findOne(id)
+const device = await findOne(id)
 
 function onDelete() {
     deleteModalVisible.value = false

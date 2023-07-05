@@ -29,7 +29,7 @@ const emits = defineEmits(["cancel", "done"])
 
 const { find } = useDevice()
 
-const { data: devices } = await find()
+const devices = await find()
 
 const unlinkedDevices = computed(() => devices.value?.filter(device => device.projectId === null))
 
@@ -41,12 +41,7 @@ const options = computed<TreeOption[]>(() => unlinkedDevices.value ? unlinkedDev
 async function handleSubmit() {
     const { link } = useDevice()
 
-    const { data: device, error } = await link(model.value.selectedDeviceId, props.project.id)
-
-    if (error.value) {
-    }
-    else {
-        emits("done", device.value)
-    }
+    await link(model.value.selectedDeviceId, props.project.id)
+        .then(device => emits("done", device))
 }
 </script>

@@ -27,7 +27,7 @@ const projectVariables = ref<{ key: string, value: string }[]>([])
 
 if (props.device.projectId) {
     const { findOne } = useProject()
-    const { data: project } = await findOne(props.device.projectId)
+    const project = await findOne(props.device.projectId)
 
     if (project.value?.variables) {
         projectVariables.value = project.value.variables as { key: string, value: string }[]
@@ -37,16 +37,17 @@ if (props.device.projectId) {
 async function handleSubmit() {
     const { update } = useDevice()
 
-    const { data, error } = await update(props.device.id, { variables: model.value })
+    await update(props.device.id, { variables: model.value })
+        .then(() => {
+            const { publish } = useMqtt()
 
-    const { publish } = useMqtt()
-
-    publish({
-        deviceId: props.device.id,
-        action: "command",
-        type: "config",
-        payload: JSON.stringify(model.value),
-        retained: true
-    })
+            publish({
+                deviceId: props.device.id,
+                action: "command",
+                type: "config",
+                payload: JSON.stringify(model.value),
+                retained: true
+            })
+        })
 }
 </script>

@@ -69,6 +69,6 @@ rules.value = {
 async function handleSubmit() {
     const { update } = useDevice()
 
-    const { data, error } = await update(props.device.id, model.value)
+    await update(props.device.id, model.value)
 }
 </script>

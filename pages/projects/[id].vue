@@ -60,7 +60,7 @@ const id = route.params.id as string
 
 const { findOne } = useProject()
 
-const { data: project } = await findOne(id)
+const project = await findOne(id)
 
 async function onDelete() {
 

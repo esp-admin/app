@@ -66,15 +66,11 @@ async function handleSubmit() {
 
     const { remove } = useProject()
 
-    const { data, error } = await remove(props.project.id)
-
-    if (error.value) {
-        apiErrors.value.hasReleases = error.value.data?.message.includes("The change you are trying to make would violate the required relation")
-    }
-
-    else {
-        emits("done", data.value)
-    }
+    await remove(props.project.id)
+        .then(project => emits("done", project))
+        .catch(error => {
+            apiErrors.value.hasReleases = error.data?.message.includes("The change you are trying to make would violate the required relation")
+        })
 }
 
 </script>

@@ -44,7 +44,7 @@ const createModalVisible = ref(false)
 const nameSearch = ref()
 
 const { find } = useProject()
-const { data: projects } = await find()
+const projects = await find()
 
 const searchDebounce = inputDebounce((value: string) => nameSearch.value = value, 500)
 

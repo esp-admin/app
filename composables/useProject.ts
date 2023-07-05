@@ -2,142 +2,90 @@ import type { H3Error } from "h3";
 
 export default function useProject() {
   const key = `projects`;
+  const projects = useState<Project[]>(key);
 
-  const { data: projects } = useNuxtData<Project[]>(key);
-
-  if (projects.value === null) {
-    clearNuxtData(key);
-  }
-
-  function find() {
+  async function find() {
     const request = `/api/projects`;
 
-    return useAsyncData(key, () => useAuthFetch<Project[]>(request), {
-      default: () => projects.value,
-      immediate: projects.value ? false : true,
-    });
+    if (projects.value === undefined) {
+      projects.value = await useAuthFetch(request);
+    }
+
+    return projects;
   }
 
-  function findOne(id: Project["id"]) {
+  async function findOne(id: Project["id"]) {
     const key = `project-${id}`;
     const request = `/api/projects/${id}`;
 
-    const { data: project } = useNuxtData(key);
+    const project = useState<Project>(key);
 
-    if (project.value === null) {
-      clearNuxtData(key);
+    if (project.value === undefined) {
+      project.value = await useAuthFetch(request);
     }
 
-    return useAsyncData<Project>(key, () => useAuthFetch(request), {
-      default: () => project.value,
-      immediate: project.value ? false : true,
-    });
+    return project;
   }
 
   function remove(id: Project["id"]) {
     const request = `/api/projects/${id}`;
 
-    return useAsyncData<Project, H3Error>(() =>
-      useAuthFetch(request, {
-        method: "DELETE",
+    return useAuthFetch<Project>(request, {
+      method: "DELETE",
 
-        onResponse: ({ response }) => {
-          if (response.ok && projects.value) {
-            const projectIndex = projects.value.findIndex(
-              (project) => project.id === id
-            );
-            if (projectIndex !== undefined) {
-              projects.value.splice(projectIndex, 1);
-            }
+      onResponse: ({ response }) => {
+        if (response.ok && projects.value) {
+          const projectIndex = projects.value.findIndex(
+            (project) => project.id === id
+          );
+          if (projectIndex !== undefined) {
+            projects.value.splice(projectIndex, 1);
           }
-        },
-      })
-    );
+        }
+      },
+    });
   }
 
   function add(data: Partial<Project>) {
     const request = `/api/projects`;
 
-    return useAsyncData<Project, H3Error>(() =>
-      useAuthFetch(request, {
-        method: "POST",
-        body: data,
+    return useAuthFetch<Project>(request, {
+      method: "POST",
+      body: data,
 
-        onResponse: ({ response }) => {
-          if (response.ok && projects.value) {
-            projects.value.push(response._data);
-          }
-        },
-      })
-    );
+      onResponse: ({ response }) => {
+        if (response.ok && projects.value) {
+          projects.value.push(response._data);
+        }
+      },
+    });
   }
 
   function update(id: Project["id"], data: Partial<Project>) {
     const key = `project-${id}`;
     const request = `/api/projects/${id}`;
+    const project = useState(key);
 
-    return useAsyncData<Project, H3Error>(key, () =>
-      useAuthFetch(request, {
-        method: "PATCH",
-        body: data,
+    return useAuthFetch<Project>(request, {
+      method: "PATCH",
+      body: data,
 
-        onResponse: ({ response }) => {
-          if (response.ok && projects.value) {
-            const projectIndex = projects.value.findIndex(
-              (project) => project.id === id
-            );
-            if (projectIndex !== undefined) {
-              projects.value[projectIndex] = response._data;
-            }
+      onResponse: ({ response }) => {
+        if (response.ok && projects.value) {
+          const projectIndex = projects.value.findIndex(
+            (project) => project.id === id
+          );
+          if (projectIndex !== undefined) {
+            projects.value[projectIndex] = response._data;
           }
-        },
-      })
-    );
+        }
+
+        if (response.ok && project.value) {
+          project.value = response._data;
+        }
+      },
+    });
   }
 
-  function addRelease(id: Project["id"], data: Partial<Release>) {
-    const key = `project-${id}`;
-    const request = `/api/projects/${id}/releases`;
-
-    return useAsyncData<Project, H3Error>(key, () =>
-      useAuthFetch(request, {
-        method: "POST",
-        body: data,
-
-        onResponse: ({ response }) => {
-          if (response.ok && projects.value) {
-            const projectIndex = projects.value.findIndex(
-              (project) => project.id === id
-            );
-            if (projectIndex !== undefined) {
-              projects.value[projectIndex] = response._data;
-            }
-          }
-        },
-      })
-    );
-  }
-
-  function removeRelease(projectId: Project["id"], releaseId: Release["id"]) {
-    const key = `project-${projectId}`;
-    const request = `/api/projects/${projectId}/releases/${releaseId}`;
-
-    return useAsyncData<Project, H3Error>(key, () =>
-      useAuthFetch(request, {
-        method: "DELETE",
-
-        onResponse: ({ response }) => {
-          if (response.ok && projects.value) {
-            const projectIndex = projects.value.findIndex(
-              (project) => project.id === projectId
-            );
-            if (projectIndex !== undefined) {
-              projects.value[projectIndex] = response._data;
-            }
-          }
-        },
-      })
-    );
-  }
-  return { find, findOne, remove, add, update, addRelease, removeRelease };
+  return { find, findOne, remove, add, update };
 }

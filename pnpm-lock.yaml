@@ -5,14 +5,14 @@ specifiers:
   '@bg-dev/nuxt-naiveui': ^1.2.0
   '@bg-dev/nuxt-s3': ^0.2.3
   '@bugsnag/js': ^7.20.2
-  '@nuxt/devtools': ^0.6.2
+  '@nuxt/devtools': ^0.6.6
   '@nuxtjs/tailwindcss': ^6.8.0
   '@prisma/client': ^4.16.2
   '@types/ua-parser-js': ^0.7.36
-  changelogen: ^0.5.3
-  dayjs: ^1.11.8
+  changelogen: ^0.5.4
+  dayjs: ^1.11.9
   highcharts: '10'
-  highcharts-vue: ^1.4.2
+  highcharts-vue: ^1.4.3
   highlight.js: ^11.8.0
   mqtt: ^4.3.7
   npm: ^9.7.2

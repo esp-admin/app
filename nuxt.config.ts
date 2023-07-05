@@ -2,9 +2,6 @@ import { auth, naiveui, tailwindcss, s3 } from "./config";
 
 export default defineNuxtConfig({
   ssr: true,
-  // experimental: {
-  //   inlineSSRStyles: false,
-  // },
 
   app: {
     head: {
@@ -25,8 +22,8 @@ export default defineNuxtConfig({
         },
       ],
     },
-    // pageTransition: { name: "page", mode: "out-in" },
-    // layoutTransition: { name: "layout", mode: "out-in" },
+    pageTransition: { name: "page", mode: "out-in" },
+    layoutTransition: { name: "layout", mode: "out-in" },
   },
 
   css: ["~/assets/styles/main.css"],
@@ -82,7 +79,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       bugsnag: {
-        enabled: false,
+        enabled: true,
         apiKey: process.env.BUGSNAG_API_KEY,
       },
     },

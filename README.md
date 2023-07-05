@@ -13,7 +13,7 @@ This project is under developement, planning can be found under `Projects` tab. 
 - Built-in authentication
 - User defined MQTT broker
 - Remote configuration
-- Error reporting via Webhook and Bugsnag
+- Error reporting via Webhook and Email
 - Realtime logging
 - Remote software updates
 - Database agnostic (Prisma based)

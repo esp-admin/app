@@ -1,6 +1,80 @@
 # Changelog
 
 
+## v0.0.9
+
+[compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.8...v0.0.9)
+
+### 🚀 Enhancements
+
+- Add custom report via email ([843c8de](https://github.com/becem-gharbi/esp-admin/commit/843c8de))
+- Replace pkg paho-mqtt with mqtt for mqtt v5 support ([7ce3ac4](https://github.com/becem-gharbi/esp-admin/commit/7ce3ac4))
+
+### 🩹 Fixes
+
+- Disable inlineSSRStyles for fixing tailwind styles conflict ([f4a980d](https://github.com/becem-gharbi/esp-admin/commit/f4a980d))
+- Fix S3 middleware ([7a16fea](https://github.com/becem-gharbi/esp-admin/commit/7a16fea))
+- Fix undefined userId in user patch handler ([83f68a2](https://github.com/becem-gharbi/esp-admin/commit/83f68a2))
+- **DeploymentStatus:** Replace ctive with started ([2e54126](https://github.com/becem-gharbi/esp-admin/commit/2e54126))
+- Fix <update> report message parsing ([4c5229d](https://github.com/becem-gharbi/esp-admin/commit/4c5229d))
+- Auto scroll on realtime logs ([bc5077b](https://github.com/becem-gharbi/esp-admin/commit/bc5077b))
+- Fix composables naming ([174d1a0](https://github.com/becem-gharbi/esp-admin/commit/174d1a0))
+- About create release on upload fail ([a09a59e](https://github.com/becem-gharbi/esp-admin/commit/a09a59e))
+- Allow profile update on unedited form ([403a491](https://github.com/becem-gharbi/esp-admin/commit/403a491))
+- Reconnect on lost mqtt connection ([a12431e](https://github.com/becem-gharbi/esp-admin/commit/a12431e))
+
+### 💅 Refactors
+
+- Add route validation on device & project pages ([c65f959](https://github.com/becem-gharbi/esp-admin/commit/c65f959))
+- Add missing autocomplete form attribute ([561b973](https://github.com/becem-gharbi/esp-admin/commit/561b973))
+- Replace projectId with releaseId in update command ([ee1e65f](https://github.com/becem-gharbi/esp-admin/commit/ee1e65f))
+- Replace Authorization with API-KEY in checkDevice ([c9fd9d9](https://github.com/becem-gharbi/esp-admin/commit/c9fd9d9))
+- Refactor device related api handlers ([a789b91](https://github.com/becem-gharbi/esp-admin/commit/a789b91))
+- **models:** Remove mac field from Device & replace active with started in DeploymentStatus ([070151d](https://github.com/becem-gharbi/esp-admin/commit/070151d))
+- Remove mac input on device create ([7e3fd3f](https://github.com/becem-gharbi/esp-admin/commit/7e3fd3f))
+- **models:** Remove certificate field from Mqtt ([f95eb61](https://github.com/becem-gharbi/esp-admin/commit/f95eb61))
+- Remove certificate input on mqtt settings ([f8d18aa](https://github.com/becem-gharbi/esp-admin/commit/f8d18aa))
+- **update:** Return only deployment id on update endpoint ([07a88ef](https://github.com/becem-gharbi/esp-admin/commit/07a88ef))
+- Select only required fields on device handlers ([407edd0](https://github.com/becem-gharbi/esp-admin/commit/407edd0))
+- Merge update patch handler with update post handler ([27fb3a4](https://github.com/becem-gharbi/esp-admin/commit/27fb3a4))
+- Change deployment started icon ([f321ad7](https://github.com/becem-gharbi/esp-admin/commit/f321ad7))
+- Order findMany by desc createdAt ([96dc195](https://github.com/becem-gharbi/esp-admin/commit/96dc195))
+- Minor ui refactoring ([0e3f77f](https://github.com/becem-gharbi/esp-admin/commit/0e3f77f))
+- Display device id on metadata form ([9627d2b](https://github.com/becem-gharbi/esp-admin/commit/9627d2b))
+- Minor ui refactoring ([189f7b8](https://github.com/becem-gharbi/esp-admin/commit/189f7b8))
+- Cache projects with useState ([693aa99](https://github.com/becem-gharbi/esp-admin/commit/693aa99))
+- Cache devices with useState ([dd9cb54](https://github.com/becem-gharbi/esp-admin/commit/dd9cb54))
+- Cache release with useState ([8c174af](https://github.com/becem-gharbi/esp-admin/commit/8c174af))
+- Cache deployments with useState ([695a3e4](https://github.com/becem-gharbi/esp-admin/commit/695a3e4))
+- Cache mqtt with useState ([73c2e2b](https://github.com/becem-gharbi/esp-admin/commit/73c2e2b))
+- Cache report settings with useState ([8e069ed](https://github.com/becem-gharbi/esp-admin/commit/8e069ed))
+- Create layout public ([2999465](https://github.com/becem-gharbi/esp-admin/commit/2999465))
+- Minor ui refactoring ([3e1a3c3](https://github.com/becem-gharbi/esp-admin/commit/3e1a3c3))
+- Add layout and page transitions ([07d9770](https://github.com/becem-gharbi/esp-admin/commit/07d9770))
+
+### 📖 Documentation
+
+- **readme:** Remove leading slash on topics ([7312b9f](https://github.com/becem-gharbi/esp-admin/commit/7312b9f))
+- Update README ([8384522](https://github.com/becem-gharbi/esp-admin/commit/8384522))
+- **readme:** Remove nvs encryption note ([dd037ed](https://github.com/becem-gharbi/esp-admin/commit/dd037ed))
+- Update README ([5f44725](https://github.com/becem-gharbi/esp-admin/commit/5f44725))
+
+### 🌊 Types
+
+- Add mqtt/dist/mqtt declaration file ([51c6ee4](https://github.com/becem-gharbi/esp-admin/commit/51c6ee4))
+
+### 🏡 Chore
+
+- Downgrade nuxt to v3.5 ([9808c1b](https://github.com/becem-gharbi/esp-admin/commit/9808c1b))
+- Replace destr with JSON.parse ([3474122](https://github.com/becem-gharbi/esp-admin/commit/3474122))
+- Change fontFamily to Rubik ([47ac2ef](https://github.com/becem-gharbi/esp-admin/commit/47ac2ef))
+- Enable google analytics ([be41244](https://github.com/becem-gharbi/esp-admin/commit/be41244))
+- Upgrade to nuxt v3.6 ([5235b3d](https://github.com/becem-gharbi/esp-admin/commit/5235b3d))
+
+### ❤️  Contributors
+
+- Becem Gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v0.0.8
 
 [compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.7...v0.0.8)

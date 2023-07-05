@@ -42,25 +42,27 @@ model RefreshToken {
 }
 
 model Mqtt {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  uriTCP      String?
-  uriWS       String
-  username    String
-  password    String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  userId      String   @unique @db.ObjectId
-  user        User     @relation(fields: [userId], references: [id])
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  uriTCP    String?
+  uriWS     String
+  username  String
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String   @unique @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 model Report {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  bugsnagKey String?
-  webhookUrl String?
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  userId     String   @unique @db.ObjectId
-  user       User     @relation(fields: [userId], references: [id])
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  webhookEnable Boolean  @default(false)
+  webhookUrl    String?
+  emailEnable   Boolean  @default(false)
+  emailAddress  String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  userId        String   @unique @db.ObjectId
+  user          User     @relation(fields: [userId], references: [id])
 }
 
 model Project {

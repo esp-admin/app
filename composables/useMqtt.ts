@@ -60,6 +60,7 @@ export default function useMqtt() {
       mqttClient.connect({
         userName: mqtt.username,
         password: mqtt.password,
+        reconnect: true,
         onSuccess: () => {
           connected.value = true;
           subscribe();

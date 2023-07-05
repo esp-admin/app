@@ -38,7 +38,7 @@ async function onTrigger() {
 
     const { find } = useDevice()
 
-    const { data: devices } = await find()
+    const devices = await find()
 
     const linkedDevices = devices.value?.filter(device => device.projectId === props.projectId) || []
 

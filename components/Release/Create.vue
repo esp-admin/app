@@ -96,35 +96,33 @@ async function handleSubmit() {
 
     const { add } = useRelease(props.project.id)
 
-    const { data: release, error } = await add(model.value)
+    await add(model.value)
+        .then(async release => {
+            const { publish } = useMqtt()
 
-    if (error.value) {
-        apiErrors.value.versionAlreadyExists = error.value.data?.message.includes("Unique constraint failed on the constraint: `Project_name_key`")
-    }
-    else {
-        const { publish } = useMqtt()
+            const { find } = useDevice()
 
-        const { find } = useDevice()
+            const devices = await find()
 
-        const { data: devices } = await find()
+            const linkedDevices = devices.value?.filter(device => device.projectId === props.project.id) || []
 
-        const linkedDevices = devices.value?.filter(device => device.projectId === props.project.id) || []
-
-        for (let device of linkedDevices) {
-            publish({
-                deviceId: device.id,
-                action: "command",
-                type: "update",
-                retained: true,
-                payload: JSON.stringify({
-                    releaseId: release.value!.id,
-                    version: release.value!.version,
-                    downloadUrl: release.value!.downloadUrl,
+            for (let device of linkedDevices) {
+                publish({
+                    deviceId: device.id,
+                    action: "command",
+                    type: "update",
+                    retained: true,
+                    payload: JSON.stringify({
+                        releaseId: release.id,
+                        version: release.version,
+                        downloadUrl: release.downloadUrl,
+                    })
                 })
-            })
-        }
+            }
 
-        emits("done", release.value)
-    }
+            emits("done", release)
+        }).catch(error => {
+            apiErrors.value.versionAlreadyExists = error.data?.message.includes("Unique constraint failed on the constraint: `Project_name_key`")
+        })
 }
 </script>

@@ -36,7 +36,7 @@ const props = defineProps<{ project: Project }>()
 
 const { find } = useRelease(props.project.id)
 
-const { data: releases } = await find()
+const releases = await find()
 
 function onCreate() {
     createModalVisible.value = false

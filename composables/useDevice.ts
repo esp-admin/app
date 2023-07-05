@@ -1,5 +1,3 @@
-import type { H3Error } from "h3";
-
 export default function useDevice() {
   const key = `devices`;
   const devices = useState<Device[]>(key);

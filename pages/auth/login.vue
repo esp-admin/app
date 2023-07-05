@@ -63,6 +63,10 @@ rules.value = {
             trigger: "blur",
         },
         {
+            type: "email",
+            message: "Should be a valid email address"
+        },
+        {
             message: "Wrong credentials",
             validator: () => !apiErrors.value.wrongCredentials
         },

@@ -84,7 +84,11 @@ rules.value = {
             validator: () => !apiErrors.value.emailAlreadyExists,
             message: "Email already exists",
             trigger: "input"
-        }
+        },
+        {
+            type: "email",
+            message: "Should be a valid email address"
+        },
     ],
     password: [
         {

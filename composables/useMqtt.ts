@@ -1,8 +1,6 @@
-//@ts-ignore
-import * as MQTT from "mqtt/dist/mqtt";
-import type { Client } from "mqtt";
+import MQTT from "mqtt/dist/mqtt";
 
-var mqttClient: Client | undefined;
+var mqttClient: MQTT.Client | undefined;
 
 export default function useMqtt() {
   const key = "mqtt";

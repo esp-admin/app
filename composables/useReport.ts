@@ -2,35 +2,40 @@ export default function useReport() {
   const key = "report";
   const request = `/api/report`;
 
-  const { data: report } = useNuxtData<Report>(key);
+  const report = useState<Report>(key);
 
-  if (report.value === null) {
-    clearNuxtData(key);
-  }
+  async function find() {
+    if (report.value === undefined) {
+      report.value = await useAuthFetch<Report>(request);
+    }
 
-  function find() {
-    return useAsyncData(key, () => useAuthFetch<Report>(request), {
-      default: () => report.value,
-      immediate: report.value ? false : true,
-    });
+    return report;
   }
 
   function update(data: Partial<Report>) {
-    return useAsyncData(key, () =>
-      useAuthFetch<Report>(request, {
-        method: "PATCH",
-        body: data,
-      })
-    );
+    return useAuthFetch<Report>(request, {
+      method: "PATCH",
+      body: data,
+
+      onResponse: ({ response }) => {
+        if (response.ok) {
+          report.value = response._data;
+        }
+      },
+    });
   }
 
   function add(data: Partial<Report>) {
-    return useAsyncData(key, () =>
-      useAuthFetch<Report>(request, {
-        method: "POST",
-        body: data,
-      })
-    );
+    return useAuthFetch<Report>(request, {
+      method: "POST",
+      body: data,
+
+      onResponse: ({ response }) => {
+        if (response.ok) {
+          report.value = response._data;
+        }
+      },
+    });
   }
 
   return { find, add, update };

@@ -17,7 +17,7 @@
 
 const { find } = useReport()
 
-const { data: report } = await find()
+const report = await find()
 
 const model = ref<Partial<Report>>({
     bugsnagKey: report.value?.bugsnagKey,
@@ -30,12 +30,10 @@ async function handleSubmit() {
     const { add, update } = useReport()
 
     if (report.value) {
-        const { data, error } = await update(model.value)
-
+        await update(model.value)
     }
     else {
-        const { data, error } = await add(model.value)
-
+        await add(model.value)
     }
 }
 </script>

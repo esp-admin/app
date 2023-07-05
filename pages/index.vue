@@ -1,8 +1,5 @@
 <template>
-    <div class="page">
-        <Navbar></Navbar>
-        <main class="flex-1"></main>
-        <Footer></Footer>
+    <div>
     </div>
 </template>
 
@@ -11,6 +8,6 @@ definePageMeta({
     auth: false,
     middleware: "guest",
     colorMode: "light",
-    layout: false
+    layout: "public"
 });
 </script>

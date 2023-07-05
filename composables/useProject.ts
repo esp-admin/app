@@ -1,6 +1,6 @@
 import type { H3Error } from "h3";
 
-export default function useDevice() {
+export default function useProject() {
   const key = `projects`;
 
   const { data: projects } = useNuxtData<Project[]>(key);

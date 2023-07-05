@@ -1,4 +1,4 @@
-export default function useMqtt() {
+export default function useReport() {
   const key = "report";
   const request = `/api/report`;
 

@@ -12,24 +12,34 @@ export default defineEventHandler(async (event) => {
 
     const message = await readBody<Body>(event);
 
-    const user = await prisma.user.findUnique({
+    const report = await prisma.report.findUnique({
       where: {
-        id: userId,
-      },
-      select: {
-        email: true,
+        userId,
       },
     });
 
-    if (!user) {
+    if (!report) {
       throw new Error("unauthorized");
     }
 
-    sendMail({
-      subject: `[${message.type}] ${message.subject}`,
-      to: user.email,
-      html: `<p>${message.body}</p>`,
-    });
+    if (report.emailEnable && report.emailAddress) {
+      sendMail({
+        subject: `[${message.type}] ${message.subject}`,
+        to: report.emailAddress,
+        html: `<p>${message.body}</p>`,
+      });
+    }
+
+    if (report.webhookEnable && report.webhookUrl) {
+      await $fetch(report.webhookUrl, {
+        method: "POST",
+        body: {
+          type: message.type,
+          subject: message.subject,
+          body: message.body,
+        },
+      }).catch(console.error);
+    }
 
     return "ok";
   } catch (error) {

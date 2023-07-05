@@ -62,6 +62,6 @@ rules.value = {
 async function handleSubmit() {
     const { update } = useProject()
 
-    const { data, error } = await update(props.project.id, model.value)
+    await update(props.project.id, model.value)
 }
 </script>

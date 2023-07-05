@@ -4,7 +4,7 @@
             Alpha ~ {{ version }}
         </n-text>
 
-        <n-text>-</n-text>
+        <n-text>•</n-text>
 
         <nuxt-link :to="repository" target="_blank">
             <span class="flex gap-2 items-center">

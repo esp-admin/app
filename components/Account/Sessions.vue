@@ -20,7 +20,7 @@
                         }}
                     </n-text>
 
-                    <n-text depth="3" class="text-base"><n-time :time="new Date(session.updatedAt)"
+                    <n-text depth="3" class="text-base"> • <n-time :time="new Date(session.updatedAt)"
                             type="relative" /></n-text>
                 </template>
 

@@ -38,7 +38,7 @@ const emits = defineEmits(["cancel", "done"])
 
 const model = ref<Partial<Release>>({
     version: "",
-    downloadUrl: "",
+    downloadUrl: undefined,
 });
 
 const { apiErrors, formRef, onSubmit, pending, rules, edited } = useNaiveForm(model)
@@ -90,8 +90,9 @@ async function handleSubmit() {
         }
     }
 
-    if (!model.value.downloadUrl) {
+    if (model.value.downloadUrl === undefined) {
         apiErrors.value.uploadFailed = true
+        return
     }
 
     const { add } = useRelease(props.project.id)

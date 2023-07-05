@@ -1,44 +1,33 @@
 export default function useDeployment(deviceId: Device["id"]) {
   const key = `deployments-${deviceId}`;
 
-  const { data: deployments } = useNuxtData<Deployment[]>(key);
+  const deployments = useState<Deployment[]>(key);
 
-  if (deployments.value === null) {
-    clearNuxtData(key);
-  }
-
-  function find() {
+  async function find() {
     const request = `/api/deployments`;
 
-    return useAsyncData(
-      key,
-      () =>
-        useAuthFetch<Deployment[]>(request, {
-          query: {
-            deviceId,
-          },
-        }),
-      {
-        default: () => deployments.value,
-        immediate: deployments.value ? false : true,
-      }
-    );
+    if (deployments.value === undefined) {
+      deployments.value = await useAuthFetch<Deployment[]>(request, {
+        query: {
+          deviceId,
+        },
+      });
+    }
+
+    return deployments;
   }
 
-  function findOne(id: Deployment["id"]) {
+  async function findOne(id: Deployment["id"]) {
     const key = `deployment-${id}`;
     const request = `/api/deployments/${id}`;
 
-    const { data: deployment } = useNuxtData(key);
+    const deployment = useState<Deployment>(key);
 
-    if (deployment.value === null) {
-      clearNuxtData(key);
+    if (deployment.value === undefined) {
+      deployment.value = await useAuthFetch(request);
     }
 
-    return useAsyncData<Deployment>(key, () => useAuthFetch(request), {
-      default: () => deployment.value,
-      immediate: deployment.value ? false : true,
-    });
+    return deployment;
   }
 
   async function update(id: Deployment["id"], status: Deployment["status"]) {
@@ -46,10 +35,12 @@ export default function useDeployment(deviceId: Device["id"]) {
       const deploymentIndex = deployments.value.findIndex(
         (deployment) => deployment.id === id
       );
+
       if (deploymentIndex !== undefined) {
         deployments.value[deploymentIndex].status = status;
       } else {
-        const { data: deployment } = await findOne(id);
+        const deployment = await findOne(id);
+
         if (deployment.value) {
           deployments.value.unshift(deployment.value);
         }

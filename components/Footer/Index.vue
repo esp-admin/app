@@ -17,7 +17,7 @@
 
         <nuxt-link :to="repository" target="_blank">
             <span class="flex gap-1 items-start">
-                <naive-icon name="mdi:github" :size="18"></naive-icon>
+                <naive-icon name="tabler:brand-github" :size="18"></naive-icon>
                 <n-text>Github</n-text>
             </span>
         </nuxt-link>

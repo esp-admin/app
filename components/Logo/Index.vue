@@ -6,7 +6,7 @@
 <script setup lang="ts">
 const { colorMode } = useNaiveColorMode()
 
-withDefaults(defineProps<{ width: number }>(), {
+withDefaults(defineProps<{ width?: number }>(), {
     width: 100
 })
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div class="page">
-        <div class="flex-1 flex ">
+        <div class="flex-1 flex">
             <div class="md:w-1/3 w-full flex flex-col justify-between">
 
                 <div class="px-8 mt-10">
@@ -19,7 +19,6 @@
             </div>
 
             <div class="w-2/3 hidden md:block bg-gradient-to-r from-cyan-500 to-blue-500"></div>
-
         </div>
     </div>
 </template>

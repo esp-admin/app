@@ -1,8 +1,12 @@
 <template>
-    <img v-if="colorMode === 'light'" src="~/assets/logos/light.svg" alt="logo" width="120">
-    <img v-else src="~/assets/logos/dark.svg" alt="logo" width="120">
+    <img v-if="colorMode === 'light'" src="~/assets/logos/light.svg" alt="logo" :width="width">
+    <img v-else src="~/assets/logos/dark.svg" alt="logo" :width="width">
 </template>
 
-<script setup>
+<script setup lang="ts">
 const { colorMode } = useNaiveColorMode()
+
+withDefaults(defineProps<{ width: number }>(), {
+    width: 100
+})
 </script>

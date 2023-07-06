@@ -74,6 +74,9 @@ export default defineNuxtConfig({
         xssValidator: false,
       },
     },
+    "/": {
+      redirect: "/auth/login",
+    },
   },
 
   runtimeConfig: {

@@ -6,10 +6,19 @@
 
         <n-text>•</n-text>
 
+        <nuxt-link to="https://esp-admin.bg-tech.tn" target="_blank">
+            <span class="flex gap-1 items-start">
+                <naive-icon name="ph:house" :size="18"></naive-icon>
+                <n-text>Home</n-text>
+            </span>
+        </nuxt-link>
+
+        <n-text>•</n-text>
+
         <nuxt-link :to="repository" target="_blank">
-            <span class="flex gap-2 items-center">
+            <span class="flex gap-1 items-start">
+                <naive-icon name="mdi:github" :size="18"></naive-icon>
                 <n-text>Github</n-text>
-                <naive-icon name="ph:arrow-square-out" :size="18"></naive-icon>
             </span>
         </nuxt-link>
     </footer>

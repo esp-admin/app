@@ -17,7 +17,6 @@ specifiers:
   mqtt: ^4.3.7
   npm: ^9.7.2
   nuxt: ^3.6.1
-  nuxt-gtag: ^0.5.7
   nuxt-security: ^0.13.1
   prisma: ^4.16.2
   ua-parser-js: ^1.0.35
@@ -42,7 +41,6 @@ devDependencies:
   changelogen: 0.5.4
   npm: 9.7.2
   nuxt: 3.6.1_@types+node@20.3.3
-  nuxt-gtag: 0.5.7
   nuxt-security: 0.13.1
   prisma: 4.16.2
 
@@ -6788,17 +6786,6 @@ packages:
     dependencies:
       '@nuxt/kit': 3.6.1
       defu: 6.1.2
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
-    dev: true
-
-  /nuxt-gtag/0.5.7:
-    resolution: {integrity: sha512-Q6NRndEJ0phEfKdS4uLy3hpVBkgWGnG5KJ2dhVyCmbLXcfakkmf19f2WJ5uM2yUOg8rAkYgDjRb9XyAfE+okuA==}
-    dependencies:
-      '@nuxt/kit': 3.6.1
-      defu: 6.1.2
-      pathe: 1.1.1
     transitivePeerDependencies:
       - rollup
       - supports-color

@@ -31,11 +31,11 @@ const naiveTheme = useNaiveTheme()
 
 <style scoped>
 footer {
-    height: 48px;
-    padding: 16px;
-    box-shadow: 0px 0px 2px 0px #a3a3a3;
+    height: 56px;
+    /* box-shadow: 0px 0px 2px 0px #a3a3a3; */
     display: flex;
-    place-content: center;
+    justify-content: center;
+    align-items: center;
     gap: 16px;
     width: 100%;
 }

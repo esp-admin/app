@@ -1,6 +1,44 @@
 # Changelog
 
 
+## v0.0.10
+
+[compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.9...v0.0.10)
+
+### 🚀 Enhancements
+
+- Add Github login method ([43e5e9b](https://github.com/becem-gharbi/esp-admin/commit/43e5e9b))
+
+### 🩹 Fixes
+
+- Add missing client side email validations ([f8945de](https://github.com/becem-gharbi/esp-admin/commit/f8945de))
+
+### 💅 Refactors
+
+- **models:** Update Report ([b2de303](https://github.com/becem-gharbi/esp-admin/commit/b2de303))
+- Update report settings form ([91b3f05](https://github.com/becem-gharbi/esp-admin/commit/91b3f05))
+- Update report custom handler ([6488248](https://github.com/becem-gharbi/esp-admin/commit/6488248))
+- Add handleCustom report handler ([16ec016](https://github.com/becem-gharbi/esp-admin/commit/16ec016))
+- Update auth layout ([89c532e](https://github.com/becem-gharbi/esp-admin/commit/89c532e))
+- Add home btn to Footer ([65c7834](https://github.com/becem-gharbi/esp-admin/commit/65c7834))
+- Rename NavbarMain to Navbar ([d26aad4](https://github.com/becem-gharbi/esp-admin/commit/d26aad4))
+- Minor UI refactoring ([8c210a2](https://github.com/becem-gharbi/esp-admin/commit/8c210a2))
+
+### 📖 Documentation
+
+- **readme:** Replace Bugsnag report method with Email ([9805856](https://github.com/becem-gharbi/esp-admin/commit/9805856))
+- Update README.md ([4d45c26](https://github.com/becem-gharbi/esp-admin/commit/4d45c26))
+
+### 🏡 Chore
+
+- Remove landing page & redirect to login page ([e62f69b](https://github.com/becem-gharbi/esp-admin/commit/e62f69b))
+- Remove google analytics ([63ea8fb](https://github.com/becem-gharbi/esp-admin/commit/63ea8fb))
+
+### ❤️  Contributors
+
+- Becem Gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+- Becem ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v0.0.9
 
 [compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.8...v0.0.9)

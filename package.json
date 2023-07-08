@@ -1,6 +1,6 @@
 {
   "name": "esp-admin",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "private": true,
   "repository": "https://github.com/becem-gharbi/esp-admin.git",
   "scripts": {

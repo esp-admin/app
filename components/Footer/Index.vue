@@ -1,15 +1,15 @@
 <template>
-    <footer :style="{ backgroundColor: naiveTheme.common.bodyColor }">
-        <n-text :depth="2">
+    <footer :style="{ backgroundColor: naiveTheme.common.bodyColor }" class="text-gray-500">
+        <n-text class="text-gray-500">
             Alpha ~ {{ version }}
         </n-text>
 
-        <n-text>•</n-text>
+        <n-text class="text-gray-500">•</n-text>
 
         <nuxt-link to="https://esp-admin.bg-tech.tn" target="_blank">
             <span class="flex gap-1 items-start">
                 <naive-icon name="ph:house" :size="18"></naive-icon>
-                <n-text>Home</n-text>
+                <n-text class="text-gray-500">Home</n-text>
             </span>
         </nuxt-link>
 
@@ -18,7 +18,7 @@
         <nuxt-link :to="repository" target="_blank">
             <span class="flex gap-1 items-start">
                 <naive-icon name="tabler:brand-github" :size="18"></naive-icon>
-                <n-text>Github</n-text>
+                <n-text class="text-gray-500">Github</n-text>
             </span>
         </nuxt-link>
     </footer>
@@ -32,7 +32,6 @@ const naiveTheme = useNaiveTheme()
 <style scoped>
 footer {
     height: 56px;
-    /* box-shadow: 0px 0px 2px 0px #a3a3a3; */
     display: flex;
     justify-content: center;
     align-items: center;

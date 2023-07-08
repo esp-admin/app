@@ -20,6 +20,15 @@ export const auth: Partial<ModuleOptions> = {
       tokenUrl: "https://accounts.google.com/o/oauth2/token",
       userUrl: "https://www.googleapis.com/oauth2/v3/userinfo",
     },
+
+    github: {
+      clientId: process.env.AUTH_OAUTH_GITHUB_CLIENT_ID || "",
+      clientSecret: process.env.AUTH_OAUTH_GITHUB_CLIENT_SECRET || "",
+      scopes: "user:email",
+      authorizeUrl: "https://github.com/login/oauth/authorize",
+      tokenUrl: "https://github.com/login/oauth/access_token",
+      userUrl: "https://api.github.com/user",
+    },
   },
 
   redirect: {

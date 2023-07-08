@@ -15,11 +15,19 @@
                     <n-text type="primary">Forgot password?</n-text>
                 </nuxt-link>
                 <n-button attr-type="submit" block :loading="pending" :disabled="pending" type="primary">Login</n-button>
+
                 <n-button @click="() => loginWithProvider('google')" block>
                     <template #icon>
                         <naive-icon name="logos:google-icon"></naive-icon>
                     </template>
                     Continue with Google
+                </n-button>
+
+                <n-button @click="() => loginWithProvider('github')" block>
+                    <template #icon>
+                        <naive-icon name="mdi:github"></naive-icon>
+                    </template>
+                    Continue with Github
                 </n-button>
 
                 <nuxt-link to="/auth/register">

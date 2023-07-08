@@ -131,6 +131,7 @@ enum Role {
 enum Provider {
   default
   google
+  github
 }
 
 enum DeviceStatus {

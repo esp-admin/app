@@ -16,14 +16,14 @@
                 </nuxt-link>
                 <n-button attr-type="submit" block :loading="pending" :disabled="pending" type="primary">Login</n-button>
 
-                <n-button @click="() => loginWithProvider('google')" block>
+                <n-button v-if="$config.public.oauth.google" @click="() => loginWithProvider('google')" block>
                     <template #icon>
                         <naive-icon name="logos:google-icon"></naive-icon>
                     </template>
                     Continue with Google
                 </n-button>
 
-                <n-button @click="() => loginWithProvider('github')" block>
+                <n-button v-if="$config.public.oauth.github" @click="() => loginWithProvider('github')" block>
                     <template #icon>
                         <naive-icon name="mdi:github"></naive-icon>
                     </template>

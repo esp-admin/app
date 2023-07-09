@@ -43,6 +43,7 @@ export const auth: Partial<ModuleOptions> = {
   enableGlobalAuthMiddleware: true,
 
   registration: {
+    enable: process.env.AUTH_REGISTRATION_ENABLE === "false" ? false : true,
     requireEmailVerification: true,
     defaultRole: "user",
   },

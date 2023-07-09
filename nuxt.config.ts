@@ -77,8 +77,12 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
+      oauth: {
+        google: process.env.AUTH_OAUTH_GOOGLE_ENABLE === "true" ? true : false,
+        github: process.env.AUTH_OAUTH_GITHUB_ENABLE === "true" ? true : false,
+      },
       bugsnag: {
-        enabled: true,
+        enabled: process.env.BUGSNAG_ENABLE === "true" ? true : false,
         apiKey: process.env.BUGSNAG_API_KEY,
       },
     },

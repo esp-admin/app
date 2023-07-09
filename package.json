@@ -13,14 +13,14 @@
   },
   "devDependencies": {
     "@bg-dev/nuxt-auth": "^1.4.0",
-    "@bg-dev/nuxt-naiveui": "^1.2.0",
+    "@bg-dev/nuxt-naiveui": "^1.2.1",
     "@bg-dev/nuxt-s3": "^0.2.3",
-    "@nuxt/devtools": "^0.6.6",
+    "@nuxt/devtools": "^0.6.7",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/ua-parser-js": "^0.7.36",
     "changelogen": "^0.5.4",
-    "npm": "^9.7.2",
-    "nuxt": "^3.6.1",
+    "npm": "^9.8.0",
+    "nuxt": "^3.6.2",
     "nuxt-security": "^0.13.1",
     "prisma": "^4.16.2"
   },

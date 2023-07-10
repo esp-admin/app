@@ -1,4 +1,6 @@
 <template>
+    <n-h1 class="text-xl">Delete Release</n-h1>
+
     <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
         <n-form-item label="Version" path="version">
             <n-input v-model:value="model.version"></n-input>

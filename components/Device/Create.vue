@@ -1,4 +1,6 @@
 <template>
+    <n-h1 class="text-xl">Create new Device</n-h1>
+
     <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
         <n-form-item label="Name" path="name">
             <n-input v-model:value="model.name"></n-input>

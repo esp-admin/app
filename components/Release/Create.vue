@@ -1,4 +1,6 @@
 <template>
+    <n-h1 class="text-xl">Create new Release</n-h1>
+
     <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
         <n-form-item>
             <n-upload :custom-request="(e) => file = e.file.file" accept=".bin">

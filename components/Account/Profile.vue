@@ -27,7 +27,7 @@ const model = ref({
     picture: user.value?.picture,
 })
 
-const { formRef, pending, onSubmit, edited, reset } = useNaiveForm(model)
+const { formRef, pending, onSubmit, reset } = useNaiveForm(model)
 
 const file = ref<File | null>()
 

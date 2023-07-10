@@ -76,7 +76,7 @@ rules.value = {
 
 async function handleSubmit() {
     if (file.value) {
-        const { upload, getPublicUrl } = useS3Object()
+        const { upload } = useS3Object()
 
         const { getAccessToken } = useAuthSession()
 
@@ -87,8 +87,9 @@ async function handleSubmit() {
             authorization: `Bearer ${accessToken}`
         })
 
+
         if (data.value) {
-            model.value.downloadUrl = getPublicUrl(data.value[0].url)
+            model.value.downloadUrl = data.value[0].url
         }
     }
 

@@ -58,7 +58,6 @@ export default defineNuxtConfig({
           "https://ui-avatars.com",
           "https://www.googletagmanager.com",
           "https://avatars.githubusercontent.com",
-          process.env.S3_PUBLIC_BUCKET_URL || "",
         ],
       },
     },

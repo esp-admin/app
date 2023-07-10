@@ -1,6 +1,33 @@
 # Changelog
 
 
+## v0.0.11
+
+[compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.10...v0.0.11)
+
+### 🚀 Enhancements
+
+- Use private S3 bucket ([7f55c66](https://github.com/becem-gharbi/esp-admin/commit/7f55c66))
+
+### 💅 Refactors
+
+- Customize email templates ([04da2d3](https://github.com/becem-gharbi/esp-admin/commit/04da2d3))
+- Display description on Device & Project cards ([9f57f45](https://github.com/becem-gharbi/esp-admin/commit/9f57f45))
+- Set mqtt settings password input's type ([59af5a7](https://github.com/becem-gharbi/esp-admin/commit/59af5a7))
+- Add titles to modals ([fcab238](https://github.com/becem-gharbi/esp-admin/commit/fcab238))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([bfb6599](https://github.com/becem-gharbi/esp-admin/commit/bfb6599))
+- Add new env, check example.env ([bbc3de9](https://github.com/becem-gharbi/esp-admin/commit/bbc3de9))
+- Upgrade dependencies ([027909b](https://github.com/becem-gharbi/esp-admin/commit/027909b))
+- Set SEO meta ([31d4356](https://github.com/becem-gharbi/esp-admin/commit/31d4356))
+- Update SEO meta ([d897373](https://github.com/becem-gharbi/esp-admin/commit/d897373))
+
+### ❤️  Contributors
+
+- Becem Gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v0.0.10
 
 [compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.9...v0.0.10)

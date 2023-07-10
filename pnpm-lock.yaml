@@ -1,9 +1,9 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@bg-dev/nuxt-auth': ^1.4.0
+  '@bg-dev/nuxt-auth': ^1.4.1
   '@bg-dev/nuxt-naiveui': ^1.2.1
-  '@bg-dev/nuxt-s3': ^0.2.3
+  '@bg-dev/nuxt-s3': ^0.2.4
   '@bugsnag/js': ^7.20.2
   '@nuxt/devtools': ^0.6.7
   '@nuxtjs/tailwindcss': ^6.8.0
@@ -32,9 +32,9 @@ dependencies:
   ua-parser-js: 1.0.35
 
 devDependencies:
-  '@bg-dev/nuxt-auth': 1.4.0_prisma@4.16.2
+  '@bg-dev/nuxt-auth': 1.4.1_prisma@4.16.2
   '@bg-dev/nuxt-naiveui': 1.2.1_vue@3.3.4
-  '@bg-dev/nuxt-s3': 0.2.3
+  '@bg-dev/nuxt-s3': 0.2.4
   '@nuxt/devtools': 0.6.7_nuxt@3.6.2+vite@4.3.9
   '@nuxtjs/tailwindcss': 6.8.0_webpack@5.88.1
   '@types/ua-parser-js': 0.7.36
@@ -997,14 +997,14 @@ packages:
       '@babel/helper-validator-identifier': 7.22.5
       to-fast-properties: 2.0.0
 
-  /@bg-dev/nuxt-auth/1.4.0_prisma@4.16.2:
-    resolution: {integrity: sha512-76fQHvE74Hw0aIbh2PQD/QOiHkO3Uru6jjOVP8xzCGRJAwd9fkeI6EUQE5l0MwJ11ccK7eRTf5HHUYG7P9YDxg==}
+  /@bg-dev/nuxt-auth/1.4.1_prisma@4.16.2:
+    resolution: {integrity: sha512-5usZrhK7M2iP+L1iJHJmNGd8DRB0vrMA8YVZm/l6MSfKf0P+ruCIEyNs4y22oAf/B+c+cw7zqNzrbbL2YoSazw==}
     dependencies:
-      '@nuxt/kit': 3.6.1
+      '@nuxt/kit': 3.6.2
       '@prisma/client': 4.16.2_prisma@4.16.2
       bcryptjs: 2.4.3
       defu: 6.1.2
-      jsonwebtoken: 9.0.0
+      jsonwebtoken: 9.0.1
       jwt-decode: 3.1.2
       mustache: 4.2.0
       nodemailer: 6.9.3
@@ -1029,11 +1029,11 @@ packages:
       - vue
     dev: true
 
-  /@bg-dev/nuxt-s3/0.2.3:
-    resolution: {integrity: sha512-a30j6uCk/x8WpzgBGIz7zDctm4W+s11EbPRiTWKYziXxFwxslk7w+TvjzE29FWcvuArh3kwaTh6cFQDG+NH+rQ==}
+  /@bg-dev/nuxt-s3/0.2.4:
+    resolution: {integrity: sha512-1QDrxWbgdTkeMyP62G7toZLgqhH3kPrD16LhXWGUpcfMclk+WgbhZRE4Sn2f6kux3U6K3IX34AGnWE+SoSvafg==}
     dependencies:
       '@aws-sdk/client-s3': 3.363.0
-      '@nuxt/kit': 3.6.1
+      '@nuxt/kit': 3.6.2
       browser-image-compression: 2.0.2
       defu: 6.1.2
       uuid: 9.0.0
@@ -5689,8 +5689,8 @@ packages:
     engines: {'0': node >= 0.2.0}
     dev: true
 
-  /jsonwebtoken/9.0.0:
-    resolution: {integrity: sha512-tuGfYXxkQGDPnLJ7SibiQgVgeDgfbPq2k2ICcbgqW8WxWLBAxKQM/ZCu/IT8SOSwmaYl4dpTFCW5xZv7YbbWUw==}
+  /jsonwebtoken/9.0.1:
+    resolution: {integrity: sha512-K8wx7eJ5TPvEjuiVSkv167EVboBDv9PZdDoF7BgeQnBLVvZWW9clr2PsQHVJDTKaEIH5JBIwHujGcHp7GgI2eg==}
     engines: {node: '>=12', npm: '>=6'}
     dependencies:
       jws: 3.2.2

@@ -224,13 +224,13 @@ const themeConfig = ref<ThemeConfig>({
 })
 
 useSeoMeta({
-  description: '[description]',
-  ogTitle: '[og:title]',
-  ogDescription: '[og:description]',
+  description: 'A platform for remote management of ESP microcontrollers',
+  ogTitle: 'ESP Admin',
+  ogDescription: 'A platform for remote management of ESP microcontrollers',
   ogImage: '[og:image]',
   ogUrl: '[og:url]',
-  twitterTitle: '[twitter:title]',
-  twitterDescription: '[twitter:description]',
+  twitterTitle: 'ESP Admin',
+  twitterDescription: 'A platform for remote management of ESP microcontrollers',
   twitterImage: '[twitter:image]',
   twitterCard: 'summary'
 })

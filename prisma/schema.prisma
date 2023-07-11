@@ -83,13 +83,13 @@ model Project {
 }
 
 model Release {
-  id          String       @id @default(auto()) @map("_id") @db.ObjectId
-  downloadUrl String
-  version     String
-  createdAt   DateTime     @default(now())
-  projectId   String       @db.ObjectId
-  project     Project      @relation(fields: [projectId], references: [id])
-  deployments Deployment[]
+  id           String       @id @default(auto()) @map("_id") @db.ObjectId
+  downloadPath String
+  version      String
+  createdAt    DateTime     @default(now())
+  projectId    String       @db.ObjectId
+  project      Project      @relation(fields: [projectId], references: [id])
+  deployments  Deployment[]
 
   @@unique([version, projectId])
 }

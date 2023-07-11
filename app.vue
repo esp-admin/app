@@ -227,22 +227,12 @@ useSeoMeta({
   description: 'Remote management of ESP microcontrollers',
   ogTitle: 'ESP Admin',
   ogDescription: 'Remote management of ESP microcontrollers',
-  ogImage: 'https://is1-ssl.mzstatic.com/image/thumb/Purple122/v4/21/52/5a/21525a58-8dd9-cad0-4852-4da017797fdb/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x600wa.png',
+  ogImage: 'https://esp-admin-app.bg-tech.tn/poster.png',
   ogUrl: 'https://esp-admin.bg-tech.tn',
   twitterTitle: 'ESP Admin',
   twitterDescription: 'Remote management of ESP microcontrollers',
-  twitterImage: 'https://is1-ssl.mzstatic.com/image/thumb/Purple122/v4/21/52/5a/21525a58-8dd9-cad0-4852-4da017797fdb/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x600wa.png',
+  twitterImage: 'https://esp-admin-app.bg-tech.tn/favicon.ico',
   twitterCard: 'summary'
-})
-
-useHead({
-  link: [
-    {
-      rel: 'icon',
-      type: 'image/png',
-      href: '/favicon.png'
-    }
-  ]
 })
 </script>
 

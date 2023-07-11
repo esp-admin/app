@@ -24,7 +24,8 @@
         <ReleaseCard v-for="release of versionSearch ? filteredReleases : releases" :release="release"
             :projectId="project.id"></ReleaseCard>
 
-        <n-modal preset="card" v-model:show="createModalVisible" :closable="false" :mask-closable="false" class="max-w-xs">
+        <n-modal preset="card" v-model:show="createModalVisible" :closable="false" :mask-closable="false"
+            class="max-w-sm w-full">
             <ReleaseCreate @cancel="createModalVisible = false" @done="onCreate" :project="project" />
         </n-modal>
     </div>

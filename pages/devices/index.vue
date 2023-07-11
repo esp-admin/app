@@ -34,7 +34,7 @@
 
         </div>
 
-        <n-modal preset="card" v-model:show="createModalVisible" :closable="false" :mask-closable="false" class="max-w-xs">
+        <n-modal preset="card" v-model:show="createModalVisible" :closable="false" :mask-closable="false" class="max-w-sm">
             <DeviceCreate @cancel="createModalVisible = false" @done="onCreate"></DeviceCreate>
         </n-modal>
     </div>

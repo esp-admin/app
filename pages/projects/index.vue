@@ -32,7 +32,7 @@
             <ProjectCard v-for=" project  of  nameSearch ? filteredProjects : projects " :project="project"></ProjectCard>
         </div>
 
-        <n-modal preset="card" v-model:show="createModalVisible" :closable="false" :mask-closable="false" class="max-w-xs">
+        <n-modal preset="card" v-model:show="createModalVisible" :closable="false" :mask-closable="false" class="max-w-sm">
             <ProjectCreate @cancel="createModalVisible = false" @done="onCreate" />
         </n-modal>
     </div>

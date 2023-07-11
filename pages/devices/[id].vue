@@ -40,11 +40,11 @@
             </n-tab-pane>
         </n-tabs>
 
-        <n-modal preset="card" v-model:show="deleteModalVisible" :closable="false" :mask-closable="false" class="max-w-xs">
+        <n-modal preset="card" v-model:show="deleteModalVisible" :closable="false" :mask-closable="false" class="max-w-sm">
             <DeviceDelete @cancel="deleteModalVisible = false" @done="onDelete" :device="device" />
         </n-modal>
 
-        <n-modal preset="card" v-model:show="unlinkModalVisible" :closable="false" :mask-closable="false" class="max-w-xs">
+        <n-modal preset="card" v-model:show="unlinkModalVisible" :closable="false" :mask-closable="false" class="max-w-sm">
             <DeviceUnlink @cancel="unlinkModalVisible = false" @done="onUnlink" :device="device" />
         </n-modal>
     </div>

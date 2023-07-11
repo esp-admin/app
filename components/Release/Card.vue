@@ -16,7 +16,7 @@
             </div>
         </template>
 
-        <n-modal preset="card" v-model:show="deleteModalVisible" :closable="false" :mask-closable="false" class="max-w-xs">
+        <n-modal preset="card" v-model:show="deleteModalVisible" :closable="false" :mask-closable="false" class="max-w-sm">
             <ReleaseDelete @cancel="deleteModalVisible = false" @done="onDelete" :release="release"
                 :projectId="projectId" />
         </n-modal>

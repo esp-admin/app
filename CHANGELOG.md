@@ -1,6 +1,49 @@
 # Changelog
 
 
+## v0.1.1
+
+[compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.11...v0.1.1)
+
+### 🚀 Enhancements
+
+- Add deployment remove ([be9178d](https://github.com/becem-gharbi/esp-admin/commit/be9178d))
+- Create custom report email template ([4cde7e9](https://github.com/becem-gharbi/esp-admin/commit/4cde7e9))
+- Add missing server-side input validation ([e4cad3d](https://github.com/becem-gharbi/esp-admin/commit/e4cad3d))
+
+### 🩹 Fixes
+
+- Remove non project  variables from device variables ([8ac86a6](https://github.com/becem-gharbi/esp-admin/commit/8ac86a6))
+- Fix item index check ([8783cc1](https://github.com/becem-gharbi/esp-admin/commit/8783cc1))
+
+### 💅 Refactors
+
+- Move report utils to useReport ([a386d6d](https://github.com/becem-gharbi/esp-admin/commit/a386d6d))
+- Remove input search debounce ([77d2378](https://github.com/becem-gharbi/esp-admin/commit/77d2378))
+- Increase width of modals ([44780c7](https://github.com/becem-gharbi/esp-admin/commit/44780c7))
+- Increase user avatar size ([2d5412b](https://github.com/becem-gharbi/esp-admin/commit/2d5412b))
+- Rename command debug to log ([4220096](https://github.com/becem-gharbi/esp-admin/commit/4220096))
+- Reduce auth form width ([2ac31c9](https://github.com/becem-gharbi/esp-admin/commit/2ac31c9))
+- On delete form add confirm input ([3ce4679](https://github.com/becem-gharbi/esp-admin/commit/3ce4679))
+- **models:** Rename downloadUrl to downloadPath in Release ([0cd98a4](https://github.com/becem-gharbi/esp-admin/commit/0cd98a4))
+- Rename downloadUrl to downloadPath ([03ba3e0](https://github.com/becem-gharbi/esp-admin/commit/03ba3e0))
+- Change homepage path to / ([5f58247](https://github.com/becem-gharbi/esp-admin/commit/5f58247))
+
+### 📖 Documentation
+
+- **readme:** Remove under development warning ([9ff5d8a](https://github.com/becem-gharbi/esp-admin/commit/9ff5d8a))
+
+### 🏡 Chore
+
+- Update favicon ([00ece02](https://github.com/becem-gharbi/esp-admin/commit/00ece02))
+- Add poster.png ([a645755](https://github.com/becem-gharbi/esp-admin/commit/a645755))
+- **desing:** Add backend design rev-5 ([0d06f66](https://github.com/becem-gharbi/esp-admin/commit/0d06f66))
+- Bump version to 0.1 ([7a07fc1](https://github.com/becem-gharbi/esp-admin/commit/7a07fc1))
+
+### ❤️  Contributors
+
+- Becem Gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v0.0.11
 
 [compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.10...v0.0.11)

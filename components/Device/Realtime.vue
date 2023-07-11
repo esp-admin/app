@@ -68,7 +68,7 @@ onMounted(() => {
     publish({
         deviceId: props.device.id,
         action: "command",
-        type: "debug",
+        type: "log",
         payload: "on",
         retained: false,
     })
@@ -83,7 +83,7 @@ onUnmounted(() => {
     publish({
         deviceId: props.device.id,
         action: "command",
-        type: "debug",
+        type: "log",
         payload: "off",
         retained: false,
     })

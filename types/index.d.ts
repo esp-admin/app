@@ -32,7 +32,7 @@ declare global {
   interface CommandMessage {
     deviceId: Device["id"];
     action: "command";
-    type: "config" | "debug" | "restart" | "update" | "custom";
+    type: "config" | "log" | "restart" | "update" | "custom";
     payload: string;
     retained: boolean;
   }

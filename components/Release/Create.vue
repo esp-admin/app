@@ -23,7 +23,7 @@
         <div class="flex gap-4">
             <n-button secondary class="flex-1" attr-type="button" @click="$emit('cancel')"
                 :disabled="pending">Cancel</n-button>
-            <n-button type="primary" class="flex-1" attr-type="submit" :loading="pending" :disabled="pending || !edited">
+            <n-button type="primary" class="flex-1" attr-type="submit" :loading="pending" :disabled="pending">
                 Create
             </n-button>
         </div>
@@ -43,7 +43,7 @@ const model = ref<Partial<Release>>({
     downloadPath: undefined,
 });
 
-const { apiErrors, formRef, onSubmit, pending, rules, edited } = useNaiveForm(model)
+const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm(model)
 
 apiErrors.value = {
     versionAlreadyExists: false,

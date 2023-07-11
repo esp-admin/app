@@ -2,8 +2,8 @@
     <n-h1 class="text-xl">Delete Project</n-h1>
 
     <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
-        <n-form-item label="Name" path="name">
-            <n-input v-model:value="model.name"></n-input>
+        <n-form-item label="Confirm" path="confirm">
+            <n-input v-model:value="model.confirm" placeholder="Write <delete> to confirm"></n-input>
         </n-form-item>
 
         <div class="flex gap-4">
@@ -23,7 +23,7 @@ const emits = defineEmits(["cancel", "done"])
 const props = defineProps<{ project: Project }>()
 
 const model = ref({
-    name: "",
+    confirm: "",
 });
 
 const { apiErrors, formRef, onSubmit, pending, rules, edited } = useNaiveForm(model)
@@ -34,15 +34,11 @@ apiErrors.value = {
 }
 
 rules.value = {
-    name: [
+    confirm: [
         {
-            required: true,
-            message: "Please input project name",
-            trigger: "blur",
-        },
-        {
-            message: `Name should be ${props.project.name}`,
-            validator: (rule, value) => value === props.project.name
+            message: "Please write <delete>",
+            validator: (rule, value) => value === "delete",
+            trigger: "blur"
         },
         {
             message: `Make sure to remove related releases first`,

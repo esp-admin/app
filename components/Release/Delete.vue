@@ -2,8 +2,8 @@
     <n-h1 class="text-xl">Delete Release</n-h1>
 
     <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
-        <n-form-item label="Version" path="version">
-            <n-input v-model:value="model.version"></n-input>
+        <n-form-item label="Confirm" path="confirm">
+            <n-input v-model:value="model.confirm" placeholder="Write <delete> to confirm"></n-input>
         </n-form-item>
 
         <div class="flex gap-4">
@@ -23,21 +23,17 @@ const emits = defineEmits(["cancel", "done"])
 const props = defineProps<{ release: Release, projectId: Project["id"] }>()
 
 const model = ref({
-    version: "",
+    confirm: "",
 });
 
 const { formRef, onSubmit, pending, rules, edited } = useNaiveForm(model)
 
 rules.value = {
-    version: [
+    confirm: [
         {
-            required: true,
-            message: "Please input release version",
-            trigger: "blur",
-        },
-        {
-            message: `Version should be ${props.release.version}`,
-            validator: (rule, value) => value === props.release.version
+            message: "Please write <delete>",
+            validator: (rule, value) => value === "delete",
+            trigger: "blur"
         },
     ],
 }

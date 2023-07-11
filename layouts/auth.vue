@@ -8,7 +8,7 @@
                     <h1 class="text-xl font-semibold text-gray-400">{{ title }}</h1>
                 </div>
 
-                <div class="px-8 py-4">
+                <div class="px-8 py-4 max-w-sm mx-auto w-full">
                     <slot />
                 </div>
 

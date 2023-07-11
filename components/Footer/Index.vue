@@ -13,7 +13,7 @@
             </span>
         </nuxt-link>
 
-        <n-text>•</n-text>
+        <n-text class="text-gray-500">•</n-text>
 
         <nuxt-link :to="repository" target="_blank">
             <span class="flex gap-1 items-start">

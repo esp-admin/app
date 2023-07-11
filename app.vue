@@ -227,11 +227,11 @@ useSeoMeta({
   description: 'Remote management of ESP microcontrollers',
   ogTitle: 'ESP Admin',
   ogDescription: 'Remote management of ESP microcontrollers',
-  ogImage: 'https://esp-admin-app.bg-tech.tn/poster.png',
+  ogImage: '/poster.png',
   ogUrl: 'https://esp-admin.bg-tech.tn',
   twitterTitle: 'ESP Admin',
   twitterDescription: 'Remote management of ESP microcontrollers',
-  twitterImage: 'https://esp-admin-app.bg-tech.tn/favicon.ico',
+  twitterImage: '/favicon.ico',
   twitterCard: 'summary'
 })
 </script>

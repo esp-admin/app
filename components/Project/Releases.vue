@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col gap-6">
         <div v-if="releases?.length" class="col-span-full flex gap-4">
-            <n-input>
+            <n-input v-model:value="versionSearch">
                 <template #prefix>
                     <naive-icon name="ph:magnifying-glass" :size="16"></naive-icon>
                 </template>
@@ -21,7 +21,8 @@
             </template>
         </n-result>
 
-        <ReleaseCard v-for="release of releases" :release="release" :projectId="project.id"></ReleaseCard>
+        <ReleaseCard v-for="release of versionSearch ? filteredReleases : releases" :release="release"
+            :projectId="project.id"></ReleaseCard>
 
         <n-modal preset="card" v-model:show="createModalVisible" :closable="false" :mask-closable="false" class="max-w-xs">
             <ReleaseCreate @cancel="createModalVisible = false" @done="onCreate" :project="project" />
@@ -36,7 +37,11 @@ const props = defineProps<{ project: Project }>()
 
 const { find } = useRelease(props.project.id)
 
+const versionSearch = ref("")
+
 const releases = await find()
+
+const filteredReleases = computed(() => releases.value.filter(release => release.version.includes(versionSearch.value)))
 
 function onCreate() {
     createModalVisible.value = false

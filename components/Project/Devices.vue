@@ -1,7 +1,7 @@
 <template>
     <div class="grid md:grid-cols-3 gap-6">
         <div v-if="linkedDevices?.length" class="col-span-full flex gap-4">
-            <n-input @input="searchDebounce">
+            <n-input v-model:value="nameSearch">
                 <template #prefix>
                     <naive-icon name="ph:magnifying-glass" :size="16"></naive-icon>
                 </template>
@@ -42,9 +42,7 @@ const devices = await find()
 
 const linkedDevices = computed(() => devices.value?.filter(device => device.projectId === props.project.id) || [])
 
-const nameSearch = ref()
-
-const searchDebounce = inputDebounce((value: string) => nameSearch.value = value, 500)
+const nameSearch = ref("")
 
 const filteredDevices = computed(() => linkedDevices.value.filter(device => device.name.includes(nameSearch.value)))
 

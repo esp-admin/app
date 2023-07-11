@@ -9,7 +9,7 @@
             </div>
 
             <div v-if="projects?.length" class="col-span-full flex gap-4">
-                <n-input @input="searchDebounce">
+                <n-input v-model:value="nameSearch">
                     <template #prefix>
                         <naive-icon name="ph:magnifying-glass" :size="16"></naive-icon>
                     </template>
@@ -45,8 +45,6 @@ const nameSearch = ref()
 
 const { find } = useProject()
 const projects = await find()
-
-const searchDebounce = inputDebounce((value: string) => nameSearch.value = value, 500)
 
 const filteredProjects = computed(() => projects.value?.filter(project => project.name.includes(nameSearch.value)))
 

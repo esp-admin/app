@@ -10,7 +10,7 @@
             </div>
 
             <div v-if="devices?.length" class="col-span-full flex gap-4">
-                <n-input @input="searchDebounce">
+                <n-input v-model:value="nameSearch">
                     <template #prefix>
                         <naive-icon name="ph:magnifying-glass" :size="16"></naive-icon>
                     </template>
@@ -48,8 +48,6 @@ const nameSearch = ref("")
 const { find } = useDevice()
 
 const devices = await find()
-
-const searchDebounce = inputDebounce((value: string) => nameSearch.value = value, 500)
 
 const filteredDevices = computed(() => devices.value?.filter(device => device.name.includes(nameSearch.value)))
 

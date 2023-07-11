@@ -1,7 +1,7 @@
 <template>
     <footer :style="{ backgroundColor: naiveTheme.common.bodyColor }" class="text-gray-500">
         <n-text class="text-gray-500">
-            Alpha ~ {{ version }}
+            Beta ~ {{ version }}
         </n-text>
 
         <n-text class="text-gray-500">•</n-text>

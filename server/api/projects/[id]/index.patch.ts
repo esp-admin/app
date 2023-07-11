@@ -1,13 +1,18 @@
 import { handleError, prisma } from "#auth";
-import type { Project } from "@prisma/client";
+import { z } from "zod";
 
 export default defineEventHandler(async (event) => {
   try {
-    const { userId } = checkUser(event);
+    checkUser(event);
 
     const id = event.context.params?.id;
-
     const data = await readBody<Partial<Project>>(event);
+
+    const schema = z.object({
+      id: z.string().regex(/^[a-fA-F0-9]{24}$/),
+    });
+
+    schema.parse({ id });
 
     const project = await prisma.project.update({
       where: {

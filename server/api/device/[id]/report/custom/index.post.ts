@@ -1,5 +1,6 @@
 import { handleError, prisma, sendMail } from "#auth";
 import Mustache from "mustache";
+import { z } from "zod";
 
 export default defineEventHandler(async (event) => {
   interface Body {
@@ -12,6 +13,14 @@ export default defineEventHandler(async (event) => {
     const { userId } = await checkDevice(event);
 
     const message = await readBody<Body>(event);
+
+    const schema = z.object({
+      type: z.string().min(1),
+      subject: z.string().min(1),
+      body: z.string().min(1),
+    });
+
+    schema.parse(message);
 
     const report = await prisma.report.findUnique({
       where: {

@@ -1,14 +1,17 @@
 import { handleError, prisma } from "#auth";
+import { z } from "zod";
 
 export default defineEventHandler(async (event) => {
   try {
-    const { userId } = checkUser(event);
+    checkUser(event);
 
     const { deviceId } = getQuery(event) as { deviceId: Device["id"] };
 
-    if (!deviceId) {
-      throw new Error("<deviceId> is required");
-    }
+    const schema = z.object({
+      deviceId: z.string().regex(/^[a-fA-F0-9]{24}$/),
+    });
+
+    schema.parse({ deviceId });
 
     const deployments = await prisma.deployment.findMany({
       where: {

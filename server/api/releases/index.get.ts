@@ -1,14 +1,17 @@
 import { handleError, prisma } from "#auth";
+import { z } from "zod";
 
 export default defineEventHandler(async (event) => {
   try {
-    const { userId } = checkUser(event);
+    checkUser(event);
 
     const { projectId } = getQuery(event) as { projectId: Project["id"] };
 
-    if (!projectId) {
-      throw new Error("<projectId> is required");
-    }
+    const schema = z.object({
+      projectId: z.string().regex(/^[a-fA-F0-9]{24}$/),
+    });
+
+    schema.parse({ projectId });
 
     const releases = await prisma.release.findMany({
       where: {

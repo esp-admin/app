@@ -1,4 +1,5 @@
 import { handleError, prisma } from "#auth";
+import { z } from "zod";
 
 export default defineEventHandler(async (event) => {
   interface Body {
@@ -11,6 +12,12 @@ export default defineEventHandler(async (event) => {
     const { id: deviceId } = await checkDevice(event);
 
     const body = await readBody<Body>(event);
+
+    const schema = z.object({
+      status: z.string().min(1),
+    });
+
+    schema.parse({ status: body.status });
 
     if (body.status == "started") {
       const deployment = await prisma.deployment.create({

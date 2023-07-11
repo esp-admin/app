@@ -97,10 +97,10 @@ export default function useMqtt() {
 
     switch (mqttMessage.action) {
       case "report":
-        handleReport(mqttMessage);
+        useReport().handleReport(mqttMessage);
         break;
       case "logs":
-        handleLogs(mqttMessage);
+        useDevice().handleLogs(mqttMessage);
         break;
     }
   }

@@ -144,5 +144,9 @@ export default function useDevice() {
 
   const logs = useState<LoggingMessage[]>("device_logs", () => []);
 
-  return { find, findOne, remove, add, link, unlink, update, logs };
+  function handleLogs(message: LoggingMessage) {
+    logs.value.push(message);
+  }
+
+  return { find, findOne, remove, add, link, unlink, update, logs, handleLogs };
 }

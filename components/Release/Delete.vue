@@ -51,7 +51,7 @@ async function handleSubmit() {
             const accessToken = await getAccessToken()
 
             await remove({
-                url: props.release.downloadUrl,
+                url: props.release.downloadPath,
                 authorization: `Bearer ${accessToken}`
             })
 

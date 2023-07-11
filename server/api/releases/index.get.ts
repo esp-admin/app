@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
       select: {
         id: true,
         version: true,
-        downloadUrl: true,
+        downloadPath: true,
         createdAt: true,
       },
       orderBy: {

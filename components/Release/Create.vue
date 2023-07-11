@@ -40,7 +40,7 @@ const emits = defineEmits(["cancel", "done"])
 
 const model = ref<Partial<Release>>({
     version: "",
-    downloadUrl: undefined,
+    downloadPath: undefined,
 });
 
 const { apiErrors, formRef, onSubmit, pending, rules, edited } = useNaiveForm(model)
@@ -89,11 +89,11 @@ async function handleSubmit() {
 
 
         if (data.value) {
-            model.value.downloadUrl = data.value[0].url
+            model.value.downloadPath = data.value[0].url
         }
     }
 
-    if (model.value.downloadUrl === undefined) {
+    if (model.value.downloadPath === undefined) {
         apiErrors.value.uploadFailed = true
         return
     }
@@ -119,7 +119,7 @@ async function handleSubmit() {
                     payload: JSON.stringify({
                         releaseId: release.id,
                         version: release.version,
-                        downloadUrl: release.downloadUrl,
+                        downloadPath: release.downloadPath,
                     })
                 })
             }

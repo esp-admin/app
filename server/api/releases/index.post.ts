@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
     const release = await prisma.release.create({
       data: {
         version: data.version,
-        downloadUrl: data.downloadUrl,
+        downloadPath: data.downloadPath,
         project: {
           connect: {
             id: data.projectId,

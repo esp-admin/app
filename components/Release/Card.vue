@@ -50,7 +50,7 @@ async function onTrigger() {
             retained: true,
             payload: JSON.stringify({
                 releaseId: props.release.id,
-                downloadUrl: props.release.downloadUrl,
+                downloadPath: props.release.downloadPath,
                 version: props.release.version,
             })
         })

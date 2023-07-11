@@ -32,6 +32,12 @@ if (props.device.projectId) {
     if (project.value?.variables) {
         projectVariables.value = project.value.variables as { key: string, value: string }[]
     }
+
+    Object.keys(model.value).forEach(key => {
+        if (projectVariables.value.find(el => el.key === key) === undefined) {
+            delete model.value[key]
+        }
+    })
 }
 
 async function handleSubmit() {

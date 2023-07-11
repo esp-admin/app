@@ -50,7 +50,6 @@ Docs can be found [here](https://esp-admin.bg-tech.tn/getting_started)
 | device/<device_id>/command/update  | true         | Device      | Trigger new or existing release |
 | device/<device_id>/logs            | false        | Device      | Send logs                       |
 | device/<device_id>/report/custom   | false        | Device      | Send custom reports             |
-| device/<device_id>/report/debug    | false        | Device      | Send logging status             |
 | device/<device_id>/report/status   | true         | Device      | Send device status              |
 | device/<device_id>/report/update   | false        | Device      | Send update status              |
 

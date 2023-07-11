@@ -37,7 +37,7 @@ export default function useDevice() {
             (device) => device.id === id
           );
 
-          if (deviceIndex !== undefined) {
+          if (deviceIndex >= 0) {
             devices.value.splice(deviceIndex, 1);
           }
         }
@@ -77,7 +77,7 @@ export default function useDevice() {
           const deviceIndex = devices.value.findIndex(
             (device) => device.id === deviceId
           );
-          if (deviceIndex !== undefined) {
+          if (deviceIndex >= 0) {
             devices.value[deviceIndex].projectId = projectId;
           }
         }
@@ -103,7 +103,7 @@ export default function useDevice() {
           const deviceIndex = devices.value.findIndex(
             (device) => device.id === id
           );
-          if (deviceIndex !== undefined) {
+          if (deviceIndex >= 0) {
             devices.value[deviceIndex].projectId = null;
           }
         }
@@ -130,7 +130,7 @@ export default function useDevice() {
           const deviceIndex = devices.value.findIndex(
             (device) => device.id === id
           );
-          if (deviceIndex !== undefined) {
+          if (deviceIndex >= 0) {
             devices.value[deviceIndex] = response._data;
           }
         }

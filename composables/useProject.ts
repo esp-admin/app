@@ -36,7 +36,7 @@ export default function useProject() {
           const projectIndex = projects.value.findIndex(
             (project) => project.id === id
           );
-          if (projectIndex !== undefined) {
+          if (projectIndex >= 0) {
             projects.value.splice(projectIndex, 1);
           }
         }
@@ -73,7 +73,7 @@ export default function useProject() {
           const projectIndex = projects.value.findIndex(
             (project) => project.id === id
           );
-          if (projectIndex !== undefined) {
+          if (projectIndex >= 0) {
             projects.value[projectIndex] = response._data;
           }
         }

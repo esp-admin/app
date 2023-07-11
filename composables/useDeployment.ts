@@ -36,12 +36,14 @@ export default function useDeployment(deviceId: Device["id"]) {
         (deployment) => deployment.id === id
       );
 
-      if (deploymentIndex !== undefined) {
+      if (deploymentIndex >= 0) {
         deployments.value[deploymentIndex].status = status;
       } else {
         const deployment = await findOne(id);
 
         if (deployment.value) {
+          console.log("on deployment update - prepend", id);
+
           deployments.value.unshift(deployment.value);
         }
       }

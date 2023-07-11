@@ -26,7 +26,7 @@ export default function useRelease(projectId: Project["id"]) {
           const releaseIndex = releases.value.findIndex(
             (release) => release.id === id
           );
-          if (releaseIndex !== undefined) {
+          if (releaseIndex >= 0) {
             releases.value.splice(releaseIndex, 1);
           }
         }

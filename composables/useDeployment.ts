@@ -30,6 +30,26 @@ export default function useDeployment(deviceId: Device["id"]) {
     return deployment;
   }
 
+  async function remove(id: Deployment["id"]) {
+    const request = `/api/deployments/${id}`;
+
+    return useAuthFetch<Device>(request, {
+      method: "DELETE",
+
+      onResponse: ({ response }) => {
+        if (response.ok && deployments.value) {
+          const deploymentIndex = deployments.value.findIndex(
+            (deployment) => deployment.id === id
+          );
+
+          if (deploymentIndex >= 0) {
+            deployments.value.splice(deploymentIndex, 1);
+          }
+        }
+      },
+    });
+  }
+
   async function update(id: Deployment["id"], status: Deployment["status"]) {
     if (deployments.value) {
       const deploymentIndex = deployments.value.findIndex(
@@ -50,5 +70,5 @@ export default function useDeployment(deviceId: Device["id"]) {
     }
   }
 
-  return { find, update };
+  return { find, update, remove };
 }

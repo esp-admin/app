@@ -16,11 +16,23 @@
                 <nuxt-link :to="`/projects/${deployment.release?.projectId}`">
                     <n-button secondary>Project</n-button>
                 </nuxt-link>
+
+                <n-button secondary @click="deleteModalVisible = true">Delete</n-button>
             </div>
         </template>
+
+        <n-modal preset="card" v-model:show="deleteModalVisible" :closable="false" :mask-closable="false" class="max-w-sm">
+            <DeploymentDelete @cancel="deleteModalVisible = false" @done="onDelete" :deployment="deployment" />
+        </n-modal>
     </n-card>
 </template>
 
 <script setup lang="ts">
 defineProps<{ deployment: Deployment }>()
+
+const deleteModalVisible = ref(false)
+
+function onDelete() {
+    deleteModalVisible.value = false
+}
 </script>

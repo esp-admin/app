@@ -2,7 +2,7 @@
     <div class="my-4">
         <n-result status="404" title="Not Found">
             <template #footer>
-                <nuxt-link to="/home">
+                <nuxt-link to="/">
                     <n-button>Back home</n-button>
                 </nuxt-link>
             </template>

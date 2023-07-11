@@ -1,7 +1,7 @@
 <template>
     <naive-navbar :routes="routes" drawer-closable menu-placement="left" class="font-medium">
         <template #start>
-            <nuxt-link to="/home">
+            <nuxt-link to="/">
                 <Logo />
             </nuxt-link>
         </template>
@@ -39,7 +39,7 @@ const routes = ref<NavbarRoute[]>([
     {
         label: "Dashboard",
         icon: "ph:activity",
-        path: "/home"
+        path: "/"
     },
     {
         label: "Projects",

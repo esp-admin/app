@@ -17,6 +17,7 @@
     "@bg-dev/nuxt-s3": "^0.2.4",
     "@nuxt/devtools": "^0.6.7",
     "@nuxtjs/tailwindcss": "^6.8.0",
+    "@types/mustache": "^4.2.2",
     "@types/ua-parser-js": "^0.7.36",
     "changelogen": "^0.5.4",
     "npm": "^9.8.0",
@@ -32,6 +33,7 @@
     "highcharts-vue": "^1.4.3",
     "highlight.js": "^11.8.0",
     "mqtt": "^4.3.7",
+    "mustache": "^4.2.0",
     "ua-parser-js": "^1.0.35"
   }
 }

@@ -8,6 +8,7 @@ specifiers:
   '@nuxt/devtools': ^0.6.7
   '@nuxtjs/tailwindcss': ^6.8.0
   '@prisma/client': ^4.16.2
+  '@types/mustache': ^4.2.2
   '@types/ua-parser-js': ^0.7.36
   changelogen: ^0.5.4
   dayjs: ^1.11.9
@@ -15,6 +16,7 @@ specifiers:
   highcharts-vue: ^1.4.3
   highlight.js: ^11.8.0
   mqtt: ^4.3.7
+  mustache: ^4.2.0
   npm: ^9.8.0
   nuxt: ^3.6.2
   nuxt-security: ^0.13.1
@@ -29,6 +31,7 @@ dependencies:
   highcharts-vue: 1.4.3_cpnxvdl44u5kszoqnisyxpjsae
   highlight.js: 11.8.0
   mqtt: 4.3.7
+  mustache: 4.2.0
   ua-parser-js: 1.0.35
 
 devDependencies:
@@ -37,6 +40,7 @@ devDependencies:
   '@bg-dev/nuxt-s3': 0.2.4
   '@nuxt/devtools': 0.6.7_nuxt@3.6.2+vite@4.3.9
   '@nuxtjs/tailwindcss': 6.8.0_webpack@5.88.1
+  '@types/mustache': 4.2.2
   '@types/ua-parser-js': 0.7.36
   changelogen: 0.5.4
   npm: 9.8.0
@@ -2753,6 +2757,10 @@ packages:
 
   /@types/lodash/4.14.195:
     resolution: {integrity: sha512-Hwx9EUgdwf2GLarOjQp5ZH8ZmblzcbTBC2wtQWNKARBSxM9ezRIAUpeDTgoQRAFB0+8CNWXVA9+MaSOzOF3nPg==}
+    dev: true
+
+  /@types/mustache/4.2.2:
+    resolution: {integrity: sha512-MUSpfpW0yZbTgjekDbH0shMYBUD+X/uJJJMm9LXN1d5yjl5lCY1vN/eWKD6D1tOtjA6206K0zcIPnUaFMurdNA==}
     dev: true
 
   /@types/node/20.3.3:
@@ -6277,7 +6285,6 @@ packages:
   /mustache/4.2.0:
     resolution: {integrity: sha512-71ippSywq5Yb7/tVYyGbkBggbU8H3u5Rz56fH60jGFgr8uHwxs+aSKeqmluIVzM0m0kB7xQjKS6qPfd0b2ZoqQ==}
     hasBin: true
-    dev: true
 
   /mz/2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}

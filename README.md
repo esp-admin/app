@@ -12,7 +12,6 @@ An open source platform to remotely manage ESP microcontrollers for IoT applicat
 - Error reporting via Webhook and Email
 - Realtime logging
 - Remote software updates
-- Database agnostic (Prisma based)
 - File storage to S3 compatible storage provider
 - Serverless deployment
 

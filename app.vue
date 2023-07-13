@@ -9,6 +9,8 @@
 
     <nuxt-loading-indicator :color="themeConfig.light?.common?.primaryColor" :height="3" />
 
+    <vite-pwa-manifest />
+
     <n-message-provider>
       <nuxt-layout>
         <nuxt-page />

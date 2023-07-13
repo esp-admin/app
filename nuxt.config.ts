@@ -1,4 +1,4 @@
-import { auth, naiveui, tailwindcss, s3 } from "./config";
+import { auth, naiveui, tailwindcss, s3, pwa } from "./config";
 
 export default defineNuxtConfig({
   ssr: true,
@@ -34,6 +34,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@bg-dev/nuxt-s3",
     "nuxt-security",
+    "@vite-pwa/nuxt",
     // "@nuxt/devtools",
   ],
 
@@ -41,6 +42,7 @@ export default defineNuxtConfig({
   naiveui,
   tailwindcss,
   s3,
+  pwa,
 
   security: {
     corsHandler: {

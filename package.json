@@ -19,6 +19,7 @@
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/mustache": "^4.2.2",
     "@types/ua-parser-js": "^0.7.36",
+    "@vite-pwa/nuxt": "^0.1.0",
     "changelogen": "^0.5.4",
     "npm": "^9.8.0",
     "nuxt": "^3.6.2",

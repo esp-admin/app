@@ -22,7 +22,7 @@
     "@vite-pwa/nuxt": "^0.1.0",
     "changelogen": "^0.5.4",
     "npm": "^9.8.0",
-    "nuxt": "^3.6.2",
+    "nuxt": "^3.6.3",
     "nuxt-security": "^0.13.1",
     "prisma": "^4.16.2"
   },
@@ -30,7 +30,7 @@
     "@bugsnag/js": "^7.20.2",
     "@prisma/client": "^4.16.2",
     "dayjs": "^1.11.9",
-    "highcharts": "10",
+    "highcharts": "^10.3.3",
     "highcharts-vue": "^1.4.3",
     "highlight.js": "^11.8.0",
     "mqtt": "^4.3.7",

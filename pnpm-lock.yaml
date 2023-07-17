@@ -9,17 +9,17 @@ dependencies:
     specifier: ^7.20.2
     version: 7.20.2
   '@prisma/client':
-    specifier: ^4.16.2
-    version: 4.16.2(prisma@4.16.2)
+    specifier: ^5.0.0
+    version: 5.0.0(prisma@5.0.0)
   dayjs:
     specifier: ^1.11.9
     version: 1.11.9
   highcharts:
-    specifier: ^10.3.3
-    version: 10.3.3
+    specifier: ^11.1.0
+    version: 11.1.0
   highcharts-vue:
     specifier: ^1.4.3
-    version: 1.4.3(highcharts@10.3.3)(vue@3.3.4)
+    version: 1.4.3(highcharts@11.1.0)(vue@3.3.4)
   highlight.js:
     specifier: ^11.8.0
     version: 11.8.0
@@ -38,8 +38,8 @@ dependencies:
 
 devDependencies:
   '@bg-dev/nuxt-auth':
-    specifier: ^1.4.1
-    version: 1.4.1(prisma@4.16.2)(rollup@2.79.1)
+    specifier: ^1.4.2
+    version: 1.4.2(prisma@5.0.0)(rollup@2.79.1)
   '@bg-dev/nuxt-naiveui':
     specifier: ^1.2.1
     version: 1.2.1(rollup@2.79.1)(vue@3.3.4)
@@ -71,11 +71,11 @@ devDependencies:
     specifier: ^3.6.3
     version: 3.6.3(@types/node@20.4.2)(rollup@2.79.1)
   nuxt-security:
-    specifier: ^0.13.1
-    version: 0.13.1(rollup@2.79.1)
+    specifier: ^0.14.0
+    version: 0.14.0(rollup@2.79.1)
   prisma:
-    specifier: ^4.16.2
-    version: 4.16.2
+    specifier: ^5.0.0
+    version: 5.0.0
 
 packages:
 
@@ -1948,11 +1948,11 @@ packages:
       '@babel/helper-validator-identifier': 7.22.5
       to-fast-properties: 2.0.0
 
-  /@bg-dev/nuxt-auth@1.4.1(prisma@4.16.2)(rollup@2.79.1):
-    resolution: {integrity: sha512-5usZrhK7M2iP+L1iJHJmNGd8DRB0vrMA8YVZm/l6MSfKf0P+ruCIEyNs4y22oAf/B+c+cw7zqNzrbbL2YoSazw==}
+  /@bg-dev/nuxt-auth@1.4.2(prisma@5.0.0)(rollup@2.79.1):
+    resolution: {integrity: sha512-l5Wd4HNkAfFgEC6A0bky+o5poGCakwo5gci/vaIWbJPXd4sTdeiBSGYELCkSyIDgwGYTw/Xll97IfRoqyW/TXg==}
     dependencies:
       '@nuxt/kit': 3.6.3(rollup@2.79.1)
-      '@prisma/client': 4.16.2(prisma@4.16.2)
+      '@prisma/client': 5.0.0(prisma@5.0.0)
       bcryptjs: 2.4.3
       defu: 6.1.2
       jsonwebtoken: 9.0.1
@@ -3001,9 +3001,9 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@prisma/client@4.16.2(prisma@4.16.2):
-    resolution: {integrity: sha512-qCoEyxv1ZrQ4bKy39GnylE8Zq31IRmm8bNhNbZx7bF2cU5aiCCnSa93J2imF88MBjn7J9eUQneNxUQVJdl/rPQ==}
-    engines: {node: '>=14.17'}
+  /@prisma/client@5.0.0(prisma@5.0.0):
+    resolution: {integrity: sha512-XlO5ELNAQ7rV4cXIDJUNBEgdLwX3pjtt9Q/RHqDpGf43szpNJx2hJnggfFs7TKNx0cOFsl6KJCSfqr5duEU/bQ==}
+    engines: {node: '>=16.13'}
     requiresBuild: true
     peerDependencies:
       prisma: '*'
@@ -3011,14 +3011,14 @@ packages:
       prisma:
         optional: true
     dependencies:
-      '@prisma/engines-version': 4.16.1-1.4bc8b6e1b66cb932731fb1bdbbc550d1e010de81
-      prisma: 4.16.2
+      '@prisma/engines-version': 4.17.0-26.6b0aef69b7cdfc787f822ecd7cdc76d5f1991584
+      prisma: 5.0.0
 
-  /@prisma/engines-version@4.16.1-1.4bc8b6e1b66cb932731fb1bdbbc550d1e010de81:
-    resolution: {integrity: sha512-q617EUWfRIDTriWADZ4YiWRZXCa/WuhNgLTVd+HqWLffjMSPzyM5uOWoauX91wvQClSKZU4pzI4JJLQ9Kl62Qg==}
+  /@prisma/engines-version@4.17.0-26.6b0aef69b7cdfc787f822ecd7cdc76d5f1991584:
+    resolution: {integrity: sha512-HHiUF6NixsldsP3JROq07TYBLEjXFKr6PdH8H4gK/XAoTmIplOJBCgrIUMrsRAnEuGyRoRLXKXWUb943+PFoKQ==}
 
-  /@prisma/engines@4.16.2:
-    resolution: {integrity: sha512-vx1nxVvN4QeT/cepQce68deh/Turxy5Mr+4L4zClFuK1GlxN3+ivxfuv+ej/gvidWn1cE1uAhW7ALLNlYbRUAw==}
+  /@prisma/engines@5.0.0:
+    resolution: {integrity: sha512-kyT/8fd0OpWmhAU5YnY7eP31brW1q1YrTGoblWrhQJDiN/1K+Z8S1kylcmtjqx5wsUGcP1HBWutayA/jtyt+sg==}
     requiresBuild: true
 
   /@rollup/plugin-alias@5.0.0(rollup@3.26.2):
@@ -6356,18 +6356,18 @@ packages:
       readable-stream: 3.6.2
     dev: false
 
-  /highcharts-vue@1.4.3(highcharts@10.3.3)(vue@3.3.4):
+  /highcharts-vue@1.4.3(highcharts@11.1.0)(vue@3.3.4):
     resolution: {integrity: sha512-qIy9EFuLIgOw+reNkTvu0pvMBcSE0BAPtONAqZoEl0qaAIpGxiyXqhRNPDufWieSC0YlybpCznxE8EK19Kcg+A==}
     peerDependencies:
       highcharts: '>=5.0.0'
       vue: '>=1.0.0'
     dependencies:
-      highcharts: 10.3.3
+      highcharts: 11.1.0
       vue: 3.3.4
     dev: false
 
-  /highcharts@10.3.3:
-    resolution: {integrity: sha512-r7wgUPQI9tr3jFDn3XT36qsNwEIZYcfgz4mkKEA6E4nn5p86y+u1EZjazIG4TRkl5/gmGRtkBUiZW81g029RIw==}
+  /highcharts@11.1.0:
+    resolution: {integrity: sha512-vhmqq6/frteWMx0GKYWwEFL25g4OYc7+m+9KQJb/notXbNtIb8KVy+ijOF7XAFqF165cq0pdLIePAmyFY5ph3g==}
     dev: false
 
   /highlight.js@11.8.0:
@@ -8075,8 +8075,8 @@ packages:
       - supports-color
     dev: true
 
-  /nuxt-security@0.13.1(rollup@2.79.1):
-    resolution: {integrity: sha512-ZqO9Eu2LmB43U/NK+kAQtTcEO+7swu6WhgZBjvHwSCvg5cDvruhfEjLOffF4nuhvyVpKnt5HRfeRao8ABIe3ug==}
+  /nuxt-security@0.14.0(rollup@2.79.1):
+    resolution: {integrity: sha512-gBUTilz4W1BHBYNzukQdGF+TSCLMww+FHc2wMf/bG3J0HsNVJVR678uL4R78FS0hvMi40nA+i6nerpUQYQxs1Q==}
     dependencies:
       '@nuxt/kit': 3.6.3(rollup@2.79.1)
       basic-auth: 2.0.1
@@ -8967,13 +8967,13 @@ packages:
     engines: {node: ^14.13.1 || >=16.0.0}
     dev: true
 
-  /prisma@4.16.2:
-    resolution: {integrity: sha512-SYCsBvDf0/7XSJyf2cHTLjLeTLVXYfqp7pG5eEVafFLeT0u/hLFz/9W196nDRGUOo1JfPatAEb+uEnTQImQC1g==}
-    engines: {node: '>=14.17'}
+  /prisma@5.0.0:
+    resolution: {integrity: sha512-KYWk83Fhi1FH59jSpavAYTt2eoMVW9YKgu8ci0kuUnt6Dup5Qy47pcB4/TLmiPAbhGrxxSz7gsSnJcCmkyPANA==}
+    engines: {node: '>=16.13'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 4.16.2
+      '@prisma/engines': 5.0.0
 
   /proc-log@3.0.0:
     resolution: {integrity: sha512-++Vn7NS4Xf9NacaU9Xq3URUuqZETPsf8L4j5/ckhaRYsfPeRyzGw+iDjFhV/Jr3uNmTvvddEJFWh5R1gRgUH8A==}

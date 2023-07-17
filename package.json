@@ -2,6 +2,7 @@
   "name": "esp-admin",
   "version": "0.1.1",
   "private": true,
+  "homepage": "https://esp-admin.bg-tech.tn",
   "repository": "https://github.com/becem-gharbi/esp-admin.git",
   "scripts": {
     "build": "prisma generate && nuxt build",
@@ -12,7 +13,7 @@
     "release": "changelogen --release && git push --follow-tags"
   },
   "devDependencies": {
-    "@bg-dev/nuxt-auth": "^1.4.1",
+    "@bg-dev/nuxt-auth": "^1.4.2",
     "@bg-dev/nuxt-naiveui": "^1.2.1",
     "@bg-dev/nuxt-s3": "^0.2.4",
     "@nuxt/devtools": "^0.6.7",
@@ -23,14 +24,14 @@
     "changelogen": "^0.5.4",
     "npm": "^9.8.0",
     "nuxt": "^3.6.3",
-    "nuxt-security": "^0.13.1",
-    "prisma": "^4.16.2"
+    "nuxt-security": "^0.14.0",
+    "prisma": "^5.0.0"
   },
   "dependencies": {
     "@bugsnag/js": "^7.20.2",
-    "@prisma/client": "^4.16.2",
+    "@prisma/client": "^5.0.0",
     "dayjs": "^1.11.9",
-    "highcharts": "^10.3.3",
+    "highcharts": "^11.1.0",
     "highcharts-vue": "^1.4.3",
     "highlight.js": "^11.8.0",
     "mqtt": "^4.3.7",

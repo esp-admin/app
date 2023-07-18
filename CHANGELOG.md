@@ -1,6 +1,31 @@
 # Changelog
 
 
+## v0.1.2
+
+[compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.1.1...v0.1.2)
+
+### 🩹 Fixes
+
+- Update mqtt connected state on disconnect events ([56b53bd](https://github.com/becem-gharbi/esp-admin/commit/56b53bd))
+
+### 📖 Documentation
+
+- Update README.md ([cbeed29](https://github.com/becem-gharbi/esp-admin/commit/cbeed29))
+
+### 🏡 Chore
+
+- Set stage to Beta ([bead60c](https://github.com/becem-gharbi/esp-admin/commit/bead60c))
+- Use relative url for static assets ([e2977e5](https://github.com/becem-gharbi/esp-admin/commit/e2977e5))
+- Add vite-pwa ([d30f3b4](https://github.com/becem-gharbi/esp-admin/commit/d30f3b4))
+- Upgrade dependencies ([e97e683](https://github.com/becem-gharbi/esp-admin/commit/e97e683))
+- Upgrade dependencies ([ed46b95](https://github.com/becem-gharbi/esp-admin/commit/ed46b95))
+
+### ❤️  Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+
 ## v0.1.1
 
 [compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.0.11...v0.1.1)

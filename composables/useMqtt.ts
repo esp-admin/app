@@ -60,6 +60,12 @@ export default function useMqtt() {
 
       mqttClient?.on("disconnect", () => (connected.value = false));
 
+      mqttClient?.on("offline", () => (connected.value = false));
+
+      mqttClient?.on("end", () => (connected.value = false));
+
+      mqttClient?.on("close", () => (connected.value = false));
+
       mqttClient?.on("connect", () => {
         connected.value = true;
         subscribe();

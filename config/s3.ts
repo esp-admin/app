@@ -13,4 +13,6 @@ export const s3: Partial<ModuleOptions> = {
   bucket: process.env.S3_BUCKET,
 
   image: {},
+
+  cacheControl: "max-age=2678400, s-maxage=2678400",
 };

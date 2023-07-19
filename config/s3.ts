@@ -14,5 +14,5 @@ export const s3: Partial<ModuleOptions> = {
 
   image: {},
 
-  cacheControl: "max-age=2678400, s-maxage=2678400",
+  cacheControl: "public,s-maxage=31536000,immutable",
 };

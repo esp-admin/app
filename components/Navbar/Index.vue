@@ -9,7 +9,7 @@
         <template #end v-if="!isMobileOrTablet">
             <n-dropdown trigger="click" :options="dropdownOptions" :style="{ padding: '8px' }" @select="handleSelect">
                 <img v-if="user.picture" :src="user.picture"
-                    class="notMobileOrTablet w-9 h-9 object-contain rounded-full ring-2 cursor-pointer" />
+                    class="notMobileOrTablet w-9 h-9 object-cover rounded-full ring-2 cursor-pointer" />
             </n-dropdown>
         </template>
 

@@ -5,7 +5,6 @@ An open source platform to remotely manage ESP microcontrollers for IoT applicat
 ## ✔️ Features
 
 - Support for _ESP32_
-- Multi-tenant architecture
 - Built-in authentication
 - User defined MQTT broker
 - Remote configuration

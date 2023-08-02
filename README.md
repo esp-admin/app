@@ -31,7 +31,7 @@ An open source platform to remotely manage ESP microcontrollers for IoT applicat
 
 ## 📝 Documentation
 
-Docs can be found [here](https://esp-admin.bg-tech.tn/getting_started)
+Docs can be found [here](https://esp-admin.bg.tn/getting_started)
 
 ## License
 

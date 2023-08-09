@@ -14,9 +14,9 @@
   },
   "devDependencies": {
     "@bg-dev/nuxt-auth": "^1.4.2",
-    "@bg-dev/nuxt-naiveui": "^1.2.5",
+    "@bg-dev/nuxt-naiveui": "1.2.6",
     "@bg-dev/nuxt-s3": "^0.2.5",
-    "@nuxt/devtools": "^0.7.5",
+    "@nuxt/devtools": "^0.7.6",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/mustache": "^4.2.2",
     "@types/ua-parser-js": "^0.7.36",
@@ -34,7 +34,7 @@
     "highcharts": "^11.1.0",
     "highcharts-vue": "^1.4.3",
     "highlight.js": "^11.8.0",
-    "mqtt": "^4.3.7",
+    "mqtt": "4",
     "mustache": "^4.2.0",
     "ua-parser-js": "^1.0.35",
     "zod": "^3.21.4"

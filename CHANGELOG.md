@@ -1,6 +1,40 @@
 # Changelog
 
 
+## v0.1.3
+
+[compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.1.2...v0.1.3)
+
+### 🔥 Performance
+
+- Add S3 object caching ([c2622d3](https://github.com/becem-gharbi/esp-admin/commit/c2622d3))
+
+### 🩹 Fixes
+
+- Set user avatar object-fit to cover ([674d5c1](https://github.com/becem-gharbi/esp-admin/commit/674d5c1))
+- Show password on click instead on on mousedown ([56e5381](https://github.com/becem-gharbi/esp-admin/commit/56e5381))
+
+### 💅 Refactors
+
+- Replace S3Image with native img ([d6e33ab](https://github.com/becem-gharbi/esp-admin/commit/d6e33ab))
+
+### 📖 Documentation
+
+- Update README.md ([5955213](https://github.com/becem-gharbi/esp-admin/commit/5955213))
+
+### 🏡 Chore
+
+- Update s3 object cache-control ([a2bf31b](https://github.com/becem-gharbi/esp-admin/commit/a2bf31b))
+- Update baseURL ([224c2b8](https://github.com/becem-gharbi/esp-admin/commit/224c2b8))
+- Upgrade dependencies ([9c950cb](https://github.com/becem-gharbi/esp-admin/commit/9c950cb))
+- Upgrade dependencies ([03dd44b](https://github.com/becem-gharbi/esp-admin/commit/03dd44b))
+- Upgrade dependencies ([496b1a2](https://github.com/becem-gharbi/esp-admin/commit/496b1a2))
+
+### ❤️  Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+
 ## v0.1.2
 
 [compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.1.1...v0.1.2)

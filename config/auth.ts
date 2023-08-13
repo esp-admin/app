@@ -58,6 +58,10 @@ export const auth: Partial<ModuleOptions> = {
     from: process.env.AUTH_SMTP_FROM || "",
   },
 
+  admin: {
+    enable: true,
+  },
+
   emailTemplates: {
     emailVerify: `
   <html lang="en">

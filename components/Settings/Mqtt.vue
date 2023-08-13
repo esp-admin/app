@@ -13,7 +13,7 @@
         </n-form-item>
 
         <n-form-item label="Password" path="password">
-            <n-input v-model:value="model.password" type="password" show-password-on="mousedown"></n-input>
+            <n-input v-model:value="model.password" type="password" show-password-on="click"></n-input>
         </n-form-item>
 
         <FormButtons @reset="reset" :loading="pending" :disabled="!edited || pending"></FormButtons>

@@ -9,7 +9,7 @@
         </n-form-item>
 
         <n-form-item label="API key" path="apiKey">
-            <n-input v-model:value="model.apiKey" type="password" show-password-on="mousedown"></n-input>
+            <n-input v-model:value="model.apiKey" type="password" show-password-on="click"></n-input>
         </n-form-item>
 
         <n-form-item label="Description" path="description">

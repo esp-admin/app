@@ -35,8 +35,7 @@ export default defineNuxtConfig({
     "@bg-dev/nuxt-s3",
     "nuxt-security",
     "@vite-pwa/nuxt",
-    // "@nuxt/devtools",
-  ],
+   ],
 
   auth,
   naiveui,

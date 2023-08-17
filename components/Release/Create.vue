@@ -78,19 +78,9 @@ async function handleSubmit() {
     if (file.value) {
         const { upload } = useS3Object()
 
-        const { getAccessToken } = useAuthSession()
+        const url = await upload(file.value)
 
-        const accessToken = await getAccessToken()
-
-        const { data } = await upload({
-            files: [file.value],
-            authorization: `Bearer ${accessToken}`
-        })
-
-
-        if (data.value) {
-            model.value.downloadPath = data.value[0].url
-        }
+        model.value.downloadPath = url
     }
 
     if (model.value.downloadPath === undefined) {

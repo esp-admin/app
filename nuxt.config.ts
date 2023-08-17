@@ -32,10 +32,10 @@ export default defineNuxtConfig({
     "@bg-dev/nuxt-auth",
     "@bg-dev/nuxt-naiveui",
     "@nuxtjs/tailwindcss",
-    "@bg-dev/nuxt-s3",
+    "nuxt-s3",
     "nuxt-security",
     "@vite-pwa/nuxt",
-   ],
+  ],
 
   auth,
   naiveui,
@@ -65,7 +65,8 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    "api/s3/object/create": {
+    "/api/s3/query/**": { static: true },
+    "/api/s3/mutation/**": {
       security: {
         xssValidator: false,
       },
@@ -75,11 +76,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       oauth: {
-        google: process.env.AUTH_OAUTH_GOOGLE_ENABLE === "true" ? true : false,
-        github: process.env.AUTH_OAUTH_GITHUB_ENABLE === "true" ? true : false,
+        google: process.env.AUTH_OAUTH_GOOGLE_ENABLE === "true",
+        github: process.env.AUTH_OAUTH_GITHUB_ENABLE === "true",
       },
       bugsnag: {
-        enabled: process.env.BUGSNAG_ENABLE === "true" ? true : false,
+        enabled: process.env.BUGSNAG_ENABLE === "true",
         apiKey: process.env.BUGSNAG_API_KEY,
       },
     },

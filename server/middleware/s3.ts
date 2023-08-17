@@ -1,24 +1,7 @@
-import { setPermissions } from "#s3";
-
 export default defineEventHandler((event) => {
-  let userRole;
+  const isS3Mutation = getRequestURL(event).pathname.includes("s3/mutation");
 
-  try {
-    userRole = checkUser(event).userRole;
-  } catch (e) {}
-
-  setPermissions(event, {
-    bucket: {
-      create: false,
-      delete: false,
-      list: false,
-    },
-    object: {
-      create: userRole === "admin" || userRole === "user",
-      delete: userRole === "admin" || userRole === "user",
-      list: false,
-      read: true,
-      update: userRole === "admin" || userRole === "user",
-    },
-  });
+  if (isS3Mutation) {
+    checkUser(event);
+  }
 });

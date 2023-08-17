@@ -1,6 +1,21 @@
 # Changelog
 
 
+## v0.1.4
+
+[compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.1.3...v0.1.4)
+
+### 🏡 Chore
+
+- Enable Admin API ([f89af30](https://github.com/becem-gharbi/esp-admin/commit/f89af30))
+- Upgrade dependencies ([51bb52f](https://github.com/becem-gharbi/esp-admin/commit/51bb52f))
+- Remove nuxt devtools ([3eee70c](https://github.com/becem-gharbi/esp-admin/commit/3eee70c))
+- Migrate from @bg-dev/nuxt-s3 to nuxt-s3 ([96e452c](https://github.com/becem-gharbi/esp-admin/commit/96e452c))
+
+### ❤️  Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+
 ## v0.1.3
 
 [compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.1.2...v0.1.3)

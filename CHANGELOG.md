@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v0.1.5
+
+[compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.1.4...v0.1.5)
+
+### 🩹 Fixes
+
+- Update release remove handling ([e80b63e](https://github.com/becem-gharbi/esp-admin/commit/e80b63e))
+
+### 💅 Refactors
+
+- Set object-fit to cover on avatar upload ([ab7164d](https://github.com/becem-gharbi/esp-admin/commit/ab7164d))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([f5a5d10](https://github.com/becem-gharbi/esp-admin/commit/f5a5d10))
+- Upgrade dependencies ([7d3b229](https://github.com/becem-gharbi/esp-admin/commit/7d3b229))
+- Upgrade dependencies ([47230f9](https://github.com/becem-gharbi/esp-admin/commit/47230f9))
+
+### ❤️  Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+
 ## v0.1.4
 
 [compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.1.3...v0.1.4)

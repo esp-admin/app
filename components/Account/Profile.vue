@@ -2,7 +2,7 @@
     <div>
         <n-upload class="overflow-hidden w-min mx-auto my-4" list-type="image-card" :max="1" accept="image/*"
             :custom-request="(e) => file = e.file.file">
-            <img v-if="model.picture" :src="model.picture" class="object-contain" />
+            <img v-if="model.picture" :src="model.picture" class="object-cover" />
         </n-upload>
 
         <n-form ref="formRef" @submit.prevent="onSubmit(updateAccount)">

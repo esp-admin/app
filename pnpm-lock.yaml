@@ -38,8 +38,8 @@ dependencies:
 
 devDependencies:
   '@bg-dev/nuxt-auth':
-    specifier: ^1.4.3
-    version: 1.4.3(prisma@5.1.1)(rollup@2.79.1)
+    specifier: ^1.4.4
+    version: 1.4.4(prisma@5.1.1)(rollup@2.79.1)
   '@bg-dev/nuxt-naiveui':
     specifier: 1.2.6
     version: 1.2.6(rollup@2.79.1)(vue@3.3.4)
@@ -65,8 +65,8 @@ devDependencies:
     specifier: ^3.6.5
     version: 3.6.5(@types/node@20.5.0)(rollup@2.79.1)
   nuxt-s3:
-    specifier: ^0.1.5
-    version: 0.1.5(rollup@2.79.1)
+    specifier: ^0.1.6
+    version: 0.1.6(rollup@2.79.1)
   nuxt-security:
     specifier: ^0.14.4
     version: 0.14.4(rollup@2.79.1)
@@ -1289,8 +1289,8 @@ packages:
       '@babel/helper-validator-identifier': 7.22.5
       to-fast-properties: 2.0.0
 
-  /@bg-dev/nuxt-auth@1.4.3(prisma@5.1.1)(rollup@2.79.1):
-    resolution: {integrity: sha512-4DMsuKkwHK9tE8He4ZDjb1EUMY4JToTH4GiKPSz/oqVxrRZL1xCI9ZGV62GkDse1bvAUDMPbCQO828FKc2vmXQ==}
+  /@bg-dev/nuxt-auth@1.4.4(prisma@5.1.1)(rollup@2.79.1):
+    resolution: {integrity: sha512-d8MyOPwdR2GQ/MEhlzimmHJEUiqQUpveA1Uusrnt1J0G2PFCguetGlqADcqoYuA8+ZKmg4QyqPaEJHhxb2/A7w==}
     dependencies:
       '@nuxt/kit': 3.6.5(rollup@2.79.1)
       '@prisma/client': 5.1.1(prisma@5.1.1)
@@ -6153,8 +6153,8 @@ packages:
       - supports-color
     dev: true
 
-  /nuxt-s3@0.1.5(rollup@2.79.1):
-    resolution: {integrity: sha512-Fq88GbZX5UVaTGalW52wmtB8r6FITPW1yMl3f8N6x4Hm2H8KXw3gunWeMtsDdnBxVHcXZoU1zUxgq+xkfg/kOQ==}
+  /nuxt-s3@0.1.6(rollup@2.79.1):
+    resolution: {integrity: sha512-Qg2xdQmBf78rQnDq3aJfi8D/mEMWiwPzvEjKoq6noed/8IFg3yDv9jW0GqflZkXUeDj6BEpN1piYolrCZj8H3g==}
     dependencies:
       '@nuxt/kit': 3.6.5(rollup@2.79.1)
       aws4fetch: 1.0.17

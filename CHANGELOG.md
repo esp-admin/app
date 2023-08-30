@@ -1,6 +1,29 @@
 # Changelog
 
 
+## v0.2.1
+
+[compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.1.5...v0.2.1)
+
+### 🩹 Fixes
+
+- Set colorMode to light on callback page ([feaa27b](https://github.com/becem-gharbi/esp-admin/commit/feaa27b))
+- Add missing workbox assets ([1ede20f](https://github.com/becem-gharbi/esp-admin/commit/1ede20f))
+
+### 🏡 Chore
+
+- Set isr rule on get object route ([aa51234](https://github.com/becem-gharbi/esp-admin/commit/aa51234))
+- Upgrade nuxt to v3.7 ([e4465db](https://github.com/becem-gharbi/esp-admin/commit/e4465db))
+- Upgrade dependencies ([d96a8ee](https://github.com/becem-gharbi/esp-admin/commit/d96a8ee))
+- Effect server-side migration to nuxt-auth v2 ([3c9840a](https://github.com/becem-gharbi/esp-admin/commit/3c9840a))
+- Effect client-side migration to nuxt-auth v2 ([a6befbc](https://github.com/becem-gharbi/esp-admin/commit/a6befbc))
+- Remove admin management ([9fb0419](https://github.com/becem-gharbi/esp-admin/commit/9fb0419))
+- Bump version to 0.2 ([b766796](https://github.com/becem-gharbi/esp-admin/commit/b766796))
+
+### ❤️ Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+
 ## v0.1.5
 
 [compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.1.4...v0.1.5)

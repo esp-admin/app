@@ -16,11 +16,9 @@
 </template>
 
 <script setup lang="ts">
-const { useUser } = useAuthSession()
+const { user } = useAuthSession()
 const { upload } = useS3Object()
 const { fetchUser } = useAuth()
-
-const user = useUser()
 
 const model = ref({
     name: user.value?.name,

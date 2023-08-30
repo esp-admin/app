@@ -5,8 +5,7 @@
 
 <script setup>
 const { connected } = useMqtt()
-const { useUser } = useAuthSession();
-const user = useUser();
+const { user } = useAuthSession();
 
 const notification = useNotification()
 

@@ -27,7 +27,7 @@ export const pwa: Partial<ModuleOptions> = {
   },
   workbox: {
     navigateFallback: "/",
-    globPatterns: ["**/*.{html,png,svg,ico}"],
+    globPatterns: ["**/*.{png,svg,ico,js,css,html}"],
   },
   client: {
     installPrompt: true,

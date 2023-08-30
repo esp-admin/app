@@ -101,22 +101,6 @@ watch(props.user, (newUser, oldUser) => {
             icon: () => h(NaiveIcon, { name: 'ph:sign-out' }),
         }
     ]
-
-    if (newUser.role === "admin") {
-        dropdownOptions.value.splice(2, 0, {
-            label: 'Management',
-            key: 'management',
-            icon: () => h(NaiveIcon, { name: 'ph:users' }),
-        })
-
-        if (isMobileOrTablet) {
-            routes.value.push({
-                label: "Management",
-                path: "/management",
-                icon: 'ph:users'
-            })
-        }
-    }
 }, { immediate: true })
 
 
@@ -126,8 +110,6 @@ async function handleSelect(key: string) {
             return logout()
         case 'account':
             return navigateTo('/account')
-        case 'management':
-            return navigateTo('/management')
         case 'settings':
             return navigateTo('/settings')
     }

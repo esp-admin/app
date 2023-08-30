@@ -1,4 +1,4 @@
-import { handleError, prisma } from "#auth";
+import { handleError } from "#auth";
 import { z } from "zod";
 
 export default defineEventHandler(async (event) => {
@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
 
     schema.parse({ webhookEnable, emailEnable, webhookUrl, emailAddress });
 
-    const report = await prisma.report.update({
+    const report = await event.context.prisma.report.update({
       where: {
         userId,
       },

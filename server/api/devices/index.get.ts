@@ -1,10 +1,10 @@
-import { handleError, prisma } from "#auth";
+import { handleError } from "#auth";
 
 export default defineEventHandler(async (event) => {
   try {
     const { userId } = checkUser(event);
 
-    const devices = await prisma.device.findMany({
+    const devices = await event.context.prisma.device.findMany({
       where: {
         userId,
       },

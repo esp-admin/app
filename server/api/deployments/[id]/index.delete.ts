@@ -1,4 +1,4 @@
-import { handleError, prisma } from "#auth";
+import { handleError } from "#auth";
 import { z } from "zod";
 
 export default defineEventHandler(async (event) => {
@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
 
     schema.parse({ id });
 
-    const deployment = await prisma.deployment.delete({
+    const deployment = await event.context.prisma.deployment.delete({
       where: {
         id,
       },

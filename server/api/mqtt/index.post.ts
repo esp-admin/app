@@ -1,4 +1,4 @@
-import { handleError, prisma } from "#auth";
+import { handleError } from "#auth";
 import { z } from "zod";
 
 export default defineEventHandler(async (event) => {
@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
 
     schema.parse({ uriTCP, uriWS, username, password });
 
-    const mqtt = await prisma.mqtt.create({
+    const mqtt = await event.context.prisma.mqtt.create({
       data: {
         uriTCP,
         uriWS,

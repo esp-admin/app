@@ -1,4 +1,4 @@
-import { handleError, prisma, sendMail } from "#auth";
+import { handleError, sendMail } from "#auth";
 import Mustache from "mustache";
 import { z } from "zod";
 
@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
 
     schema.parse(message);
 
-    const report = await prisma.report.findUnique({
+    const report = await event.context.prisma.report.findUnique({
       where: {
         userId,
       },
@@ -33,7 +33,7 @@ export default defineEventHandler(async (event) => {
     }
 
     if (report.emailEnable && report.emailAddress) {
-      sendMail({
+      sendMail(event, {
         subject: `${message.type} | ${message.subject}`,
         to: report.emailAddress,
         html: Mustache.render(reportTemplate, {

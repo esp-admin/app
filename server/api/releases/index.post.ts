@@ -1,4 +1,4 @@
-import { handleError, prisma } from "#auth";
+import { handleError } from "#auth";
 import { z } from "zod";
 
 export default defineEventHandler(async (event) => {
@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
 
     schema.parse({ version, downloadPath, projectId });
 
-    const release = await prisma.release.create({
+    const release = await event.context.prisma.release.create({
       data: {
         version: version,
         downloadPath: downloadPath,

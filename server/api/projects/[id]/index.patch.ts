@@ -1,4 +1,4 @@
-import { handleError, prisma } from "#auth";
+import { handleError } from "#auth";
 import { z } from "zod";
 
 export default defineEventHandler(async (event) => {
@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
 
     schema.parse({ id });
 
-    const project = await prisma.project.update({
+    const project = await event.context.prisma.project.update({
       where: {
         id,
       },

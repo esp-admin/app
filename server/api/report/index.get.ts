@@ -1,10 +1,10 @@
-import { handleError, prisma } from "#auth";
+import { handleError } from "#auth";
 
 export default defineEventHandler(async (event) => {
   try {
     const { userId } = checkUser(event);
 
-    const report = await prisma.report.findUnique({
+    const report = await event.context.prisma.report.findUnique({
       where: {
         userId,
       },

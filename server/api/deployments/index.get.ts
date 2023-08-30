@@ -1,4 +1,4 @@
-import { handleError, prisma } from "#auth";
+import { handleError } from "#auth";
 import { z } from "zod";
 
 export default defineEventHandler(async (event) => {
@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
 
     schema.parse({ deviceId });
 
-    const deployments = await prisma.deployment.findMany({
+    const deployments = await event.context.prisma.deployment.findMany({
       where: {
         deviceId,
       },

@@ -21,7 +21,7 @@
     "@vite-pwa/nuxt": "^0.1.0",
     "changelogen": "^0.5.4",
     "npm": "^9.8.1",
-    "nuxt": "^3.6.5",
+    "nuxt": "^3.7.0",
     "nuxt-s3": "^0.1.6",
     "nuxt-security": "^0.14.4",
     "prisma": "^5.1.1"

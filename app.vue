@@ -21,9 +21,9 @@
 </template>
 
 <script setup lang="ts">
-import { ThemeConfig } from "@bg-dev/nuxt-naiveui"
 import { theme } from "#tailwind-config";
 import hljs from 'highlight.js/lib/core'
+import type { ThemeConfig } from "@bg-dev/nuxt-naiveui"
 
 hljs.configure({ classPrefix: "" })
 
@@ -131,6 +131,10 @@ const themeConfig = ref<ThemeConfig>({
     },
     Statistic: {
       valueFontSize: theme.fontSize.base[0],
+    },
+    Notification: {
+      padding: "16px",
+       titleFontSize: theme.fontSize.lg,
     }
   },
 

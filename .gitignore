@@ -10,4 +10,3 @@ dist
 
 docker-compose.yml
 Dockerfile
-pnpm-lock.yaml

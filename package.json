@@ -3,7 +3,7 @@
   "version": "0.2.1",
   "private": true,
   "homepage": "https://esp-admin.bg.tn",
-  "repository": "https://github.com/becem-gharbi/esp-admin.git",
+  "repository": "https://github.com/esp-admin/app",
   "scripts": {
     "build": "prisma generate && nuxt build",
     "dev": "nuxt dev",

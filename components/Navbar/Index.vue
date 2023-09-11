@@ -1,5 +1,5 @@
 <template>
-    <naive-navbar :routes="routes" drawer-closable menu-placement="left" class="font-medium">
+    <naive-navbar :routes="routes" :drawer-routes="drawerRoutes" menu-placement="center">
         <template #start>
             <nuxt-link to="/">
                 <Logo />
@@ -9,7 +9,7 @@
         <template #end v-if="!isMobileOrTablet">
             <n-dropdown trigger="click" :options="dropdownOptions" :style="{ padding: '8px', minWidth: '200px' }"
                 @select="handleSelect">
-                <img v-if="user.picture" :src="user.picture"
+                <img :src="user!.picture"
                     class="notMobileOrTablet w-9 h-9 object-cover rounded-full ring-2 cursor-pointer" />
             </n-dropdown>
         </template>
@@ -28,15 +28,14 @@
 
 <script setup lang="ts">
 import { NaiveIcon, AccountInfo } from "#components"
-import { NavbarRoute } from "@bg-dev/nuxt-naiveui"
+import type { NavbarRoute } from "@bg-dev/nuxt-naiveui"
 import type { DropdownOption } from "naive-ui"
 
-const props = defineProps<{ user: User }>()
-
 const { logout } = useAuth()
+const { user } = useAuthSession()
 const { isMobileOrTablet } = useNaiveDevice()
 
-const routes = ref<NavbarRoute[]>([
+const routes: NavbarRoute[] = [
     {
         label: "Dashboard",
         icon: "ph:activity",
@@ -52,57 +51,62 @@ const routes = ref<NavbarRoute[]>([
         icon: "ph:cpu",
         path: "/devices"
     }
-])
+]
 
-if (isMobileOrTablet) {
-    routes.value.push(
-        {
-            label: "Settings",
-            icon: "ph:gear",
-            path: "/settings"
-        },
-        {
-            label: "Account",
-            path: "/account",
-            icon: 'ph:user'
-        })
-}
-
-const dropdownOptions = ref<DropdownOption[]>([])
-
-watch(props.user, (newUser, oldUser) => {
-    if (!newUser || newUser.role === oldUser?.role) {
-        return
+const drawerRoutes: NavbarRoute[] = [
+    {
+        label: "Dashboard",
+        icon: "ph:activity",
+        path: "/"
+    },
+    {
+        label: "Projects",
+        icon: "ph:code",
+        path: "/projects"
+    },
+    {
+        label: "Devices",
+        icon: "ph:cpu",
+        path: "/devices"
+    },
+    {
+        label: "Settings",
+        icon: "ph:gear",
+        path: "/settings"
+    },
+    {
+        label: "Account",
+        path: "/account",
+        icon: 'ph:user'
     }
+]
 
-    dropdownOptions.value = [
-        {
-            key: 'header',
-            type: 'render',
-            render: () => h(AccountInfo)
-        },
-        {
-            key: 'divider',
-            type: 'divider',
-        },
-        {
-            label: 'Settings',
-            key: 'settings',
-            icon: () => h(NaiveIcon, { name: 'ph:gear' }),
-        },
-        {
-            label: 'Account',
-            key: 'account',
-            icon: () => h(NaiveIcon, { name: 'ph:user' }),
-        },
-        {
-            label: 'Logout',
-            key: 'logout',
-            icon: () => h(NaiveIcon, { name: 'ph:sign-out' }),
-        }
-    ]
-}, { immediate: true })
-
+const dropdownOptions: DropdownOption[] = [
+    {
+        key: 'header',
+        type: 'render',
+        render: () => h(AccountInfo)
+    },
+    {
+        key: 'divider',
+        type: 'divider',
+    },
+    {
+        label: 'Settings',
+        key: 'settings',
+        icon: () => h(NaiveIcon, { name: 'ph:gear' }),
+    },
+    {
+        label: 'Account',
+        key: 'account',
+        icon: () => h(NaiveIcon, { name: 'ph:user' }),
+    },
+    {
+        label: 'Logout',
+        key: 'logout',
+        icon: () => h(NaiveIcon, { name: 'ph:sign-out' }),
+    }
+]
 
 async function handleSelect(key: string) {
     switch (key) {

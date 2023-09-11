@@ -22,7 +22,7 @@ export const auth: Partial<ModuleOptions> = {
     },
 
     github: {
-      clientId: process.env.AUTH_OAUTH_GITHUB_CLIENT_ID,
+      clientId: process.env.AUTH_OAUTH_GITHUB_CLIENT_ID!,
       clientSecret: process.env.AUTH_OAUTH_GITHUB_CLIENT_SECRET!,
       scopes: "user:email",
       authorizeUrl: "https://github.com/login/oauth/authorize",

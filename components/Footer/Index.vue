@@ -1,5 +1,5 @@
 <template>
-    <footer :style="{ backgroundColor: naiveTheme.common.bodyColor }" class="text-gray-500">
+    <footer :style="{ backgroundColor: naiveTheme.bodyColor }" class="text-gray-500">
         <n-text class="text-gray-500">
             Beta ~ {{ version }}
         </n-text>
@@ -26,7 +26,7 @@
 
 <script setup>
 import { version, repository, homepage } from "../../package.json"
-const naiveTheme = useNaiveTheme()
+const naiveTheme = useThemeVars()
 </script>
 
 <style scoped>

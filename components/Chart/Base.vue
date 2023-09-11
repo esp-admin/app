@@ -16,7 +16,7 @@ const props = defineProps<{
     width?: number
 }>()
 
-const naiveTheme = useNaiveTheme()
+const naiveTheme = useThemeVars()
 
 const highchartsOptions = computed<HighchartsOptions>(() => defu(
     props.options,
@@ -27,9 +27,9 @@ const highchartsOptions = computed<HighchartsOptions>(() => defu(
             backgroundColor: "transparent",
             plotBackgroundColor: "transparent",
             style: {
-                fontFamily: naiveTheme.value.common?.fontFamily,
-                borderRadius: naiveTheme.value.common?.borderRadius,
-                fontSize: naiveTheme.value.common?.fontSize,
+                fontFamily: naiveTheme.value.fontFamily,
+                borderRadius: naiveTheme.value.borderRadius,
+                fontSize: naiveTheme.value.fontSize,
             },
         },
 
@@ -39,8 +39,8 @@ const highchartsOptions = computed<HighchartsOptions>(() => defu(
 
         title: {
             style: {
-                color: naiveTheme.value?.common?.textColor1,
-                fontSize: naiveTheme.value.common?.fontSize,
+                color: naiveTheme.value.textColor1,
+                fontSize: naiveTheme.value.fontSize,
             }
         },
 
@@ -48,14 +48,14 @@ const highchartsOptions = computed<HighchartsOptions>(() => defu(
             lineColor: "#EDEDED82",
             title: {
                 style: {
-                    color: naiveTheme.value?.common?.textColor2,
-                    fontSize: naiveTheme.value?.common?.fontSizeSmall,
+                    color: naiveTheme.value.textColor2,
+                    fontSize: naiveTheme.value.fontSizeSmall,
                 }
             },
             labels: {
                 style: {
-                    color: naiveTheme.value?.common?.textColor2,
-                    fontSize: naiveTheme.value?.common?.fontSizeMini,
+                    color: naiveTheme.value.textColor2,
+                    fontSize: naiveTheme.value.fontSizeMini,
                 }
             },
         },
@@ -64,28 +64,28 @@ const highchartsOptions = computed<HighchartsOptions>(() => defu(
             gridLineColor: "#DBDBDB51",
             title: {
                 style: {
-                    color: naiveTheme.value?.common?.textColor2,
-                    fontSize: naiveTheme.value?.common?.fontSizeSmall,
+                    color: naiveTheme.value.textColor2,
+                    fontSize: naiveTheme.value.fontSizeSmall,
                 }
             },
             labels: {
                 style: {
-                    color: naiveTheme.value?.common?.textColor2,
-                    fontSize: naiveTheme.value?.common?.fontSizeMini,
+                    color: naiveTheme.value.textColor2,
+                    fontSize: naiveTheme.value.fontSizeMini,
                 }
             },
         },
 
         legend: {
             itemStyle: {
-                color: naiveTheme.value?.common?.textColor2
+                color: naiveTheme.value.textColor2
             }
         },
 
         credits: {
             enabled: false,
             style: {
-                fontSize: naiveTheme.value?.common?.fontSizeSmall,
+                fontSize: naiveTheme.value.fontSizeSmall,
             }
         }
     } as HighchartsOptions

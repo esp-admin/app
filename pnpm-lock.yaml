@@ -38,8 +38,8 @@ dependencies:
 
 devDependencies:
   '@bg-dev/nuxt-auth':
-    specifier: 2.1.0-rc
-    version: 2.1.0-rc(prisma@5.2.0)(rollup@2.79.1)
+    specifier: 2.1.1-rc
+    version: 2.1.1-rc(prisma@5.2.0)(rollup@2.79.1)
   '@bg-dev/nuxt-naiveui':
     specifier: 1.4.3
     version: 1.4.3(rollup@2.79.1)(vue@3.3.4)
@@ -1289,8 +1289,8 @@ packages:
       '@babel/helper-validator-identifier': 7.22.15
       to-fast-properties: 2.0.0
 
-  /@bg-dev/nuxt-auth@2.1.0-rc(prisma@5.2.0)(rollup@2.79.1):
-    resolution: {integrity: sha512-f3/7j0x5aEU1uohD9ftHbbYr1aRNuSa5lGVY7a59+8Kb3AIkWbfYcuFo3UUWpD4R2kzlcWyAyuivuUJJVXMCPQ==}
+  /@bg-dev/nuxt-auth@2.1.1-rc(prisma@5.2.0)(rollup@2.79.1):
+    resolution: {integrity: sha512-vgy8lbUbIL3Z3Nmw2+yG+rxwP7mAbY+xIUmwv3d1gM/doLx1NZvGpsiNkleacXgvuK4pSFoLXhLaD7FV26y8Vg==}
     peerDependencies:
       prisma: ^5.2.0
     dependencies:

@@ -1,6 +1,39 @@
 # Changelog
 
 
+## v0.2.2
+
+[compare changes](https://github.com/esp-admin/app/compare/v0.2.1...v0.2.2)
+
+### 🔥 Performance
+
+- **default layout:** Lazy load Navbar and Footer ([a3d8274](https://github.com/esp-admin/app/commit/a3d8274))
+- **Navbar:** Lazy load dropdown ([7c4d640](https://github.com/esp-admin/app/commit/7c4d640))
+
+### 🩹 Fixes
+
+- Fix file upload (related to nitro) ([0e34584](https://github.com/esp-admin/app/commit/0e34584))
+- Fix encoding on netlify ([e688b39](https://github.com/esp-admin/app/commit/e688b39))
+
+### 💅 Refactors
+
+- Effect latest naive-ui changes ([e11c239](https://github.com/esp-admin/app/commit/e11c239))
+- Change Notification styles ([1602807](https://github.com/esp-admin/app/commit/1602807))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([9b97ff2](https://github.com/esp-admin/app/commit/9b97ff2))
+- Update repository link ([cb7faef](https://github.com/esp-admin/app/commit/cb7faef))
+- Change logo ([217bddd](https://github.com/esp-admin/app/commit/217bddd))
+- Add lockfile to gitignore ([bb8505c](https://github.com/esp-admin/app/commit/bb8505c))
+- Upgrade dependencies ([688131a](https://github.com/esp-admin/app/commit/688131a))
+- Disable type restriction on file upload ([92c6464](https://github.com/esp-admin/app/commit/92c6464))
+- Enable type check on file upload ([89352f2](https://github.com/esp-admin/app/commit/89352f2))
+
+### ❤️ Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+
 ## v0.2.1
 
 [compare changes](https://github.com/becem-gharbi/esp-admin/compare/v0.1.5...v0.2.1)

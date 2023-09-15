@@ -37,5 +37,8 @@
     "mustache": "^4.2.0",
     "ua-parser-js": "^1.0.36",
     "zod": "^3.22.2"
+  },
+  "overrides": {
+    "gloabl-parent": ">=5.1.2"
   }
 }

@@ -39,6 +39,6 @@
     "zod": "^3.22.2"
   },
   "overrides": {
-    "gloabl-parent": ">5.1.2"
+    "gloabl-parent": ">=5.1.2"
   }
 }

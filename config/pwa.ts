@@ -6,6 +6,7 @@ export const pwa: Partial<ModuleOptions> = {
     name: "ESP admin",
     short_name: "ESPAdmin",
     theme_color: "#18181B",
+    background_color: "#FFFFFF",
     icons: [
       {
         src: "pwa-192x192.png",

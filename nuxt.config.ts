@@ -2,8 +2,8 @@ import { auth, naiveui, tailwindcss, s3, pwa } from "./config";
 
 export default defineNuxtConfig({
   ssr: true,
-  
-  devtools: { enabled: false },
+
+  devtools: { enabled: true },
 
   app: {
     head: {
@@ -47,7 +47,7 @@ export default defineNuxtConfig({
 
   security: {
     corsHandler: {
-      origin: "*",
+      origin: process.env.NUXT_SECURITY_CORS_HANDLER_ORIGIN, // BUG (not auto replaced)
       methods: "*",
     },
     headers: {

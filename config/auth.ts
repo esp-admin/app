@@ -1,20 +1,20 @@
 import type { ModuleOptions } from "@bg-dev/nuxt-auth";
 
 export const auth: Partial<ModuleOptions> = {
-  baseUrl: process.env.AUTH_BASE_URL,
+  baseUrl: "http://localhost:3000",
 
   accessToken: {
-    jwtSecret: process.env.AUTH_ACCESS_TOKEN_SECRET!,
+    jwtSecret: "*",
   },
 
   refreshToken: {
-    jwtSecret: process.env.AUTH_REFRESH_TOKEN_SECRET!,
+    jwtSecret: "*",
   },
 
   oauth: {
     google: {
-      clientId: process.env.AUTH_OAUTH_GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.AUTH_OAUTH_GOOGLE_CLIENT_SECRET!,
+      clientId: "",
+      clientSecret: "",
       scopes: "email profile",
       authorizeUrl: "https://accounts.google.com/o/oauth2/auth",
       tokenUrl: "https://accounts.google.com/o/oauth2/token",
@@ -22,8 +22,8 @@ export const auth: Partial<ModuleOptions> = {
     },
 
     github: {
-      clientId: process.env.AUTH_OAUTH_GITHUB_CLIENT_ID!,
-      clientSecret: process.env.AUTH_OAUTH_GITHUB_CLIENT_SECRET!,
+      clientId: "",
+      clientSecret: "",
       scopes: "user:email",
       authorizeUrl: "https://github.com/login/oauth/authorize",
       tokenUrl: "https://github.com/login/oauth/access_token",
@@ -43,16 +43,16 @@ export const auth: Partial<ModuleOptions> = {
   enableGlobalAuthMiddleware: true,
 
   registration: {
-    enable: process.env.AUTH_REGISTRATION_ENABLE === "false" ? false : true,
+    enable: true,
     requireEmailVerification: true,
     defaultRole: "user",
   },
 
   email: {
-    from: process.env.AUTH_EMAIL_FROM!,
+    from: "",
     provider: {
       name: "sendgrid",
-      apiKey: process.env.AUTH_EMAIL_SENDGRID_API_KEY!,
+      apiKey: "",
     },
   },
 };

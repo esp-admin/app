@@ -2,6 +2,8 @@ import { auth, naiveui, tailwindcss, s3, pwa } from "./config";
 
 export default defineNuxtConfig({
   ssr: true,
+  
+  devtools: { enabled: false },
 
   app: {
     head: {
@@ -45,7 +47,7 @@ export default defineNuxtConfig({
 
   security: {
     corsHandler: {
-      origin: process.env.AUTH_BASE_URL,
+      origin: "*",
       methods: "*",
     },
     headers: {
@@ -76,12 +78,12 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       oauth: {
-        google: process.env.AUTH_OAUTH_GOOGLE_ENABLE === "true",
-        github: process.env.AUTH_OAUTH_GITHUB_ENABLE === "true",
+        google: false,
+        github: false,
       },
       bugsnag: {
-        enabled: process.env.BUGSNAG_ENABLE === "true",
-        apiKey: process.env.BUGSNAG_API_KEY,
+        enabled: false,
+        apiKey: "*",
       },
     },
   },

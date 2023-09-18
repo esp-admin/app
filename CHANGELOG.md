@@ -1,6 +1,41 @@
 # Changelog
 
 
+## v0.2.3
+
+[compare changes](https://github.com/esp-admin/app/compare/v0.2.2...v0.2.3)
+
+### 🩹 Fixes
+
+- Manually set cors origin config option ([e5be18f](https://github.com/esp-admin/app/commit/e5be18f))
+
+### 💅 Refactors
+
+- Use env matching to replace runtime config ([d8d8586](https://github.com/esp-admin/app/commit/d8d8586))
+- Rename LazyNDropdown to LazyDropdown ([995c5a4](https://github.com/esp-admin/app/commit/995c5a4))
+
+### 📦 Build
+
+- Add Dockerfile ([0b0eba8](https://github.com/esp-admin/app/commit/0b0eba8))
+
+### 🏡 Chore
+
+- Upgrade nuxt-auth ([ab5cdd1](https://github.com/esp-admin/app/commit/ab5cdd1))
+- Update package.json ([79a0133](https://github.com/esp-admin/app/commit/79a0133))
+- Bump `global-parent` to 5.1.2 ([78dfa5b](https://github.com/esp-admin/app/commit/78dfa5b))
+- Update example.env ([4708505](https://github.com/esp-admin/app/commit/4708505))
+- Add missing robots.txt ([1ac3333](https://github.com/esp-admin/app/commit/1ac3333))
+- **pwa:** Set background_color to white ([64a5f54](https://github.com/esp-admin/app/commit/64a5f54))
+- **pwa:** Set background color of images to white ([17f9e78](https://github.com/esp-admin/app/commit/17f9e78))
+- **pwa:** Add netlify config file ([3e9e878](https://github.com/esp-admin/app/commit/3e9e878))
+- Delete netlify.toml ([c9eb344](https://github.com/esp-admin/app/commit/c9eb344))
+- Update example.env ([b8b5456](https://github.com/esp-admin/app/commit/b8b5456))
+
+### ❤️ Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+
 ## v0.2.2
 
 [compare changes](https://github.com/esp-admin/app/compare/v0.2.1...v0.2.2)

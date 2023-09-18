@@ -1,0 +1,13 @@
+/.nuxt
+/.output
+/node_modules
+/dist
+/design
+
+.gitignore
+.gitattributes
+README.md
+.env
+example.env
+CHANGELOG.md
+docker-compose.yml

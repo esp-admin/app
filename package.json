@@ -2,6 +2,7 @@
   "name": "esp-admin",
   "version": "0.2.2",
   "private": true,
+  "description": "Remote management for ESP microcontrollers",
   "homepage": "https://esp-admin.bg.tn",
   "repository": "https://github.com/esp-admin/app",
   "scripts": {
@@ -13,32 +14,29 @@
     "release": "changelogen --release && git push --follow-tags"
   },
   "devDependencies": {
-    "@bg-dev/nuxt-auth": "2.1.1-rc",
-    "@bg-dev/nuxt-naiveui": "1.4.5",
+    "@bg-dev/nuxt-auth": "^2.0.1",
+    "@bg-dev/nuxt-naiveui": "^1.4.6",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/mustache": "^4.2.2",
     "@types/ua-parser-js": "^0.7.37",
     "@vite-pwa/nuxt": "^0.1.1",
     "changelogen": "^0.5.5",
     "npm": "^10.1.0",
-    "nuxt": "^3.7.1",
+    "nuxt": "^3.7.3",
     "nuxt-s3": "^0.1.6",
     "nuxt-security": "^0.14.4",
-    "prisma": "^5.2.0"
+    "prisma": "^5.3.1"
   },
   "dependencies": {
     "@bugsnag/js": "^7.21.0",
-    "@prisma/client": "^5.2.0",
+    "@prisma/client": "^5.3.1",
     "dayjs": "^1.11.9",
     "highcharts": "^11.1.0",
     "highcharts-vue": "^1.4.3",
     "highlight.js": "^11.8.0",
-    "mqtt": "4",
+    "mqtt": "5",
     "mustache": "^4.2.0",
     "ua-parser-js": "^1.0.36",
     "zod": "^3.22.2"
-  },
-  "overrides": {
-    "gloabl-parent": ">=5.1.2"
   }
 }

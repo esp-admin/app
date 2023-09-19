@@ -1,9 +1,0 @@
-version: "3"
-services:
-  esp-admin:
-    image: becemgharbi/esp-admin
-    ports:
-      - "3000:3000"
-    # env_file: .env
-    environment:
-      - AUTH_OAUTH_GOOGLE_ENABLE = "true"

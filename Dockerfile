@@ -8,8 +8,8 @@ RUN apt-get update -y && apt-get install -y openssl
 # Build
 FROM base as build
 
-COPY package.json ./
-COPY package-lock.json ./
+COPY ./package.json ./
+COPY ./package-lock.json ./
 
 RUN npm install 
 
@@ -22,6 +22,7 @@ RUN npm prune
 FROM base
 
 COPY --from=build /src/.output /src/.output
+COPY --from=build /src/prisma /src/prisma
 
 EXPOSE 3000
 

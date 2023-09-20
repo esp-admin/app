@@ -1,7 +1,7 @@
 version: '3'
 
 networks:
-  app-tier:
+  db-link:
     driver: bridge
 
 services:
@@ -16,46 +16,7 @@ services:
     volumes:
       - ./mongodb:/bitnami/mongodb
     networks:
-      - app-tier
-
-  mongodb-secondary:
-    container_name: mongodb-secondary
-    image: bitnami/mongodb
-    depends_on:
-      - mongodb-primary
-    environment:
-      - MONGODB_ADVERTISED_HOSTNAME=mongodb-secondary
-      - MONGODB_REPLICA_SET_MODE=secondary
-      - MONGODB_INITIAL_PRIMARY_HOST=mongodb-primary
-      - MONGODB_INITIAL_PRIMARY_PORT_NUMBER=27017
-      - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}
-      - MONGODB_REPLICA_SET_KEY=replicasetkey123
-
-  mongodb-arbiter:
-    container_name: mongodb-arbiter
-    image: bitnami/mongodb
-    depends_on:
-      - mongodb-primary
-    environment:
-      - MONGODB_ADVERTISED_HOSTNAME=mongodb-arbiter
-      - MONGODB_REPLICA_SET_MODE=arbiter
-      - MONGODB_INITIAL_PRIMARY_HOST=mongodb-primary
-      - MONGODB_INITIAL_PRIMARY_PORT_NUMBER=27017
-      - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}
-      - MONGODB_REPLICA_SET_KEY=replicasetkey123
-
-  nuxt:
-    container_name: nuxt
-    build: ..
-    env_file: .env
-    depends_on:
-      - mongodb-primary
-    ports:
-      - "3000:3000"
-    networks:
-      - app-tier
-    environment:
-      - DATABASE_URL=mongodb://root:${MONGODB_ROOT_PASSWORD}@mongodb-primary/esp-admin?authSource=admin&retryWrites=true&w=majority
+      - db-link
 
   emqx:
     container_name: emqx
@@ -71,4 +32,17 @@ services:
       - "./emqx/data:/opt/emqx/data"
       - "./emqx/etc:/opt/emqx/etc"
       - "./emqx/log:/opt/emqx/log"
- 
+
+  nuxt:
+    container_name: nuxt
+    image: becemgharbi/esp-admin
+    env_file: .env
+    depends_on:
+      - mongodb-primary
+      - emqx
+    ports:
+      - "3000:3000"
+    networks:
+      - db-link
+    environment:
+      - DATABASE_URL=mongodb://root:${MONGODB_ROOT_PASSWORD}@mongodb-primary/esp-admin?authSource=admin&retryWrites=true&w=majority

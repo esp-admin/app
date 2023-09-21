@@ -29,10 +29,10 @@ const { find } = useReport()
 const report = await find()
 
 const model = ref<Partial<Report>>({
-    webhookEnable: report.value.webhookEnable,
-    webhookUrl: report.value.webhookUrl,
-    emailEnable: report.value.emailEnable,
-    emailAddress: report.value.emailAddress
+    webhookEnable: report.value?.webhookEnable,
+    webhookUrl: report.value?.webhookUrl,
+    emailEnable: report.value?.emailEnable,
+    emailAddress: report.value?.emailAddress
 });
 
 const { formRef, onSubmit, pending, rules, edited, reset } = useNaiveForm(model)

@@ -47,7 +47,7 @@ export default defineNuxtConfig({
 
   security: {
     corsHandler: {
-      origin: process.env.NUXT_SECURITY_CORS_HANDLER_ORIGIN, // BUG (not auto replaced)
+      origin: process.env.NUXT_SECURITY_CORS_HANDLER_ORIGIN,
       methods: '*'
     },
     headers: {

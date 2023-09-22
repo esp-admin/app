@@ -34,7 +34,7 @@ const logInst = ref<LogInst>()
 
 const props = defineProps<{ device: Device }>()
 
-const { publish } = useMqtt()
+const { $mqtt } = useNuxtApp()
 
 const projectCommands = ref<Command[]>([])
 
@@ -52,7 +52,7 @@ const { logs } = useDevice()
 const logsString = computed(() => logs.value.map(log => `${log.type} - ${log.payload}`).join('\n'))
 
 function handleRestart () {
-  publish({
+  $mqtt.publish({
     deviceId: props.device.id,
     action: 'command',
     type: 'restart',
@@ -62,7 +62,7 @@ function handleRestart () {
 }
 
 function handleCommand (command: Command) {
-  publish({
+  $mqtt.publish({
     deviceId: props.device.id,
     action: 'command',
     type: 'custom',
@@ -74,7 +74,7 @@ function handleCommand (command: Command) {
 onMounted(() => {
   logs.value = []
 
-  publish({
+  $mqtt.publish({
     deviceId: props.device.id,
     action: 'command',
     type: 'log',
@@ -89,7 +89,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   logs.value = []
-  publish({
+  $mqtt.publish({
     deviceId: props.device.id,
     action: 'command',
     type: 'log',

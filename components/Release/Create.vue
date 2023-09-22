@@ -123,8 +123,8 @@ async function handleSubmit () {
       }
 
       emits('done', release)
-    }).catch((error) => {
-      apiErrors.value.versionAlreadyExists = error.data?.message.includes('Unique constraint failed on the constraint: `Project_name_key`')
+    }).catch((_) => {
+      apiErrors.value.versionAlreadyExists = true
     })
 }
 </script>

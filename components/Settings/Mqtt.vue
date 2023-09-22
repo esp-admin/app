@@ -1,5 +1,5 @@
 <template>
-    <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
+    <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)" autocomplete="off">
         <n-form-item label="Websockets uri" path="uriWS">
             <n-input v-model:value="model.uriWS"></n-input>
         </n-form-item>
@@ -9,11 +9,12 @@
         </n-form-item>
 
         <n-form-item label="Username" path="username">
-            <n-input v-model:value="model.username"></n-input>
+            <n-input v-model:value="model.username" :input-props="{ autocomplete: 'off' }"></n-input>
         </n-form-item>
 
         <n-form-item label="Password" path="password">
-            <n-input v-model:value="model.password" type="password" show-password-on="click"></n-input>
+            <n-input v-model:value="model.password" type="password" show-password-on="click"
+                :input-props="{ autocomplete: 'new-password' }"></n-input>
         </n-form-item>
 
         <FormButtons @reset="reset" :loading="pending" :disabled="pending"></FormButtons>
@@ -81,7 +82,6 @@ rules.value = {
 
 async function handleSubmit() {
     try {
-
         const { add, update } = useMqtt()
         const { $mqtt } = useNuxtApp()
 
@@ -100,6 +100,7 @@ async function handleSubmit() {
         }
 
     } catch (error) {
+        console.error(error)
         apiErrors.value.unableToConnect = true
 
     }

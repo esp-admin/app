@@ -3,6 +3,7 @@ import { z } from "zod";
 
 export default defineEventHandler(async (event) => {
   try {
+    console.log("hit mqtt create")
     const { userId } = checkUser(event);
 
     const { uriTCP, uriWS, username, password } = await readBody<Mqtt>(event);

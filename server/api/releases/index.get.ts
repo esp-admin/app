@@ -1,35 +1,35 @@
-import { handleError } from "#auth";
-import { z } from "zod";
+import { z } from 'zod'
+import { handleError } from '#auth'
 
 export default defineEventHandler(async (event) => {
   try {
-    checkUser(event);
+    checkUser(event)
 
-    const { projectId } = getQuery(event) as { projectId: Project["id"] };
+    const { projectId } = getQuery(event) as { projectId: Project['id'] }
 
     const schema = z.object({
-      projectId: z.string().regex(/^[a-fA-F0-9]{24}$/),
-    });
+      projectId: z.string().regex(/^[a-fA-F0-9]{24}$/)
+    })
 
-    schema.parse({ projectId });
+    schema.parse({ projectId })
 
     const releases = await event.context.prisma.release.findMany({
       where: {
-        projectId,
+        projectId
       },
       select: {
         id: true,
         version: true,
         downloadPath: true,
-        createdAt: true,
+        createdAt: true
       },
       orderBy: {
-        createdAt: "desc",
-      },
-    });
+        createdAt: 'desc'
+      }
+    })
 
-    return releases;
+    return releases
   } catch (error) {
-    await handleError(error);
+    await handleError(error)
   }
-});
+})

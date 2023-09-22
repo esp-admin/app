@@ -1,23 +1,23 @@
-import { handleError } from "#auth";
+import { handleError } from '#auth'
 
 export default defineEventHandler(async (event) => {
   try {
-    const { userId } = checkUser(event);
+    const { userId } = checkUser(event)
 
-    const { name, picture } = await readBody(event);
+    const { name, picture } = await readBody(event)
 
     const user = await event.context.prisma.user.update({
       where: {
-        id: userId,
+        id: userId
       },
       data: {
         name,
-        picture,
-      },
-    });
+        picture
+      }
+    })
 
-    return user;
+    return user
   } catch (error) {
-    await handleError(error);
+    await handleError(error)
   }
-});
+})

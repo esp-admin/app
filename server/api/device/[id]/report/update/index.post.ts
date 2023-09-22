@@ -1,61 +1,61 @@
-import { handleError } from "#auth";
-import { z } from "zod";
+import { z } from 'zod'
+import { handleError } from '#auth'
 
 export default defineEventHandler(async (event) => {
   interface Body {
-    releaseId: Release["id"];
-    deploymentId: Deployment["id"];
-    status: Deployment["status"];
+    releaseId: Release['id'];
+    deploymentId: Deployment['id'];
+    status: Deployment['status'];
   }
 
   try {
-    const { id: deviceId } = await checkDevice(event);
+    const { id: deviceId } = await checkDevice(event)
 
-    const body = await readBody<Body>(event);
+    const body = await readBody<Body>(event)
 
     const schema = z.object({
-      status: z.string().min(1),
-    });
+      status: z.string().min(1)
+    })
 
-    schema.parse({ status: body.status });
+    schema.parse({ status: body.status })
 
-    if (body.status == "started") {
+    if (body.status === 'started') {
       const deployment = await event.context.prisma.deployment.create({
         data: {
           deviceId,
           device: {
             connect: {
-              id: deviceId,
-            },
+              id: deviceId
+            }
           },
           release: {
             connect: {
-              id: body.releaseId,
-            },
-          },
+              id: body.releaseId
+            }
+          }
         },
         select: {
-          id: true,
-        },
-      });
+          id: true
+        }
+      })
 
-      return deployment.id;
+      return deployment.id
     }
 
     const deployment = await event.context.prisma.deployment.update({
       where: {
-        id: body.deploymentId,
+        id: body.deploymentId
       },
       data: {
-        status: body.status,
+        status: body.status
       },
       select: {
-        id: true,
-      },
-    });
+        id: true
+      }
+    })
 
-    return deployment.id;
+    return deployment.id
   } catch (error) {
-    await handleError(error);
+    await handleError(error)
   }
-});
+})

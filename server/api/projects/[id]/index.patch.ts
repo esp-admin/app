@@ -1,28 +1,28 @@
-import { handleError } from "#auth";
-import { z } from "zod";
+import { z } from 'zod'
+import { handleError } from '#auth'
 
 export default defineEventHandler(async (event) => {
   try {
-    checkUser(event);
+    checkUser(event)
 
-    const id = event.context.params?.id;
-    const data = await readBody<Partial<Project>>(event);
+    const id = event.context.params?.id
+    const data = await readBody<Partial<Project>>(event)
 
     const schema = z.object({
-      id: z.string().regex(/^[a-fA-F0-9]{24}$/),
-    });
+      id: z.string().regex(/^[a-fA-F0-9]{24}$/)
+    })
 
-    schema.parse({ id });
+    schema.parse({ id })
 
     const project = await event.context.prisma.project.update({
       where: {
-        id,
+        id
       },
-      data,
-    });
+      data
+    })
 
-    return project;
+    return project
   } catch (error) {
-    await handleError(error);
+    await handleError(error)
   }
-});
+})

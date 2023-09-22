@@ -2,8 +2,8 @@
   <naive-config :theme-config="themeConfig" :hljs="hljs">
     <client-only>
       <n-notification-provider placement="bottom-right">
-        <NotificationNetwork></NotificationNetwork>
-        <NotificationMqtt></NotificationMqtt>
+        <NotificationNetwork />
+        <NotificationMqtt />
       </n-notification-provider>
     </client-only>
 
@@ -16,36 +16,35 @@
         <nuxt-page />
       </nuxt-layout>
     </n-message-provider>
-
   </naive-config>
 </template>
 
 <script setup lang="ts">
-import { theme } from "#tailwind-config";
 import hljs from 'highlight.js/lib/core'
-import type { ThemeConfig } from "@bg-dev/nuxt-naiveui"
+import type { ThemeConfig } from '@bg-dev/nuxt-naiveui'
+import { theme } from '#tailwind-config'
 
-hljs.configure({ classPrefix: "" })
+hljs.configure({ classPrefix: '' })
 
 hljs.registerLanguage('realtime', () => ({
   contains: [
     {
       className: 'bg-blue-600 text-white p-1',
-      begin: /info/,
+      begin: /info/
     },
     {
       className: 'bg-red-500 text-white p-1',
-      begin: /error/,
+      begin: /error/
     },
     {
       className: 'bg-amber-500 text-white p-1',
-      begin: /warn/,
+      begin: /warn/
     },
     {
       className: 'bg-green-500 text-white p-1',
-      begin: /success/,
+      begin: /success/
     }
-  ],
+  ]
 }))
 
 const themeConfig = ref<ThemeConfig>({
@@ -74,10 +73,10 @@ const themeConfig = ref<ThemeConfig>({
       lineHeight: theme.lineHeight.normal,
 
       borderRadius: theme.borderRadius.md,
-      borderRadiusSmall: theme.borderRadius.sm,
+      borderRadiusSmall: theme.borderRadius.sm
     },
     Tabs: {
-      tabFontSizeMedium: theme.fontSize.base[0],
+      tabFontSizeMedium: theme.fontSize.base[0]
     },
     Form: {
       labelFontSizeTopMedium: theme.fontSize.base[0],
@@ -86,55 +85,55 @@ const themeConfig = ref<ThemeConfig>({
     },
     Input: {
       heightMedium: theme.height[10],
-      fontSizeMedium: theme.fontSize.base[0],
+      fontSizeMedium: theme.fontSize.base[0]
     },
     Button: {
       heightMedium: theme.height[10],
-      fontSizeMedium: theme.fontSize.base[0],
+      fontSizeMedium: theme.fontSize.base[0]
     },
     Card: {
-      fontSizeMedium: theme.fontSize.base[0],
+      fontSizeMedium: theme.fontSize.base[0]
     },
     Avatar: {
       heightMedium: theme.height[10],
-      fontSize: theme.fontSize.base[0],
+      fontSize: theme.fontSize.base[0]
     },
     ColorPicker: {
       heightMedium: theme.height[10],
-      fontSizeMedium: theme.fontSize.base[0],
+      fontSizeMedium: theme.fontSize.base[0]
     },
     Dropdown: {
       optionHeightMedium: theme.height[10],
-      fontSizeMedium: theme.fontSize.base[0],
+      fontSizeMedium: theme.fontSize.base[0]
     },
     Radio: {
       buttonHeightMedium: theme.height[10],
-      fontSizeMedium: theme.fontSize.base[0],
+      fontSizeMedium: theme.fontSize.base[0]
     },
     Skeleton: {
-      heightMedium: theme.height[10],
+      heightMedium: theme.height[10]
     },
     Tag: {
       heightMedium: theme.height[10],
-      fontSizeMedium: theme.fontSize.base[0],
+      fontSizeMedium: theme.fontSize.base[0]
     },
     Result: {
       fontSizeMedium: theme.fontSize.base[0],
-      titleFontSizeMedium: theme.fontSize.lg[0],
+      titleFontSizeMedium: theme.fontSize.lg[0]
     },
     Menu: {
       fontSize: theme.fontSize.base[0],
       titleFontSizeMedium: theme.fontSize.base[0]
     },
     Alert: {
-      fontSize: theme.fontSize.base[0],
+      fontSize: theme.fontSize.base[0]
     },
     Statistic: {
-      valueFontSize: theme.fontSize.base[0],
+      valueFontSize: theme.fontSize.base[0]
     },
     Notification: {
-      padding: "16px",
-       titleFontSize: theme.fontSize.lg,
+      padding: '16px',
+      titleFontSize: theme.fontSize.lg
     }
   },
 
@@ -169,18 +168,18 @@ const themeConfig = ref<ThemeConfig>({
       warningColor: theme.colors.amber[600],
       warningColorHover: theme.colors.amber[500],
       warningColorPressed: theme.colors.amber[700],
-      warningColorSuppl: theme.colors.amber[800],
+      warningColorSuppl: theme.colors.amber[800]
     },
     Card: {
-      borderColor: theme.colors.zinc[300],
+      borderColor: theme.colors.zinc[300]
     },
     List: {
-      color: theme.colors.white,
+      color: theme.colors.white
     },
     Tooltip: {
       color: theme.colors.zinc[50],
-      textColor: theme.colors.zinc[700],
-    },
+      textColor: theme.colors.zinc[700]
+    }
   },
 
   dark: {
@@ -214,19 +213,19 @@ const themeConfig = ref<ThemeConfig>({
       warningColor: theme.colors.amber[400],
       warningColorHover: theme.colors.amber[300],
       warningColorPressed: theme.colors.amber[600],
-      warningColorSuppl: theme.colors.amber[700],
+      warningColorSuppl: theme.colors.amber[700]
     },
     Card: {
       borderColor: theme.colors.zinc[700],
-      textColor: theme.colors.zinc[200],
+      textColor: theme.colors.zinc[200]
     },
     Tooltip: {
-      color: theme.colors.zinc[800],
+      color: theme.colors.zinc[800]
     },
     List: {
-      color: theme.colors.zinc[900],
+      color: theme.colors.zinc[900]
     }
-  },
+  }
 })
 
 useSeoMeta({
@@ -253,7 +252,6 @@ useSeoMeta({
   opacity: 0;
   filter: blur(1rem);
 }
-
 
 .layout-enter-active,
 .layout-leave-active {

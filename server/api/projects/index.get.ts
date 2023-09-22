@@ -1,26 +1,26 @@
-import { handleError } from "#auth";
+import { handleError } from '#auth'
 
 export default defineEventHandler(async (event) => {
   try {
-    const { userId } = checkUser(event);
+    const { userId } = checkUser(event)
 
     const projects = await event.context.prisma.project.findMany({
       where: {
-        userId,
+        userId
       },
       select: {
         id: true,
         name: true,
         description: true,
-        createdAt: true,
+        createdAt: true
       },
       orderBy: {
-        createdAt: "desc",
-      },
-    });
+        createdAt: 'desc'
+      }
+    })
 
-    return projects;
+    return projects
   } catch (error) {
-    await handleError(error);
+    await handleError(error)
   }
-});
+})

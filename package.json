@@ -11,17 +11,20 @@
     "generate": "prisma generate && nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "release": "changelogen --release && git push --follow-tags"
+    "release": "changelogen --release && git push --follow-tags",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@bg-dev/nuxt-auth": "^2.0.1",
     "@bg-dev/nuxt-naiveui": "^1.4.6",
     "@nuxt/devtools": "^0.8.4",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/mustache": "^4.2.2",
     "@types/ua-parser-js": "^0.7.37",
     "@vite-pwa/nuxt": "^0.1.1",
     "changelogen": "^0.5.5",
+    "eslint": "^8.49.0",
     "npm": "^10.1.0",
     "nuxt": "^3.7.3",
     "nuxt-s3": "^0.1.6",

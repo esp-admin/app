@@ -1,152 +1,152 @@
-export default function useDevice() {
-  const key = `devices`;
-  const devices = useState<Device[]>(key);
+export default function useDevice () {
+  const key = 'devices'
+  const devices = useState<Device[]>(key)
 
-  async function find() {
-    const request = "/api/devices";
+  async function find () {
+    const request = '/api/devices'
 
     if (devices.value === undefined) {
-      devices.value = await useAuthFetch(request);
+      devices.value = await useAuthFetch(request)
     }
 
-    return devices;
+    return devices
   }
 
-  async function findOne(id: Device["id"]) {
-    const key = `device-${id}`;
-    const request = `/api/devices/${id}`;
+  async function findOne (id: Device['id']) {
+    const key = `device-${id}`
+    const request = `/api/devices/${id}`
 
-    const device = useState<Device>(key);
+    const device = useState<Device>(key)
 
     if (device.value === undefined) {
-      device.value = await useAuthFetch(request);
+      device.value = await useAuthFetch(request)
     }
 
-    return device;
+    return device
   }
 
-  function remove(id: Device["id"]) {
-    const request = `/api/devices/${id}`;
+  function remove (id: Device['id']) {
+    const request = `/api/devices/${id}`
 
     return useAuthFetch<Device>(request, {
-      method: "DELETE",
+      method: 'DELETE',
 
       onResponse: ({ response }) => {
         if (response.ok && devices.value) {
           const deviceIndex = devices.value.findIndex(
-            (device) => device.id === id
-          );
+            device => device.id === id
+          )
 
           if (deviceIndex >= 0) {
-            devices.value.splice(deviceIndex, 1);
+            devices.value.splice(deviceIndex, 1)
           }
         }
-      },
-    });
+      }
+    })
   }
 
-  function add(data: Partial<Device>) {
-    const request = "/api/devices";
+  function add (data: Partial<Device>) {
+    const request = '/api/devices'
 
     return useAuthFetch<Device>(request, {
-      method: "POST",
+      method: 'POST',
       body: data,
 
       onResponse: ({ response }) => {
         if (response.ok && devices.value) {
-          devices.value.unshift(response._data);
+          devices.value.unshift(response._data)
         }
-      },
-    });
+      }
+    })
   }
 
-  function link(deviceId: Device["id"], projectId: Project["id"]) {
-    const key = `device-${deviceId}`;
-    const request = `/api/devices/${deviceId}/link`;
+  function link (deviceId: Device['id'], projectId: Project['id']) {
+    const key = `device-${deviceId}`
+    const request = `/api/devices/${deviceId}/link`
 
-    const device = useState<Device>(key);
+    const device = useState<Device>(key)
 
     return useAuthFetch<Device>(request, {
-      method: "PATCH",
+      method: 'PATCH',
       body: {
-        projectId,
+        projectId
       },
 
       onResponse: ({ response }) => {
         if (response.ok && devices.value) {
           const deviceIndex = devices.value.findIndex(
-            (device) => device.id === deviceId
-          );
+            device => device.id === deviceId
+          )
           if (deviceIndex >= 0) {
-            devices.value[deviceIndex].projectId = projectId;
+            devices.value[deviceIndex].projectId = projectId
           }
         }
 
         if (response.ok && device.value) {
-          device.value.projectId = projectId;
+          device.value.projectId = projectId
         }
-      },
-    });
+      }
+    })
   }
 
-  function unlink(id: Device["id"]) {
-    const key = `device-${id}`;
-    const request = `/api/devices/${id}/unlink`;
+  function unlink (id: Device['id']) {
+    const key = `device-${id}`
+    const request = `/api/devices/${id}/unlink`
 
-    const device = useState<Device>(key);
+    const device = useState<Device>(key)
 
     return useAuthFetch<Device>(request, {
-      method: "PATCH",
+      method: 'PATCH',
 
       onResponse: ({ response }) => {
         if (response.ok && devices.value) {
           const deviceIndex = devices.value.findIndex(
-            (device) => device.id === id
-          );
+            device => device.id === id
+          )
           if (deviceIndex >= 0) {
-            devices.value[deviceIndex].projectId = null;
+            devices.value[deviceIndex].projectId = null
           }
         }
 
         if (response.ok && device.value) {
-          device.value.projectId = null;
+          device.value.projectId = null
         }
-      },
-    });
+      }
+    })
   }
 
-  function update(id: Device["id"], data: Partial<Device>) {
-    const key = `device-${id}`;
-    const request = `/api/devices/${id}`;
+  function update (id: Device['id'], data: Partial<Device>) {
+    const key = `device-${id}`
+    const request = `/api/devices/${id}`
 
-    const device = useState<Device>(key);
+    const device = useState<Device>(key)
 
     return useAuthFetch<Device>(request, {
-      method: "PATCH",
+      method: 'PATCH',
       body: data,
 
       onResponse: ({ response }) => {
         if (response.ok && devices.value) {
           const deviceIndex = devices.value.findIndex(
-            (device) => device.id === id
-          );
+            device => device.id === id
+          )
           if (deviceIndex >= 0) {
-            devices.value[deviceIndex] = response._data;
+            devices.value[deviceIndex] = response._data
           }
         }
 
         if (response.ok && device.value) {
-          device.value = response._data;
+          device.value = response._data
         }
-      },
-    });
+      }
+    })
   }
 
-  const logs = useState<LoggingMessage[]>("device_logs", () => []);
+  const logs = useState<LoggingMessage[]>('device_logs', () => [])
 
-  function handleLogs(message: LoggingMessage) {
-    logs.value.push(message);
+  function handleLogs (message: LoggingMessage) {
+    logs.value.push(message)
   }
 
-  return { find, findOne, remove, add, link, unlink, update, logs, handleLogs };
+  return { find, findOne, remove, add, link, unlink, update, logs, handleLogs }
 }

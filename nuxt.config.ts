@@ -1,4 +1,4 @@
-import { auth, naiveui, tailwindcss, s3, pwa } from "./config";
+import { auth, naiveui, tailwindcss, s3, pwa } from './config'
 
 export default defineNuxtConfig({
   ssr: true,
@@ -7,36 +7,37 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "ESP Admin",
+      title: 'ESP Admin',
       htmlAttrs: {
-        lang: "en",
+        lang: 'en'
       },
       link: [
-        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         {
-          rel: "preconnect",
-          href: "https://fonts.gstatic.com",
-          crossorigin: "anonymous",
+          rel: 'preconnect',
+          href: 'https://fonts.gstatic.com',
+          crossorigin: 'anonymous'
         },
         {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap",
-        },
-      ],
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap'
+        }
+      ]
     },
-    pageTransition: { name: "page", mode: "out-in" },
-    layoutTransition: { name: "layout", mode: "out-in" },
+    pageTransition: { name: 'page', mode: 'out-in' },
+    layoutTransition: { name: 'layout', mode: 'out-in' }
   },
 
-  css: ["~/assets/styles/main.css"],
+  css: ['~/assets/styles/main.css'],
 
   modules: [
-    "@bg-dev/nuxt-auth",
-    "@bg-dev/nuxt-naiveui",
-    "@nuxtjs/tailwindcss",
-    "nuxt-s3",
-    "nuxt-security",
-    "@vite-pwa/nuxt",
+    '@bg-dev/nuxt-auth',
+    '@bg-dev/nuxt-naiveui',
+    '@nuxtjs/tailwindcss',
+    'nuxt-s3',
+    'nuxt-security',
+    '@vite-pwa/nuxt',
+    '@nuxtjs/eslint-module'
   ],
 
   auth,
@@ -48,43 +49,43 @@ export default defineNuxtConfig({
   security: {
     corsHandler: {
       origin: process.env.NUXT_SECURITY_CORS_HANDLER_ORIGIN, // BUG (not auto replaced)
-      methods: "*",
+      methods: '*'
     },
     headers: {
       crossOriginEmbedderPolicy: false,
       contentSecurityPolicy: {
-        "img-src": [
+        'img-src': [
           "'self'",
-          "data:",
-          "blob:",
-          "https://*.googleusercontent.com",
-          "https://ui-avatars.com",
-          "https://www.googletagmanager.com",
-          "https://avatars.githubusercontent.com",
-        ],
-      },
-    },
+          'data:',
+          'blob:',
+          'https://*.googleusercontent.com',
+          'https://ui-avatars.com',
+          'https://www.googletagmanager.com',
+          'https://avatars.githubusercontent.com'
+        ]
+      }
+    }
   },
 
   routeRules: {
-    "/api/s3/query/**": { isr: true },
-    "/api/s3/mutation/**": {
+    '/api/s3/query/**': { isr: true },
+    '/api/s3/mutation/**': {
       security: {
-        xssValidator: false,
-      },
-    },
+        xssValidator: false
+      }
+    }
   },
 
   runtimeConfig: {
     public: {
       oauth: {
         google: false,
-        github: false,
+        github: false
       },
       bugsnag: {
         enabled: false,
-        apiKey: "*",
-      },
-    },
-  },
-});
+        apiKey: '*'
+      }
+    }
+  }
+})

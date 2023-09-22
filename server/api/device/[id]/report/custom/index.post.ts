@@ -1,64 +1,66 @@
-import { handleError, sendMail } from "#auth";
-import Mustache from "mustache";
-import { z } from "zod";
+import Mustache from 'mustache'
+import { z } from 'zod'
+import { handleError, sendMail } from '#auth'
 
 export default defineEventHandler(async (event) => {
   interface Body {
-    type: "info" | "error" | "warn" | "success";
+    type: 'info' | 'error' | 'warn' | 'success';
     subject: string;
     body: string;
   }
 
   try {
-    const { userId } = await checkDevice(event);
+    const { userId } = await checkDevice(event)
 
-    const message = await readBody<Body>(event);
+    const message = await readBody<Body>(event)
 
     const schema = z.object({
       type: z.string().min(1),
       subject: z.string().min(1),
-      body: z.string().min(1),
-    });
+      body: z.string().min(1)
+    })
 
-    schema.parse(message);
+    schema.parse(message)
 
     const report = await event.context.prisma.report.findUnique({
       where: {
-        userId,
-      },
-    });
+        userId
+      }
+    })
 
     if (!report) {
-      throw new Error("unauthorized");
+      throw new Error('unauthorized')
     }
 
     if (report.emailEnable && report.emailAddress) {
-      sendMail(event, {
+      sendMail({
         subject: `${message.type} | ${message.subject}`,
         to: report.emailAddress,
         html: Mustache.render(reportTemplate, {
           type: message.type,
-          body: message.body,
-        }),
-      });
+          body: message.body
+        })
+      })
     }
 
     if (report.webhookEnable && report.webhookUrl) {
       await $fetch(report.webhookUrl, {
-        method: "POST",
+        method: 'POST',
         body: {
           type: message.type,
           subject: message.subject,
-          body: message.body,
-        },
-      }).catch(console.error);
+          body: message.body
+        }
+      }).catch((_) => {
+        // console.error(e)
+      })
     }
 
-    return "ok";
+    return 'ok'
   } catch (error) {
-    await handleError(error);
+    await handleError(error)
   }
-});
+})
 
 const reportTemplate = `
 <html lang="en">
@@ -115,4 +117,4 @@ const reportTemplate = `
     </p>
 </body>
 
-</html>`;
+</html>`

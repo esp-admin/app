@@ -1,44 +1,44 @@
-export default function useMqtt() {
-  const key = "mqtt";
-  const request = `/api/mqtt`;
+export default function useMqtt () {
+  const key = 'mqtt'
+  const request = '/api/mqtt'
 
-  const mqtt = useState<Mqtt>(key);
+  const mqtt = useState<Mqtt>(key)
 
-  async function find() {
+  async function find () {
     if (mqtt.value === undefined) {
-      mqtt.value = await useAuthFetch<Mqtt>(request);
+      mqtt.value = await useAuthFetch<Mqtt>(request)
     }
 
-    return mqtt;
+    return mqtt
   }
 
-  function update(data: Partial<Mqtt>) {
+  function update (data: Partial<Mqtt>) {
     return useAuthFetch<Mqtt>(request, {
-      method: "PATCH",
+      method: 'PATCH',
       body: data,
 
       onResponse: ({ response }) => {
         if (response.ok) {
-          mqtt.value = response._data;
+          mqtt.value = response._data
         }
-      },
-    });
+      }
+    })
   }
 
-  function add(data: Partial<Mqtt>) {
+  function add (data: Partial<Mqtt>) {
     return useAuthFetch<Mqtt>(request, {
-      method: "POST",
+      method: 'POST',
       body: data,
 
       onResponse: ({ response }) => {
         if (response.ok) {
-          mqtt.value = response._data;
+          mqtt.value = response._data
         }
-      },
-    });
+      }
+    })
   }
 
-  const connected = useState("mqtt_connected");
+  const connected = useState('mqtt_connected')
 
-  return { find, add, update, connected };
+  return { find, add, update, connected }
 }

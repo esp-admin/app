@@ -1,10 +1,10 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss'
 
 export default <Partial<Config>>{
-  darkMode: "class",
+  darkMode: 'class',
   theme: {
     fontFamily: {
-      sans: ["Rubik"],
-    },
-  },
-};
+      sans: ['Rubik']
+    }
+  }
+}

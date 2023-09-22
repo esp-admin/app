@@ -55,7 +55,7 @@ rules.value = {
       validator: () => !apiErrors.value.unableToConnect
     },
     {
-      validator: (rule, value) => /^wss/.test(value),
+      validator: (_, value) => /^wss/.test(value),
       message: 'Should start with wss',
       trigger: 'input'
     }
@@ -76,7 +76,7 @@ rules.value = {
   ],
   uriTCP: [
     {
-      validator: (rule, value) => value && /^mqtts/.test(value),
+      validator: (_, value) => value && /^mqtts/.test(value),
       message: 'Should start with mqtts',
       trigger: 'input'
     }
@@ -100,7 +100,6 @@ async function handleSubmit () {
       await add(model.value)
     }
   } catch (error) {
-    console.error(error)
     apiErrors.value.unableToConnect = true
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <n-form ref="formRef" :rules="rules" :model="model" autocomplete="off" @submit.prevent="() => onSubmit(handleSubmit)">
     <n-form-item label="Identifier">
-      <n-input v-model:value="device.id" disabled readonly />
+      <n-input :value="device.id" disabled />
     </n-form-item>
 
     <n-form-item label="Name" path="name">
@@ -47,7 +47,7 @@ rules.value = {
       validator: () => !apiErrors.value.nameAlreadyExists
     },
     {
-      validator: (rule, value) => !/^\s|\s$/.test(value),
+      validator: (_, value) => !/^\s|\s$/.test(value),
       message: 'Should not start or end with a whitespace',
       trigger: 'blur'
     }
@@ -59,7 +59,7 @@ rules.value = {
       trigger: 'blur'
     },
     {
-      validator: (rule, value) => /(?=.*[a-z])(?=.*[0-9])(?=.{6,})/.test(value),
+      validator: (_, value) => /(?=.*[a-z])(?=.*[0-9])(?=.{6,})/.test(value),
       message: 'At least 6 characters, 1 lowercase, 1 number',
       trigger: 'blur'
     }

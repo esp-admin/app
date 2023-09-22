@@ -1,56 +1,66 @@
 <template>
-    <n-list>
-        <n-list-item v-for="session of sessions">
-            <n-thing>
-                <template #avatar>
-                    <n-tag size="small" :type="session.current ? 'success' : 'warning'">
-                        {{ session.current ? 'Current' : 'Active' }}
-                    </n-tag>
-                </template>
+  <n-list>
+    <n-list-item v-for="session of sessions" :key="session.id">
+      <n-thing>
+        <template #avatar>
+          <n-tag size="small" :type="session.current ? 'success' : 'warning'">
+            {{ session.current ? 'Current' : 'Active' }}
+          </n-tag>
+        </template>
 
-                <template #header>
-                    <n-text strong class="text-base">
-                        {{
-                            [
-                                session.ua && UAParser(session.ua).browser.name,
-                                session.ua && UAParser(session.ua).os.name,
-                                session.ua && UAParser(session.ua).device.model
-                            ]
-                                .join(' ')
-                        }}
-                    </n-text>
+        <template #header>
+          <n-text strong class="text-base">
+            {{
+              [
+                session.ua && UAParser.UAParser(session.ua).browser.name,
+                session.ua && UAParser.UAParser(session.ua).os.name,
+                session.ua && UAParser.UAParser(session.ua).device.model
+              ]
+                .join(' ')
+            }}
+          </n-text>
 
-                    <n-text depth="3" class="text-base"> • <n-time :time="new Date(session.updatedAt)"
-                            type="relative" /></n-text>
-                </template>
+          <n-text depth="3" class="text-base">
+            • <n-time
+              :time="new Date(session.updatedAt)"
+              type="relative"
+            />
+          </n-text>
+        </template>
 
-                <template #header-extra>
-                    <n-button circle size="small" type="error" secondary @click="() => handleSessionRevoke(session.id)"
-                        :disabled="session.current">
-                        <template #icon>
-                            <NaiveIcon name="ph:trash-simple"></NaiveIcon>
-                        </template>
-                    </n-button>
-                </template>
-            </n-thing>
-        </n-list-item>
-    </n-list>
+        <template #header-extra>
+          <n-button
+            circle
+            size="small"
+            type="error"
+            secondary
+            :disabled="session.current"
+            @click="() => handleSessionRevoke(session.id)"
+          >
+            <template #icon>
+              <NaiveIcon name="ph:trash-simple" />
+            </template>
+          </n-button>
+        </template>
+      </n-thing>
+    </n-list-item>
+  </n-list>
 </template>
 
 <script setup lang="ts">
-import { UAParser } from "ua-parser-js"
+import UAParser from 'ua-parser-js'
 
 const { getAllSessions, revokeSession } = useAuthSession()
 
 const { data: sessions } = await useAsyncData(getAllSessions)
 
-async function handleSessionRevoke(id: string) {
-    try {
-        await revokeSession(id)
+async function handleSessionRevoke (id: string) {
+  try {
+    await revokeSession(id)
 
-        sessions.value = sessions.value!.filter(el => el.id !== id)
-    } catch (error) {
-        console.error(error)
-    }
+    sessions.value = sessions.value!.filter(el => el.id !== id)
+  } catch (error) {
+    // console.error(error)
+  }
 }
 </script>

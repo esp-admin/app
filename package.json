@@ -11,7 +11,7 @@
     "generate": "prisma generate && nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "release": "changelogen --release && git push --follow-tags",
+    "release": "lint && changelogen --release && git push --follow-tags",
     "lint": "eslint ."
   },
   "devDependencies": {

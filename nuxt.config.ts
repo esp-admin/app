@@ -36,8 +36,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'nuxt-s3',
     'nuxt-security',
-    '@vite-pwa/nuxt',
-    '@nuxtjs/eslint-module'
+    '@vite-pwa/nuxt'
   ],
 
   auth,

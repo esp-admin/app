@@ -1,3 +1,5 @@
+import { RefSymbol } from '@vue/reactivity'
+
 export default function useDevice () {
   const key = 'devices'
   const devices = useState<Device[]>(key)
@@ -115,10 +117,16 @@ export default function useDevice () {
     })
   }
 
-  function update (id: Device['id'], data: Partial<Device>) {
+  async function update (id: Device['id'], data: Partial<Device>) {
+    await find()
+
+    const deviceExists = devices.value.find(device => device.id === id)
+    if (!deviceExists) {
+      return
+    }
+
     const key = `device-${id}`
     const request = `/api/devices/${id}`
-
     const device = useState<Device>(key)
 
     return useAuthFetch<Device>(request, {

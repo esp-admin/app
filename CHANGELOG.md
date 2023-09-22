@@ -1,6 +1,39 @@
 # Changelog
 
 
+## v0.2.4
+
+[compare changes](https://github.com/esp-admin/app/compare/v0.2.3...v0.2.4)
+
+### 🩹 Fixes
+
+- Set uriTCP to optional on server-side validation ([d11f657](https://github.com/esp-admin/app/commit/d11f657))
+- **Report:** Fix undefined model properties ([6dd2ac6](https://github.com/esp-admin/app/commit/6dd2ac6))
+- **Settings:** Disable autocomplete on mqtt form ([c5cd7c2](https://github.com/esp-admin/app/commit/c5cd7c2))
+- **useDevice:** On update check if exists before calling fetch request ([6379376](https://github.com/esp-admin/app/commit/6379376))
+- **ui:** Disable autocomplete on device metadata form ([65293cf](https://github.com/esp-admin/app/commit/65293cf))
+
+### 💅 Refactors
+
+- Fix eslint issues ([199bd28](https://github.com/esp-admin/app/commit/199bd28))
+- Remove prisma error client side check ([7ca1468](https://github.com/esp-admin/app/commit/7ca1468))
+- Effect changes related to mqtt pkg v5 migration ([ad1db3d](https://github.com/esp-admin/app/commit/ad1db3d))
+
+### 📦 Build
+
+- Add docker-compose setup ([dd376f6](https://github.com/esp-admin/app/commit/dd376f6))
+- **docker-compose:** Remove db replicas ([81c7dd8](https://github.com/esp-admin/app/commit/81c7dd8))
+- **docker-compose:** Move it to docker repo ([3fb0f63](https://github.com/esp-admin/app/commit/3fb0f63))
+
+### 🏡 Chore
+
+- Fix lint issues ([6dcaa56](https://github.com/esp-admin/app/commit/6dcaa56))
+- Run linter on release ([a90f597](https://github.com/esp-admin/app/commit/a90f597))
+
+### ❤️ Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+
 ## v0.2.3
 
 [compare changes](https://github.com/esp-admin/app/compare/v0.2.2...v0.2.3)

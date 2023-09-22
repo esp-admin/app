@@ -1,5 +1,3 @@
-import { RefSymbol } from '@vue/reactivity'
-
 export default function useDevice () {
   const key = 'devices'
   const devices = useState<Device[]>(key)

@@ -16,7 +16,7 @@
             <n-input v-model:value="model.password" type="password" show-password-on="click"></n-input>
         </n-form-item>
 
-        <FormButtons @reset="reset" :loading="pending" :disabled="!edited || pending"></FormButtons>
+        <FormButtons @reset="reset" :loading="pending" :disabled="pending"></FormButtons>
     </n-form>
 </template>
 
@@ -82,9 +82,10 @@ rules.value = {
 async function handleSubmit() {
     try {
 
-        const { add, update, connect } = useMqtt()
+        const { add, update } = useMqtt()
+        const { $mqtt } = useNuxtApp()
 
-        await connect({
+        await $mqtt.connect({
             password: model.value.password!,
             uri: model.value.uriWS!,
             username: model.value.username!

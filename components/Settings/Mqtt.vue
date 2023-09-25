@@ -21,7 +21,7 @@
       />
     </n-form-item>
 
-    <FormButtons :loading="pending" :disabled="pending" @reset="reset" />
+    <FormButtons :loading="pending" :disabled="pending || !edited" @reset="reset" />
   </n-form>
 </template>
 
@@ -37,11 +37,7 @@ const model = ref<Partial<Mqtt>>({
   uriWS: mqtt.value?.uriWS
 })
 
-const { apiErrors, formRef, onSubmit, pending, rules, edited, reset } = useNaiveForm(model)
-
-apiErrors.value = {
-  unableToConnect: false
-}
+const { formRef, onSubmit, pending, rules, edited, reset } = useNaiveForm(model)
 
 rules.value = {
   uriWS: [
@@ -49,10 +45,6 @@ rules.value = {
       required: true,
       message: "Please enter borker's Websockets URI",
       trigger: 'blur'
-    },
-    {
-      message: 'Unable to connect',
-      validator: () => !apiErrors.value.unableToConnect
     },
     {
       validator: (_, value) => /^wss/.test(value),
@@ -76,7 +68,7 @@ rules.value = {
   ],
   uriTCP: [
     {
-      validator: (_, value) => value && /^mqtts/.test(value),
+      validator: (_, value) => value ? /^mqtts/.test(value) : true,
       message: 'Should start with mqtts',
       trigger: 'input'
     }
@@ -84,26 +76,22 @@ rules.value = {
 }
 
 async function handleSubmit () {
-  try {
-    const { add, update } = useMqtt()
+  const { add, update } = useMqtt()
 
-    model.value.uriTCP ||= undefined
+  model.value.uriTCP ||= undefined
 
-    if (mqtt.value) {
-      await update(model.value)
-    } else {
-      await add(model.value)
-    }
-
-    const { $mqtt } = useNuxtApp()
-
-    await $mqtt.connect({
-      password: model.value.password!,
-      uri: model.value.uriWS!,
-      username: model.value.username!
-    })
-  } catch (error) {
-    // apiErrors.value.unableToConnect = true
+  if (mqtt.value) {
+    await update(model.value)
+  } else {
+    await add(model.value)
   }
+
+  const { $mqtt } = useNuxtApp()
+
+  await $mqtt.connect({
+    password: model.value.password!,
+    uri: model.value.uriWS!,
+    username: model.value.username!
+  }).catch(() => {})
 }
 </script>

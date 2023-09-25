@@ -1,4 +1,4 @@
-import { connect as _connect } from 'mqtt/dist/mqtt.min'
+import { connectAsync } from 'mqtt/dist/mqtt.min'
 import type { MqttClient } from 'mqtt'
 
 export default defineNuxtPlugin({
@@ -7,47 +7,38 @@ export default defineNuxtPlugin({
   setup: (nuxtApp) => {
     let mqttClient: MqttClient | undefined
 
-    function connect (options: {
+    async function connect (options: {
       uri: string;
       username: string;
       password: string;
     }) {
       const { connected } = useMqtt()
 
-      return new Promise((resolve, reject) => {
-        disconnect()
+      await disconnect()
 
-        mqttClient = _connect(options.uri, {
-          username: options.username,
-          password: options.password
-        })
-
-        mqttClient.on('error', (e) => {
-          connected.value = false
-          reject(e)
-        })
-
-        mqttClient.on('disconnect', () => (connected.value = false))
-
-        mqttClient.on('offline', () => (connected.value = false))
-
-        mqttClient.on('end', () => (connected.value = false))
-
-        mqttClient.on('close', () => (connected.value = false))
-
-        mqttClient.on('connect', () => {
-          connected.value = true
-          subscribe()
-          resolve('connected')
-        })
-
-        mqttClient.on('message', onMessageArrived)
+      mqttClient = await connectAsync(options.uri, {
+        username: options.username,
+        password: options.password
       })
+
+      connected.value = true
+
+      mqttClient.on('disconnect', () => (connected.value = false))
+
+      mqttClient.on('offline', () => (connected.value = false))
+
+      mqttClient.on('end', () => (connected.value = false))
+
+      mqttClient.on('close', () => (connected.value = false))
+
+      mqttClient.on('connect', subscribe)
+
+      mqttClient.on('message', onMessageArrived)
     }
 
     function disconnect () {
       if (mqttClient?.connected) {
-        mqttClient.end()
+        return mqttClient.endAsync()
       }
     }
 
@@ -97,14 +88,14 @@ export default defineNuxtPlugin({
         const mqtt = await find()
 
         if (mqtt.value) {
-          connect({
+          await connect({
             uri: mqtt.value.uriWS,
             password: mqtt.value.password,
             username: mqtt.value.username
           })
         }
       } else {
-        disconnect()
+        await disconnect()
       }
     })
 

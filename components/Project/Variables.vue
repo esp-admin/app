@@ -27,7 +27,7 @@
       </div>
     </n-dynamic-input>
 
-    <FormButtons v-if="model.variables?.length" :loading="pending" :disabled="!edited || pending" @reset="reset" />
+    <FormButtons :loading="pending" :disabled="!edited || pending" @reset="reset" />
   </n-form>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <nuxt-link :to="`/devices/${device.id}`">
-    <n-card :title="device.name" size="small" hoverable>
+    <n-card :title="device.name" size="small" hoverable class="h-full">
       <n-text depth="3">
         Created <n-time :time="new Date(device.createdAt)" type="relative" />
       </n-text>

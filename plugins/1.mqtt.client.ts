@@ -23,6 +23,8 @@ export default defineNuxtPlugin({
 
       connected.value = true
 
+      subscribe()
+
       mqttClient.on('disconnect', () => (connected.value = false))
 
       mqttClient.on('offline', () => (connected.value = false))
@@ -30,8 +32,6 @@ export default defineNuxtPlugin({
       mqttClient.on('end', () => (connected.value = false))
 
       mqttClient.on('close', () => (connected.value = false))
-
-      mqttClient.on('connect', subscribe)
 
       mqttClient.on('message', onMessageArrived)
     }

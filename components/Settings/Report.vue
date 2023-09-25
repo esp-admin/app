@@ -40,6 +40,9 @@ rules.value = {
     {
       message: 'Webhook URL required if enabled',
       validator: (_, value) => model.value.webhookEnable ? !!value : true
+    },
+    {
+      type: 'url'
     }
   ],
   emailAddress: [

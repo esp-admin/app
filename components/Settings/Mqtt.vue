@@ -50,6 +50,9 @@ rules.value = {
       validator: (_, value) => /^wss/.test(value),
       message: 'Should start with wss',
       trigger: 'input'
+    },
+    {
+      type: 'url'
     }
   ],
   username: [
@@ -71,6 +74,9 @@ rules.value = {
       validator: (_, value) => value ? /^mqtts/.test(value) : true,
       message: 'Should start with mqtts',
       trigger: 'input'
+    },
+    {
+      type: 'url'
     }
   ]
 }

@@ -44,8 +44,13 @@ rules.value = {
     },
     {
       validator: (_, value) => !/^\s|\s$/.test(value),
-      message: 'Should not start or end with a whitespace',
+      message: 'Should not contain leading or trailing space',
       trigger: 'blur'
+    }
+  ],
+  repository: [
+    {
+      type: 'url'
     }
   ]
 }

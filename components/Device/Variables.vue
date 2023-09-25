@@ -50,9 +50,9 @@ async function handleSubmit () {
 
   await update(props.device.id, { variables: model.value })
     .then(() => {
-      const { publish } = useMqtt()
+      const { $mqtt } = useNuxtApp()
 
-      publish({
+      $mqtt.publish({
         deviceId: props.device.id,
         action: 'command',
         type: 'config',

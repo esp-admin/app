@@ -49,7 +49,7 @@ rules.value = {
     },
     {
       trigger: 'input',
-      message: 'Should not contain spaces',
+      message: 'Should not contain space',
       validator: (_, value) => !/\s/.test(value)
     }
   ]

@@ -98,21 +98,21 @@ const themeConfig = ref<ThemeConfig>({
     //  heightMedium: theme.height[10],
       fontSize: theme.fontSize.base[0]
     },
-    ColorPicker: {
-    //  heightMedium: theme.height[10],
-      fontSizeMedium: theme.fontSize.base[0]
-    },
+    // ColorPicker: {
+    // //  heightMedium: theme.height[10],
+    //   fontSizeMedium: theme.fontSize.base[0]
+    // },
     Dropdown: {
       //   optionHeightMedium: theme.height[10],
       fontSizeMedium: theme.fontSize.base[0]
     },
-    Radio: {
-    //  buttonHeightMedium: theme.height[10],
-      fontSizeMedium: theme.fontSize.base[0]
-    },
-    Skeleton: {
-    //  heightMedium: theme.height[10]
-    },
+    // Radio: {
+    // //  buttonHeightMedium: theme.height[10],
+    //   fontSizeMedium: theme.fontSize.base[0]
+    // },
+    // Skeleton: {
+    // //  heightMedium: theme.height[10]
+    // },
     Tag: {
       // heightMedium: theme.height[10],
       fontSizeMedium: theme.fontSize.base[0]
@@ -125,9 +125,9 @@ const themeConfig = ref<ThemeConfig>({
       fontSize: theme.fontSize.base[0],
       titleFontSizeMedium: theme.fontSize.base[0]
     },
-    Alert: {
-      fontSize: theme.fontSize.base[0]
-    },
+    // Alert: {
+    //   fontSize: theme.fontSize.base[0]
+    // },
     Statistic: {
       valueFontSize: theme.fontSize.base[0]
     },

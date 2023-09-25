@@ -3,7 +3,7 @@ import { auth, naiveui, tailwindcss, s3, pwa } from './config'
 export default defineNuxtConfig({
   ssr: true,
 
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   app: {
     head: {

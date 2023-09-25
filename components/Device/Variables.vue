@@ -22,7 +22,7 @@
 <script setup lang="ts">
 const props = defineProps<{ device: Device }>()
 
-const model = ref(props.device.variables as Record<string, string>)
+const model = ref(props.device.variables as Record<string, string> || {})
 
 const { formRef, onSubmit, pending, edited, reset } = useNaiveForm(model)
 

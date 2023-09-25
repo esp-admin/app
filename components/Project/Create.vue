@@ -63,8 +63,8 @@ async function handleSubmit () {
 
   await add(model.value)
     .then(project => emits('done', project))
-    .catch((_) => {
-      apiErrors.value.nameAlreadyExists = true
+    .catch((error) => {
+      apiErrors.value.nameAlreadyExists = error.data.message === 'Project_name_userId_key | P2002'
     })
 }
 </script>

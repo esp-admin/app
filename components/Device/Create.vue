@@ -79,8 +79,8 @@ async function handleSubmit () {
 
   await add(model.value)
     .then(device => emits('done', device))
-    .catch((_) => {
-      apiErrors.value.nameAlreadyExists = true
+    .catch((error) => {
+      apiErrors.value.nameAlreadyExists = error.data.message === 'Device_name_userId_key | P2002'
     })
 }
 </script>

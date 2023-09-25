@@ -59,5 +59,8 @@ async function handleSubmit () {
   const { update } = useProject()
 
   await update(props.project.id, model.value)
+    .catch((error) => {
+      apiErrors.value.nameAlreadyExists = error.data.message === 'Project_name_userId_key | P2002'
+    })
 }
 </script>

@@ -1,6 +1,3 @@
-import { H3Error } from 'h3'
-import { handleError } from '#auth'
-
 export default defineNitroPlugin((nitroApp) => {
   nitroApp.hooks.hook('request', (event) => {
     const isBase64 = (value: string) => {
@@ -16,9 +13,5 @@ export default defineNitroPlugin((nitroApp) => {
     }
   })
 
-  nitroApp.hooks.hook('error', async (error) => {
-    if (error instanceof H3Error) { return }
-
-    await handleError(error)
-  })
+  nitroApp.hooks.hook('error', () => {})
 })

@@ -1,6 +1,6 @@
 import Mustache from 'mustache'
 import { z } from 'zod'
-import { handleError, sendMail } from '#auth'
+import { sendMail } from '#auth'
 
 export default defineEventHandler(async (event) => {
   interface Body {
@@ -8,64 +8,10 @@ export default defineEventHandler(async (event) => {
     subject: string;
     body: string;
   }
+  const reportTemplate = `
+    <html lang="en">
 
-  try {
-    const { userId } = await checkDevice(event)
-
-    const message = await readBody<Body>(event)
-
-    const schema = z.object({
-      type: z.string().min(1),
-      subject: z.string().min(1),
-      body: z.string().min(1)
-    })
-
-    schema.parse(message)
-
-    const report = await event.context.prisma.report.findUnique({
-      where: {
-        userId
-      }
-    })
-
-    if (!report) {
-      throw new Error('unauthorized')
-    }
-
-    if (report.emailEnable && report.emailAddress) {
-      sendMail({
-        subject: `${message.type} | ${message.subject}`,
-        to: report.emailAddress,
-        html: Mustache.render(reportTemplate, {
-          type: message.type,
-          body: message.body
-        })
-      })
-    }
-
-    if (report.webhookEnable && report.webhookUrl) {
-      await $fetch(report.webhookUrl, {
-        method: 'POST',
-        body: {
-          type: message.type,
-          subject: message.subject,
-          body: message.body
-        }
-      }).catch((_) => {
-        // console.error(e)
-      })
-    }
-
-    return 'ok'
-  } catch (error) {
-    await handleError(error)
-  }
-})
-
-const reportTemplate = `
-<html lang="en">
-
-<head>
+    <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -101,9 +47,9 @@ const reportTemplate = `
             font-style: italic;
         }
     </style>
-</head>
+    </head>
 
-<body>
+    <body>
     <header>
         <h3>ESP Admin</h3>
     </header>
@@ -115,6 +61,55 @@ const reportTemplate = `
     <p class="payload">
         {{body}}
     </p>
-</body>
+    </body>
 
-</html>`
+    </html>`
+
+  const { userId } = await checkDevice(event)
+
+  const message = await readBody<Body>(event)
+
+  const schema = z.object({
+    type: z.string().min(1),
+    subject: z.string().min(1),
+    body: z.string().min(1)
+  })
+
+  schema.parse(message)
+
+  const report = await event.context.prisma.report.findUnique({
+    where: {
+      userId
+    }
+  })
+
+  if (!report) {
+    throw new Error('unauthorized')
+  }
+
+  if (report.emailEnable && report.emailAddress) {
+    sendMail({
+      subject: `${message.type} | ${message.subject}`,
+      to: report.emailAddress,
+      html: Mustache.render(reportTemplate, {
+        type: message.type,
+        body: message.body
+      })
+    })
+  }
+
+  if (report.webhookEnable && report.webhookUrl) {
+    await $fetch(report.webhookUrl, {
+      method: 'POST',
+      body: {
+        type: message.type,
+        subject: message.subject,
+        body: message.body
+      }
+    }).catch((_) => {
+      // console.error(e)
+    })
+  }
+
+  return 'ok'
+})

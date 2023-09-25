@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { handleError } from '#auth'
 
 export default defineEventHandler(async (event) => {
   interface Body {
@@ -8,46 +7,30 @@ export default defineEventHandler(async (event) => {
     status: Deployment['status'];
   }
 
-  try {
-    const { id: deviceId } = await checkDevice(event)
+  const { id: deviceId } = await checkDevice(event)
 
-    const body = await readBody<Body>(event)
+  const body = await readBody<Body>(event)
 
-    const schema = z.object({
-      status: z.string().min(1)
-    })
+  const schema = z.object({
+    status: z.string().min(1)
+  })
 
-    schema.parse({ status: body.status })
+  schema.parse({ status: body.status })
 
-    if (body.status === 'started') {
-      const deployment = await event.context.prisma.deployment.create({
-        data: {
-          deviceId,
-          device: {
-            connect: {
-              id: deviceId
-            }
-          },
-          release: {
-            connect: {
-              id: body.releaseId
-            }
+  if (body.status === 'started') {
+    const deployment = await event.context.prisma.deployment.create({
+      data: {
+        deviceId,
+        device: {
+          connect: {
+            id: deviceId
           }
         },
-        select: {
-          id: true
+        release: {
+          connect: {
+            id: body.releaseId
+          }
         }
-      })
-
-      return deployment.id
-    }
-
-    const deployment = await event.context.prisma.deployment.update({
-      where: {
-        id: body.deploymentId
-      },
-      data: {
-        status: body.status
       },
       select: {
         id: true
@@ -55,7 +38,19 @@ export default defineEventHandler(async (event) => {
     })
 
     return deployment.id
-  } catch (error) {
-    await handleError(error)
   }
+
+  const deployment = await event.context.prisma.deployment.update({
+    where: {
+      id: body.deploymentId
+    },
+    data: {
+      status: body.status
+    },
+    select: {
+      id: true
+    }
+  })
+
+  return deployment.id
 })

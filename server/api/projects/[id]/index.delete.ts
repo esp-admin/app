@@ -1,26 +1,21 @@
 import { z } from 'zod'
-import { handleError } from '#auth'
 
 export default defineEventHandler(async (event) => {
-  try {
-    checkUser(event)
+  checkUser(event)
 
-    const id = event.context.params?.id
+  const id = event.context.params?.id
 
-    const schema = z.object({
-      id: z.string().regex(/^[a-fA-F0-9]{24}$/)
-    })
+  const schema = z.object({
+    id: z.string().regex(/^[a-fA-F0-9]{24}$/)
+  })
 
-    schema.parse({ id })
+  schema.parse({ id })
 
-    const project = await event.context.prisma.project.delete({
-      where: {
-        id
-      }
-    })
+  const project = await event.context.prisma.project.delete({
+    where: {
+      id
+    }
+  })
 
-    return project
-  } catch (error) {
-    await handleError(error)
-  }
+  return project
 })

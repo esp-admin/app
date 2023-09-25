@@ -86,6 +86,15 @@ rules.value = {
 async function handleSubmit () {
   try {
     const { add, update } = useMqtt()
+
+    model.value.uriTCP ||= undefined
+
+    if (mqtt.value) {
+      await update(model.value)
+    } else {
+      await add(model.value)
+    }
+
     const { $mqtt } = useNuxtApp()
 
     await $mqtt.connect({
@@ -93,14 +102,8 @@ async function handleSubmit () {
       uri: model.value.uriWS!,
       username: model.value.username!
     })
-
-    if (mqtt.value) {
-      await update(model.value)
-    } else {
-      await add(model.value)
-    }
   } catch (error) {
-    apiErrors.value.unableToConnect = true
+    // apiErrors.value.unableToConnect = true
   }
 }
 </script>

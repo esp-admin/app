@@ -1,11 +1,11 @@
 <template>
   <n-form ref="formRef" :rules="rules" :model="model" autocomplete="off" @submit.prevent="() => onSubmit(handleSubmit)">
     <n-form-item label="Websockets uri" path="uriWS">
-      <n-input v-model:value="model.uriWS" />
+      <n-input v-model:value="model.uriWS" placeholder="wss://example.com:8884/mqtt" />
     </n-form-item>
 
     <n-form-item label="Mqtt uri" path="uriTCP">
-      <n-input v-model:value="model.uriTCP" />
+      <n-input v-model:value="model.uriTCP" placeholder="mqtts://example.com:8883/mqtt" />
     </n-form-item>
 
     <n-form-item label="Username" path="username">

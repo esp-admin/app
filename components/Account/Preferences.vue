@@ -1,30 +1,30 @@
 <template>
   <n-form>
     <n-form-item label="Color Mode">
-      <n-tree-select v-model:value="preference" :options="colorModeSelectOptions" />
+      <n-select v-model:value="preference" :options="colorModeSelectOptions" />
     </n-form-item>
   </n-form>
 </template>
 
 <script setup lang="ts">
-import type { TreeOption } from 'naive-ui'
+import type { SelectOption } from 'naive-ui'
 
 const { colorModePreference } = useNaiveColorMode()
 const preference = ref(colorModePreference.get())
 
 watch(preference, (value: any) => colorModePreference.set(value))
 
-const colorModeSelectOptions = ref<TreeOption[]>([
+const colorModeSelectOptions = ref<SelectOption[]>([
   {
     label: 'Light',
-    key: 'light'
+    value: 'light'
   },
   {
     label: 'Dark',
-    key: 'dark'
+    value: 'dark'
   }, {
     label: 'System',
-    key: 'system'
+    value: 'system'
   }
 ])
 </script>

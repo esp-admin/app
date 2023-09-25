@@ -5,7 +5,7 @@
 
   <n-form ref="formRef" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
     <n-form-item label="Name">
-      <n-tree-select v-model:value="model.selectedDeviceId" :options="options" />
+      <n-select v-model:value="model.selectedDeviceId" :options="options" />
     </n-form-item>
 
     <div class="flex gap-4">
@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import type { TreeOption } from 'naive-ui'
+import type { SelectOption } from 'naive-ui'
 
 const model = ref({
   selectedDeviceId: ''
@@ -44,10 +44,10 @@ const devices = await find()
 
 const unlinkedDevices = computed(() => devices.value?.filter(device => device.projectId === null))
 
-const options = computed<TreeOption[]>(() => unlinkedDevices.value
+const options = computed<SelectOption[]>(() => unlinkedDevices.value
   ? unlinkedDevices.value.map(device => ({
     label: device.name,
-    key: device.id
+    value: device.id
   }))
   : [])
 

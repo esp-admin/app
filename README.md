@@ -1,6 +1,6 @@
 # ESP Admin
 
-An open source platform to remotely manage ESP microcontrollers for IoT applications. SDK can be found [here](https://github.com/becem-gharbi/esp-admin-sdk).
+An open source platform to remotely manage ESP microcontrollers for IoT applications.
 
 ## ✔️ Features
 

@@ -1,6 +1,48 @@
 # Changelog
 
 
+## v0.2.5
+
+[compare changes](https://github.com/esp-admin/app/compare/v0.2.4...v0.2.5)
+
+### 🩹 Fixes
+
+- **settings:** Replace uriTCP empty string with undefined ([4fd42ef](https://github.com/esp-admin/app/commit/4fd42ef))
+- **settings:** Fix mqtt form validator return type ([064c878](https://github.com/esp-admin/app/commit/064c878))
+- **Device variables:** Fix undefined model ([4bb7f03](https://github.com/esp-admin/app/commit/4bb7f03))
+- **project variables:** Always display buttons ([08582fc](https://github.com/esp-admin/app/commit/08582fc))
+- **form item:** Hide tooltip if description empty ([119da13](https://github.com/esp-admin/app/commit/119da13))
+- **project commands:** Always show buttons ([1290d73](https://github.com/esp-admin/app/commit/1290d73))
+- Accept empty string as optional in zod validation ([d529fd7](https://github.com/esp-admin/app/commit/d529fd7))
+
+### 💅 Refactors
+
+- **mqtt plugin:** Remove on connect listener ([a24b4c2](https://github.com/esp-admin/app/commit/a24b4c2))
+- **settings:** Add mqtt inputs placeholders ([961b5a4](https://github.com/esp-admin/app/commit/961b5a4))
+- **client-side validation:** Add url validation and change error messages ([8b09a14](https://github.com/esp-admin/app/commit/8b09a14))
+- Use nitro error hook to handle errors ([331077a](https://github.com/esp-admin/app/commit/331077a))
+- Create createPrismaError utility to format errors ([9414630](https://github.com/esp-admin/app/commit/9414630))
+- Add missing client-side error messages ([dc12805](https://github.com/esp-admin/app/commit/dc12805))
+- Comment theme height properties ([c91f230](https://github.com/esp-admin/app/commit/c91f230))
+- Comment unused theme properties ([6b58eba](https://github.com/esp-admin/app/commit/6b58eba))
+- Set DeviceCard & ProjectCard heights to full ([5ebb620](https://github.com/esp-admin/app/commit/5ebb620))
+- Replace NTreeSelect with NSelect ([91c0c54](https://github.com/esp-admin/app/commit/91c0c54))
+
+### 📖 Documentation
+
+- Update README ([5a6025e](https://github.com/esp-admin/app/commit/5a6025e))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([2acdeee](https://github.com/esp-admin/app/commit/2acdeee))
+- Disable devtools ([a83b8ef](https://github.com/esp-admin/app/commit/a83b8ef))
+- **eslint:** Disable vue/multi-word-component-names ([9b70651](https://github.com/esp-admin/app/commit/9b70651))
+- Fix lint issues ([4702cf8](https://github.com/esp-admin/app/commit/4702cf8))
+
+### ❤️ Contributors
+
+- Becem Gharbi <becem.gharbi@live.com>
+
 ## v0.2.4
 
 [compare changes](https://github.com/esp-admin/app/compare/v0.2.3...v0.2.4)

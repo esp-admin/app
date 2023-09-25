@@ -1,6 +1,6 @@
 {
   "name": "esp-admin",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "private": true,
   "description": "Remote management for ESP microcontrollers",
   "homepage": "https://esp-admin.bg.tn",

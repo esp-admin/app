@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
       emailAddress,
       emailEnable
     }
-  })
+  }).catch((e) => { throw createPrismaError(e) })
 
   return report
 })

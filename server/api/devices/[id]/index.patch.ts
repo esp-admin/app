@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
       id
     },
     data
-  })
+  }).catch((e) => { throw createPrismaError(e) })
 
   return device
 })

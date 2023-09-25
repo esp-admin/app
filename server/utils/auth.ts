@@ -1,4 +1,4 @@
-import type { H3Event } from 'H3'
+import type { H3Event } from 'h3'
 
 export async function checkDevice (event: H3Event) {
   const deviceId = event.context.params?.id

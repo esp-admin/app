@@ -9,8 +9,8 @@ export default defineEventHandler(async (event) => {
   const schema = z.object({
     webhookEnable: z.boolean(),
     emailEnable: z.boolean(),
-    webhookUrl: z.string().url(),
-    emailAddress: z.string().email()
+    webhookUrl: z.string().url().or(z.literal('')),
+    emailAddress: z.string().email().or(z.literal(''))
   })
 
   schema.parse({ webhookEnable, emailEnable, webhookUrl, emailAddress })

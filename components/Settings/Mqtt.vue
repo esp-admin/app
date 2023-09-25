@@ -84,8 +84,6 @@ rules.value = {
 async function handleSubmit () {
   const { add, update } = useMqtt()
 
-  model.value.uriTCP ||= undefined
-
   if (mqtt.value) {
     await update(model.value)
   } else {

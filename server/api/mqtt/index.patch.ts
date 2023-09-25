@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
   const { uriTCP, uriWS, username, password } = await readBody<Mqtt>(event)
 
   const schema = z.object({
-    uriTCP: z.string().url().optional(),
+    uriTCP: z.string().url().optional().or(z.literal('')),
     uriWS: z.string().url(),
     username: z.string().min(1),
     password: z.string().min(1)

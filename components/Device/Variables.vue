@@ -13,7 +13,7 @@
 
     <n-result v-else class="col-span-full my-5" title="No variables defined">
       <template #icon>
-        <img src="~/assets/images/no-results.png" alt="no-results" width="200">
+        <ResultEmpty />
       </template>
     </n-result>
   </n-form>

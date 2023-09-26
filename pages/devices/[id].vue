@@ -13,15 +13,23 @@
         </n-text>
       </div>
 
-      <n-button type="error" secondary circle @click="deleteModalVisible = true">
-        <template #icon>
-          <naive-icon name="ph:trash" />
-        </template>
-      </n-button>
-
       <n-button v-if="device.projectId" type="primary" secondary circle @click="unlinkModalVisible = true">
         <template #icon>
           <naive-icon name="ph:link-break" />
+        </template>
+      </n-button>
+
+      <NuxtLink v-if="device.projectId" :to="`/projects/${device.projectId}`">
+        <n-button type="primary" secondary circle>
+          <template #icon>
+            <naive-icon name="ph:code" />
+          </template>
+        </n-button>
+      </NuxtLink>
+
+      <n-button type="error" secondary circle @click="deleteModalVisible = true">
+        <template #icon>
+          <naive-icon name="ph:trash" />
         </template>
       </n-button>
     </div>

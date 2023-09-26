@@ -62,8 +62,6 @@ export default function useDeployment (deviceId: Device['id']) {
         const deployment = await findOne(id)
 
         if (deployment.value) {
-          // console.log('on deployment update - prepend', id)
-
           deployments.value.unshift(deployment.value)
         }
       }

@@ -1,26 +1,15 @@
 <template>
-  <div class="page">
-    <div class="flex-1 flex">
-      <div class="md:w-1/3 w-full flex flex-col justify-between">
-        <div class="px-8 mt-10">
-          <h1 class="text-lg font-semibold text-gray-900">
-            ESP Admin
-          </h1>
-          <h1 class="text-lg font-semibold text-gray-400">
-            {{ title }}
-          </h1>
-        </div>
+  <div class="page justify-center items-center">
+    <NuxtLink to="/">
+      <Logo :width="110" />
+    </NuxtLink>
 
-        <div class="px-8 py-4 max-w-sm mx-auto w-full">
-          <slot />
-        </div>
+    <n-text class="text-xl font-semibold mb-8 mt-2">
+      {{ title }}
+    </n-text>
 
-        <div>
-          <Footer />
-        </div>
-      </div>
-
-      <div class="w-2/3 hidden md:block bg-gradient-to-r from-cyan-500 to-blue-500" />
+    <div class="w-full max-w-sm p-7 sm:shadow-lg sm:border-zinc-100 sm:border sm:rounded-md">
+      <slot />
     </div>
   </div>
 </template>

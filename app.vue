@@ -52,14 +52,6 @@ const themeConfig = ref<ThemeConfig>({
     common: {
       fontFamily: theme.fontFamily.sans[0],
 
-      // fontSizeMini: theme.fontSize.xs[0],
-      // fontSizeTiny: theme.fontSize.xs[0],
-      // fontSizeSmall: theme.fontSize.sm[0],
-      // fontSizeMedium: theme.fontSize.base[0],
-      // fontSizeLarge: theme.fontSize.lg[0],
-      // fontSizeHuge: theme.fontSize.xl[0],
-      // fontSize: theme.fontSize.base[0],
-
       fontWeight: theme.fontWeight.light,
       fontWeightStrong: theme.fontWeight.medium,
 
@@ -68,38 +60,14 @@ const themeConfig = ref<ThemeConfig>({
       borderRadius: theme.borderRadius.md,
       borderRadiusSmall: theme.borderRadius.sm
     },
-    Tabs: {
-      // tabFontSizeMedium: theme.fontSize.base[0]
-    },
     Form: {
-      // labelFontSizeTopMedium: theme.fontSize.base[0],
       feedbackPadding: theme.padding[2],
       labelFontWeight: theme.fontWeight.medium
     },
-    Input: {
-    //  fontSizeMedium: theme.fontSize.base[0]
-    },
-    Button: {
-    //  fontSizeMedium: theme.fontSize.base[0]
-    },
-    Card: {
-      // fontSizeMedium: theme.fontSize.base[0]
-    },
-    Avatar: {
-    //  fontSize: theme.fontSize.base[0]
-    },
-    Dropdown: {
-    //  fontSizeMedium: theme.fontSize.base[0]
-    },
-    Tag: {
-    //  fontSizeMedium: theme.fontSize.base[0]
-    },
     Result: {
-    //  fontSizeMedium: theme.fontSize.base[0],
       titleFontSizeMedium: theme.fontSize.lg[0]
     },
     Menu: {
-    //  fontSize: theme.fontSize.base[0],
       titleFontSizeMedium: theme.fontSize.base[0]
     },
     Statistic: {

@@ -1,14 +1,14 @@
 <template>
-  <div class="page justify-center items-center">
+  <div class="page justify-center items-center p-7">
     <NuxtLink to="/">
-      <Logo :width="110" />
+      <Logo :width="115" />
     </NuxtLink>
 
-    <n-text class="text-xl font-semibold mb-8 mt-2">
+    <n-text class="text-lg font-medium mb-8 mt-1" depth="3">
       {{ title }}
     </n-text>
 
-    <div class="w-full max-w-sm p-7 sm:shadow-lg sm:border-zinc-100 sm:border sm:rounded-md">
+    <div class="w-full max-w-sm sm:p-6 sm:shadow-md sm:border-zinc-100 sm:border sm:rounded-md">
       <slot />
     </div>
   </div>

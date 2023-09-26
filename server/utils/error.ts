@@ -14,3 +14,10 @@ export function createPrismaError (error: any) {
     message: `${error.meta.target} | ${error.code}`
   })
 }
+
+export function createUnauthorizedError () {
+  return createError({
+    message: 'unauthorized',
+    statusCode: 401
+  })
+}

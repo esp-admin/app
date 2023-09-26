@@ -12,7 +12,7 @@ export async function checkDevice (event: H3Event) {
   })
 
   if (!device || device.apiKey !== apiKey) {
-    throw new Error('unauthorized')
+    throw createUnauthorizedError()
   }
 
   return device
@@ -22,5 +22,5 @@ export function checkUser (event: H3Event) {
   if (event.context.auth) {
     return event.context.auth
   }
-  throw new Error('unauthorized')
+  throw createUnauthorizedError()
 }

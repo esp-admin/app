@@ -84,7 +84,7 @@ export default defineEventHandler(async (event) => {
   })
 
   if (!report) {
-    throw new Error('unauthorized')
+    throw createUnauthorizedError()
   }
 
   if (report.emailEnable && report.emailAddress) {

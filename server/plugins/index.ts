@@ -12,6 +12,4 @@ export default defineNitroPlugin((nitroApp) => {
       event.node.req.body = Buffer.from(event.node.req.body, 'base64')
     }
   })
-
-  nitroApp.hooks.hook('error', () => {})
 })

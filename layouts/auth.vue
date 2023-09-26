@@ -8,7 +8,7 @@
       {{ title }}
     </n-text>
 
-    <div class="w-full max-w-sm sm:p-6 sm:shadow-md sm:border-zinc-100 sm:border sm:rounded-md">
+    <div class="w-full max-w-sm sm:p-6 sm:shadow-md sm:border-zinc-100 sm:dark:border-zinc-800 sm:border sm:rounded-md">
       <slot />
     </div>
   </div>

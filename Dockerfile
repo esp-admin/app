@@ -3,15 +3,16 @@ FROM node:lts-slim as base
 WORKDIR /src
 
 # Install openSSL for Prisma
-RUN apt-get update -y && apt-get install -y openssl
+RUN apt-get update -y 
+RUN apt-get install -y openssl
 
 # Build
 FROM base as build
 
-COPY ./package.json ./
 COPY ./package-lock.json ./
+COPY ./package.json ./
 
-RUN npm install 
+RUN npm install --verbose
 
 COPY . .
 

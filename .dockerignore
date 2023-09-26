@@ -1,5 +1,6 @@
 /.nuxt
 /.output
+/.github
 /node_modules
 /dist
 /design
@@ -10,4 +11,3 @@ README.md
 .env
 example.env
 CHANGELOG.md
-docker-compose.yml

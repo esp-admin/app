@@ -12,7 +12,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "release": "npm run lint && changelogen --release && git push --follow-tags",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build:docker": "docker build . -t becemgharbi/esp-admin"
   },
   "devDependencies": {
     "@bg-dev/nuxt-auth": "^2.0.1",

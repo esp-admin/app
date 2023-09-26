@@ -1,6 +1,41 @@
 # Changelog
 
 
+## v0.2.6
+
+[compare changes](https://github.com/esp-admin/app/compare/v0.2.5...v0.2.6)
+
+### 🚀 Enhancements
+
+- Add project btn link on device page ([8fbd32e](https://github.com/esp-admin/app/commit/8fbd32e))
+
+### 🩹 Fixes
+
+- **input:** Disable background autofill ([acc1f80](https://github.com/esp-admin/app/commit/acc1f80))
+
+### 💅 Refactors
+
+- Update auth layout ([c37a470](https://github.com/esp-admin/app/commit/c37a470))
+- Create createUnauthorizedError utility ([3655f83](https://github.com/esp-admin/app/commit/3655f83))
+- **theme:** Comment fontSize properties ([f4a6959](https://github.com/esp-admin/app/commit/f4a6959))
+- Update auth layout ([4ff0a28](https://github.com/esp-admin/app/commit/4ff0a28))
+- Update o results image ([d4f8021](https://github.com/esp-admin/app/commit/d4f8021))
+- Update default layout ([0700524](https://github.com/esp-admin/app/commit/0700524))
+- Disable forced light mode on auth pages ([f715e41](https://github.com/esp-admin/app/commit/f715e41))
+- Update auth layout ([06e2dcb](https://github.com/esp-admin/app/commit/06e2dcb))
+- Set default Logo width to 105px ([22c2d96](https://github.com/esp-admin/app/commit/22c2d96))
+- Update auth layout ([4dee7a9](https://github.com/esp-admin/app/commit/4dee7a9))
+
+### 🏡 Chore
+
+- Add funding btn ([59fd444](https://github.com/esp-admin/app/commit/59fd444))
+- Update Dockerfile ([715bbc4](https://github.com/esp-admin/app/commit/715bbc4))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- Becem Gharbi <becem.gharbi@live.com>
+
 ## v0.2.5
 
 [compare changes](https://github.com/esp-admin/app/compare/v0.2.4...v0.2.5)

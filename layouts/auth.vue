@@ -1,10 +1,10 @@
 <template>
   <div class="page justify-center items-center p-7">
     <NuxtLink to="/" class="mr-auto sm:mr-0">
-      <Logo :width="115" />
+      <Logo :width="110" />
     </NuxtLink>
 
-    <n-text class="text-lg font-medium mb-10 sm:mb-8 mt-1 mr-auto sm:mr-0" depth="3">
+    <n-text class="text-lg font-medium mb-10 mt-1 mr-auto sm:mr-0" depth="3">
       {{ title }}
     </n-text>
 

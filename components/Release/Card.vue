@@ -58,7 +58,7 @@ async function onTrigger () {
       deviceId: device.id,
       action: 'command',
       type: 'update',
-      retained: true,
+      retain: true,
       payload: JSON.stringify({
         releaseId: props.release.id,
         downloadPath: props.release.downloadPath,

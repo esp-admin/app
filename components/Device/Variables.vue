@@ -57,7 +57,7 @@ async function handleSubmit () {
         action: 'command',
         type: 'config',
         payload: JSON.stringify(model.value),
-        retained: true
+        retain: true
       })
     })
 }

@@ -47,7 +47,7 @@ if (props.device.projectId) {
   }
 }
 
-const { logs } = useDevice()
+const { logs } = useLog(props.device.id)
 
 const logsString = computed(() => logs.value.map(log => `${log.type} - ${log.payload}`).join('\n'))
 
@@ -56,7 +56,7 @@ function handleRestart () {
     deviceId: props.device.id,
     action: 'command',
     type: 'restart',
-    retained: false,
+    retain: false,
     payload: ''
   })
 }
@@ -66,35 +66,52 @@ function handleCommand (command: Command) {
     deviceId: props.device.id,
     action: 'command',
     type: 'custom',
-    retained: false,
+    retain: false,
     payload: JSON.stringify(command)
   })
 }
 
 onMounted(() => {
-  logs.value = []
+  scrollToBottom()
 
+  enableLog()
+
+  watch(logsString, () =>
+    nextTick(() => scrollToBottom())
+  )
+})
+
+if (process.client) {
+  window.onbeforeunload = () => {
+    disableLog()
+  }
+}
+
+onUnmounted(() => {
+  disableLog()
+})
+
+function scrollToBottom () {
+  logInst.value?.scrollTo({ position: 'bottom', slient: true })
+}
+
+function enableLog () {
   $mqtt.publish({
     deviceId: props.device.id,
     action: 'command',
     type: 'log',
     payload: 'on',
-    retained: false
+    retain: false
   })
+}
 
-  watch(logsString, () =>
-    nextTick(() => logInst.value?.scrollTo({ position: 'bottom', slient: true }))
-  )
-})
-
-onUnmounted(() => {
-  logs.value = []
+function disableLog () {
   $mqtt.publish({
     deviceId: props.device.id,
     action: 'command',
     type: 'log',
     payload: 'off',
-    retained: false
+    retain: false
   })
-})
+}
 </script>

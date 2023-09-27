@@ -1,4 +1,4 @@
-import { connectAsync } from 'mqtt/dist/mqtt.min'
+import { connectAsync } from 'mqtt'
 import type { MqttClient } from 'mqtt'
 
 export default defineNuxtPlugin({
@@ -17,6 +17,8 @@ export default defineNuxtPlugin({
       await disconnect()
 
       mqttClient = await connectAsync(options.uri, {
+        keepalive: 30,
+        reconnectPeriod: 3000,
         username: options.username,
         password: options.password
       })
@@ -67,7 +69,7 @@ export default defineNuxtPlugin({
           useReport().handleReport(mqttMessage)
           break
         case 'logs':
-          useDevice().handleLogs(mqttMessage)
+          useLog(mqttMessage.deviceId).append(mqttMessage)
           break
       }
     }
@@ -76,7 +78,7 @@ export default defineNuxtPlugin({
       const topic = `device/${message.deviceId}/${message.action}/${message.type}`
 
       mqttClient?.publish(topic, message.payload, {
-        retain: message.retained,
+        retain: message.retain,
         qos: 1
       })
     }

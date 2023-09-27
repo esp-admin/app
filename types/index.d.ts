@@ -34,14 +34,14 @@ declare global {
     action: "command";
     type: "config" | "log" | "restart" | "update" | "custom";
     payload: string;
-    retained: boolean;
+    retain: boolean;
   }
 
   interface ReportMessage {
     deviceId: Device["id"];
     action: "report";
     type: "status" | "update" | "custom";
-    retained: boolean;
+    retain: boolean;
     payload: string;
   }
 
@@ -50,7 +50,7 @@ declare global {
     action: "logs";
     type: "info" | "error" | "warn" | "success";
     payload: string;
-    retained: boolean;
+    retain: boolean;
   }
 
   type MqttMessage = CommandMessage | LoggingMessage | ReportMessage;

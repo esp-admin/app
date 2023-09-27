@@ -113,7 +113,7 @@ async function handleSubmit () {
           deviceId: device.id,
           action: 'command',
           type: 'update',
-          retained: true,
+          retain: true,
           payload: JSON.stringify({
             releaseId: release.id,
             version: release.version,

@@ -1,6 +1,5 @@
 import { connectAsync } from 'mqtt'
 import type { MqttClient } from 'mqtt'
-import { useLog } from '#imports'
 
 export default defineNuxtPlugin({
   enforce: 'pre',
@@ -79,7 +78,7 @@ export default defineNuxtPlugin({
       const topic = `device/${message.deviceId}/${message.action}/${message.type}`
 
       mqttClient?.publish(topic, message.payload, {
-        retain: message.retained,
+        retain: message.retain,
         qos: 1
       })
     }

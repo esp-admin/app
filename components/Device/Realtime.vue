@@ -56,7 +56,7 @@ function handleRestart () {
     deviceId: props.device.id,
     action: 'command',
     type: 'restart',
-    retained: false,
+    retain: false,
     payload: ''
   })
 }
@@ -66,7 +66,7 @@ function handleCommand (command: Command) {
     deviceId: props.device.id,
     action: 'command',
     type: 'custom',
-    retained: false,
+    retain: false,
     payload: JSON.stringify(command)
   })
 }
@@ -95,7 +95,7 @@ function enableLog () {
     action: 'command',
     type: 'log',
     payload: 'on',
-    retained: false
+    retain: false
   })
 }
 
@@ -105,7 +105,7 @@ function disableLog () {
     action: 'command',
     type: 'log',
     payload: 'off',
-    retained: false
+    retain: false
   })
 }
 </script>

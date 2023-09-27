@@ -1,5 +1,6 @@
 import { connectAsync } from 'mqtt'
 import type { MqttClient } from 'mqtt'
+import { useLog } from '#imports'
 
 export default defineNuxtPlugin({
   enforce: 'pre',
@@ -67,7 +68,7 @@ export default defineNuxtPlugin({
           useReport().handleReport(mqttMessage)
           break
         case 'logs':
-          useDevice().handleLogs(mqttMessage)
+          useLog(mqttMessage.deviceId).append(mqttMessage)
           break
       }
     }

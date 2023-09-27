@@ -1,4 +1,4 @@
-import { connectAsync } from 'mqtt/dist/mqtt.min'
+import { connectAsync } from 'mqtt'
 import type { MqttClient } from 'mqtt'
 
 export default defineNuxtPlugin({

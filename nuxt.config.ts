@@ -1,3 +1,9 @@
+// Node polyfill for MQTT.js
+import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
+import { nodePolyfills as viteNodePolyfills } from 'vite-plugin-node-polyfills'
+import rollupNodePolyfills from 'rollup-plugin-polyfill-node'
+//
+
 import { auth, naiveui, tailwindcss, s3, pwa } from './config'
 
 export default defineNuxtConfig({
@@ -84,6 +90,29 @@ export default defineNuxtConfig({
       bugsnag: {
         enabled: false,
         apiKey: '*'
+      }
+    }
+  },
+
+  // Node polyfill for MQTT.js
+  vite: {
+    plugins: [
+      viteNodePolyfills({ include: ['util'], globals: { process: false } })
+    ],
+    optimizeDeps: {
+      esbuildOptions: {
+        define: {
+          global: 'globalThis'
+        },
+        plugins: [
+          // @ts-ignore
+          NodeGlobalsPolyfillPlugin({ buffer: true, process: true })
+        ]
+      }
+    },
+    build: {
+      rollupOptions: {
+        plugins: [rollupNodePolyfills()]
       }
     }
   }

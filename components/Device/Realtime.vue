@@ -87,6 +87,18 @@ onMounted(() => {
   )
 })
 
+if (process.client) {
+  window.onbeforeunload = () => {
+    $mqtt.publish({
+      deviceId: props.device.id,
+      action: 'command',
+      type: 'log',
+      payload: 'off',
+      retained: false
+    })
+  }
+}
+
 onUnmounted(() => {
   logs.value = []
   $mqtt.publish({

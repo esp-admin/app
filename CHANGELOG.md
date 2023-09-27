@@ -1,6 +1,32 @@
 # Changelog
 
 
+## v0.2.7
+
+[compare changes](https://github.com/esp-admin/app/compare/v0.2.6...v0.2.7)
+
+### 🚀 Enhancements
+
+- **realtime:** Save logs per-device with no reset after tab close ([eb61445](https://github.com/esp-admin/app/commit/eb61445))
+
+### 🔥 Performance
+
+- Import MQTT.js with tree-shaking instead of the complete bundle ([d55f3cd](https://github.com/esp-admin/app/commit/d55f3cd))
+
+### 🩹 Fixes
+
+- **realtime:** Disable logs on window close ([9919682](https://github.com/esp-admin/app/commit/9919682))
+- **realtime:** Scroll logs to bottom on mounted ([e679696](https://github.com/esp-admin/app/commit/e679696))
+
+### 💅 Refactors
+
+- **MQTT:** Set keepalive and reconnectPeriod options ([6347a51](https://github.com/esp-admin/app/commit/6347a51))
+- Rename ([b4e2c6b](https://github.com/esp-admin/app/commit/b4e2c6b))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v0.2.6
 
 [compare changes](https://github.com/esp-admin/app/compare/v0.2.5...v0.2.6)

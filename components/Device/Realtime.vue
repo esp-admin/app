@@ -72,10 +72,12 @@ function handleCommand (command: Command) {
 }
 
 onMounted(() => {
+  scrollToBottom()
+
   enableLog()
 
   watch(logsString, () =>
-    nextTick(() => logInst.value?.scrollTo({ position: 'bottom', slient: true }))
+    nextTick(() => scrollToBottom())
   )
 })
 
@@ -88,6 +90,10 @@ if (process.client) {
 onUnmounted(() => {
   disableLog()
 })
+
+function scrollToBottom () {
+  logInst.value?.scrollTo({ position: 'bottom', slient: true })
+}
 
 function enableLog () {
   $mqtt.publish({

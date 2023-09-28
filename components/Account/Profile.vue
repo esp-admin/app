@@ -42,7 +42,8 @@ async function updateAccount () {
 
     if (file.value) {
       const url = await upload(file.value, {
-        url: model.value.picture
+        url: model.value.picture,
+        prefix: `image/${user.value!.id}/`
       })
 
       model.value.picture = url

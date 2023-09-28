@@ -4,7 +4,7 @@
 
     <n-tooltip>
       <template #trigger>
-        <n-button v-show="!key" @click="refresh">
+        <n-button v-show="!value" @click="refresh">
           <template #icon>
             <naive-icon name="ph:arrows-clockwise" />
           </template>
@@ -15,7 +15,7 @@
 
     <n-tooltip>
       <template #trigger>
-        <n-button v-show="key" @click="cancel">
+        <n-button v-show="value" @click="cancel">
           <template #icon>
             <naive-icon name="ph:x" />
           </template>
@@ -26,7 +26,7 @@
 
     <n-tooltip>
       <template #trigger>
-        <n-button v-show="key" :type="copied ? 'success': 'default'" @click="copy">
+        <n-button v-show="value" :type="copied ? 'success': 'default'" @click="copy">
           <template #icon>
             <naive-icon name="ph:copy" />
           </template>
@@ -40,16 +40,14 @@
 <script setup lang="ts">
 import * as randomstring from 'randomstring'
 
-defineProps<{ value?: string }>()
+const props = defineProps<{ value?: string }>()
 
 const emits = defineEmits(['update:value'])
 
-const key = ref()
-
 const placeholder = computed(() => {
-  if (key.value && copied.value) {
+  if (props.value && copied.value) {
     return 'Key copied to clipboard'
-  } else if (key.value && !copied.value) {
+  } else if (props.value && !copied.value) {
     return 'Please copy the new Key'
   }
   return 'Key cannot be displayed'
@@ -58,17 +56,16 @@ const placeholder = computed(() => {
 const copied = ref(false)
 
 function refresh () {
-  key.value = randomstring.generate(20)
-  emits('update:value', key.value)
+  const newValue = randomstring.generate(20)
+  emits('update:value', newValue)
 }
 
 function copy () {
-  navigator.clipboard.writeText(key.value)
+  navigator.clipboard.writeText(props.value!)
   copied.value = true
 }
 
 function cancel () {
-  key.value = undefined
   copied.value = false
   emits('update:value')
 }

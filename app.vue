@@ -166,6 +166,9 @@ const themeConfig = ref<ThemeConfig>({
     },
     List: {
       color: theme.colors.zinc[900]
+    },
+    Input: {
+      borderSuccess: theme.colors.green[400]
     }
   }
 })

@@ -9,7 +9,7 @@
     </n-form-item>
 
     <n-form-item label="API key" path="apiKey">
-      <n-input v-model:value="model.apiKey" type="password" show-password-on="click" :input-props="{ autocomplete: 'off' }" />
+      <FormKey v-model:value="model.apiKey" />
     </n-form-item>
 
     <n-form-item label="Description" path="description">
@@ -25,7 +25,7 @@ const props = defineProps<{ device: Device }>()
 
 const model = ref({
   name: props.device.name,
-  apiKey: props.device.apiKey,
+  apiKey: undefined,
   description: props.device.description
 })
 
@@ -39,7 +39,7 @@ rules.value = {
   name: [
     {
       required: true,
-      message: 'Please input project name',
+      message: 'Please input device name',
       trigger: 'blur'
     },
     {
@@ -49,18 +49,6 @@ rules.value = {
     {
       validator: (_, value) => !/^\s|\s$/.test(value),
       message: 'Should not contain leading or trailing space',
-      trigger: 'blur'
-    }
-  ],
-  apiKey: [
-    {
-      required: true,
-      message: 'Please input API key',
-      trigger: 'blur'
-    },
-    {
-      validator: (_, value) => /(?=.*[a-z])(?=.*[0-9])(?=.{6,})/.test(value),
-      message: 'At least 6 characters, 1 lowercase, 1 number',
       trigger: 'blur'
     }
   ]

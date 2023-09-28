@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { z } from 'zod'
 
 export default defineEventHandler(async (event) => {
@@ -12,12 +13,24 @@ export default defineEventHandler(async (event) => {
 
   schema.parse({ id })
 
+  let hashedApiKey
+
+  if (data.apiKey) {
+    hashedApiKey = hashSync(data.apiKey, 12)
+  }
+
   const device = await event.context.prisma.device.update({
     where: {
       id
     },
-    data
+    data: {
+      ...data,
+      apiKey: hashedApiKey
+    }
   }).catch((e) => { throw createPrismaError(e) })
 
-  return device
+  // @ts-ignore
+  const { apiKey, ...sanitizedDevice } = device
+
+  return sanitizedDevice
 })

@@ -9,7 +9,7 @@
     </n-form-item>
 
     <n-form-item label="API Key" path="apiKey">
-      <n-input v-model:value="model.apiKey" />
+      <FormKey v-model:value="model.apiKey" />
     </n-form-item>
 
     <div class="flex gap-4">
@@ -64,11 +64,6 @@ rules.value = {
     {
       required: true,
       message: 'Please input api key',
-      trigger: 'blur'
-    },
-    {
-      validator: (_, value) => /(?=.*[a-z])(?=.*[0-9])(?=.{6,})/.test(value),
-      message: 'At least 6 characters, 1 lowercase, 1 number',
       trigger: 'blur'
     }
   ]

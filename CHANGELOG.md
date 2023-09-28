@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v0.2.8
+
+[compare changes](https://github.com/esp-admin/app/compare/v0.2.7...v0.2.8)
+
+### 🩹 Fixes
+
+- Hide and auto-generate device API Key ([98a5930](https://github.com/esp-admin/app/commit/98a5930))
+- **device metadata:** Fix name required error message ([619d6d8](https://github.com/esp-admin/app/commit/619d6d8))
+- Hash device API key ([df939d5](https://github.com/esp-admin/app/commit/df939d5))
+
+### 💅 Refactors
+
+- **FormKey:** Remove message display ([98aaf76](https://github.com/esp-admin/app/commit/98aaf76))
+- **FormKey:** Remove extra state ([392c201](https://github.com/esp-admin/app/commit/392c201))
+- Group uploaded files by user ([29ffe0d](https://github.com/esp-admin/app/commit/29ffe0d))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v0.2.7
 
 [compare changes](https://github.com/esp-admin/app/compare/v0.2.6...v0.2.7)

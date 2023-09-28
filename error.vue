@@ -18,5 +18,5 @@
 <script setup lang="ts">
 defineProps<{ error: object }>()
 
-const handleError = () => clearError({ redirect: '/home' })
+const handleError = () => clearError({ redirect: '/' })
 </script>

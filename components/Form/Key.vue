@@ -1,24 +1,39 @@
 <template>
   <n-input-group>
-    <n-input disabled :placeholder="placeholder" />
+    <n-input :placeholder="placeholder" disabled />
 
-    <n-button v-if="!key" @click="refresh">
-      <template #icon>
-        <naive-icon name="ph:arrows-clockwise" />
+    <n-tooltip>
+      <template #trigger>
+        <n-button v-show="!key" @click="refresh">
+          <template #icon>
+            <naive-icon name="ph:arrows-clockwise" />
+          </template>
+        </n-button>
       </template>
-    </n-button>
+      Refresh
+    </n-tooltip>
 
-    <n-button v-if="key" @click="copy">
-      <template #icon>
-        <naive-icon name="ph:copy" />
+    <n-tooltip>
+      <template #trigger>
+        <n-button v-show="key" @click="cancel">
+          <template #icon>
+            <naive-icon name="ph:x" />
+          </template>
+        </n-button>
       </template>
-    </n-button>
+      Cancel
+    </n-tooltip>
 
-    <n-button v-if="key" @click="cancel">
-      <template #icon>
-        <naive-icon name="ph:arrow-counter-clockwise" />
+    <n-tooltip>
+      <template #trigger>
+        <n-button v-show="key" :type="copied ? 'success': 'default'" @click="copy">
+          <template #icon>
+            <naive-icon name="ph:copy" />
+          </template>
+        </n-button>
       </template>
-    </n-button>
+      Copy
+    </n-tooltip>
   </n-input-group>
 </template>
 
@@ -31,24 +46,30 @@ const emits = defineEmits(['update:value'])
 
 const key = ref()
 
-const message = useMessage()
+const placeholder = computed(() => {
+  if (key.value && copied.value) {
+    return 'Key copied to clipboard'
+  } else if (key.value && !copied.value) {
+    return 'Please copy the new Key'
+  }
+  return 'Key cannot be displayed'
+})
 
-const placeholder = computed(() => key.value ? 'Please copy new value' : 'Value cannot be displayed')
+const copied = ref(false)
 
 function refresh () {
   key.value = randomstring.generate(20)
-  message.warning('Key needs to be copied')
   emits('update:value', key.value)
 }
 
 function copy () {
   navigator.clipboard.writeText(key.value)
-  message.success('Key copied to clipboard')
+  copied.value = true
 }
 
 function cancel () {
   key.value = undefined
-  message.info('Key not refreshed')
+  copied.value = false
   emits('update:value')
 }
 </script>

@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import * as randomstring from 'randomstring'
 
-defineProps<{ value: string }>()
+defineProps<{ value?: string }>()
 
 const emits = defineEmits(['update:value'])
 
@@ -37,7 +37,7 @@ const placeholder = computed(() => key.value ? 'Please copy new value' : 'Value 
 
 function refresh () {
   key.value = randomstring.generate(20)
-  message.warning('Key update active')
+  message.warning('Key needs to be copied')
   emits('update:value', key.value)
 }
 
@@ -48,7 +48,7 @@ function copy () {
 
 function cancel () {
   key.value = undefined
-  message.info('Key update canceled')
+  message.info('Key not refreshed')
   emits('update:value')
 }
 </script>

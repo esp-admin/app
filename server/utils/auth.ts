@@ -5,13 +5,17 @@ export async function checkDevice (event: H3Event) {
 
   const apiKey = getHeader(event, 'Api-Key')
 
+  if (!apiKey) {
+    throw createUnauthorizedError()
+  }
+
   const device = await event.context.prisma.device.findUnique({
     where: {
       id: deviceId
     }
   })
 
-  if (!device || device.apiKey !== apiKey) {
+  if (!device || !compareSync(apiKey, device.apiKey)) {
     throw createUnauthorizedError()
   }
 

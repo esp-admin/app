@@ -12,11 +12,13 @@ export default defineEventHandler(async (event) => {
 
   schema.parse({ name, apiKey })
 
+  const hashedApiKey = hashSync(apiKey, 12)
+
   const device = await event.context.prisma.device.create({
     data: {
       name,
       userId,
-      apiKey
+      apiKey: hashedApiKey
     }
   }).catch((e) => { throw createPrismaError(e) })
 

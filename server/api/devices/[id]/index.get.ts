@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { z } from 'zod'
 
 export default defineEventHandler(async (event) => {
@@ -31,5 +32,8 @@ export default defineEventHandler(async (event) => {
     }
   })
 
-  return device
+  // @ts-ignore
+  const { apiKey, ...sanitizedDevice } = device
+
+  return sanitizedDevice
 })

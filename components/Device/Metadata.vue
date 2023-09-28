@@ -25,7 +25,7 @@ const props = defineProps<{ device: Device }>()
 
 const model = ref({
   name: props.device.name,
-  apiKey: props.device.apiKey,
+  apiKey: undefined,
   description: props.device.description
 })
 

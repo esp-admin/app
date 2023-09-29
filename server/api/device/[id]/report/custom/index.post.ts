@@ -8,62 +8,10 @@ export default defineEventHandler(async (event) => {
     subject: string;
     body: string;
   }
+
   const reportTemplate = `
-    <html lang="en">
-
-    <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-        body {
-            background-color: #f1f5f9;
-            color: #0f172a;
-            font-family: "Arial";
-            padding: 8px;
-        }
-
-        a {
-            cursor: pointer;
-            display: block;
-            text-align: center;
-            color: #4438cac5;
-            margin: 8px;
-        }
-
-        header {
-            text-align: center;
-            padding: 8px;
-            background-color: rgba(0, 0, 255, 0.295);
-        }
-
-        .type {
-            font-weight: bold;
-            display: inline;
-        }
-
-        .payload {
-            font-style: italic;
-        }
-    </style>
-    </head>
-
-    <body>
-    <header>
-        <h3>ESP Admin</h3>
-    </header>
-
-    <h3>Hello</h3>
-
-    <span>We have received <p class="type">{{type}}</p> custom report message with the following payload</span>
-
-    <p class="payload">
-        {{body}}
-    </p>
-    </body>
-
-    </html>`
+  <!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>@font-face{font-family:Inter;font-style:normal;font-weight:400;mso-font-alt:Verdana;src:url(https://rsms.me/inter/font-files/Inter-Regular.woff2?v=3.19) format('woff2')}*{font-family:Inter,Verdana}</style><style>blockquote,h1,h2,h3,img,li,ol,p,ul{margin-top:0;margin-bottom:0}</style></head><body><table align="center" width="100%" role="presentation" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;margin-left:auto;margin-right:auto;padding:.5rem"><tbody><tr style="width:100%"><td><img alt="" src="https://raw.githubusercontent.com/esp-admin/app/main/assets/logos/light.svg" style="display: block;outline: none;border: none;text-decoration: none;margin-bottom: 32px;margin-top: 0px;height: 40px;"><h3 style="font-size: 24px;font-weight: 600;line-height: 38px;margin-bottom: 12px;color: rgb(17, 24, 39);text-align: left;">Hello</h3><p style="font-size: 15px;line-height: 24px;margin: 16px 0;margin-top: 0px;margin-bottom: 20px;color: rgb(55, 65, 81);-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;text-align: left;">We have received <u><strong>{{type}}</strong></u> custom report message with the following payload</p><p style="font-size: 15px;line-height: 24px;margin: 16px 0;margin-top: 0px;margin-bottom: 20px;color: rgb(55, 65, 81);-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;text-align: left;"><em>{{body}}</em></p></td></tr></tbody></table></body></html>
+ `
 
   const { userId } = await checkDevice(event)
 
@@ -106,9 +54,7 @@ export default defineEventHandler(async (event) => {
         subject: message.subject,
         body: message.body
       }
-    }).catch((_) => {
-      // console.error(e)
-    })
+    }).catch(() => {})
   }
 
   return 'ok'

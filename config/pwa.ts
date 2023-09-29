@@ -9,6 +9,7 @@ export const pwa: Partial<ModuleOptions> = {
     short_name: 'ESPAdmin',
     theme_color: '#18181B',
     background_color: '#FFFFFF',
+    description: 'Remote management for ESP microcontrollers',
     icons: [
       {
         src: 'pwa/icon-72x72.png',

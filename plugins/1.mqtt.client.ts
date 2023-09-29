@@ -90,14 +90,14 @@ export default defineNuxtPlugin({
         const mqtt = await find()
 
         if (mqtt.value) {
-          await connect({
+          connect({
             uri: mqtt.value.uriWS,
             password: mqtt.value.password,
             username: mqtt.value.username
           })
         }
       } else {
-        await disconnect()
+        disconnect()
       }
     })
 

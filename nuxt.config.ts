@@ -28,6 +28,9 @@ export default defineNuxtConfig({
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap'
         }
+      ],
+      meta: [
+        { name: 'theme-color', content: '#18181B' }
       ]
     },
     pageTransition: { name: 'page', mode: 'out-in' },

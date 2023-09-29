@@ -1,6 +1,32 @@
 # Changelog
 
 
+## v0.2.9
+
+[compare changes](https://github.com/esp-admin/app/compare/v0.2.8...v0.2.9)
+
+### 🔥 Performance
+
+- Avoid wait mqtt connection on auth:loggedIn hook ([f6bff55](https://github.com/esp-admin/app/commit/f6bff55))
+
+### 🩹 Fixes
+
+- **pwa:** Disable navigateFallback ([e50ade4](https://github.com/esp-admin/app/commit/e50ade4))
+
+### 🏡 Chore
+
+- **pwa:** Add all possible icon sizes ([33251af](https://github.com/esp-admin/app/commit/33251af))
+- **pwa:** Add description to manifest ([4c7f6d9](https://github.com/esp-admin/app/commit/4c7f6d9))
+- Add missing theme-color meta tag ([8033ab7](https://github.com/esp-admin/app/commit/8033ab7))
+- Create custom email templates for email verification and password reset ([c1a405e](https://github.com/esp-admin/app/commit/c1a405e))
+- Update email template of custom report ([cbaa284](https://github.com/esp-admin/app/commit/cbaa284))
+- Allow cross origin requests on pwa icons ([1c32eae](https://github.com/esp-admin/app/commit/1c32eae))
+- Update email templates ([fea3e66](https://github.com/esp-admin/app/commit/fea3e66))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v0.2.8
 
 [compare changes](https://github.com/esp-admin/app/compare/v0.2.7...v0.2.8)

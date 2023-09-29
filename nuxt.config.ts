@@ -76,6 +76,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
+    '/pwa/**': { security: { corsHandler: false } },
     '/api/s3/query/**': { isr: true },
     '/api/s3/mutation/**': {
       security: {

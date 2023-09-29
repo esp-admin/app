@@ -22,19 +22,13 @@ export const pwa: Partial<ModuleOptions> = {
         src: 'pwa-512x512.png',
         sizes: '512x512',
         type: 'image/png',
-        purpose: 'any'
-      },
-      {
-        src: 'pwa-512x512.png',
-        sizes: '512x512',
-        type: 'image/png',
-        purpose: 'maskable'
+        purpose: 'any maskable'
       }
     ]
   },
   workbox: {
-    navigateFallback: '/',
-    globPatterns: ['**/*.{png,svg,ico,js,css,html}']
+    navigateFallback: null,
+    globPatterns: ['**/*.{js,css,html,png,svg,ico}']
   },
   client: {
     installPrompt: true

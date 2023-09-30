@@ -35,6 +35,8 @@ export default defineNuxtPlugin({
 
       mqttClient.on('close', () => (connected.value = false))
 
+      mqttClient.on('connect', () => (connected.value = true))
+
       mqttClient.on('message', onMessageArrived)
     }
 

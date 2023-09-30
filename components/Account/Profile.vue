@@ -49,7 +49,7 @@ async function updateAccount () {
       model.value.picture = url
     }
 
-    await useAuthFetch('/api/user', {
+    await useAuthFetch('/api/account/profile', {
       method: 'PATCH',
       body: model.value
     })

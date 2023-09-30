@@ -4,11 +4,11 @@
       <Logo :width="110" />
     </NuxtLink>
 
-    <n-text class="text-lg font-medium mb-10 mt-1 mr-auto sm:mr-0" depth="3">
+    <n-text class="text-lg font-medium mt-1 mr-auto sm:mr-0" depth="3">
       {{ title }}
     </n-text>
 
-    <div class="w-full sm:max-w-sm sm:p-6 sm:shadow-md sm:border-zinc-100 sm:dark:border-zinc-800 sm:border sm:rounded-md">
+    <div class="w-full my-auto sm:max-w-sm sm:p-6 sm:shadow-md sm:border-zinc-100 sm:dark:border-zinc-800 sm:border sm:rounded-md">
       <slot />
     </div>
   </div>

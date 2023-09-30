@@ -39,8 +39,14 @@ export default defineNuxtPlugin({
     }
 
     function disconnect () {
-      if (mqttClient?.connected) {
+      if (mqttClient && mqttClient.connected) {
         return mqttClient.endAsync()
+      }
+    }
+
+    function reconnect () {
+      if (mqttClient && !mqttClient.connected) {
+        mqttClient.reconnect()
       }
     }
 
@@ -106,7 +112,8 @@ export default defineNuxtPlugin({
         mqtt: {
           connect,
           disconnect,
-          publish
+          publish,
+          reconnect
         }
       }
     }

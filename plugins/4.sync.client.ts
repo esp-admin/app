@@ -1,10 +1,24 @@
 export default defineNuxtPlugin(() => {
   const deploymentTimemoutMs = 3 * 60 * 1000
-  const syncIntervalMs = 5000
+  const syncIntervalMs = 10 * 1000
 
   setInterval(sync, syncIntervalMs)
 
   function sync () {
+    updateDeployments()
+    reconnectMqtt()
+  }
+
+  function reconnectMqtt () {
+    const { mqtt, connected } = useMqtt()
+
+    if (mqtt.value && !connected.value) {
+      const { $mqtt } = useNuxtApp()
+      $mqtt?.reconnect()
+    }
+  }
+
+  function updateDeployments () {
     const { devices } = useDevice()
 
     for (const device of devices.value || []) {

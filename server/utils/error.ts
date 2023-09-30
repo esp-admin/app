@@ -1,25 +1,27 @@
 export { z } from 'zod'
 
 export function createPrismaError (error: any) {
-  let statusCode
+  const h3Error = createError('server-error')
 
   switch (error.code) {
     case 'P2002':
-      statusCode = 409
+      h3Error.statusCode = 409
+      h3Error.message = `Unique constraint failed on ${error.meta.target}`
       break
-    default:
-      statusCode = 500
+    case 'P2014':
+      h3Error.statusCode = 409
+      h3Error.message = `Required relation violation on ${error.meta.relation_name}`
+      break
   }
 
-  return createError({
-    statusCode,
-    message: `${error.meta.target} | ${error.code}`
-  })
+  return h3Error
 }
 
 export function createUnauthorizedError () {
-  return createError({
+  const h3Error = createError({
     message: 'unauthorized',
     statusCode: 401
   })
+
+  return h3Error
 }

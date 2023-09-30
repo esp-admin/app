@@ -60,7 +60,7 @@ async function handleSubmit () {
   await add(model.value)
     .then(project => emits('done', project))
     .catch((error) => {
-      apiErrors.value.nameAlreadyExists = error.data.message === 'Project_name_userId_key | P2002'
+      apiErrors.value.nameAlreadyExists = error.data.message === 'Unique constraint failed on Project_name_userId_key'
     })
 }
 </script>

@@ -71,7 +71,7 @@ async function handleSubmit () {
   await add(model.value)
     .then(device => emits('done', device))
     .catch((error) => {
-      apiErrors.value.nameAlreadyExists = error.data.message === 'Device_name_userId_key | P2002'
+      apiErrors.value.nameAlreadyExists = error.data.message === 'Unique constraint failed on Device_name_userId_key'
     })
 }
 </script>

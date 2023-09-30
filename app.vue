@@ -71,7 +71,8 @@ const themeConfig = ref<ThemeConfig>({
       titleFontSizeMedium: theme.fontSize.base[0]
     },
     Statistic: {
-      valueFontSize: theme.fontSize.base[0]
+      valueFontSize: theme.fontSize.sm,
+      labelFontSize: theme.fontSize.sm
     },
     Notification: {
       padding: '16px',

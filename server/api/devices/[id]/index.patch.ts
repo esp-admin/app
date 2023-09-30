@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { z } from 'zod'
+import { hashSync } from '#auth'
 
 export default defineEventHandler(async (event) => {
   checkUser(event)

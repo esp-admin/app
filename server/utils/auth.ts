@@ -1,4 +1,5 @@
 import type { H3Event } from 'h3'
+import { compareSync } from '#auth'
 
 export async function checkDevice (event: H3Event) {
   const deviceId = event.context.params?.id

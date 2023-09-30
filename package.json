@@ -16,13 +16,12 @@
     "build:docker": "docker build . -t becemgharbi/esp-admin"
   },
   "devDependencies": {
-    "@bg-dev/nuxt-auth": "^2.0.1",
+    "@bg-dev/nuxt-auth": "^2.0.2",
     "@bg-dev/nuxt-naiveui": "^1.4.7",
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@nuxt/devtools": "^0.8.5",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/tailwindcss": "^6.8.0",
-    "@types/bcryptjs": "^2.4.4",
     "@types/mustache": "^4.2.3",
     "@types/randomstring": "^1.1.9",
     "@types/ua-parser-js": "^0.7.37",

@@ -50,7 +50,7 @@ export default function useDeployment (deviceId: Device['id']) {
     })
   }
 
-  async function update (id: Deployment['id'], status: Deployment['status']) {
+  async function update (id: Deployment['id'], status: Deployment['status'], saveToDB = false) {
     if (deployments.value) {
       const deploymentIndex = deployments.value.findIndex(
         deployment => deployment.id === id
@@ -58,6 +58,16 @@ export default function useDeployment (deviceId: Device['id']) {
 
       if (deploymentIndex >= 0) {
         deployments.value[deploymentIndex].status = status
+
+        if (saveToDB) {
+          const request = `/api/deployments/${id}`
+          return await useAuthFetch(request, {
+            method: 'PATCH',
+            body: {
+              status
+            }
+          })
+        }
       } else {
         const deployment = await findOne(id)
 
@@ -68,5 +78,5 @@ export default function useDeployment (deviceId: Device['id']) {
     }
   }
 
-  return { find, update, remove }
+  return { find, update, remove, deployments }
 }

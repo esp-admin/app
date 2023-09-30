@@ -1,8 +1,4 @@
 <template>
-  <n-h1 class="text-xl">
-    Link Device
-  </n-h1>
-
   <n-form ref="formRef" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
     <n-form-item label="Name">
       <n-select v-model:value="model.selectedDeviceId" :options="options" />

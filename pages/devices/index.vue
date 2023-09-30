@@ -34,7 +34,16 @@
       <DeviceCard v-for="device of nameSearch ? filteredDevices : devices" :key="device.id" :device="device" />
     </div>
 
-    <n-modal v-model:show="createModalVisible" preset="card" :closable="false" :mask-closable="false" class="max-w-sm">
+    <n-modal
+      v-model:show="createModalVisible"
+      title="Create new device"
+      bordered
+      segmented
+      preset="card"
+      :closable="false"
+      :mask-closable="false"
+      class="max-w-sm"
+    >
       <DeviceCreate @cancel="createModalVisible = false" @done="onCreate" />
     </n-modal>
   </div>

@@ -39,7 +39,16 @@
       </n-tab-pane>
     </n-tabs>
 
-    <n-modal v-model:show="deleteModalVisible" preset="card" :closable="false" :mask-closable="false" class="max-w-sm">
+    <n-modal
+      v-model:show="deleteModalVisible"
+      title="Delete project"
+      bordered
+      segmented
+      preset="card"
+      :closable="false"
+      :mask-closable="false"
+      class="max-w-sm"
+    >
       <ProjectDelete :project="project" @cancel="deleteModalVisible = false" @done="onDelete" />
     </n-modal>
   </div>

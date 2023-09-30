@@ -77,6 +77,11 @@ const themeConfig = ref<ThemeConfig>({
     Notification: {
       padding: '16px',
       titleFontSize: theme.fontSize.lg
+    },
+    Card: {
+      titleFontSizeMedium: theme.fontSize.xl[0],
+      titleFontSizeSmall: theme.fontSize.lg[0],
+      titleFontWeight: theme.fontWeight.medium
     }
   },
 

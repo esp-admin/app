@@ -52,11 +52,29 @@
       </n-tab-pane>
     </n-tabs>
 
-    <n-modal v-model:show="deleteModalVisible" preset="card" :closable="false" :mask-closable="false" class="max-w-sm">
+    <n-modal
+      v-model:show="deleteModalVisible"
+      title="Delete device"
+      bordered
+      segmented
+      preset="card"
+      :closable="false"
+      :mask-closable="false"
+      class="max-w-sm"
+    >
       <DeviceDelete :device="device" @cancel="deleteModalVisible = false" @done="onDelete" />
     </n-modal>
 
-    <n-modal v-model:show="unlinkModalVisible" preset="card" :closable="false" :mask-closable="false" class="max-w-sm">
+    <n-modal
+      v-model:show="unlinkModalVisible"
+      title="Unlink device"
+      bordered
+      segmented
+      preset="card"
+      :closable="false"
+      :mask-closable="false"
+      class="max-w-sm"
+    >
       <DeviceUnlink :device="device" @cancel="unlinkModalVisible = false" @done="onUnlink" />
     </n-modal>
   </div>

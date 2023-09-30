@@ -1,6 +1,34 @@
 # Changelog
 
 
+## v0.2.10
+
+[compare changes](https://github.com/esp-admin/app/compare/v0.2.9...v0.2.10)
+
+### 🩹 Fixes
+
+- **deployment:** Change stale started status to failed on 3 min of timeout ([8a9412e](https://github.com/esp-admin/app/commit/8a9412e))
+- Force mqtt reconnection ([52cf38f](https://github.com/esp-admin/app/commit/52cf38f))
+
+### 💅 Refactors
+
+- Remove unused global styles ([59240d4](https://github.com/esp-admin/app/commit/59240d4))
+- Expose zod as server utility for auto-import ([7222af6](https://github.com/esp-admin/app/commit/7222af6))
+- **modals:** Use title prop ([131413c](https://github.com/esp-admin/app/commit/131413c))
+- **modals:** Use title prop ([637aafd](https://github.com/esp-admin/app/commit/637aafd))
+- Update auth layout ([5097b06](https://github.com/esp-admin/app/commit/5097b06))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([beef3d7](https://github.com/esp-admin/app/commit/beef3d7))
+- Set default color mode to light instead of system ([1869150](https://github.com/esp-admin/app/commit/1869150))
+- Upgrade nuxt-auth ([1ecfe3f](https://github.com/esp-admin/app/commit/1ecfe3f))
+- Change user profile patch api route ([6643e2e](https://github.com/esp-admin/app/commit/6643e2e))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v0.2.9
 
 [compare changes](https://github.com/esp-admin/app/compare/v0.2.8...v0.2.9)

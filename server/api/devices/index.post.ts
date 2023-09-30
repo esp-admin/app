@@ -1,4 +1,3 @@
-import { z } from 'zod'
 import { hashSync } from '#auth'
 
 export default defineEventHandler(async (event) => {

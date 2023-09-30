@@ -1,3 +1,5 @@
+export { z } from 'zod'
+
 export function createPrismaError (error: any) {
   let statusCode
 

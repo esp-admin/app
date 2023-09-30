@@ -1,5 +1,4 @@
 import Mustache from 'mustache'
-import { z } from 'zod'
 import { sendMail } from '#auth'
 
 export default defineEventHandler(async (event) => {

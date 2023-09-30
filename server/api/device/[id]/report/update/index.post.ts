@@ -1,5 +1,3 @@
-import { z } from 'zod'
-
 export default defineEventHandler(async (event) => {
   interface Body {
     releaseId: Release['id'];

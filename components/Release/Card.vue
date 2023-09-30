@@ -23,7 +23,16 @@
       </div>
     </template>
 
-    <n-modal v-model:show="deleteModalVisible" preset="card" :closable="false" :mask-closable="false" class="max-w-sm">
+    <n-modal
+      v-model:show="deleteModalVisible"
+      title="Delete release"
+      bordered
+      segmented
+      preset="card"
+      :closable="false"
+      :mask-closable="false"
+      class="max-w-sm"
+    >
       <ReleaseDelete
         :release="release"
         :project-id="projectId"

@@ -31,7 +31,16 @@
       </div>
     </template>
 
-    <n-modal v-model:show="deleteModalVisible" preset="card" :closable="false" :mask-closable="false" class="max-w-sm">
+    <n-modal
+      v-model:show="deleteModalVisible"
+      title="Delete deployment"
+      bordered
+      segmented
+      preset="card"
+      :closable="false"
+      :mask-closable="false"
+      class="max-w-sm"
+    >
       <DeploymentDelete :deployment="deployment" @cancel="deleteModalVisible = false" @done="onDelete" />
     </n-modal>
   </n-card>

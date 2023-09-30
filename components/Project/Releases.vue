@@ -32,6 +32,9 @@
 
     <n-modal
       v-model:show="createModalVisible"
+      title="Create new release"
+      bordered
+      segmented
       preset="card"
       :closable="false"
       :mask-closable="false"

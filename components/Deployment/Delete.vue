@@ -1,8 +1,4 @@
 <template>
-  <n-h1 class="text-xl">
-    Delete Deployment
-  </n-h1>
-
   <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
     <n-form-item label="Confirm" path="confirm">
       <n-input v-model:value="model.confirm" placeholder="Write <delete> to confirm" />

@@ -2,32 +2,14 @@
   <div>
     <div class="flex gap-4">
       <div class="flex-1">
-        <n-button v-for="projectCommand of projectCommands" :key="projectCommand.key" secondary @click="handleCommand(projectCommand)">
+        <n-button v-for="projectCommand of projectCommands" :key="projectCommand.key" @click="handleCommand(projectCommand)">
           {{ projectCommand.key }}
         </n-button>
       </div>
 
-      <n-tooltip>
-        <template #trigger>
-          <n-button secondary circle @click="handleRestart">
-            <template #icon>
-              <naive-icon name="ph:arrow-counter-clockwise" />
-            </template>
-          </n-button>
-        </template>
-        Restart device
-      </n-tooltip>
+      <TooltipIconButton name="ph:arrow-counter-clockwise" message="Restart device" circle @click="handleRestart" />
 
-      <n-tooltip>
-        <template #trigger>
-          <n-button secondary circle @click="clear">
-            <template #icon>
-              <naive-icon name="ph:trash" />
-            </template>
-          </n-button>
-        </template>
-        Clear logs
-      </n-tooltip>
+      <TooltipIconButton name="ph:trash" message="Clear logs" circle @click="clear" />
     </div>
 
     <n-card class="mt-4">

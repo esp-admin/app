@@ -29,18 +29,16 @@
         </template>
 
         <template #header-extra>
-          <n-button
-            circle
+          <TooltipIconButton
+            name="ph:trash"
             size="small"
             type="error"
             secondary
             :disabled="session.current"
+            message="Delete session"
+            circle
             @click="() => handleSessionRevoke(session.id)"
-          >
-            <template #icon>
-              <NaiveIcon name="ph:trash-simple" />
-            </template>
-          </n-button>
+          />
         </template>
       </n-thing>
     </n-list-item>

@@ -2,11 +2,14 @@
   <div v-if="project">
     <n-page-header :title="project.name" class="mb-8" :on-back="$router.back">
       <template #extra>
-        <n-button type="error" secondary circle @click="deleteModalVisible = true">
-          <template #icon>
-            <naive-icon name="ph:trash" />
-          </template>
-        </n-button>
+        <TooltipIconButton
+          name="ph:trash"
+          type="error"
+          secondary
+          message="Delete project"
+          circle
+          @click="deleteModalVisible = true"
+        />
       </template>
     </n-page-header>
 

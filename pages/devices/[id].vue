@@ -3,25 +3,35 @@
     <n-page-header :title="device.name" class="mb-8" :on-back="$router.back">
       <template #extra>
         <div class="flex justify-between gap-2">
-          <n-button v-if="device.projectId" type="primary" secondary circle @click="unlinkModalVisible = true">
-            <template #icon>
-              <naive-icon name="ph:link-break" />
-            </template>
-          </n-button>
+          <TooltipIconButton
+            v-if="device.projectId"
+            name="ph:link-break"
+            secondary
+            type="primary"
+            message="Unlink device"
+            circle
+            @click="unlinkModalVisible = true"
+          />
 
           <NuxtLink v-if="device.projectId" :to="`/projects/${device.projectId}`">
-            <n-button type="primary" secondary circle>
-              <template #icon>
-                <naive-icon name="ph:code" />
-              </template>
-            </n-button>
+            <TooltipIconButton
+              v-if="device.projectId"
+              secondary
+              type="primary"
+              name="ph:code"
+              message="Linked project"
+              circle
+            />
           </NuxtLink>
 
-          <n-button type="error" secondary circle @click="deleteModalVisible = true">
-            <template #icon>
-              <naive-icon name="ph:trash" />
-            </template>
-          </n-button>
+          <TooltipIconButton
+            name="ph:trash"
+            secondary
+            type="error"
+            message="Delete device"
+            circle
+            @click="deleteModalVisible = true"
+          />
         </div>
       </template>
     </n-page-header>

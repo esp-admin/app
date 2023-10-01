@@ -11,6 +11,7 @@
 </template>
 
 <script setup lang="ts">
+// @ts-nocheck
 
 const props = defineProps<{ device: Device }>()
 
@@ -20,32 +21,34 @@ const deployments = await find()
 
 const latestDeployment = computed(() => deployments.value[0])
 
-watchEffect(() => {
+function updateFavicon (href:string) {
   let link = document.querySelector("link[rel~='icon']")
 
   if (!link) {
     link = document.createElement('link')
-    // @ts-ignore
     link.rel = 'icon'
     document.getElementsByTagName('head')[0].appendChild(link)
   }
 
-  let href = '/favicon.ico'
+  link.href = href
+}
 
+watchEffect(() => {
   switch (latestDeployment.value?.status) {
     case 'started':
-      href = '/icons/loading.svg'
+      updateFavicon('/icons/loading.svg')
       break
     case 'failed':
-      href = '/icons/failed.svg'
+      updateFavicon('/icons/failed.svg')
       break
     case 'succeded':
-      href = '/icons/success.svg'
+      updateFavicon('/icons/success.svg')
       break
+    default:
+      updateFavicon('/favicon.ico')
   }
-
-  // @ts-ignore
-  link.href = href
 })
+
+onUnmounted(() => updateFavicon('/favicon.ico'))
 
 </script>

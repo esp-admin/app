@@ -16,7 +16,7 @@
       <n-log
         ref="logInst"
         language="realtime"
-        :loading="false"
+        :loading="device.status === 'connected'"
         :log="logsString"
         :line-height="1.7"
         :rows="10"

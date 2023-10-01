@@ -1,8 +1,10 @@
-export default defineNuxtPlugin(() => {
+export default defineNuxtPlugin((nuxtApp) => {
   const deploymentTimemoutMs = 3 * 60 * 1000
   const syncIntervalMs = 10 * 1000
 
-  setInterval(sync, syncIntervalMs)
+  nuxtApp.hook('app:mounted', () => {
+    setInterval(sync, syncIntervalMs)
+  })
 
   function sync () {
     updateDeployments()

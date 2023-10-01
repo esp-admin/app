@@ -1,11 +1,10 @@
 <template>
   <div>
-    <div class="flex gap-2 items-center mb-4">
-      <naive-icon name="ph:gear" />
-      <n-text class="col-span-full text-lg" strong>
-        Settings
-      </n-text>
-    </div>
+    <n-page-header title="Settings" class="mb-8">
+      <template #avatar>
+        <naive-icon name="ph:gear" />
+      </template>
+    </n-page-header>
 
     <n-tabs type="line" animated>
       <n-tab-pane name="mqtt" tab="MQTT">

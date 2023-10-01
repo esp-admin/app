@@ -1,21 +1,14 @@
 <template>
   <div v-if="project">
-    <div class="flex justify-between mb-4">
-      <div class="flex flex-col">
-        <n-text class="text-lg" strong>
-          {{ project.name }}
-        </n-text>
-        <n-text depth="3">
-          Created <n-time :time="new Date(project.createdAt)" type="relative" />
-        </n-text>
-      </div>
-
-      <n-button type="error" secondary circle @click="deleteModalVisible = true">
-        <template #icon>
-          <naive-icon name="ph:trash" />
-        </template>
-      </n-button>
-    </div>
+    <n-page-header :title="project.name" class="mb-8" :on-back="$router.back">
+      <template #extra>
+        <n-button type="error" secondary circle @click="deleteModalVisible = true">
+          <template #icon>
+            <naive-icon name="ph:trash" />
+          </template>
+        </n-button>
+      </template>
+    </n-page-header>
 
     <n-tabs type="line" animated>
       <n-tab-pane name="metadata" tab="Metadata">

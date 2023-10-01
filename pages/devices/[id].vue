@@ -1,38 +1,30 @@
 <template>
   <div v-if="device">
-    <div class="flex justify-between mb-4 gap-2">
-      <div class="flex flex-col flex-grow">
-        <div class="flex items-center gap-2">
-          <n-text class="text-lg" strong>
-            {{ device.name }}
-          </n-text>
+    <n-page-header :title="device.name" class="mb-8" :on-back="$router.back">
+      <template #extra>
+        <div class="flex justify-between gap-2">
+          <n-button v-if="device.projectId" type="primary" secondary circle @click="unlinkModalVisible = true">
+            <template #icon>
+              <naive-icon name="ph:link-break" />
+            </template>
+          </n-button>
+
+          <NuxtLink v-if="device.projectId" :to="`/projects/${device.projectId}`">
+            <n-button type="primary" secondary circle>
+              <template #icon>
+                <naive-icon name="ph:code" />
+              </template>
+            </n-button>
+          </NuxtLink>
+
+          <n-button type="error" secondary circle @click="deleteModalVisible = true">
+            <template #icon>
+              <naive-icon name="ph:trash" />
+            </template>
+          </n-button>
         </div>
-
-        <n-text depth="3">
-          {{ device.status }}
-        </n-text>
-      </div>
-
-      <n-button v-if="device.projectId" type="primary" secondary circle @click="unlinkModalVisible = true">
-        <template #icon>
-          <naive-icon name="ph:link-break" />
-        </template>
-      </n-button>
-
-      <NuxtLink v-if="device.projectId" :to="`/projects/${device.projectId}`">
-        <n-button type="primary" secondary circle>
-          <template #icon>
-            <naive-icon name="ph:code" />
-          </template>
-        </n-button>
-      </NuxtLink>
-
-      <n-button type="error" secondary circle @click="deleteModalVisible = true">
-        <template #icon>
-          <naive-icon name="ph:trash" />
-        </template>
-      </n-button>
-    </div>
+      </template>
+    </n-page-header>
 
     <n-tabs type="line" animated>
       <n-tab-pane name="metadata" tab="Metadata">

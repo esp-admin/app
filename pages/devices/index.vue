@@ -1,13 +1,12 @@
 <template>
   <div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="flex gap-2 items-center">
+    <n-page-header title="Devices" class="mb-8">
+      <template #avatar>
         <naive-icon name="ph:cpu" />
-        <n-text class="col-span-full text-lg" strong>
-          Devices
-        </n-text>
-      </div>
+      </template>
+    </n-page-header>
 
+    <div class="grid md:grid-cols-3 gap-6">
       <div v-if="devices?.length" class="col-span-full flex gap-4">
         <n-input v-model:value="nameSearch">
           <template #prefix>

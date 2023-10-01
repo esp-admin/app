@@ -1,8 +1,4 @@
 <template>
-  <Head>
-    <Link rel="icon" type="image/x-icon" :href="favicon" />
-  </Head>
-
   <div class="flex flex-col gap-6">
     <n-result v-if="deployments?.length === 0" class="col-span-full my-5" title="You have no deployments">
       <template #icon>
@@ -24,20 +20,26 @@ const deployments = await find()
 
 const latestDeployment = computed(() => deployments.value[0])
 
-const favicon = computed(() => {
+watchEffect(() => {
+  const link = document.querySelector("link[rel~='icon']")
+  if (!link) { return }
+
+  let href = '/favicon.ico'
+
   switch (latestDeployment.value?.status) {
     case 'started':
-      return '/icons/loading.svg'
+      href = '/icons/loading.svg'
+      break
     case 'failed':
-      return '/icons/failed.svg'
+      href = '/icons/failed.svg'
+      break
     case 'succeded':
-      return '/icons/success.svg'
-    default:
-      return '/favicon.ico'
+      href = '/icons/success.svg'
+      break
   }
+
+  // @ts-ignore
+  link.href = href
 })
 
-// useHead(() => ({
-//   link: () => [{ rel: 'icon', type: 'image/x-icon', href: favicon }]
-// }))
 </script>

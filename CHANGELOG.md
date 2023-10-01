@@ -1,6 +1,44 @@
 # Changelog
 
 
+## v0.2.11
+
+[compare changes](https://github.com/esp-admin/app/compare/v0.2.10...v0.2.11)
+
+### 🚀 Enhancements
+
+- **Realtime:** Add clear logs button ([2e6a911](https://github.com/esp-admin/app/commit/2e6a911))
+- **realtime:** Add loading indicator when device connected ([15191dc](https://github.com/esp-admin/app/commit/15191dc))
+- Display status of latest deployment via favicon ([1d43926](https://github.com/esp-admin/app/commit/1d43926))
+
+### 🔥 Performance
+
+- Only force mqtt reconnection on document visibility change ([2346b44](https://github.com/esp-admin/app/commit/2346b44))
+- Only run sync task on app mounted ([2bd8f3b](https://github.com/esp-admin/app/commit/2bd8f3b))
+
+### 🩹 Fixes
+
+- **mqtt:** Update connected on connect listener ([d3952e6](https://github.com/esp-admin/app/commit/d3952e6))
+- Reset favicon when leaving deployment tab ([e11c0c8](https://github.com/esp-admin/app/commit/e11c0c8))
+
+### 💅 Refactors
+
+- **createPrismaError:** Add relation violation error message ([69936d9](https://github.com/esp-admin/app/commit/69936d9))
+- Use n-page-header ([6514ced](https://github.com/esp-admin/app/commit/6514ced))
+- Set default Logo width to 107px ([42164cf](https://github.com/esp-admin/app/commit/42164cf))
+- Create TooltipIconButton ([3daac0c](https://github.com/esp-admin/app/commit/3daac0c))
+- Update favicon via Head component ([fdd465c](https://github.com/esp-admin/app/commit/fdd465c))
+- Avoid useHead to update favicon instead rely on native ([c6f2578](https://github.com/esp-admin/app/commit/c6f2578))
+- Create favicon link tag if not already exists ([2bcfd6a](https://github.com/esp-admin/app/commit/2bcfd6a))
+
+### 🏡 Chore
+
+- **pwa:** Set devOptions to true ([f463803](https://github.com/esp-admin/app/commit/f463803))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v0.2.10
 
 [compare changes](https://github.com/esp-admin/app/compare/v0.2.9...v0.2.10)

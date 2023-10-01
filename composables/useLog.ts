@@ -5,5 +5,9 @@ export default function useLog (deviceId: Device['id']) {
     logs.value.push(message)
   }
 
-  return { logs, append }
+  function clear () {
+    logs.value = []
+  }
+
+  return { logs, append, clear }
 }

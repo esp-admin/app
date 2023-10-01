@@ -1,13 +1,33 @@
 <template>
   <div>
     <div class="flex gap-4">
-      <n-button secondary @click="handleRestart">
-        restart
-      </n-button>
+      <div class="flex-1">
+        <n-button v-for="projectCommand of projectCommands" :key="projectCommand.key" secondary @click="handleCommand(projectCommand)">
+          {{ projectCommand.key }}
+        </n-button>
+      </div>
 
-      <n-button v-for="projectCommand of projectCommands" :key="projectCommand.key" secondary @click="handleCommand(projectCommand)">
-        {{ projectCommand.key }}
-      </n-button>
+      <n-tooltip>
+        <template #trigger>
+          <n-button secondary circle @click="handleRestart">
+            <template #icon>
+              <naive-icon name="ph:arrow-counter-clockwise" />
+            </template>
+          </n-button>
+        </template>
+        Restart device
+      </n-tooltip>
+
+      <n-tooltip>
+        <template #trigger>
+          <n-button secondary circle @click="clear">
+            <template #icon>
+              <naive-icon name="ph:trash" />
+            </template>
+          </n-button>
+        </template>
+        Clear logs
+      </n-tooltip>
     </div>
 
     <n-card class="mt-4">
@@ -47,7 +67,7 @@ if (props.device.projectId) {
   }
 }
 
-const { logs } = useLog(props.device.id)
+const { logs, clear } = useLog(props.device.id)
 
 const logsString = computed(() => logs.value.map(log => `${log.type} - ${log.payload}`).join('\n'))
 

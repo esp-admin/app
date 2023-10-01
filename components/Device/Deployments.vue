@@ -1,6 +1,9 @@
 <template>
+  <Head>
+    <Link rel="icon" type="image/x-icon" :href="favicon" />
+  </Head>
+
   <div class="flex flex-col gap-6">
-    {{ latestDeploymentStatus }}
     <n-result v-if="deployments?.length === 0" class="col-span-full my-5" title="You have no deployments">
       <template #icon>
         <ResultEmpty />
@@ -34,7 +37,7 @@ const favicon = computed(() => {
   }
 })
 
-useHead(() => ({
-  link: [{ rel: 'icon', type: 'image/x-icon', href: favicon }]
-}))
+// useHead(() => ({
+//   link: () => [{ rel: 'icon', type: 'image/x-icon', href: favicon }]
+// }))
 </script>

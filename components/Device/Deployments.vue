@@ -21,8 +21,14 @@ const deployments = await find()
 const latestDeployment = computed(() => deployments.value[0])
 
 watchEffect(() => {
-  const link = document.querySelector("link[rel~='icon']")
-  if (!link) { return }
+  let link = document.querySelector("link[rel~='icon']")
+
+  if (!link) {
+    link = document.createElement('link')
+    // @ts-ignore
+    link.rel = 'icon'
+    document.getElementsByTagName('head')[0].appendChild(link)
+  }
 
   let href = '/favicon.ico'
 

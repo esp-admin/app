@@ -1,5 +1,6 @@
 <template>
   <div class="flex flex-col gap-6">
+    {{ latestDeploymentStatus }}
     <n-result v-if="deployments?.length === 0" class="col-span-full my-5" title="You have no deployments">
       <template #icon>
         <ResultEmpty />
@@ -17,4 +18,23 @@ const props = defineProps<{ device: Device }>()
 const { find } = useDeployment(props.device.id)
 
 const deployments = await find()
+
+const latestDeployment = computed(() => deployments.value[0])
+
+const favicon = computed(() => {
+  switch (latestDeployment.value?.status) {
+    case 'started':
+      return '/icons/loading.svg'
+    case 'failed':
+      return '/icons/failed.svg'
+    case 'succeded':
+      return '/icons/success.svg'
+    default:
+      return '/favicon.ico'
+  }
+})
+
+useHead(() => ({
+  link: [{ rel: 'icon', type: 'image/x-icon', href: favicon }]
+}))
 </script>

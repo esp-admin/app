@@ -6,16 +6,6 @@ export default defineNuxtPlugin(() => {
 
   function sync () {
     updateDeployments()
-    reconnectMqtt()
-  }
-
-  function reconnectMqtt () {
-    const { mqtt, connected } = useMqtt()
-
-    if (mqtt.value && !connected.value) {
-      const { $mqtt } = useNuxtApp()
-      $mqtt?.reconnect()
-    }
   }
 
   function updateDeployments () {

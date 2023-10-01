@@ -91,6 +91,12 @@ export default defineNuxtPlugin({
       })
     }
 
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden === false) {
+        reconnect()
+      }
+    })
+
     nuxtApp.hook('auth:loggedIn', async (loggedIn) => {
       const { find } = useMqtt()
 
@@ -114,8 +120,7 @@ export default defineNuxtPlugin({
         mqtt: {
           connect,
           disconnect,
-          publish,
-          reconnect
+          publish
         }
       }
     }

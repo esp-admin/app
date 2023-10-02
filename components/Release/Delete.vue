@@ -32,7 +32,7 @@
 
 const emits = defineEmits(['cancel', 'done'])
 
-const props = defineProps<{ release: Release, projectId: Project['id'] }>()
+const props = defineProps<{ release: Release }>()
 
 const model = ref({
   confirm: ''
@@ -51,7 +51,7 @@ rules.value = {
 }
 
 async function handleSubmit () {
-  const { remove } = useRelease(props.projectId)
+  const { remove } = useRelease(props.release.projectId)
 
   await remove(props.release.id)
     .then(async (release) => {

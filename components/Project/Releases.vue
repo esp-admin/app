@@ -23,12 +23,33 @@
       </template>
     </n-result>
 
-    <ReleaseCard
-      v-for="release of versionSearch ? filteredReleases : releases"
-      :key="release.id"
-      :release="release"
-      :project-id="project.id"
-    />
+    <n-collapse>
+      <n-collapse-item
+        v-for="release of versionSearch ? filteredReleases : releases"
+        :key="release.id"
+        :name="release.version"
+      >
+        <template #header>
+          <n-text strong>
+            {{ release.version }}
+          </n-text>
+          <n-text class="mx-2">
+            •
+          </n-text>
+          <n-text depth="3" class="text-base">
+            Created <n-time
+              :time="new Date(release.createdAt)"
+              type="relative"
+            />
+          </n-text>
+        </template>
+
+        <LazyReleaseCard
+          :key="release.id"
+          :release="release"
+        />
+      </n-collapse-item>
+    </n-collapse>
 
     <n-modal
       v-model:show="createModalVisible"

@@ -50,5 +50,11 @@ export default function useRelease (projectId: Project['id']) {
     })
   }
 
-  return { find, remove, add }
+  function findDeployments (id: Release['id']) {
+    const request = `/api/releases/${id}/deployments`
+
+    return useAuthFetch<Deployment[]>(request)
+  }
+
+  return { find, remove, add, findDeployments }
 }

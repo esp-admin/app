@@ -69,7 +69,7 @@ export const pwa: Partial<ModuleOptions> = {
     installPrompt: true
   },
   devOptions: {
-    enabled: true,
+    enabled: false,
     suppressWarnings: true,
     navigateFallbackAllowlist: [/^\/$/],
     type: 'module'

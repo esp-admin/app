@@ -1,6 +1,34 @@
 # Changelog
 
 
+## v0.2.12
+
+[compare changes](https://github.com/esp-admin/app/compare/v0.2.11...v0.2.12)
+
+### 🚀 Enhancements
+
+- **ReleaseCard:** Display devices with deployment status ([570c446](https://github.com/esp-admin/app/commit/570c446))
+
+### 🩹 Fixes
+
+- Fix potential viewport overflow ([ff4172e](https://github.com/esp-admin/app/commit/ff4172e))
+
+### 💅 Refactors
+
+- **profile:** Change upload component ([314ca43](https://github.com/esp-admin/app/commit/314ca43))
+- Set placeholder for search inputs ([1cae069](https://github.com/esp-admin/app/commit/1cae069))
+- Minor UI refactoring ([95d26f6](https://github.com/esp-admin/app/commit/95d26f6))
+
+### 🏡 Chore
+
+- Replace build:docker script to release:docker ([02c88d5](https://github.com/esp-admin/app/commit/02c88d5))
+- **design:** Update ERD ([0c5b143](https://github.com/esp-admin/app/commit/0c5b143))
+- **pwa:** Disable devOptions ([2d437af](https://github.com/esp-admin/app/commit/2d437af))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v0.2.11
 
 [compare changes](https://github.com/esp-admin/app/compare/v0.2.10...v0.2.11)

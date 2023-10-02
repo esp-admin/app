@@ -11,7 +11,7 @@
       </div>
     </template>
 
-    <div>
+    <div class="flex flex-wrap gap-2">
       <nuxt-link v-for="device of devicesWithDeployment" :key="device.id" :to="`/devices/${device.id}`">
         <n-button secondary>
           {{ device.name }}

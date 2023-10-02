@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex gap-4">
-      <div class="flex-1">
+      <div class="flex-1 flex gap-2 flex-wrap">
         <n-button v-for="projectCommand of projectCommands" :key="projectCommand.key" secondary @click="handleCommand(projectCommand)">
           {{ projectCommand.key }}
         </n-button>

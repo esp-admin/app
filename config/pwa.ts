@@ -5,7 +5,7 @@ import type { ModuleOptions } from '@vite-pwa/nuxt'
 export const pwa: Partial<ModuleOptions> = {
   registerType: 'autoUpdate',
   manifest: {
-    name: 'ESP admin',
+    name: 'ESP Admin',
     short_name: 'ESPAdmin',
     theme_color: '#18181B',
     background_color: '#FFFFFF',

@@ -3,7 +3,7 @@
     <n-button type="primary" attr-type="submit" :loading="loading" :disabled="disabled">
       Save
     </n-button>
-    <n-button secondary attr-type="button" :disabled="disabled" @click="$emit('reset')">
+    <n-button secondary attr-type="reset" :disabled="disabled" @click="$emit('reset')">
       Reset
     </n-button>
   </div>

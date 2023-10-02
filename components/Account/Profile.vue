@@ -1,21 +1,19 @@
 <template>
   <div>
-    <n-upload
-      class="overflow-hidden w-min mx-auto my-4"
-      list-type="image-card"
-      :max="1"
-      accept="image/*"
-      :custom-request="(e) => file = e.file.file"
-    >
-      <img v-if="model.picture" :src="model.picture" class="object-cover">
-    </n-upload>
+    <ImageUpload
+      ref="uploadRef"
+      class="mx-auto shadow hover:shadow-lg border-blue-300 border-2"
+      :src="model.picture"
+      :width="180"
+      @select="(f)=> model.file=f"
+    />
 
     <n-form ref="formRef" @submit.prevent="onSubmit(updateAccount)">
       <n-form-item label="Name">
         <n-input v-model:value="model.name" />
       </n-form-item>
 
-      <FormButtons :loading="pending" :disabled="pending" @reset="reset" />
+      <FormButtons :loading="pending" :disabled="pending || !edited" @reset="handleReset" />
     </n-form>
   </div>
 </template>
@@ -25,23 +23,29 @@ const { user } = useAuthSession()
 const { upload } = useS3Object()
 const { fetchUser } = useAuth()
 
+const uploadRef = ref()
+
 const model = ref({
   name: user.value?.name,
-  picture: user.value?.picture
+  picture: user.value?.picture,
+  file: undefined
 })
 
-const { formRef, pending, onSubmit, reset } = useNaiveForm(model)
-
-const file = ref<File | null>()
+const { edited, formRef, pending, onSubmit, reset } = useNaiveForm(model)
 
 const loading = ref(false)
+
+function handleReset () {
+  uploadRef.value.reset()
+  reset()
+}
 
 async function updateAccount () {
   try {
     loading.value = true
 
-    if (file.value) {
-      const url = await upload(file.value, {
+    if (model.value.file) {
+      const url = await upload(model.value.file, {
         url: model.value.picture,
         prefix: `image/${user.value!.id}/`
       })
@@ -54,7 +58,7 @@ async function updateAccount () {
       body: model.value
     })
 
-    file.value = null
+    model.value.file = undefined
 
     await fetchUser()
   } finally {

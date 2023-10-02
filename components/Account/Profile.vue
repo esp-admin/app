@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ImageUpload
+    <UploadImage
       ref="uploadRef"
       class="mx-auto shadow hover:shadow-lg border-blue-300 border-2"
       :src="model.picture"

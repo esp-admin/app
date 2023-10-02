@@ -1,17 +1,17 @@
 <template>
   <nuxt-link :to="`/devices/${device.id}`">
-    <n-card :title="device.name" size="small" hoverable class="h-full">
-      <n-text depth="3">
-        Created <n-time :time="new Date(device.createdAt)" type="relative" />
-      </n-text>
-      <br>
-      <n-text depth="3">
-        {{ device.description || 'no description' }}
-      </n-text>
+    <n-card size="small" hoverable class="h-full">
+      <template #header>
+        <TitleDate :title="device.name" :created-at="device.createdAt" />
+      </template>
 
       <template #header-extra>
         <DeviceStatus :device="device" :size="24" />
       </template>
+
+      <n-text depth="3">
+        {{ device.description || 'no description' }}
+      </n-text>
     </n-card>
   </nuxt-link>
 </template>

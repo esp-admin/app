@@ -1,48 +1,34 @@
 <template>
-  <n-list>
-    <n-list-item v-for="session of sessions" :key="session.id">
-      <n-thing>
-        <template #avatar>
+  <div class="flex flex-col gap-4">
+    <div v-for="session of sessions" :key="session.id" class="flex justify-between">
+      <TitleDate
+        :title=" [
+          session.ua && UAParser.UAParser(session.ua).browser.name,
+          session.ua && UAParser.UAParser(session.ua).os.name,
+          session.ua && UAParser.UAParser(session.ua).device.model
+        ]
+          .join(' ')"
+
+        :updated-at="session.updatedAt"
+      >
+        <template #icon>
           <n-tag size="small" :type="session.current ? 'success' : 'warning'">
             {{ session.current ? 'Current' : 'Active' }}
           </n-tag>
         </template>
+      </TitleDate>
 
-        <template #header>
-          <n-text strong class="text-base">
-            {{
-              [
-                session.ua && UAParser.UAParser(session.ua).browser.name,
-                session.ua && UAParser.UAParser(session.ua).os.name,
-                session.ua && UAParser.UAParser(session.ua).device.model
-              ]
-                .join(' ')
-            }}
-          </n-text>
-
-          <n-text depth="3" class="text-base">
-            • <n-time
-              :time="new Date(session.updatedAt)"
-              type="relative"
-            />
-          </n-text>
-        </template>
-
-        <template #header-extra>
-          <TooltipIconButton
-            name="ph:trash"
-            size="small"
-            type="error"
-            secondary
-            :disabled="session.current"
-            message="Delete session"
-            circle
-            @click="() => handleSessionRevoke(session.id)"
-          />
-        </template>
-      </n-thing>
-    </n-list-item>
-  </n-list>
+      <TooltipIconButton
+        name="ph:trash"
+        type="error"
+        secondary
+        :disabled="session.current"
+        message="Delete session"
+        circle
+        @click="() => handleSessionRevoke(session.id)"
+      />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">

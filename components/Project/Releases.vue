@@ -30,18 +30,7 @@
         :name="release.version"
       >
         <template #header>
-          <n-text strong>
-            {{ release.version }}
-          </n-text>
-          <n-text class="mx-2">
-            •
-          </n-text>
-          <n-text depth="3" class="text-base">
-            Created <n-time
-              :time="new Date(release.createdAt)"
-              type="relative"
-            />
-          </n-text>
+          <TitleDate :title="release.version" :created-at="release.createdAt" />
         </template>
 
         <LazyReleaseCard

@@ -8,7 +8,7 @@
 
     <div class="grid md:grid-cols-3 gap-6">
       <div v-if="devices?.length" class="col-span-full flex gap-4">
-        <n-input v-model:value="nameSearch">
+        <n-input v-model:value="nameSearch" placeholder="Search by name">
           <template #prefix>
             <naive-icon name="ph:magnifying-glass" :size="16" />
           </template>

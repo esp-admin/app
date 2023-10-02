@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col gap-6">
     <div v-if="releases?.length" class="col-span-full flex gap-4">
-      <n-input v-model:value="versionSearch">
+      <n-input v-model:value="versionSearch" placeholder="Search by version">
         <template #prefix>
           <naive-icon name="ph:magnifying-glass" :size="16" />
         </template>

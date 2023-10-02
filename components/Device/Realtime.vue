@@ -2,14 +2,14 @@
   <div>
     <div class="flex gap-4">
       <div class="flex-1">
-        <n-button v-for="projectCommand of projectCommands" :key="projectCommand.key" @click="handleCommand(projectCommand)">
+        <n-button v-for="projectCommand of projectCommands" :key="projectCommand.key" secondary @click="handleCommand(projectCommand)">
           {{ projectCommand.key }}
         </n-button>
       </div>
 
-      <TooltipIconButton name="ph:arrow-counter-clockwise" message="Restart device" circle @click="handleRestart" />
+      <TooltipIconButton name="ph:arrow-counter-clockwise" message="Restart device" secondary circle @click="handleRestart" />
 
-      <TooltipIconButton name="ph:trash" message="Clear logs" circle @click="clear" />
+      <TooltipIconButton name="ph:trash" message="Clear logs" circle secondary @click="clear" />
     </div>
 
     <n-card class="mt-4">

@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v0.2.13
+
+[compare changes](https://github.com/esp-admin/app/compare/v0.2.12...v0.2.13)
+
+### 🔥 Performance
+
+- Cache s3 objects on client-side instead of CDN ([99e150e](https://github.com/esp-admin/app/commit/99e150e))
+
+### 💅 Refactors
+
+- Minor UI refactoring ([3164e42](https://github.com/esp-admin/app/commit/3164e42))
+- Minor UI refactoring ([dff49bb](https://github.com/esp-admin/app/commit/dff49bb))
+
+### 🏡 Chore
+
+- Remove provided Bugsnag instance ([deb1d2b](https://github.com/esp-admin/app/commit/deb1d2b))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v0.2.12
 
 [compare changes](https://github.com/esp-admin/app/compare/v0.2.11...v0.2.12)

@@ -2,38 +2,17 @@
   <n-input-group>
     <n-input :placeholder="placeholder" disabled />
 
-    <n-tooltip>
-      <template #trigger>
-        <n-button v-show="!value" @click="refresh">
-          <template #icon>
-            <naive-icon name="ph:arrows-clockwise" />
-          </template>
-        </n-button>
-      </template>
-      Refresh
-    </n-tooltip>
+    <TooltipIconButton v-if="!value" name="ph:arrows-clockwise" message="Refresh" @click="refresh" />
 
-    <n-tooltip>
-      <template #trigger>
-        <n-button v-show="value" @click="cancel">
-          <template #icon>
-            <naive-icon name="ph:x" />
-          </template>
-        </n-button>
-      </template>
-      Cancel
-    </n-tooltip>
+    <TooltipIconButton v-if="value" name="ph:x" message="Cancel" @click="cancel" />
 
-    <n-tooltip>
-      <template #trigger>
-        <n-button v-show="value" :type="copied ? 'success': 'default'" @click="copy">
-          <template #icon>
-            <naive-icon name="ph:copy" />
-          </template>
-        </n-button>
-      </template>
-      Copy
-    </n-tooltip>
+    <TooltipIconButton
+      v-if="value"
+      name="ph:copy"
+      message="Copy"
+      :type="copied ? 'success': 'default'"
+      @click="copy"
+    />
   </n-input-group>
 </template>
 

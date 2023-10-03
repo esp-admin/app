@@ -3,7 +3,6 @@
     <client-only>
       <n-notification-provider placement="bottom-right">
         <NotificationNetwork />
-        <NotificationMqtt />
       </n-notification-provider>
     </client-only>
 
@@ -75,7 +74,7 @@ const themeConfig = ref<ThemeConfig>({
       labelFontSize: theme.fontSize.sm
     },
     Notification: {
-      padding: '16px',
+      padding: theme.padding[4],
       titleFontSize: theme.fontSize.lg
     },
     Card: {

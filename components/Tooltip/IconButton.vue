@@ -24,7 +24,7 @@ defineProps<{
     message: string,
     circle?: boolean,
     secondary?: boolean,
-  disabled?: boolean,
+    disabled?: boolean,
     size?: 'tiny' | 'small' | 'medium' | 'large',
     type?: 'default' | 'tertiary' | 'primary' | 'success' | 'info' | 'warning' | 'error'
 }>()

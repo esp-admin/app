@@ -7,7 +7,7 @@
         <n-tooltip v-if="description" trigger="click" placement="left">
           <template #trigger>
             <n-button text>
-              <naive-icon name="ph:question-light" :size="18" />
+              <naive-icon name="ph:question-light" :size="20" />
             </n-button>
           </template>
           <span> {{ description }} </span>

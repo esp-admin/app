@@ -29,9 +29,7 @@ export default defineNuxtConfig({
           href: 'https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap'
         }
       ],
-      meta: [
-        { name: 'theme-color', content: '#18181B' }
-      ]
+      meta: [{ name: 'theme-color', content: '#18181B' }]
     },
     pageTransition: { name: 'page', mode: 'out-in' },
     layoutTransition: { name: 'layout', mode: 'out-in' }
@@ -77,7 +75,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/pwa/**': { security: { corsHandler: false } },
-    '/api/s3/query/**': { isr: true },
+    '/api/s3/query/**': { cache: { maxAge: 2592000 } },
     '/api/s3/mutation/**': {
       security: {
         xssValidator: false

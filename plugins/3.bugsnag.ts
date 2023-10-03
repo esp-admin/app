@@ -19,10 +19,4 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.hook('app:error', (error) => {
     bugsnag.notify(error)
   })
-
-  return {
-    provide: {
-      bugsnag
-    }
-  }
 })

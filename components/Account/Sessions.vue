@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-5">
     <div v-for="session of sessions" :key="session.id" class="flex justify-between">
       <TitleDate
         :title=" [

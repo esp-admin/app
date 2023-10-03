@@ -2,12 +2,21 @@
   <n-card size="small" hoverable title="Devices">
     <template #header-extra>
       <div class="flex gap-2">
-        <n-button secondary @click="onTrigger">
-          Trigger
-        </n-button>
-        <n-button secondary @click="deleteModalVisible = true">
-          Delete
-        </n-button>
+        <TooltipIconButton
+          name="ph:arrow-line-down"
+          message="Deploy now"
+          secondary
+          circle
+          @click="onTrigger"
+        />
+
+        <TooltipIconButton
+          name="ph:trash"
+          message="Delete release"
+          circle
+          secondary
+          @click="deleteModalVisible = true"
+        />
       </div>
     </template>
 

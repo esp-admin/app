@@ -2,9 +2,9 @@
   <div>
     <UploadImage
       ref="uploadRef"
-      class="mx-auto shadow hover:shadow-lg border-blue-300 border-2"
+      class="mb-2 mx-auto shadow hover:shadow-lg border-blue-300 border-2"
       :src="model.picture"
-      :width="180"
+      :width="160"
       @select="(f)=> model.file=f"
     />
 

@@ -30,7 +30,7 @@
     "eslint": "^8.50.0",
     "npm": "^10.1.0",
     "nuxt": "^3.7.4",
-    "nuxt-s3": "^0.1.16-edge",
+    "nuxt-s3": "^0.2.0",
     "nuxt-security": "^0.14.4",
     "prisma": "^5.3.1",
     "rollup-plugin-polyfill-node": "^0.12.0",

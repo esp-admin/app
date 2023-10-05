@@ -50,7 +50,10 @@ async function updateAccount () {
 
   await useAuthFetch('/api/account/profile', {
     method: 'PATCH',
-    body: model.value
+    body: {
+      name: model.value.name,
+      picture: model.value.picture
+    }
   })
 
   model.value.file = undefined

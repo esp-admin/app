@@ -33,36 +33,28 @@ const model = ref({
 
 const { edited, formRef, pending, onSubmit, reset } = useNaiveForm(model)
 
-const loading = ref(false)
-
 function handleReset () {
   uploadRef.value.reset()
   reset()
 }
 
 async function updateAccount () {
-  try {
-    loading.value = true
-
-    if (model.value.file) {
-      const url = await upload(model.value.file, {
-        url: model.value.picture,
-        prefix: `image/${user.value!.id}/`
-      })
-
-      model.value.picture = url
-    }
-
-    await useAuthFetch('/api/account/profile', {
-      method: 'PATCH',
-      body: model.value
+  if (model.value.file) {
+    const url = await upload(model.value.file, {
+      url: model.value.picture,
+      prefix: `image/${user.value!.id}/`
     })
 
-    model.value.file = undefined
-
-    await fetchUser()
-  } finally {
-    loading.value = false
+    model.value.picture = url
   }
+
+  await useAuthFetch('/api/account/profile', {
+    method: 'PATCH',
+    body: model.value
+  })
+
+  model.value.file = undefined
+
+  await fetchUser()
 }
 </script>

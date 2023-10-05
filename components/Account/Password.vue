@@ -8,9 +8,7 @@
       <n-input v-model:value="model.newPassword" type="password" show-password-on="click" />
     </n-form-item>
 
-    <n-button attr-type="submit" :loading="pending" class="float-right" type="primary">
-      Change password
-    </n-button>
+    <FormButtons :loading="pending" :disabled="pending || !edited" @reset="reset" />
   </n-form>
 </template>
 
@@ -19,12 +17,12 @@ const { changePassword } = useAuth()
 
 const message = useMessage()
 
-const { formRef, onSubmit, pending, rules, apiErrors } = useNaiveForm()
-
 const model = ref({
   currentPassword: '',
   newPassword: ''
 })
+
+const { formRef, onSubmit, pending, rules, apiErrors, edited, reset } = useNaiveForm(model)
 
 apiErrors.value = {
   wrongPassword: false

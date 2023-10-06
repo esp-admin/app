@@ -53,10 +53,7 @@ export default defineNuxtConfig({
   pwa,
 
   security: {
-    corsHandler: {
-      origin: process.env.NUXT_PUBLIC_AUTH_BASE_URL,
-      methods: '*'
-    },
+    corsHandler: false,
     headers: {
       crossOriginEmbedderPolicy: false,
       contentSecurityPolicy: {
@@ -76,11 +73,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/pwa/**': { security: { corsHandler: false } },
     '/api/s3/query/**': { cache: { maxAge: 2592000 } },
-    '/api/s3/mutation/**': {
-      security: {
-        xssValidator: false
-      }
-    }
+    '/api/s3/mutation/**': { security: { xssValidator: false } }
   },
 
   runtimeConfig: {

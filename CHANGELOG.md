@@ -1,6 +1,32 @@
 # Changelog
 
 
+## v0.2.14
+
+[compare changes](https://github.com/esp-admin/app/compare/v0.2.13...v0.2.14)
+
+### 🩹 Fixes
+
+- Avoid sending file on profile update form ([ecb8def](https://github.com/esp-admin/app/commit/ecb8def))
+
+### 💅 Refactors
+
+- **profile:** Remove unused loading state ([c54cfc4](https://github.com/esp-admin/app/commit/c54cfc4))
+- Add reset btn to password change form ([9e5f728](https://github.com/esp-admin/app/commit/9e5f728))
+
+### 🏡 Chore
+
+- Upgrade nuxt-s3 ([d37537a](https://github.com/esp-admin/app/commit/d37537a))
+- Upgrade nuxt-s3 to latest ([09b2edf](https://github.com/esp-admin/app/commit/09b2edf))
+- Update example.env ([a05e8f4](https://github.com/esp-admin/app/commit/a05e8f4))
+- Remove NUXT_SECURITY_CORS_HANDLER_ORIGIN env ([c3983e7](https://github.com/esp-admin/app/commit/c3983e7))
+- **s3:** Set upload max size ([d4110f0](https://github.com/esp-admin/app/commit/d4110f0))
+- Use s3 built-in cors handler instead of nuxt-security ([d1dcffa](https://github.com/esp-admin/app/commit/d1dcffa))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v0.2.13
 
 [compare changes](https://github.com/esp-admin/app/compare/v0.2.12...v0.2.13)

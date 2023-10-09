@@ -30,7 +30,6 @@
     "@types/mustache": "^4.2.3",
     "@types/randomstring": "^1.1.9",
     "@types/ua-parser-js": "^0.7.37",
-    "@vite-pwa/nuxt": "^0.1.1",
     "changelogen": "^0.5.5",
     "eslint": "^8.50.0",
     "npm": "^10.2.0",

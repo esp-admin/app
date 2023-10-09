@@ -4,7 +4,7 @@ import { nodePolyfills as viteNodePolyfills } from 'vite-plugin-node-polyfills'
 import rollupNodePolyfills from 'rollup-plugin-polyfill-node'
 //
 
-import { auth, naiveui, tailwindcss, s3, pwa } from './config'
+import { auth, naiveui, tailwindcss, s3 } from './config'
 
 export default defineNuxtConfig({
   ssr: true,
@@ -42,15 +42,13 @@ export default defineNuxtConfig({
     '@bg-dev/nuxt-naiveui',
     '@nuxtjs/tailwindcss',
     'nuxt-s3',
-    'nuxt-security',
-    '@vite-pwa/nuxt'
+    'nuxt-security'
   ],
 
   auth,
   naiveui,
   tailwindcss,
   s3,
-  pwa,
 
   security: {
     corsHandler: false,
@@ -71,7 +69,6 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/pwa/**': { security: { corsHandler: false } },
     '/api/s3/query/**': { cache: { maxAge: 2592000 } },
     '/api/s3/mutation/**': { security: { xssValidator: false } }
   },

@@ -1,6 +1,56 @@
 # Changelog
 
 
+## v0.3.0
+
+[compare changes](https://github.com/esp-admin/app/compare/v0.2.14...v0.3.0)
+
+### 🚀 Enhancements
+
+- Create sql prisma schema ([6c255b2](https://github.com/esp-admin/app/commit/6c255b2))
+
+### 🔥 Performance
+
+- Remove userId from object upload path ([5940598](https://github.com/esp-admin/app/commit/5940598))
+- Remove Bugsnag ([af9126e](https://github.com/esp-admin/app/commit/af9126e))
+- Remove vite pwa ([84baa2d](https://github.com/esp-admin/app/commit/84baa2d))
+- Serve logos from public instead of assets ([0a56dee](https://github.com/esp-admin/app/commit/0a56dee))
+
+### 🩹 Fixes
+
+- Throw error on unfound unique entity ([14d4698](https://github.com/esp-admin/app/commit/14d4698))
+- Set status code to 404 of unfound resource ([f149c66](https://github.com/esp-admin/app/commit/f149c66))
+- **report:** Fix server-side optional inputs ([6aa6d61](https://github.com/esp-admin/app/commit/6aa6d61))
+
+### 💅 Refactors
+
+- Move regexs to utils ([d52cbdd](https://github.com/esp-admin/app/commit/d52cbdd))
+- Replace JSON.parse with destr ([ebc2ad6](https://github.com/esp-admin/app/commit/ebc2ad6))
+
+### 📦 Build
+
+- Add prisma generate command ([4994f6e](https://github.com/esp-admin/app/commit/4994f6e))
+
+### 🏡 Chore
+
+- ⚠️  Change ids validation regex ([7749e4f](https://github.com/esp-admin/app/commit/7749e4f))
+- Update mongodb schema to insure compatibility with sql schema ([1bdad00](https://github.com/esp-admin/app/commit/1bdad00))
+- Add prisma npm scripts ([1fdce0a](https://github.com/esp-admin/app/commit/1fdce0a))
+- Add prisma migrations folder to gitignore ([50b8f28](https://github.com/esp-admin/app/commit/50b8f28))
+- Replace logo path on email templates ([8052940](https://github.com/esp-admin/app/commit/8052940))
+- Delete prisma/migrations directory ([2ea7545](https://github.com/esp-admin/app/commit/2ea7545))
+- **design:** Update ERD ([d00d475](https://github.com/esp-admin/app/commit/d00d475))
+- Load db url from env on sql schema ([3e01ed0](https://github.com/esp-admin/app/commit/3e01ed0))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Change ids validation regex ([7749e4f](https://github.com/esp-admin/app/commit/7749e4f))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+
 ## v0.2.14
 
 [compare changes](https://github.com/esp-admin/app/compare/v0.2.13...v0.2.14)

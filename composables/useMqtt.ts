@@ -2,11 +2,11 @@ export default function useMqtt () {
   const key = 'mqtt'
   const request = '/api/mqtt'
 
-  const mqtt = useState<Mqtt>(key)
+  const mqtt = useState<Mqtt|undefined>(key)
 
   async function find () {
     if (mqtt.value === undefined) {
-      mqtt.value = await useAuthFetch<Mqtt>(request)
+      mqtt.value = await useAuthFetch<Mqtt>(request).catch(() => undefined)
     }
 
     return mqtt

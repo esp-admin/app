@@ -4,11 +4,11 @@ export default function useReport () {
   const key = 'report'
   const request = '/api/report'
 
-  const report = useState<Report>(key)
+  const report = useState<Report | undefined>(key)
 
   async function find () {
     if (report.value === undefined) {
-      report.value = await useAuthFetch<Report>(request)
+      report.value = await useAuthFetch<Report>(request).catch(() => undefined)
     }
 
     return report

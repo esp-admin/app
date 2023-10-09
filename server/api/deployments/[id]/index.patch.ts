@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
   const { status } = await readBody<Deployment>(event)
 
   const schema = z.object({
-    id: z.string().regex(REGEX_UUID),
+    id: z.string().regex(REGEX_ID),
     status: z.string().min(1)
   })
 

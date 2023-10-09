@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
   const id = event.context.params?.id
 
   const schema = z.object({
-    id: z.string().regex(REGEX_UUID)
+    id: z.string().regex(REGEX_ID)
   })
 
   schema.parse({ id })

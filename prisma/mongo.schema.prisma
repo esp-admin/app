@@ -15,8 +15,8 @@ model User {
   name                   String
   email                  String         @unique
   picture                String
-  role                   Role           @default(user)
-  provider               Provider       @default(default)
+  role                   String         @default("user")
+  provider               String         @default("default")
   password               String?
   verified               Boolean        @default(false)
   suspended              Boolean        @default(false)
@@ -71,8 +71,8 @@ model Project {
   name        String
   repository  String?
   description String?
-  variables   Json?
-  commands    Json?
+  variables   String?
+  commands    String?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   userId      String    @db.ObjectId
@@ -100,8 +100,8 @@ model Device {
   name        String
   apiKey      String
   description String?
-  variables   Json?
-  status      DeviceStatus @default(unregistered)
+  variables   String?
+  status      String       @default("unregistered")
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
   projectId   String?      @db.ObjectId
@@ -114,35 +114,12 @@ model Device {
 }
 
 model Deployment {
-  id        String           @id @default(auto()) @map("_id") @db.ObjectId
-  status    DeploymentStatus @default(started)
-  createdAt DateTime         @default(now())
-  updatedAt DateTime         @updatedAt
-  deviceId  String           @db.ObjectId
-  device    Device           @relation(fields: [releaseId], references: [id])
-  releaseId String           @db.ObjectId
-  release   Release          @relation(fields: [releaseId], references: [id])
-}
-
-enum Role {
-  user
-  admin
-}
-
-enum Provider {
-  default
-  google
-  github
-}
-
-enum DeviceStatus {
-  connected
-  disconnected
-  unregistered
-}
-
-enum DeploymentStatus {
-  started
-  failed
-  succeded
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  status    String   @default("started")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deviceId  String   @db.ObjectId
+  device    Device   @relation(fields: [releaseId], references: [id])
+  releaseId String   @db.ObjectId
+  release   Release  @relation(fields: [releaseId], references: [id])
 }

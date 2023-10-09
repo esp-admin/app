@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
     version: z
       .string()
       .regex(/^(\d+)\.(\d+)\.(\d+)(?:-([\w-.]+))?(?:\+([\w-.]+))?$/),
-    projectId: z.string().regex(REGEX_UUID),
+    projectId: z.string().regex(REGEX_ID),
     downloadPath: z.string().min(1)
   })
 

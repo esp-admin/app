@@ -6,7 +6,7 @@ export async function checkDevice (event: H3Event) {
 
   const apiKey = getHeader(event, 'Api-Key')
 
-  if (!apiKey || !deviceId || !REGEX_UUID.test(deviceId)) {
+  if (!apiKey || !deviceId || !REGEX_ID.test(deviceId)) {
     throw createUnauthorizedError()
   }
 

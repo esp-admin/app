@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
   const data = await readBody<Partial<Project>>(event)
 
   const schema = z.object({
-    id: z.string().regex(REGEX_UUID)
+    id: z.string().regex(REGEX_ID)
   })
 
   schema.parse({ id })

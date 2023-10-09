@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
   const { projectId } = getQuery(event) as { projectId: Project['id'] }
 
   const schema = z.object({
-    projectId: z.string().regex(REGEX_UUID)
+    projectId: z.string().regex(REGEX_ID)
   })
 
   schema.parse({ projectId })

@@ -1,3 +1,5 @@
+import { destr } from 'destr'
+
 export default function useReport () {
   const key = 'report'
   const request = '/api/report'
@@ -54,7 +56,7 @@ export default function useReport () {
   async function handleStatus (message: ReportMessage) {
     const { update } = useDevice()
 
-    const device = JSON.parse(message.payload) as Device
+    const device = destr<Device>(message.payload)
 
     await update(message.deviceId, {
       status: device.status
@@ -64,10 +66,10 @@ export default function useReport () {
   async function handleUpdate (message: ReportMessage) {
     const { update } = useDeployment(message.deviceId)
 
-    const { deploymentId, status } = JSON.parse(message.payload) as {
+    const { deploymentId, status } = destr<{
       deploymentId: Deployment['id'];
       status: Deployment['status'];
-    }
+    }>(message.payload)
 
     await update(deploymentId, status)
   }

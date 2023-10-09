@@ -26,11 +26,8 @@
 </template>
 
 <script setup lang="ts">
-import { LogInst } from 'naive-ui'
-
-interface Command {
-    key: string, value: string
-}
+import { destr } from 'destr'
+import type { LogInst } from 'naive-ui'
 
 const logInst = ref<LogInst>()
 
@@ -38,15 +35,12 @@ const props = defineProps<{ device: Device }>()
 
 const { $mqtt } = useNuxtApp()
 
-const projectCommands = ref<Command[]>([])
+const projectCommands = ref<{key: string, value: string}[]>([])
 
 if (props.device.projectId) {
   const { findOne } = useProject()
   const project = await findOne(props.device.projectId)
-
-  if (project.value?.commands) {
-    projectCommands.value = JSON.parse(project.value.commands) as { key: string, value: string }[]
-  }
+  projectCommands.value = destr(project.value.commands)
 }
 
 const { logs, clear } = useLog(props.device.id)
@@ -63,7 +57,7 @@ function handleRestart () {
   })
 }
 
-function handleCommand (command: Command) {
+function handleCommand (command:object) {
   $mqtt.publish({
     deviceId: props.device.id,
     action: 'command',
@@ -94,7 +88,7 @@ onUnmounted(() => {
 })
 
 function scrollToBottom () {
-  logInst.value?.scrollTo({ position: 'bottom', slient: true })
+  logInst.value?.scrollTo({ position: 'bottom' })
 }
 
 function enableLog () {

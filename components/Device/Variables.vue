@@ -20,9 +20,13 @@
 </template>
 
 <script setup lang="ts">
+import { destr } from 'destr'
+
 const props = defineProps<{ device: Device }>()
 
-const model = ref(JSON.parse(props.device.variables) || {})
+const model = ref(destr<Record<string, string>>(props.device.variables))
+
+model.value ||= {}
 
 const { formRef, onSubmit, pending, edited, reset } = useNaiveForm(model)
 
@@ -33,7 +37,7 @@ if (props.device.projectId) {
   const project = await findOne(props.device.projectId)
 
   if (project.value?.variables) {
-    projectVariables.value = JSON.parse(project.value.variables) as { key: string, value: string }[]
+    projectVariables.value = destr<{ key: string, value: string }[]>(project.value.variables)
   }
 
   if (model.value) {
@@ -48,7 +52,7 @@ if (props.device.projectId) {
 async function handleSubmit () {
   const { update } = useDevice()
 
-  await update(props.device.id, { variables: model.value })
+  await update(props.device.id, { variables: JSON.stringify(model.value) })
     .then(() => {
       const { $mqtt } = useNuxtApp()
 

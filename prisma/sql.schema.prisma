@@ -1,0 +1,125 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = "file:../data/dev.db"
+}
+
+model User {
+    id                     String         @id @default(uuid())
+    name                   String
+    email                  String         @unique
+    picture                String
+    role                   String         @default("user")
+    provider               String         @default("default")
+    password               String?
+    verified               Boolean        @default(false)
+    suspended              Boolean        @default(false)
+    requestedPasswordReset Boolean        @default(false)
+    createdAt              DateTime       @default(now())
+    updatedAt              DateTime       @updatedAt
+    refreshTokens          RefreshToken[]
+    projects               Project[]
+    devices                Device[]
+    mqtt                   Mqtt?
+    report                 Report?
+}
+
+model RefreshToken {
+    id        String   @id @default(uuid())
+    uid       String
+    userId    String
+    user      User     @relation(fields: [userId], references: [id])
+    userAgent String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([userId])
+}
+
+model Mqtt {
+    id        String   @id @default(uuid())
+    uriTCP    String?
+    uriWS     String
+    username  String
+    password  String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    userId    String   @unique
+    user      User     @relation(fields: [userId], references: [id])
+}
+
+model Report {
+    id            String   @id @default(uuid())
+    webhookEnable Boolean  @default(false)
+    webhookUrl    String?
+    emailEnable   Boolean  @default(false)
+    emailAddress  String?
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
+    userId        String   @unique
+    user          User     @relation(fields: [userId], references: [id])
+}
+
+model Project {
+    id          String    @id @default(uuid())
+    name        String
+    repository  String?
+    description String?
+    variables   String?
+    commands    String?
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+    userId      String
+    user        User      @relation(fields: [userId], references: [id])
+    releases    Release[]
+    devices     Device[]
+
+    @@unique([name, userId])
+}
+
+model Release {
+    id           String       @id @default(uuid())
+    downloadPath String
+    version      String
+    createdAt    DateTime     @default(now())
+    projectId    String
+    project      Project      @relation(fields: [projectId], references: [id])
+    deployments  Deployment[]
+
+    @@unique([version, projectId])
+}
+
+model Device {
+    id          String       @id @default(uuid())
+    name        String
+    apiKey      String
+    description String?
+    variables   String
+    status      String       @default("unregistered")
+    createdAt   DateTime     @default(now())
+    updatedAt   DateTime     @updatedAt
+    projectId   String?
+    project     Project?     @relation(fields: [projectId], references: [id])
+    userId      String
+    user        User         @relation(fields: [userId], references: [id])
+    deployments Deployment[]
+
+    @@unique([name, userId])
+}
+
+model Deployment {
+    id        String   @id @default(uuid())
+    status    String   @default("started")
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deviceId  String
+    device    Device   @relation(fields: [releaseId], references: [id])
+    releaseId String
+    release   Release  @relation(fields: [releaseId], references: [id])
+}

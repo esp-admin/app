@@ -8,7 +8,7 @@ import type {
   Deployment as DeploymentRaw,
 } from "@prisma/client";
 
-import { Options } from "highcharts";
+import type { Options } from "highcharts";
 
 declare global {
   interface HighchartsOptions extends Options {}
@@ -17,16 +17,22 @@ declare global {
 
   interface Release extends ReleaseRaw {}
 
-  interface Device extends DeviceRaw {}
+  interface Device extends DeviceRaw {
+    status: 'unregistered' | 'connected' | 'disconnected'
+  }
 
   interface Mqtt extends MqttRaw {}
 
-  interface User extends UserRaw {}
+  interface User extends UserRaw {
+    provider: 'default' | 'google' | 'github',
+    role: 'user' | 'admin'
+  }
 
   interface Report extends ReportRaw {}
 
   interface Deployment extends DeploymentRaw {
     release?: ReleaseRaw;
+    status: 'started' | 'failed' | 'succeded'
   }
 
   interface CommandMessage {

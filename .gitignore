@@ -10,3 +10,4 @@ dist
 
 uploads/
 data/
+prisma/migrations

@@ -42,7 +42,6 @@
     "vite-plugin-node-polyfills": "^0.15.0"
   },
   "dependencies": {
-    "@bugsnag/js": "^7.21.0",
     "@prisma/client": "^5.4.1",
     "dayjs": "^1.11.10",
     "highcharts": "^11.1.0",

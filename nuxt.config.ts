@@ -81,10 +81,6 @@ export default defineNuxtConfig({
       oauth: {
         google: false,
         github: false
-      },
-      bugsnag: {
-        enabled: false,
-        apiKey: '*'
       }
     }
   },

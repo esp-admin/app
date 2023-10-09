@@ -71,8 +71,8 @@ model Project {
     name        String
     repository  String?
     description String?
-    variables   String? // Json string, Array<{key:string, value:string}>
-    commands    String? // Json string, Array<{key:string, value:string}>
+    variables   String?
+    commands    String?
     createdAt   DateTime  @default(now())
     updatedAt   DateTime  @updatedAt
     userId      String
@@ -100,7 +100,7 @@ model Device {
     name        String
     apiKey      String
     description String?
-    variables   String? // JSON string, Record<key:string, value:string>
+    variables   String?
     status      String       @default("unregistered")
     createdAt   DateTime     @default(now())
     updatedAt   DateTime     @updatedAt

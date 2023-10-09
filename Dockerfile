@@ -9,13 +9,13 @@ RUN apt-get install -y openssl
 # Build
 FROM base as build
 
-COPY ./package-lock.json ./
-COPY ./package.json ./
+COPY package*.json ./
 
-RUN npm install --verbose
+RUN npm ci 
 
 COPY . .
 
+RUN npm run prisma:generate:sql
 RUN npm run build
 RUN npm prune
 

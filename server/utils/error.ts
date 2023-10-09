@@ -12,6 +12,10 @@ export function createPrismaError (error: any) {
       h3Error.statusCode = 409
       h3Error.message = `Required relation violation on ${error.meta.relation_name}`
       break
+    case 'P2025':
+      h3Error.statusCode = 404
+      h3Error.message = 'Not found'
+      break
   }
 
   return h3Error

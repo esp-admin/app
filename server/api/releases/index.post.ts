@@ -4,9 +4,7 @@ export default defineEventHandler(async (event) => {
   const { version, downloadPath, projectId } = await readBody<Release>(event)
 
   const schema = z.object({
-    version: z
-      .string()
-      .regex(/^(\d+)\.(\d+)\.(\d+)(?:-([\w-.]+))?(?:\+([\w-.]+))?$/),
+    version: z.string().regex(REGEX_VERSION),
     projectId: z.string().regex(REGEX_ID),
     downloadPath: z.string().min(1)
   })

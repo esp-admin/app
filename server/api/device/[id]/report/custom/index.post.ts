@@ -28,7 +28,7 @@ export default defineEventHandler(async (event) => {
     where: {
       userId
     }
-  })
+  }).catch((e) => { throw createPrismaError(e) })
 
   if (!report) {
     throw createUnauthorizedError()

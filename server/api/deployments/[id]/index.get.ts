@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
 
   schema.parse({ id })
 
-  const deployment = await event.context.prisma.deployment.findUnique({
+  const deployment = await event.context.prisma.deployment.findUniqueOrThrow({
     where: {
       id
     },

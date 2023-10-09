@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
 
   schema.parse(message)
 
-  const report = await event.context.prisma.report.findUnique({
+  const report = await event.context.prisma.report.findUniqueOrThrow({
     where: {
       userId
     }

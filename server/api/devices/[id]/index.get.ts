@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
 
   schema.parse({ id })
 
-  const device = await event.context.prisma.device.findUnique({
+  const device = await event.context.prisma.device.findUniqueOrThrow({
     where: {
       id
     },

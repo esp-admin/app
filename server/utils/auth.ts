@@ -10,7 +10,7 @@ export async function checkDevice (event: H3Event) {
     throw createUnauthorizedError()
   }
 
-  const device = await event.context.prisma.device.findUnique({
+  const device = await event.context.prisma.device.findUniqueOrThrow({
     where: {
       id: deviceId
     }

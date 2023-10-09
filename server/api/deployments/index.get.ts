@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
   const { deviceId } = getQuery(event) as { deviceId: Device['id'] }
 
   const schema = z.object({
-    deviceId: z.string().regex(/^[a-fA-F0-9]{24}$/)
+    deviceId: z.string().regex(/^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/)
   })
 
   schema.parse({ deviceId })

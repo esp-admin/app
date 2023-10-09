@@ -6,14 +6,19 @@
   "homepage": "https://esp-admin.bg.tn",
   "repository": "https://github.com/esp-admin/app",
   "scripts": {
-    "build": "prisma generate && nuxt build",
+    "build": "nuxt build",
+    "build:docker": "docker build . -t becemgharbi/esp-admin",
+    "release": "npm run lint && changelogen --release && git push --follow-tags",
+    "release:docker": "docker push becemgharbi/esp-admin",
+    "prisma:generate:sql": "prisma generate --schema ./prisma/sql.schema.prisma",
+    "prisma:generate:mongo": "prisma generate --schema ./prisma/mongo.schema.prisma",
+    "prisma:migrate:sql": "prisma migrate dev --schema ./prisma/sql.schema.prisma",
+    "prisma:migrate:mongo": "prisma db push --schema ./prisma/mongo.schema.prisma",
     "dev": "nuxt dev",
-    "generate": "prisma generate && nuxt generate",
+    "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "release": "npm run lint && changelogen --release && git push --follow-tags",
-    "lint": "eslint .",
-    "release:docker": "docker build . -t becemgharbi/esp-admin && docker push becemgharbi/esp-admin"
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@bg-dev/nuxt-auth": "^2.0.2",

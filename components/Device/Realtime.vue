@@ -45,7 +45,7 @@ if (props.device.projectId) {
   const project = await findOne(props.device.projectId)
 
   if (project.value?.commands) {
-    projectCommands.value = project.value.commands as { key: string, value: string }[]
+    projectCommands.value = JSON.parse(project.value.commands) as { key: string, value: string }[]
   }
 }
 

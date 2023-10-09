@@ -22,7 +22,7 @@
 <script setup lang="ts">
 const props = defineProps<{ device: Device }>()
 
-const model = ref(props.device.variables as Record<string, string> || {})
+const model = ref(JSON.parse(props.device.variables) || {})
 
 const { formRef, onSubmit, pending, edited, reset } = useNaiveForm(model)
 
@@ -33,7 +33,7 @@ if (props.device.projectId) {
   const project = await findOne(props.device.projectId)
 
   if (project.value?.variables) {
-    projectVariables.value = project.value.variables as { key: string, value: string }[]
+    projectVariables.value = JSON.parse(project.value.variables) as { key: string, value: string }[]
   }
 
   if (model.value) {

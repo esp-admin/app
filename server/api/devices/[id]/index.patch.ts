@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
   const data = await readBody<Partial<Device>>(event)
 
   const schema = z.object({
-    id: z.string().regex(/^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/)
+    id: z.string().regex(REGEX_UUID)
   })
 
   schema.parse({ id })

@@ -47,7 +47,7 @@ rules.value = {
       validator: () => !apiErrors.value.nameAlreadyExists
     },
     {
-      validator: (_, value) => !/^\s|\s$/.test(value),
+      validator: (_, value) => !REGEX_SPACE_AROUND.test(value),
       message: 'Should not contain leading or trailing space',
       trigger: 'blur'
     }

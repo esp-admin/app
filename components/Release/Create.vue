@@ -71,7 +71,7 @@ rules.value = {
       validator: () => !apiErrors.value.uploadFailed
     },
     {
-      validator: (_, value) => /^(\d+)\.(\d+)\.(\d+)(?:-([\w-.]+))?(?:\+([\w-.]+))?$/.test(value),
+      validator: (_, value) => REGEX_VERSION.test(value),
       message: 'Should be in format x.y.z or x.y.z-suffix',
       trigger: 'blur'
     }

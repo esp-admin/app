@@ -58,7 +58,7 @@
 definePageMeta({
   validate: (route) => {
     const params = route.params as { id: string }
-    return /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/.test(params.id)
+    return REGEX_UUID.test(params.id)
   }
 })
 

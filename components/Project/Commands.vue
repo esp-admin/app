@@ -37,7 +37,7 @@
 const props = defineProps<{ project: Project }>()
 
 const model = ref({
-  commands: props.project.commands as { key: string, value: string }[]
+  commands: JSON.parse(props.project.commands || '') as { key: string, value: string }[]
 })
 
 const { formRef, onSubmit, pending, rules, edited, reset } = useNaiveForm(model)
@@ -51,7 +51,7 @@ rules.value = {
     {
       trigger: 'input',
       message: 'Should not contain space',
-      validator: (_, value) => !/\s/.test(value)
+      validator: (_, value) => !REGEX_SPACE.test(value)
     }
   ],
   value:

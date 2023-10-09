@@ -47,7 +47,7 @@ rules.value = {
       trigger: 'blur'
     },
     {
-      validator: (_, value) => /^wss/.test(value),
+      validator: (_, value) => REGEX_URL_WSS.test(value),
       message: 'Should start with wss',
       trigger: 'input'
     },
@@ -71,7 +71,7 @@ rules.value = {
   ],
   uriTCP: [
     {
-      validator: (_, value) => value ? /^mqtts/.test(value) : true,
+      validator: (_, value) => value ? REGEX_URL_MQTTS.test(value) : true,
       message: 'Should start with mqtts',
       trigger: 'input'
     },

@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "private": true,
   "description": "Remote management for ESP microcontrollers",
-  "homepage": "https://esp-admin.bg.tn",
+  "homepage": "https://esp-admin.tn",
   "repository": "https://github.com/esp-admin/app",
   "scripts": {
     "build": "nuxt build",

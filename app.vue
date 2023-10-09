@@ -181,7 +181,7 @@ useSeoMeta({
   ogTitle: 'ESP Admin',
   ogDescription: 'Remote management of ESP microcontrollers',
   ogImage: '/poster.png',
-  ogUrl: 'https://esp-admin.bg.tn',
+  ogUrl: 'https://esp-admin.tn',
   twitterTitle: 'ESP Admin',
   twitterDescription: 'Remote management of ESP microcontrollers',
   twitterImage: '/favicon.ico',

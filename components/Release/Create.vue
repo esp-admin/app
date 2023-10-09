@@ -81,10 +81,9 @@ rules.value = {
 async function handleSubmit () {
   if (file.value) {
     const { upload } = useS3Object()
-    const { user } = useAuthSession()
 
     const url = await upload(file.value, {
-      prefix: `binary/${user.value!.id}/`
+      prefix: 'binaries/'
     })
 
     model.value.downloadPath = url

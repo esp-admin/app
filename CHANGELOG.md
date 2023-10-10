@@ -1,6 +1,41 @@
 # Changelog
 
 
+## v0.3.1
+
+[compare changes](https://github.com/esp-admin/app/compare/v0.3.0...v0.3.1)
+
+### 🔥 Performance
+
+- Load MQTT.js dynamically ([da25735](https://github.com/esp-admin/app/commit/da25735))
+
+### 🩹 Fixes
+
+- Return success on not found settings ([9754c33](https://github.com/esp-admin/app/commit/9754c33))
+- Add client-side validation on profile form ([45810e2](https://github.com/esp-admin/app/commit/45810e2))
+
+### 💅 Refactors
+
+- Remove modals titles ([9935051](https://github.com/esp-admin/app/commit/9935051))
+- Remove Footer ([c4ff4ff](https://github.com/esp-admin/app/commit/c4ff4ff))
+- Change required error message ([099ecb2](https://github.com/esp-admin/app/commit/099ecb2))
+- Multi refactor of forms (rules, messages, code) ([b4d1bc9](https://github.com/esp-admin/app/commit/b4d1bc9))
+- Change Card boxShadow ([b790a84](https://github.com/esp-admin/app/commit/b790a84))
+
+### 🏡 Chore
+
+- Update .dockerignore ([5b66057](https://github.com/esp-admin/app/commit/5b66057))
+- Change origin ([534fded](https://github.com/esp-admin/app/commit/534fded))
+- Change favicon bg to white ([e9ab8d9](https://github.com/esp-admin/app/commit/e9ab8d9))
+- Remove s3 cache for now ([44e1b89](https://github.com/esp-admin/app/commit/44e1b89))
+- Change favicon border radius ([de122b5](https://github.com/esp-admin/app/commit/de122b5))
+- Update example.env ([056895c](https://github.com/esp-admin/app/commit/056895c))
+- Remove extra hoverable state ([795052f](https://github.com/esp-admin/app/commit/795052f))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v0.3.0
 
 [compare changes](https://github.com/esp-admin/app/compare/v0.2.14...v0.3.0)

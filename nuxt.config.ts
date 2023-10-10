@@ -69,7 +69,6 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/api/s3/query/**': { cache: { maxAge: 2592000 } },
     '/api/s3/mutation/**': { security: { xssValidator: false } }
   },
 

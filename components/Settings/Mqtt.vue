@@ -43,7 +43,7 @@ rules.value = {
   uriWS: [
     {
       required: true,
-      message: "Please enter borker's Websockets URI",
+      message: 'Please fill out this field.',
       trigger: 'blur'
     },
     {
@@ -58,14 +58,14 @@ rules.value = {
   username: [
     {
       required: true,
-      message: 'Please enter username',
+      message: 'Please fill out this field.',
       trigger: 'blur'
     }
   ],
   password: [
     {
       required: true,
-      message: 'Please enter password',
+      message: 'Please fill out this field.',
       trigger: 'blur'
     }
   ],

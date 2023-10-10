@@ -59,7 +59,7 @@ rules.value = {
   version: [
     {
       required: true,
-      message: 'Please input project version',
+      message: 'Please fill out this field.',
       trigger: 'blur'
     },
     {

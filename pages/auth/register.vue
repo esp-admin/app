@@ -70,21 +70,21 @@ rules.value = {
   firstName: [
     {
       required: true,
-      message: 'Please input your first name',
+      message: 'Please fill out this field.',
       trigger: 'blur'
     }
   ],
   lastName: [
     {
       required: true,
-      message: 'Please input your last name',
+      message: 'Please fill out this field.',
       trigger: 'blur'
     }
   ],
   email: [
     {
       required: true,
-      message: 'Please input your email',
+      message: 'Please fill out this field.',
       trigger: 'blur'
     },
     {
@@ -100,7 +100,7 @@ rules.value = {
   password: [
     {
       required: true,
-      message: 'Please input your password',
+      message: 'Please fill out this field.',
       trigger: 'blur'
     },
     {

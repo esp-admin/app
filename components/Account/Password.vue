@@ -32,7 +32,7 @@ rules.value = {
   currentPassword: [
     {
       required: true,
-      message: 'Please enter your password',
+      message: 'Please fill out this field.',
       trigger: 'blur'
     },
     {
@@ -44,7 +44,7 @@ rules.value = {
   newPassword: [
     {
       required: true,
-      message: 'Please enter your new password',
+      message: 'Please fill out this field.',
       trigger: 'input'
     }
   ]

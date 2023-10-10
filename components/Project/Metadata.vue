@@ -35,7 +35,7 @@ rules.value = {
   name: [
     {
       required: true,
-      message: 'Please input project name',
+      message: 'Please fill out this field.',
       trigger: 'blur'
     },
     {

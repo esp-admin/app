@@ -53,7 +53,7 @@ rules.value = {
   email: [
     {
       required: true,
-      message: 'Please input your email',
+      message: 'Please fill out this field.',
       trigger: 'input'
     },
     {

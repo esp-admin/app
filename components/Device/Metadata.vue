@@ -39,7 +39,7 @@ rules.value = {
   name: [
     {
       required: true,
-      message: 'Please input device name',
+      message: 'Please fill out this field.',
       trigger: 'blur'
     },
     {

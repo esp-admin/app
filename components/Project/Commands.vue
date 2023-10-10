@@ -45,7 +45,7 @@ rules.value = {
   key: [
     {
       required: true,
-      message: 'Please set the name'
+      message: 'Please fill out this field.'
     },
     {
       trigger: 'input',

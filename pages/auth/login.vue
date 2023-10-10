@@ -75,7 +75,7 @@ rules.value = {
   email: [
     {
       required: true,
-      message: 'Please input your email',
+      message: 'Please fill out this field.',
       trigger: 'blur'
     },
     {
@@ -98,7 +98,7 @@ rules.value = {
   password: [
     {
       required: true,
-      message: 'Please input your password',
+      message: 'Please fill out this field.',
       trigger: 'blur'
     }
   ]

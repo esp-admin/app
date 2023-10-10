@@ -1,5 +1,5 @@
 <template>
-  <n-card size="small" hoverable :header-extra-style="{ padding: 0 }">
+  <n-card size="small" :header-extra-style="{ padding: 0 }">
     <template #header>
       <div class="flex flex-col">
         <div class="flex items-center gap-2">

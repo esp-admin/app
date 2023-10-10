@@ -133,7 +133,7 @@ const themeConfig = ref<ThemeConfig>({
       textColorBase: theme.colors.zinc[200],
       textColor1: theme.colors.zinc[200],
       textColor2: theme.colors.zinc[300],
-      textColor3: theme.colors.zinc[500],
+      textColor3: theme.colors.zinc[400],
       textColorDisabled: theme.colors.zinc[500],
 
       bodyColor: theme.colors.zinc[900],

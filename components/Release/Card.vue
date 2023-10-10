@@ -1,5 +1,5 @@
 <template>
-  <n-card size="small" hoverable title="Devices">
+  <n-card size="small" title="Devices">
     <template #header-extra>
       <div class="flex gap-2">
         <TooltipIconButton

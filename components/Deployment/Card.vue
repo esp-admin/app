@@ -40,9 +40,7 @@
 
     <n-modal
       v-model:show="deleteModalVisible"
-      title="Delete deployment"
       bordered
-      segmented
       preset="card"
       :closable="false"
       :mask-closable="false"

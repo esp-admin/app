@@ -29,7 +29,7 @@
         Cancel
       </n-button>
       <n-button type="primary" class="flex-1" attr-type="submit" :loading="pending" :disabled="pending">
-        Create
+        Create release
       </n-button>
     </div>
   </n-form>

@@ -56,9 +56,7 @@
 
     <n-modal
       v-model:show="deleteModalVisible"
-      title="Delete device"
       bordered
-      segmented
       preset="card"
       :closable="false"
       :mask-closable="false"
@@ -69,9 +67,7 @@
 
     <n-modal
       v-model:show="unlinkModalVisible"
-      title="Unlink device"
       bordered
-      segmented
       preset="card"
       :closable="false"
       :mask-closable="false"

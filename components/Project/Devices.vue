@@ -27,9 +27,7 @@
 
     <n-modal
       v-model:show="linkModalVisible"
-      title="Link device"
       bordered
-      segmented
       preset="card"
       :closable="false"
       :mask-closable="false"

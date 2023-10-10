@@ -37,9 +37,7 @@
 
     <n-modal
       v-model:show="deleteModalVisible"
-      title="Delete project"
       bordered
-      segmented
       preset="card"
       :closable="false"
       :mask-closable="false"

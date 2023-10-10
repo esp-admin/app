@@ -35,9 +35,7 @@
 
     <n-modal
       v-model:show="createModalVisible"
-      title="Create new project"
       bordered
-      segmented
       preset="card"
       :closable="false"
       :mask-closable="false"

@@ -21,8 +21,7 @@
         :disabled="pending || !edited"
         :loading="pending"
       >
-        Delete
-        release
+        Delete release
       </n-button>
     </div>
   </n-form>

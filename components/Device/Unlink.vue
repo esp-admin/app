@@ -21,7 +21,7 @@
         :disabled="pending || !edited"
         :loading="pending"
       >
-        Unlink
+        Unlink device
       </n-button>
     </div>
   </n-form>

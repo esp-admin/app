@@ -19,7 +19,7 @@
         Cancel
       </n-button>
       <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending || !edited" class="flex-1">
-        Create
+        Create device
       </n-button>
     </div>
   </n-form>

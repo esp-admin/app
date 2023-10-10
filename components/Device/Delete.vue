@@ -15,7 +15,7 @@
         Cancel
       </n-button>
       <n-button type="error" class="flex-1" attr-type="submit" :disabled="pending || !edited" :loading="pending">
-        Delete
+        Delete device
       </n-button>
     </div>
   </n-form>

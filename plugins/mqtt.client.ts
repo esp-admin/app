@@ -1,4 +1,3 @@
-import { connectAsync } from 'mqtt'
 import type { MqttClient } from 'mqtt'
 
 export default defineNuxtPlugin({
@@ -12,11 +11,13 @@ export default defineNuxtPlugin({
       username: string;
       password: string;
     }) {
+      const MQTT = await import('mqtt')
+
       const { connected } = useMqtt()
 
       await disconnect()
 
-      mqttClient = await connectAsync(options.uri, {
+      mqttClient = await MQTT.connectAsync(options.uri, {
         keepalive: 30,
         reconnectPeriod: 3000,
         username: options.username,

@@ -30,12 +30,8 @@ export default defineEventHandler(async (event) => {
     }
   }).catch((e) => { throw createPrismaError(e) })
 
-  if (!report) {
-    throw createUnauthorizedError()
-  }
-
   if (report.emailEnable && report.emailAddress) {
-    sendMail({
+    await sendMail({
       subject: `${message.type} | ${message.subject}`,
       to: report.emailAddress,
       html: Mustache.render(reportTemplate, {
@@ -53,7 +49,7 @@ export default defineEventHandler(async (event) => {
         subject: message.subject,
         body: message.body
       }
-    }).catch(() => {})
+    })
   }
 
   return 'ok'

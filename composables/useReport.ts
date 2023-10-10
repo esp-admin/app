@@ -8,7 +8,7 @@ export default function useReport () {
 
   async function find () {
     if (report.value === undefined) {
-      report.value = await useAuthFetch<Report>(request).catch(() => undefined)
+      report.value = await useAuthFetch<Report>(request)
     }
 
     return report

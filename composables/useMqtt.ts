@@ -6,7 +6,7 @@ export default function useMqtt () {
 
   async function find () {
     if (mqtt.value === undefined) {
-      mqtt.value = await useAuthFetch<Mqtt>(request).catch(() => undefined)
+      mqtt.value = await useAuthFetch<Mqtt>(request)
     }
 
     return mqtt

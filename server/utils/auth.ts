@@ -16,7 +16,7 @@ export async function checkDevice (event: H3Event) {
     }
   })
 
-  if (!device || !compareSync(apiKey, device.apiKey)) {
+  if (!compareSync(apiKey, device.apiKey)) {
     throw createUnauthorizedError()
   }
 

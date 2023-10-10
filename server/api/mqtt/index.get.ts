@@ -1,11 +1,11 @@
 export default defineEventHandler(async (event) => {
   const { userId } = checkUser(event)
 
-  const mqtt = await event.context.prisma.mqtt.findUniqueOrThrow({
+  const mqtt = await event.context.prisma.mqtt.findUnique({
     where: {
       userId
     }
-  }).catch((e) => { throw createPrismaError(e) })
+  })
 
   return mqtt
 })

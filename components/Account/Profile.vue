@@ -8,8 +8,8 @@
       @select="(f)=> model.file=f"
     />
 
-    <n-form ref="formRef" @submit.prevent="onSubmit(updateAccount)">
-      <n-form-item label="Name">
+    <n-form ref="formRef" :rules="rules" @submit.prevent="onSubmit(updateAccount)">
+      <n-form-item label="Name" path="name">
         <n-input v-model:value="model.name" />
       </n-form-item>
 
@@ -31,7 +31,16 @@ const model = ref({
   file: undefined
 })
 
-const { edited, formRef, pending, onSubmit, reset } = useNaiveForm(model)
+const { edited, formRef, pending, onSubmit, reset, rules } = useNaiveForm(model)
+
+rules.value = {
+  name: [
+    {
+      required: true,
+      message: 'Please fill out this field.'
+    }
+  ]
+}
 
 function handleReset () {
   uploadRef.value.reset()

@@ -9,7 +9,7 @@
         <DeviceStatus :device="device" :size="24" />
       </template>
 
-      <n-text depth="3">
+      <n-text depth="2">
         {{ device.description || 'no description' }}
       </n-text>
     </n-card>

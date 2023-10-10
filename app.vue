@@ -78,7 +78,8 @@ const themeConfig = ref<ThemeConfig>({
     Card: {
       titleFontSizeMedium: theme.fontSize.xl[0],
       titleFontSizeSmall: theme.fontSize.lg[0],
-      titleFontWeight: theme.fontWeight.medium
+      titleFontWeight: theme.fontWeight.medium,
+      boxShadow: '0px 0px 2px 2px rgba(25,87,204,0.32)'
     }
   },
 
@@ -132,7 +133,7 @@ const themeConfig = ref<ThemeConfig>({
       textColorBase: theme.colors.zinc[200],
       textColor1: theme.colors.zinc[200],
       textColor2: theme.colors.zinc[300],
-      textColor3: theme.colors.zinc[400],
+      textColor3: theme.colors.zinc[500],
       textColorDisabled: theme.colors.zinc[500],
 
       bodyColor: theme.colors.zinc[900],

@@ -5,7 +5,7 @@
         <TitleDate :title="project.name" :created-at="project.createdAt" />
       </template>
 
-      <n-text depth="3">
+      <n-text depth="2">
         {{ project.description || 'no description' }}
       </n-text>
     </n-card>

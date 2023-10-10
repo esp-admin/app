@@ -1,5 +1,5 @@
 <template>
-  <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
+  <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="onSubmit(handleSubmit)">
     <n-form-item label="Name" path="name">
       <n-input v-model:value="model.name" />
     </n-form-item>
@@ -43,24 +43,24 @@ rules.value = {
   name: [
     {
       required: true,
-      message: 'Please fill out this field.',
-      trigger: 'blur'
+      message: ERROR_REQUIRED,
+      trigger: 'input'
     },
     {
-      message: 'Name already used',
+      message: ERROR_EXISTS,
       validator: () => !apiErrors.value.nameAlreadyExists
     },
     {
       validator: (_, value) => !REGEX_SPACE_AROUND.test(value),
-      message: 'Should not contain leading or trailing space',
-      trigger: 'blur'
+      message: ERROR_NO_SPACE_AROUND,
+      trigger: 'input'
     }
   ],
   apiKey: [
     {
       required: true,
-      message: 'Please fill out this field.',
-      trigger: 'blur'
+      message: ERROR_REQUIRED,
+      trigger: 'input'
     }
   ]
 }
@@ -71,7 +71,7 @@ async function handleSubmit () {
   await add(model.value)
     .then(device => emits('done', device))
     .catch((error) => {
-      apiErrors.value.nameAlreadyExists = error.data.message === 'Unique constraint failed on Device_name_userId_key'
+      apiErrors.value.nameAlreadyExists = error.data.message.includes('Unique constraint failed')
     })
 }
 </script>

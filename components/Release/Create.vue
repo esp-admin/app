@@ -1,7 +1,16 @@
 <template>
-  <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
-    <n-form-item>
-      <n-upload :custom-request="(e) => file = e.file.file" accept=".bin">
+  <n-form
+    ref="formRef"
+    :rules="rules"
+    :model="model"
+    @submit.prevent="onSubmit(handleSubmit)"
+  >
+    <n-form-item label="Version" path="version">
+      <n-input v-model:value="model.version" />
+    </n-form-item>
+
+    <n-form-item path="file" label="Firmware">
+      <n-upload :custom-request="(e) => {model.file = e.file.file}" accept=".bin">
         <n-upload-dragger>
           <div>
             <naive-icon name="ph:upload" :size="28" />
@@ -14,10 +23,6 @@
       </n-upload>
     </n-form-item>
 
-    <n-form-item label="Version" path="version">
-      <n-input v-model:value="model.version" />
-    </n-form-item>
-
     <div class="flex gap-4">
       <n-button
         secondary
@@ -28,7 +33,13 @@
       >
         Cancel
       </n-button>
-      <n-button type="primary" class="flex-1" attr-type="submit" :loading="pending" :disabled="pending">
+      <n-button
+        type="primary"
+        class="flex-1"
+        attr-type="submit"
+        :loading="pending"
+        :disabled="pending"
+      >
         Create release
       </n-button>
     </div>
@@ -39,13 +50,12 @@
 
 const props = defineProps<{ project: Project }>()
 
-const file = ref<File | null>()
-
 const emits = defineEmits(['cancel', 'done'])
 
-const model = ref<Partial<Release>>({
+const model = ref({
   version: '',
-  downloadPath: undefined
+  downloadPath: '',
+  file: null as File |null
 })
 
 const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm(model)
@@ -59,70 +69,76 @@ rules.value = {
   version: [
     {
       required: true,
-      message: 'Please fill out this field.',
-      trigger: 'blur'
+      message: ERROR_REQUIRED,
+      trigger: 'input'
     },
     {
-      message: 'Version already used',
+      message: ERROR_EXISTS,
       validator: () => !apiErrors.value.versionAlreadyExists
     },
     {
-      message: 'Unable to upload firmware',
-      validator: () => !apiErrors.value.uploadFailed
+      validator: (_, value) => REGEX_VERSION.test(value),
+      message: ERROR_INVALID_VERSION,
+      trigger: 'input'
+    }
+  ],
+  file: [
+    {
+      required: true,
+      message: ERROR_REQUIRED
     },
     {
-      validator: (_, value) => REGEX_VERSION.test(value),
-      message: 'Should be in format x.y.z or x.y.z-suffix',
-      trigger: 'blur'
+      message: ERROR_UPLOAD_FAILED,
+      validator: () => !apiErrors.value.uploadFailed
     }
   ]
 }
 
 async function handleSubmit () {
-  if (file.value) {
-    const { upload } = useS3Object()
+  const { upload } = useS3Object()
 
-    const url = await upload(file.value, {
+  try {
+    model.value.downloadPath = await upload(model.value.file!, {
       prefix: 'binaries/'
     })
-
-    model.value.downloadPath = url
-  }
-
-  if (model.value.downloadPath === undefined) {
+  } catch (e) {
     apiErrors.value.uploadFailed = true
     return
   }
 
   const { add } = useRelease(props.project.id)
 
-  await add(model.value)
-    .then(async (release) => {
-      const { $mqtt } = useNuxtApp()
-
-      const { find } = useDevice()
-
-      const devices = await find()
-
-      const linkedDevices = devices.value?.filter(device => device.projectId === props.project.id) || []
-
-      for (const device of linkedDevices) {
-        $mqtt.publish({
-          deviceId: device.id,
-          action: 'command',
-          type: 'update',
-          retain: true,
-          payload: JSON.stringify({
-            releaseId: release.id,
-            version: release.version,
-            downloadPath: release.downloadPath
-          })
-        })
-      }
-
-      emits('done', release)
-    }).catch((_) => {
-      apiErrors.value.versionAlreadyExists = true
+  try {
+    const release = await add({
+      downloadPath: model.value.downloadPath,
+      version: model.value.version
     })
+
+    const { find } = useDevice()
+
+    const devices = await find()
+
+    const linkedDevices = devices.value?.filter(device => device.projectId === props.project.id) || []
+
+    const { $mqtt } = useNuxtApp()
+
+    for (const device of linkedDevices) {
+      $mqtt.publish({
+        deviceId: device.id,
+        action: 'command',
+        type: 'update',
+        retain: true,
+        payload: JSON.stringify({
+          releaseId: release.id,
+          version: release.version,
+          downloadPath: release.downloadPath
+        })
+      })
+    }
+
+    emits('done', release)
+  } catch (error:any) {
+    apiErrors.value.versionAlreadyExists = error.data.message.includes('Unique constraint failed')
+  }
 }
 </script>

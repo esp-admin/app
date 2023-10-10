@@ -1,5 +1,5 @@
 <template>
-  <n-form ref="formRef" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
+  <n-form ref="formRef" :model="model" @submit.prevent="onSubmit(handleSubmit)">
     <FormItem
       v-for="projectVariable of projectVariables"
       :key="projectVariable.key"

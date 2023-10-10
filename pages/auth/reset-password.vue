@@ -26,7 +26,7 @@
     </n-result>
 
     <div v-else>
-      <n-form ref="formRef" :model="model" :rules="rules" @submit.prevent="() => onSubmit(handleSubmit)">
+      <n-form ref="formRef" :model="model" :rules="rules" @submit.prevent="onSubmit(handleSubmit)">
         <n-form-item label="Password" path="password" :show-require-mark="false">
           <n-input
             v-model:value="model.password"
@@ -78,16 +78,16 @@ const model = ref({
 rules.value = {
   password: [
     {
-      validator: (_, value) => /(?=.*[a-z])(?=.*[0-9])(?=.{6,})/.test(value),
-      message: 'At least 6 characters, 1 lowercase, 1 number',
-      trigger: 'blur'
+      validator: (_, value) => REGEX_PASSWORD.test(value),
+      message: ERROR_INVALID_PASSWORD,
+      trigger: 'input'
     }
   ],
   passwordConfirm: [
     {
       validator: (_, value) => value === model.value.password,
-      message: 'Passwords do not match',
-      trigger: 'blur'
+      message: ERROR_MATCH_PASSWORD,
+      trigger: 'input'
     }
   ]
 }

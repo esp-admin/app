@@ -8,7 +8,7 @@
       @select="(f)=> model.file=f"
     />
 
-    <n-form ref="formRef" :rules="rules" @submit.prevent="onSubmit(updateAccount)">
+    <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="onSubmit(updateAccount)">
       <n-form-item label="Name" path="name">
         <n-input v-model:value="model.name" />
       </n-form-item>
@@ -20,8 +20,6 @@
 
 <script setup lang="ts">
 const { user } = useAuthSession()
-const { upload } = useS3Object()
-const { fetchUser } = useAuth()
 
 const uploadRef = ref()
 
@@ -31,13 +29,21 @@ const model = ref({
   file: undefined
 })
 
-const { edited, formRef, pending, onSubmit, reset, rules } = useNaiveForm(model)
+const { edited, formRef, pending, onSubmit, reset, rules, apiErrors } = useNaiveForm(model)
+
+apiErrors.value = {
+  uploadFailed: false
+}
 
 rules.value = {
   name: [
     {
       required: true,
-      message: 'Please fill out this field.'
+      message: ERROR_REQUIRED
+    },
+    {
+      message: ERROR_UPLOAD_FAILED,
+      validator: () => !apiErrors.value.uploadFailed
     }
   ]
 }
@@ -48,13 +54,18 @@ function handleReset () {
 }
 
 async function updateAccount () {
-  if (model.value.file) {
-    const url = await upload(model.value.file, {
-      url: model.value.picture,
-      prefix: 'images/'
-    })
+  try {
+    const { upload } = useS3Object()
 
-    model.value.picture = url
+    if (model.value.file) {
+      model.value.picture = await upload(model.value.file, {
+        url: model.value.picture,
+        prefix: 'images/'
+      })
+    }
+  } catch (e) {
+    apiErrors.value.uploadFailed = true
+    return
   }
 
   await useAuthFetch('/api/account/profile', {
@@ -65,7 +76,7 @@ async function updateAccount () {
     }
   })
 
-  model.value.file = undefined
+  const { fetchUser } = useAuth()
 
   await fetchUser()
 }

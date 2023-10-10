@@ -1,5 +1,5 @@
 <template>
-  <n-form ref="formRef" :rules="rules" :model="model" autocomplete="off" @submit.prevent="() => onSubmit(handleSubmit)">
+  <n-form ref="formRef" :rules="rules" :model="model" autocomplete="off" @submit.prevent="onSubmit(handleSubmit)">
     <n-form-item label="Websockets uri" path="uriWS">
       <n-input v-model:value="model.uriWS" placeholder="wss://example.com:8884/mqtt" />
     </n-form-item>
@@ -43,40 +43,43 @@ rules.value = {
   uriWS: [
     {
       required: true,
-      message: 'Please fill out this field.',
-      trigger: 'blur'
-    },
-    {
-      validator: (_, value) => REGEX_URL_WSS.test(value),
-      message: 'Should start with wss',
+      message: ERROR_REQUIRED,
       trigger: 'input'
     },
     {
-      type: 'url'
+      validator: (_, value) => REGEX_URL_WSS.test(value),
+      message: ERROR_INVALID_URL,
+      trigger: 'input'
+    },
+    {
+      type: 'url',
+      message: ERROR_INVALID_URL
+
     }
   ],
   username: [
     {
       required: true,
-      message: 'Please fill out this field.',
-      trigger: 'blur'
+      message: ERROR_REQUIRED,
+      trigger: 'input'
     }
   ],
   password: [
     {
       required: true,
-      message: 'Please fill out this field.',
-      trigger: 'blur'
+      message: ERROR_REQUIRED,
+      trigger: 'input'
     }
   ],
   uriTCP: [
     {
       validator: (_, value) => value ? REGEX_URL_MQTTS.test(value) : true,
-      message: 'Should start with mqtts',
+      message: ERROR_INVALID_URL,
       trigger: 'input'
     },
     {
-      type: 'url'
+      type: 'url',
+      message: ERROR_INVALID_URL
     }
   ]
 }

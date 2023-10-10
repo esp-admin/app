@@ -3,7 +3,7 @@
     <n-result v-if="success" status="success" title="Email verification is sent" description="Please check your inbox" />
 
     <div v-else>
-      <n-form ref="formRef" :model="model" :rules="rules" @submit.prevent="() => onSubmit(handleSubmit)">
+      <n-form ref="formRef" :model="model" :rules="rules" @submit.prevent="onSubmit(handleSubmit)">
         <n-form-item label="First name" path="firstName">
           <n-input v-model:value="model.firstName" />
         </n-form-item>
@@ -70,50 +70,50 @@ rules.value = {
   firstName: [
     {
       required: true,
-      message: 'Please fill out this field.',
-      trigger: 'blur'
+      message: ERROR_REQUIRED,
+      trigger: 'input'
     }
   ],
   lastName: [
     {
       required: true,
-      message: 'Please fill out this field.',
-      trigger: 'blur'
+      message: ERROR_REQUIRED,
+      trigger: 'input'
     }
   ],
   email: [
     {
       required: true,
-      message: 'Please fill out this field.',
-      trigger: 'blur'
+      message: ERROR_REQUIRED,
+      trigger: 'input'
     },
     {
       validator: () => !apiErrors.value.emailAlreadyExists,
-      message: 'Email already exists',
+      message: ERROR_EXISTS,
       trigger: 'input'
     },
     {
       type: 'email',
-      message: 'Should be a valid email address'
+      message: ERROR_INVALID_EMAIL
     }
   ],
   password: [
     {
       required: true,
-      message: 'Please fill out this field.',
-      trigger: 'blur'
+      message: ERROR_REQUIRED,
+      trigger: 'input'
     },
     {
-      validator: (_, value) => /(?=.*[a-z])(?=.*[0-9])(?=.{6,})/.test(value),
-      message: 'At least 6 characters, 1 lowercase, 1 number',
-      trigger: 'blur'
+      validator: (_, value) => REGEX_PASSWORD.test(value),
+      message: ERROR_INVALID_PASSWORD,
+      trigger: 'input'
     }
   ],
   passwordConfirm: [
     {
       validator: (_, value) => value === model.value.password,
-      message: 'Passwords do not match',
-      trigger: 'blur'
+      message: ERROR_MATCH_PASSWORD,
+      trigger: 'input'
     }
   ]
 }

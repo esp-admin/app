@@ -34,17 +34,15 @@
 <script setup lang="ts">
 import UAParser from 'ua-parser-js'
 
-const { getAllSessions, revokeSession } = useAuthSession()
+const { getAllSessions } = useAuthSession()
 
 const { data: sessions } = await useAsyncData(getAllSessions)
 
 async function handleSessionRevoke (id: string) {
-  try {
-    await revokeSession(id)
+  const { revokeSession } = useAuthSession()
 
-    sessions.value = sessions.value!.filter(el => el.id !== id)
-  } catch (error) {
-    // console.error(error)
-  }
+  await revokeSession(id)
+
+  sessions.value = sessions.value!.filter(el => el.id !== id)
 }
 </script>

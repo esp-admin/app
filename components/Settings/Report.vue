@@ -1,5 +1,5 @@
 <template>
-  <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
+  <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="onSubmit(handleSubmit)">
     <n-form-item label="Report by webhook" path="webhookEnable" label-placement="left">
       <n-checkbox v-model:checked="model.webhookEnable" />
     </n-form-item>
@@ -42,13 +42,14 @@ rules.value = {
       validator: (_, value) => model.value.webhookEnable ? !!value : true
     },
     {
-      type: 'url'
+      type: 'url',
+      message: ERROR_INVALID_URL
     }
   ],
   emailAddress: [
     {
       type: 'email',
-      message: 'Should be a valid email address'
+      message: ERROR_INVALID_EMAIL
     },
     {
       message: 'Email address required if enabled',

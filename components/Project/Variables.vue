@@ -1,5 +1,5 @@
 <template>
-  <n-form ref="formRef" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
+  <n-form ref="formRef" :model="model" @submit.prevent="onSubmit(handleSubmit)">
     <n-dynamic-input
       v-model:value="model"
       #="{ index }"
@@ -44,11 +44,11 @@ rules.value = {
   key: [
     {
       required: true,
-      message: 'Please fill out this field.'
+      message: ERROR_REQUIRED
     },
     {
       trigger: 'input',
-      message: 'Should not contain space',
+      message: ERROR_NO_SPACE,
       validator: (_, value) => !REGEX_SPACE.test(value)
     }
   ]

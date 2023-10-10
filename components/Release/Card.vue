@@ -82,13 +82,13 @@ function onDelete () {
 }
 
 async function onTrigger () {
-  const { $mqtt } = useNuxtApp()
-
   const { find } = useDevice()
 
   const devices = await find()
 
   const relatedDevices = devices.value?.filter(device => device.projectId === props.release.projectId) || []
+
+  const { $mqtt } = useNuxtApp()
 
   for (const device of relatedDevices) {
     $mqtt.publish({

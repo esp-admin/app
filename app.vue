@@ -198,7 +198,7 @@ useSeoMeta({
 .page-enter-from,
 .page-leave-to {
   opacity: 0;
-  filter: blur(1rem);
+  filter: input(1rem);
 }
 
 .layout-enter-active,
@@ -209,6 +209,6 @@ useSeoMeta({
 .layout-enter-from,
 .layout-leave-to {
   opacity: 0;
-  filter: blur(1rem);
+  filter: input(1rem);
 }
 </style>

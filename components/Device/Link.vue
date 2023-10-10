@@ -1,5 +1,5 @@
 <template>
-  <n-form ref="formRef" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
+  <n-form ref="formRef" :model="model" @submit.prevent="onSubmit(handleSubmit)">
     <n-form-item label="Name">
       <n-select v-model:value="model.selectedDeviceId" :options="options" />
     </n-form-item>

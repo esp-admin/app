@@ -33,8 +33,6 @@ const logInst = ref<LogInst>()
 
 const props = defineProps<{ device: Device }>()
 
-const { $mqtt } = useNuxtApp()
-
 const projectCommands = ref<{key: string, value: string}[]>([])
 
 if (props.device.projectId) {
@@ -46,6 +44,8 @@ if (props.device.projectId) {
 const { logs, clear } = useLog(props.device.id)
 
 const logsString = computed(() => logs.value.map(log => `${log.type} - ${log.payload}`).join('\n'))
+
+const { $mqtt } = useNuxtApp()
 
 function handleRestart () {
   $mqtt.publish({

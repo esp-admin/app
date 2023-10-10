@@ -1,5 +1,5 @@
 <template>
-  <n-form ref="formRef" :model="model" :rules="rules" @submit.prevent="() => onSubmit(handleChangePassword)">
+  <n-form ref="formRef" :model="model" :rules="rules" @submit.prevent="onSubmit(handleChangePassword)">
     <n-form-item label="Current password" path="currentPassword">
       <n-input v-model:value="model.currentPassword" type="password" show-password-on="click" />
     </n-form-item>
@@ -32,8 +32,8 @@ rules.value = {
   currentPassword: [
     {
       required: true,
-      message: 'Please fill out this field.',
-      trigger: 'blur'
+      message: ERROR_REQUIRED,
+      trigger: 'input'
     },
     {
       validator: () => !apiErrors.value.wrongPassword,
@@ -44,7 +44,12 @@ rules.value = {
   newPassword: [
     {
       required: true,
-      message: 'Please fill out this field.',
+      message: ERROR_REQUIRED,
+      trigger: 'input'
+    },
+    {
+      validator: (_, value) => REGEX_PASSWORD.test(value),
+      message: ERROR_INVALID_PASSWORD,
       trigger: 'input'
     }
   ]

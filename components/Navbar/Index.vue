@@ -116,7 +116,7 @@ const dropdownOptions: DropdownOption[] = [
   }
 ]
 
-async function handleSelect (key: string) {
+function handleSelect (key: string) {
   switch (key) {
     case 'logout':
       return logout()

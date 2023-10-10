@@ -1,7 +1,7 @@
 <template>
-  <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="() => onSubmit(handleSubmit)">
+  <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="onSubmit(handleSubmit)">
     <n-form-item label="Confirm" path="confirm">
-      <n-input v-model:value="model.confirm" placeholder="Write <delete> to confirm" />
+      <n-input v-model:value="model.confirm" placeholder="confirm" />
     </n-form-item>
 
     <div class="flex gap-4">
@@ -42,9 +42,9 @@ const { formRef, onSubmit, pending, rules, edited } = useNaiveForm(model)
 rules.value = {
   confirm: [
     {
-      message: 'Please write <delete>',
-      validator: (_, value) => value === 'delete',
-      trigger: 'blur'
+      message: ERROR_CONFIRM_REQUIRED,
+      validator: (_, value) => value === 'confirm',
+      trigger: 'input'
     }
   ]
 }

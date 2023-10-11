@@ -1,6 +1,34 @@
 # Changelog
 
 
+## v1.1.0-rc
+
+[compare changes](https://github.com/esp-admin/app/compare/v0.3.1...v1.1.0-rc)
+
+### 🚀 Enhancements
+
+- Auto expand of release card after creation ([87eddb8](https://github.com/esp-admin/app/commit/87eddb8))
+
+### 🔥 Performance
+
+- Move s3 encoding fix to middleware ([4c7f340](https://github.com/esp-admin/app/commit/4c7f340))
+- Cache s3 objects by setting header instead of route rules ([aad7b31](https://github.com/esp-admin/app/commit/aad7b31))
+
+### 🩹 Fixes
+
+- Run Sync on loggedIn and stop on loggedOut ([b1404a1](https://github.com/esp-admin/app/commit/b1404a1))
+
+### 🏡 Chore
+
+- General fixes and optimizations ([a0ee091](https://github.com/esp-admin/app/commit/a0ee091))
+- Increase MQTT reconnect period to 10 sec ([6d42cd5](https://github.com/esp-admin/app/commit/6d42cd5))
+- Add rc suffix in changelogen ([bef1c47](https://github.com/esp-admin/app/commit/bef1c47))
+- Bump version to 1.0.0 ([e9aa925](https://github.com/esp-admin/app/commit/e9aa925))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v0.3.1
 
 [compare changes](https://github.com/esp-admin/app/compare/v0.3.0...v0.3.1)

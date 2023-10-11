@@ -4,6 +4,7 @@ import { nodePolyfills as viteNodePolyfills } from 'vite-plugin-node-polyfills'
 import rollupNodePolyfills from 'rollup-plugin-polyfill-node'
 //
 
+import info from './package.json'
 import { auth, naiveui, tailwindcss, s3 } from './config'
 
 export default defineNuxtConfig({
@@ -78,6 +79,14 @@ export default defineNuxtConfig({
         google: false,
         github: false
       }
+    },
+    info: {
+      name: info.name,
+      version: info.version,
+      description: info.description,
+      repository: info.repository,
+      homepage: info.homepage,
+      author: info.author
     }
   },
 

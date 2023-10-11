@@ -5,6 +5,7 @@
   "description": "Remote management for ESP microcontrollers",
   "homepage": "https://esp-admin.tn",
   "repository": "https://github.com/esp-admin/app",
+  "author": "Becem Gharbi <becem.gharbi@live.com>",
   "scripts": {
     "build": "nuxt build",
     "build:docker": "docker build . -t becemgharbi/esp-admin",

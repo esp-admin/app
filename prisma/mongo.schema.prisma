@@ -119,7 +119,7 @@ model Deployment {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   deviceId  String   @db.ObjectId
-  device    Device   @relation(fields: [releaseId], references: [id])
+  device    Device   @relation(fields: [deviceId], references: [id])
   releaseId String   @db.ObjectId
   release   Release  @relation(fields: [releaseId], references: [id])
 }

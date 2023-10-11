@@ -12,7 +12,6 @@ export default defineEventHandler(async (event) => {
   if (body.status === 'started') {
     const deployment = await event.context.prisma.deployment.create({
       data: {
-        deviceId,
         device: {
           connect: {
             id: deviceId

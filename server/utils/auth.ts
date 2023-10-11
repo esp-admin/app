@@ -14,7 +14,7 @@ export async function checkDevice (event: H3Event) {
     where: {
       id: deviceId
     }
-  })
+  }).catch((e) => { throw createPrismaError(e) })
 
   if (!compareSync(apiKey, device.apiKey)) {
     throw createUnauthorizedError()

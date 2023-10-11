@@ -1,7 +1,7 @@
 export default defineEventHandler(async (event) => {
   checkUser(event)
 
-  const { deviceId } = getQuery(event) as { deviceId: Device['id'] }
+  const { deviceId } = getQuery<{ deviceId: Device['id'] }>(event)
 
   const schema = z.object({
     deviceId: z.string().regex(REGEX_ID)

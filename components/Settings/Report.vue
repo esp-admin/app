@@ -38,7 +38,7 @@ const { formRef, onSubmit, pending, rules, edited, reset } = useNaiveForm(model)
 rules.value = {
   webhookUrl: [
     {
-      message: 'Webhook URL required if enabled',
+      message: ERROR_REQUIRED,
       validator: (_, value) => model.value.webhookEnable ? !!value : true
     },
     {
@@ -52,7 +52,7 @@ rules.value = {
       message: ERROR_INVALID_EMAIL
     },
     {
-      message: 'Email address required if enabled',
+      message: ERROR_REQUIRED,
       validator: (_, value) => model.value.emailEnable ? !!value : true
     }
   ]

@@ -1,5 +1,5 @@
 export default defineEventHandler(async (event) => {
-  checkUser(event)
+  const { userId } = checkUser(event)
 
   const id = event.context.params?.id
 
@@ -11,7 +11,11 @@ export default defineEventHandler(async (event) => {
 
   const device = await event.context.prisma.device.update({
     where: {
-      id
+      id,
+      userId
+    },
+    select: {
+      id: true
     },
     data: {
       project: { disconnect: true }

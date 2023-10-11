@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
 
   const schema = z.object({
     id: z.string().regex(REGEX_ID),
-    status: z.string().min(1)
+    status: z.enum(['started', 'failed', 'succeded'])
   })
 
   schema.parse({ id, status })

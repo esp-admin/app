@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 export default defineEventHandler(async (event) => {
-  checkUser(event)
+  const { userId } = checkUser(event)
 
   const id = event.context.params?.id
 
@@ -13,7 +11,8 @@ export default defineEventHandler(async (event) => {
 
   const device = await event.context.prisma.device.findUniqueOrThrow({
     where: {
-      id
+      id,
+      userId
     },
     include: {
       project: {
@@ -31,8 +30,8 @@ export default defineEventHandler(async (event) => {
     }
   }).catch((e) => { throw createPrismaError(e) })
 
-  // @ts-ignore
-  const { apiKey, ...sanitizedDevice } = device
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { apiKey, ...sanitized } = device
 
-  return sanitizedDevice
+  return sanitized
 })

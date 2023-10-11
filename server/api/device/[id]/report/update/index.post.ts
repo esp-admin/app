@@ -1,16 +1,10 @@
 export default defineEventHandler(async (event) => {
-  interface Body {
-    releaseId: Release['id'];
-    deploymentId: Deployment['id'];
-    status: Deployment['status'];
-  }
-
   const { id: deviceId } = await checkDevice(event)
 
-  const body = await readBody<Body>(event)
+  const body = await readBody<ReportUpdateMessage>(event)
 
   const schema = z.object({
-    status: z.string().min(1)
+    status: z.enum(['started', 'failed', 'succeded'])
   })
 
   schema.parse({ status: body.status })

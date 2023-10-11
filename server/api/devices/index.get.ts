@@ -11,7 +11,8 @@ export default defineEventHandler(async (event) => {
       description: true,
       status: true,
       projectId: true,
-      createdAt: true
+      createdAt: true,
+      apiKey: false
     },
     orderBy: {
       createdAt: 'desc'

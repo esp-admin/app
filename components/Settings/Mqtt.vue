@@ -95,7 +95,7 @@ async function handleSubmit () {
 
   const { $mqtt } = useNuxtApp()
 
-  await $mqtt.connect({
+  $mqtt.connect({
     password: model.value.password!,
     uri: model.value.uriWS!,
     username: model.value.username!

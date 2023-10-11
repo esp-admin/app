@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-center">
     <n-result
       v-if="$route.query.error"
       status="error"

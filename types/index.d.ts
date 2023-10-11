@@ -60,6 +60,18 @@ declare global {
   }
 
   type MqttMessage = CommandMessage | LoggingMessage | ReportMessage;
+
+  interface ReportCustomMessage {
+    type: 'info' | 'error' | 'warn' | 'success';
+    subject: string;
+    body: string;
+  }
+
+  interface ReportUpdateMessage {
+    releaseId: Release['id'];
+    deploymentId: Deployment['id'];
+    status: Deployment['status'];
+  }
 }
 
 export {};

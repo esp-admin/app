@@ -17,6 +17,9 @@ export default defineEventHandler(async (event) => {
     data: {
       name,
       picture
+    },
+    select: {
+      id: true
     }
   }).catch((e) => { throw createPrismaError(e) })
 

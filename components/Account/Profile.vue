@@ -79,5 +79,7 @@ async function updateAccount () {
   const { fetchUser } = useAuth()
 
   await fetchUser()
+
+  model.value.file = undefined
 }
 </script>

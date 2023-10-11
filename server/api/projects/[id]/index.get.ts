@@ -1,5 +1,5 @@
 export default defineEventHandler(async (event) => {
-  checkUser(event)
+  const { userId } = checkUser(event)
 
   const id = event.context.params?.id
 
@@ -11,7 +11,8 @@ export default defineEventHandler(async (event) => {
 
   const project = await event.context.prisma.project.findUniqueOrThrow({
     where: {
-      id
+      id,
+      userId
     }
   })
 

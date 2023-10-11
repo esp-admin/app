@@ -19,7 +19,7 @@ export default defineNuxtPlugin({
 
       mqttClient = await MQTT.connectAsync(options.uri, {
         keepalive: 30,
-        reconnectPeriod: 3000,
+        reconnectPeriod: 10000,
         username: options.username,
         password: options.password
       })

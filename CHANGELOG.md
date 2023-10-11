@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.1.1-rc
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.1.0-rc...v1.1.1-rc)
+
+### 🩹 Fixes
+
+- Fix relation between deployment and device ([8883c01](https://github.com/esp-admin/app/commit/8883c01))
+
+### 🏡 Chore
+
+- Add info api endpoint ([6a51417](https://github.com/esp-admin/app/commit/6a51417))
+- Add missing prisma error resolvers ([0e7d3fe](https://github.com/esp-admin/app/commit/0e7d3fe))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.1.0-rc
 
 [compare changes](https://github.com/esp-admin/app/compare/v0.3.1...v1.1.0-rc)

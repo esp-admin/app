@@ -1,5 +1,6 @@
 export default defineEventHandler((event) => {
   const isS3Mutation = getRequestURL(event).pathname.includes('s3/mutation')
+  const isS3Query = getRequestURL(event).pathname.includes('s3/query')
 
   if (isS3Mutation) {
     checkUser(event)
@@ -16,5 +17,7 @@ export default defineEventHandler((event) => {
     if (isBase64(event.node.req.body)) {
       event.node.req.body = Buffer.from(event.node.req.body, 'base64')
     }
+  } else if (isS3Query) {
+    setResponseHeader(event, 'Cache-Control', 'public, max-age=2592000, immutable')
   }
 })

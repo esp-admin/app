@@ -23,11 +23,12 @@
       </template>
     </n-result>
 
-    <n-collapse>
+    <n-collapse :expanded-names="expandedCollapseName" @click="expandedCollapseName = undefined">
       <n-collapse-item
         v-for="release of versionSearch ? filteredReleases : releases"
+        :id="`collapse-item-${release.id}`"
         :key="release.id"
-        :name="release.version"
+        :name="release.id"
       >
         <template #header>
           <TitleDate :title="release.version" :created-at="release.createdAt" />
@@ -66,7 +67,11 @@ const releases = await find()
 
 const filteredReleases = computed(() => releases.value.filter(release => release.version.includes(versionSearch.value)))
 
-function onCreate () {
+const expandedCollapseName = ref()
+
+function onCreate (release:Release) {
   createModalVisible.value = false
+  expandedCollapseName.value = release.id
 }
+
 </script>

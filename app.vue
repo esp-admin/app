@@ -79,7 +79,7 @@ const themeConfig = ref<ThemeConfig>({
       titleFontSizeMedium: theme.fontSize.xl[0],
       titleFontSizeSmall: theme.fontSize.lg[0],
       titleFontWeight: theme.fontWeight.medium,
-      boxShadow: '0px 0px 2px 2px rgba(25,87,204,0.32)'
+      boxShadow: theme.boxShadow.lg
     }
   },
 

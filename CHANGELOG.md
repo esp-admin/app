@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.1.2-rc
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.1.1-rc...v1.1.2-rc)
+
+### 🩹 Fixes
+
+- Allow only one file upload on create release ([1d3345e](https://github.com/esp-admin/app/commit/1d3345e))
+- **TitleDate:** Update each 10 seconds ([25e5252](https://github.com/esp-admin/app/commit/25e5252))
+
+### 💅 Refactors
+
+- Follow MQTT.js vite setup ([71441da](https://github.com/esp-admin/app/commit/71441da))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.1.1-rc
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.1.0-rc...v1.1.1-rc)

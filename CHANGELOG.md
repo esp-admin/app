@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v1.1.3-rc
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.1.2-rc...v1.1.3-rc)
+
+### 🔥 Performance
+
+- Set appropriate logo dimensions ([519e302](https://github.com/esp-admin/app/commit/519e302))
+
+### 💅 Refactors
+
+- **Navbar:** Remove lazy loading dropdown ([e310e29](https://github.com/esp-admin/app/commit/e310e29))
+
+### 📦 Build
+
+- Add ci workflow ([8f9dda5](https://github.com/esp-admin/app/commit/8f9dda5))
+- Trigger ci on release ([d9862b0](https://github.com/esp-admin/app/commit/d9862b0))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.1.2-rc
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.1.1-rc...v1.1.2-rc)

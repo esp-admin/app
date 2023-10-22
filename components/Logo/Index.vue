@@ -10,5 +10,5 @@ withDefaults(defineProps<{ width?: number, height?:number }>(), {
   height: 50
 })
 
-const src = computed(() => colorMode.value === 'light' ? '/logos/light.svg' : '/logos/dark.svg')
+const src = computed(() => colorMode.value === 'light' ? '/logos/light.png' : '/logos/dark.png')
 </script>

@@ -7,17 +7,17 @@
     </template>
 
     <template v-if="!isMobileOrTablet" #end>
-      <LazyDropdown
+      <n-dropdown
+        :style="{ padding: '8px', minWidth: '200px' }"
         trigger="click"
         :options="dropdownOptions"
-        :style="{ padding: '8px', minWidth: '200px' }"
         @select="handleSelect"
       >
         <img
           :src="user!.picture"
           class="notMobileOrTablet w-9 h-9 object-cover rounded-full ring-2 cursor-pointer"
         >
-      </LazyDropdown>
+      </n-dropdown>
     </template>
 
     <template #drawer-header>
@@ -36,8 +36,6 @@
 import type { NavbarRoute } from '@bg-dev/nuxt-naiveui'
 import type { DropdownOption } from 'naive-ui'
 import { NaiveIcon, AccountInfo } from '#components'
-
-const LazyDropdown = defineAsyncComponent(() => import('naive-ui/es/dropdown/src/Dropdown'))
 
 const { logout } = useAuth()
 const { user } = useAuthSession()

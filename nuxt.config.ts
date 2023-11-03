@@ -82,5 +82,15 @@ export default defineNuxtConfig({
       homepage: info.homepage,
       author: info.author
     }
+  },
+
+  vite: {
+    optimizeDeps: {
+      esbuildOptions: {
+        define: {
+          global: 'globalThis'
+        }
+      }
+    }
   }
 })

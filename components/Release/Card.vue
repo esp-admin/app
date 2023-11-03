@@ -6,14 +6,12 @@
           name="ph:arrow-line-down"
           message="Deploy now"
           secondary
-          circle
           @click="onTrigger"
         />
 
         <TooltipIconButton
           name="ph:trash"
           message="Delete release"
-          circle
           secondary
           @click="deleteModalVisible = true"
         />

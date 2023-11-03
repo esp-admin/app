@@ -9,7 +9,6 @@
             secondary
             type="primary"
             message="Unlink device"
-            circle
             @click="unlinkModalVisible = true"
           />
 
@@ -20,7 +19,6 @@
               type="primary"
               name="ph:code"
               message="Linked project"
-              circle
             />
           </NuxtLink>
 
@@ -29,7 +27,6 @@
             secondary
             type="error"
             message="Delete device"
-            circle
             @click="deleteModalVisible = true"
           />
         </div>

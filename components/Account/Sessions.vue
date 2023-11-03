@@ -24,7 +24,6 @@
         secondary
         :disabled="session.current"
         message="Delete session"
-        circle
         @click="() => handleSessionRevoke(session.id)"
       />
     </div>

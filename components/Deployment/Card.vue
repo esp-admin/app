@@ -24,14 +24,12 @@
             name="ph:code"
             message="Linked project"
             secondary
-            circle
           />
         </nuxt-link>
 
         <TooltipIconButton
           name="ph:trash"
           message="Delete deployment"
-          circle
           secondary
           @click="deleteModalVisible = true"
         />

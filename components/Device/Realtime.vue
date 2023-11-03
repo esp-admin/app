@@ -7,9 +7,9 @@
         </n-button>
       </div>
 
-      <TooltipIconButton name="ph:arrow-counter-clockwise" message="Restart device" secondary circle @click="handleRestart" />
+      <TooltipIconButton name="ph:arrow-counter-clockwise" message="Restart device" secondary @click="handleRestart" />
 
-      <TooltipIconButton name="ph:trash" message="Clear logs" circle secondary @click="clear" />
+      <TooltipIconButton name="ph:trash" message="Clear logs" secondary @click="clear" />
     </div>
 
     <n-card class="mt-4">

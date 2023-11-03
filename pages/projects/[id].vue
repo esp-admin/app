@@ -7,7 +7,6 @@
           type="error"
           secondary
           message="Delete project"
-          circle
           @click="deleteModalVisible = true"
         />
       </template>

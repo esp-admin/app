@@ -5,7 +5,7 @@ export default function useMqtt () {
   const mqtt = useNuxtData<Mqtt|undefined>(key)
 
   async function find () {
-    if (mqtt.data.value === null) {
+    if (!mqtt.data.value) {
       mqtt.data.value = await useAuthFetch<Mqtt>(request)
     }
 

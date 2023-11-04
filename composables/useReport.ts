@@ -7,7 +7,7 @@ export default function useReport () {
   const report = useNuxtData<Report | undefined>(key)
 
   async function find () {
-    if (report.data.value === null) {
+    if (!report.data.value) {
       report.data.value = await useAuthFetch<Report>(request)
     }
 

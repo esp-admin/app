@@ -6,7 +6,7 @@ export default function useDeployment (deviceId: Device['id']) {
   async function find () {
     const request = '/api/deployments'
 
-    if (deployments.data.value === null) {
+    if (!deployments.data.value) {
       deployments.data.value = await useAuthFetch<Deployment[]>(request, {
         query: {
           deviceId
@@ -23,7 +23,7 @@ export default function useDeployment (deviceId: Device['id']) {
 
     const deployment = useNuxtData<Deployment>(key)
 
-    if (deployment.data.value === null) {
+    if (!deployment.data.value) {
       deployment.data.value = await useAuthFetch(request)
     }
 

@@ -5,7 +5,7 @@ export default function useDevice () {
   async function find () {
     const request = '/api/devices'
 
-    if (devices.data.value === null) {
+    if (!devices.data.value) {
       devices.data.value = await useAuthFetch(request)
     }
 
@@ -18,7 +18,7 @@ export default function useDevice () {
 
     const device = useNuxtData<Device>(key)
 
-    if (device.data.value === null) {
+    if (!device.data.value) {
       device.data.value = await useAuthFetch(request)
     }
 

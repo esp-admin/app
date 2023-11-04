@@ -6,7 +6,7 @@ export default function useRelease (projectId: Project['id']) {
   async function find () {
     const request = '/api/releases'
 
-    if (releases.data.value === null) {
+    if (!releases.data.value) {
       releases.data.value = await useAuthFetch<Release[]>(request, {
         query: { projectId }
       })

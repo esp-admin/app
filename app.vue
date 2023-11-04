@@ -1,9 +1,7 @@
 <template>
   <naive-config :theme-config="themeConfig" :hljs="hljs">
     <client-only>
-      <n-notification-provider placement="bottom-right">
-        <NotificationNetwork />
-      </n-notification-provider>
+      <LazyNotification />
     </client-only>
 
     <nuxt-loading-indicator :color="themeConfig.light?.common?.primaryColor" :height="3" />

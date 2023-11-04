@@ -1,12 +1,12 @@
 export default function useProject () {
   const key = 'projects'
-  const projects = useState<Project[]>(key)
+  const projects = useNuxtData<Project[]>(key)
 
   async function find () {
     const request = '/api/projects'
 
-    if (projects.value === undefined) {
-      projects.value = await useAuthFetch(request)
+    if (projects.data.value === null) {
+      projects.data.value = await useAuthFetch(request)
     }
 
     return projects
@@ -16,10 +16,10 @@ export default function useProject () {
     const key = `project-${id}`
     const request = `/api/projects/${id}`
 
-    const project = useState<Project>(key)
+    const project = useNuxtData<Project>(key)
 
-    if (project.value === undefined) {
-      project.value = await useAuthFetch(request)
+    if (project.data.value === null) {
+      project.data.value = await useAuthFetch(request)
     }
 
     return project
@@ -32,12 +32,12 @@ export default function useProject () {
       method: 'DELETE',
 
       onResponse: ({ response }) => {
-        if (response.ok && projects.value) {
-          const projectIndex = projects.value.findIndex(
+        if (response.ok && projects.data.value) {
+          const projectIndex = projects.data.value.findIndex(
             project => project.id === id
           )
           if (projectIndex >= 0) {
-            projects.value.splice(projectIndex, 1)
+            projects.data.value.splice(projectIndex, 1)
           }
         }
       }
@@ -52,8 +52,8 @@ export default function useProject () {
       body: data,
 
       onResponse: ({ response }) => {
-        if (response.ok && projects.value) {
-          projects.value.unshift(response._data)
+        if (response.ok && projects.data.value) {
+          projects.data.value.unshift(response._data)
         }
       }
     })
@@ -69,12 +69,12 @@ export default function useProject () {
       body: data,
 
       onResponse: ({ response }) => {
-        if (response.ok && projects.value) {
-          const projectIndex = projects.value.findIndex(
+        if (response.ok && projects.data.value) {
+          const projectIndex = projects.data.value.findIndex(
             project => project.id === id
           )
           if (projectIndex >= 0) {
-            projects.value[projectIndex] = response._data
+            projects.data.value[projectIndex] = response._data
           }
         }
 

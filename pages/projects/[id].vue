@@ -67,7 +67,7 @@ const id = route.params.id as string
 
 const { findOne } = useProject()
 
-const project = await findOne(id)
+const { data: project } = await findOne(id)
 
 async function onDelete () {
   deleteModalVisible.value = false

@@ -21,7 +21,7 @@ export default defineNuxtPlugin({
     function updateDeployments () {
       const { devices } = useDevice()
 
-      for (const device of devices.value || []) {
+      for (const device of devices.data.value || []) {
         const { deployments, update } = useDeployment(device.id)
 
         for (const deployment of deployments.value || []) {

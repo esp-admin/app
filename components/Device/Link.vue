@@ -36,7 +36,7 @@ const emits = defineEmits(['cancel', 'done'])
 
 const { find } = useDevice()
 
-const devices = await find()
+const { data: devices } = await find()
 
 const unlinkedDevices = computed(() => devices.value?.filter(device => device.projectId === null))
 

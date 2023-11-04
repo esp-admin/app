@@ -53,7 +53,7 @@ const nameSearch = ref('')
 
 const { find } = useDevice()
 
-const devices = await find()
+const { data: devices } = await find()
 
 const filteredDevices = computed(() => devices.value?.filter(device => device.name.includes(nameSearch.value)))
 

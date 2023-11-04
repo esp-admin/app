@@ -6,7 +6,7 @@
 
 const { find } = useDevice()
 
-const devices = await find()
+const { data: devices } = await find()
 
 const chartOptions = computed<HighchartsOptions>(() => ({
   title: {

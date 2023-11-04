@@ -1,12 +1,12 @@
 export default function useDevice () {
   const key = 'devices'
-  const devices = useState<Device[]>(key)
+  const devices = useNuxtData<Device[]>(key)
 
   async function find () {
     const request = '/api/devices'
 
-    if (devices.value === undefined) {
-      devices.value = await useAuthFetch(request)
+    if (devices.data.value === null) {
+      devices.data.value = await useAuthFetch(request)
     }
 
     return devices
@@ -16,10 +16,10 @@ export default function useDevice () {
     const key = `device-${id}`
     const request = `/api/devices/${id}`
 
-    const device = useState<Device>(key)
+    const device = useNuxtData<Device>(key)
 
-    if (device.value === undefined) {
-      device.value = await useAuthFetch(request)
+    if (device.data.value === null) {
+      device.data.value = await useAuthFetch(request)
     }
 
     return device
@@ -32,13 +32,13 @@ export default function useDevice () {
       method: 'DELETE',
 
       onResponse: ({ response }) => {
-        if (response.ok && devices.value) {
-          const deviceIndex = devices.value.findIndex(
+        if (response.ok && devices.data.value) {
+          const deviceIndex = devices.data.value.findIndex(
             device => device.id === id
           )
 
           if (deviceIndex >= 0) {
-            devices.value.splice(deviceIndex, 1)
+            devices.data.value.splice(deviceIndex, 1)
           }
         }
       }
@@ -53,8 +53,8 @@ export default function useDevice () {
       body: data,
 
       onResponse: ({ response }) => {
-        if (response.ok && devices.value) {
-          devices.value.unshift(response._data)
+        if (response.ok && devices.data.value) {
+          devices.data.value.unshift(response._data)
         }
       }
     })
@@ -64,7 +64,7 @@ export default function useDevice () {
     const key = `device-${deviceId}`
     const request = `/api/devices/${deviceId}/link`
 
-    const device = useState<Device>(key)
+    const device = useNuxtData<Device>(key)
 
     return useAuthFetch<Device>(request, {
       method: 'PATCH',
@@ -73,17 +73,17 @@ export default function useDevice () {
       },
 
       onResponse: ({ response }) => {
-        if (response.ok && devices.value) {
-          const deviceIndex = devices.value.findIndex(
+        if (response.ok && devices.data.value) {
+          const deviceIndex = devices.data.value.findIndex(
             device => device.id === deviceId
           )
           if (deviceIndex >= 0) {
-            devices.value[deviceIndex].projectId = projectId
+            devices.data.value[deviceIndex].projectId = projectId
           }
         }
 
-        if (response.ok && device.value) {
-          device.value.projectId = projectId
+        if (response.ok && device.data.value) {
+          device.data.value.projectId = projectId
         }
       }
     })
@@ -93,23 +93,23 @@ export default function useDevice () {
     const key = `device-${id}`
     const request = `/api/devices/${id}/unlink`
 
-    const device = useState<Device>(key)
+    const device = useNuxtData<Device>(key)
 
     return useAuthFetch<Device>(request, {
       method: 'PATCH',
 
       onResponse: ({ response }) => {
-        if (response.ok && devices.value) {
-          const deviceIndex = devices.value.findIndex(
+        if (response.ok && devices.data.value) {
+          const deviceIndex = devices.data.value.findIndex(
             device => device.id === id
           )
           if (deviceIndex >= 0) {
-            devices.value[deviceIndex].projectId = null
+            devices.data.value[deviceIndex].projectId = null
           }
         }
 
-        if (response.ok && device.value) {
-          device.value.projectId = null
+        if (response.ok && device.data.value) {
+          device.data.value.projectId = null
         }
       }
     })
@@ -118,7 +118,7 @@ export default function useDevice () {
   async function update (id: Device['id'], data: Partial<Device>) {
     await find()
 
-    const deviceExists = devices.value.find(device => device.id === id)
+    const deviceExists = devices.data.value?.find(device => device.id === id)
     if (!deviceExists) {
       return
     }
@@ -132,12 +132,12 @@ export default function useDevice () {
       body: data,
 
       onResponse: ({ response }) => {
-        if (response.ok && devices.value) {
-          const deviceIndex = devices.value.findIndex(
+        if (response.ok && devices.data.value) {
+          const deviceIndex = devices.data.value.findIndex(
             device => device.id === id
           )
           if (deviceIndex >= 0) {
-            devices.value[deviceIndex] = response._data
+            devices.data.value[deviceIndex] = response._data
           }
         }
 

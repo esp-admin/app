@@ -116,7 +116,7 @@ async function handleSubmit () {
 
     const { find } = useDevice()
 
-    const devices = await find()
+    const { data: devices } = await find()
 
     const linkedDevices = devices.value?.filter(device => device.projectId === props.project.id) || []
 

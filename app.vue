@@ -8,11 +8,9 @@
 
     <nuxt-loading-indicator :color="themeConfig.light?.common?.primaryColor" :height="3" />
 
-    <n-message-provider>
-      <nuxt-layout>
-        <nuxt-page />
-      </nuxt-layout>
-    </n-message-provider>
+    <nuxt-layout>
+      <nuxt-page />
+    </nuxt-layout>
   </naive-config>
 </template>
 

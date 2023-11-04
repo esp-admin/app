@@ -12,7 +12,9 @@
       </n-tab-pane>
 
       <n-tab-pane v-if="user?.provider === 'default'" name="security" tab="Security">
-        <AccountPassword class="mt-4" />
+        <n-message-provider>
+          <AccountPassword class="mt-4" />
+        </n-message-provider>
       </n-tab-pane>
 
       <n-tab-pane name="preferences" tab="Preferences">

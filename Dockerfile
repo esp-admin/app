@@ -11,7 +11,7 @@ FROM base as build
 
 COPY package*.json ./
 
-RUN npm ci --verbose
+RUN npm install
 
 COPY . .
 

@@ -40,5 +40,5 @@ export default function useMqtt () {
 
   const connected = useState('mqtt_connected')
 
-  return { find, add, update, connected, mqtt }
+  return { find, add, update, connected }
 }

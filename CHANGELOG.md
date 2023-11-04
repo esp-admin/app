@@ -1,6 +1,45 @@
 # Changelog
 
 
+## v1.1.4-rc
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.1.3-rc...v1.1.4-rc)
+
+### 🔥 Performance
+
+- Move n-message-provider from root ([15838d7](https://github.com/esp-admin/app/commit/15838d7))
+- Lazy load notifications ([761efc5](https://github.com/esp-admin/app/commit/761efc5))
+- Fetch all devices on loggedIn hook ([8b07cd6](https://github.com/esp-admin/app/commit/8b07cd6))
+
+### 🩹 Fixes
+
+- Fix global is not defined ([0731c9b](https://github.com/esp-admin/app/commit/0731c9b))
+- **AccountPassword:** Add missing autocomplete attribute ([e8ea075](https://github.com/esp-admin/app/commit/e8ea075))
+- Add missing html tags ([f415f48](https://github.com/esp-admin/app/commit/f415f48))
+
+### 💅 Refactors
+
+- Remove NButton circle form ([988c85c](https://github.com/esp-admin/app/commit/988c85c))
+- **useMqtt:** Remove unused mqtt member return ([13e617d](https://github.com/esp-admin/app/commit/13e617d))
+- **useMqtt:** Cache fetch results in NuxtData ([522a5ce](https://github.com/esp-admin/app/commit/522a5ce))
+- **useReport:** Cache fetch results in NuxtData ([5d5ce35](https://github.com/esp-admin/app/commit/5d5ce35))
+- **useProject:** Cache fetch results in NuxtData ([8c53f84](https://github.com/esp-admin/app/commit/8c53f84))
+- **useDevice:** Cache fetch results in NuxtData ([8de7a4b](https://github.com/esp-admin/app/commit/8de7a4b))
+- **useRelease:** Cache fetch results in NuxtData ([e536e6b](https://github.com/esp-admin/app/commit/e536e6b))
+- **useDeployment:** Cache fetch results in NuxtData ([e807f61](https://github.com/esp-admin/app/commit/e807f61))
+- Refresh fetch cache on falsy data ([840a73a](https://github.com/esp-admin/app/commit/840a73a))
+- Remove extra destructure on find and findOne ([b20761c](https://github.com/esp-admin/app/commit/b20761c))
+- **NTab:** Remove animated behaviour ([a4c95fd](https://github.com/esp-admin/app/commit/a4c95fd))
+- Remove n-message-provider ([095041c](https://github.com/esp-admin/app/commit/095041c))
+- Add loading indicator on deployments and releases fetch ([92376dc](https://github.com/esp-admin/app/commit/92376dc))
+- Minor refactoring ([a02bf55](https://github.com/esp-admin/app/commit/a02bf55))
+- **DeviceRealtime:** Add space between logs ([b3d6ec1](https://github.com/esp-admin/app/commit/b3d6ec1))
+- **realtime:** Display device status via borderColor ([a45bf88](https://github.com/esp-admin/app/commit/a45bf88))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.1.3-rc
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.1.2-rc...v1.1.3-rc)

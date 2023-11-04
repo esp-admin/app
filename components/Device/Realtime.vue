@@ -18,7 +18,7 @@
         language="realtime"
         :loading="device.status === 'connected'"
         :log="logsString"
-        :line-height="1.7"
+        :line-height="2"
         :rows="10"
       />
     </n-card>

@@ -33,7 +33,7 @@
       </template>
     </n-page-header>
 
-    <n-tabs type="line" animated>
+    <n-tabs type="line">
       <n-tab-pane name="metadata" tab="Metadata">
         <DeviceMetadata class="mt-4" :device="device" />
       </n-tab-pane>

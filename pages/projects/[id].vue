@@ -12,7 +12,7 @@
       </template>
     </n-page-header>
 
-    <n-tabs type="line" animated>
+    <n-tabs type="line">
       <n-tab-pane name="metadata" tab="Metadata">
         <ProjectMetadata class="mt-4" :project="project" />
       </n-tab-pane>

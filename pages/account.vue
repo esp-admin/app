@@ -6,7 +6,7 @@
       </template>
     </n-page-header>
 
-    <n-tabs type="line" animated>
+    <n-tabs type="line">
       <n-tab-pane name="profile" tab="Profile">
         <AccountProfile class="mt-4" />
       </n-tab-pane>

@@ -4,11 +4,11 @@ export default function useReport () {
   const key = 'report'
   const request = '/api/report'
 
-  const report = useState<Report | undefined>(key)
+  const report = useNuxtData<Report | undefined>(key)
 
   async function find () {
-    if (report.value === undefined) {
-      report.value = await useAuthFetch<Report>(request)
+    if (report.data.value === null) {
+      report.data.value = await useAuthFetch<Report>(request)
     }
 
     return report
@@ -21,7 +21,7 @@ export default function useReport () {
 
       onResponse: ({ response }) => {
         if (response.ok) {
-          report.value = response._data
+          report.data.value = response._data
         }
       }
     })
@@ -34,7 +34,7 @@ export default function useReport () {
 
       onResponse: ({ response }) => {
         if (response.ok) {
-          report.value = response._data
+          report.data.value = response._data
         }
       }
     })

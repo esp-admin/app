@@ -27,10 +27,10 @@ const { find } = useReport()
 const report = await find()
 
 const model = ref<Partial<Report>>({
-  webhookEnable: report.value?.webhookEnable || false,
-  webhookUrl: report.value?.webhookUrl,
-  emailEnable: report.value?.emailEnable || false,
-  emailAddress: report.value?.emailAddress
+  webhookEnable: report.data.value?.webhookEnable || false,
+  webhookUrl: report.data.value?.webhookUrl,
+  emailEnable: report.data.value?.emailEnable || false,
+  emailAddress: report.data.value?.emailAddress
 })
 
 const { formRef, onSubmit, pending, rules, edited, reset } = useNaiveForm(model)
@@ -61,7 +61,7 @@ rules.value = {
 async function handleSubmit () {
   const { add, update } = useReport()
 
-  if (report.value) {
+  if (report.data.value) {
     await update(model.value)
   } else {
     await add(model.value)

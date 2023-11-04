@@ -1,11 +1,21 @@
 <template>
   <n-form ref="formRef" :model="model" :rules="rules" @submit.prevent="onSubmit(handleChangePassword)">
     <n-form-item label="Current password" path="currentPassword">
-      <n-input v-model:value="model.currentPassword" type="password" show-password-on="click" />
+      <n-input
+        v-model:value="model.currentPassword"
+        type="password"
+        show-password-on="click"
+        :input-props="{ autocomplete: 'current-password' }"
+      />
     </n-form-item>
 
     <n-form-item label="New password" path="newPassword">
-      <n-input v-model:value="model.newPassword" type="password" show-password-on="click" />
+      <n-input
+        v-model:value="model.newPassword"
+        type="password"
+        show-password-on="click"
+        :input-props="{ autocomplete: 'new-password' }"
+      />
     </n-form-item>
 
     <FormButtons :loading="pending" :disabled="pending || !edited" @reset="reset" />

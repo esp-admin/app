@@ -2,11 +2,11 @@ export default function useMqtt () {
   const key = 'mqtt'
   const request = '/api/mqtt'
 
-  const mqtt = useState<Mqtt|undefined>(key)
+  const mqtt = useNuxtData<Mqtt|undefined>(key)
 
   async function find () {
-    if (mqtt.value === undefined) {
-      mqtt.value = await useAuthFetch<Mqtt>(request)
+    if (mqtt.data.value === null) {
+      mqtt.data.value = await useAuthFetch<Mqtt>(request)
     }
 
     return mqtt
@@ -19,7 +19,7 @@ export default function useMqtt () {
 
       onResponse: ({ response }) => {
         if (response.ok) {
-          mqtt.value = response._data
+          mqtt.data.value = response._data
         }
       }
     })
@@ -32,7 +32,7 @@ export default function useMqtt () {
 
       onResponse: ({ response }) => {
         if (response.ok) {
-          mqtt.value = response._data
+          mqtt.data.value = response._data
         }
       }
     })

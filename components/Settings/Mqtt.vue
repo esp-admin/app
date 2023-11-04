@@ -31,10 +31,10 @@ const { find } = useMqtt()
 const mqtt = await find()
 
 const model = ref<Partial<Mqtt>>({
-  password: mqtt.value?.password,
-  username: mqtt.value?.username,
-  uriTCP: mqtt.value?.uriTCP,
-  uriWS: mqtt.value?.uriWS
+  password: mqtt.data.value?.password,
+  username: mqtt.data.value?.username,
+  uriTCP: mqtt.data.value?.uriTCP,
+  uriWS: mqtt.data.value?.uriWS
 })
 
 const { formRef, onSubmit, pending, rules, edited, reset } = useNaiveForm(model)
@@ -87,7 +87,7 @@ rules.value = {
 async function handleSubmit () {
   const { add, update } = useMqtt()
 
-  if (mqtt.value) {
+  if (mqtt.data.value) {
     await update(model.value)
   } else {
     await add(model.value)

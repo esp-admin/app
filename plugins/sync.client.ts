@@ -18,10 +18,12 @@ export default defineNuxtPlugin({
       updateDeployments()
     }
 
-    function updateDeployments () {
-      const { devices } = useDevice()
+    async function updateDeployments () {
+      const { find } = useDevice()
 
-      for (const device of devices.data.value || []) {
+      const devices = await find()
+
+      for (const device of devices.value || []) {
         const { deployments, update } = useDeployment(device.id)
 
         for (const deployment of deployments.data.value || []) {

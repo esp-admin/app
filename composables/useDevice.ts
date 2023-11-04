@@ -148,5 +148,5 @@ export default function useDevice () {
     })
   }
 
-  return { find, findOne, remove, add, link, unlink, update, devices }
+  return { find, findOne, remove, add, link, unlink, update }
 }

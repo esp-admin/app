@@ -76,6 +76,9 @@ const themeConfig = ref<ThemeConfig>({
       titleFontSizeSmall: theme.fontSize.lg[0],
       titleFontWeight: theme.fontWeight.medium,
       boxShadow: theme.boxShadow.lg
+    },
+    LoadingBar: {
+      height: '3px'
     }
   },
 

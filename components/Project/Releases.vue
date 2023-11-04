@@ -34,10 +34,12 @@
           <TitleDate :title="release.version" :created-at="release.createdAt" />
         </template>
 
-        <LazyReleaseCard
-          :key="release.id"
-          :release="release"
-        />
+        <n-loading-bar-provider>
+          <LazyReleaseCard
+            :key="release.id"
+            :release="release"
+          />
+        </n-loading-bar-provider>
       </n-collapse-item>
     </n-collapse>
 

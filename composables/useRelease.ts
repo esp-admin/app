@@ -1,13 +1,13 @@
 export default function useRelease (projectId: Project['id']) {
   const key = `releases-${projectId}`
 
-  const releases = useState<Release[]>(key)
+  const releases = useNuxtData<Release[]>(key)
 
   async function find () {
     const request = '/api/releases'
 
-    if (releases.value === undefined) {
-      releases.value = await useAuthFetch<Release[]>(request, {
+    if (releases.data.value === null) {
+      releases.data.value = await useAuthFetch<Release[]>(request, {
         query: { projectId }
       })
     }
@@ -22,12 +22,12 @@ export default function useRelease (projectId: Project['id']) {
       method: 'DELETE',
 
       onResponse: ({ response }) => {
-        if (response.ok && releases.value) {
-          const releaseIndex = releases.value.findIndex(
+        if (response.ok && releases.data.value) {
+          const releaseIndex = releases.data.value.findIndex(
             release => release.id === id
           )
           if (releaseIndex >= 0) {
-            releases.value.splice(releaseIndex, 1)
+            releases.data.value.splice(releaseIndex, 1)
           }
         }
       }
@@ -43,8 +43,8 @@ export default function useRelease (projectId: Project['id']) {
       body: data,
 
       onResponse: ({ response }) => {
-        if (response.ok && releases.value) {
-          releases.value.unshift(response._data)
+        if (response.ok && releases.data.value) {
+          releases.data.value.unshift(response._data)
         }
       }
     })

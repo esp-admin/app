@@ -12,11 +12,11 @@
       <TooltipIconButton name="ph:trash" message="Clear logs" secondary @click="clear" />
     </div>
 
-    <n-card class="mt-4">
+    <n-card class="mt-4" :theme-overrides="{borderColor: cardBorderColor}">
       <n-log
         ref="logInst"
         language="realtime"
-        :loading="device.status === 'connected'"
+        :loading="false"
         :log="logsString"
         :line-height="2"
         :rows="10"
@@ -32,6 +32,8 @@ import type { LogInst } from 'naive-ui'
 const logInst = ref<LogInst>()
 
 const props = defineProps<{ device: Device }>()
+
+const cardBorderColor = computed(() => props.device.status === 'connected' ? '#22c55e' : '#ef4444')
 
 const projectCommands = ref<{key: string, value: string}[]>([])
 

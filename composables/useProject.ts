@@ -62,7 +62,7 @@ export default function useProject () {
   function update (id: Project['id'], data: Partial<Project>) {
     const key = `project-${id}`
     const request = `/api/projects/${id}`
-    const project = useState(key)
+    const project = useNuxtData(key)
 
     return useAuthFetch<Project>(request, {
       method: 'PATCH',
@@ -78,8 +78,8 @@ export default function useProject () {
           }
         }
 
-        if (response.ok && project.value) {
-          project.value = response._data
+        if (response.ok && project.data.value) {
+          project.data.value = response._data
         }
       }
     })

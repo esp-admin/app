@@ -125,7 +125,7 @@ export default function useDevice () {
 
     const key = `device-${id}`
     const request = `/api/devices/${id}`
-    const device = useState<Device>(key)
+    const device = useNuxtData<Device>(key)
 
     return useAuthFetch<Device>(request, {
       method: 'PATCH',
@@ -141,8 +141,8 @@ export default function useDevice () {
           }
         }
 
-        if (response.ok && device.value) {
-          device.value = response._data
+        if (response.ok && device.data.value) {
+          device.data.value = response._data
         }
       }
     })

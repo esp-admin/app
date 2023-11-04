@@ -67,7 +67,7 @@ const devicesWithDeployment = computed(() => releaseDevices.value.map((device) =
   const { deployments: deviceDeployments } = useDeployment(device.id)
 
   // Update
-  const deviceDeployment = deviceDeployments.value?.find(deployment => deployment.releaseId === props.release.id)
+  const deviceDeployment = deviceDeployments.data.value?.find(deployment => deployment.releaseId === props.release.id)
 
   // Initial
   const releaseDeployment = releaseDeployments.find(deployment => deployment.deviceId === device.id)

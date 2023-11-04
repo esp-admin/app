@@ -1,13 +1,13 @@
 export default function useDeployment (deviceId: Device['id']) {
   const key = `deployments-${deviceId}`
 
-  const deployments = useState<Deployment[]>(key)
+  const deployments = useNuxtData<Deployment[]>(key)
 
   async function find () {
     const request = '/api/deployments'
 
-    if (deployments.value === undefined) {
-      deployments.value = await useAuthFetch<Deployment[]>(request, {
+    if (deployments.data.value === null) {
+      deployments.data.value = await useAuthFetch<Deployment[]>(request, {
         query: {
           deviceId
         }
@@ -21,10 +21,10 @@ export default function useDeployment (deviceId: Device['id']) {
     const key = `deployment-${id}`
     const request = `/api/deployments/${id}`
 
-    const deployment = useState<Deployment>(key)
+    const deployment = useNuxtData<Deployment>(key)
 
-    if (deployment.value === undefined) {
-      deployment.value = await useAuthFetch(request)
+    if (deployment.data.value === null) {
+      deployment.data.value = await useAuthFetch(request)
     }
 
     return deployment
@@ -37,13 +37,13 @@ export default function useDeployment (deviceId: Device['id']) {
       method: 'DELETE',
 
       onResponse: ({ response }) => {
-        if (response.ok && deployments.value) {
-          const deploymentIndex = deployments.value.findIndex(
+        if (response.ok && deployments.data.value) {
+          const deploymentIndex = deployments.data.value.findIndex(
             deployment => deployment.id === id
           )
 
           if (deploymentIndex >= 0) {
-            deployments.value.splice(deploymentIndex, 1)
+            deployments.data.value.splice(deploymentIndex, 1)
           }
         }
       }
@@ -51,13 +51,13 @@ export default function useDeployment (deviceId: Device['id']) {
   }
 
   async function update (id: Deployment['id'], status: Deployment['status'], saveToDB = false) {
-    if (deployments.value) {
-      const deploymentIndex = deployments.value.findIndex(
+    if (deployments.data.value) {
+      const deploymentIndex = deployments.data.value.findIndex(
         deployment => deployment.id === id
       )
 
       if (deploymentIndex >= 0) {
-        deployments.value[deploymentIndex].status = status
+        deployments.data.value[deploymentIndex].status = status
 
         if (saveToDB) {
           const request = `/api/deployments/${id}`
@@ -71,8 +71,8 @@ export default function useDeployment (deviceId: Device['id']) {
       } else {
         const deployment = await findOne(id)
 
-        if (deployment.value) {
-          deployments.value.unshift(deployment.value)
+        if (deployment.data.value) {
+          deployments.data.value.unshift(deployment.data.value)
         }
       }
     }

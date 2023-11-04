@@ -11,7 +11,7 @@ export default function useReport () {
       report.data.value = await useAuthFetch<Report>(request)
     }
 
-    return report
+    return report.data
   }
 
   function update (data: Partial<Report>) {

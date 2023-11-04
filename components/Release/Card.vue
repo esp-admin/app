@@ -57,7 +57,7 @@ const { findDeployments } = useRelease(props.release.projectId)
 
 const { find } = useDevice()
 
-const { data: devices } = await find()
+const devices = await find()
 
 const releaseDevices = computed(() => devices.value?.filter(device => device.projectId === props.release.projectId) || [])
 
@@ -82,7 +82,7 @@ function onDelete () {
 async function onTrigger () {
   const { find } = useDevice()
 
-  const { data: devices } = await find()
+  const devices = await find()
 
   const relatedDevices = devices.value?.filter(device => device.projectId === props.release.projectId) || []
 

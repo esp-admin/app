@@ -9,7 +9,7 @@ export default function useMqtt () {
       mqtt.data.value = await useAuthFetch<Mqtt>(request)
     }
 
-    return mqtt
+    return mqtt.data
   }
 
   function update (data: Partial<Mqtt>) {

@@ -12,7 +12,7 @@ export default function useRelease (projectId: Project['id']) {
       })
     }
 
-    return releases
+    return releases.data
   }
 
   function remove (id: Release['id']) {

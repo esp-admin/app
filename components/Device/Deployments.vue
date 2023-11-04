@@ -17,7 +17,7 @@ const props = defineProps<{ device: Device }>()
 
 const { find } = useDeployment(props.device.id)
 
-const { data: deployments } = await find()
+const deployments = await find()
 
 const latestDeployment = computed(() => deployments.value[0])
 

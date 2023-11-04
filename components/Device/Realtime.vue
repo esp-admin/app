@@ -37,7 +37,7 @@ const projectCommands = ref<{key: string, value: string}[]>([])
 
 if (props.device.projectId) {
   const { findOne } = useProject()
-  const { data: project } = await findOne(props.device.projectId)
+  const project = await findOne(props.device.projectId)
   projectCommands.value = destr(project.value?.commands)
 }
 

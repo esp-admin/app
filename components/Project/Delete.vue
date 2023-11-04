@@ -64,7 +64,7 @@ rules.value = {
 
 async function handleSubmit () {
   const { find } = useDevice()
-  const { data: devices } = await find()
+  const devices = await find()
 
   const linkedDevices = devices.value?.filter(device => device.projectId === props.project.id)
 

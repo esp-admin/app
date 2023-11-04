@@ -34,7 +34,7 @@ const projectVariables = ref<{ key: string, value: string }[]>([])
 
 if (props.device.projectId) {
   const { findOne } = useProject()
-  const { data: project } = await findOne(props.device.projectId)
+  const project = await findOne(props.device.projectId)
 
   projectVariables.value = destr<{ key: string, value: string }[]>(project.value?.variables)
 

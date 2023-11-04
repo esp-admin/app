@@ -9,7 +9,7 @@ export default function useDevice () {
       devices.data.value = await useAuthFetch(request)
     }
 
-    return devices
+    return devices.data
   }
 
   async function findOne (id: Device['id']) {
@@ -22,7 +22,7 @@ export default function useDevice () {
       device.data.value = await useAuthFetch(request)
     }
 
-    return device
+    return device.data
   }
 
   function remove (id: Device['id']) {

@@ -63,7 +63,7 @@ const { find } = useRelease(props.project.id)
 
 const versionSearch = ref('')
 
-const { data: releases } = await find()
+const releases = await find()
 
 const filteredReleases = computed(() => releases.value?.filter(release => release.version.includes(versionSearch.value)))
 

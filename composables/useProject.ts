@@ -9,7 +9,7 @@ export default function useProject () {
       projects.data.value = await useAuthFetch(request)
     }
 
-    return projects
+    return projects.data
   }
 
   async function findOne (id: Project['id']) {
@@ -22,7 +22,7 @@ export default function useProject () {
       project.data.value = await useAuthFetch(request)
     }
 
-    return project
+    return project.data
   }
 
   function remove (id: Project['id']) {

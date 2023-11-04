@@ -14,7 +14,7 @@ export default function useDeployment (deviceId: Device['id']) {
       })
     }
 
-    return deployments
+    return deployments.data
   }
 
   async function findOne (id: Deployment['id']) {

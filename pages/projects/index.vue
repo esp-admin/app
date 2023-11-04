@@ -52,7 +52,7 @@ const createModalVisible = ref(false)
 const nameSearch = ref()
 
 const { find } = useProject()
-const { data: projects } = await find()
+const projects = await find()
 
 const filteredProjects = computed(() => projects.value?.filter(project => project.name.includes(nameSearch.value)))
 

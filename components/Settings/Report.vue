@@ -24,7 +24,7 @@
 
 const { find } = useReport()
 
-const { data: report } = await find()
+const report = await find()
 
 const model = ref<Partial<Report>>({
   webhookEnable: report.value?.webhookEnable || false,
@@ -61,7 +61,7 @@ rules.value = {
 async function handleSubmit () {
   const { add, update } = useReport()
 
-  if (report.data.value) {
+  if (report.value) {
     await update(model.value)
   } else {
     await add(model.value)

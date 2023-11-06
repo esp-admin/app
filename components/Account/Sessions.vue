@@ -35,7 +35,13 @@ import UAParser from 'ua-parser-js'
 
 const { getAllSessions } = useAuthSession()
 
+const loadingBar = useLoadingBar()
+
+loadingBar.start()
+
 const { data: sessions } = await useAsyncData(getAllSessions)
+
+loadingBar.finish()
 
 async function handleSessionRevoke (id: string) {
   const { revokeSession } = useAuthSession()

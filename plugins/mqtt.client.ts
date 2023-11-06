@@ -18,8 +18,8 @@ export default defineNuxtPlugin({
       await disconnect()
 
       mqttClient = await MQTT.connectAsync(options.uri, {
-        keepalive: 30,
-        reconnectPeriod: 10000,
+        keepalive: 90,
+        reconnectPeriod: 1000,
         username: options.username,
         password: options.password
       })
@@ -44,12 +44,6 @@ export default defineNuxtPlugin({
     function disconnect () {
       if (mqttClient && mqttClient.connected) {
         return mqttClient.endAsync()
-      }
-    }
-
-    function reconnect () {
-      if (mqttClient && !mqttClient.connected) {
-        mqttClient.reconnect()
       }
     }
 
@@ -91,12 +85,6 @@ export default defineNuxtPlugin({
         qos: 1
       })
     }
-
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden === false) {
-        reconnect()
-      }
-    })
 
     nuxtApp.hook('auth:loggedIn', async (loggedIn) => {
       const { find } = useMqtt()

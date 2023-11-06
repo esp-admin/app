@@ -2,6 +2,9 @@
 
 An open source platform to remotely manage ESP microcontrollers for IoT applications.
 
+[![ci](https://github.com/esp-admin/app/actions/workflows/ci.yml/badge.svg)](https://github.com/esp-admin/app/actions/workflows/ci.yml)
+
+
 ## ✔️ Features
 
 - Support for _ESP32_

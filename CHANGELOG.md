@@ -1,6 +1,34 @@
 # Changelog
 
 
+## v1.1.5-rc
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.1.4-rc...v1.1.5-rc)
+
+### 🔥 Performance
+
+- Move Notification from root to default layout ([4d9dabf](https://github.com/esp-admin/app/commit/4d9dabf))
+
+### 🩹 Fixes
+
+- Prevent mqtt disconnect when running in background with power saver on ([a70cafc](https://github.com/esp-admin/app/commit/a70cafc))
+- **Realtime:** Disable button when action has no effect ([2b73265](https://github.com/esp-admin/app/commit/2b73265))
+
+### 💅 Refactors
+
+- Minor refactoring ([43703ec](https://github.com/esp-admin/app/commit/43703ec))
+- Add loading bar on sessions tab ([5d491c9](https://github.com/esp-admin/app/commit/5d491c9))
+- Add loading bar on Report tab ([3f90947](https://github.com/esp-admin/app/commit/3f90947))
+
+### 🏡 Chore
+
+- Update Dockerfile ([0f41e76](https://github.com/esp-admin/app/commit/0f41e76))
+
+### ❤️ Contributors
+
+- Becem-gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+- Becem ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v1.1.4-rc
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.1.3-rc...v1.1.4-rc)

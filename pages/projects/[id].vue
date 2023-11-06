@@ -30,9 +30,7 @@
       </n-tab-pane>
 
       <n-tab-pane name="releases" tab="Releases">
-        <n-loading-bar-provider>
-          <ProjectReleases class="mt-4" :project="project" />
-        </n-loading-bar-provider>
+        <ProjectReleases class="mt-4" :project="project" />
       </n-tab-pane>
     </n-tabs>
 

@@ -47,9 +47,7 @@
       </n-tab-pane>
 
       <n-tab-pane name="deployments" tab="Deployments">
-        <n-loading-bar-provider>
-          <DeviceDeployments class="mt-4" :device="device" />
-        </n-loading-bar-provider>
+        <DeviceDeployments class="mt-4" :device="device" />
       </n-tab-pane>
     </n-tabs>
 

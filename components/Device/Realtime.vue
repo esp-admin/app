@@ -1,15 +1,33 @@
 <template>
   <div>
-    <div class="flex gap-4">
+    <div class="flex gap-2">
       <div class="flex-1 flex gap-2 flex-wrap">
-        <n-button v-for="projectCommand of projectCommands" :key="projectCommand.key" secondary @click="handleCommand(projectCommand)">
+        <n-button
+          v-for="projectCommand of projectCommands"
+          :key="projectCommand.key"
+          secondary
+          :disabled="device.status !== 'connected'"
+          @click="handleCommand(projectCommand)"
+        >
           {{ projectCommand.key }}
         </n-button>
       </div>
 
-      <TooltipIconButton icon="ph:arrow-counter-clockwise" message="Restart device" secondary @click="handleRestart" />
+      <TooltipIconButton
+        :disabled="device.status !== 'connected'"
+        icon="ph:arrow-counter-clockwise"
+        message="Restart device"
+        secondary
+        @click="handleRestart"
+      />
 
-      <TooltipIconButton icon="ph:trash" message="Clear logs" secondary @click="clear" />
+      <TooltipIconButton
+        :disabled="logs.length === 0"
+        icon="ph:trash"
+        message="Clear logs"
+        secondary
+        @click="clear"
+      />
     </div>
 
     <n-card class="mt-4" :theme-overrides="{borderColor: cardBorderColor}">

@@ -26,7 +26,7 @@ const uploadRef = ref()
 const model = ref({
   name: user.value?.name,
   picture: user.value?.picture,
-  file: undefined
+  file: null
 })
 
 const { edited, formRef, pending, onSubmit, reset, rules, apiErrors } = useNaiveForm(model)
@@ -80,6 +80,6 @@ async function updateAccount () {
 
   await fetchUser()
 
-  model.value.file = undefined
+  model.value.file = null
 }
 </script>

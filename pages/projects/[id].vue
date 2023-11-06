@@ -3,7 +3,7 @@
     <n-page-header :title="project.name" class="mb-8" :on-back="$router.back">
       <template #extra>
         <TooltipIconButton
-          name="ph:trash"
+          icon="ph:trash"
           type="error"
           secondary
           message="Delete project"

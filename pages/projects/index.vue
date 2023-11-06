@@ -19,7 +19,7 @@
         </n-button>
       </div>
 
-      <n-result v-else class="col-span-full my-5" title="You have no projects">
+      <n-result v-else class="col-span-full my-5" title="No projects found">
         <template #icon>
           <ResultEmpty />
         </template>

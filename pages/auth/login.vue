@@ -24,14 +24,14 @@
           Login
         </n-button>
 
-        <n-button v-if="$config.public.oauth.google" block @click="() => loginWithProvider('google')">
+        <n-button v-if="$config.public.oauth.google" block @click="loginWithProvider('google')">
           <template #icon>
             <naive-icon name="logos:google-icon" />
           </template>
           Continue with Google
         </n-button>
 
-        <n-button v-if="$config.public.oauth.github" block @click="() => loginWithProvider('github')">
+        <n-button v-if="$config.public.oauth.github" block @click="loginWithProvider('github')">
           <template #icon>
             <naive-icon name="mdi:github" />
           </template>

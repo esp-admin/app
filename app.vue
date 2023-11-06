@@ -1,7 +1,7 @@
 <template>
   <naive-config :theme-config="themeConfig" :hljs="hljs">
     <client-only>
-      <LazyNotification />
+      <Notification />
     </client-only>
 
     <nuxt-loading-indicator :color="themeConfig.light?.common?.primaryColor" :height="3" />
@@ -186,19 +186,6 @@ useSeoMeta({
   twitterDescription: 'Remote management of ESP microcontrollers',
   twitterImage: '/favicon.ico',
   twitterCard: 'summary'
-})
-
-useHead({
-  htmlAttrs: {
-    lang: 'en'
-  },
-  link: [
-    {
-      rel: 'icon',
-      type: 'image/png',
-      href: '/favicon.ico'
-    }
-  ]
 })
 </script>
 

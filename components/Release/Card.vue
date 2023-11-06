@@ -1,33 +1,35 @@
 <template>
   <n-card size="small" title="Devices">
+    <template #header>
+      <div class="flex flex-wrap gap-2">
+        <nuxt-link v-for="device of devicesWithDeployment" :key="device.id" :to="`/devices/${device.id}`">
+          <n-button secondary>
+            {{ device.name }}
+            <template #icon>
+              <DeploymentStatus :deployment="device.deployment" :size="18" />
+            </template>
+          </n-button>
+        </nuxt-link>
+      </div>
+    </template>
+
     <template #header-extra>
       <div class="flex gap-2">
         <TooltipIconButton
-          name="ph:arrow-line-down"
+          icon="ph:arrow-line-down"
           message="Deploy now"
           secondary
           @click="onTrigger"
         />
 
         <TooltipIconButton
-          name="ph:trash"
+          icon="ph:trash"
           message="Delete release"
           secondary
           @click="deleteModalVisible = true"
         />
       </div>
     </template>
-
-    <div class="flex flex-wrap gap-2">
-      <nuxt-link v-for="device of devicesWithDeployment" :key="device.id" :to="`/devices/${device.id}`">
-        <n-button secondary>
-          {{ device.name }}
-          <template #icon>
-            <DeploymentStatus :deployment="device.deployment" :size="18" />
-          </template>
-        </n-button>
-      </nuxt-link>
-    </div>
 
     <n-modal
       v-model:show="deleteModalVisible"
@@ -84,7 +86,7 @@ async function onTrigger () {
 
   const devices = await find()
 
-  const relatedDevices = devices.value?.filter(device => device.projectId === props.release.projectId) || []
+  const relatedDevices = devices.value?.filter(device => device.projectId === props.release.projectId) ?? []
 
   const { $mqtt } = useNuxtApp()
 

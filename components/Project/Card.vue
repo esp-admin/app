@@ -6,7 +6,7 @@
       </template>
 
       <n-text depth="2">
-        {{ project.description || 'no description' }}
+        {{ project.description ?? 'no description' }}
       </n-text>
     </n-card>
   </nuxt-link>

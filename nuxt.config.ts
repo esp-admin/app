@@ -9,10 +9,9 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'ESP Admin',
-      htmlAttrs: {
-        lang: 'en'
-      },
+      htmlAttrs: { lang: 'en' },
       link: [
+        { rel: 'icon', href: '/favicon.ico' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         {
           rel: 'preconnect',

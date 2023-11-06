@@ -49,7 +49,7 @@ export default function useReport () {
         handleUpdate(message)
         break
       case 'custom':
-       // handleCustom(message)
+        break
     }
   }
 
@@ -73,9 +73,6 @@ export default function useReport () {
 
     await update(deploymentId, status)
   }
-
-  // function handleCustom (message: ReportMessage) {
-  // }
 
   return { find, add, update, handleReport }
 }

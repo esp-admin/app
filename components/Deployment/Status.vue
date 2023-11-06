@@ -2,7 +2,7 @@
   <n-tooltip trigger="hover">
     <template #trigger>
       <naive-icon
-        v-if="deployment?.status === undefined"
+        v-if="!deployment?.status"
         name="ph:question-duotone"
         :size="size"
         icon-color="#a3a3a3"
@@ -26,7 +26,7 @@
         icon-color="#22c55e"
       />
     </template>
-    {{ deployment?.status || 'not found' }}
+    {{ deployment?.status ?? 'not found' }}
   </n-tooltip>
 </template>
 

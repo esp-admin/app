@@ -10,7 +10,7 @@
         @click="()=> $emit('click')"
       >
         <template #icon>
-          <naive-icon :name="name" />
+          <naive-icon :name="icon" />
         </template>
       </n-button>
     </template>
@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 defineProps<{
-    name: string,
+    icon: string,
     message: string,
     circle?: boolean,
     secondary?: boolean,

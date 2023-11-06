@@ -10,7 +10,7 @@
       </template>
 
       <n-text depth="2">
-        {{ device.description || 'no description' }}
+        {{ device.description ?? 'no description' }}
       </n-text>
     </n-card>
   </nuxt-link>

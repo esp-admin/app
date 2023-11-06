@@ -10,6 +10,7 @@
 import type { SelectOption } from 'naive-ui'
 
 const { colorModePreference } = useNaiveColorMode()
+
 const preference = ref(colorModePreference.get())
 
 watch(preference, (value: any) => colorModePreference.set(value))

@@ -28,7 +28,6 @@ const highchartsOptions = computed<HighchartsOptions>(() => defu(
         plotBackgroundColor: 'transparent',
         style: {
           fontFamily: naiveTheme.value.fontFamily,
-          borderRadius: naiveTheme.value.borderRadius,
           fontSize: naiveTheme.value.fontSize
         }
       },

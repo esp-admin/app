@@ -1,3 +1,4 @@
+// @ts-nocheck
 export default defineEventHandler((event) => {
   const isS3Mutation = getRequestURL(event).pathname.includes('s3/mutation')
   const isS3Query = getRequestURL(event).pathname.includes('s3/query')
@@ -8,8 +9,7 @@ export default defineEventHandler((event) => {
     // https://github.com/unjs/nitro/issues/1719
     const isBase64 = (value: string) => {
       if (typeof value !== 'string') { return false }
-      // https://debugpointer.com/regex/regex-for-base64
-      return /^(?:[a-zA-Z0-9+/]{4})*(?:|(?:[a-zA-Z0-9+/]{3}=)|(?:[a-zA-Z0-9+/]{2}==)|(?:[a-zA-Z0-9+/]{1}===))$/gm.test(
+      return /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(
         value
       )
     }

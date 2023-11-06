@@ -12,7 +12,7 @@
       </n-button>
     </div>
 
-    <n-result v-else class="col-span-full my-5" title="You have no linked devices">
+    <n-result v-else class="col-span-full my-5" title="No linked devices found">
       <template #icon>
         <ResultEmpty />
       </template>
@@ -48,7 +48,7 @@ const { find } = useDevice()
 
 const devices = await find()
 
-const linkedDevices = computed(() => devices.value?.filter(device => device.projectId === props.project.id) || [])
+const linkedDevices = computed(() => devices.value?.filter(device => device.projectId === props.project.id) ?? [])
 
 const nameSearch = ref('')
 

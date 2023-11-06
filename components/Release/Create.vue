@@ -118,7 +118,7 @@ async function handleSubmit () {
 
     const devices = await find()
 
-    const linkedDevices = devices.value?.filter(device => device.projectId === props.project.id) || []
+    const linkedDevices = devices.value?.filter(device => device.projectId === props.project.id) ?? []
 
     const { $mqtt } = useNuxtApp()
 

@@ -5,7 +5,7 @@
         <div class="flex justify-between gap-2">
           <TooltipIconButton
             v-if="device.projectId"
-            name="ph:link-break"
+            icon="ph:link-break"
             secondary
             type="primary"
             message="Unlink device"
@@ -17,13 +17,13 @@
               v-if="device.projectId"
               secondary
               type="primary"
-              name="ph:code"
+              icon="ph:code"
               message="Linked project"
             />
           </NuxtLink>
 
           <TooltipIconButton
-            name="ph:trash"
+            icon="ph:trash"
             secondary
             type="error"
             message="Delete device"

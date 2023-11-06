@@ -19,12 +19,12 @@
       </TitleDate>
 
       <TooltipIconButton
-        name="ph:trash"
+        icon="ph:trash"
         type="error"
         secondary
         :disabled="session.current"
         message="Delete session"
-        @click="() => handleSessionRevoke(session.id)"
+        @click="handleSessionRevoke(session.id)"
       />
     </div>
   </div>

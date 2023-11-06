@@ -1,6 +1,6 @@
 <template>
   <div>
-    <n-result v-if="success" status="success" title="Done" description="Your password is successfully reset">
+    <n-result v-if="success" status="success" title="Done" description="Password is successfully reset">
       <template #footer>
         <nuxt-link to="/auth/login" class="no-underline">
           <n-button type="primary">

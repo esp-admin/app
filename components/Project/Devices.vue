@@ -44,11 +44,9 @@ const linkModalVisible = ref(false)
 
 const props = defineProps<{ project: Project }>()
 
-const { find } = useDevice()
+const { findLinked } = useDevice()
 
-const devices = await find()
-
-const linkedDevices = computed(() => devices.value?.filter(device => device.projectId === props.project.id) ?? [])
+const linkedDevices = await findLinked(props.project.id)
 
 const nameSearch = ref('')
 

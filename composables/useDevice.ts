@@ -148,5 +148,13 @@ export default function useDevice () {
     })
   }
 
-  return { find, findOne, remove, add, link, unlink, update }
+  async function findLinked (projectId: Project['id']) {
+    const devices = await find()
+
+    return computed(() =>
+      devices.value?.filter(device => device.projectId === projectId) ?? []
+    )
+  }
+
+  return { find, findOne, remove, add, link, unlink, update, findLinked }
 }

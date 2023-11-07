@@ -114,15 +114,13 @@ async function handleSubmit () {
       version: model.value.version
     })
 
-    const { find } = useDevice()
+    const { findLinked } = useDevice()
 
-    const devices = await find()
-
-    const linkedDevices = devices.value?.filter(device => device.projectId === props.project.id) ?? []
+    const linkedDevices = await findLinked(props.project.id)
 
     const { $mqtt } = useNuxtApp()
 
-    for (const device of linkedDevices) {
+    for (const device of linkedDevices.value) {
       $mqtt.publish({
         deviceId: device.id,
         action: 'command',

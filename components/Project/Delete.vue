@@ -63,12 +63,11 @@ rules.value = {
 }
 
 async function handleSubmit () {
-  const { find } = useDevice()
-  const devices = await find()
+  const { findLinked } = useDevice()
 
-  const linkedDevices = devices.value?.filter(device => device.projectId === props.project.id)
+  const linkedDevices = await findLinked(props.project.id)
 
-  if (linkedDevices?.length) {
+  if (linkedDevices.value?.length) {
     apiErrors.value.hasDevices = true
     return
   }

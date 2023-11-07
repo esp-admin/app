@@ -1,5 +1,5 @@
 export default function useDeployment (deviceId: Device['id']) {
-  const key = `deployments-${deviceId}`
+  const key = `deployments-device-${deviceId}`
   const deployments = useNuxtData<Deployment[]>(key)
   const loadingBar = useLoadingBar()
 

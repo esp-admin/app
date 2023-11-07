@@ -61,7 +61,7 @@ const { find } = useDevice()
 
 const devices = await find()
 
-const releaseDevices = computed(() => devices.value?.filter(device => device.projectId === props.release.projectId) || [])
+const releaseDevices = computed(() => devices.value?.filter(device => device.projectId === props.release.projectId) ?? [])
 
 const releaseDeployments = await findDeployments(props.release.id)
 

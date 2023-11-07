@@ -82,5 +82,17 @@ export default function useDeployment (deviceId: Device['id']) {
     }
   }
 
-  return { find, update, remove, deployments }
+  function removeByRelease (releaseId: Release['id']) {
+    if (deployments.data.value) {
+      const deploymentIndex = deployments.data.value.findIndex(
+        deployment => deployment.releaseId === releaseId
+      )
+
+      if (deploymentIndex >= 0) {
+        deployments.data.value.splice(deploymentIndex, 1)
+      }
+    }
+  }
+
+  return { find, update, remove, removeByRelease, deployments }
 }

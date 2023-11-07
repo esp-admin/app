@@ -25,13 +25,25 @@ export default function useRelease (projectId: Project['id']) {
     return useAuthFetch<Release>(request, {
       method: 'DELETE',
 
-      onResponse: ({ response }) => {
-        if (response.ok && releases.data.value) {
-          const releaseIndex = releases.data.value.findIndex(
-            release => release.id === id
-          )
-          if (releaseIndex >= 0) {
-            releases.data.value.splice(releaseIndex, 1)
+      onResponse: async ({ response }) => {
+        if (response.ok) {
+          if (releases.data.value) {
+            const releaseIndex = releases.data.value.findIndex(
+              release => release.id === id
+            )
+            if (releaseIndex >= 0) {
+              releases.data.value.splice(releaseIndex, 1)
+            }
+          }
+
+          const { find } = useDevice()
+          const devices = await find()
+
+          if (devices.value) {
+            for (const device of devices.value) {
+              const { removeByRelease } = useDeployment(device.id)
+              removeByRelease(id)
+            }
           }
         }
       }

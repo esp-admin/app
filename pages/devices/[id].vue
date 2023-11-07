@@ -1,5 +1,5 @@
 <template>
-  <div v-if="device">
+  <div>
     <n-page-header :title="device.name" class="mb-8" :on-back="$router.back">
       <template #extra>
         <div class="flex justify-between gap-2">
@@ -73,10 +73,6 @@
       <DeviceUnlink :device="device" @cancel="unlinkModalVisible = false" @done="onUnlink" />
     </n-modal>
   </div>
-
-  <n-text v-else>
-    Not found
-  </n-text>
 </template>
 
 <script setup lang="ts">

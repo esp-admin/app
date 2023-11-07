@@ -18,7 +18,7 @@ export default function useDevice () {
 
     device.data.value ||= await useAuthFetch(request)
 
-    return device.data
+    return device.data as Ref<Device>
   }
 
   function remove (id: Device['id']) {

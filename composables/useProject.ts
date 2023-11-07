@@ -18,7 +18,7 @@ export default function useProject () {
 
     project.data.value ||= await useAuthFetch(request)
 
-    return project.data
+    return project.data as Ref<Project>
   }
 
   function remove (id: Project['id']) {

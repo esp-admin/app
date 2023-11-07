@@ -27,11 +27,9 @@ export default function useDeployment (deviceId: Device['id']) {
 
     const deployment = useNuxtData<Deployment>(key)
 
-    if (!deployment.data.value) {
-      deployment.data.value = await useAuthFetch(request)
-    }
+    deployment.data.value ||= await useAuthFetch(request)
 
-    return deployment
+    return deployment.data
   }
 
   async function remove (id: Deployment['id']) {
@@ -75,8 +73,8 @@ export default function useDeployment (deviceId: Device['id']) {
       } else {
         const deployment = await findOne(id)
 
-        if (deployment.data.value) {
-          deployments.data.value.unshift(deployment.data.value)
+        if (deployment.value) {
+          deployments.data.value.unshift(deployment.value)
         }
       }
     }

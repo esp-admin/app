@@ -8,7 +8,7 @@
       </client-only>
 
       <n-loading-bar-provider>
-        <div class="flex-1 container mx-auto mt-8 px-4">
+        <div class="flex-1 container mx-auto mt-8 p-4">
           <slot />
         </div>
       </n-loading-bar-provider>

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="project">
+  <div>
     <n-page-header :title="project.name" class="mb-8" :on-back="$router.back">
       <template #extra>
         <TooltipIconButton
@@ -45,10 +45,6 @@
       <ProjectDelete :project="project" @cancel="deleteModalVisible = false" @done="onDelete" />
     </n-modal>
   </div>
-
-  <n-text v-else>
-    Not found
-  </n-text>
 </template>
 
 <script setup lang="ts">

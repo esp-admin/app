@@ -43,6 +43,9 @@ export default function useDevice () {
 
           const { removeAll } = useDeployment(id)
           removeAll()
+
+          const { remove } = useLog(id)
+          remove()
         }
       }
     })

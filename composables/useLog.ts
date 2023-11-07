@@ -1,5 +1,6 @@
 export default function useLog (deviceId: Device['id']) {
-  const logs = useState<LoggingMessage[]>(`logs-${deviceId}`, () => [])
+  const key = `logs-${deviceId}`
+  const logs = useState<LoggingMessage[]>(key, () => [])
 
   function append (message: LoggingMessage) {
     logs.value.push(message)
@@ -9,5 +10,9 @@ export default function useLog (deviceId: Device['id']) {
     logs.value = []
   }
 
-  return { logs, append, clear }
+  function remove () {
+    clearNuxtState(key)
+  }
+
+  return { logs, append, clear, remove }
 }

@@ -17,6 +17,7 @@
       <div class="flex gap-2">
         <TooltipIconButton
           icon="ph:arrow-line-down"
+          :disabled="devicesWithDeployment.length ===0"
           message="Deploy now"
           secondary
           @click="onTrigger"

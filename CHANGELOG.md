@@ -1,6 +1,39 @@
 # Changelog
 
 
+## v1.1.6-rc
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.1.5-rc...v1.1.6-rc)
+
+### 🩹 Fixes
+
+- **models:** Delete deployments on deleting device and release ([26a3936](https://github.com/esp-admin/app/commit/26a3936))
+- **useDeployment:** Clear state on Release delete ([0c23967](https://github.com/esp-admin/app/commit/0c23967))
+- **useDeployment:** Clear state on Device delete ([103bfee](https://github.com/esp-admin/app/commit/103bfee))
+- **useLog:** Remove state on Device delete ([d6cd965](https://github.com/esp-admin/app/commit/d6cd965))
+
+### 💅 Refactors
+
+- **useDevice:** Create findLinked ([ab0fbe3](https://github.com/esp-admin/app/commit/ab0fbe3))
+- **useDevice:** Minor refactoring ([832fd31](https://github.com/esp-admin/app/commit/832fd31))
+- **useProject:** Minor refactoring ([d5ef4e0](https://github.com/esp-admin/app/commit/d5ef4e0))
+- **useLog:** Minor refactoring ([a4dce29](https://github.com/esp-admin/app/commit/a4dce29))
+- **useMqtt:** Minor refactoring ([8811fb7](https://github.com/esp-admin/app/commit/8811fb7))
+- **useRelease:** Minor refactoring ([789792a](https://github.com/esp-admin/app/commit/789792a))
+- **useDeployment:** Minor refactoring ([2fb3629](https://github.com/esp-admin/app/commit/2fb3629))
+- Minor refactoring ([1f64b83](https://github.com/esp-admin/app/commit/1f64b83))
+- **ReleaseCard:** Disable deploy now btn on empty devices list ([0665997](https://github.com/esp-admin/app/commit/0665997))
+- Minor refactoring ([cd826c0](https://github.com/esp-admin/app/commit/cd826c0))
+
+### 📖 Documentation
+
+- Update README.md ([d951f27](https://github.com/esp-admin/app/commit/d951f27))
+
+### ❤️ Contributors
+
+- Becem-gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+- Becem ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v1.1.5-rc
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.1.4-rc...v1.1.5-rc)

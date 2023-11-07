@@ -5,9 +5,7 @@ export default function useDevice () {
   async function find () {
     const request = '/api/devices'
 
-    if (!devices.data.value) {
-      devices.data.value = await useAuthFetch(request)
-    }
+    devices.data.value ||= await useAuthFetch(request)
 
     return devices.data
   }
@@ -18,9 +16,7 @@ export default function useDevice () {
 
     const device = useNuxtData<Device>(key)
 
-    if (!device.data.value) {
-      device.data.value = await useAuthFetch(request)
-    }
+    device.data.value ||= await useAuthFetch(request)
 
     return device.data
   }
@@ -40,12 +36,11 @@ export default function useDevice () {
           if (deviceIndex >= 0) {
             devices.data.value.splice(deviceIndex, 1)
           }
+        }
 
-          const { removeAll } = useDeployment(id)
-          removeAll()
-
-          const { remove } = useLog(id)
-          remove()
+        if (response.ok) {
+          useDeployment(id).removeAll()
+          useLog(id).remove()
         }
       }
     })

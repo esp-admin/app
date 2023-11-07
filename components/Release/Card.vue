@@ -2,7 +2,7 @@
   <n-card size="small" title="Devices">
     <template #header>
       <div class="flex flex-wrap gap-2">
-        <nuxt-link v-for="device of devicesWithDeployment" :key="device.id" :to="`/devices/${device.id}`">
+        <nuxt-link v-for="device of linkedDevicesWithDeployment" :key="device.id" :to="`/devices/${device.id}`">
           <n-button secondary>
             {{ device.name }}
             <template #icon>
@@ -17,7 +17,7 @@
       <div class="flex gap-2">
         <TooltipIconButton
           icon="ph:arrow-line-down"
-          :disabled="devicesWithDeployment.length ===0"
+          :disabled="linkedDevicesWithDeployment.length ===0"
           message="Deploy now"
           secondary
           @click="onTrigger"
@@ -58,43 +58,31 @@ const props = defineProps<{ release: Release }>()
 
 const { findDeployments } = useRelease(props.release.projectId)
 
-const { find } = useDevice()
+const { findLinked } = useDevice()
 
-const devices = await find()
-
-const releaseDevices = computed(
-  () => devices.value?.filter(device => device.projectId === props.release.projectId) ?? []
-)
+const linkedDevices = await findLinked(props.release.projectId)
 
 const releaseDeployments = await findDeployments(props.release.id)
 
-const devicesWithDeployment = computed(
-  () => releaseDevices.value.map((device) => {
+const linkedDevicesWithDeployment = computed(
+  () => linkedDevices.value.map((device) => {
     const { deployments: deviceDeployments } = useDeployment(device.id)
 
-    // Update
-    const deviceDeployment = deviceDeployments.data.value?.find(deployment => deployment.releaseId === props.release.id)
+    const initialDeployment = releaseDeployments.find(deployment => deployment.deviceId === device.id)
 
-    // Initial
-    const releaseDeployment = releaseDeployments.find(deployment => deployment.deviceId === device.id)
+    const updatedDeployment = deviceDeployments.data.value?.find(deployment => deployment.releaseId === props.release.id)
 
-    return defu(device, { deployment: deviceDeployment }, { deployment: releaseDeployment })
+    return defu(device, { deployment: updatedDeployment }, { deployment: initialDeployment })
   }))
 
 function onDelete () {
   deleteModalVisible.value = false
 }
 
-async function onTrigger () {
-  const { find } = useDevice()
-
-  const devices = await find()
-
-  const relatedDevices = devices.value?.filter(device => device.projectId === props.release.projectId) ?? []
-
+function onTrigger () {
   const { $mqtt } = useNuxtApp()
 
-  for (const device of relatedDevices) {
+  for (const device of linkedDevices.value) {
     $mqtt.publish({
       deviceId: device.id,
       action: 'command',

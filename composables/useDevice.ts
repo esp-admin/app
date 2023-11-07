@@ -40,6 +40,9 @@ export default function useDevice () {
           if (deviceIndex >= 0) {
             devices.data.value.splice(deviceIndex, 1)
           }
+
+          const { removeAll } = useDeployment(id)
+          removeAll()
         }
       }
     })

@@ -94,5 +94,9 @@ export default function useDeployment (deviceId: Device['id']) {
     }
   }
 
-  return { find, update, remove, removeByRelease, deployments }
+  function removeAll () {
+    clearNuxtData(key)
+  }
+
+  return { find, update, remove, removeByRelease, removeAll, deployments }
 }

@@ -1,14 +1,12 @@
 <template>
   <div class="page">
     <template v-if="user">
-      <LazyNavbar />
+      <Navbar />
 
-      <client-only>
-        <Notification />
-      </client-only>
+      <Notification />
 
       <n-loading-bar-provider>
-        <div class="flex-1 container mx-auto mt-8 p-4">
+        <div class="flex-1 container mx-auto mt-6 p-4">
           <slot />
         </div>
       </n-loading-bar-provider>

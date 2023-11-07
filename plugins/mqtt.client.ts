@@ -6,6 +6,9 @@ export default defineNuxtPlugin({
   setup: (nuxtApp) => {
     let mqttClient: MqttClient | undefined
 
+    /**
+     * Connects to MQTT broker, sets `connected` state and registers event handlers
+    */
     async function connect (options: {
       uri: string;
       username: string;
@@ -15,7 +18,7 @@ export default defineNuxtPlugin({
 
       const { connected } = useMqtt()
 
-      await disconnect()
+      await mqttClient?.endAsync()
 
       mqttClient = await MQTT.connectAsync(options.uri, {
         keepalive: 90,
@@ -41,12 +44,9 @@ export default defineNuxtPlugin({
       mqttClient.on('message', onMessageArrived)
     }
 
-    function disconnect () {
-      if (mqttClient?.connected) {
-        return mqttClient.endAsync()
-      }
-    }
-
+    /**
+     * Subscribe to all used topics
+     */
     function subscribe () {
       mqttClient?.subscribe([
         'device/+/report/status',
@@ -102,7 +102,7 @@ export default defineNuxtPlugin({
           })
         }
       } else {
-        disconnect()
+        await mqttClient?.endAsync()
       }
     })
 
@@ -110,7 +110,6 @@ export default defineNuxtPlugin({
       provide: {
         mqtt: {
           connect,
-          disconnect,
           publish
         }
       }

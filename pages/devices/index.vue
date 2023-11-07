@@ -55,7 +55,9 @@ const { find } = useDevice()
 
 const devices = await find()
 
-const filteredDevices = computed(() => devices.value?.filter(device => device.name.includes(nameSearch.value)))
+const filteredDevices = computed(
+  () => devices.value?.filter(device => device.name.includes(nameSearch.value)) ?? []
+)
 
 async function onCreate (device: Device) {
   createModalVisible.value = false

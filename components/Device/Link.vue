@@ -1,7 +1,7 @@
 <template>
   <n-form ref="formRef" :model="model" @submit.prevent="onSubmit(handleSubmit)">
     <n-form-item label="Name">
-      <n-select v-model:value="model.selectedDeviceId" :options="options" />
+      <n-select v-model:value="model.selectedDeviceId" :options="selectOptions" />
     </n-form-item>
 
     <div class="flex gap-4">
@@ -38,14 +38,12 @@ const { find } = useDevice()
 
 const devices = await find()
 
-const unlinkedDevices = computed(() => devices.value?.filter(device => device.projectId === null))
+const unlinkedDevices = computed(() => devices.value?.filter(device => device.projectId === null) ?? [])
 
-const options = computed<SelectOption[]>(() => unlinkedDevices.value
-  ? unlinkedDevices.value.map(device => ({
-    label: device.name,
-    value: device.id
-  }))
-  : [])
+const selectOptions = computed<SelectOption[]>(() => unlinkedDevices.value.map(device => ({
+  label: device.name,
+  value: device.id
+})))
 
 async function handleSubmit () {
   const { link } = useDevice()

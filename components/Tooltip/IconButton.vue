@@ -7,7 +7,7 @@
         :type="type"
         :size="size"
         :disabled="disabled"
-        @click="()=> $emit('click')"
+        @click="$emit('click')"
       >
         <template #icon>
           <naive-icon :name="icon" />

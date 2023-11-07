@@ -65,7 +65,9 @@ const versionSearch = ref('')
 
 const releases = await find()
 
-const filteredReleases = computed(() => releases.value?.filter(release => release.version.includes(versionSearch.value)))
+const filteredReleases = computed(
+  () => releases.value?.filter(release => release.version.includes(versionSearch.value)) ?? []
+)
 
 const expandedCollapseName = ref()
 

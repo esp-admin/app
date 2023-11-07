@@ -31,7 +31,7 @@ declare global {
   interface Report extends ReportRaw {}
 
   interface Deployment extends DeploymentRaw {
-    release?: ReleaseRaw;
+    release: ReleaseRaw;
     status: 'started' | 'failed' | 'succeded'
   }
 

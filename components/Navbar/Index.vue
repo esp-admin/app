@@ -16,6 +16,7 @@
         <img
           :src="user!.picture"
           class="notMobileOrTablet w-9 h-9 object-cover rounded-full ring-2 cursor-pointer"
+          alt="avatar"
         >
       </n-dropdown>
     </template>
@@ -25,7 +26,7 @@
     </template>
 
     <template #drawer-footer>
-      <n-button secondary block @click="async () => await logout()">
+      <n-button secondary block @click="logout">
         Logout
       </n-button>
     </template>

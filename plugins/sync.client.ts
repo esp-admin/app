@@ -1,14 +1,20 @@
+/*
+This client-side plugin is intended for state update
+The routine handler `sync` runs every SYNC_INTERVAL_MS
+*/
+
+const DEPLOYMENT_TIMEOUT_MS = 3 * 60 * 1000
+const SYNC_INTERVAL_MS = 10 * 1000
+
 export default defineNuxtPlugin({
   enforce: 'pre',
 
   setup: (nuxtApp) => {
-    const deploymentTimemoutMs = 3 * 60 * 1000
-    const syncIntervalMs = 10 * 1000
     let intervalId:any
 
     nuxtApp.hook('auth:loggedIn', (loggedIn) => {
       if (loggedIn) {
-        intervalId = setInterval(sync, syncIntervalMs)
+        intervalId = setInterval(sync, SYNC_INTERVAL_MS)
       } else if (intervalId) {
         clearInterval(intervalId)
       }
@@ -18,6 +24,9 @@ export default defineNuxtPlugin({
       updateDeployments()
     }
 
+    /**
+     * This function updates all deployments with `failed` status after DEPLOYMENT_TIMEOUT_MS reached
+     */
     async function updateDeployments () {
       const { find } = useDevice()
 
@@ -29,7 +38,7 @@ export default defineNuxtPlugin({
         for (const deployment of deployments.data.value ?? []) {
           if (deployment.status === 'started') {
             const deploymentStartTimestamp = new Date(deployment.createdAt).getTime()
-            const maxDeploymentEndTimestamp = deploymentStartTimestamp + deploymentTimemoutMs
+            const maxDeploymentEndTimestamp = deploymentStartTimestamp + DEPLOYMENT_TIMEOUT_MS
             const now = new Date().getTime()
 
             if (maxDeploymentEndTimestamp < now) {

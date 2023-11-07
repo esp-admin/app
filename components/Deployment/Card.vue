@@ -1,5 +1,5 @@
 <template>
-  <n-card v-if="deployment.release" size="small">
+  <n-card size="small">
     <template #header>
       <TitleDate :title="deployment.release.version" :created-at="deployment.createdAt">
         <template #icon>

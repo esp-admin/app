@@ -1,5 +1,5 @@
 export default function useRelease (projectId: Project['id']) {
-  const key = `releases-${projectId}`
+  const key = `releases-project-${projectId}`
   const releases = useNuxtData<Release[]>(key)
   const loadingBar = useLoadingBar()
 
@@ -26,16 +26,16 @@ export default function useRelease (projectId: Project['id']) {
       method: 'DELETE',
 
       onResponse: async ({ response }) => {
-        if (response.ok) {
-          if (releases.data.value) {
-            const releaseIndex = releases.data.value.findIndex(
-              release => release.id === id
-            )
-            if (releaseIndex >= 0) {
-              releases.data.value.splice(releaseIndex, 1)
-            }
+        if (response.ok && releases.data.value) {
+          const releaseIndex = releases.data.value.findIndex(
+            release => release.id === id
+          )
+          if (releaseIndex >= 0) {
+            releases.data.value.splice(releaseIndex, 1)
           }
+        }
 
+        if (response.ok) {
           const { find } = useDevice()
           const devices = await find()
 

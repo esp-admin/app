@@ -3,9 +3,7 @@ import { destr } from 'destr'
 export default function useReport () {
   const key = 'report'
   const request = '/api/report'
-
   const loadingBar = useLoadingBar()
-
   const report = useNuxtData<Report | undefined>(key)
 
   async function find () {

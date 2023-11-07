@@ -1,7 +1,6 @@
 export default function useMqtt () {
   const key = 'mqtt'
   const request = '/api/mqtt'
-
   const mqtt = useNuxtData<Mqtt | undefined>(key)
   const connected = useState('mqtt_connected')
 

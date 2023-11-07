@@ -5,9 +5,7 @@ export default function useProject () {
   async function find () {
     const request = '/api/projects'
 
-    if (!projects.data.value) {
-      projects.data.value = await useAuthFetch(request)
-    }
+    projects.data.value ||= await useAuthFetch(request)
 
     return projects.data
   }
@@ -18,9 +16,7 @@ export default function useProject () {
 
     const project = useNuxtData<Project>(key)
 
-    if (!project.data.value) {
-      project.data.value = await useAuthFetch(request)
-    }
+    project.data.value ||= await useAuthFetch(request)
 
     return project.data
   }

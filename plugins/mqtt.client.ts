@@ -71,9 +71,11 @@ export default defineNuxtPlugin({
         case 'report':
           useReport().handleReport(mqttMessage)
           break
-        case 'logs':
-          useLog(mqttMessage.deviceId).append(mqttMessage)
+        case 'logs': {
+          const { logs } = useLog(mqttMessage.deviceId)
+          logs.value.push(mqttMessage)
           break
+        }
       }
     }
 

@@ -26,7 +26,7 @@
         icon="ph:trash"
         message="Clear logs"
         secondary
-        @click="clear"
+        @click="logs = []"
       />
     </div>
 
@@ -61,7 +61,7 @@ if (props.device.projectId) {
   projectCommands.value = destr(project.value?.commands)
 }
 
-const { logs, clear } = useLog(props.device.id)
+const { logs } = useLog(props.device.id)
 
 const logsString = computed(() => logs.value.map(log => `${log.type} - ${log.payload}`).join('\n'))
 

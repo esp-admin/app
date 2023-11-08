@@ -20,12 +20,6 @@ export default defineEventHandler(async (event) => {
           name: true,
           id: true
         }
-      },
-      deployments: {
-        select: {
-          status: true,
-          updatedAt: true
-        }
       }
     }
   }).catch((e) => { throw createPrismaError(e) })

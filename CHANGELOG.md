@@ -1,6 +1,46 @@
 # Changelog
 
 
+## v1.2.0-rc
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.1.6-rc...v2.0.0-rc)
+
+### 🔥 Performance
+
+- Fetch devices on loggedIn hook ([b881619](https://github.com/esp-admin/app/commit/b881619))
+- **useReport:** Avoid device status update if not changed ([333da33](https://github.com/esp-admin/app/commit/333da33))
+
+### 🩹 Fixes
+
+- Authorize upload by userId check ([ce986fd](https://github.com/esp-admin/app/commit/ce986fd))
+- **useDeployment:** Fetch deployments on update ([bf93e16](https://github.com/esp-admin/app/commit/bf93e16))
+- Handle undefined loadingBar ([8ea8511](https://github.com/esp-admin/app/commit/8ea8511))
+- **useReport:** Fix parsing on handleStatus ([1b23731](https://github.com/esp-admin/app/commit/1b23731))
+
+### 💅 Refactors
+
+- **ReleaseCard:** Change identifiers ([c257497](https://github.com/esp-admin/app/commit/c257497))
+- ⚠️  Change S3 key naming ([de7b303](https://github.com/esp-admin/app/commit/de7b303))
+- Reduce Empty image size ([57027b8](https://github.com/esp-admin/app/commit/57027b8))
+- **Navbar:** Place horizontal menu left ([f15fcfc](https://github.com/esp-admin/app/commit/f15fcfc))
+- Reduce default icons size to 18px ([4bbd957](https://github.com/esp-admin/app/commit/4bbd957))
+- **models:** Delete Releases on Project delete ([700b304](https://github.com/esp-admin/app/commit/700b304))
+- **useProject:** Clear releases and deployments on delete ([81e0990](https://github.com/esp-admin/app/commit/81e0990))
+- **useRelease:** Remove release files on removeAll ([2d1b112](https://github.com/esp-admin/app/commit/2d1b112))
+- Minor refactoring ([502916d](https://github.com/esp-admin/app/commit/502916d))
+- Create removeArrayElByKey utility ([e970cc7](https://github.com/esp-admin/app/commit/e970cc7))
+- Minor refactoring ([0c4438a](https://github.com/esp-admin/app/commit/0c4438a))
+- Minor refactoring ([b08d44e](https://github.com/esp-admin/app/commit/b08d44e))
+- Increase gaps ([d2bd007](https://github.com/esp-admin/app/commit/d2bd007))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Change S3 key naming ([de7b303](https://github.com/esp-admin/app/commit/de7b303))
+
+### ❤️ Contributors
+
+- Becem-gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v1.1.6-rc
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.1.5-rc...v1.1.6-rc)

@@ -34,12 +34,9 @@ export default defineNuxtPlugin({
       const devices = await find()
 
       for (const device of devices.value ?? []) {
-        const { find, update } = useDeployment(device.id)
+        const { deployments, update } = useDeployment(device.id)
 
-        // No need to fetch deployments, we only need to update the existant state
-        const deployments = await find(false)
-
-        for (const deployment of deployments.value ?? []) {
+        for (const deployment of deployments.data.value ?? []) {
           if (deployment.status === 'started') {
             const deploymentStartTimestamp = new Date(deployment.createdAt).getTime()
             const maxDeploymentEndTimestamp = deploymentStartTimestamp + DEPLOYMENT_TIMEOUT_MS

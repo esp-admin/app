@@ -40,13 +40,7 @@ export default function useDeployment (deviceId: Device['id']) {
 
       onResponse: ({ response }) => {
         if (response.ok && deployments.data.value) {
-          const deploymentIndex = deployments.data.value.findIndex(
-            deployment => deployment.id === id
-          )
-
-          if (deploymentIndex >= 0) {
-            deployments.data.value.splice(deploymentIndex, 1)
-          }
+          removeArrayElByKey(deployments.data.value, 'id', id)
         }
       }
     })
@@ -83,13 +77,7 @@ export default function useDeployment (deviceId: Device['id']) {
 
   function removeByRelease (releaseId: Release['id']) {
     if (deployments.data.value) {
-      const deploymentIndex = deployments.data.value.findIndex(
-        deployment => deployment.releaseId === releaseId
-      )
-
-      if (deploymentIndex >= 0) {
-        deployments.data.value.splice(deploymentIndex, 1)
-      }
+      removeArrayElByKey(deployments.data.value, 'releaseId', releaseId)
     }
   }
 

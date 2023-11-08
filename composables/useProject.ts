@@ -29,12 +29,7 @@ export default function useProject () {
 
       onResponse: ({ response }) => {
         if (response.ok && projects.data.value) {
-          const projectIndex = projects.data.value.findIndex(
-            project => project.id === id
-          )
-          if (projectIndex >= 0) {
-            projects.data.value.splice(projectIndex, 1)
-          }
+          removeArrayElByKey(projects.data.value, 'id', id)
         }
 
         if (response.ok) {

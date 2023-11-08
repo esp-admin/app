@@ -29,13 +29,7 @@ export default function useDevice () {
 
       onResponse: ({ response }) => {
         if (response.ok && devices.data.value) {
-          const deviceIndex = devices.data.value.findIndex(
-            device => device.id === id
-          )
-
-          if (deviceIndex >= 0) {
-            devices.data.value.splice(deviceIndex, 1)
-          }
+          removeArrayElByKey(devices.data.value, 'id', id)
         }
 
         if (response.ok) {

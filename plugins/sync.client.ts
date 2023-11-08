@@ -12,8 +12,11 @@ export default defineNuxtPlugin({
   setup: (nuxtApp) => {
     let intervalId:any
 
-    nuxtApp.hook('auth:loggedIn', (loggedIn) => {
+    nuxtApp.hook('auth:loggedIn', async (loggedIn) => {
       if (loggedIn) {
+        // All devices are fetched on login event
+        await useDevice().find()
+
         intervalId = setInterval(sync, SYNC_INTERVAL_MS)
       } else if (intervalId) {
         clearInterval(intervalId)
@@ -30,7 +33,6 @@ export default defineNuxtPlugin({
     async function updateDeployments () {
       const { find } = useDevice()
 
-      // All devices are fetched on login event
       const devices = await find()
 
       for (const device of devices.value ?? []) {

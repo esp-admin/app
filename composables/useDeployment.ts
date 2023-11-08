@@ -77,15 +77,9 @@ export default function useDeployment (deviceId: Device['id']) {
     }
   }
 
-  function removeByRelease (releaseId: Release['id']) {
-    if (deployments.data.value) {
-      removeArrayElByKey(deployments.data.value, 'releaseId', releaseId)
-    }
-  }
-
   function removeAll () {
     clearNuxtData(key)
   }
 
-  return { find, updateStatus, remove, removeByRelease, removeAll, deployments }
+  return { find, updateStatus, remove, removeAll, deployments }
 }

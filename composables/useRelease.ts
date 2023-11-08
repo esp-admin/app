@@ -66,12 +66,13 @@ export default function useRelease (projectId: Project['id']) {
   }
 
   async function removeDeployments (id: Release['id']) {
-    const { find } = useDevice()
-    const devices = await find()
+    const devices = await useDevice().find()
 
     for (const device of devices.value ?? []) {
-      const { removeByRelease } = useDeployment(device.id)
-      removeByRelease(id)
+      const { deployments } = useDeployment(device.id)
+      if (deployments.data.value) {
+        removeArrayElByKey(deployments.data.value, 'releaseId', id)
+      }
     }
   }
 

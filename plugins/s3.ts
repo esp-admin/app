@@ -5,6 +5,7 @@ export default defineNuxtPlugin({
 
       const token = await getAccessToken()
 
+      // Passing access token for upload and remove endpoints
       headers.authorization = `Bearer ${token}`
     }
   }

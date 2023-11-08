@@ -61,7 +61,7 @@ if (props.device.projectId) {
   projectCommands.value = destr(project.value?.commands)
 }
 
-const { logs } = useLog(props.device.id)
+const logs = useLog(props.device.id).find()
 
 const logsString = computed(() => logs.value.map(log => `${log.type} - ${log.payload}`).join('\n'))
 

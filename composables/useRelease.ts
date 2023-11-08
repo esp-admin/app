@@ -80,8 +80,10 @@ export default function useRelease (projectId: Project['id']) {
 
     const urls = releases.value?.map(release => release.downloadPath) ?? []
 
+    // Remove all uploaded files
     await useUpload().remove(urls)
 
+    // Clear related deployments state
     releases.value?.forEach(release => removeDeployments(release.id))
 
     clearNuxtData(key)

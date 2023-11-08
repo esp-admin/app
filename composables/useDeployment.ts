@@ -3,10 +3,10 @@ export default function useDeployment (deviceId: Device['id']) {
   const deployments = useNuxtData<Deployment[]>(key)
   const loadingBar = useLoadingBar()
 
-  async function find () {
+  async function find (fetchData = true) {
     const request = '/api/deployments'
 
-    if (!deployments.data.value) {
+    if (!deployments.data.value && fetchData) {
       loadingBar.start()
 
       deployments.data.value = await useAuthFetch<Deployment[]>(request, {
@@ -46,7 +46,7 @@ export default function useDeployment (deviceId: Device['id']) {
     })
   }
 
-  async function update (id: Deployment['id'], status: Deployment['status'], saveToDB = false) {
+  async function update (id: Deployment['id'], status: Deployment['status'], fetchData = false) {
     if (!deployments.data.value) { return }
 
     const deploymentIndex = deployments.data.value.findIndex(
@@ -56,7 +56,7 @@ export default function useDeployment (deviceId: Device['id']) {
     if (deploymentIndex >= 0) {
       deployments.data.value[deploymentIndex].status = status
 
-      if (saveToDB) {
+      if (fetchData) {
         const request = `/api/deployments/${id}`
 
         return await useAuthFetch(request, {
@@ -85,5 +85,5 @@ export default function useDeployment (deviceId: Device['id']) {
     clearNuxtData(key)
   }
 
-  return { find, update, remove, removeByRelease, removeAll, deployments }
+  return { find, update, remove, removeByRelease, removeAll }
 }

@@ -21,7 +21,7 @@ export default defineNuxtPlugin({
       await mqttClient?.endAsync()
 
       mqttClient = await MQTT.connectAsync(options.uri, {
-        keepalive: 90,
+        keepalive: 90, // This insures that websocket connection is kept on background with power saver on
         reconnectPeriod: 1000,
         username: options.username,
         password: options.password
@@ -71,11 +71,9 @@ export default defineNuxtPlugin({
         case 'report':
           useReport().handleReport(mqttMessage)
           break
-        case 'logs': {
-          const { logs } = useLog(mqttMessage.deviceId)
-          logs.value.push(mqttMessage)
+        case 'logs':
+          useLog(mqttMessage.deviceId).append(mqttMessage)
           break
-        }
       }
     }
 
@@ -95,6 +93,7 @@ export default defineNuxtPlugin({
         const mqtt = await find()
 
         if (mqtt.value) {
+          // Do not wait for connection, UX optimization
           connect({
             uri: mqtt.value.uriWS,
             password: mqtt.value.password,
@@ -102,7 +101,8 @@ export default defineNuxtPlugin({
           })
         }
       } else {
-        await mqttClient?.endAsync()
+        // Do not wait for disconnection, UX optimization
+        mqttClient?.endAsync()
       }
     })
 

@@ -30,19 +30,24 @@ export default defineNuxtPlugin({
     async function updateDeployments () {
       const { find } = useDevice()
 
+      // All devices are fetched on login event
       const devices = await find()
 
       for (const device of devices.value ?? []) {
-        const { deployments, update } = useDeployment(device.id)
+        const { find, update } = useDeployment(device.id)
 
-        for (const deployment of deployments.data.value ?? []) {
+        // No need to fetch deployments, we only need to update the existant state
+        const deployments = await find(false)
+
+        for (const deployment of deployments.value ?? []) {
           if (deployment.status === 'started') {
             const deploymentStartTimestamp = new Date(deployment.createdAt).getTime()
             const maxDeploymentEndTimestamp = deploymentStartTimestamp + DEPLOYMENT_TIMEOUT_MS
             const now = new Date().getTime()
 
             if (maxDeploymentEndTimestamp < now) {
-              update(deployment.id, 'failed', true)
+              // This deployment has reached timeout, thus its status should be updated to `failed`
+              await update(deployment.id, 'failed', true)
             }
           }
         }

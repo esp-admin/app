@@ -33,6 +33,7 @@ export default function useProject () {
         }
 
         if (response.ok) {
+          // Clear all related releases
           useRelease(id).removeAll()
         }
       }

@@ -3,7 +3,7 @@ This client-side plugin is intended for state update
 The routine handler `sync` runs every SYNC_INTERVAL_MS
 */
 
-const DEPLOYMENT_TIMEOUT_MS = 3 * 60 * 1000
+const DEPLOYMENT_TIMEOUT_MS = 4 * 60 * 1000
 const SYNC_INTERVAL_MS = 10 * 1000
 
 export default defineNuxtPlugin({
@@ -25,7 +25,7 @@ export default defineNuxtPlugin({
     }
 
     /**
-     * This function updates all deployments with `failed` status after DEPLOYMENT_TIMEOUT_MS reached
+     * This function updates all existant deployments with `failed` status after DEPLOYMENT_TIMEOUT_MS reached
      */
     async function updateDeployments () {
       const { find } = useDevice()

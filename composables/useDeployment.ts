@@ -53,29 +53,30 @@ export default function useDeployment (deviceId: Device['id']) {
   }
 
   async function update (id: Deployment['id'], status: Deployment['status'], saveToDB = false) {
-    if (deployments.data.value) {
-      const deploymentIndex = deployments.data.value.findIndex(
-        deployment => deployment.id === id
-      )
+    if (!deployments.data.value) { return }
 
-      if (deploymentIndex >= 0) {
-        deployments.data.value[deploymentIndex].status = status
+    const deploymentIndex = deployments.data.value.findIndex(
+      deployment => deployment.id === id
+    )
 
-        if (saveToDB) {
-          const request = `/api/deployments/${id}`
-          return await useAuthFetch(request, {
-            method: 'PATCH',
-            body: {
-              status
-            }
-          })
-        }
-      } else {
-        const deployment = await findOne(id)
+    if (deploymentIndex >= 0) {
+      deployments.data.value[deploymentIndex].status = status
 
-        if (deployment.value) {
-          deployments.data.value.unshift(deployment.value)
-        }
+      if (saveToDB) {
+        const request = `/api/deployments/${id}`
+
+        return await useAuthFetch(request, {
+          method: 'PATCH',
+          body: {
+            status
+          }
+        })
+      }
+    } else {
+      const deployment = await findOne(id)
+
+      if (deployment.value) {
+        deployments.data.value.unshift(deployment.value)
       }
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-6">
+  <div class="flex flex-col gap-8">
     <n-result v-if="!deployments?.length" class="col-span-full my-5" title="No deployments found">
       <template #icon>
         <ResultEmpty />

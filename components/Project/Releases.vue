@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-6">
+  <div class="flex flex-col gap-8">
     <div v-if="releases?.length" class="col-span-full flex gap-4">
       <n-input v-model:value="versionSearch" placeholder="Search by version">
         <template #prefix>

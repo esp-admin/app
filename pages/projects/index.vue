@@ -6,7 +6,7 @@
       </template>
     </n-page-header>
 
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-3 gap-8">
       <div v-if="projects?.length" class="col-span-full flex gap-4">
         <n-input v-model:value="nameSearch" placeholder="Search by name">
           <template #prefix>

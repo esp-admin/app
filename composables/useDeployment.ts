@@ -7,7 +7,7 @@ export default function useDeployment (deviceId: Device['id']) {
     const request = '/api/deployments'
 
     if (!deployments.data.value) {
-      loadingBar.start()
+      loadingBar?.start()
 
       deployments.data.value = await useAuthFetch<Deployment[]>(request, {
         query: {
@@ -15,7 +15,7 @@ export default function useDeployment (deviceId: Device['id']) {
         }
       })
 
-      loadingBar.finish()
+      loadingBar?.finish()
     }
 
     return deployments.data
@@ -46,32 +46,32 @@ export default function useDeployment (deviceId: Device['id']) {
     })
   }
 
-  async function update (id: Deployment['id'], status: Deployment['status'], fetchData = false) {
-    const deployments = await find()
+  async function updateStatus (id: Deployment['id'], status: Deployment['status'], fetchData = false) {
+    if (fetchData) {
+      const request = `/api/deployments/${id}`
 
-    if (deployments.value) {
-      const deploymentIndex = deployments.value.findIndex(
+      await useAuthFetch(request, {
+        method: 'PATCH',
+        body: {
+          status
+        }
+      })
+    }
+
+    await find()
+
+    if (deployments.data.value) {
+      const deploymentIndex = deployments.data.value.findIndex(
         deployment => deployment.id === id
       )
 
       if (deploymentIndex >= 0) {
-        deployments.value[deploymentIndex].status = status
-
-        if (fetchData) {
-          const request = `/api/deployments/${id}`
-
-          return await useAuthFetch(request, {
-            method: 'PATCH',
-            body: {
-              status
-            }
-          })
-        }
+        deployments.data.value[deploymentIndex].status = status
       } else {
         const deployment = await findOne(id)
 
         if (deployment.value) {
-          deployments.value.unshift(deployment.value)
+          deployments.data.value.unshift(deployment.value)
         }
       }
     }
@@ -87,5 +87,5 @@ export default function useDeployment (deviceId: Device['id']) {
     clearNuxtData(key)
   }
 
-  return { find, update, remove, removeByRelease, removeAll, deployments }
+  return { find, updateStatus, remove, removeByRelease, removeAll, deployments }
 }

@@ -34,7 +34,7 @@ export default defineNuxtPlugin({
       const devices = await find()
 
       for (const device of devices.value ?? []) {
-        const { deployments, update } = useDeployment(device.id)
+        const { deployments, updateStatus } = useDeployment(device.id)
 
         for (const deployment of deployments.data.value ?? []) {
           if (deployment.status === 'started') {
@@ -44,7 +44,7 @@ export default defineNuxtPlugin({
 
             if (maxDeploymentEndTimestamp < now) {
               // This deployment has reached timeout, thus its status should be updated to `failed`
-              await update(deployment.id, 'failed', true)
+              await updateStatus(deployment.id, 'failed', true)
             }
           }
         }

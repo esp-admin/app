@@ -68,14 +68,14 @@ export default function useReport () {
   }
 
   async function handleUpdate (message: ReportMessage) {
-    const { update } = useDeployment(message.deviceId)
+    const { updateStatus } = useDeployment(message.deviceId)
 
     const { deploymentId, status } = destr<{
       deploymentId: Deployment['id'];
       status: Deployment['status'];
     }>(message.payload)
 
-    await update(deploymentId, status)
+    await updateStatus(deploymentId, status)
   }
 
   return { find, add, update, handleReport }

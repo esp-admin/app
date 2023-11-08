@@ -56,11 +56,11 @@ export default function useRelease (projectId: Project['id']) {
   async function findDeployments (id: Release['id']) {
     const request = `/api/releases/${id}/deployments`
 
-    loadingBar.start()
+    loadingBar?.start()
 
     const deployments = await useAuthFetch<Deployment[]>(request)
 
-    loadingBar.finish()
+    loadingBar?.finish()
 
     return deployments
   }

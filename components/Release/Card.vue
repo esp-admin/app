@@ -65,15 +65,17 @@ const linkedDevices = await findLinked(props.release.projectId)
 const releaseDeployments = await findDeployments(props.release.id)
 
 const linkedDevicesWithDeployment = computed(
-  () => linkedDevices.value.map((device) => {
-    const { deployments: deviceDeployments } = useDeployment(device.id)
+  () => linkedDevices.value.map(
+    (device) => {
+      const { deployments: deviceDeployments } = useDeployment(device.id)
 
-    const initialDeployment = releaseDeployments.find(deployment => deployment.deviceId === device.id)
+      const initialDeployment = releaseDeployments.value?.find(deployment => deployment.deviceId === device.id)
 
-    const updatedDeployment = deviceDeployments.data.value?.find(deployment => deployment.releaseId === props.release.id)
+      const updatedDeployment = deviceDeployments.data.value?.find(deployment => deployment.releaseId === props.release.id)
 
-    return defu(device, { deployment: updatedDeployment }, { deployment: initialDeployment })
-  }))
+      return defu(device, { deployment: updatedDeployment }, { deployment: initialDeployment })
+    }
+  ))
 
 function onDelete () {
   deleteModalVisible.value = false

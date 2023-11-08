@@ -55,14 +55,19 @@ export default function useRelease (projectId: Project['id']) {
 
   async function findDeployments (id: Release['id']) {
     const request = `/api/releases/${id}/deployments`
+    const key = `deployments-release-${id}`
 
-    loadingBar?.start()
+    const deployments = useNuxtData<Deployment[]>(key)
 
-    const deployments = await useAuthFetch<Deployment[]>(request)
+    if (!deployments.data.value) {
+      loadingBar?.start()
 
-    loadingBar?.finish()
+      deployments.data.value = await useAuthFetch<Deployment[]>(request)
 
-    return deployments
+      loadingBar?.finish()
+    }
+
+    return deployments.data
   }
 
   async function removeDeployments (id: Release['id']) {

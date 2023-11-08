@@ -70,7 +70,8 @@ async function handleSubmit () {
   const { remove } = useProject()
 
   await remove(props.project.id)
-    .then(project => emits('done', project))
+
+  emits('done')
 }
 
 </script>

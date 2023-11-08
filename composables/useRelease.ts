@@ -7,13 +7,13 @@ export default function useRelease (projectId: Project['id']) {
     const request = '/api/releases'
 
     if (!releases.data.value) {
-      loadingBar.start()
+      loadingBar?.start()
 
       releases.data.value = await useAuthFetch<Release[]>(request, {
         query: { projectId }
       })
 
-      loadingBar.finish()
+      loadingBar?.finish()
     }
 
     return releases.data
@@ -82,6 +82,10 @@ export default function useRelease (projectId: Project['id']) {
 
   async function removeAll () {
     const releases = await find()
+
+    const urls = releases.value?.map(release => release.downloadPath) ?? []
+
+    await useUpload().remove(urls)
 
     releases.value?.forEach(release => removeDeployments(release.id))
 

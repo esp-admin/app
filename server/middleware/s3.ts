@@ -1,10 +1,11 @@
 // @ts-nocheck
 export default defineEventHandler((event) => {
-  const isS3Mutation = getRequestURL(event).pathname.includes('s3/mutation')
-  const isS3Query = getRequestURL(event).pathname.includes('s3/query')
+  const { pathname } = getRequestURL(event)
+  const isS3Mutation = pathname.startsWith('/api/s3/mutation')
+  const isS3Query = pathname.startsWith('/api/s3/query')
 
   if (isS3Mutation) {
-    checkUser(event)
+    checkUpload(event)
 
     // https://github.com/unjs/nitro/issues/1719
     const isBase64 = (value: string) => {

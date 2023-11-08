@@ -54,9 +54,9 @@ async function handleSubmit () {
 
   await remove(props.release.id)
     .then(async (release) => {
-      const { remove } = useS3Object()
+      const { remove } = useUpload()
 
-      await remove(props.release.downloadPath)
+      await remove([props.release.downloadPath])
 
       emits('done', release)
     })

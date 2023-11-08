@@ -95,12 +95,10 @@ rules.value = {
 }
 
 async function handleSubmit () {
-  const { upload } = useS3Object()
+  const { upload } = useUpload()
 
   try {
-    model.value.downloadPath = await upload(model.value.file!, {
-      prefix: 'binaries/'
-    })
+    model.value.downloadPath = await upload(model.value.file!)
   } catch (e) {
     apiErrors.value.uploadFailed = true
     return

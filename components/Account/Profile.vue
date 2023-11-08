@@ -55,13 +55,10 @@ function handleReset () {
 
 async function updateAccount () {
   try {
-    const { upload } = useS3Object()
+    const { upload } = useUpload()
 
     if (model.value.file) {
-      model.value.picture = await upload(model.value.file, {
-        url: model.value.picture,
-        prefix: 'images/'
-      })
+      model.value.picture = await upload(model.value.file, model.value.picture)
     }
   } catch (e) {
     apiErrors.value.uploadFailed = true

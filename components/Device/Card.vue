@@ -6,7 +6,7 @@
       </template>
 
       <template #header-extra>
-        <DeviceStatus :device="device" :size="24" />
+        <DeviceStatus :device="device" :size="22" />
       </template>
 
       <n-text depth="2">

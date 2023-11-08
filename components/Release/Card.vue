@@ -6,7 +6,7 @@
           <n-button secondary>
             {{ device.name }}
             <template #icon>
-              <DeploymentStatus :deployment="device.deployment" :size="18" />
+              <DeploymentStatus :deployment="device.deployment" />
             </template>
           </n-button>
         </nuxt-link>

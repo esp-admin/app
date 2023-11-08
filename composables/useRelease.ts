@@ -36,15 +36,7 @@ export default function useRelease (projectId: Project['id']) {
         }
 
         if (response.ok) {
-          const { find } = useDevice()
-          const devices = await find()
-
-          if (devices.value) {
-            for (const device of devices.value) {
-              const { removeByRelease } = useDeployment(device.id)
-              removeByRelease(id)
-            }
-          }
+          await removeDeployments(id)
         }
       }
     })
@@ -78,5 +70,23 @@ export default function useRelease (projectId: Project['id']) {
     return deployments
   }
 
-  return { find, remove, add, findDeployments }
+  async function removeDeployments (id: Release['id']) {
+    const { find } = useDevice()
+    const devices = await find()
+
+    for (const device of devices.value ?? []) {
+      const { removeByRelease } = useDeployment(device.id)
+      removeByRelease(id)
+    }
+  }
+
+  async function removeAll () {
+    const releases = await find()
+
+    releases.value?.forEach(release => removeDeployments(release.id))
+
+    clearNuxtData(key)
+  }
+
+  return { find, remove, add, findDeployments, removeAll }
 }

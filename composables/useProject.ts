@@ -36,6 +36,10 @@ export default function useProject () {
             projects.data.value.splice(projectIndex, 1)
           }
         }
+
+        if (response.ok) {
+          useRelease(id).removeAll()
+        }
       }
     })
   }

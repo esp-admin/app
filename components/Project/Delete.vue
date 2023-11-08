@@ -40,7 +40,6 @@ const model = ref({
 const { apiErrors, formRef, onSubmit, pending, rules, edited } = useNaiveForm(model)
 
 apiErrors.value = {
-  hasReleases: false,
   hasDevices: false
 }
 
@@ -50,10 +49,6 @@ rules.value = {
       message: ERROR_CONFIRM_REQUIRED,
       validator: (_, value) => value === 'confirm',
       trigger: 'input'
-    },
-    {
-      message: 'Make sure to remove related releases first',
-      validator: () => !apiErrors.value.hasReleases
     },
     {
       message: 'Make sure to unlink devices first',
@@ -76,9 +71,6 @@ async function handleSubmit () {
 
   await remove(props.project.id)
     .then(project => emits('done', project))
-    .catch((error) => {
-      apiErrors.value.hasReleases = error.data?.message.includes('Required relation violation')
-    })
 }
 
 </script>

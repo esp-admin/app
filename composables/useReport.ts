@@ -60,20 +60,20 @@ export default function useReport () {
   async function handleStatus (message: ReportMessage) {
     const { update, find } = useDevice()
 
-    const payload = destr<Device>(message.payload)
+    const { status } = destr<{status: Device['status']}>(message.payload)
 
     const devices = await find()
 
     if (devices.value) {
-      const deviceIndex = devices.value.findIndex(device => device.id === payload.id)
+      const deviceIndex = devices.value.findIndex(device => device.id === message.deviceId)
 
-      if (deviceIndex >= 0 && devices.value[deviceIndex].status === payload.status) {
+      if (deviceIndex >= 0 && devices.value[deviceIndex].status === status) {
         return
       }
     }
 
     await update(message.deviceId, {
-      status: payload.status
+      status
     })
   }
 

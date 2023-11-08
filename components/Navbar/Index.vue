@@ -1,5 +1,5 @@
 <template>
-  <naive-navbar :routes="routes" :drawer-routes="drawerRoutes" menu-placement="center">
+  <naive-navbar :routes="routes" :drawer-routes="drawerRoutes" menu-placement="left">
     <template #start>
       <nuxt-link to="/">
         <Logo />

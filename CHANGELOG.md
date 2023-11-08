@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v1.2.1-rc
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.2.0-rc...v1.2.1-rc)
+
+### 🩹 Fixes
+
+- **DeviceVariables:** Handle case of undefined project variables ([f649c2a](https://github.com/esp-admin/app/commit/f649c2a))
+- Remove unused deployments field from get device endpoint ([f94dd00](https://github.com/esp-admin/app/commit/f94dd00))
+
+### ❤️ Contributors
+
+- Becem-gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v1.2.0-rc
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.1.6-rc...v2.0.0-rc)

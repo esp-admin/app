@@ -1,6 +1,33 @@
 # Changelog
 
 
+## v1.2.2-rc
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.2.1-rc...v1.2.2-rc)
+
+### 🔥 Performance
+
+- **useRelease:** Cache findDeployments result ([2c1a611](https://github.com/esp-admin/app/commit/2c1a611))
+
+### 💅 Refactors
+
+- **useDeployment:** Remove removeByRelease ([858bd94](https://github.com/esp-admin/app/commit/858bd94))
+- **report:** Add deviceId and projectId to body of custom report webhook ([37e490f](https://github.com/esp-admin/app/commit/37e490f))
+- **report:** Add device link to email template ([c62758f](https://github.com/esp-admin/app/commit/c62758f))
+- **passwordReset:** Update email template ([2d68f7a](https://github.com/esp-admin/app/commit/2d68f7a))
+- **verifyEmail:** Update email template ([f9da56a](https://github.com/esp-admin/app/commit/f9da56a))
+- Create filteredArrayByKey utility ([a42d662](https://github.com/esp-admin/app/commit/a42d662))
+- **ProjectReleases:** Add scrollbar to releases list ([7995ed2](https://github.com/esp-admin/app/commit/7995ed2))
+- Remove vertical margins on empty result ([151cc52](https://github.com/esp-admin/app/commit/151cc52))
+
+### 🏡 Chore
+
+- Update main link in tmail templates ([aeca055](https://github.com/esp-admin/app/commit/aeca055))
+
+### ❤️ Contributors
+
+- Becem-gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v1.2.1-rc
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.2.0-rc...v1.2.1-rc)

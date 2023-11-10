@@ -11,7 +11,7 @@
 
     <FormButtons v-if="projectVariables?.length" :loading="pending" :disabled="!edited || pending" @reset="reset" />
 
-    <n-result v-else class="col-span-full my-5" title="No variables found">
+    <n-result v-else class="col-span-full" title="No variables found">
       <template #icon>
         <ResultEmpty />
       </template>

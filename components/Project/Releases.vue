@@ -12,7 +12,7 @@
       </n-button>
     </div>
 
-    <n-result v-else class="col-span-full my-5" title="No releases found">
+    <n-result v-else class="col-span-full" title="No releases found">
       <template #icon>
         <ResultEmpty />
       </template>

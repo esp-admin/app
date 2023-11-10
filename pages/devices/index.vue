@@ -19,7 +19,7 @@
         </n-button>
       </div>
 
-      <n-result v-else class="col-span-full my-5" title="No devices found">
+      <n-result v-else class="col-span-full" title="No devices found">
         <template #icon>
           <ResultEmpty />
         </template>

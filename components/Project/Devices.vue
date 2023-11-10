@@ -23,7 +23,7 @@
       </template>
     </n-result>
 
-    <DeviceCard v-for="device of nameSearch ? filteredDevices : linkedDevices" :key="device.id" :device="device" />
+    <DeviceCard v-for="device of filteredDevices " :key="device.id" :device="device" />
 
     <n-modal
       v-model:show="linkModalVisible"
@@ -50,9 +50,7 @@ const linkedDevices = await findLinked(props.project.id)
 
 const nameSearch = ref('')
 
-const filteredDevices = computed(
-  () => linkedDevices.value.filter(device => device.name.includes(nameSearch.value)) ?? []
-)
+const filteredDevices = filteredArrayByKey(linkedDevices, 'name', nameSearch)
 
 function onLink () {
   linkModalVisible.value = false

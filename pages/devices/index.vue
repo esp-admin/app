@@ -30,7 +30,7 @@
         </template>
       </n-result>
 
-      <DeviceCard v-for="device of nameSearch ? filteredDevices : devices" :key="device.id" :device="device" />
+      <DeviceCard v-for="device of filteredDevices" :key="device.id" :device="device" />
     </div>
 
     <n-modal
@@ -55,9 +55,7 @@ const { find } = useDevice()
 
 const devices = await find()
 
-const filteredDevices = computed(
-  () => devices.value?.filter(device => device.name.includes(nameSearch.value)) ?? []
-)
+const filteredDevices = filteredArrayByKey(devices, 'name', nameSearch)
 
 async function onCreate (device: Device) {
   createModalVisible.value = false

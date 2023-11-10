@@ -30,7 +30,7 @@
         </template>
       </n-result>
 
-      <ProjectCard v-for="project of nameSearch ? filteredProjects : projects " :key="project.id" :project="project" />
+      <ProjectCard v-for="project of filteredProjects" :key="project.id" :project="project" />
     </div>
 
     <n-modal
@@ -54,9 +54,7 @@ const nameSearch = ref()
 const { find } = useProject()
 const projects = await find()
 
-const filteredProjects = computed(
-  () => projects.value?.filter(project => project.name.includes(nameSearch.value)) ?? []
-)
+const filteredProjects = filteredArrayByKey(projects, 'name', nameSearch)
 
 async function onCreate (project: Project) {
   createModalVisible.value = false

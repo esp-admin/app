@@ -25,7 +25,7 @@
 
     <n-collapse :expanded-names="expandedCollapseName" @click="expandedCollapseName = undefined">
       <n-collapse-item
-        v-for="release of versionSearch ? filteredReleases : releases"
+        v-for="release of filteredReleases"
         :id="`collapse-item-${release.id}`"
         :key="release.id"
         :name="release.id"
@@ -65,9 +65,7 @@ const versionSearch = ref('')
 
 const releases = await find()
 
-const filteredReleases = computed(
-  () => releases.value?.filter(release => release.version.includes(versionSearch.value)) ?? []
-)
+const filteredReleases = filteredArrayByKey(releases, 'version', versionSearch)
 
 const expandedCollapseName = ref()
 

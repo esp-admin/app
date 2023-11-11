@@ -1,5 +1,34 @@
 # Changelog
 
+## v1.2.3-rc
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.2.2-rc...v1.2.3-rc)
+
+### 🩹 Fixes
+
+- **removeArrayElByKey:** Remove all elements passing condition ([14d6009](https://github.com/esp-admin/app/commit/14d6009))
+- Hide pagination on empty list ([893606c](https://github.com/esp-admin/app/commit/893606c))
+- Remove unused project field from get device endpoint ([2af3a8d](https://github.com/esp-admin/app/commit/2af3a8d))
+- **usePagination:** Fix case page exceed pageCount ([f1e0fab](https://github.com/esp-admin/app/commit/f1e0fab))
+
+### 💅 Refactors
+
+- **ui:** Refactor cards ([1c4570f](https://github.com/esp-admin/app/commit/1c4570f))
+- **textarea:** Remove autosize ([43f4c84](https://github.com/esp-admin/app/commit/43f4c84))
+- Add pagination to releases and deployments ([18bc2b3](https://github.com/esp-admin/app/commit/18bc2b3))
+- Disable auto expand of release card ([5e8f432](https://github.com/esp-admin/app/commit/5e8f432))
+- Remove tooltip on device and deployment status ([e587d68](https://github.com/esp-admin/app/commit/e587d68))
+- Minor refactoring ([04a26d1](https://github.com/esp-admin/app/commit/04a26d1))
+
+### 🏡 Chore
+
+- **design:** Re-design cards ([0ce6397](https://github.com/esp-admin/app/commit/0ce6397))
+- Move empty.svg to assets ([cdf7d00](https://github.com/esp-admin/app/commit/cdf7d00))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.2.2-rc
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.2.1-rc...v1.2.2-rc)

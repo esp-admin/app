@@ -53,9 +53,9 @@ rules.value = {
 async function handleSubmit () {
   const { remove } = useDeployment(props.deployment.deviceId)
 
-  await remove(props.deployment.id).then((deployment) => {
-    emits('done', deployment)
-  })
+  await remove(props.deployment.id)
+
+  emits('done')
 }
 
 </script>

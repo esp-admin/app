@@ -1,5 +1,5 @@
 <template>
-  <n-tooltip>
+  <n-tooltip trigger="hover">
     <template #trigger>
       <n-button
         :secondary="secondary"

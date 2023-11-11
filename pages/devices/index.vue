@@ -2,7 +2,7 @@
   <div>
     <n-page-header title="Devices" class="mb-8">
       <template #avatar>
-        <naive-icon name="ph:cpu" />
+        <naive-icon name="ph:cpu" :size="20" />
       </template>
     </n-page-header>
 

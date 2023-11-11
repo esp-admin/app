@@ -2,7 +2,7 @@
   <div>
     <n-page-header title="Projects" class="mb-8">
       <template #avatar>
-        <naive-icon name="ph:code" />
+        <naive-icon name="ph:code" :size="20" />
       </template>
     </n-page-header>
 

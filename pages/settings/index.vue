@@ -2,7 +2,7 @@
   <div>
     <n-page-header title="Settings" class="mb-8">
       <template #avatar>
-        <naive-icon name="ph:gear" />
+        <naive-icon name="ph:gear" :size="20" />
       </template>
     </n-page-header>
 

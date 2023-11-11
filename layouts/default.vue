@@ -6,7 +6,7 @@
       <Notification />
 
       <n-loading-bar-provider>
-        <div class="flex-1 container mx-auto mt-6 p-4">
+        <div class="flex-1 container mx-auto mt-6 mb-4 p-4">
           <slot />
         </div>
       </n-loading-bar-provider>

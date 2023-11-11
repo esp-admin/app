@@ -29,8 +29,8 @@
           <ReleaseItem :release="release" />
         </n-list-item>
 
-        <template #footer>
-          <n-pagination v-model:page="page" :page-count="pageCount" />
+        <template v-if="pageCount > 1" #footer>
+          <n-pagination v-model:page="page" :page-count="pageCount" class="my-1" />
         </template>
       </n-list>
     </template>

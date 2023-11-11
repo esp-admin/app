@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col mb-1">
+  <div class="flex flex-col">
     <n-text class="font-medium">
       {{ title }}
     </n-text>

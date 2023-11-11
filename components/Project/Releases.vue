@@ -24,9 +24,13 @@
     </n-result>
 
     <n-list bordered show-divider hoverable>
-      <n-list-item v-for="release of filteredReleases" :key="release.id">
+      <n-list-item v-for="release of releasesPaginated" :key="release.id">
         <ReleaseItem :release="release" />
       </n-list-item>
+
+      <template #footer>
+        <n-pagination v-model:page="page" :page-count="pageCount" />
+      </template>
     </n-list>
 
     <n-modal
@@ -54,6 +58,8 @@ const versionSearch = ref('')
 const releases = await find()
 
 const filteredReleases = filteredArrayByKey(releases, 'version', versionSearch)
+
+const { output: releasesPaginated, page, pageCount } = usePagination(filteredReleases)
 
 const expandedCollapseName = ref()
 

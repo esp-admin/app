@@ -7,9 +7,13 @@
     </n-result>
 
     <n-list bordered show-divider>
-      <n-list-item v-for="deployment of deployments" :key="deployment.id">
+      <n-list-item v-for="deployment of deploymentsPaginated" :key="deployment.id">
         <DeploymentItem :deployment="deployment" />
       </n-list-item>
+
+      <template #footer>
+        <n-pagination v-model:page="page" :page-count="pageCount" />
+      </template>
     </n-list>
   </div>
 </template>
@@ -22,6 +26,8 @@ const props = defineProps<{ device: Device }>()
 const { find } = useDeployment(props.device.id)
 
 const deployments = await find()
+
+const { output: deploymentsPaginated, page, pageCount } = usePagination(deployments)
 
 const latestDeployment = computed(() => deployments.value[0])
 

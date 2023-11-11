@@ -63,11 +63,8 @@ const filteredReleases = filteredArrayByKey(releases, 'version', versionSearch)
 
 const { output: releasesPaginated, page, pageCount } = usePagination(filteredReleases)
 
-const expandedCollapseName = ref()
-
-function onCreate (release:Release) {
+function onCreate () {
   createModalVisible.value = false
-  expandedCollapseName.value = release.id
 }
 
 </script>

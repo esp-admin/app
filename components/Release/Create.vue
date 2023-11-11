@@ -132,7 +132,7 @@ async function handleSubmit () {
       })
     }
 
-    emits('done', release)
+    emits('done')
   } catch (error:any) {
     apiErrors.value.versionAlreadyExists = error.data.message.includes('Unique constraint failed')
   }

@@ -1,5 +1,5 @@
 /**
- * Removes element from array having a certain value for a giving key
+ * Removes elements from array having a certain value for a giving key
  */
 export function removeArrayElByKey (array: Array<Record<string, any>>, key: string, value: any) {
   for (let i = array.length - 1; i >= 0; i--) {

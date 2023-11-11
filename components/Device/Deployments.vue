@@ -6,7 +6,7 @@
       </template>
     </n-result>
 
-    <n-list bordered show-divider>
+    <n-list v-else bordered show-divider>
       <n-list-item v-for="deployment of deploymentsPaginated" :key="deployment.id">
         <DeploymentItem :deployment="deployment" />
       </n-list-item>

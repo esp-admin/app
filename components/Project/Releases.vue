@@ -1,18 +1,6 @@
 <template>
   <div class="flex flex-col gap-8">
-    <div v-if="releases?.length" class="col-span-full flex gap-4">
-      <n-input v-model:value="versionSearch" placeholder="Search by version">
-        <template #prefix>
-          <naive-icon name="ph:magnifying-glass" :size="16" />
-        </template>
-      </n-input>
-
-      <n-button type="primary" @click="createModalVisible = true">
-        Create release
-      </n-button>
-    </div>
-
-    <n-result v-else class="col-span-full" title="No releases found">
+    <n-result v-if="!releases?.length" class="col-span-full" title="No releases found">
       <template #icon>
         <ResultEmpty />
       </template>
@@ -23,15 +11,29 @@
       </template>
     </n-result>
 
-    <n-list bordered show-divider hoverable>
-      <n-list-item v-for="release of releasesPaginated" :key="release.id">
-        <ReleaseItem :release="release" />
-      </n-list-item>
+    <template v-else>
+      <div class="col-span-full flex gap-4">
+        <n-input v-model:value="versionSearch" placeholder="Search by version">
+          <template #prefix>
+            <naive-icon name="ph:magnifying-glass" :size="16" />
+          </template>
+        </n-input>
 
-      <template #footer>
-        <n-pagination v-model:page="page" :page-count="pageCount" />
-      </template>
-    </n-list>
+        <n-button type="primary" @click="createModalVisible = true">
+          Create release
+        </n-button>
+      </div>
+
+      <n-list bordered show-divider hoverable>
+        <n-list-item v-for="release of releasesPaginated" :key="release.id">
+          <ReleaseItem :release="release" />
+        </n-list-item>
+
+        <template #footer>
+          <n-pagination v-model:page="page" :page-count="pageCount" />
+        </template>
+      </n-list>
+    </template>
 
     <n-modal
       v-model:show="createModalVisible"

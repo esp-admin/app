@@ -9,7 +9,7 @@
     </n-form-item>
 
     <n-form-item label="Description" path="description">
-      <n-input v-model:value="model.description" type="textarea" autosize />
+      <n-input v-model:value="model.description" type="textarea" :rows="2" />
     </n-form-item>
 
     <FormButtons :loading="pending" :disabled="!edited || pending" @reset="reset" />

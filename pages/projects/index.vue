@@ -30,7 +30,7 @@
         </template>
       </n-result>
 
-      <ProjectCard v-for="project of filteredProjects" :key="project.id" :project="project" />
+      <ProjectItem v-for="project of filteredProjects" :key="project.id" :project="project" />
     </div>
 
     <n-modal

@@ -23,7 +23,7 @@
       </template>
     </n-result>
 
-    <DeviceCard v-for="device of filteredDevices " :key="device.id" :device="device" />
+    <DeviceItem v-for="device of filteredDevices " :key="device.id" :device="device" />
 
     <n-modal
       v-model:show="linkModalVisible"

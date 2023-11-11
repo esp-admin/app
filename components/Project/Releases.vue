@@ -23,25 +23,11 @@
       </template>
     </n-result>
 
-    <n-scrollbar class="max-h-96">
-      <n-collapse :expanded-names="expandedCollapseName" @click="expandedCollapseName = undefined">
-        <n-collapse-item
-          v-for="release of filteredReleases"
-          :id="`collapse-item-${release.id}`"
-          :key="release.id"
-          :name="release.id"
-        >
-          <template #header>
-            <TitleDate :title="release.version" :created-at="release.createdAt" />
-          </template>
-
-          <LazyReleaseCard
-            :key="release.id"
-            :release="release"
-          />
-        </n-collapse-item>
-      </n-collapse>
-    </n-scrollbar>
+    <n-list bordered show-divider hoverable>
+      <n-list-item v-for="release of filteredReleases" :key="release.id">
+        <ReleaseItem :release="release" />
+      </n-list-item>
+    </n-list>
 
     <n-modal
       v-model:show="createModalVisible"

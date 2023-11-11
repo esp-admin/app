@@ -26,7 +26,7 @@
         icon-color="#22c55e"
       />
     </template>
-    {{ deployment?.status ?? 'not found' }}
+    {{ 'Deployment ' + (deployment?.status ?? 'not found') }}
   </n-tooltip>
 </template>
 

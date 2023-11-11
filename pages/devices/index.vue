@@ -30,7 +30,7 @@
         </template>
       </n-result>
 
-      <DeviceCard v-for="device of filteredDevices" :key="device.id" :device="device" />
+      <DeviceItem v-for="device of filteredDevices" :key="device.id" :device="device" />
     </div>
 
     <n-modal

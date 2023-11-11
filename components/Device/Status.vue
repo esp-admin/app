@@ -20,7 +20,7 @@
         icon-color="#a3a3a3"
       />
     </template>
-    {{ device.status }}
+    {{ 'Device ' + device.status }}
   </n-tooltip>
 </template>
 

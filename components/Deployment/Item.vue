@@ -1,11 +1,11 @@
 <template>
-  <n-card size="small">
+  <n-thing>
+    <template #avatar>
+      <DeploymentStatus :deployment="deployment" :size="24" />
+    </template>
+
     <template #header>
-      <TitleDate :title="deployment.release.version" :created-at="deployment.createdAt">
-        <template #icon>
-          <DeploymentStatus :deployment="deployment" />
-        </template>
-      </TitleDate>
+      <TitleDate :title="deployment.release.version" :created-at="deployment.createdAt" />
     </template>
 
     <template #header-extra>
@@ -26,18 +26,18 @@
         />
       </div>
     </template>
+  </n-thing>
 
-    <n-modal
-      v-model:show="deleteModalVisible"
-      bordered
-      preset="card"
-      :closable="false"
-      :mask-closable="false"
-      class="max-w-sm"
-    >
-      <DeploymentDelete :deployment="deployment" @cancel="deleteModalVisible = false" @done="onDelete" />
-    </n-modal>
-  </n-card>
+  <n-modal
+    v-model:show="deleteModalVisible"
+    bordered
+    preset="card"
+    :closable="false"
+    :mask-closable="false"
+    class="max-w-sm"
+  >
+    <DeploymentDelete :deployment="deployment" @cancel="deleteModalVisible = false" @done="onDelete" />
+  </n-modal>
 </template>
 
 <script setup lang="ts">

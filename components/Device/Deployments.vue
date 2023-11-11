@@ -6,7 +6,11 @@
       </template>
     </n-result>
 
-    <DeploymentCard v-for="deployment of deployments" :key="deployment.id" :deployment="deployment" />
+    <n-list bordered show-divider>
+      <n-list-item v-for="deployment of deployments" :key="deployment.id">
+        <DeploymentItem :deployment="deployment" />
+      </n-list-item>
+    </n-list>
   </div>
 </template>
 

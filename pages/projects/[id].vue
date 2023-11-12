@@ -2,11 +2,9 @@
   <div>
     <n-page-header :title="project.name" class="mb-8" :on-back="$router.back">
       <template #extra>
-        <TooltipIconButton
+        <ButtonIcon
           icon="ph:trash"
-          type="error"
           secondary
-          message="Delete project"
           @click="deleteModalVisible = true"
         />
       </template>

@@ -28,12 +28,11 @@
         </template>
 
         <template #header-extra>
-          <TooltipIconButton
+          <ButtonIcon
             icon="ph:trash"
             type="error"
             secondary
             :disabled="session.current"
-            message="Delete session"
             @click="handleSessionRevoke(session.id)"
           />
         </template>

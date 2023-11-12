@@ -2,24 +2,21 @@
   <n-input-group>
     <n-input :placeholder="placeholder" disabled />
 
-    <TooltipIconButton
+    <ButtonIcon
       v-if="!value"
       icon="ph:arrows-clockwise"
-      message="Refresh"
       @click="refresh"
     />
 
-    <TooltipIconButton
+    <ButtonIcon
       v-if="value"
       icon="ph:x"
-      message="Cancel"
       @click="cancel"
     />
 
-    <TooltipIconButton
+    <ButtonIcon
       v-if="value"
       icon="ph:copy"
-      message="Copy"
       :type="copied ? 'success' : 'default'"
       @click="copy"
     />

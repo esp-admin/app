@@ -3,30 +3,24 @@
     <n-page-header :title="device.name" class="mb-8" :on-back="$router.back">
       <template #extra>
         <div class="flex justify-between gap-2">
-          <TooltipIconButton
+          <ButtonIcon
             v-if="device.projectId"
             icon="ph:link-break"
             secondary
-            type="primary"
-            message="Unlink device"
             @click="unlinkModalVisible = true"
           />
 
           <NuxtLink v-if="device.projectId" :to="`/projects/${device.projectId}`">
-            <TooltipIconButton
+            <ButtonIcon
               v-if="device.projectId"
               secondary
-              type="primary"
               icon="ph:code"
-              message="Linked project"
             />
           </NuxtLink>
 
-          <TooltipIconButton
+          <ButtonIcon
             icon="ph:trash"
             secondary
-            type="error"
-            message="Delete device"
             @click="deleteModalVisible = true"
           />
         </div>

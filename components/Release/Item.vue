@@ -6,24 +6,21 @@
 
     <template #header-extra>
       <div class="flex gap-2">
-        <TooltipIconButton
+        <ButtonIcon
           :icon="collapsed ? 'ph:arrow-down' :'ph:arrow-up'"
-          :message="collapsed ? 'expand': 'collapse'"
           secondary
           @click="collapsed = !collapsed"
         />
 
-        <TooltipIconButton
+        <ButtonIcon
           icon="ic:baseline-bolt"
           :disabled="linkedDevices.length ===0"
-          message="Deploy now"
           secondary
           @click="onTrigger"
         />
 
-        <TooltipIconButton
+        <ButtonIcon
           icon="ph:trash"
-          message="Delete release"
           secondary
           @click="deleteModalVisible = true"
         />

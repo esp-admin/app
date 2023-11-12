@@ -11,16 +11,11 @@
     <template #header-extra>
       <div class="flex gap-2">
         <nuxt-link :to="`/projects/${deployment.release.projectId}`">
-          <TooltipIconButton
-            icon="ph:code"
-            message="Linked project"
-            secondary
-          />
+          <ButtonIcon icon="ph:code" secondary />
         </nuxt-link>
 
-        <TooltipIconButton
+        <ButtonIcon
           icon="ph:trash"
-          message="Delete deployment"
           secondary
           @click="deleteModalVisible = true"
         />

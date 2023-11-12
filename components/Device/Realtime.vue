@@ -13,18 +13,16 @@
         </n-button>
       </div>
 
-      <TooltipIconButton
+      <ButtonIcon
         :disabled="device.status !== 'connected'"
         icon="ph:arrow-counter-clockwise"
-        message="Restart device"
         secondary
         @click="handleRestart"
       />
 
-      <TooltipIconButton
+      <ButtonIcon
         :disabled="logs.length === 0"
-        icon="ph:trash"
-        message="Clear logs"
+        icon="ph:eraser"
         secondary
         @click="logs = []"
       />

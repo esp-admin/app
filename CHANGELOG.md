@@ -1,5 +1,26 @@
 # Changelog
 
+## v1.0.0
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.2.3-rc...main)
+
+### 💅 Refactors
+
+- **ReleaseItem:** Add collapse button ([eec6916](https://github.com/esp-admin/app/commit/eec6916))
+- **IconButton:** Remove tooltip ([cbe3f89](https://github.com/esp-admin/app/commit/cbe3f89))  
+- **Icons:** Group icon names in icons utility ([9cafd0a](https://github.com/esp-admin/app/commit/9cafd0a))
+- **Icons:** Change names ([f5f1c67](https://github.com/esp-admin/app/commit/f5f1c67))
+- **ReleaseItem:** Auto expand on release create ([8974694](https://github.com/esp-admin/app/commit/8974694))
+- **ReleaseDevices:** Change btn type ([ace9a23](https://github.com/esp-admin/app/commit/ace9a23))
+
+### 🏡 Chore
+
+- **release:** V1.0.0 ([e682e40](https://github.com/esp-admin/app/commit/e682e40))
+
+### ❤️ Contributors
+
+- Becem-gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v1.2.3-rc
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.2.2-rc...v1.2.3-rc)

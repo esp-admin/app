@@ -9,7 +9,7 @@
   "scripts": {
     "build": "nuxt build",
     "build:docker": "docker build . -t becemgharbi/esp-admin",
-    "release": "npm run lint && changelogen --release --versionSuffix rc && git push --follow-tags",
+    "release": "npm run lint && changelogen --release && git push --follow-tags",
     "release:docker": "docker push becemgharbi/esp-admin",
     "prisma:generate:sql": "prisma generate --schema ./prisma/sql.schema.prisma",
     "prisma:generate:mongo": "prisma generate --schema ./prisma/mongo.schema.prisma",

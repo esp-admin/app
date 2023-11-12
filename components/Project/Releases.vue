@@ -24,7 +24,7 @@
         </n-button>
       </div>
 
-      <n-list bordered show-divider hoverable>
+      <n-list bordered show-divider>
         <n-list-item v-for="release of releasesPaginated" :key="release.id">
           <ReleaseItem :release="release" />
         </n-list-item>

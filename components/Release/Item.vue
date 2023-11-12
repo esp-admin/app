@@ -1,5 +1,5 @@
 <template>
-  <n-thing class="cursor-pointer" @click="toggleCollapse">
+  <n-thing>
     <template #header>
       <TitleDate :title="release.version" :created-at="release.createdAt" />
     </template>
@@ -7,7 +7,14 @@
     <template #header-extra>
       <div class="flex gap-2">
         <TooltipIconButton
-          icon="ph:arrow-line-down"
+          :icon="collapsed ? 'ph:arrow-down' :'ph:arrow-up'"
+          :message="collapsed ? 'expand': 'collapse'"
+          secondary
+          @click="collapsed = !collapsed"
+        />
+
+        <TooltipIconButton
+          icon="ic:baseline-bolt"
           :disabled="linkedDevices.length ===0"
           message="Deploy now"
           secondary
@@ -76,9 +83,5 @@ function onTrigger () {
       })
     })
   }
-}
-
-function toggleCollapse () {
-  collapsed.value = !collapsed.value
 }
 </script>

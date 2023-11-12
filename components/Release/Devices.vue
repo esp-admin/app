@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap gap-2">
     <nuxt-link v-for="device of linkedDevicesWithDeployment" :key="device.id" :to="`/devices/${device.id}`">
-      <n-button secondary>
+      <n-button quaternary>
         {{ device.name }}
         <template #icon>
           <DeploymentStatus :deployment="device.deployment" />

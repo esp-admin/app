@@ -30,7 +30,6 @@
         <template #header-extra>
           <ButtonIcon
             :icon="ICON_DELETE"
-            type="error"
             secondary
             :disabled="session.current"
             @click="handleSessionRevoke(session.id)"

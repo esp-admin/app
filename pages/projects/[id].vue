@@ -3,7 +3,7 @@
     <n-page-header :title="project.name" class="mb-8" :on-back="$router.back">
       <template #extra>
         <ButtonIcon
-          icon="ph:trash"
+          :icon="ICON_DELETE"
           secondary
           @click="deleteModalVisible = true"
         />

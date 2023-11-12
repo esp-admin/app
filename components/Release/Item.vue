@@ -81,4 +81,15 @@ function onTrigger () {
     })
   }
 }
+
+// Show devices on release creation
+onMounted(() => {
+  const delay = 10000
+  const createdAt = new Date(props.release.createdAt).getTime()
+  const now = new Date().getTime()
+
+  if (now < (createdAt + delay)) {
+    collapsed.value = false
+  }
+})
 </script>

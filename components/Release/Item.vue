@@ -7,20 +7,20 @@
     <template #header-extra>
       <div class="flex gap-2">
         <ButtonIcon
-          :icon="collapsed ? 'ph:arrow-down' :'ph:arrow-up'"
+          :icon="collapsed ? ICON_EXPAND : ICON_COLLAPSE"
           secondary
           @click="collapsed = !collapsed"
         />
 
         <ButtonIcon
           icon="ic:baseline-bolt"
-          :disabled="linkedDevices.length ===0"
+          :disabled="linkedDevices.length === 0"
           secondary
           @click="onTrigger"
         />
 
         <ButtonIcon
-          icon="ph:trash"
+          :icon="ICON_DELETE"
           secondary
           @click="deleteModalVisible = true"
         />

@@ -15,7 +15,7 @@
       <div class="col-span-full flex gap-4">
         <n-input v-model:value="versionSearch" placeholder="Search by version">
           <template #prefix>
-            <naive-icon name="ph:magnifying-glass" :size="16" />
+            <naive-icon :name="ICON_SEARCH" :size="16" />
           </template>
         </n-input>
 

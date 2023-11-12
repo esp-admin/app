@@ -4,19 +4,19 @@
 
     <ButtonIcon
       v-if="!value"
-      icon="ph:arrows-clockwise"
+      :icon="ICON_RESET"
       @click="refresh"
     />
 
     <ButtonIcon
       v-if="value"
-      icon="ph:x"
+      :icon="ICON_CANCEL"
       @click="cancel"
     />
 
     <ButtonIcon
       v-if="value"
-      icon="ph:copy"
+      :icon="ICON_COPY"
       :type="copied ? 'success' : 'default'"
       @click="copy"
     />

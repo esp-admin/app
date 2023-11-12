@@ -23,7 +23,7 @@
 
         <n-button block attr-type="submit" :loading="pending" type="primary">
           <template #icon>
-            <naive-icon name="ph:arrows-counter-clockwise-duotone" />
+            <naive-icon :name="ICON_RESET" />
           </template>
           Reset password
         </n-button>

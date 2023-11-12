@@ -26,20 +26,23 @@
 
         <n-button v-if="$config.public.oauth.google" block @click="loginWithProvider('google')">
           <template #icon>
-            <naive-icon name="logos:google-icon" />
+            <naive-icon :name="ICON_GOOGLE" />
           </template>
           Continue with Google
         </n-button>
 
         <n-button v-if="$config.public.oauth.github" block @click="loginWithProvider('github')">
           <template #icon>
-            <naive-icon name="mdi:github" />
+            <naive-icon :name="ICON_GITHUB" />
           </template>
           Continue with Github
         </n-button>
 
         <nuxt-link to="/auth/register">
           <n-button attr-type="button" block>
+            <template #icon>
+              <naive-icon :name="ICON_ADD" />
+            </template>
             Create Account
           </n-button>
         </nuxt-link>

@@ -13,7 +13,7 @@
       <n-upload :custom-request="(e) => {model.file = e.file.file}" accept=".bin" :max="1">
         <n-upload-dragger>
           <div>
-            <naive-icon name="ph:upload" :size="28" />
+            <naive-icon :name="ICON_UPLOAD" :size="28" />
           </div>
 
           <n-text class="text-sm" :depth="2">

@@ -45,17 +45,17 @@ const { isMobileOrTablet } = useNaiveDevice()
 const routes: NavbarRoute[] = [
   {
     label: 'Dashboard',
-    icon: 'ph:activity',
+    icon: ICON_DASH,
     path: '/'
   },
   {
     label: 'Projects',
-    icon: 'ph:code',
+    icon: ICON_PROJECT,
     path: '/projects'
   },
   {
     label: 'Devices',
-    icon: 'ph:cpu',
+    icon: ICON_DEVICE,
     path: '/devices'
   }
 ]
@@ -63,28 +63,28 @@ const routes: NavbarRoute[] = [
 const drawerRoutes: NavbarRoute[] = [
   {
     label: 'Dashboard',
-    icon: 'ph:activity',
+    icon: ICON_DASH,
     path: '/'
   },
   {
     label: 'Projects',
-    icon: 'ph:code',
+    icon: ICON_PROJECT,
     path: '/projects'
   },
   {
     label: 'Devices',
-    icon: 'ph:cpu',
+    icon: ICON_DEVICE,
     path: '/devices'
   },
   {
     label: 'Settings',
-    icon: 'ph:gear',
+    icon: ICON_SETTINGS,
     path: '/settings'
   },
   {
     label: 'Account',
     path: '/account',
-    icon: 'ph:user'
+    icon: ICON_USER
   }
 ]
 
@@ -101,17 +101,17 @@ const dropdownOptions: DropdownOption[] = [
   {
     label: 'Settings',
     key: 'settings',
-    icon: () => h(NaiveIcon, { name: 'ph:gear' })
+    icon: () => h(NaiveIcon, { name: ICON_SETTINGS })
   },
   {
     label: 'Account',
     key: 'account',
-    icon: () => h(NaiveIcon, { name: 'ph:user' })
+    icon: () => h(NaiveIcon, { name: ICON_USER })
   },
   {
     label: 'Logout',
     key: 'logout',
-    icon: () => h(NaiveIcon, { name: 'ph:sign-out' })
+    icon: () => h(NaiveIcon, { name: ICON_LOGOUT })
   }
 ]
 

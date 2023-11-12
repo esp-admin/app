@@ -3,7 +3,7 @@
     <div v-if="linkedDevices?.length" class="col-span-full flex gap-4">
       <n-input v-model:value="nameSearch" placeholder="Search by name">
         <template #prefix>
-          <naive-icon name="ph:magnifying-glass" :size="16" />
+          <naive-icon :name="ICON_SEARCH" :size="16" />
         </template>
       </n-input>
 

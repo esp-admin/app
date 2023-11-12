@@ -3,7 +3,7 @@
     <div class="absolute right-2 bottom-2 border-4 rounded-full" :style="{borderColor: theme.bodyColor}">
       <n-button circle type="primary" size="small" @click="()=>input?.click()">
         <template #icon>
-          <naive-icon name="ph:camera" />
+          <naive-icon :name="ICON_CAMERA" />
         </template>
       </n-button>
     </div>

@@ -11,11 +11,11 @@
     <template #header-extra>
       <div class="flex gap-2">
         <nuxt-link :to="`/projects/${deployment.release.projectId}`">
-          <ButtonIcon icon="ph:code" secondary />
+          <ButtonIcon :icon="ICON_PROJECT" secondary />
         </nuxt-link>
 
         <ButtonIcon
-          icon="ph:trash"
+          :icon="ICON_DELETE"
           secondary
           @click="deleteModalVisible = true"
         />

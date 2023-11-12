@@ -1,25 +1,25 @@
 <template>
   <naive-icon
     v-if="!deployment?.status"
-    name="ph:question-duotone"
+    :name="ICON_UNKNOWN"
     :size="size"
     icon-color="#a3a3a3"
   />
   <naive-icon
     v-else-if="deployment.status === 'started'"
-    name="svg-spinners:90-ring-with-bg"
+    :name="ICON_LOADING"
     :size="size"
     icon-color="#3b82f6"
   />
   <naive-icon
     v-else-if="deployment.status === 'failed'"
-    name="ph:x-circle-duotone"
+    :name="ICON_FAIL"
     :size="size"
     icon-color="#ef4444"
   />
   <naive-icon
     v-else-if="deployment.status === 'succeded'"
-    name="ph:check-circle-duotone"
+    :name="ICON_CHECK"
     :size="size"
     icon-color="#22c55e"
   />

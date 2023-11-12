@@ -15,14 +15,14 @@
 
       <ButtonIcon
         :disabled="device.status !== 'connected'"
-        icon="ph:arrow-counter-clockwise"
+        :icon="ICON_RESET"
         secondary
         @click="handleRestart"
       />
 
       <ButtonIcon
         :disabled="logs.length === 0"
-        icon="ph:eraser"
+        :icon="ICON_ERASE"
         secondary
         @click="logs = []"
       />

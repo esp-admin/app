@@ -6,7 +6,7 @@
           <n-tooltip trigger="hover">
             <template #trigger>
               <naive-icon
-                name="ph:check-circle"
+                :name="ICON_CHECK"
                 :icon-color="session.current ? '#22c55e' : '#f59e0b'"
                 :size="24"
               />
@@ -29,7 +29,7 @@
 
         <template #header-extra>
           <ButtonIcon
-            icon="ph:trash"
+            :icon="ICON_DELETE"
             type="error"
             secondary
             :disabled="session.current"

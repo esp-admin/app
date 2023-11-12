@@ -2,7 +2,7 @@
   <div>
     <n-page-header title="Projects" class="mb-8">
       <template #avatar>
-        <naive-icon name="ph:code" :size="20" />
+        <naive-icon :name="ICON_PROJECT" :size="20" />
       </template>
     </n-page-header>
 
@@ -10,7 +10,7 @@
       <div v-if="projects?.length" class="col-span-full flex gap-4">
         <n-input v-model:value="nameSearch" placeholder="Search by name">
           <template #prefix>
-            <naive-icon name="ph:magnifying-glass" :size="16" />
+            <naive-icon :name="ICON_SEARCH" :size="16" />
           </template>
         </n-input>
 

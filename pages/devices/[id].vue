@@ -5,7 +5,7 @@
         <div class="flex justify-between gap-2">
           <ButtonIcon
             v-if="device.projectId"
-            icon="ph:link-break"
+            :icon="ICON_UNLINK"
             secondary
             @click="unlinkModalVisible = true"
           />
@@ -14,12 +14,12 @@
             <ButtonIcon
               v-if="device.projectId"
               secondary
-              icon="ph:code"
+              :icon="ICON_PROJECT"
             />
           </NuxtLink>
 
           <ButtonIcon
-            icon="ph:trash"
+            :icon="ICON_DELETE"
             secondary
             @click="deleteModalVisible = true"
           />

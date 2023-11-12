@@ -47,7 +47,7 @@
 
         <n-button attr-type="submit" block :disabled="pending" :loading="pending" type="primary">
           <template #icon>
-            <naive-icon name="ph:arrows-counter-clockwise-duotone" />
+            <naive-icon :name="ICON_RESET" />
           </template>
           Change password
         </n-button>

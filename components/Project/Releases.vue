@@ -57,7 +57,13 @@ const { find } = useRelease(props.project.id)
 
 const versionSearch = ref('')
 
+const lb = useLoadingBar()
+
+lb.start()
+
 const releases = await find()
+
+lb.finish()
 
 const filteredReleases = filteredArrayByKey(releases, 'version', versionSearch)
 

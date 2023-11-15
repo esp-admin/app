@@ -45,10 +45,6 @@ import UAParser from 'ua-parser-js'
 
 const { getAllSessions } = useAuthSession()
 
-const loadingBar = useLoadingBar()
-
-loadingBar.start()
-
 const { data: sessions } = await useAsyncData(getAllSessions, {
   transform: (data) => {
     // Move current session on top
@@ -60,8 +56,6 @@ const { data: sessions } = await useAsyncData(getAllSessions, {
     return data
   }
 })
-
-loadingBar.finish()
 
 async function handleSessionRevoke (id: string) {
   const { revokeSession } = useAuthSession()

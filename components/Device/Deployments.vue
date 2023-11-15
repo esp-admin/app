@@ -25,7 +25,13 @@ const props = defineProps<{ device: Device }>()
 
 const { find } = useDeployment(props.device.id)
 
+const lb = useLoadingBar()
+
+lb.start()
+
 const deployments = await find()
+
+lb.finish()
 
 const { output: deploymentsPaginated, page, pageCount } = usePagination(deployments)
 

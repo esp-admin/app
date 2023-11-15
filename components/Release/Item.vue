@@ -28,7 +28,9 @@
     </template>
 
     <n-collapse-transition :show="!collapsed">
-      <LazyReleaseDevices :release="release" />
+      <n-loading-bar-provider>
+        <LazyReleaseDevices :release="release" />
+      </n-loading-bar-provider>
     </n-collapse-transition>
   </n-thing>
 

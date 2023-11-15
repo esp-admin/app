@@ -3,16 +3,11 @@ import { destr } from 'destr'
 export default function useReport () {
   const key = 'report'
   const request = '/api/report'
-  const loadingBar = useLoadingBar()
   const report = useNuxtData<Report | undefined>(key)
 
   async function find () {
     if (!report.data.value) {
-      loadingBar.start()
-
       report.data.value = await useAuthFetch<Report>(request)
-
-      loadingBar.finish()
     }
 
     return report.data

@@ -1,19 +1,14 @@
 export default function useRelease (projectId: Project['id']) {
   const key = `releases-project-${projectId}`
   const releases = useNuxtData<Release[]>(key)
-  const loadingBar = useLoadingBar()
 
   async function find () {
     const request = '/api/releases'
 
     if (!releases.data.value) {
-      loadingBar?.start()
-
       releases.data.value = await useAuthFetch<Release[]>(request, {
         query: { projectId }
       })
-
-      loadingBar?.finish()
     }
 
     return releases.data
@@ -60,11 +55,7 @@ export default function useRelease (projectId: Project['id']) {
     const deployments = useNuxtData<Deployment[]>(key)
 
     if (!deployments.data.value) {
-      loadingBar?.start()
-
       deployments.data.value = await useAuthFetch<Deployment[]>(request)
-
-      loadingBar?.finish()
     }
 
     return deployments.data

@@ -24,7 +24,13 @@
 
 const { find } = useReport()
 
+const lb = useLoadingBar()
+
+lb.start()
+
 const report = await find()
+
+lb.finish()
 
 const model = ref<Partial<Report>>({
   webhookEnable: report.value?.webhookEnable || false,

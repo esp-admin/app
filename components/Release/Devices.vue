@@ -20,9 +20,15 @@ const { findDeployments } = useRelease(props.release.projectId)
 
 const { findLinked } = useDevice()
 
+const lb = useLoadingBar()
+
+lb.start()
+
 const linkedDevices = await findLinked(props.release.projectId)
 
 const releaseDeployments = await findDeployments(props.release.id)
+
+lb.finish()
 
 const linkedDevicesWithDeployment = computed(
   () => linkedDevices.value.map(

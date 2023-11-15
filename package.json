@@ -34,7 +34,7 @@
     "eslint": "^8.53.0",
     "nuxt": "^3.8.1",
     "nuxt-s3": "1.0.2",
-    "nuxt-security": "^0.14.4",
+    "nuxt-security": "1.0.0-rc.4",
     "prisma": "^5.6.0"
   },
   "dependencies": {

@@ -74,7 +74,8 @@ const themeConfig = ref<ThemeConfig>({
       boxShadow: theme.boxShadow.lg
     },
     LoadingBar: {
-      height: '3px'
+      height: '3px',
+      colorLoading: theme.colors.blue[600]
     }
   },
 

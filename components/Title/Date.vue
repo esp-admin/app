@@ -21,7 +21,11 @@ defineProps <{ title: string, createdAt?: string | Date, updatedAt?: string | Da
 
 const key = ref(0)
 
-onMounted(() => setInterval(() => key.value++, 10000))
+let intervalId:any
 
-// TODO onUnmounted clearInterval
+onMounted(() => {
+  intervalId = setInterval(() => key.value++, 10000)
+})
+
+onUnmounted(() => clearInterval(intervalId))
 </script>

@@ -10,7 +10,7 @@ export default defineNuxtPlugin({
   enforce: 'pre',
 
   setup: (nuxtApp) => {
-    let intervalId:any
+    let intervalId: any
 
     nuxtApp.hook('auth:loggedIn', async (loggedIn) => {
       if (loggedIn) {

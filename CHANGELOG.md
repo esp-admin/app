@@ -1,5 +1,28 @@
 # Changelog
 
+## v1.0.1
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.0...v1.0.1)
+
+### 🩹 Fixes
+
+- Fix useLoadingBar scope ([d931ae6](https://github.com/esp-admin/app/commit/d931ae6))
+- **TitleDate:** Clear timer on unmounted ([2890398](https://github.com/esp-admin/app/commit/2890398))
+
+### 💅 Refactors
+
+- Follow MQTT.js v5.2 import ([2bf92f5](https://github.com/esp-admin/app/commit/2bf92f5))
+- **loadingBar:** Set a unique color for navigation and data fetching ([c8a9f85](https://github.com/esp-admin/app/commit/c8a9f85))
+
+### 🏡 Chore
+
+- Upgrade nuxt-s3 to latest ([b7f1cdb](https://github.com/esp-admin/app/commit/b7f1cdb))
+- Upgrade nuxt-s3 to latest ([53011b6](https://github.com/esp-admin/app/commit/53011b6))
+
+### ❤️ Contributors
+
+- Becem-gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v1.0.0
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.2.3-rc...main)

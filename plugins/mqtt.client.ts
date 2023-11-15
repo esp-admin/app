@@ -14,7 +14,7 @@ export default defineNuxtPlugin({
       username: string;
       password: string;
     }) {
-      const MQTT = await import('mqtt/dist/mqtt.min')
+      const { default: MQTT } = await import('mqtt')
 
       const { connected } = useMqtt()
 

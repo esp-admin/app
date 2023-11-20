@@ -121,6 +121,11 @@ const themeConfig = ref<ThemeConfig>({
     Tooltip: {
       color: theme.colors.zinc[50],
       textColor: theme.colors.zinc[700]
+    },
+    Pagination: {
+      itemColorActiveHover: theme.colors.blue[600],
+      itemColorActive: theme.colors.blue[600],
+      itemTextColorActive: theme.colors.white
     }
   },
 
@@ -169,6 +174,16 @@ const themeConfig = ref<ThemeConfig>({
     },
     Input: {
       borderSuccess: theme.colors.green[400]
+    },
+    Pagination: {
+      itemColorActiveHover: theme.colors.blue[400],
+      itemColorActive: theme.colors.blue[400],
+      itemTextColorActive: theme.colors.zinc[900]
+    }
+  },
+  mobileOrTablet: {
+    Pagination: {
+      itemSizeMedium: '36px'
     }
   }
 })

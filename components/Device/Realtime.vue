@@ -115,7 +115,7 @@ function enableLog () {
     action: 'command',
     type: 'log',
     payload: 'on',
-    retain: false
+    retain: true
   })
 }
 
@@ -125,7 +125,7 @@ function disableLog () {
     action: 'command',
     type: 'log',
     payload: 'off',
-    retain: false
+    retain: true
   })
 }
 </script>

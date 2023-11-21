@@ -1,5 +1,25 @@
 # Changelog
 
+## v1.0.2
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.1...v1.0.2)
+
+### 🩹 Fixes
+
+- **Realtime:** Retain log command ([dcd69c9](https://github.com/esp-admin/app/commit/dcd69c9))
+
+### 💅 Refactors
+
+- Change Pagination style ([258d3db](https://github.com/esp-admin/app/commit/258d3db))
+
+### 🏡 Chore
+
+- Disable devtools ([80d8fa5](https://github.com/esp-admin/app/commit/80d8fa5))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.0.1
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.0...v1.0.1)

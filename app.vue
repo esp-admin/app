@@ -180,11 +180,6 @@ const themeConfig = ref<ThemeConfig>({
       itemColorActive: theme.colors.blue[400],
       itemTextColorActive: theme.colors.zinc[900]
     }
-  },
-  mobileOrTablet: {
-    Pagination: {
-      itemSizeMedium: '36px'
-    }
   }
 })
 

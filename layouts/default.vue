@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <template v-if="user">
-      <Navbar />
+      <LazyNavbar />
 
       <Notification />
 

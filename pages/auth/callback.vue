@@ -22,6 +22,7 @@
 <script setup>
 definePageMeta({
   auth: false,
-  layout: 'auth'
+  layout: 'auth',
+  colorMode: 'light'
 })
 </script>

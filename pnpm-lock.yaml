@@ -41,8 +41,8 @@ devDependencies:
     specifier: ^2.1.0
     version: 2.1.0(prisma@5.6.0)
   '@bg-dev/nuxt-naiveui':
-    specifier: ^1.5.5
-    version: 1.5.5(vue@3.3.8)
+    specifier: 1.6.0
+    version: 1.6.0(vue@3.3.8)
   '@nuxt/devtools':
     specifier: ^1.0.2
     version: 1.0.3(nuxt@3.8.2)(vite@4.5.0)
@@ -461,8 +461,8 @@ packages:
       - supports-color
     dev: true
 
-  /@bg-dev/nuxt-naiveui@1.5.5(vue@3.3.8):
-    resolution: {integrity: sha512-nd+bmD5RtCHg5cO5+YEgNV/ohJKHY4Z4E8X8cbMSEBt8T9kEqIfAgH+tsxoFOQyNEjKnjsfci/pXFvj98VMhcg==}
+  /@bg-dev/nuxt-naiveui@1.6.0(vue@3.3.8):
+    resolution: {integrity: sha512-uF/TV0nA1Fu+Bb3g+aXqaVPw8e0Oe64tEs9+gGlKgv63Cb9iS3W3JAObaDyzzj1o5Y3C/IXL9YDBd9a3ChqNxQ==}
     dependencies:
       '@iconify/vue': 4.1.1(vue@3.3.8)
       '@nuxt/kit': 3.8.2
@@ -1630,6 +1630,7 @@ packages:
     dependencies:
       is-glob: 4.0.3
       micromatch: 4.0.5
+      napi-wasm: 1.1.0
     dev: true
     bundledDependencies:
       - napi-wasm
@@ -6164,6 +6165,10 @@ packages:
     resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==}
     engines: {node: ^14 || ^16 || >=18}
     hasBin: true
+    dev: true
+
+  /napi-wasm@1.1.0:
+    resolution: {integrity: sha512-lHwIAJbmLSjF9VDRm9GoVOy9AGp3aIvkjv+Kvz9h16QR3uSVYH78PNQUnT2U4X53mhlnV2M7wrhibQ3GHicDmg==}
     dev: true
 
   /natural-compare@1.4.0:

@@ -1,5 +1,25 @@
 # Changelog
 
+## v1.0.3
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.2...v1.0.3)
+
+### 💅 Refactors
+
+- Move transition styles to assets ([720b3e8](https://github.com/esp-admin/app/commit/720b3e8))
+- Force light mode on auth pages ([3da9169](https://github.com/esp-admin/app/commit/3da9169))
+- Minor refactoring ([1fd48a5](https://github.com/esp-admin/app/commit/1fd48a5))
+
+### 🏡 Chore
+
+- Update comment ([8ecaa69](https://github.com/esp-admin/app/commit/8ecaa69))
+- Change rate limit settings on auth endpoints ([9532a61](https://github.com/esp-admin/app/commit/9532a61))
+- Adjust rate limiting on auth endpoints ([8e26e4a](https://github.com/esp-admin/app/commit/8e26e4a))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.0.2
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.1...v1.0.2)

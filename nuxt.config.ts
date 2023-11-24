@@ -63,7 +63,8 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/api/s3/mutation/**': { security: { xssValidator: false } }
+    '/api/s3/mutation/**': { security: { xssValidator: false } },
+    '/api/auth/**': { security: { rateLimiter: { tokensPerInterval: 15, interval: 30000 } } }
   },
 
   runtimeConfig: {

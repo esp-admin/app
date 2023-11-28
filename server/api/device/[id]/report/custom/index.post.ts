@@ -21,6 +21,12 @@ export default defineEventHandler(async (event) => {
   const report = await event.context.prisma.report.findUniqueOrThrow({
     where: {
       userId
+    },
+    select: {
+      emailAddress: true,
+      emailEnable: true,
+      webhookEnable: true,
+      webhookUrl: true
     }
   }).catch((e) => { throw createPrismaError(e) })
 

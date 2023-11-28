@@ -14,6 +14,13 @@ export async function checkDevice (event: H3Event) {
   const device = await event.context.prisma.device.findUniqueOrThrow({
     where: {
       id: deviceId
+    },
+    select: {
+      id: true,
+      userId: true,
+      projectId: true,
+      name: true,
+      apiKey: true
     }
   }).catch((e) => { throw createPrismaError(e) })
 

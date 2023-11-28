@@ -20,6 +20,12 @@ export default defineEventHandler(async (event) => {
       emailAddress,
       emailEnable,
       userId
+    },
+    select: {
+      emailAddress: true,
+      emailEnable: true,
+      webhookEnable: true,
+      webhookUrl: true
     }
   }).catch((e) => { throw createPrismaError(e) })
 

@@ -19,6 +19,12 @@ export default defineEventHandler(async (event) => {
       username,
       password,
       userId
+    },
+    select: {
+      password: true,
+      username: true,
+      uriTCP: true,
+      uriWS: true
     }
   })
 

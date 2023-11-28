@@ -4,6 +4,12 @@ export default defineEventHandler(async (event) => {
   const report = await event.context.prisma.report.findUnique({
     where: {
       userId
+    },
+    select: {
+      emailAddress: true,
+      emailEnable: true,
+      webhookEnable: true,
+      webhookUrl: true
     }
   })
 

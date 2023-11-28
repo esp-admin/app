@@ -19,11 +19,16 @@ export default defineEventHandler(async (event) => {
       name,
       userId,
       apiKey: hashedApiKey
+    },
+    select: {
+      id: true,
+      name: true,
+      description: true,
+      status: true,
+      projectId: true,
+      createdAt: true
     }
   }).catch((e) => { throw createPrismaError(e) })
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { apiKey, ...sanitized } = device
-
-  return sanitized
+  return device
 })

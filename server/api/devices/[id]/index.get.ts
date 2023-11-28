@@ -13,11 +13,17 @@ export default defineEventHandler(async (event) => {
     where: {
       id,
       userId
+    },
+    select: {
+      id: true,
+      name: true,
+      description: true,
+      status: true,
+      projectId: true,
+      createdAt: true,
+      variables: true
     }
   }).catch((e) => { throw createPrismaError(e) })
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { apiKey, ...sanitized } = device
-
-  return sanitized
+  return device
 })

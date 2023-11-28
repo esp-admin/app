@@ -6,9 +6,7 @@ export default function useReport () {
   const { $auth } = useNuxtApp()
 
   async function find () {
-    if (!report.data.value) {
-      report.data.value = await $auth.fetch<Report>('/api/report')
-    }
+    report.data.value ||= await $auth.fetch<Report>('/api/report')
 
     return report.data
   }

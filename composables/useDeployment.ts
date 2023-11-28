@@ -4,13 +4,11 @@ export default function useDeployment (deviceId: Device['id']) {
   const { $auth } = useNuxtApp()
 
   async function find () {
-    if (!deployments.data.value) {
-      deployments.data.value = await $auth.fetch<Deployment[]>('/api/deployments', {
-        query: {
-          deviceId
-        }
-      })
-    }
+    deployments.data.value ||= await $auth.fetch<Deployment[]>('/api/deployments', {
+      query: {
+        deviceId
+      }
+    })
 
     return deployments.data
   }

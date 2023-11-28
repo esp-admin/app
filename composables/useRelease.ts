@@ -14,7 +14,7 @@ export default function useRelease (projectId: Project['id']) {
   }
 
   function remove (id: Release['id']) {
-    return $auth.fetch<Release>(`/api/releases/${id}`, {
+    return $auth.fetch(`/api/releases/${id}`, {
       method: 'DELETE',
 
       onResponse: async ({ response }) => {
@@ -32,7 +32,7 @@ export default function useRelease (projectId: Project['id']) {
   function add (data: Partial<Release>) {
     data.projectId = projectId
 
-    return $auth.fetch<Release>('/api/releases', {
+    return $auth.fetch('/api/releases', {
       method: 'POST',
       body: data,
 

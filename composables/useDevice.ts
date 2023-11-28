@@ -20,7 +20,7 @@ export default function useDevice () {
   }
 
   function remove (id: Device['id']) {
-    return $auth.fetch<Device>(`/api/devices/${id}`, {
+    return $auth.fetch(`/api/devices/${id}`, {
       method: 'DELETE',
 
       onResponse: ({ response }) => {
@@ -37,7 +37,7 @@ export default function useDevice () {
   }
 
   function add (data: Partial<Device>) {
-    return $auth.fetch<Device>('/api/devices', {
+    return $auth.fetch('/api/devices', {
       method: 'POST',
       body: data,
 
@@ -54,7 +54,7 @@ export default function useDevice () {
 
     const device = useNuxtData<Device>(key)
 
-    return $auth.fetch<Device>(`/api/devices/${deviceId}/link`, {
+    return $auth.fetch(`/api/devices/${deviceId}/link`, {
       method: 'PATCH',
       body: {
         projectId
@@ -82,7 +82,7 @@ export default function useDevice () {
 
     const device = useNuxtData<Device>(key)
 
-    return $auth.fetch<Device>(`/api/devices/${id}/unlink`, {
+    return $auth.fetch(`/api/devices/${id}/unlink`, {
       method: 'PATCH',
 
       onResponse: ({ response }) => {
@@ -113,7 +113,7 @@ export default function useDevice () {
     const key = `device-${id}`
     const device = useNuxtData<Device>(key)
 
-    return $auth.fetch<Device>(`/api/devices/${id}`, {
+    return $auth.fetch(`/api/devices/${id}`, {
       method: 'PATCH',
       body: data,
 

@@ -26,7 +26,7 @@ export default function useDeployment (deviceId: Device['id']) {
   }
 
   async function remove (id: Deployment['id']) {
-    return await $auth.fetch<Device>(`/api/deployments/${id}`, {
+    return await $auth.fetch(`/api/deployments/${id}`, {
       method: 'DELETE',
 
       onResponse: ({ response }) => {

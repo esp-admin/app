@@ -11,7 +11,7 @@ export default function useMqtt () {
   }
 
   function update (data: Partial<Mqtt>) {
-    return $auth.fetch<Mqtt>('/api/mqtt', {
+    return $auth.fetch('/api/mqtt', {
       method: 'PATCH',
       body: data,
 
@@ -24,7 +24,7 @@ export default function useMqtt () {
   }
 
   function add (data: Partial<Mqtt>) {
-    return $auth.fetch<Mqtt>('/api/mqtt', {
+    return $auth.fetch('/api/mqtt', {
       method: 'POST',
       body: data,
 

@@ -14,7 +14,7 @@ export default function useReport () {
   }
 
   function update (data: Partial<Report>) {
-    return $auth.fetch<Report>('/api/report', {
+    return $auth.fetch('/api/report', {
       method: 'PATCH',
       body: data,
 
@@ -27,7 +27,7 @@ export default function useReport () {
   }
 
   function add (data: Partial<Report>) {
-    return $auth.fetch<Report>('/api/report', {
+    return $auth.fetch('/api/report', {
       method: 'POST',
       body: data,
 

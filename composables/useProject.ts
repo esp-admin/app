@@ -20,7 +20,7 @@ export default function useProject () {
   }
 
   function remove (id: Project['id']) {
-    return $auth.fetch<Project>(`/api/projects/${id}`, {
+    return $auth.fetch(`/api/projects/${id}`, {
       method: 'DELETE',
 
       onResponse: ({ response }) => {
@@ -37,7 +37,7 @@ export default function useProject () {
   }
 
   function add (data: Partial<Project>) {
-    return $auth.fetch<Project>('/api/projects', {
+    return $auth.fetch('/api/projects', {
       method: 'POST',
       body: data,
 
@@ -53,7 +53,7 @@ export default function useProject () {
     const key = `project-${id}`
     const project = useNuxtData(key)
 
-    return $auth.fetch<Project>(`/api/projects/${id}`, {
+    return $auth.fetch(`/api/projects/${id}`, {
       method: 'PATCH',
       body: data,
 

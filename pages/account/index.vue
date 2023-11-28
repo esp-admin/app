@@ -20,7 +20,9 @@
       </n-tab-pane>
 
       <n-tab-pane name="Sessions" tab="Sessions">
-        <AccountSessions class="mt-4" />
+        <n-loading-bar-provider>
+          <AccountSessions class="mt-4" />
+        </n-loading-bar-provider>
       </n-tab-pane>
     </n-tabs>
   </div>

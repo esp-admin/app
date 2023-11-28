@@ -11,7 +11,7 @@
         </template>
 
         <n-text v-if="device.description" depth="2">
-          {{ device.description }}
+          {{ truncateString(device.description) }}
         </n-text>
       </n-thing>
     </n-card>

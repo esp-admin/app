@@ -7,7 +7,7 @@
         </template>
 
         <n-text v-if="project.description" depth="2">
-          {{ project.description }}
+          {{ truncateString(project.description) }}
         </n-text>
       </n-thing>
     </n-card>

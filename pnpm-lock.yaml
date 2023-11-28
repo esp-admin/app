@@ -41,8 +41,8 @@ devDependencies:
     specifier: 2.2.1
     version: 2.2.1(prisma@5.6.0)
   '@bg-dev/nuxt-naiveui':
-    specifier: 1.6.0
-    version: 1.6.0(vue@3.3.8)
+    specifier: 1.6.1
+    version: 1.6.1(vue@3.3.8)
   '@nuxt/devtools':
     specifier: ^1.0.2
     version: 1.0.3(nuxt@3.8.2)(vite@4.5.0)
@@ -462,8 +462,8 @@ packages:
       - supports-color
     dev: true
 
-  /@bg-dev/nuxt-naiveui@1.6.0(vue@3.3.8):
-    resolution: {integrity: sha512-uF/TV0nA1Fu+Bb3g+aXqaVPw8e0Oe64tEs9+gGlKgv63Cb9iS3W3JAObaDyzzj1o5Y3C/IXL9YDBd9a3ChqNxQ==}
+  /@bg-dev/nuxt-naiveui@1.6.1(vue@3.3.8):
+    resolution: {integrity: sha512-L1n1QMmUIIfJ/Hg8yIDqDndmheu674+cgy3RJhRfrLRrdHT34ZMZg/Q8Q4O/XMq2GBBPMaywubc/neIOmbWvrQ==}
     dependencies:
       '@iconify/vue': 4.1.1(vue@3.3.8)
       '@nuxt/kit': 3.8.2

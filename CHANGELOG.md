@@ -1,5 +1,32 @@
 # Changelog
 
+## v1.0.4
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.3...v1.0.4)
+
+### 💅 Refactors
+
+- Replace useAuthFetch with useNuxtApp()..fetch ([eba5a36](https://github.com/esp-admin/app/commit/eba5a36))
+- **fetch:** Remove extra explicit return type ([52e04a9](https://github.com/esp-admin/app/commit/52e04a9))
+- Limit selection on devices and projects responses ([cfd8a6e](https://github.com/esp-admin/app/commit/cfd8a6e))
+- Limit selection on releases and deployments endpoints ([e2ff987](https://github.com/esp-admin/app/commit/e2ff987))
+- Limit selection on mqtt and report endpoints ([69307f6](https://github.com/esp-admin/app/commit/69307f6))
+- Limit selection on device endpoints ([fc88eb4](https://github.com/esp-admin/app/commit/fc88eb4))
+- **AccountSessions:** Add loading bar ([2001ceb](https://github.com/esp-admin/app/commit/2001ceb))
+- **FormButtons:** Reverse order ([2f3c519](https://github.com/esp-admin/app/commit/2f3c519))
+- **cards:** Truncate description ([005652a](https://github.com/esp-admin/app/commit/005652a))
+- Move logos to assets ([16270f6](https://github.com/esp-admin/app/commit/16270f6))
+- **useReport:** Validate deploymentId before updating deployment status ([9c97143](https://github.com/esp-admin/app/commit/9c97143))
+- Minor refactoring ([0cc83a9](https://github.com/esp-admin/app/commit/0cc83a9))
+
+### 🏡 Chore
+
+- Add typecheck to release script ([0882aa4](https://github.com/esp-admin/app/commit/0882aa4))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.0.3
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.2...v1.0.3)

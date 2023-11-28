@@ -20,6 +20,13 @@ export default defineEventHandler(async (event) => {
           id: projectId
         }
       }
+    },
+    select: {
+      id: true,
+      version: true,
+      downloadPath: true,
+      createdAt: true,
+      projectId: true
     }
   }).catch((e) => { throw createPrismaError(e) })
 

@@ -12,6 +12,9 @@ export default defineEventHandler(async (event) => {
   const release = await event.context.prisma.release.delete({
     where: {
       id
+    },
+    select: {
+      id: true
     }
   }).catch((e) => { throw createPrismaError(e) })
 

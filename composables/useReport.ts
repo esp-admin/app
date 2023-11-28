@@ -2,19 +2,19 @@ import { destr } from 'destr'
 
 export default function useReport () {
   const key = 'report'
-  const request = '/api/report'
   const report = useNuxtData<Report | undefined>(key)
+  const { $auth } = useNuxtApp()
 
   async function find () {
     if (!report.data.value) {
-      report.data.value = await useAuthFetch<Report>(request)
+      report.data.value = await $auth.fetch<Report>('/api/report')
     }
 
     return report.data
   }
 
   function update (data: Partial<Report>) {
-    return useAuthFetch<Report>(request, {
+    return $auth.fetch<Report>('/api/report', {
       method: 'PATCH',
       body: data,
 
@@ -27,7 +27,7 @@ export default function useReport () {
   }
 
   function add (data: Partial<Report>) {
-    return useAuthFetch<Report>(request, {
+    return $auth.fetch<Report>('/api/report', {
       method: 'POST',
       body: data,
 

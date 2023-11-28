@@ -1,12 +1,11 @@
 export default function useDeployment (deviceId: Device['id']) {
   const key = `deployments-device-${deviceId}`
   const deployments = useNuxtData<Deployment[]>(key)
+  const { $auth } = useNuxtApp()
 
   async function find () {
-    const request = '/api/deployments'
-
     if (!deployments.data.value) {
-      deployments.data.value = await useAuthFetch<Deployment[]>(request, {
+      deployments.data.value = await $auth.fetch<Deployment[]>('/api/deployments', {
         query: {
           deviceId
         }
@@ -18,19 +17,16 @@ export default function useDeployment (deviceId: Device['id']) {
 
   async function findOne (id: Deployment['id']) {
     const key = `deployment-${id}`
-    const request = `/api/deployments/${id}`
 
     const deployment = useNuxtData<Deployment>(key)
 
-    deployment.data.value ||= await useAuthFetch(request)
+    deployment.data.value ||= await $auth.fetch<Deployment>(`/api/deployments/${id}`)
 
     return deployment.data
   }
 
   async function remove (id: Deployment['id']) {
-    const request = `/api/deployments/${id}`
-
-    return await useAuthFetch<Device>(request, {
+    return await $auth.fetch<Device>(`/api/deployments/${id}`, {
       method: 'DELETE',
 
       onResponse: ({ response }) => {
@@ -43,9 +39,7 @@ export default function useDeployment (deviceId: Device['id']) {
 
   async function updateStatus (id: Deployment['id'], status: Deployment['status'], fetchData = false) {
     if (fetchData) {
-      const request = `/api/deployments/${id}`
-
-      await useAuthFetch(request, {
+      await $auth.fetch(`/api/deployments/${id}`, {
         method: 'PATCH',
         body: {
           status

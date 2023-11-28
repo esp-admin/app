@@ -1,30 +1,26 @@
 export default function useProject () {
   const key = 'projects'
   const projects = useNuxtData<Project[]>(key)
+  const { $auth } = useNuxtApp()
 
   async function find () {
-    const request = '/api/projects'
-
-    projects.data.value ||= await useAuthFetch(request)
+    projects.data.value ||= await $auth.fetch<Project[]>('/api/projects')
 
     return projects.data
   }
 
   async function findOne (id: Project['id']) {
     const key = `project-${id}`
-    const request = `/api/projects/${id}`
 
     const project = useNuxtData<Project>(key)
 
-    project.data.value ||= await useAuthFetch(request)
+    project.data.value ||= await $auth.fetch<Project>(`/api/projects/${id}`)
 
     return project.data as Ref<Project>
   }
 
   function remove (id: Project['id']) {
-    const request = `/api/projects/${id}`
-
-    return useAuthFetch<Project>(request, {
+    return $auth.fetch<Project>(`/api/projects/${id}`, {
       method: 'DELETE',
 
       onResponse: ({ response }) => {
@@ -41,9 +37,7 @@ export default function useProject () {
   }
 
   function add (data: Partial<Project>) {
-    const request = '/api/projects'
-
-    return useAuthFetch<Project>(request, {
+    return $auth.fetch<Project>('/api/projects', {
       method: 'POST',
       body: data,
 
@@ -57,10 +51,9 @@ export default function useProject () {
 
   function update (id: Project['id'], data: Partial<Project>) {
     const key = `project-${id}`
-    const request = `/api/projects/${id}`
     const project = useNuxtData(key)
 
-    return useAuthFetch<Project>(request, {
+    return $auth.fetch<Project>(`/api/projects/${id}`, {
       method: 'PATCH',
       body: data,
 

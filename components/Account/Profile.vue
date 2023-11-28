@@ -65,7 +65,9 @@ async function updateAccount () {
     return
   }
 
-  await useAuthFetch('/api/account/profile', {
+  const { $auth } = useNuxtApp()
+
+  await $auth.fetch('/api/account/profile', {
     method: 'PATCH',
     body: {
       name: model.value.name,

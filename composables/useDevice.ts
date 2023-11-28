@@ -1,30 +1,26 @@
 export default function useDevice () {
   const key = 'devices'
   const devices = useNuxtData<Device[]>(key)
+  const { $auth } = useNuxtApp()
 
   async function find () {
-    const request = '/api/devices'
-
-    devices.data.value ||= await useAuthFetch(request)
+    devices.data.value ||= await $auth.fetch<Device[]>('/api/devices')
 
     return devices.data
   }
 
   async function findOne (id: Device['id']) {
     const key = `device-${id}`
-    const request = `/api/devices/${id}`
 
     const device = useNuxtData<Device>(key)
 
-    device.data.value ||= await useAuthFetch(request)
+    device.data.value ||= await $auth.fetch<Device>(`/api/devices/${id}`)
 
     return device.data as Ref<Device>
   }
 
   function remove (id: Device['id']) {
-    const request = `/api/devices/${id}`
-
-    return useAuthFetch<Device>(request, {
+    return $auth.fetch<Device>(`/api/devices/${id}`, {
       method: 'DELETE',
 
       onResponse: ({ response }) => {
@@ -41,9 +37,7 @@ export default function useDevice () {
   }
 
   function add (data: Partial<Device>) {
-    const request = '/api/devices'
-
-    return useAuthFetch<Device>(request, {
+    return $auth.fetch<Device>('/api/devices', {
       method: 'POST',
       body: data,
 
@@ -57,11 +51,10 @@ export default function useDevice () {
 
   function link (deviceId: Device['id'], projectId: Project['id']) {
     const key = `device-${deviceId}`
-    const request = `/api/devices/${deviceId}/link`
 
     const device = useNuxtData<Device>(key)
 
-    return useAuthFetch<Device>(request, {
+    return $auth.fetch<Device>(`/api/devices/${deviceId}/link`, {
       method: 'PATCH',
       body: {
         projectId
@@ -86,11 +79,10 @@ export default function useDevice () {
 
   function unlink (id: Device['id']) {
     const key = `device-${id}`
-    const request = `/api/devices/${id}/unlink`
 
     const device = useNuxtData<Device>(key)
 
-    return useAuthFetch<Device>(request, {
+    return $auth.fetch<Device>(`/api/devices/${id}/unlink`, {
       method: 'PATCH',
 
       onResponse: ({ response }) => {
@@ -119,10 +111,9 @@ export default function useDevice () {
     }
 
     const key = `device-${id}`
-    const request = `/api/devices/${id}`
     const device = useNuxtData<Device>(key)
 
-    return useAuthFetch<Device>(request, {
+    return $auth.fetch<Device>(`/api/devices/${id}`, {
       method: 'PATCH',
       body: data,
 

@@ -1,17 +1,17 @@
 export default function useMqtt () {
   const key = 'mqtt'
-  const request = '/api/mqtt'
   const mqtt = useNuxtData<Mqtt | undefined>(key)
   const connected = useState('mqtt_connected')
+  const { $auth } = useNuxtApp()
 
   async function find () {
-    mqtt.data.value ||= await useAuthFetch<Mqtt>(request)
+    mqtt.data.value ||= await $auth.fetch<Mqtt>('/api/mqtt')
 
     return mqtt.data
   }
 
   function update (data: Partial<Mqtt>) {
-    return useAuthFetch<Mqtt>(request, {
+    return $auth.fetch<Mqtt>('/api/mqtt', {
       method: 'PATCH',
       body: data,
 
@@ -24,7 +24,7 @@ export default function useMqtt () {
   }
 
   function add (data: Partial<Mqtt>) {
-    return useAuthFetch<Mqtt>(request, {
+    return $auth.fetch<Mqtt>('/api/mqtt', {
       method: 'POST',
       body: data,
 

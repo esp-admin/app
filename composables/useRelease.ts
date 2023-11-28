@@ -1,12 +1,11 @@
 export default function useRelease (projectId: Project['id']) {
   const key = `releases-project-${projectId}`
   const releases = useNuxtData<Release[]>(key)
+  const { $auth } = useNuxtApp()
 
   async function find () {
-    const request = '/api/releases'
-
     if (!releases.data.value) {
-      releases.data.value = await useAuthFetch<Release[]>(request, {
+      releases.data.value = await $auth.fetch<Release[]>('/api/releases', {
         query: { projectId }
       })
     }
@@ -15,9 +14,7 @@ export default function useRelease (projectId: Project['id']) {
   }
 
   function remove (id: Release['id']) {
-    const request = `/api/releases/${id}`
-
-    return useAuthFetch<Release>(request, {
+    return $auth.fetch<Release>(`/api/releases/${id}`, {
       method: 'DELETE',
 
       onResponse: async ({ response }) => {
@@ -33,10 +30,9 @@ export default function useRelease (projectId: Project['id']) {
   }
 
   function add (data: Partial<Release>) {
-    const request = '/api/releases'
     data.projectId = projectId
 
-    return useAuthFetch<Release>(request, {
+    return $auth.fetch<Release>('/api/releases', {
       method: 'POST',
       body: data,
 
@@ -49,13 +45,12 @@ export default function useRelease (projectId: Project['id']) {
   }
 
   async function findDeployments (id: Release['id']) {
-    const request = `/api/releases/${id}/deployments`
     const key = `deployments-release-${id}`
 
     const deployments = useNuxtData<Deployment[]>(key)
 
     if (!deployments.data.value) {
-      deployments.data.value = await useAuthFetch<Deployment[]>(request)
+      deployments.data.value = await $auth.fetch<Deployment[]>(`/api/releases/${id}/deployments`)
     }
 
     return deployments.data

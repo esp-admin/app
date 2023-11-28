@@ -1,14 +1,22 @@
 <template>
-  <img :src="src" alt="logo" :width="width" :height="height">
+  <img
+    v-if="colorMode === 'light'"
+    src="~/assets/logos/light.png"
+    :width="width"
+    alt="logo"
+  >
+  <img
+    v-else
+    src="~/assets/logos/dark.png"
+    :width="width"
+    alt="logo"
+  >
 </template>
 
 <script setup lang="ts">
 const { colorMode } = useNaiveColorMode()
 
-withDefaults(defineProps<{ width?: number, height?:number }>(), {
-  width: 107,
-  height: 50
+withDefaults(defineProps<{ width?: number }>(), {
+  width: 107
 })
-
-const src = computed(() => colorMode.value === 'light' ? '/logos/light.png' : '/logos/dark.png')
 </script>

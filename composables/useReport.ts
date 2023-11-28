@@ -80,7 +80,9 @@ export default function useReport () {
       status: Deployment['status'];
     }>(message.payload)
 
-    await updateStatus(deploymentId, status)
+    if (REGEX_ID.test(deploymentId)) {
+      await updateStatus(deploymentId, status)
+    }
   }
 
   return { find, add, update, handleReport }

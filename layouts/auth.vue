@@ -1,5 +1,5 @@
 <template>
-  <div class="page justify-center items-center p-7">
+  <div v-show="!user" class="page justify-center items-center p-7">
     <NuxtLink to="/" class="mr-auto sm:mr-0">
       <Logo :width="110" />
     </NuxtLink>
@@ -15,6 +15,8 @@
 </template>
 
 <script setup>
+const { user } = useAuthSession()
+
 const route = useRoute()
 
 const title = computed(() => {

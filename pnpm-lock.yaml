@@ -35,8 +35,8 @@ dependencies:
 
 devDependencies:
   '@bg-dev/nuxt-auth':
-    specifier: 2.2.1
-    version: 2.2.1(prisma@5.6.0)
+    specifier: 2.3.1
+    version: 2.3.1(prisma@5.6.0)
   '@bg-dev/nuxt-naiveui':
     specifier: 1.6.1
     version: 1.6.1(vue@3.3.9)
@@ -439,13 +439,14 @@ packages:
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
 
-  /@bg-dev/nuxt-auth@2.2.1(prisma@5.6.0):
-    resolution: {integrity: sha512-Vt+nVcBg0SP92QJ4gRHQz9o/O02CqrvmOwLepWsxgg547SS+/wZ+XL1/ZQshz5HqfIVbaAT2wP8mgQIZmEh2Yw==}
+  /@bg-dev/nuxt-auth@2.3.1(prisma@5.6.0):
+    resolution: {integrity: sha512-TKdkBq8cheDA5yHQzLszK//3VANr004sfjiB7cJRsjgiw+RdFLBEDhKREs5WKFYZyYGkoIopojwJBM6rE2qn3g==}
     peerDependencies:
       prisma: ^5.2.0
     dependencies:
       '@nuxt/kit': 3.8.2
       '@prisma/client': 5.6.0(prisma@5.6.0)
+      '@prisma/extension-accelerate': 0.6.2(@prisma/client@5.6.0)
       bcryptjs: 2.4.3
       defu: 6.1.3
       jose: 5.1.3
@@ -1696,6 +1697,15 @@ packages:
   /@prisma/engines@5.6.0:
     resolution: {integrity: sha512-Mt2q+GNJpU2vFn6kif24oRSBQv1KOkYaterQsi0k2/lA+dLvhRX6Lm26gon6PYHwUM8/h8KRgXIUMU0PCLB6bw==}
     requiresBuild: true
+
+  /@prisma/extension-accelerate@0.6.2(@prisma/client@5.6.0):
+    resolution: {integrity: sha512-KIBVPeWt8qaSg7wQ+TXmCVeUDoW75whtXcdS9dbHxRoO2OWFH5I9+qbkHBhx5Wj/h1wQpS8usuxGnsZqiBjUpQ==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@prisma/client': '>=4.16.1'
+    dependencies:
+      '@prisma/client': 5.6.0(prisma@5.6.0)
+    dev: true
 
   /@rollup/plugin-alias@5.1.0(rollup@4.6.1):
     resolution: {integrity: sha512-lpA3RZ9PdIG7qqhEfv79tBffNaoDuukFDrmhLqg9ifv99u/ehn+lOg30x2zmhf8AQqQUZaMk/B9fZraQ6/acDQ==}

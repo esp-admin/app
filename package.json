@@ -6,6 +6,9 @@
   "homepage": "https://esp-admin.tn",
   "repository": "https://github.com/esp-admin/app",
   "author": "Becem Gharbi <becem.gharbi@live.com>",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "build": "nuxt build",
     "build:docker": "docker build . -t becemgharbi/esp-admin",

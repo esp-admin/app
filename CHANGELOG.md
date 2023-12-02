@@ -1,5 +1,27 @@
 # Changelog
 
+## v1.0.5
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.4...v1.0.5)
+
+### 🩹 Fixes
+
+- Fix colorMode transition on login ([ba1166b](https://github.com/esp-admin/app/commit/ba1166b))
+
+### 💅 Refactors
+
+- Remove s3 middleware fixing encoding on netlify ([1b49aad](https://github.com/esp-admin/app/commit/1b49aad))
+- **auth layout:** Change styles ([d87b688](https://github.com/esp-admin/app/commit/d87b688))
+
+### 🏡 Chore
+
+- Require node +18 ([d9774c8](https://github.com/esp-admin/app/commit/d9774c8))
+- Limit usage of s3 endpoints ([cc77943](https://github.com/esp-admin/app/commit/cc77943))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.0.4
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.3...v1.0.4)

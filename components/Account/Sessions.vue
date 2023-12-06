@@ -49,17 +49,7 @@ const lb = useLoadingBar()
 
 lb.start()
 
-const { data: sessions } = await useAsyncData(getAllSessions, {
-  transform: (data) => {
-    // Move current session on top
-    const currentSessionIndex = data.findIndex(el => el.current)
-    if (currentSessionIndex >= 0) {
-      const currentSession = data.splice(currentSessionIndex)
-      data.unshift(currentSession[0])
-    }
-    return data
-  }
-})
+const sessions = await getAllSessions()
 
 lb.finish()
 

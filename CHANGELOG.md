@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.0.6
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.5...v1.0.6)
+
+### 💅 Refactors
+
+- **AccountSessions:** Remove extra fetch transformation ([fe36124](https://github.com/esp-admin/app/commit/fe36124))
+- **AccountSessions:** Minor refactoring ([a762abf](https://github.com/esp-admin/app/commit/a762abf))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.0.5
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.4...v1.0.5)

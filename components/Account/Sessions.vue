@@ -49,7 +49,7 @@ const lb = useLoadingBar()
 
 lb.start()
 
-const sessions = await getAllSessions()
+const sessions = ref(await getAllSessions())
 
 lb.finish()
 
@@ -58,6 +58,6 @@ async function handleSessionRevoke (id: string) {
 
   await revokeSession(id)
 
-  sessions.value = sessions.value!.filter(el => el.id !== id)
+  removeArrayElByKey(sessions.value, 'id', id)
 }
 </script>

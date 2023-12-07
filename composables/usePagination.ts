@@ -11,6 +11,8 @@ export default function usePagination<T> (input: Ref<Array<T>>) {
   watch(pageCount, (value) => {
     if (page.value > value) {
       page.value = value
+    } else if (value === 1) {
+      page.value = 1
     }
   })
 

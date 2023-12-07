@@ -1,5 +1,36 @@
 # Changelog
 
+## v1.0.7
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.6...v1.0.7)
+
+### 🩹 Fixes
+
+- **ProjectReleases:** Reset page after clearing search ([8e80f1d](https://github.com/esp-admin/app/commit/8e80f1d))
+
+### 💅 Refactors
+
+- **usePagination:** Minor refactoring ([b181bd2](https://github.com/esp-admin/app/commit/b181bd2))
+- **default layout:** Use naive-ui scrollbar over the native one ([4fe854f](https://github.com/esp-admin/app/commit/4fe854f))
+- **ReleaseItem:** Disable collapse button if no linked devices found ([a51a488](https://github.com/esp-admin/app/commit/a51a488))
+- **Logo:** Set height to 50px ([32b45ad](https://github.com/esp-admin/app/commit/32b45ad))
+- **onMessageArrived:** Verify existance of device ([12eeafd](https://github.com/esp-admin/app/commit/12eeafd))
+- **device update:** Remove existance check ([d83e5ae](https://github.com/esp-admin/app/commit/d83e5ae))
+- Minor refactoring ([f5f895d](https://github.com/esp-admin/app/commit/f5f895d))
+- Remove custom error page and use the default ([e33c69b](https://github.com/esp-admin/app/commit/e33c69b))
+- **auth layout:** Remove user check ([bccabc6](https://github.com/esp-admin/app/commit/bccabc6))
+- Minor refactoring ([6ea61f7](https://github.com/esp-admin/app/commit/6ea61f7))
+- Minor refactoring ([59e5531](https://github.com/esp-admin/app/commit/59e5531))
+- Hide scrollbar ([3a9ccfc](https://github.com/esp-admin/app/commit/3a9ccfc))
+
+### 🏡 Chore
+
+- **deps-dev:** Bump vite from 4.5.0 to 4.5.1 ([fd79015](https://github.com/esp-admin/app/commit/fd79015))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.0.6
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.5...v1.0.6)

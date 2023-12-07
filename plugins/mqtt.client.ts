@@ -56,7 +56,7 @@ export default defineNuxtPlugin({
       ])
     }
 
-    function onMessageArrived (topic: string, payload: Buffer) {
+    async function onMessageArrived (topic: string, payload: Buffer) {
       const splittedTopic = topic.split('/')
       const message = payload.toString()
 
@@ -66,6 +66,13 @@ export default defineNuxtPlugin({
         type: splittedTopic[3],
         payload: message
       } as MqttMessage
+
+      const devices = await useDevice().find()
+
+      if (devices.value) {
+        const deviceIndex = devices.value.findIndex(device => device.id === mqttMessage.deviceId)
+        if (deviceIndex < 0) { return }
+      }
 
       switch (mqttMessage.action) {
         case 'report':

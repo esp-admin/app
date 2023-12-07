@@ -8,6 +8,7 @@
       <div class="flex gap-2">
         <ButtonIcon
           :icon="collapsed ? ICON_EXPAND : ICON_COLLAPSE"
+          :disabled="linkedDevices.length === 0"
           secondary
           @click="collapsed = !collapsed"
         />

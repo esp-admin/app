@@ -1,12 +1,7 @@
 export default function usePagination<T> (input: Ref<Array<T>>) {
   const pageSize = 5
   const page = ref(1)
-  const pageCount = computed(() => {
-    if (input.value?.length) {
-      return Math.ceil(input.value.length / pageSize)
-    }
-    return 0
-  })
+  const pageCount = computed(() => input.value?.length && Math.ceil(input.value.length / pageSize))
 
   watch(pageCount, (value) => {
     if (page.value > value) {
@@ -23,9 +18,7 @@ export default function usePagination<T> (input: Ref<Array<T>>) {
     return array.slice(startIndex, endIndex)
   }
 
-  const output = computed<Array<T>>(() => {
-    return paginate(pageSize, page.value, input.value ?? [])
-  })
+  const output = computed<Array<T>>(() => paginate(pageSize, page.value, input.value ?? []))
 
   return { page, pageCount, output }
 }

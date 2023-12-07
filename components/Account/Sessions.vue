@@ -8,7 +8,7 @@
               <naive-icon
                 :name="ICON_CHECK"
                 :icon-color="session.current ? '#22c55e' : '#f59e0b'"
-                :size="24"
+                :size="23"
               />
             </template>
             {{ session.current ? 'Current session': 'Active session' }}

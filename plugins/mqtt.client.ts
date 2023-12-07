@@ -71,16 +71,16 @@ export default defineNuxtPlugin({
 
       if (devices.value) {
         const deviceIndex = devices.value.findIndex(device => device.id === mqttMessage.deviceId)
-        if (deviceIndex < 0) { return }
-      }
-
-      switch (mqttMessage.action) {
-        case 'report':
-          useReport().handleReport(mqttMessage)
-          break
-        case 'logs':
-          useLog(mqttMessage.deviceId).append(mqttMessage)
-          break
+        if (deviceIndex >= 0) {
+          switch (mqttMessage.action) {
+            case 'report':
+              useReport().handleReport(mqttMessage)
+              break
+            case 'logs':
+              useLog(mqttMessage.deviceId).append(mqttMessage)
+              break
+          }
+        }
       }
     }
 

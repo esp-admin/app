@@ -3,7 +3,7 @@
     <n-card size="small" hoverable class="h-full">
       <n-thing>
         <template #avatar>
-          <DeviceStatus :device="device" :size="24" />
+          <DeviceStatus :device="device" :size="23" />
         </template>
 
         <template #header>

@@ -1,7 +1,7 @@
 <template>
   <n-thing>
     <template #avatar>
-      <DeploymentStatus :deployment="deployment" :size="24" />
+      <DeploymentStatus :deployment="deployment" :size="23" />
     </template>
 
     <template #header>

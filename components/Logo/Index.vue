@@ -3,12 +3,14 @@
     v-if="colorMode === 'light'"
     src="~/assets/logos/light.png"
     :width="width"
+    height="50"
     alt="logo"
   >
   <img
     v-else
     src="~/assets/logos/dark.png"
     :width="width"
+    height="50"
     alt="logo"
   >
 </template>

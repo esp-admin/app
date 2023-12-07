@@ -102,14 +102,7 @@ export default function useDevice () {
     })
   }
 
-  async function update (id: Device['id'], data: Partial<Device>) {
-    await find()
-
-    const deviceExists = devices.data.value?.find(device => device.id === id)
-    if (!deviceExists) {
-      return
-    }
-
+  function update (id: Device['id'], data: Partial<Device>) {
     const key = `device-${id}`
     const device = useNuxtData<Device>(key)
 

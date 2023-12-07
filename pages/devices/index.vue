@@ -1,13 +1,24 @@
 <template>
   <div>
-    <n-page-header title="Devices" class="mb-8">
-      <template #avatar>
-        <naive-icon :name="ICON_DEVICE" :size="20" />
+    <n-result v-if="!devices?.length" title="No devices found">
+      <template #icon>
+        <ResultEmpty />
       </template>
-    </n-page-header>
+      <template #footer>
+        <n-button type="primary" @click="createModalVisible = true">
+          Create first device
+        </n-button>
+      </template>
+    </n-result>
 
-    <div class="grid md:grid-cols-3 gap-8">
-      <div v-if="devices?.length" class="col-span-full flex gap-4">
+    <div v-else class="grid md:grid-cols-3 gap-8">
+      <n-page-header title="Devices" class="col-span-full">
+        <template #avatar>
+          <naive-icon :name="ICON_DEVICE" :size="20" />
+        </template>
+      </n-page-header>
+
+      <div class="col-span-full flex gap-4">
         <n-input v-model:value="nameSearch" placeholder="Search by name">
           <template #prefix>
             <naive-icon :name="ICON_SEARCH" :size="16" />
@@ -18,17 +29,6 @@
           Create device
         </n-button>
       </div>
-
-      <n-result v-else class="col-span-full" title="No devices found">
-        <template #icon>
-          <ResultEmpty />
-        </template>
-        <template #footer>
-          <n-button type="primary" @click="createModalVisible = true">
-            Create first device
-          </n-button>
-        </template>
-      </n-result>
 
       <DeviceItem v-for="device of filteredDevices" :key="device.id" :device="device" />
     </div>

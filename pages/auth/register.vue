@@ -127,7 +127,7 @@ async function handleSubmit () {
   })
 
   if (error.value) {
-    apiErrors.value.emailAlreadyExists = error.value.data?.message.includes('email-used-with') || false
+    apiErrors.value.emailAlreadyExists = error.value.data?.message.startsWith('email-used-with') ?? false
   } else {
     await requestEmailVerify(model.value.email)
 

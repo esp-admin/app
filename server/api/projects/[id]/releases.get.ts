@@ -1,24 +1,23 @@
 export default defineEventHandler(async (event) => {
   checkUser(event)
 
-  const { projectId } = getQuery<{ projectId: Project['id'] }>(event)
+  const id = event.context.params?.id
 
   const schema = z.object({
-    projectId: z.string().regex(REGEX_ID)
+    id: z.string().regex(REGEX_ID)
   })
 
-  schema.parse({ projectId })
+  schema.parse({ id })
 
   const releases = await event.context.prisma.release.findMany({
     where: {
-      projectId
+      projectId: id
     },
     select: {
       id: true,
       version: true,
       downloadPath: true,
-      createdAt: true,
-      projectId: true
+      createdAt: true
     },
     orderBy: {
       createdAt: 'desc'

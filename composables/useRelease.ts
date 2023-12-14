@@ -4,9 +4,7 @@ export default function useRelease (projectId: Project['id']) {
   const { $auth } = useNuxtApp()
 
   async function find () {
-    releases.data.value ||= await $auth.fetch<Release[]>('/api/releases', {
-      query: { projectId }
-    })
+    releases.data.value ||= await $auth.fetch<Release[]>(`/api/projects/${projectId}/releases`)
 
     return releases.data
   }

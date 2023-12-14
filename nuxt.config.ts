@@ -79,6 +79,7 @@ export default defineNuxtConfig({
     }
   },
 
+  // https://github.com/mqttjs/MQTT.js/issues/1681
   vite: {
     optimizeDeps: {
       esbuildOptions: {

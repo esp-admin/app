@@ -1,8 +1,10 @@
 <template>
   <naive-config :theme-config="themeConfig" :hljs="hljs">
-    <n-loading-bar-provider>
-      <naive-loading-bar navigation />
-    </n-loading-bar-provider>
+    <client-only>
+      <n-loading-bar-provider>
+        <naive-loading-bar navigation />
+      </n-loading-bar-provider>
+    </client-only>
 
     <nuxt-layout>
       <nuxt-page />
@@ -124,6 +126,9 @@ const themeConfig = ref<ThemeConfig>({
       itemColorActiveHover: theme.colors.blue[600],
       itemColorActive: theme.colors.blue[600],
       itemTextColorActive: theme.colors.white
+    },
+    Divider: {
+      color: theme.colors.zinc[200]
     }
   },
 

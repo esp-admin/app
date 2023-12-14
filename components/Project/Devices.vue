@@ -1,5 +1,5 @@
 <template>
-  <div class="grid md:grid-cols-3 gap-8">
+  <div class="grid lg:grid-cols-3 gap-8">
     <div v-if="linkedDevices?.length" class="col-span-full flex gap-4">
       <n-input v-model:value="nameSearch" placeholder="Search by name">
         <template #prefix>

@@ -11,7 +11,7 @@
       </template>
     </n-result>
 
-    <div v-else class="grid md:grid-cols-3 gap-8">
+    <div v-else class="grid lg:grid-cols-3 gap-8">
       <n-page-header title="Projects" class="col-span-full">
         <template #avatar>
           <naive-icon :name="ICON_PROJECT" :size="20" />

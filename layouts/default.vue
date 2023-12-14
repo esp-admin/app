@@ -8,6 +8,7 @@
       </template>
 
       <template #end>
+        <AccountInfo class="m-2 notMobileOrTablet" />
         <n-button secondary class="m-2 notMobileOrTablet" @click="logout">
           Logout
         </n-button>

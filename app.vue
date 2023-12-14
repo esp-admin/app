@@ -129,6 +129,10 @@ const themeConfig = ref<ThemeConfig>({
     },
     Divider: {
       color: '#e4e4e7' // theme.colors.zinc[200]
+    },
+    Layout: {
+      siderColor: '#fff', // theme.colors.white
+      headerColor: '#fff' // theme.colors.white
     }
   },
 
@@ -179,6 +183,10 @@ const themeConfig = ref<ThemeConfig>({
       itemColorActiveHover: '#60a5fa', // theme.colors.blue[400]
       itemColorActive: '#60a5fa', // theme.colors.blue[400]
       itemTextColorActive: '#18181b' // theme.colors.zinc[900]
+    },
+    Layout: {
+      siderColor: '#18181b', // theme.colors.zinc[900]
+      headerColor: '#18181b' // theme.colors.zinc[900]
     }
   }
 })

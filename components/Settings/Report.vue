@@ -24,7 +24,7 @@
 
 const { find } = useReport()
 
-const lb = useLoadingBar()
+const lb = useNaiveLoadingBar()
 
 lb.start()
 

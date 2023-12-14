@@ -139,7 +139,7 @@
 
 ### 🩹 Fixes
 
-- Fix useLoadingBar scope ([d931ae6](https://github.com/esp-admin/app/commit/d931ae6))
+- Fix useNaiveLoadingBar scope ([d931ae6](https://github.com/esp-admin/app/commit/d931ae6))
 - **TitleDate:** Clear timer on unmounted ([2890398](https://github.com/esp-admin/app/commit/2890398))
 
 ### 💅 Refactors
@@ -163,7 +163,7 @@
 ### 💅 Refactors
 
 - **ReleaseItem:** Add collapse button ([eec6916](https://github.com/esp-admin/app/commit/eec6916))
-- **IconButton:** Remove tooltip ([cbe3f89](https://github.com/esp-admin/app/commit/cbe3f89))  
+- **IconButton:** Remove tooltip ([cbe3f89](https://github.com/esp-admin/app/commit/cbe3f89))
 - **Icons:** Group icon names in icons utility ([9cafd0a](https://github.com/esp-admin/app/commit/9cafd0a))
 - **Icons:** Change names ([f5f1c67](https://github.com/esp-admin/app/commit/f5f1c67))
 - **ReleaseItem:** Auto expand on release create ([8974694](https://github.com/esp-admin/app/commit/8974694))

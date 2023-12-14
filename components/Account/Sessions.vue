@@ -45,7 +45,7 @@ import UAParser from 'ua-parser-js'
 
 const { getAllSessions } = useAuthSession()
 
-const lb = useLoadingBar()
+const lb = useNaiveLoadingBar()
 
 lb.start()
 

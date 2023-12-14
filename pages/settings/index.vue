@@ -12,9 +12,7 @@
       </n-tab-pane>
 
       <n-tab-pane name="report" tab="Report">
-        <n-loading-bar-provider>
-          <SettingsReport class="mt-4" />
-        </n-loading-bar-provider>
+        <SettingsReport class="mt-4" />
       </n-tab-pane>
     </n-tabs>
   </div>

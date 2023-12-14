@@ -1,6 +1,8 @@
 <template>
   <naive-config :theme-config="themeConfig" :hljs="hljs">
-    <nuxt-loading-indicator :color="themeConfig.light?.common?.primaryColor" :height="3" />
+    <n-loading-bar-provider>
+      <naive-loading-bar navigation />
+    </n-loading-bar-provider>
 
     <nuxt-layout>
       <nuxt-page />

@@ -1,17 +1,17 @@
 export default defineEventHandler(async (event) => {
   checkUser(event)
 
-  const { deviceId } = getQuery<{ deviceId: Device['id'] }>(event)
+  const id = event.context.params?.id
 
   const schema = z.object({
-    deviceId: z.string().regex(REGEX_ID)
+    id: z.string().regex(REGEX_ID)
   })
 
-  schema.parse({ deviceId })
+  schema.parse({ id })
 
   const deployments = await event.context.prisma.deployment.findMany({
     where: {
-      deviceId
+      deviceId: id
     },
     include: {
       release: {

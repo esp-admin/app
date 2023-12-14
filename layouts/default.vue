@@ -1,7 +1,6 @@
 <template>
   <div>
-    <Notification />
-    <naive-layout-sidebar v-if="user" :routes="routes" :drawer-routes="routes">
+    <naive-layout-sidebar :routes="routes" :drawer-routes="routes">
       <template #start>
         <nuxt-link to="/" class="mx-auto my-2">
           <Logo :width="110" />
@@ -29,9 +28,11 @@
         </n-button>
       </template>
 
-      <div class="p-2">
+      <div v-if="user" class="p-2">
         <slot />
       </div>
+
+      <Notification />
     </naive-layout-sidebar>
   </div>
 </template>

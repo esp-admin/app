@@ -1,5 +1,42 @@
 # Changelog
 
+## v1.0.8
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.7...v1.0.8)
+
+### 🔥 Performance
+
+- Disable Tailwind exposeConfig in production ([42a73f1](https://github.com/esp-admin/app/commit/42a73f1))
+
+### 💅 Refactors
+
+- Replace nuxt-loading-indicator with naive-ui loading bar ([b40b746](https://github.com/esp-admin/app/commit/b40b746))
+- Replace useLoadingBar with useNaiveLoadingBar ([cd30976](https://github.com/esp-admin/app/commit/cd30976))
+- Minor refactoring ([4fe32ee](https://github.com/esp-admin/app/commit/4fe32ee))
+- Change default layout ([9c5d354](https://github.com/esp-admin/app/commit/9c5d354))
+- Change grid breakpoint ([517437f](https://github.com/esp-admin/app/commit/517437f))
+- Remove scrollbar hide styles ([79d332e](https://github.com/esp-admin/app/commit/79d332e))
+- Display AccountInfo on sidebar ([97475f4](https://github.com/esp-admin/app/commit/97475f4))
+- Add Notification to default layout ([79de8b2](https://github.com/esp-admin/app/commit/79de8b2))
+- Change GET releases route ([c3ad709](https://github.com/esp-admin/app/commit/c3ad709))
+- Change GET deployments route ([d4b4e78](https://github.com/esp-admin/app/commit/d4b4e78))
+- Minor refactoring ([ae7199b](https://github.com/esp-admin/app/commit/ae7199b))
+- Minor refactoring ([9825744](https://github.com/esp-admin/app/commit/9825744))
+- Minor refactoring ([163cfec](https://github.com/esp-admin/app/commit/163cfec))
+- Minor refactoring ([757e155](https://github.com/esp-admin/app/commit/757e155))
+- Change layout color ([3e66e7d](https://github.com/esp-admin/app/commit/3e66e7d))
+- **default layout:** Set `naive-layout-sidebar` as root ([8f32cf5](https://github.com/esp-admin/app/commit/8f32cf5))
+- Minor refactoring ([12b7e10](https://github.com/esp-admin/app/commit/12b7e10))
+
+### 🏡 Chore
+
+- Use `@nuxtjs/google-fonts` for handling fonts ([f2ee3c4](https://github.com/esp-admin/app/commit/f2ee3c4))
+- Disable `cssnano` on production ([b732956](https://github.com/esp-admin/app/commit/b732956))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.0.7
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.6...v1.0.7)

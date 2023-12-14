@@ -1,40 +1,38 @@
 <template>
-  <div>
-    <naive-layout-sidebar :routes="routes" :drawer-routes="routes">
-      <template #start>
-        <nuxt-link to="/" class="mx-auto my-2">
-          <Logo :width="112" />
-        </nuxt-link>
-        <n-divider style="margin:0" class="notMobileOrTablet" />
-      </template>
+  <naive-layout-sidebar :routes="routes" :drawer-routes="routes">
+    <template #start>
+      <nuxt-link to="/" class="mx-auto my-2">
+        <Logo :width="112" />
+      </nuxt-link>
+      <n-divider style="margin:0" class="notMobileOrTablet" />
+    </template>
 
-      <template #end>
-        <div class="flex flex-col gap-8 m-2 notMobileOrTablet">
-          <n-divider style="margin:0" />
-          <AccountInfo />
-          <n-button secondary @click="logout">
-            Logout
-          </n-button>
-        </div>
-      </template>
-
-      <template #drawer-header>
-        <AccountInfo class="mx-2" />
-      </template>
-
-      <template #drawer-footer>
-        <n-button secondary block @click="logout">
+    <template #end>
+      <div class="flex flex-col gap-8 m-2 notMobileOrTablet">
+        <n-divider style="margin:0" />
+        <AccountInfo />
+        <n-button secondary @click="logout">
           Logout
         </n-button>
-      </template>
-
-      <div v-if="user" class="p-2">
-        <slot />
       </div>
+    </template>
 
-      <Notification />
-    </naive-layout-sidebar>
-  </div>
+    <template #drawer-header>
+      <AccountInfo class="mx-2" />
+    </template>
+
+    <template #drawer-footer>
+      <n-button secondary block @click="logout">
+        Logout
+      </n-button>
+    </template>
+
+    <div v-if="user" class="p-2">
+      <slot />
+    </div>
+
+    <Notification />
+  </naive-layout-sidebar>
 </template>
 
 <script setup lang="ts">

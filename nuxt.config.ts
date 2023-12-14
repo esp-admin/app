@@ -10,19 +10,6 @@ export default defineNuxtConfig({
     head: {
       title: 'ESP Admin',
       htmlAttrs: { lang: 'en' },
-      link: [
-        { rel: 'icon', href: '/favicon.ico' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        {
-          rel: 'preconnect',
-          href: 'https://fonts.gstatic.com',
-          crossorigin: 'anonymous'
-        },
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap'
-        }
-      ],
       meta: [{ name: 'theme-color', content: '#18181B' }]
     },
     pageTransition: { name: 'page', mode: 'out-in' },
@@ -36,7 +23,8 @@ export default defineNuxtConfig({
     '@bg-dev/nuxt-naiveui',
     '@nuxtjs/tailwindcss',
     'nuxt-s3',
-    'nuxt-security'
+    'nuxt-security',
+    '@nuxtjs/google-fonts'
   ],
 
   auth,
@@ -59,6 +47,12 @@ export default defineNuxtConfig({
           'https://avatars.githubusercontent.com'
         ]
       }
+    }
+  },
+
+  googleFonts: {
+    families: {
+      Rubik: [400, 500]
     }
   },
 

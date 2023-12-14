@@ -87,5 +87,12 @@ export default defineNuxtConfig({
         }
       }
     }
+  },
+
+  // https://github.com/nuxt-modules/google-fonts/issues/158
+  postcss: {
+    plugins: {
+      cssnano: process.env.NODE_ENV === 'production' && { preset: ['default', { discardComments: { removeAll: true } }] }
+    }
   }
 })

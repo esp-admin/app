@@ -71,8 +71,8 @@ devDependencies:
     specifier: 1.0.2
     version: 1.0.2
   nuxt-security:
-    specifier: 1.0.0-rc.4
-    version: 1.0.0-rc.4
+    specifier: 1.0.0
+    version: 1.0.0
   prisma:
     specifier: ^5.6.0
     version: 5.6.0
@@ -6242,8 +6242,8 @@ packages:
       - supports-color
     dev: true
 
-  /nuxt-security@1.0.0-rc.4:
-    resolution: {integrity: sha512-xYj0+kXpgePq59UPTZ73eGN74LT2ByFMbobV5eZkePVLWwa8MNl1j0XhM2IjdBhowFnCMasApU2P/dnP27J96g==}
+  /nuxt-security@1.0.0:
+    resolution: {integrity: sha512-3e5oL3uPZvTBbEyN40YNbXNz1RiaFrBqSuGAI80YHBo5SdWjoLXXvAO5TOKiYUYwnRyf7hDuODOeyoe8+qiR/w==}
     dependencies:
       '@nuxt/kit': 3.8.2
       basic-auth: 2.0.1

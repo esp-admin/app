@@ -1,7 +1,7 @@
 <template>
   <div>
     <Notification />
-    <naive-layout-sidebar v-if="user" :routes="routes" :drawer-routes="routes">
+    <lazy-naive-layout-sidebar v-if="user" :routes="routes" :drawer-routes="routes">
       <template #start>
         <nuxt-link to="/" class="mx-auto my-2">
           <Logo :width="110" />
@@ -10,6 +10,7 @@
 
       <template #end>
         <div class="flex flex-col gap-8 m-2 notMobileOrTablet">
+          <n-divider style="margin:0" />
           <AccountInfo />
           <n-button secondary @click="logout">
             Logout
@@ -30,7 +31,7 @@
       <div class="p-2">
         <slot />
       </div>
-    </naive-layout-sidebar>
+    </lazy-naive-layout-sidebar>
   </div>
 </template>
 

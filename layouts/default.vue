@@ -3,7 +3,7 @@
     <naive-layout-sidebar :routes="routes" :drawer-routes="routes">
       <template #start>
         <nuxt-link to="/" class="mx-auto my-2">
-          <Logo :width="110" />
+          <Logo :width="112" />
         </nuxt-link>
         <n-divider style="margin:0" class="notMobileOrTablet" />
       </template>

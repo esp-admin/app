@@ -1,17 +1,20 @@
 <template>
   <div>
+    <Notification />
     <naive-layout-sidebar v-if="user" :routes="routes" :drawer-routes="routes">
       <template #start>
-        <nuxt-link to="/">
-          <Logo :width="110" class="mx-auto my-2" />
+        <nuxt-link to="/" class="mx-auto my-2">
+          <Logo :width="110" />
         </nuxt-link>
       </template>
 
       <template #end>
-        <AccountInfo class="m-2 notMobileOrTablet" />
-        <n-button secondary class="m-2 notMobileOrTablet" @click="logout">
-          Logout
-        </n-button>
+        <div class="flex flex-col gap-8 m-2 notMobileOrTablet">
+          <AccountInfo />
+          <n-button secondary @click="logout">
+            Logout
+          </n-button>
+        </div>
       </template>
 
       <template #drawer-header>

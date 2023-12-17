@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.0.9
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.8...v1.0.9)
+
+### 🩹 Fixes
+
+- Add projectId to GET releases response ([0af2f70](https://github.com/esp-admin/app/commit/0af2f70))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.0.8
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.7...v1.0.8)

@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.0.10
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.9...v1.0.10)
+
+### 🩹 Fixes
+
+- **api:** Order release deployments by createdAt ([5c50e38](https://github.com/esp-admin/app/commit/5c50e38))
+
+### 💅 Refactors
+
+- Disable loading bar display on navigation ([3182193](https://github.com/esp-admin/app/commit/3182193))
+- Disable Layout transition ([9863b42](https://github.com/esp-admin/app/commit/9863b42))
+- Always render page content with default layout ([6ede08f](https://github.com/esp-admin/app/commit/6ede08f))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.0.9
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.8...v1.0.9)

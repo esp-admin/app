@@ -27,7 +27,7 @@
       </n-button>
     </template>
 
-    <div v-if="user" class="p-2">
+    <div class="p-2">
       <slot />
     </div>
 
@@ -44,7 +44,6 @@
 <script setup lang="ts">
 import type { MenuLinkRoute } from '@bg-dev/nuxt-naiveui'
 
-const { user } = useAuthSession()
 const { logout } = useAuth()
 
 const routes: MenuLinkRoute[] = [

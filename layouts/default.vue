@@ -31,6 +31,12 @@
       <slot />
     </div>
 
+    <client-only>
+      <n-loading-bar-provider>
+        <naive-loading-bar />
+      </n-loading-bar-provider>
+    </client-only>
+
     <Notification />
   </naive-layout-sidebar>
 </template>

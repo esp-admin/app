@@ -1,11 +1,5 @@
 <template>
   <naive-config :theme-config="themeConfig" :hljs="hljs">
-    <client-only>
-      <n-loading-bar-provider>
-        <naive-loading-bar navigation />
-      </n-loading-bar-provider>
-    </client-only>
-
     <nuxt-layout>
       <nuxt-page />
     </nuxt-layout>

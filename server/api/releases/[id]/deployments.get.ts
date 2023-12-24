@@ -16,6 +16,9 @@ export default defineEventHandler(async (event) => {
     select: {
       status: true,
       deviceId: true
+    },
+    orderBy: {
+      createdAt: 'desc'
     }
   }).catch((e) => { throw createPrismaError(e) })
 

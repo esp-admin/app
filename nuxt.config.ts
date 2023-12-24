@@ -12,8 +12,7 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'en' },
       meta: [{ name: 'theme-color', content: '#18181B' }]
     },
-    pageTransition: { name: 'page', mode: 'out-in' },
-    layoutTransition: { name: 'layout', mode: 'out-in' }
+    pageTransition: { name: 'page', mode: 'out-in' }
   },
 
   css: ['~/assets/styles/main.css'],

@@ -20,7 +20,7 @@ const { findDeployments } = useRelease(props.release.projectId)
 
 const { findLinked } = useDevice()
 
-const lb = useNaiveLoadingBar()
+const lb = useLoadingIndicator()
 
 lb.start()
 

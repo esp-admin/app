@@ -57,7 +57,7 @@ const { find } = useRelease(props.project.id)
 
 const versionSearch = ref('')
 
-const lb = useNaiveLoadingBar()
+const lb = useLoadingIndicator()
 
 lb.start()
 

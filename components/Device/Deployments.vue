@@ -25,7 +25,7 @@ const props = defineProps<{ device: Device }>()
 
 const { find } = useDeployment(props.device.id)
 
-const lb = useNaiveLoadingBar()
+const lb = useLoadingIndicator()
 
 lb.start()
 

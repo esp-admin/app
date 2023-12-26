@@ -1,7 +1,7 @@
 <template>
   <div class="page justify-center items-center p-7">
     <NuxtLink to="/" class="mr-auto sm:mr-0">
-      <Logo :width="110" />
+      <Logo :width="114" />
     </NuxtLink>
 
     <n-text class="text-lg font-medium mt-1 mr-auto sm:mr-0" depth="2">

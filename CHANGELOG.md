@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.0.11
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.10...v1.0.11)
+
+### 🔥 Performance
+
+- Replace NaiveLoadingBar with NuxtLoadingIndicator ([6f21e58](https://github.com/esp-admin/app/commit/6f21e58))
+
+### 💅 Refactors
+
+- **default layout:** Increase logo width ([1347cb3](https://github.com/esp-admin/app/commit/1347cb3))
+- **auth layout:** Increase logo width ([10de876](https://github.com/esp-admin/app/commit/10de876))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.0.10
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.9...v1.0.10)

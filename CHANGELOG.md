@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.0.12
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.11...v1.0.12)
+
+### 💅 Refactors
+
+- **sidebar:** Remove dividers ([ee7d873](https://github.com/esp-admin/app/commit/ee7d873))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.0.11
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.10...v1.0.11)

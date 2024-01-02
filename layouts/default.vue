@@ -4,12 +4,10 @@
       <nuxt-link to="/" class="mx-auto my-2">
         <Logo :width="114" />
       </nuxt-link>
-      <n-divider style="margin:0" class="notMobileOrTablet" />
     </template>
 
     <template #end>
       <div class="flex flex-col gap-8 m-2 notMobileOrTablet">
-        <n-divider style="margin:0" />
         <AccountInfo />
         <n-button secondary @click="logout">
           Logout

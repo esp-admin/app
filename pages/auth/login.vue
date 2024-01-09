@@ -4,7 +4,15 @@
       <n-input v-model:value="model.email" :input-props="{ autocomplete: 'username' }" />
     </n-form-item>
 
-    <n-form-item path="password" label="Password" :show-require-mark="false">
+    <n-form-item path="password" :show-require-mark="false" :label-style="{ display: 'block' }">
+      <template #label>
+        <span>Password</span>
+        <nuxt-link to="/auth/request-password-reset" class="no-underline float-right">
+          <n-text type="primary">
+            Forgot password?
+          </n-text>
+        </nuxt-link>
+      </template>
       <n-input
         v-model:value="model.password"
         type="password"
@@ -13,12 +21,7 @@
       />
     </n-form-item>
 
-    <div class="grid grid-cols-1 gap-4">
-      <nuxt-link to="/auth/request-password-reset" class="no-underline">
-        <n-text type="primary">
-          Forgot password?
-        </n-text>
-      </nuxt-link>
+    <div class="flex flex-col gap-4">
       <n-button attr-type="submit" block :loading="pending" :disabled="pending" type="primary">
         Login
       </n-button>
@@ -40,7 +43,7 @@
       <nuxt-link to="/auth/register">
         <n-button attr-type="button" block>
           <template #icon>
-            <naive-icon :name="ICON_ADD" />
+            <naive-icon name="ph:user-plus" />
           </template>
           Create Account
         </n-button>

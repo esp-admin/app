@@ -1,6 +1,6 @@
 <template>
   <div v-if="user" class="flex items-center gap-3">
-    <img :src="user.picture" class="w-10 h-10 object-cover rounded-full ring-2" alt="avatar">
+    <img :src="user.picture" class="w-10 h-10 object-cover ring-1 rounded" alt="avatar">
 
     <div class="flex flex-col text-base">
       <n-text strong>

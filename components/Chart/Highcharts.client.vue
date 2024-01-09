@@ -85,5 +85,4 @@ const highchartsOptions = computed<HighchartsOptions>(() => defu(
       }
     } as HighchartsOptions
 ))
-
 </script>

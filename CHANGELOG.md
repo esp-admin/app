@@ -1,5 +1,28 @@
 # Changelog
 
+## v1.0.13
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.12...v1.0.13)
+
+### 🔥 Performance
+
+- Only load `highcharts` on client-side ([cc860ad](https://github.com/esp-admin/app/commit/cc860ad))
+
+### 💅 Refactors
+
+- **ui:** Change layout of login form ([015002c](https://github.com/esp-admin/app/commit/015002c))
+- **ui:** Change AccountInfo avatar shape ([91c4576](https://github.com/esp-admin/app/commit/91c4576))
+- **ui:** Change AccountInfo avatar border color ([ed207c2](https://github.com/esp-admin/app/commit/ed207c2))
+- Move theme config to app.config ([7f58740](https://github.com/esp-admin/app/commit/7f58740))
+
+### 🏡 Chore
+
+- Switch to pnpm ([b1cdc9d](https://github.com/esp-admin/app/commit/b1cdc9d))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.0.12
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.11...v1.0.12)

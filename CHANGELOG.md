@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.0.14
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.13...v1.0.14)
+
+### 🩹 Fixes
+
+- Solve blocking navigation (>vue@3.4.8) ([77a74ca](https://github.com/esp-admin/app/commit/77a74ca))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.0.13
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.12...v1.0.13)

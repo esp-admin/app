@@ -56,17 +56,6 @@ export default defineNuxtConfig({
     }
   },
 
-  // https://github.com/mqttjs/MQTT.js/issues/1681
-  vite: {
-    optimizeDeps: {
-      esbuildOptions: {
-        define: {
-          global: 'globalThis'
-        }
-      }
-    }
-  },
-
   // https://github.com/nuxt-modules/google-fonts/issues/158
   postcss: {
     plugins: {

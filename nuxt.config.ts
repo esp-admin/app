@@ -1,5 +1,5 @@
 import info from './package.json'
-import { auth, naiveui, tailwindcss, s3, googleFonts } from './config'
+import { auth, naiveui, tailwindcss, s3, googleFonts, security } from './config'
 
 export default defineNuxtConfig({
   ssr: true,
@@ -31,24 +31,7 @@ export default defineNuxtConfig({
   tailwindcss,
   s3,
   googleFonts,
-
-  security: {
-    corsHandler: false,
-    headers: {
-      crossOriginEmbedderPolicy: false,
-      contentSecurityPolicy: {
-        'img-src': [
-          "'self'",
-          'data:',
-          'blob:',
-          'https://*.googleusercontent.com',
-          'https://ui-avatars.com',
-          'https://www.googletagmanager.com',
-          'https://avatars.githubusercontent.com'
-        ]
-      }
-    }
-  },
+  security,
 
   routeRules: {
     '/api/s3/mutation/**': { security: { xssValidator: false } },

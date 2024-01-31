@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.0.15
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.14...v1.0.15)
+
+### 💅 Refactors
+
+- Move google fonts settings to /config ([3ac5107](https://github.com/esp-admin/app/commit/3ac5107))
+- Move nuxt-security settings to /config ([54e4875](https://github.com/esp-admin/app/commit/54e4875))
+
+### 🏡 Chore
+
+- Remove extra globalThis definition ([35c8ca8](https://github.com/esp-admin/app/commit/35c8ca8))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.0.14
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.13...v1.0.14)

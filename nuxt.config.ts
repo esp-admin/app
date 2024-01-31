@@ -1,5 +1,5 @@
 import info from './package.json'
-import { auth, naiveui, tailwindcss, s3 } from './config'
+import { auth, naiveui, tailwindcss, s3, googleFonts } from './config'
 
 export default defineNuxtConfig({
   ssr: true,
@@ -30,6 +30,7 @@ export default defineNuxtConfig({
   naiveui,
   tailwindcss,
   s3,
+  googleFonts,
 
   security: {
     corsHandler: false,
@@ -46,12 +47,6 @@ export default defineNuxtConfig({
           'https://avatars.githubusercontent.com'
         ]
       }
-    }
-  },
-
-  googleFonts: {
-    families: {
-      Rubik: [400, 500]
     }
   },
 

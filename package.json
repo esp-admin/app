@@ -25,8 +25,8 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@bg-dev/nuxt-auth": "2.3.7",
-    "@bg-dev/nuxt-naiveui": "^1.10.0",
+    "@bg-dev/nuxt-auth": "^2.4.3",
+    "@bg-dev/nuxt-naiveui": "^1.10.1",
     "@nuxt/devtools": "^1.0.8",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/google-fonts": "^3.1.3",

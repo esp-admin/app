@@ -66,8 +66,8 @@ rules.value = {
 }
 
 async function handleSubmit () {
-  const { error } = await requestPasswordReset(model.value.email)
-
-  success.value = !error.value
+  await requestPasswordReset(model.value.email)
+    .then(() => { success.value = true })
+    .catch(() => { success.value = false })
 }
 </script>

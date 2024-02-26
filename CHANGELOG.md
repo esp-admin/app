@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.0.16
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.15...v1.0.16)
+
+### 🏡 Chore
+
+- Update changes in nuxt-auth@2.4.3 ([79630e6](https://github.com/esp-admin/app/commit/79630e6))
+- Upgrade vue (solves navigation issue) ([e50b45e](https://github.com/esp-admin/app/commit/e50b45e))
+
+### ❤️ Contributors
+
+- Becem-gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v1.0.15
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.14...v1.0.15)

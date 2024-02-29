@@ -1,5 +1,5 @@
 import info from './package.json'
-import { auth, naiveui, tailwindcss, s3, googleFonts, security } from './config'
+import { auth, naiveui, tailwindcss, s3, security } from './config'
 
 export default defineNuxtConfig({
   ssr: true,
@@ -23,14 +23,13 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'nuxt-s3',
     'nuxt-security',
-    '@nuxtjs/google-fonts'
+    '@nuxt/fonts'
   ],
 
   auth,
   naiveui,
   tailwindcss,
   s3,
-  googleFonts,
   security,
 
   routeRules: {
@@ -53,13 +52,6 @@ export default defineNuxtConfig({
       repository: info.repository,
       homepage: info.homepage,
       author: info.author
-    }
-  },
-
-  // https://github.com/nuxt-modules/google-fonts/issues/158
-  postcss: {
-    plugins: {
-      cssnano: process.env.NODE_ENV === 'production' && { preset: ['default', { discardComments: { removeAll: true } }] }
     }
   }
 })

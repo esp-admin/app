@@ -20,7 +20,7 @@ export default defineAppConfig({
           labelFontWeight: '500' // theme.fontWeight.medium
         },
         Result: {
-          titleFontSizeMedium: '1.125rem' // theme.fontSize.lg[0]
+          titleFontSizeMedium: '1.3rem' // theme.fontSize.lg[0]
         },
         Menu: {
           titleFontSizeMedium: '1rem' // theme.fontSize.base[0]

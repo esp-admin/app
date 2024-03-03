@@ -1,4 +1,10 @@
-export default defineEventHandler(() => {
-  const config = useRuntimeConfig()
-  return config.info
-})
+import { name, version, description, repository, homepage, author } from '~/package.json'
+
+export default defineEventHandler(() => ({
+  name,
+  version,
+  description,
+  repository,
+  homepage,
+  author
+}))

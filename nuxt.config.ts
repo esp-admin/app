@@ -1,4 +1,3 @@
-import info from './package.json'
 import { auth, naiveui, tailwindcss, s3, security, fonts } from './config'
 
 export default defineNuxtConfig({
@@ -45,14 +44,6 @@ export default defineNuxtConfig({
         google: false,
         github: false
       }
-    },
-    info: {
-      name: info.name,
-      version: info.version,
-      description: info.description,
-      repository: info.repository,
-      homepage: info.homepage,
-      author: info.author
     }
   },
 

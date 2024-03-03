@@ -1,5 +1,5 @@
 import info from './package.json'
-import { auth, naiveui, tailwindcss, s3, security } from './config'
+import { auth, naiveui, tailwindcss, s3, security, fonts } from './config'
 
 export default defineNuxtConfig({
   ssr: true,
@@ -31,6 +31,7 @@ export default defineNuxtConfig({
   tailwindcss,
   s3,
   security,
+  fonts,
 
   routeRules: {
     '/api/s3/mutation/**': { security: { xssValidator: false } },

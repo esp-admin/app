@@ -54,5 +54,9 @@ export default defineNuxtConfig({
       homepage: info.homepage,
       author: info.author
     }
+  },
+
+  future: {
+    typescriptBundlerResolution: false
   }
 })

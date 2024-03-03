@@ -1,5 +1,27 @@
 # Changelog
 
+## v1.0.17
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.16...v1.0.17)
+
+### 🔥 Performance
+
+- Specify font weights ([09b80a3](https://github.com/esp-admin/app/commit/09b80a3))
+
+### 💅 Refactors
+
+- Migrate from `@nuxtjs/google-fonts` to `@nuxt/fonts` ([2589f3b](https://github.com/esp-admin/app/commit/2589f3b))
+- Add custom error page ([82f37c9](https://github.com/esp-admin/app/commit/82f37c9))
+- Remove pkg info from runtimeConfig ([af9c68c](https://github.com/esp-admin/app/commit/af9c68c))
+
+### 🏡 Chore
+
+- Switch off typescriptBundlerResolution ([d06e0f6](https://github.com/esp-admin/app/commit/d06e0f6))
+
+### ❤️ Contributors
+
+- Becem-gharbi ([@becem-gharbi](http://github.com/becem-gharbi))
+
 ## v1.0.16
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.15...v1.0.16)

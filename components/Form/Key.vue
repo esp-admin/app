@@ -24,7 +24,6 @@
 </template>
 
 <script setup lang="ts">
-import * as randomstring from 'randomstring'
 
 const props = defineProps<{ value?: string }>()
 
@@ -42,7 +41,7 @@ const placeholder = computed(() => {
 const copied = ref(false)
 
 function refresh () {
-  const newValue = randomstring.generate(20)
+  const newValue = generateRandomString(20)
   emits('update:value', newValue)
 }
 

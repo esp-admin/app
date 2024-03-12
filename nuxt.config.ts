@@ -45,9 +45,5 @@ export default defineNuxtConfig({
         github: false
       }
     }
-  },
-
-  future: {
-    typescriptBundlerResolution: false
   }
 })

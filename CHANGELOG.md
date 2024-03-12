@@ -1,5 +1,25 @@
 # Changelog
 
+## v1.0.18
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.17...v1.0.18)
+
+### 🔥 Performance
+
+- **AccountInfo:** Lazy load user's image ([bcbc924](https://github.com/esp-admin/app/commit/bcbc924))
+
+### 💅 Refactors
+
+- Remove `randomString` and create a custom util ([4c58906](https://github.com/esp-admin/app/commit/4c58906))
+
+### 🏡 Chore
+
+- Enable typescriptBundlerResolution ([70ea3ca](https://github.com/esp-admin/app/commit/70ea3ca))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.0.17
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.16...v1.0.17)

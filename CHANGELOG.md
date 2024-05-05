@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.0.19
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.18...v1.0.19)
+
+### 💅 Refactors
+
+- Change cors impl ([606e28f](https://github.com/esp-admin/app/commit/606e28f))
+
+### 🏡 Chore
+
+- Apply latest changes on nuxt-auth and nuxt-naiveui ([faf6107](https://github.com/esp-admin/app/commit/faf6107))
+- Replace nuxt-s3 with @bg-dev/nuxt-s3 ([2f3b01b](https://github.com/esp-admin/app/commit/2f3b01b))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.0.18
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.17...v1.0.18)

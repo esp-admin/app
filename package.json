@@ -37,7 +37,7 @@
     "changelogen": "^0.5.5",
     "eslint": "^8.57.0",
     "nuxt": "^3.11.1",
-    "nuxt-security": "1.2.2",
+    "nuxt-security": "^1.4.3",
     "prisma": "^5.11.0"
   },
   "dependencies": {

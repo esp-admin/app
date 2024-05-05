@@ -3,6 +3,8 @@ import type { ModuleOptions } from '@bg-dev/nuxt-auth'
 export const auth: Partial<ModuleOptions> = {
   baseUrl: 'http://localhost:3000',
 
+  prisma: false,
+
   accessToken: {
     jwtSecret: '*'
   },

@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import type { MenuLinkRoute } from '@bg-dev/nuxt-naiveui'
+import type { MenuLinkRoute } from '#build/types/naiveui'
 
 const { logout } = useAuth()
 

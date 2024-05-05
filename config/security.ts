@@ -10,8 +10,6 @@ export const security: Partial<ModuleOptions> = {
         'data:',
         'blob:',
         'https://*.googleusercontent.com',
-        'https://ui-avatars.com',
-        'https://www.googletagmanager.com',
         'https://avatars.githubusercontent.com'
       ]
     }

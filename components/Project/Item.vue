@@ -1,12 +1,22 @@
 <template>
   <nuxt-link :to="`/projects/${project.id}`">
-    <n-card size="small" hoverable class="h-full">
+    <n-card
+      size="small"
+      hoverable
+      class="h-full"
+    >
       <n-thing>
         <template #header>
-          <TitleDate :title="project.name" :created-at="project.createdAt" />
+          <TitleDate
+            :title="project.name"
+            :created-at="project.createdAt"
+          />
         </template>
 
-        <n-text v-if="project.description" depth="2">
+        <n-text
+          v-if="project.description"
+          depth="2"
+        >
           {{ truncateString(project.description) }}
         </n-text>
       </n-thing>

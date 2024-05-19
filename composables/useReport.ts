@@ -1,17 +1,17 @@
 import { destr } from 'destr'
 
-export default function useReport () {
+export default function useReport() {
   const key = 'report'
   const report = useNuxtData<Report | undefined>(key)
   const { $auth } = useNuxtApp()
 
-  async function find () {
+  async function find() {
     report.data.value ||= await $auth.fetch<Report>('/api/report')
 
     return report.data
   }
 
-  function update (data: Partial<Report>) {
+  function update(data: Partial<Report>) {
     return $auth.fetch('/api/report', {
       method: 'PATCH',
       body: data,
@@ -20,11 +20,11 @@ export default function useReport () {
         if (response.ok) {
           report.data.value = response._data
         }
-      }
+      },
     })
   }
 
-  function add (data: Partial<Report>) {
+  function add(data: Partial<Report>) {
     return $auth.fetch('/api/report', {
       method: 'POST',
       body: data,
@@ -33,11 +33,11 @@ export default function useReport () {
         if (response.ok) {
           report.data.value = response._data
         }
-      }
+      },
     })
   }
 
-  function handleReport (message: ReportMessage) {
+  function handleReport(message: ReportMessage) {
     switch (message.type) {
       case 'status':
         handleStatus(message)
@@ -50,10 +50,10 @@ export default function useReport () {
     }
   }
 
-  async function handleStatus (message: ReportMessage) {
+  async function handleStatus(message: ReportMessage) {
     const { update, find } = useDevice()
 
-    const { status } = destr<{status: Device['status']}>(message.payload)
+    const { status } = destr<{ status: Device['status'] }>(message.payload)
 
     const devices = await find()
 
@@ -66,16 +66,16 @@ export default function useReport () {
     }
 
     await update(message.deviceId, {
-      status
+      status,
     })
   }
 
-  async function handleUpdate (message: ReportMessage) {
+  async function handleUpdate(message: ReportMessage) {
     const { updateStatus } = useDeployment(message.deviceId)
 
     const { deploymentId, status } = destr<{
-      deploymentId: Deployment['id'];
-      status: Deployment['status'];
+      deploymentId: Deployment['id']
+      status: Deployment['status']
     }>(message.payload)
 
     if (REGEX_ID.test(deploymentId)) {

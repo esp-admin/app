@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
   const id = event.context.params?.id
 
   const schema = z.object({
-    id: z.string().regex(REGEX_ID)
+    id: z.string().regex(REGEX_ID),
   })
 
   schema.parse({ id })
@@ -12,14 +12,14 @@ export default defineEventHandler(async (event) => {
   const device = await event.context.prisma.device.update({
     where: {
       id,
-      userId
+      userId,
     },
     select: {
-      id: true
+      id: true,
     },
     data: {
-      project: { disconnect: true }
-    }
+      project: { disconnect: true },
+    },
   }).catch((e) => { throw createPrismaError(e) })
 
   return device

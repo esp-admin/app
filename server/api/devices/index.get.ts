@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
 
   const devices = await event.context.prisma.device.findMany({
     where: {
-      userId
+      userId,
     },
     select: {
       id: true,
@@ -11,11 +11,11 @@ export default defineEventHandler(async (event) => {
       description: true,
       status: true,
       projectId: true,
-      createdAt: true
+      createdAt: true,
     },
     orderBy: {
-      createdAt: 'desc'
-    }
+      createdAt: 'desc',
+    },
   })
 
   return devices

@@ -1,15 +1,15 @@
-export default function useDeployment (deviceId: Device['id']) {
+export default function useDeployment(deviceId: Device['id']) {
   const key = `deployments-device-${deviceId}`
   const deployments = useNuxtData<Deployment[]>(key)
   const { $auth } = useNuxtApp()
 
-  async function find () {
+  async function find() {
     deployments.data.value ||= await $auth.fetch<Deployment[]>(`/api/devices/${deviceId}/deployments`)
 
     return deployments.data
   }
 
-  async function findOne (id: Deployment['id']) {
+  async function findOne(id: Deployment['id']) {
     const key = `deployment-${id}`
 
     const deployment = useNuxtData<Deployment>(key)
@@ -19,7 +19,7 @@ export default function useDeployment (deviceId: Device['id']) {
     return deployment.data
   }
 
-  async function remove (id: Deployment['id']) {
+  async function remove(id: Deployment['id']) {
     return await $auth.fetch(`/api/deployments/${id}`, {
       method: 'DELETE',
 
@@ -27,17 +27,17 @@ export default function useDeployment (deviceId: Device['id']) {
         if (response.ok && deployments.data.value) {
           removeArrayElByKey(deployments.data.value, 'id', id)
         }
-      }
+      },
     })
   }
 
-  async function updateStatus (id: Deployment['id'], status: Deployment['status'], fetchData = false) {
+  async function updateStatus(id: Deployment['id'], status: Deployment['status'], fetchData = false) {
     if (fetchData) {
       await $auth.fetch(`/api/deployments/${id}`, {
         method: 'PATCH',
         body: {
-          status
-        }
+          status,
+        },
       })
     }
 
@@ -45,12 +45,13 @@ export default function useDeployment (deviceId: Device['id']) {
 
     if (deployments.data.value) {
       const deploymentIndex = deployments.data.value.findIndex(
-        deployment => deployment.id === id
+        deployment => deployment.id === id,
       )
 
       if (deploymentIndex >= 0) {
         deployments.data.value[deploymentIndex].status = status
-      } else {
+      }
+      else {
         const deployment = await findOne(id)
 
         if (deployment.value) {
@@ -60,7 +61,7 @@ export default function useDeployment (deviceId: Device['id']) {
     }
   }
 
-  function removeAll () {
+  function removeAll() {
     clearNuxtData(key)
   }
 

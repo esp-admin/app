@@ -5,12 +5,26 @@
     </n-text>
 
     <div :key="key">
-      <n-text v-if="createdAt" depth="3" class="text-base font-normal">
-        <n-time :time="new Date(createdAt)" type="relative" />
+      <n-text
+        v-if="createdAt"
+        depth="3"
+        class="text-base font-normal"
+      >
+        <n-time
+          :time="new Date(createdAt)"
+          type="relative"
+        />
       </n-text>
 
-      <n-text v-else-if="updatedAt" depth="3" class="text-base font-normal">
-        <n-time :time="new Date(updatedAt)" type="relative" />
+      <n-text
+        v-else-if="updatedAt"
+        depth="3"
+        class="text-base font-normal"
+      >
+        <n-time
+          :time="new Date(updatedAt)"
+          type="relative"
+        />
       </n-text>
     </div>
   </div>
@@ -21,7 +35,7 @@ defineProps <{ title: string, createdAt?: string | Date, updatedAt?: string | Da
 
 const key = ref(0)
 
-let intervalId:any
+let intervalId: NodeJS.Timeout
 
 onMounted(() => {
   intervalId = setInterval(() => key.value++, 10000)

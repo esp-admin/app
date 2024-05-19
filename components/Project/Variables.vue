@@ -1,5 +1,9 @@
 <template>
-  <n-form ref="formRef" :model="model" @submit.prevent="onSubmit(handleSubmit)">
+  <n-form
+    ref="formRef"
+    :model="model"
+    @submit.prevent="onSubmit(handleSubmit)"
+  >
     <n-dynamic-input
       v-model:value="model"
       #="{ index }"
@@ -14,10 +18,18 @@
           :path="`[${index}].key`"
           :rule="rules.key"
         >
-          <n-input v-model:value="model[index].key" placeholder="Key" @keydown.enter.prevent />
+          <n-input
+            v-model:value="model[index].key"
+            placeholder="Key"
+            @keydown.enter.prevent
+          />
         </n-form-item>
 
-        <n-form-item class="flex-1" ignore-path-change :show-label="false">
+        <n-form-item
+          class="flex-1"
+          ignore-path-change
+          :show-label="false"
+        >
           <n-input
             v-model:value="model[index].value"
             placeholder="Description"
@@ -27,7 +39,11 @@
       </div>
     </n-dynamic-input>
 
-    <FormButtons :loading="pending" :disabled="!edited || pending" @reset="reset" />
+    <FormButtons
+      :loading="pending"
+      :disabled="!edited || pending"
+      @reset="reset"
+    />
   </n-form>
 </template>
 
@@ -44,21 +60,21 @@ rules.value = {
   key: [
     {
       required: true,
-      message: ERROR_REQUIRED
+      message: ERROR_REQUIRED,
     },
     {
       trigger: 'input',
       message: ERROR_NO_SPACE,
-      validator: (_, value) => !REGEX_SPACE.test(value)
-    }
-  ]
+      validator: (_, value) => !REGEX_SPACE.test(value),
+    },
+  ],
 }
 
-async function handleSubmit () {
+async function handleSubmit() {
   const { update } = useProject()
 
   await update(props.project.id, {
-    variables: JSON.stringify(model.value)
+    variables: JSON.stringify(model.value),
   })
 }
 </script>

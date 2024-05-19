@@ -19,6 +19,6 @@
 const { colorMode } = useNaiveColorMode()
 
 withDefaults(defineProps<{ width?: number }>(), {
-  width: 107
+  width: 107,
 })
 </script>

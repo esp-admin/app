@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
 
   const schema = z.object({
     name: z.string().min(1),
-    apiKey: z.string().min(1)
+    apiKey: z.string().min(1),
   })
 
   schema.parse({ name, apiKey: _apiKey })
@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
     data: {
       name,
       userId,
-      apiKey: hashedApiKey
+      apiKey: hashedApiKey,
     },
     select: {
       id: true,
@@ -26,8 +26,8 @@ export default defineEventHandler(async (event) => {
       description: true,
       status: true,
       projectId: true,
-      createdAt: true
-    }
+      createdAt: true,
+    },
   }).catch((e) => { throw createPrismaError(e) })
 
   return device

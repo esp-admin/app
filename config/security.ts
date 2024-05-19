@@ -6,12 +6,12 @@ export const security: Partial<ModuleOptions> = {
     crossOriginEmbedderPolicy: false,
     contentSecurityPolicy: {
       'img-src': [
-        "'self'",
+        '\'self\'',
         'data:',
         'blob:',
         'https://*.googleusercontent.com',
-        'https://avatars.githubusercontent.com'
-      ]
-    }
-  }
+        'https://avatars.githubusercontent.com',
+      ],
+    },
+  },
 }

@@ -1,6 +1,10 @@
 <template>
   <div>
-    <n-page-header :title="device.name" class="mb-8" :on-back="$router.back">
+    <n-page-header
+      :title="device.name"
+      class="mb-8"
+      :on-back="$router.back"
+    >
       <template #extra>
         <div class="flex justify-between gap-2">
           <ButtonIcon
@@ -10,7 +14,10 @@
             @click="unlinkModalVisible = true"
           />
 
-          <NuxtLink v-if="device.projectId" :to="`/projects/${device.projectId}`">
+          <NuxtLink
+            v-if="device.projectId"
+            :to="`/projects/${device.projectId}`"
+          >
             <ButtonIcon
               v-if="device.projectId"
               secondary
@@ -28,20 +35,44 @@
     </n-page-header>
 
     <n-tabs type="line">
-      <n-tab-pane name="metadata" tab="Metadata">
-        <DeviceMetadata class="mt-4" :device="device" />
+      <n-tab-pane
+        name="metadata"
+        tab="Metadata"
+      >
+        <DeviceMetadata
+          class="mt-4"
+          :device="device"
+        />
       </n-tab-pane>
 
-      <n-tab-pane name="variables" tab="Variables">
-        <DeviceVariables class="mt-4" :device="device" />
+      <n-tab-pane
+        name="variables"
+        tab="Variables"
+      >
+        <DeviceVariables
+          class="mt-4"
+          :device="device"
+        />
       </n-tab-pane>
 
-      <n-tab-pane name="realtime" tab="Realtime">
-        <DeviceRealtime class="mt-4" :device="device" />
+      <n-tab-pane
+        name="realtime"
+        tab="Realtime"
+      >
+        <DeviceRealtime
+          class="mt-4"
+          :device="device"
+        />
       </n-tab-pane>
 
-      <n-tab-pane name="deployments" tab="Deployments">
-        <DeviceDeployments class="mt-4" :device="device" />
+      <n-tab-pane
+        name="deployments"
+        tab="Deployments"
+      >
+        <DeviceDeployments
+          class="mt-4"
+          :device="device"
+        />
       </n-tab-pane>
     </n-tabs>
 
@@ -53,7 +84,11 @@
       :mask-closable="false"
       class="max-w-sm"
     >
-      <DeviceDelete :device="device" @cancel="deleteModalVisible = false" @done="onDelete" />
+      <DeviceDelete
+        :device="device"
+        @cancel="deleteModalVisible = false"
+        @done="onDelete"
+      />
     </n-modal>
 
     <n-modal
@@ -64,7 +99,11 @@
       :mask-closable="false"
       class="max-w-sm"
     >
-      <DeviceUnlink :device="device" @cancel="unlinkModalVisible = false" @done="onUnlink" />
+      <DeviceUnlink
+        :device="device"
+        @cancel="unlinkModalVisible = false"
+        @done="onUnlink"
+      />
     </n-modal>
   </div>
 </template>
@@ -74,7 +113,7 @@ definePageMeta({
   validate: (route) => {
     const params = route.params as { id: string }
     return REGEX_ID.test(params.id)
-  }
+  },
 })
 
 const deleteModalVisible = ref(false)
@@ -89,12 +128,12 @@ const { findOne } = useDevice()
 
 const device = await findOne(id)
 
-function onDelete () {
+function onDelete() {
   deleteModalVisible.value = false
   navigateTo('/devices')
 }
 
-function onUnlink () {
+function onUnlink() {
   unlinkModalVisible.value = false
 }
 </script>

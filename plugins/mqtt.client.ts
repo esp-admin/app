@@ -9,10 +9,10 @@ export default defineNuxtPlugin({
     /**
      * Connects to MQTT broker, sets `connected` state and registers event handlers
     */
-    async function connect (options: {
-      uri: string;
-      username: string;
-      password: string;
+    async function connect(options: {
+      uri: string
+      username: string
+      password: string
     }) {
       const { default: MQTT } = await import('mqtt')
 
@@ -24,7 +24,7 @@ export default defineNuxtPlugin({
         keepalive: 90, // This insures that websocket connection is kept on background with power saver on
         reconnectPeriod: 1000,
         username: options.username,
-        password: options.password
+        password: options.password,
       })
 
       connected.value = true
@@ -47,16 +47,16 @@ export default defineNuxtPlugin({
     /**
      * Subscribe to all used topics
      */
-    function subscribe () {
+    function subscribe() {
       mqttClient?.subscribe([
         'device/+/report/status',
         'device/+/report/update',
         'device/+/report/custom',
-        'device/+/logs/+'
+        'device/+/logs/+',
       ])
     }
 
-    async function onMessageArrived (topic: string, payload: Buffer) {
+    async function onMessageArrived(topic: string, payload: Buffer) {
       const splittedTopic = topic.split('/')
       const message = payload.toString()
 
@@ -64,7 +64,7 @@ export default defineNuxtPlugin({
         deviceId: splittedTopic[1],
         action: splittedTopic[2],
         type: splittedTopic[3],
-        payload: message
+        payload: message,
       } as MqttMessage
 
       const devices = await useDevice().find()
@@ -84,12 +84,12 @@ export default defineNuxtPlugin({
       }
     }
 
-    function publish (message: CommandMessage) {
+    function publish(message: CommandMessage) {
       const topic = `device/${message.deviceId}/${message.action}/${message.type}`
 
       mqttClient?.publish(topic, message.payload, {
         retain: message.retain,
-        qos: 1
+        qos: 1,
       })
     }
 
@@ -104,10 +104,11 @@ export default defineNuxtPlugin({
           connect({
             uri: mqtt.value.uriWS,
             password: mqtt.value.password,
-            username: mqtt.value.username
+            username: mqtt.value.username,
           })
         }
-      } else {
+      }
+      else {
         // Do not wait for disconnection, UX optimization
         mqttClient?.endAsync()
       }
@@ -117,9 +118,9 @@ export default defineNuxtPlugin({
       provide: {
         mqtt: {
           connect,
-          publish
-        }
-      }
+          publish,
+        },
+      },
     }
-  }
+  },
 })

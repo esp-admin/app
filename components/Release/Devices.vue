@@ -1,6 +1,10 @@
 <template>
   <div class="flex flex-wrap gap-2">
-    <nuxt-link v-for="device of linkedDevicesWithDeployment" :key="device.id" :to="`/devices/${device.id}`">
+    <nuxt-link
+      v-for="device of linkedDevicesWithDeployment"
+      :key="device.id"
+      :to="`/devices/${device.id}`"
+    >
       <n-button quaternary>
         {{ device.name }}
         <template #icon>
@@ -40,7 +44,6 @@ const linkedDevicesWithDeployment = computed(
       const updatedDeployment = deviceDeployments.data.value?.find(deployment => deployment.releaseId === props.release.id)
 
       return defu(device, { deployment: updatedDeployment }, { deployment: initialDeployment })
-    }
+    },
   ))
-
 </script>

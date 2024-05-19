@@ -7,21 +7,21 @@ export default defineEventHandler(async (event) => {
 
   const schema = z.object({
     id: z.string().regex(REGEX_ID),
-    status: z.enum(['started', 'failed', 'succeded'])
+    status: z.enum(['started', 'failed', 'succeded']),
   })
 
   schema.parse({ id, status })
 
   const deployment = await event.context.prisma.deployment.update({
     where: {
-      id
+      id,
     },
     data: {
-      status
+      status,
     },
     select: {
-      id: true
-    }
+      id: true,
+    },
   }).catch((e) => { throw createPrismaError(e) })
 
   return deployment

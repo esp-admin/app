@@ -6,5 +6,5 @@ export default defineEventHandler(() => ({
   description,
   repository,
   homepage,
-  author
+  author,
 }))

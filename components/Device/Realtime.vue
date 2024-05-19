@@ -28,7 +28,10 @@
       />
     </div>
 
-    <n-card class="mt-4" :theme-overrides="{borderColor: cardBorderColor}">
+    <n-card
+      class="mt-4"
+      :theme-overrides="{ borderColor: cardBorderColor }"
+    >
       <n-log
         ref="logInst"
         language="realtime"
@@ -51,7 +54,7 @@ const props = defineProps<{ device: Device }>()
 
 const cardBorderColor = computed(() => props.device.status === 'connected' ? '#22c55e' : '#ef4444')
 
-const projectCommands = ref<{key: string, value: string}[]>([])
+const projectCommands = ref<{ key: string, value: string }[]>([])
 
 if (props.device.projectId) {
   const { findOne } = useProject()
@@ -65,23 +68,23 @@ const logsString = computed(() => logs.value.map(log => `${log.type} - ${log.pay
 
 const { $mqtt } = useNuxtApp()
 
-function handleRestart () {
+function handleRestart() {
   $mqtt.publish({
     deviceId: props.device.id,
     action: 'command',
     type: 'restart',
     retain: false,
-    payload: ''
+    payload: '',
   })
 }
 
-function handleCommand (command:object) {
+function handleCommand(command: object) {
   $mqtt.publish({
     deviceId: props.device.id,
     action: 'command',
     type: 'custom',
     retain: false,
-    payload: JSON.stringify(command)
+    payload: JSON.stringify(command),
   })
 }
 
@@ -91,11 +94,11 @@ onMounted(() => {
   enableLog()
 
   watch(logsString, () =>
-    nextTick(() => scrollToBottom())
+    nextTick(() => scrollToBottom()),
   )
 })
 
-if (process.client) {
+if (import.meta.client) {
   window.onbeforeunload = () => {
     disableLog()
   }
@@ -105,27 +108,27 @@ onUnmounted(() => {
   disableLog()
 })
 
-function scrollToBottom () {
+function scrollToBottom() {
   logInst.value?.scrollTo({ position: 'bottom' })
 }
 
-function enableLog () {
+function enableLog() {
   $mqtt.publish({
     deviceId: props.device.id,
     action: 'command',
     type: 'log',
     payload: 'on',
-    retain: true
+    retain: true,
   })
 }
 
-function disableLog () {
+function disableLog() {
   $mqtt.publish({
     deviceId: props.device.id,
     action: 'command',
     type: 'log',
     payload: 'off',
-    retain: true
+    retain: true,
   })
 }
 </script>

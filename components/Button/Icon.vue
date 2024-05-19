@@ -10,7 +10,7 @@
 import type { ButtonProps } from 'naive-ui'
 
 interface Props extends /* @vue-ignore */ ButtonProps {
-  icon: string,
+  icon: string
 }
 
 defineProps<Props>()

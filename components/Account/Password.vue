@@ -1,6 +1,14 @@
 <template>
-  <n-form ref="formRef" :model="model" :rules="rules" @submit.prevent="onSubmit(handleChangePassword)">
-    <n-form-item label="Current password" path="currentPassword">
+  <n-form
+    ref="formRef"
+    :model="model"
+    :rules="rules"
+    @submit.prevent="onSubmit(handleChangePassword)"
+  >
+    <n-form-item
+      label="Current password"
+      path="currentPassword"
+    >
       <n-input
         v-model:value="model.currentPassword"
         type="password"
@@ -9,7 +17,10 @@
       />
     </n-form-item>
 
-    <n-form-item label="New password" path="newPassword">
+    <n-form-item
+      label="New password"
+      path="newPassword"
+    >
       <n-input
         v-model:value="model.newPassword"
         type="password"
@@ -18,7 +29,11 @@
       />
     </n-form-item>
 
-    <FormButtons :loading="pending" :disabled="pending || !edited" @reset="reset" />
+    <FormButtons
+      :loading="pending"
+      :disabled="pending || !edited"
+      @reset="reset"
+    />
   </n-form>
 </template>
 
@@ -27,13 +42,13 @@ const { changePassword } = useAuth()
 
 const model = ref({
   currentPassword: '',
-  newPassword: ''
+  newPassword: '',
 })
 
 const { formRef, onSubmit, pending, rules, apiErrors, edited, reset } = useNaiveForm(model)
 
 apiErrors.value = {
-  wrongPassword: false
+  wrongPassword: false,
 }
 
 rules.value = {
@@ -41,29 +56,29 @@ rules.value = {
     {
       required: true,
       message: ERROR_REQUIRED,
-      trigger: 'input'
+      trigger: 'input',
     },
     {
       validator: () => !apiErrors.value.wrongPassword,
       message: 'Wrong password',
-      trigger: 'input'
-    }
+      trigger: 'input',
+    },
   ],
   newPassword: [
     {
       required: true,
       message: ERROR_REQUIRED,
-      trigger: 'input'
+      trigger: 'input',
     },
     {
       validator: (_, value) => REGEX_PASSWORD.test(value),
       message: ERROR_INVALID_PASSWORD,
-      trigger: 'input'
-    }
-  ]
+      trigger: 'input',
+    },
+  ],
 }
 
-async function handleChangePassword () {
+async function handleChangePassword() {
   await changePassword(model.value)
     .catch((error) => {
       apiErrors.value.wrongPassword = error.data.message === 'wrong-password'

@@ -1,20 +1,20 @@
-export default function useLog (deviceId: Device['id']) {
+export default function useLog(deviceId: Device['id']) {
   const key = `logs-device-${deviceId}`
   const logs = useState<LoggingMessage[]>(key, () => [])
 
-  function find () {
+  function find() {
     return logs
   }
 
-  function remove () {
+  function remove() {
     clearNuxtState(key)
   }
 
-  function append (message:LoggingMessage) {
+  function append(message: LoggingMessage) {
     logs.value.push(message)
   }
 
-  function clean () {
+  function clean() {
     logs.value = []
   }
 

@@ -10,7 +10,7 @@ export default defineNuxtPlugin({
   enforce: 'pre',
 
   setup: (nuxtApp) => {
-    let intervalId: any
+    let intervalId: NodeJS.Timeout
 
     nuxtApp.hook('auth:loggedIn', async (loggedIn) => {
       if (loggedIn) {
@@ -18,19 +18,20 @@ export default defineNuxtPlugin({
         await useDevice().find()
 
         intervalId = setInterval(sync, SYNC_INTERVAL_MS)
-      } else if (intervalId) {
+      }
+      else if (intervalId) {
         clearInterval(intervalId)
       }
     })
 
-    function sync () {
+    function sync() {
       updateDeployments()
     }
 
     /**
      * This function updates all existant deployments with `failed` status after DEPLOYMENT_TIMEOUT_MS reached
      */
-    async function updateDeployments () {
+    async function updateDeployments() {
       const { find } = useDevice()
 
       const devices = await find()
@@ -52,5 +53,5 @@ export default defineNuxtPlugin({
         }
       }
     }
-  }
+  },
 })

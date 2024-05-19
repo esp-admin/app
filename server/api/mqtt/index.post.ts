@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
     uriTCP: z.string().url().or(z.literal('')).nullable().optional(),
     uriWS: z.string().url(),
     username: z.string().min(1),
-    password: z.string().min(1)
+    password: z.string().min(1),
   })
 
   schema.parse({ uriTCP, uriWS, username, password })
@@ -18,14 +18,14 @@ export default defineEventHandler(async (event) => {
       uriWS,
       username,
       password,
-      userId
+      userId,
     },
     select: {
       password: true,
       username: true,
       uriTCP: true,
-      uriWS: true
-    }
+      uriWS: true,
+    },
   })
 
   return mqtt

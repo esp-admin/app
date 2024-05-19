@@ -1,10 +1,21 @@
 <template>
-  <n-form ref="formRef" :rules="rules" :model="model" @submit.prevent="onSubmit(handleSubmit)">
-    <n-form-item label="Name" path="name">
+  <n-form
+    ref="formRef"
+    :rules="rules"
+    :model="model"
+    @submit.prevent="onSubmit(handleSubmit)"
+  >
+    <n-form-item
+      label="Name"
+      path="name"
+    >
       <n-input v-model:value="model.name" />
     </n-form-item>
 
-    <n-form-item label="API Key" path="apiKey">
+    <n-form-item
+      label="API Key"
+      path="apiKey"
+    >
       <FormKey v-model:value="model.apiKey" />
     </n-form-item>
 
@@ -18,7 +29,13 @@
       >
         Cancel
       </n-button>
-      <n-button type="primary" attr-type="submit" :loading="pending" :disabled="pending || !edited" class="flex-1">
+      <n-button
+        type="primary"
+        attr-type="submit"
+        :loading="pending"
+        :disabled="pending || !edited"
+        class="flex-1"
+      >
         Create device
       </n-button>
     </div>
@@ -30,13 +47,13 @@ const emits = defineEmits(['cancel', 'done'])
 
 const model = ref({
   name: '',
-  apiKey: ''
+  apiKey: '',
 })
 
 const { apiErrors, formRef, onSubmit, pending, rules, edited } = useNaiveForm(model)
 
 apiErrors.value = {
-  nameAlreadyExists: false
+  nameAlreadyExists: false,
 }
 
 rules.value = {
@@ -44,28 +61,28 @@ rules.value = {
     {
       required: true,
       message: ERROR_REQUIRED,
-      trigger: 'input'
+      trigger: 'input',
     },
     {
       message: ERROR_EXISTS,
-      validator: () => !apiErrors.value.nameAlreadyExists
+      validator: () => !apiErrors.value.nameAlreadyExists,
     },
     {
       validator: (_, value) => !REGEX_SPACE_AROUND.test(value),
       message: ERROR_NO_SPACE_AROUND,
-      trigger: 'input'
-    }
+      trigger: 'input',
+    },
   ],
   apiKey: [
     {
       required: true,
       message: ERROR_REQUIRED,
-      trigger: 'input'
-    }
-  ]
+      trigger: 'input',
+    },
+  ],
 }
 
-async function handleSubmit () {
+async function handleSubmit() {
   const { add } = useDevice()
 
   await add(model.value)

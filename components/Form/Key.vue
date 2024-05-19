@@ -1,6 +1,9 @@
 <template>
   <n-input-group>
-    <n-input :placeholder="placeholder" disabled />
+    <n-input
+      :placeholder="placeholder"
+      disabled
+    />
 
     <ButtonIcon
       v-if="!value"
@@ -24,7 +27,6 @@
 </template>
 
 <script setup lang="ts">
-
 const props = defineProps<{ value?: string }>()
 
 const emits = defineEmits(['update:value'])
@@ -32,7 +34,8 @@ const emits = defineEmits(['update:value'])
 const placeholder = computed(() => {
   if (props.value && copied.value) {
     return 'Key copied to clipboard'
-  } else if (props.value && !copied.value) {
+  }
+  else if (props.value && !copied.value) {
     return 'Please copy the new Key'
   }
   return 'Key cannot be displayed'
@@ -40,17 +43,17 @@ const placeholder = computed(() => {
 
 const copied = ref(false)
 
-function refresh () {
+function refresh() {
   const newValue = generateRandomString(20)
   emits('update:value', newValue)
 }
 
-function copy () {
+function copy() {
   navigator.clipboard.writeText(props.value!)
   copied.value = true
 }
 
-function cancel () {
+function cancel() {
   copied.value = false
   emits('update:value')
 }

@@ -1,8 +1,16 @@
 <template>
   <div>
-    <n-result v-if="success" status="success" title="Done" description="Password is successfully reset">
+    <n-result
+      v-if="success"
+      status="success"
+      title="Done"
+      description="Password is successfully reset"
+    >
       <template #footer>
-        <nuxt-link to="/auth/login" class="no-underline">
+        <nuxt-link
+          to="/auth/login"
+          class="no-underline"
+        >
           <n-button type="primary">
             Go back to login
           </n-button>
@@ -17,7 +25,10 @@
       description="You do not have permission"
     >
       <template #footer>
-        <nuxt-link to="/auth/login" class="no-underline">
+        <nuxt-link
+          to="/auth/login"
+          class="no-underline"
+        >
           <n-button type="primary">
             Go back to login
           </n-button>
@@ -26,8 +37,17 @@
     </n-result>
 
     <div v-else>
-      <n-form ref="formRef" :model="model" :rules="rules" @submit.prevent="onSubmit(handleSubmit)">
-        <n-form-item label="Password" path="password" :show-require-mark="false">
+      <n-form
+        ref="formRef"
+        :model="model"
+        :rules="rules"
+        @submit.prevent="onSubmit(handleSubmit)"
+      >
+        <n-form-item
+          label="Password"
+          path="password"
+          :show-require-mark="false"
+        >
           <n-input
             v-model:value="model.password"
             type="password"
@@ -36,7 +56,11 @@
           />
         </n-form-item>
 
-        <n-form-item label="Confirm Password" path="passwordConfirm" :show-require-mark="false">
+        <n-form-item
+          label="Confirm Password"
+          path="passwordConfirm"
+          :show-require-mark="false"
+        >
           <n-input
             v-model:value="model.passwordConfirm"
             type="password"
@@ -45,7 +69,13 @@
           />
         </n-form-item>
 
-        <n-button attr-type="submit" block :disabled="pending" :loading="pending" type="primary">
+        <n-button
+          attr-type="submit"
+          block
+          :disabled="pending"
+          :loading="pending"
+          type="primary"
+        >
           <template #icon>
             <naive-icon :name="ICON_RESET" />
           </template>
@@ -57,12 +87,11 @@
 </template>
 
 <script  setup lang="ts">
-
 definePageMeta({
   middleware: 'guest',
   auth: false,
   layout: 'auth',
-  colorMode: 'light'
+  colorMode: 'light',
 })
 
 const { formRef, pending, rules, onSubmit } = useNaiveForm()
@@ -73,7 +102,7 @@ const failure = ref(false)
 
 const model = ref({
   password: '',
-  passwordConfirm: ''
+  passwordConfirm: '',
 })
 
 rules.value = {
@@ -81,19 +110,19 @@ rules.value = {
     {
       validator: (_, value) => REGEX_PASSWORD.test(value),
       message: ERROR_INVALID_PASSWORD,
-      trigger: 'input'
-    }
+      trigger: 'input',
+    },
   ],
   passwordConfirm: [
     {
       validator: (_, value) => value === model.value.password,
       message: ERROR_MATCH_PASSWORD,
-      trigger: 'input'
-    }
-  ]
+      trigger: 'input',
+    },
+  ],
 }
 
-async function handleSubmit () {
+async function handleSubmit() {
   await resetPassword(model.value.password)
     .then(() => { success.value = true })
     .catch(() => { failure.value = true })

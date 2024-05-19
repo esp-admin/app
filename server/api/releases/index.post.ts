@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
   const schema = z.object({
     version: z.string().regex(REGEX_VERSION),
     projectId: z.string().regex(REGEX_ID),
-    downloadPath: z.string().min(1)
+    downloadPath: z.string().min(1),
   })
 
   schema.parse({ version, downloadPath, projectId })
@@ -17,17 +17,17 @@ export default defineEventHandler(async (event) => {
       downloadPath,
       project: {
         connect: {
-          id: projectId
-        }
-      }
+          id: projectId,
+        },
+      },
     },
     select: {
       id: true,
       version: true,
       downloadPath: true,
       createdAt: true,
-      projectId: true
-    }
+      projectId: true,
+    },
   }).catch((e) => { throw createPrismaError(e) })
 
   return release

@@ -1,7 +1,10 @@
 <template>
   <n-thing>
     <template #header>
-      <TitleDate :title="release.version" :created-at="release.createdAt" />
+      <TitleDate
+        :title="release.version"
+        :created-at="release.createdAt"
+      />
     </template>
 
     <template #header-extra>
@@ -50,7 +53,6 @@
 </template>
 
 <script setup lang="ts">
-
 const deleteModalVisible = ref(false)
 
 const props = defineProps<{ release: Release }>()
@@ -61,11 +63,11 @@ const { findLinked } = useDevice()
 
 const linkedDevices = await findLinked(props.release.projectId)
 
-function onDelete () {
+function onDelete() {
   deleteModalVisible.value = false
 }
 
-function onTrigger () {
+function onTrigger() {
   const { $mqtt } = useNuxtApp()
 
   for (const device of linkedDevices.value) {
@@ -77,8 +79,8 @@ function onTrigger () {
       payload: JSON.stringify({
         releaseId: props.release.id,
         downloadPath: props.release.downloadPath,
-        version: props.release.version
-      })
+        version: props.release.version,
+      }),
     })
   }
 }

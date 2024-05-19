@@ -1,7 +1,14 @@
 <template>
-  <n-form ref="formRef" :model="model" @submit.prevent="onSubmit(handleSubmit)">
+  <n-form
+    ref="formRef"
+    :model="model"
+    @submit.prevent="onSubmit(handleSubmit)"
+  >
     <n-form-item label="Name">
-      <n-select v-model:value="model.selectedDeviceId" :options="selectOptions" />
+      <n-select
+        v-model:value="model.selectedDeviceId"
+        :options="selectOptions"
+      />
     </n-form-item>
 
     <div class="flex gap-4">
@@ -14,7 +21,13 @@
       >
         Cancel
       </n-button>
-      <n-button type="primary" class="flex-1" attr-type="submit" :loading="pending" :disabled="pending || !edited">
+      <n-button
+        type="primary"
+        class="flex-1"
+        attr-type="submit"
+        :loading="pending"
+        :disabled="pending || !edited"
+      >
         Link device
       </n-button>
     </div>
@@ -25,7 +38,7 @@
 import type { SelectOption } from 'naive-ui'
 
 const model = ref({
-  selectedDeviceId: ''
+  selectedDeviceId: '',
 })
 
 const { formRef, onSubmit, pending, edited } = useNaiveForm(model)
@@ -42,10 +55,10 @@ const unlinkedDevices = computed(() => devices.value?.filter(device => device.pr
 
 const selectOptions = computed<SelectOption[]>(() => unlinkedDevices.value.map(device => ({
   label: device.name,
-  value: device.id
+  value: device.id,
 })))
 
-async function handleSubmit () {
+async function handleSubmit() {
   const { link } = useDevice()
 
   await link(model.value.selectedDeviceId, props.project.id)

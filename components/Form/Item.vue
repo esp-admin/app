@@ -4,10 +4,17 @@
       <div class="flex justify-between items-center">
         <span>{{ label }}</span>
 
-        <n-tooltip v-if="description" trigger="click" placement="left">
+        <n-tooltip
+          v-if="description"
+          trigger="click"
+          placement="left"
+        >
           <template #trigger>
             <n-button text>
-              <naive-icon :name="ICON_UNKNOWN" :size="20" />
+              <naive-icon
+                :name="ICON_UNKNOWN"
+                :size="20"
+              />
             </n-button>
           </template>
           <span> {{ description }} </span>

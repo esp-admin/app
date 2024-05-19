@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
     repository: z.string().url().or(z.literal('')).nullable().optional(),
     description: z.string().nullable().optional(),
     variables: z.string().optional().nullable(),
-    commands: z.string().optional().nullable()
+    commands: z.string().optional().nullable(),
   })
 
   schema.parse({ id, name, repository, description, variables, commands })
@@ -18,15 +18,15 @@ export default defineEventHandler(async (event) => {
   const project = await event.context.prisma.project.update({
     where: {
       id,
-      userId
+      userId,
     },
     data: {
       name,
       description,
       repository,
       commands,
-      variables
-    }
+      variables,
+    },
   }).catch((e) => { throw createPrismaError(e) })
 
   return project

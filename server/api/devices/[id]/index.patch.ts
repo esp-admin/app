@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
     name: z.string().min(1).optional(),
     description: z.string().nullable().optional(),
     status: z.enum(['connected', 'disconnected', 'unregistered']).optional(),
-    variables: z.string().optional().nullable()
+    variables: z.string().optional().nullable(),
   })
 
   schema.parse({ id, name, description, status, variables })
@@ -25,14 +25,14 @@ export default defineEventHandler(async (event) => {
   const device = await event.context.prisma.device.update({
     where: {
       id,
-      userId
+      userId,
     },
     data: {
       name,
       description,
       status,
       variables,
-      apiKey: hashedApiKey
+      apiKey: hashedApiKey,
     },
     select: {
       id: true,
@@ -41,8 +41,8 @@ export default defineEventHandler(async (event) => {
       status: true,
       projectId: true,
       createdAt: true,
-      variables: true
-    }
+      variables: true,
+    },
   }).catch((e) => { throw createPrismaError(e) })
 
   return device

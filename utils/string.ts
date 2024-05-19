@@ -1,8 +1,8 @@
-export function truncateString (str: string, maxLength = 100) {
+export function truncateString(str: string, maxLength = 100) {
   return str.length > maxLength ? str.substring(0, maxLength) + '...' : str
 }
 
-export function generateRandomString (length: number) {
+export function generateRandomString(length: number) {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
   let result = ''
 

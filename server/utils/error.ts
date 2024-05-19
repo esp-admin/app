@@ -1,6 +1,14 @@
 export { z } from 'zod'
 
-export function createPrismaError (error: any) {
+interface PrismaError {
+  code: string
+  meta: {
+    target: string
+    relation_name: string
+  }
+}
+
+export function createPrismaError(error: PrismaError) {
   const h3Error = createError('server-error')
 
   switch (error.code) {
@@ -21,10 +29,10 @@ export function createPrismaError (error: any) {
   return h3Error
 }
 
-export function createUnauthorizedError () {
+export function createUnauthorizedError() {
   const h3Error = createError({
     message: 'unauthorized',
-    statusCode: 401
+    statusCode: 401,
   })
 
   return h3Error

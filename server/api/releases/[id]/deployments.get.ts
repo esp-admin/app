@@ -4,22 +4,22 @@ export default defineEventHandler(async (event) => {
   const id = event.context.params?.id
 
   const schema = z.object({
-    id: z.string().regex(REGEX_ID)
+    id: z.string().regex(REGEX_ID),
   })
 
   schema.parse({ id })
 
   const deployments = await event.context.prisma.deployment.findMany({
     where: {
-      releaseId: id
+      releaseId: id,
     },
     select: {
       status: true,
-      deviceId: true
+      deviceId: true,
     },
     orderBy: {
-      createdAt: 'desc'
-    }
+      createdAt: 'desc',
+    },
   }).catch((e) => { throw createPrismaError(e) })
 
   return deployments

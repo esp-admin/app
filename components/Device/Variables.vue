@@ -1,5 +1,9 @@
 <template>
-  <n-form ref="formRef" :model="model" @submit.prevent="onSubmit(handleSubmit)">
+  <n-form
+    ref="formRef"
+    :model="model"
+    @submit.prevent="onSubmit(handleSubmit)"
+  >
     <FormItem
       v-for="projectVariable of projectVariables"
       :key="projectVariable.key"
@@ -9,9 +13,18 @@
       <n-input v-model:value="model[projectVariable.key]" />
     </FormItem>
 
-    <FormButtons v-if="projectVariables?.length" :loading="pending" :disabled="!edited || pending" @reset="reset" />
+    <FormButtons
+      v-if="projectVariables?.length"
+      :loading="pending"
+      :disabled="!edited || pending"
+      @reset="reset"
+    />
 
-    <n-result v-else class="col-span-full" title="No variables found">
+    <n-result
+      v-else
+      class="col-span-full"
+      title="No variables found"
+    >
       <template #icon>
         <ResultEmpty />
       </template>
@@ -49,7 +62,7 @@ if (props.device.projectId) {
   })
 }
 
-async function handleSubmit () {
+async function handleSubmit() {
   const { update } = useDevice()
 
   await update(props.device.id, { variables: JSON.stringify(model.value) })
@@ -61,7 +74,7 @@ async function handleSubmit () {
         action: 'command',
         type: 'config',
         payload: JSON.stringify(model.value),
-        retain: true
+        retain: true,
       })
     })
 }

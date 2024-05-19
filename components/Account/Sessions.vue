@@ -1,6 +1,12 @@
 <template>
-  <n-list bordered show-divider>
-    <n-list-item v-for="session of sessions" :key="session.id">
+  <n-list
+    bordered
+    show-divider
+  >
+    <n-list-item
+      v-for="session of sessions"
+      :key="session.id"
+    >
       <n-thing>
         <template #avatar>
           <n-tooltip trigger="hover">
@@ -20,7 +26,7 @@
             :title=" [
               session.ua && UAParser.UAParser(session.ua).browser.name,
               session.ua && UAParser.UAParser(session.ua).os.name,
-              session.ua && UAParser.UAParser(session.ua).device.model
+              session.ua && UAParser.UAParser(session.ua).device.model,
             ]
               .join(' ')"
             :updated-at="session.updatedAt"
@@ -53,7 +59,7 @@ const sessions = ref(await getAllSessions())
 
 lb.finish()
 
-async function handleSessionRevoke (id: string) {
+async function handleSessionRevoke(id: string) {
   const { revokeSession } = useAuthSession()
 
   await revokeSession(id)

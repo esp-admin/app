@@ -1,15 +1,15 @@
-export default function useProject () {
+export default function useProject() {
   const key = 'projects'
   const projects = useNuxtData<Project[]>(key)
   const { $auth } = useNuxtApp()
 
-  async function find () {
+  async function find() {
     projects.data.value ||= await $auth.fetch<Project[]>('/api/projects')
 
     return projects.data
   }
 
-  async function findOne (id: Project['id']) {
+  async function findOne(id: Project['id']) {
     const key = `project-${id}`
 
     const project = useNuxtData<Project>(key)
@@ -19,7 +19,7 @@ export default function useProject () {
     return project.data as Ref<Project>
   }
 
-  function remove (id: Project['id']) {
+  function remove(id: Project['id']) {
     return $auth.fetch(`/api/projects/${id}`, {
       method: 'DELETE',
 
@@ -32,11 +32,11 @@ export default function useProject () {
           // Clear all related releases
           useRelease(id).removeAll()
         }
-      }
+      },
     })
   }
 
-  function add (data: Partial<Project>) {
+  function add(data: Partial<Project>) {
     return $auth.fetch('/api/projects', {
       method: 'POST',
       body: data,
@@ -45,11 +45,11 @@ export default function useProject () {
         if (response.ok && projects.data.value) {
           projects.data.value.unshift(response._data)
         }
-      }
+      },
     })
   }
 
-  function update (id: Project['id'], data: Partial<Project>) {
+  function update(id: Project['id'], data: Partial<Project>) {
     const key = `project-${id}`
     const project = useNuxtData(key)
 
@@ -60,7 +60,7 @@ export default function useProject () {
       onResponse: ({ response }) => {
         if (response.ok && projects.data.value) {
           const projectIndex = projects.data.value.findIndex(
-            project => project.id === id
+            project => project.id === id,
           )
           if (projectIndex >= 0) {
             projects.data.value[projectIndex] = response._data
@@ -70,7 +70,7 @@ export default function useProject () {
         if (response.ok && project.data.value) {
           project.data.value = response._data
         }
-      }
+      },
     })
   }
 

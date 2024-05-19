@@ -5,22 +5,22 @@ export default defineEventHandler(async (event) => {
 
   const schema = z.object({
     name: z.string().min(1),
-    picture: z.string().min(1)
+    picture: z.string().min(1),
   })
 
   schema.parse({ name, picture })
 
   const user = await event.context.prisma.user.update({
     where: {
-      id: userId
+      id: userId,
     },
     data: {
       name,
-      picture
+      picture,
     },
     select: {
-      id: true
-    }
+      id: true,
+    },
   }).catch((e) => { throw createPrismaError(e) })
 
   return user

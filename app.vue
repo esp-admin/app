@@ -1,6 +1,9 @@
 <template>
   <naive-config :hljs="hljs">
-    <nuxt-loading-indicator color="#2563eb" :height="3" />
+    <nuxt-loading-indicator
+      color="#2563eb"
+      :height="3"
+    />
     <nuxt-layout>
       <nuxt-page />
     </nuxt-layout>
@@ -16,21 +19,21 @@ hljs.registerLanguage('realtime', () => ({
   contains: [
     {
       className: 'bg-blue-600 text-white p-1',
-      begin: /info/
+      begin: /info/,
     },
     {
       className: 'bg-red-500 text-white p-1',
-      begin: /error/
+      begin: /error/,
     },
     {
       className: 'bg-amber-500 text-white p-1',
-      begin: /warn/
+      begin: /warn/,
     },
     {
       className: 'bg-green-500 text-white p-1',
-      begin: /success/
-    }
-  ]
+      begin: /success/,
+    },
+  ],
 }))
 
 useSeoMeta({
@@ -42,6 +45,6 @@ useSeoMeta({
   twitterTitle: 'ESP Admin',
   twitterDescription: 'Remote management of ESP microcontrollers',
   twitterImage: '/favicon.ico',
-  twitterCard: 'summary'
+  twitterCard: 'summary',
 })
 </script>

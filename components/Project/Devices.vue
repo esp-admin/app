@@ -1,29 +1,52 @@
 <template>
   <div class="grid lg:grid-cols-3 gap-8">
-    <div v-if="linkedDevices?.length" class="col-span-full flex gap-4">
-      <n-input v-model:value="nameSearch" placeholder="Search by name">
+    <div
+      v-if="linkedDevices?.length"
+      class="col-span-full flex gap-4"
+    >
+      <n-input
+        v-model:value="nameSearch"
+        placeholder="Search by name"
+      >
         <template #prefix>
-          <naive-icon :name="ICON_SEARCH" :size="16" />
+          <naive-icon
+            :name="ICON_SEARCH"
+            :size="16"
+          />
         </template>
       </n-input>
 
-      <n-button type="primary" @click="linkModalVisible = true">
+      <n-button
+        type="primary"
+        @click="linkModalVisible = true"
+      >
         Link device
       </n-button>
     </div>
 
-    <n-result v-else class="col-span-full" title="No linked devices found">
+    <n-result
+      v-else
+      class="col-span-full"
+      title="No linked devices found"
+    >
       <template #icon>
         <ResultEmpty />
       </template>
       <template #footer>
-        <n-button type="primary" @click="linkModalVisible = true">
+        <n-button
+          type="primary"
+          @click="linkModalVisible = true"
+        >
           Link first device
         </n-button>
       </template>
     </n-result>
 
-    <DeviceItem v-for="device of filteredDevices " :key="device.id" :device="device" />
+    <DeviceItem
+      v-for="device of filteredDevices "
+      :key="device.id"
+      :device="device"
+    />
 
     <n-modal
       v-model:show="linkModalVisible"
@@ -33,13 +56,16 @@
       :mask-closable="false"
       class="max-w-sm"
     >
-      <DeviceLink :project="project" @cancel="linkModalVisible = false" @done="onLink" />
+      <DeviceLink
+        :project="project"
+        @cancel="linkModalVisible = false"
+        @done="onLink"
+      />
     </n-modal>
   </div>
 </template>
 
 <script setup lang="ts">
-
 const linkModalVisible = ref(false)
 
 const props = defineProps<{ project: Project }>()
@@ -52,7 +78,7 @@ const nameSearch = ref('')
 
 const filteredDevices = filteredArrayByKey(linkedDevices, 'name', nameSearch)
 
-function onLink () {
+function onLink() {
   linkModalVisible.value = false
 }
 </script>

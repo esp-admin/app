@@ -9,9 +9,9 @@ export default defineNuxtConfig({
     head: {
       title: 'ESP Admin',
       htmlAttrs: { lang: 'en' },
-      meta: [{ name: 'theme-color', content: '#18181B' }]
+      meta: [{ name: 'theme-color', content: '#18181B' }],
     },
-    pageTransition: { name: 'page', mode: 'out-in' }
+    pageTransition: { name: 'page', mode: 'out-in' },
   },
 
   css: ['~/assets/styles/main.css'],
@@ -22,7 +22,8 @@ export default defineNuxtConfig({
     '@bg-dev/nuxt-s3',
     '@nuxtjs/tailwindcss',
     'nuxt-security',
-    '@nuxt/fonts'
+    '@nuxt/fonts',
+    '@nuxt/eslint',
   ],
 
   auth,
@@ -32,18 +33,24 @@ export default defineNuxtConfig({
   security,
   fonts,
 
+  eslint: {
+    config: {
+      stylistic: true,
+    },
+  },
+
   routeRules: {
     '/api/s3/mutation/**': { security: { xssValidator: false } },
     '/api/auth/**': { security: { rateLimiter: { tokensPerInterval: 20, interval: 30000 } } },
-    '/api/s3/**': { security: { rateLimiter: { tokensPerInterval: 20, interval: 30000 } } }
+    '/api/s3/**': { security: { rateLimiter: { tokensPerInterval: 20, interval: 30000 } } },
   },
 
   runtimeConfig: {
     public: {
       oauth: {
         google: false,
-        github: false
-      }
-    }
-  }
+        github: false,
+      },
+    },
+  },
 })

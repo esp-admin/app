@@ -13,21 +13,21 @@ export default defineEventHandler(async (event) => {
   const schema = z.object({
     type: z.enum(['info', 'error', 'warn', 'success']),
     subject: z.string().min(1),
-    body: z.string().min(1)
+    body: z.string().min(1),
   })
 
   schema.parse(message)
 
   const report = await event.context.prisma.report.findUniqueOrThrow({
     where: {
-      userId
+      userId,
     },
     select: {
       emailAddress: true,
       emailEnable: true,
       webhookEnable: true,
-      webhookUrl: true
-    }
+      webhookUrl: true,
+    },
   }).catch((e) => { throw createPrismaError(e) })
 
   const config = useRuntimeConfig()
@@ -42,8 +42,8 @@ export default defineEventHandler(async (event) => {
         type: message.type,
         body: message.body,
         deviceName,
-        deviceUrl
-      })
+        deviceUrl,
+      }),
     })
   }
 
@@ -55,8 +55,8 @@ export default defineEventHandler(async (event) => {
         subject: message.subject,
         body: message.body,
         deviceId,
-        projectId
-      }
+        projectId,
+      },
     })
   }
 

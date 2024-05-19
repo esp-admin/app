@@ -1,15 +1,15 @@
-export default function useDevice () {
+export default function useDevice() {
   const key = 'devices'
   const devices = useNuxtData<Device[]>(key)
   const { $auth } = useNuxtApp()
 
-  async function find () {
+  async function find() {
     devices.data.value ||= await $auth.fetch<Device[]>('/api/devices')
 
     return devices.data
   }
 
-  async function findOne (id: Device['id']) {
+  async function findOne(id: Device['id']) {
     const key = `device-${id}`
 
     const device = useNuxtData<Device>(key)
@@ -19,7 +19,7 @@ export default function useDevice () {
     return device.data as Ref<Device>
   }
 
-  function remove (id: Device['id']) {
+  function remove(id: Device['id']) {
     return $auth.fetch(`/api/devices/${id}`, {
       method: 'DELETE',
 
@@ -32,11 +32,11 @@ export default function useDevice () {
           useDeployment(id).removeAll()
           useLog(id).remove()
         }
-      }
+      },
     })
   }
 
-  function add (data: Partial<Device>) {
+  function add(data: Partial<Device>) {
     return $auth.fetch('/api/devices', {
       method: 'POST',
       body: data,
@@ -45,11 +45,11 @@ export default function useDevice () {
         if (response.ok && devices.data.value) {
           devices.data.value.unshift(response._data)
         }
-      }
+      },
     })
   }
 
-  function link (deviceId: Device['id'], projectId: Project['id']) {
+  function link(deviceId: Device['id'], projectId: Project['id']) {
     const key = `device-${deviceId}`
 
     const device = useNuxtData<Device>(key)
@@ -57,13 +57,13 @@ export default function useDevice () {
     return $auth.fetch(`/api/devices/${deviceId}/link`, {
       method: 'PATCH',
       body: {
-        projectId
+        projectId,
       },
 
       onResponse: ({ response }) => {
         if (response.ok && devices.data.value) {
           const deviceIndex = devices.data.value.findIndex(
-            device => device.id === deviceId
+            device => device.id === deviceId,
           )
           if (deviceIndex >= 0) {
             devices.data.value[deviceIndex].projectId = projectId
@@ -73,11 +73,11 @@ export default function useDevice () {
         if (response.ok && device.data.value) {
           device.data.value.projectId = projectId
         }
-      }
+      },
     })
   }
 
-  function unlink (id: Device['id']) {
+  function unlink(id: Device['id']) {
     const key = `device-${id}`
 
     const device = useNuxtData<Device>(key)
@@ -88,7 +88,7 @@ export default function useDevice () {
       onResponse: ({ response }) => {
         if (response.ok && devices.data.value) {
           const deviceIndex = devices.data.value.findIndex(
-            device => device.id === id
+            device => device.id === id,
           )
           if (deviceIndex >= 0) {
             devices.data.value[deviceIndex].projectId = null
@@ -98,11 +98,11 @@ export default function useDevice () {
         if (response.ok && device.data.value) {
           device.data.value.projectId = null
         }
-      }
+      },
     })
   }
 
-  function update (id: Device['id'], data: Partial<Device>) {
+  function update(id: Device['id'], data: Partial<Device>) {
     const key = `device-${id}`
     const device = useNuxtData<Device>(key)
 
@@ -113,7 +113,7 @@ export default function useDevice () {
       onResponse: ({ response }) => {
         if (response.ok && devices.data.value) {
           const deviceIndex = devices.data.value.findIndex(
-            device => device.id === id
+            device => device.id === id,
           )
           if (deviceIndex >= 0) {
             devices.data.value[deviceIndex] = response._data
@@ -123,15 +123,15 @@ export default function useDevice () {
         if (response.ok && device.data.value) {
           device.data.value = response._data
         }
-      }
+      },
     })
   }
 
-  async function findLinked (projectId: Project['id']) {
+  async function findLinked(projectId: Project['id']) {
     const devices = await find()
 
     return computed(() =>
-      devices.value?.filter(device => device.projectId === projectId) ?? []
+      devices.value?.filter(device => device.projectId === projectId) ?? [],
     )
   }
 

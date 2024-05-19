@@ -6,11 +6,11 @@ export const auth: Partial<ModuleOptions> = {
   prisma: false,
 
   accessToken: {
-    jwtSecret: '*'
+    jwtSecret: '*',
   },
 
   refreshToken: {
-    jwtSecret: '*'
+    jwtSecret: '*',
   },
 
   oauth: {
@@ -20,7 +20,7 @@ export const auth: Partial<ModuleOptions> = {
       scopes: 'email profile',
       authorizeUrl: 'https://accounts.google.com/o/oauth2/auth',
       tokenUrl: 'https://accounts.google.com/o/oauth2/token',
-      userUrl: 'https://www.googleapis.com/oauth2/v3/userinfo'
+      userUrl: 'https://www.googleapis.com/oauth2/v3/userinfo',
     },
 
     github: {
@@ -29,8 +29,8 @@ export const auth: Partial<ModuleOptions> = {
       scopes: 'user:email',
       authorizeUrl: 'https://github.com/login/oauth/authorize',
       tokenUrl: 'https://github.com/login/oauth/access_token',
-      userUrl: 'https://api.github.com/user'
-    }
+      userUrl: 'https://api.github.com/user',
+    },
   },
 
   redirect: {
@@ -39,7 +39,7 @@ export const auth: Partial<ModuleOptions> = {
     home: '/',
     callback: '/auth/callback',
     emailVerify: '/auth/verify-email',
-    passwordReset: '/auth/reset-password'
+    passwordReset: '/auth/reset-password',
   },
 
   enableGlobalAuthMiddleware: true,
@@ -47,14 +47,14 @@ export const auth: Partial<ModuleOptions> = {
   registration: {
     enable: true,
     requireEmailVerification: true,
-    defaultRole: 'user'
+    defaultRole: 'user',
   },
 
   email: {
     from: '',
     provider: {
       name: 'sendgrid',
-      apiKey: ''
+      apiKey: '',
     },
     templates: {
       emailVerify:
@@ -74,7 +74,7 @@ export const auth: Partial<ModuleOptions> = {
         Reset password</span>
         <span></span>
         </a></td></tr></tbody></table><p style="font-size: 15px;line-height: 24px;margin: 16px 0;margin-top: 0px;margin-bottom: 20px;color: rgb(55, 65, 81);-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;text-align: left;">This link will expire in {{validityInMinutes}} minutes.</p><hr style="width: 100%;border: none;border-top: 1px solid #eaeaea;margin-top: 32px;margin-bottom: 32px;"><p style="font-size: 15px;line-height: 24px;margin: 16px 0;margin-top: 0px;margin-bottom: 20px;color: rgb(55, 65, 81);-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;text-align: left;">From <strong><a href="https://esp-admin.tn" target="_blank" style="font-weight: 500;color: rgb(17, 24, 39);text-decoration-line: underline;">ESP Admin</a></strong></p></td></tr></tbody></table></body></html>
-      `
-    }
-  }
+      `,
+    },
+  },
 }

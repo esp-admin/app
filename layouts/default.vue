@@ -1,7 +1,13 @@
 <template>
-  <naive-layout-sidebar :routes="routes" :drawer-routes="routes">
+  <naive-layout-sidebar
+    :routes="routes"
+    :drawer-routes="routes"
+  >
     <template #start>
-      <nuxt-link to="/" class="mx-auto my-2">
+      <nuxt-link
+        to="/"
+        class="mx-auto my-2"
+      >
         <Logo :width="114" />
       </nuxt-link>
     </template>
@@ -9,7 +15,10 @@
     <template #end>
       <div class="flex flex-col gap-8 m-2 notMobileOrTablet">
         <AccountInfo />
-        <n-button secondary @click="logout">
+        <n-button
+          secondary
+          @click="logout"
+        >
           Logout
         </n-button>
       </div>
@@ -20,7 +29,11 @@
     </template>
 
     <template #drawer-footer>
-      <n-button secondary block @click="logout">
+      <n-button
+        secondary
+        block
+        @click="logout"
+      >
         Logout
       </n-button>
     </template>
@@ -42,27 +55,27 @@ const routes: MenuLinkRoute[] = [
   {
     label: 'Dashboard',
     icon: ICON_DASH,
-    path: '/'
+    path: '/',
   },
   {
     label: 'Projects',
     icon: ICON_PROJECT,
-    path: '/projects'
+    path: '/projects',
   },
   {
     label: 'Devices',
     icon: ICON_DEVICE,
-    path: '/devices'
+    path: '/devices',
   },
   {
     label: 'Settings',
     icon: ICON_SETTINGS,
-    path: '/settings'
+    path: '/settings',
   },
   {
     label: 'Account',
     path: '/account',
-    icon: ICON_USER
-  }
+    icon: ICON_USER,
+  },
 ]
 </script>

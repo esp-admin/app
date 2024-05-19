@@ -1,10 +1,16 @@
 <template>
   <div class="page justify-center items-center p-7">
-    <NuxtLink to="/" class="mr-auto sm:mr-0">
+    <NuxtLink
+      to="/"
+      class="mr-auto sm:mr-0"
+    >
       <Logo :width="114" />
     </NuxtLink>
 
-    <n-text class="text-lg font-medium mt-1 mr-auto sm:mr-0" depth="2">
+    <n-text
+      class="text-lg font-medium mt-1 mr-auto sm:mr-0"
+      depth="2"
+    >
       {{ title }}
     </n-text>
 
@@ -36,6 +42,9 @@ const title = computed(() => {
 
     case 'auth-callback':
       return 'Social login'
+
+    default:
+      return ''
   }
 })
 </script>

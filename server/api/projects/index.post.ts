@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
   const { name } = await readBody<Project>(event)
 
   const schema = z.object({
-    name: z.string().min(1)
+    name: z.string().min(1),
   })
 
   schema.parse({ name })
@@ -12,14 +12,14 @@ export default defineEventHandler(async (event) => {
   const project = await event.context.prisma.project.create({
     data: {
       name,
-      userId
+      userId,
     },
     select: {
       id: true,
       name: true,
       description: true,
-      createdAt: true
-    }
+      createdAt: true,
+    },
   }).catch((e) => { throw createPrismaError(e) })
 
   return project

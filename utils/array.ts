@@ -1,7 +1,7 @@
 /**
  * Removes elements from array having a certain value for a giving key
  */
-export function removeArrayElByKey (array: Array<Record<string, any>>, key: string, value: any) {
+export function removeArrayElByKey<T>(array: Array<T>, key: keyof T, value: unknown) {
   for (let i = array.length - 1; i >= 0; i--) {
     if (array[i][key] === value) {
       array.splice(i, 1)
@@ -9,11 +9,13 @@ export function removeArrayElByKey (array: Array<Record<string, any>>, key: stri
   }
 }
 
-export function filteredArrayByKey<T> (array:Ref<Array<T> | null>, key: any, search: Ref<string>) {
+export function filteredArrayByKey<T>(array: Ref<Array<T> | null>, key: keyof T, search: Ref<string>) {
   return computed(() => {
     if (search.value) {
-      // @ts-ignore
-      return array.value?.filter(el => el[key].includes(search.value)) ?? []
+      return array.value?.filter((el) => {
+        const value = el[key]
+        typeof value === 'string' && value.includes(search.value)
+      }) ?? []
     }
     return array.value ?? []
   })

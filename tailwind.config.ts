@@ -4,7 +4,7 @@ export default <Partial<Config>>{
   darkMode: 'class',
   theme: {
     fontFamily: {
-      sans: ['Rubik']
-    }
-  }
+      sans: ['Rubik'],
+    },
+  },
 }

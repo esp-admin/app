@@ -1,14 +1,28 @@
 <template>
-  <div class="relative rounded-full" :style="{width:`${width}px`}">
-    <div class="absolute right-2 bottom-2 border-4 rounded-full" :style="{borderColor: theme.bodyColor}">
-      <n-button circle type="primary" size="small" @click="()=>input?.click()">
+  <div
+    class="relative rounded-full"
+    :style="{ width: `${width}px` }"
+  >
+    <div
+      class="absolute right-2 bottom-2 border-4 rounded-full"
+      :style="{ borderColor: theme.bodyColor }"
+    >
+      <n-button
+        circle
+        type="primary"
+        size="small"
+        @click="() => input?.click()"
+      >
         <template #icon>
           <naive-icon :name="ICON_CAMERA" />
         </template>
       </n-button>
     </div>
 
-    <div class="overflow-hidden rounded-full" :style="{ height:`${width}px`}">
+    <div
+      class="overflow-hidden rounded-full"
+      :style="{ height: `${width}px` }"
+    >
       <n-image
         class="h-full"
         :width="width"
@@ -19,6 +33,7 @@
     </div>
 
     <input
+      id="input-file"
       ref="input"
       type="file"
       hidden
@@ -29,11 +44,10 @@
 </template>
 
 <script setup lang="ts">
-
 const props = withDefaults(defineProps<{ src?: string, width?: number, placeholder?: string }>(), {
   src: '/images/placeholder.webp',
   placeholder: '/images/placeholder.webp',
-  width: 150
+  width: 150,
 })
 
 const emit = defineEmits(['select'])
@@ -48,11 +62,11 @@ watch(inputImage, () => reset())
 
 const theme = useThemeVars()
 
-function reset () {
+function reset() {
   image.value = inputImage.value
 }
 
-function getBase64 (file:File):Promise<string | undefined> {
+function getBase64(file: File): Promise<string | undefined> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader()
     reader.readAsDataURL(file)
@@ -61,13 +75,17 @@ function getBase64 (file:File):Promise<string | undefined> {
   })
 }
 
-async function onSelect (event:any) {
-  const selectedFile = event.target.files[0]
-  const selectedFileUrl = await getBase64(selectedFile)
+async function onSelect() {
+  const el = document.getElementById('input-file') as HTMLInputElement
+  const selectedFile = el.files?.length && el.files[0]
 
-  if (selectedFileUrl) {
-    image.value = selectedFileUrl
-    emit('select', selectedFile)
+  if (selectedFile) {
+    const selectedFileUrl = await getBase64(selectedFile)
+
+    if (selectedFileUrl) {
+      image.value = selectedFileUrl
+      emit('select', selectedFile)
+    }
   }
 }
 

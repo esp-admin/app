@@ -7,27 +7,27 @@ export default defineEventHandler(async (event) => {
     uriTCP: z.string().url().or(z.literal('')).nullable().optional(),
     uriWS: z.string().url(),
     username: z.string().min(1),
-    password: z.string().min(1)
+    password: z.string().min(1),
   })
 
   schema.parse({ uriTCP, uriWS, username, password })
 
   const mqtt = await event.context.prisma.mqtt.update({
     where: {
-      userId
+      userId,
     },
     data: {
       uriTCP,
       uriWS,
       username,
-      password
+      password,
     },
     select: {
       password: true,
       username: true,
       uriTCP: true,
-      uriWS: true
-    }
+      uriWS: true,
+    },
   })
 
   return mqtt

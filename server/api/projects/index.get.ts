@@ -3,17 +3,17 @@ export default defineEventHandler(async (event) => {
 
   const projects = await event.context.prisma.project.findMany({
     where: {
-      userId
+      userId,
     },
     select: {
       id: true,
       name: true,
       description: true,
-      createdAt: true
+      createdAt: true,
     },
     orderBy: {
-      createdAt: 'desc'
-    }
+      createdAt: 'desc',
+    },
   })
 
   return projects

@@ -38,9 +38,11 @@
       </n-button>
     </template>
 
-    <div class="p-2">
-      <slot />
-    </div>
+    <n-dialog-provider>
+      <div class="p-2">
+        <slot />
+      </div>
+    </n-dialog-provider>
 
     <notification />
   </naive-layout-sidebar>

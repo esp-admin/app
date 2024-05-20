@@ -9,7 +9,6 @@ export const REGEX_PASSWORD = /(?=.*[a-z])(?=.*[0-9])(?=.{6,})/
 export const ERROR_REQUIRED = 'Please fill out this field.'
 export const ERROR_NO_SPACE = 'Should not contain spaces.'
 export const ERROR_NO_SPACE_AROUND = 'Should not start or end with spaces.'
-export const ERROR_CONFIRM_REQUIRED = 'Please type <confirm> to proceed'
 export const ERROR_EXISTS = 'This value is already used'
 export const ERROR_INVALID_JSON = 'Should be a valid JSON'
 export const ERROR_INVALID_VERSION = 'Should be in format x.y.z or x.y.z-suffix'

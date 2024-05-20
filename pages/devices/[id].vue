@@ -11,7 +11,7 @@
             v-if="device.projectId"
             :icon="ICON_UNLINK"
             secondary
-            @click="unlinkModalVisible = true"
+            @click="onUnlink"
           />
 
           <nuxt-link
@@ -28,7 +28,7 @@
           <button-icon
             :icon="ICON_DELETE"
             secondary
-            @click="deleteModalVisible = true"
+            @click="onDelete"
           />
         </div>
       </template>
@@ -75,36 +75,6 @@
         />
       </n-tab-pane>
     </n-tabs>
-
-    <n-modal
-      v-model:show="deleteModalVisible"
-      bordered
-      preset="card"
-      :closable="false"
-      :mask-closable="false"
-      class="max-w-sm"
-    >
-      <device-delete
-        :device="device"
-        @cancel="deleteModalVisible = false"
-        @done="onDelete"
-      />
-    </n-modal>
-
-    <n-modal
-      v-model:show="unlinkModalVisible"
-      bordered
-      preset="card"
-      :closable="false"
-      :mask-closable="false"
-      class="max-w-sm"
-    >
-      <device-unlink
-        :device="device"
-        @cancel="unlinkModalVisible = false"
-        @done="onUnlink"
-      />
-    </n-modal>
   </div>
 </template>
 
@@ -116,11 +86,8 @@ definePageMeta({
   },
 })
 
-const deleteModalVisible = ref(false)
-
-const unlinkModalVisible = ref(false)
-
 const route = useRoute()
+const dialog = useDialog()
 
 const id = route.params.id as string
 
@@ -129,11 +96,28 @@ const { findOne } = useDevice()
 const device = await findOne(id)
 
 function onDelete() {
-  deleteModalVisible.value = false
-  navigateTo('/devices')
+  dialog.warning({
+    title: 'Delete Device',
+    content: 'The device will be permanently deleted, including its deployments. This action is not reversible and can not be undone.',
+    positiveText: 'Confirm',
+    negativeText: 'Cancel',
+    onPositiveClick: async () => {
+      await useDevice().remove(device.value.id)
+      dialog.destroyAll()
+      await navigateTo('/devices')
+    },
+  })
 }
 
 function onUnlink() {
-  unlinkModalVisible.value = false
+  dialog.info({
+    title: 'Unlink Device',
+    content: 'The device will unlinked from the project.',
+    positiveText: 'Confirm',
+    negativeText: 'Cancel',
+    onPositiveClick: async () => {
+      await useDevice().unlink(device.value.id)
+    },
+  })
 }
 </script>

@@ -4,8 +4,8 @@ export default defineEventHandler(async (event) => {
   const schema = z.object({
     webhookEnable: z.boolean().optional(),
     emailEnable: z.boolean().optional(),
-    webhookUrl: z.string().url().or(z.literal('')).nullable().optional(),
-    emailAddress: z.string().email().or(z.literal('')).nullable().optional(),
+    webhookUrl: z.string().url().nullable().optional(),
+    emailAddress: z.string().email().nullable().optional(),
   })
 
   const body = await validateBody(event, schema)

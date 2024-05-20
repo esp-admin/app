@@ -40,7 +40,7 @@ export default function useProject() {
     return $auth.fetch('/api/projects', {
       method: 'POST',
       body: {
-        name: data.name
+        name: data.name,
       },
 
       onResponse: ({ response }) => {
@@ -59,10 +59,10 @@ export default function useProject() {
       method: 'PATCH',
       body: {
         name: data.name,
-        repository: data.repository,
-        description: data.description,
-        variables: data.variables,
-        commands: data.commands,
+        repository: data.repository || null,
+        description: data.description || null,
+        variables: data.variables || null,
+        commands: data.commands || null,
       },
 
       onResponse: ({ response }) => {

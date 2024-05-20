@@ -2,7 +2,7 @@ export default defineEventHandler(async (event) => {
   const { userId } = checkUser(event)
 
   const schema = z.object({
-    uriTCP: z.string().url().or(z.literal('')).nullable().optional(),
+    uriTCP: z.string().url().nullable().optional(),
     uriWS: z.string().url().optional(),
     username: z.string().min(1).optional(),
     password: z.string().min(1).optional(),

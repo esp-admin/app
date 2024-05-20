@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
 
   const schema = z.object({
     name: z.string().min(1).optional(),
-    repository: z.string().url().or(z.literal('')).nullable().optional(),
+    repository: z.string().url().nullable().optional(),
     description: z.string().nullable().optional(),
     variables: z.string().optional().nullable(),
     commands: z.string().optional().nullable(),

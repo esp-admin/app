@@ -14,7 +14,7 @@ export default function useMqtt() {
     return $auth.fetch('/api/mqtt', {
       method: 'PATCH',
       body: {
-        uriTCP: data.uriTCP,
+        uriTCP: data.uriTCP || null,
         uriWS: data.uriWS,
         username: data.username,
         password: data.password,
@@ -32,7 +32,7 @@ export default function useMqtt() {
     return $auth.fetch('/api/mqtt', {
       method: 'POST',
       body: {
-        uriTCP: data.uriTCP,
+        uriTCP: data.uriTCP || null,
         uriWS: data.uriWS,
         username: data.username,
         password: data.password,

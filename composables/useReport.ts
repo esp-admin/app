@@ -17,8 +17,8 @@ export default function useReport() {
       body: {
         webhookEnable: data.webhookEnable,
         emailEnable: data.emailEnable,
-        webhookUrl: data.webhookUrl,
-        emailAddress: data.emailAddress
+        webhookUrl: data.webhookUrl || null,
+        emailAddress: data.emailAddress || null,
       },
 
       onResponse: ({ response }) => {
@@ -35,8 +35,8 @@ export default function useReport() {
       body: {
         webhookEnable: data.webhookEnable,
         emailEnable: data.emailEnable,
-        webhookUrl: data.webhookUrl,
-        emailAddress: data.emailAddress
+        webhookUrl: data.webhookUrl || null,
+        emailAddress: data.emailAddress || null,
       },
 
       onResponse: ({ response }) => {

@@ -28,7 +28,10 @@
       />
     </div>
 
-    <n-card class="mt-4" :theme-overrides="{ borderColor: cardBorderColor }">
+    <n-card
+      class="mt-4"
+      :theme-overrides="{ borderColor: cardBorderColor }"
+    >
       <n-log
         ref="logInst"
         language="realtime"
@@ -43,116 +46,116 @@
 </template>
 
 <script setup lang="ts">
-import { destr } from "destr";
-import hljs from "highlight.js/lib/core";
-import type { LogInst } from "naive-ui";
+import { destr } from 'destr'
+import hljs from 'highlight.js/lib/core'
+import type { LogInst } from 'naive-ui'
 
-const props = defineProps<{ device: Device }>();
+const props = defineProps<{ device: Device }>()
 
-hljs.configure({ classPrefix: "" });
+hljs.configure({ classPrefix: '' })
 
-hljs.registerLanguage("realtime", () => ({
+hljs.registerLanguage('realtime', () => ({
   contains: [
     {
-      className: "bg-blue-600 text-white p-1",
+      className: 'bg-blue-600 text-white p-1',
       begin: /info/,
     },
     {
-      className: "bg-red-500 text-white p-1",
+      className: 'bg-red-500 text-white p-1',
       begin: /error/,
     },
     {
-      className: "bg-amber-500 text-white p-1",
+      className: 'bg-amber-500 text-white p-1',
       begin: /warn/,
     },
     {
-      className: "bg-green-500 text-white p-1",
+      className: 'bg-green-500 text-white p-1',
       begin: /success/,
     },
   ],
-}));
+}))
 
-const logInst = ref<LogInst>();
+const logInst = ref<LogInst>()
 
 const cardBorderColor = computed(() =>
-  props.device.status === "connected" ? "#22c55e" : "#ef4444"
-);
+  props.device.status === 'connected' ? '#22c55e' : '#ef4444',
+)
 
-const projectCommands = ref<{ key: string; value: string }[]>([]);
+const projectCommands = ref<{ key: string, value: string }[]>([])
 
 if (props.device.projectId) {
-  const { findOne } = useProject();
-  const project = await findOne(props.device.projectId);
-  projectCommands.value = destr(project.value?.commands);
+  const { findOne } = useProject()
+  const project = await findOne(props.device.projectId)
+  projectCommands.value = destr(project.value?.commands)
 }
 
-const logs = useLog(props.device.id).find();
+const logs = useLog(props.device.id).find()
 
 const logsString = computed(() =>
-  logs.value.map((log) => `${log.type} - ${log.payload}`).join("\n")
-);
+  logs.value.map(log => `${log.type} - ${log.payload}`).join('\n'),
+)
 
-const { $mqtt } = useNuxtApp();
+const { $mqtt } = useNuxtApp()
 
 function handleRestart() {
   $mqtt.publish({
     deviceId: props.device.id,
-    action: "command",
-    type: "restart",
+    action: 'command',
+    type: 'restart',
     retain: false,
-    payload: "",
-  });
+    payload: '',
+  })
 }
 
 function handleCommand(command: object) {
   $mqtt.publish({
     deviceId: props.device.id,
-    action: "command",
-    type: "custom",
+    action: 'command',
+    type: 'custom',
     retain: false,
     payload: JSON.stringify(command),
-  });
+  })
 }
 
 onMounted(() => {
-  scrollToBottom();
+  scrollToBottom()
 
-  enableLog();
+  enableLog()
 
-  watch(logsString, () => nextTick(() => scrollToBottom()));
-});
+  watch(logsString, () => nextTick(() => scrollToBottom()))
+})
 
 if (import.meta.client) {
   window.onbeforeunload = () => {
-    disableLog();
-  };
+    disableLog()
+  }
 }
 
 onUnmounted(() => {
-  disableLog();
-});
+  disableLog()
+})
 
 function scrollToBottom() {
-  logInst.value?.scrollTo({ position: "bottom" });
+  logInst.value?.scrollTo({ position: 'bottom' })
 }
 
 function enableLog() {
   $mqtt.publish({
     deviceId: props.device.id,
-    action: "command",
-    type: "log",
-    payload: "on",
+    action: 'command',
+    type: 'log',
+    payload: 'on',
     retain: true,
-  });
+  })
 }
 
 function disableLog() {
   $mqtt.publish({
     deviceId: props.device.id,
-    action: "command",
-    type: "log",
-    payload: "off",
+    action: 'command',
+    type: 'log',
+    payload: 'off',
     retain: true,
-  });
+  })
 }
 </script>

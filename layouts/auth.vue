@@ -1,5 +1,5 @@
 <template>
-  <div class="page justify-center items-center p-7">
+  <div class="naive-page flex flex-col justify-center items-center p-7">
     <NuxtLink
       to="/"
       class="mr-auto sm:mr-0"

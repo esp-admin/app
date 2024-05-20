@@ -26,7 +26,7 @@
         <button-icon
           :icon="ICON_DELETE"
           secondary
-          @click="deleteModalVisible = true"
+          @click="onDelete"
         />
       </div>
     </template>
@@ -35,36 +35,30 @@
       <lazy-release-devices :release="release" />
     </n-collapse-transition>
   </n-thing>
-
-  <n-modal
-    v-model:show="deleteModalVisible"
-    bordered
-    preset="card"
-    :closable="false"
-    :mask-closable="false"
-    class="max-w-sm"
-  >
-    <release-delete
-      :release="release"
-      @cancel="deleteModalVisible = false"
-      @done="onDelete"
-    />
-  </n-modal>
 </template>
 
 <script setup lang="ts">
-const deleteModalVisible = ref(false)
-
 const props = defineProps<{ release: Release }>()
 
 const collapsed = ref(true)
+
+const dialog = useDialog()
 
 const { findLinked } = useDevice()
 
 const linkedDevices = await findLinked(props.release.projectId)
 
 function onDelete() {
-  deleteModalVisible.value = false
+  dialog.warning({
+    title: 'Delete Release',
+    content: 'The release will be permanently deleted, including its deployments. This action is not reversible and can not be undone.',
+    positiveText: 'Confirm',
+    negativeText: 'Cancel',
+    onPositiveClick: async () => {
+      await useRelease(props.release.projectId).remove(props.release.id)
+      await useUpload().remove([props.release.downloadPath])
+    },
+  })
 }
 
 function onTrigger() {

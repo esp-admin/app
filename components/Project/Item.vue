@@ -9,7 +9,7 @@
         <template #header>
           <title-date
             :title="project.name"
-            :created-at="project.createdAt"
+            :updated-at="project.updatedAt"
           />
         </template>
 

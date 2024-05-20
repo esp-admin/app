@@ -16,7 +16,7 @@
         <template #header>
           <title-date
             :title="device.name"
-            :created-at="device.createdAt"
+            :updated-at="device.updatedAt"
           />
         </template>
 

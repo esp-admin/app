@@ -12,6 +12,7 @@ export default defineEventHandler(async (event) => {
       status: true,
       projectId: true,
       createdAt: true,
+      updatedAt: true,
     },
     orderBy: {
       createdAt: 'desc',

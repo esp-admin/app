@@ -28,7 +28,7 @@
           <button-icon
             :icon="ICON_DELETE"
             secondary
-            @click="deleteModalVisible = true"
+            @click="onDelete"
           />
         </div>
       </template>
@@ -77,21 +77,6 @@
     </n-tabs>
 
     <n-modal
-      v-model:show="deleteModalVisible"
-      bordered
-      preset="card"
-      :closable="false"
-      :mask-closable="false"
-      class="max-w-sm"
-    >
-      <device-delete
-        :device="device"
-        @cancel="deleteModalVisible = false"
-        @done="onDelete"
-      />
-    </n-modal>
-
-    <n-modal
       v-model:show="unlinkModalVisible"
       bordered
       preset="card"
@@ -116,11 +101,10 @@ definePageMeta({
   },
 })
 
-const deleteModalVisible = ref(false)
-
 const unlinkModalVisible = ref(false)
 
 const route = useRoute()
+const dialog = useDialog()
 
 const id = route.params.id as string
 
@@ -129,8 +113,19 @@ const { findOne } = useDevice()
 const device = await findOne(id)
 
 function onDelete() {
-  deleteModalVisible.value = false
-  navigateTo('/devices')
+  const { remove } = useDevice()
+
+  dialog.warning({
+    title: 'Delete Device',
+    content: 'The device will be permanently deleted, including its deployments. This action is not reversible and can not be undone.',
+    positiveText: 'Confirm',
+    negativeText: 'Cancel',
+    onPositiveClick: async () => {
+      await remove(device.value.id)
+      dialog.destroyAll()
+      await navigateTo('/devices')
+    },
+  })
 }
 
 function onUnlink() {

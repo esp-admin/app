@@ -91,15 +91,13 @@ const { findLinked } = useDevice()
 const linkedDevices = await findLinked(project.value.id)
 
 async function onDelete() {
-  const { remove } = useProject()
-
   dialog.warning({
     title: 'Delete Project',
     content: 'The project will be permanently deleted, including its releases and deployments. This action is not reversible and can not be undone.',
     positiveText: 'Confirm',
     negativeText: 'Cancel',
     onPositiveClick: async () => {
-      await remove(project.value.id)
+      await useProject().remove(project.value.id)
       dialog.destroyAll()
       await navigateTo('/projects')
     },

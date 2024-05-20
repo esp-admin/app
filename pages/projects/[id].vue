@@ -9,7 +9,8 @@
         <button-icon
           :icon="ICON_DELETE"
           secondary
-          @click="deleteModalVisible = true"
+          :disabled="linkedDevices.length > 0"
+          @click="onDelete"
         />
       </template>
     </n-page-header>
@@ -65,21 +66,6 @@
         />
       </n-tab-pane>
     </n-tabs>
-
-    <n-modal
-      v-model:show="deleteModalVisible"
-      bordered
-      preset="card"
-      :closable="false"
-      :mask-closable="false"
-      class="max-w-sm"
-    >
-      <project-delete
-        :project="project"
-        @cancel="deleteModalVisible = false"
-        @done="onDelete"
-      />
-    </n-modal>
   </div>
 </template>
 
@@ -91,8 +77,7 @@ definePageMeta({
   },
 })
 
-const deleteModalVisible = ref(false)
-
+const dialog = useDialog()
 const route = useRoute()
 
 const id = route.params.id as string
@@ -101,9 +86,23 @@ const { findOne } = useProject()
 
 const project = await findOne(id)
 
-async function onDelete() {
-  deleteModalVisible.value = false
+const { findLinked } = useDevice()
 
-  await navigateTo('/projects')
+const linkedDevices = await findLinked(project.value.id)
+
+async function onDelete() {
+  const { remove } = useProject()
+
+  dialog.warning({
+    title: 'Delete Project',
+    content: 'The project will be permanently deleted, including its releases and deployments. This action is not reversible and can not be undone.',
+    positiveText: 'Confirm',
+    negativeText: 'Cancel',
+    onPositiveClick: async () => {
+      await remove(project.value.id)
+      dialog.destroyAll()
+      await navigateTo('/projects')
+    },
+  })
 }
 </script>

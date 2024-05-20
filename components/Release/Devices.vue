@@ -8,7 +8,7 @@
       <n-button quaternary>
         {{ device.name }}
         <template #icon>
-          <DeploymentStatus :deployment="device.deployment" />
+          <deployment-status :deployment="device.deployment" />
         </template>
       </n-button>
     </nuxt-link>

@@ -39,7 +39,9 @@ export default function useProject() {
   function add(data: Partial<Project>) {
     return $auth.fetch('/api/projects', {
       method: 'POST',
-      body: data,
+      body: {
+        name: data.name,
+      },
 
       onResponse: ({ response }) => {
         if (response.ok && projects.data.value) {
@@ -55,7 +57,13 @@ export default function useProject() {
 
     return $auth.fetch(`/api/projects/${id}`, {
       method: 'PATCH',
-      body: data,
+      body: {
+        name: data.name,
+        repository: data.repository || null,
+        description: data.description || null,
+        variables: data.variables || null,
+        commands: data.commands || null,
+      },
 
       onResponse: ({ response }) => {
         if (response.ok && projects.data.value) {

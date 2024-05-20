@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UploadImage
+    <upload-image
       ref="uploadRef"
       class="mb-2 mx-auto shadow hover:shadow-lg border-blue-300 border-2"
       :src="model.picture"
@@ -21,7 +21,7 @@
         <n-input v-model:value="model.name" />
       </n-form-item>
 
-      <FormButtons
+      <form-buttons
         :loading="pending"
         :disabled="pending || !edited"
         @reset="handleReset"
@@ -73,7 +73,7 @@ async function updateAccount() {
       model.value.picture = await upload(model.value.file, model.value.picture)
     }
   }
-  catch (e) {
+  catch (err) {
     apiErrors.value.uploadFailed = true
     return
   }

@@ -4,16 +4,16 @@
     :model="model"
     @submit.prevent="onSubmit(handleSubmit)"
   >
-    <FormItem
+    <form-item
       v-for="projectVariable of projectVariables"
       :key="projectVariable.key"
       :label="projectVariable.key"
       :description="projectVariable.value"
     >
       <n-input v-model:value="model[projectVariable.key]" />
-    </FormItem>
+    </form-item>
 
-    <FormButtons
+    <form-buttons
       v-if="projectVariables?.length"
       :loading="pending"
       :disabled="!edited || pending"
@@ -26,7 +26,7 @@
       title="No variables found"
     >
       <template #icon>
-        <ResultEmpty />
+        <result-empty />
       </template>
     </n-result>
   </n-form>
@@ -49,7 +49,9 @@ if (props.device.projectId) {
   const { findOne } = useProject()
   const project = await findOne(props.device.projectId)
 
-  projectVariables.value = destr<{ key: string, value: string }[]>(project.value?.variables)
+  projectVariables.value = destr<{ key: string, value: string }[]>(
+    project.value?.variables,
+  )
 
   if (!projectVariables.value) {
     model.value = {}
@@ -65,17 +67,18 @@ if (props.device.projectId) {
 async function handleSubmit() {
   const { update } = useDevice()
 
-  await update(props.device.id, { variables: JSON.stringify(model.value) })
-    .then(() => {
-      const { $mqtt } = useNuxtApp()
+  await update(props.device.id, {
+    variables: JSON.stringify(model.value),
+  }).then(() => {
+    const { $mqtt } = useNuxtApp()
 
-      $mqtt.publish({
-        deviceId: props.device.id,
-        action: 'command',
-        type: 'config',
-        payload: JSON.stringify(model.value),
-        retain: true,
-      })
+    $mqtt.publish({
+      deviceId: props.device.id,
+      action: 'command',
+      type: 'config',
+      payload: JSON.stringify(model.value),
+      retain: true,
     })
+  })
 }
 </script>

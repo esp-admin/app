@@ -31,7 +31,7 @@
       />
     </n-form-item>
 
-    <FormButtons
+    <form-buttons
       :loading="pending"
       :disabled="!edited || pending"
       @reset="reset"
@@ -48,7 +48,8 @@ const model = ref({
   description: props.project.description,
 })
 
-const { apiErrors, formRef, onSubmit, pending, rules, reset, edited } = useNaiveForm(model)
+const { apiErrors, formRef, onSubmit, pending, rules, reset, edited }
+  = useNaiveForm(model)
 
 apiErrors.value = {
   nameAlreadyExists: false,
@@ -82,9 +83,10 @@ rules.value = {
 async function handleSubmit() {
   const { update } = useProject()
 
-  await update(props.project.id, model.value)
-    .catch((error) => {
-      apiErrors.value.nameAlreadyExists = error.data.message.includes('Unique constraint failed')
-    })
+  await update(props.project.id, model.value).catch((error) => {
+    apiErrors.value.nameAlreadyExists = error.data.message.includes(
+      'Unique constraint failed',
+    )
+  })
 }
 </script>

@@ -5,19 +5,19 @@
       disabled
     />
 
-    <ButtonIcon
+    <button-icon
       v-if="!value"
       :icon="ICON_RESET"
       @click="refresh"
     />
 
-    <ButtonIcon
+    <button-icon
       v-if="value"
       :icon="ICON_CANCEL"
       @click="cancel"
     />
 
-    <ButtonIcon
+    <button-icon
       v-if="value"
       :icon="ICON_COPY"
       :type="copied ? 'success' : 'default'"

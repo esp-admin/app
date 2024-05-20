@@ -1,5 +1,5 @@
 <template>
-  <ChartBase
+  <chart-base
     :options="chartOptions"
     :height="240"
     :width="240"

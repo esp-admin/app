@@ -39,7 +39,7 @@
       </div>
     </n-dynamic-input>
 
-    <FormButtons
+    <form-buttons
       :loading="pending"
       :disabled="!edited || pending"
       @reset="reset"
@@ -52,9 +52,12 @@ import { destr } from 'destr'
 
 const props = defineProps<{ project: Project }>()
 
-const model = ref(destr<{ key: string, value: string }[]>(props.project.variables))
+const model = ref(
+  destr<{ key: string, value: string }[]>(props.project.variables),
+)
 
-const { formRef, onSubmit, pending, rules, reset, edited } = useNaiveForm(model)
+const { formRef, onSubmit, pending, rules, reset, edited }
+  = useNaiveForm(model)
 
 rules.value = {
   key: [

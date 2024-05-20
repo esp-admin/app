@@ -3,20 +3,18 @@ import { hashSync } from '#auth'
 export default defineEventHandler(async (event) => {
   const { userId } = checkUser(event)
 
-  const { name, apiKey: _apiKey } = await readBody<Device>(event)
-
   const schema = z.object({
     name: z.string().min(1),
     apiKey: z.string().min(1),
   })
 
-  schema.parse({ name, apiKey: _apiKey })
+  const body = await validateBody(event, schema)
 
-  const hashedApiKey = hashSync(_apiKey, 12)
+  const hashedApiKey = hashSync(body.apiKey, 12)
 
   const device = await event.context.prisma.device.create({
     data: {
-      name,
+      name: body.name,
       userId,
       apiKey: hashedApiKey,
     },
@@ -28,7 +26,7 @@ export default defineEventHandler(async (event) => {
       projectId: true,
       createdAt: true,
     },
-  }).catch((e) => { throw createPrismaError(e) })
+  }).catch((err) => { throw createPrismaError(err) })
 
   return device
 })

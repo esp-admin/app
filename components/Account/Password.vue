@@ -29,7 +29,7 @@
       />
     </n-form-item>
 
-    <FormButtons
+    <form-buttons
       :loading="pending"
       :disabled="pending || !edited"
       @reset="reset"

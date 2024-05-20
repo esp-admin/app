@@ -1,17 +1,11 @@
 export default defineEventHandler(async (event) => {
   checkUser(event)
 
-  const id = event.context.params?.id
-
-  const schema = z.object({
-    id: z.string().regex(REGEX_ID),
-  })
-
-  schema.parse({ id })
+  const deploymentId = validateId(event)
 
   const deployment = await event.context.prisma.deployment.findUniqueOrThrow({
     where: {
-      id,
+      id: deploymentId,
     },
     include: {
       release: {
@@ -21,7 +15,7 @@ export default defineEventHandler(async (event) => {
         },
       },
     },
-  }).catch((e) => { throw createPrismaError(e) })
+  }).catch((err) => { throw createPrismaError(err) })
 
   return deployment
 })

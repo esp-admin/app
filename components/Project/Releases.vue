@@ -6,7 +6,7 @@
       title="No releases found"
     >
       <template #icon>
-        <ResultEmpty />
+        <result-empty />
       </template>
       <template #footer>
         <n-button
@@ -48,7 +48,7 @@
           v-for="release of releasesPaginated"
           :key="release.id"
         >
-          <ReleaseItem :release="release" />
+          <release-item :release="release" />
         </n-list-item>
 
         <template
@@ -72,7 +72,7 @@
       :mask-closable="false"
       class="max-w-sm w-full"
     >
-      <ReleaseCreate
+      <release-create
         :project="project"
         @cancel="createModalVisible = false"
         @done="onCreate"
@@ -100,7 +100,11 @@ lb.finish()
 
 const filteredReleases = filteredArrayByKey(releases, 'version', versionSearch)
 
-const { output: releasesPaginated, page, pageCount } = usePagination(filteredReleases)
+const {
+  output: releasesPaginated,
+  page,
+  pageCount,
+} = usePagination(filteredReleases)
 
 function onCreate() {
   createModalVisible.value = false

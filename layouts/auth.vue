@@ -1,11 +1,11 @@
 <template>
-  <div class="page justify-center items-center p-7">
-    <NuxtLink
+  <div class="naive-page flex flex-col justify-center items-center p-7">
+    <nuxt-link
       to="/"
       class="mr-auto sm:mr-0"
     >
-      <Logo :width="114" />
-    </NuxtLink>
+      <logo :width="114" />
+    </nuxt-link>
 
     <n-text
       class="text-lg font-medium mt-1 mr-auto sm:mr-0"

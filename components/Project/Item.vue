@@ -7,7 +7,7 @@
     >
       <n-thing>
         <template #header>
-          <TitleDate
+          <title-date
             :title="project.name"
             :created-at="project.createdAt"
           />

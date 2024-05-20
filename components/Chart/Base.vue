@@ -1,6 +1,6 @@
 <template>
   <div :style="{ width: `${width}px`, height: `${height}px` }">
-    <ChartHighcharts
+    <chart-highcharts
       :options="options"
       :height="height"
       :width="width"

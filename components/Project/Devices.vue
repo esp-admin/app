@@ -30,7 +30,7 @@
       title="No linked devices found"
     >
       <template #icon>
-        <ResultEmpty />
+        <result-empty />
       </template>
       <template #footer>
         <n-button
@@ -42,8 +42,8 @@
       </template>
     </n-result>
 
-    <DeviceItem
-      v-for="device of filteredDevices "
+    <device-item
+      v-for="device of filteredDevices"
       :key="device.id"
       :device="device"
     />
@@ -56,7 +56,7 @@
       :mask-closable="false"
       class="max-w-sm"
     >
-      <DeviceLink
+      <device-link
         :project="project"
         @cancel="linkModalVisible = false"
         @done="onLink"

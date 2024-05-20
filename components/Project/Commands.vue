@@ -40,7 +40,7 @@
       </div>
     </n-dynamic-input>
 
-    <FormButtons
+    <form-buttons
       :loading="pending"
       :disabled="!edited || pending"
       @reset="reset"
@@ -53,9 +53,12 @@ import { destr, safeDestr } from 'destr'
 
 const props = defineProps<{ project: Project }>()
 
-const model = ref(destr<{ key: string, value: string }[]>(props.project.commands))
+const model = ref(
+  destr<{ key: string, value: string }[]>(props.project.commands),
+)
 
-const { formRef, onSubmit, pending, rules, edited, reset } = useNaiveForm(model)
+const { formRef, onSubmit, pending, rules, edited, reset }
+  = useNaiveForm(model)
 
 rules.value = {
   key: [
@@ -69,22 +72,21 @@ rules.value = {
       validator: (_, value) => !REGEX_SPACE.test(value),
     },
   ],
-  value:
-        [
-          {
-            trigger: 'input',
-            message: ERROR_INVALID_JSON,
-            validator(_, value) {
-              try {
-                safeDestr(value)
-                return true
-              }
-              catch (_) {
-                return false
-              }
-            },
-          },
-        ],
+  value: [
+    {
+      trigger: 'input',
+      message: ERROR_INVALID_JSON,
+      validator(_, value) {
+        try {
+          safeDestr(value)
+          return true
+        }
+        catch (_) {
+          return false
+        }
+      },
+    },
+  ],
 }
 
 async function handleSubmit() {

@@ -1,14 +1,14 @@
 <template>
   <n-thing>
     <template #avatar>
-      <DeploymentStatus
+      <deployment-status
         :deployment="deployment"
         :size="23"
       />
     </template>
 
     <template #header>
-      <TitleDate
+      <title-date
         :title="deployment.release.version"
         :created-at="deployment.createdAt"
       />
@@ -17,13 +17,13 @@
     <template #header-extra>
       <div class="flex gap-2">
         <nuxt-link :to="`/projects/${deployment.release.projectId}`">
-          <ButtonIcon
+          <button-icon
             :icon="ICON_PROJECT"
             secondary
           />
         </nuxt-link>
 
-        <ButtonIcon
+        <button-icon
           :icon="ICON_DELETE"
           secondary
           @click="deleteModalVisible = true"
@@ -40,7 +40,7 @@
     :mask-closable="false"
     class="max-w-sm"
   >
-    <DeploymentDelete
+    <deployment-delete
       :deployment="deployment"
       @cancel="deleteModalVisible = false"
       @done="onDelete"

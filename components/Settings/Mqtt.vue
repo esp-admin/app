@@ -48,7 +48,7 @@
       />
     </n-form-item>
 
-    <FormButtons
+    <form-buttons
       :loading="pending"
       :disabled="pending || !edited"
       @reset="reset"
@@ -68,7 +68,8 @@ const model = ref<Partial<Mqtt>>({
   uriWS: mqtt.value?.uriWS,
 })
 
-const { formRef, onSubmit, pending, rules, edited, reset } = useNaiveForm(model)
+const { formRef, onSubmit, pending, rules, edited, reset }
+  = useNaiveForm(model)
 
 rules.value = {
   uriWS: [
@@ -85,7 +86,6 @@ rules.value = {
     {
       type: 'url',
       message: ERROR_INVALID_URL,
-
     },
   ],
   username: [
@@ -104,7 +104,7 @@ rules.value = {
   ],
   uriTCP: [
     {
-      validator: (_, value) => value ? REGEX_URL_MQTTS.test(value) : true,
+      validator: (_, value) => (value ? REGEX_URL_MQTTS.test(value) : true),
       message: ERROR_INVALID_URL,
       trigger: 'input',
     },
@@ -127,10 +127,12 @@ async function handleSubmit() {
 
   const { $mqtt } = useNuxtApp()
 
-  $mqtt.connect({
-    password: model.value.password!,
-    uri: model.value.uriWS!,
-    username: model.value.username!,
-  }).catch(() => {})
+  $mqtt
+    .connect({
+      password: model.value.password!,
+      uri: model.value.uriWS!,
+      username: model.value.username!,
+    })
+    .catch(() => {})
 }
 </script>

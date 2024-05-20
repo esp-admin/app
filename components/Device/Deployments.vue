@@ -6,7 +6,7 @@
       title="No deployments found"
     >
       <template #icon>
-        <ResultEmpty />
+        <result-empty />
       </template>
     </n-result>
 
@@ -19,7 +19,7 @@
         v-for="deployment of deploymentsPaginated"
         :key="deployment.id"
       >
-        <DeploymentItem :deployment="deployment" />
+        <deployment-item :deployment="deployment" />
       </n-list-item>
 
       <template
@@ -49,9 +49,15 @@ const deployments = await find()
 
 lb.finish()
 
-const { output: deploymentsPaginated, page, pageCount } = usePagination(deployments)
+const {
+  output: deploymentsPaginated,
+  page,
+  pageCount,
+} = usePagination(deployments)
 
-const latestDeployment = computed(() => deployments.value && deployments.value[0])
+const latestDeployment = computed(
+  () => deployments.value && deployments.value[0],
+)
 
 function updateFavicon(href: string) {
   let link = document.querySelector<HTMLLinkElement>('link[rel~=\'icon\']')

@@ -1,5 +1,5 @@
 <template>
-  <Chart :options="highchartsOptions" />
+  <chart :options="highchartsOptions" />
 </template>
 
 <script setup lang="ts">
@@ -14,9 +14,8 @@ const props = defineProps<{
 
 const naiveTheme = useThemeVars()
 
-const highchartsOptions = computed<HighchartsOptions>(() => defu(
-  props.options,
-  {
+const highchartsOptions = computed<HighchartsOptions>(() =>
+  defu(props.options, {
     chart: {
       height: props.height,
       width: props.width,
@@ -83,6 +82,6 @@ const highchartsOptions = computed<HighchartsOptions>(() => defu(
         fontSize: naiveTheme.value.fontSizeSmall,
       },
     },
-  } as HighchartsOptions,
-))
+  } as HighchartsOptions),
+)
 </script>

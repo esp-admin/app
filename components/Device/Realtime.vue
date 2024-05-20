@@ -13,14 +13,14 @@
         </n-button>
       </div>
 
-      <ButtonIcon
+      <button-icon
         :disabled="device.status !== 'connected'"
         :icon="ICON_RESET"
         secondary
         @click="handleRestart"
       />
 
-      <ButtonIcon
+      <button-icon
         :disabled="logs.length === 0"
         :icon="ICON_ERASE"
         secondary
@@ -35,6 +35,7 @@
       <n-log
         ref="logInst"
         language="realtime"
+        :hljs="hljs"
         :loading="false"
         :log="logsString"
         :line-height="2"
@@ -46,13 +47,39 @@
 
 <script setup lang="ts">
 import { destr } from 'destr'
+import hljs from 'highlight.js/lib/core'
 import type { LogInst } from 'naive-ui'
-
-const logInst = ref<LogInst>()
 
 const props = defineProps<{ device: Device }>()
 
-const cardBorderColor = computed(() => props.device.status === 'connected' ? '#22c55e' : '#ef4444')
+hljs.configure({ classPrefix: '' })
+
+hljs.registerLanguage('realtime', () => ({
+  contains: [
+    {
+      className: 'bg-blue-600 text-white p-1',
+      begin: /info/,
+    },
+    {
+      className: 'bg-red-500 text-white p-1',
+      begin: /error/,
+    },
+    {
+      className: 'bg-amber-500 text-white p-1',
+      begin: /warn/,
+    },
+    {
+      className: 'bg-green-500 text-white p-1',
+      begin: /success/,
+    },
+  ],
+}))
+
+const logInst = ref<LogInst>()
+
+const cardBorderColor = computed(() =>
+  props.device.status === 'connected' ? '#22c55e' : '#ef4444',
+)
 
 const projectCommands = ref<{ key: string, value: string }[]>([])
 
@@ -64,7 +91,9 @@ if (props.device.projectId) {
 
 const logs = useLog(props.device.id).find()
 
-const logsString = computed(() => logs.value.map(log => `${log.type} - ${log.payload}`).join('\n'))
+const logsString = computed(() =>
+  logs.value.map(log => `${log.type} - ${log.payload}`).join('\n'),
+)
 
 const { $mqtt } = useNuxtApp()
 
@@ -93,9 +122,7 @@ onMounted(() => {
 
   enableLog()
 
-  watch(logsString, () =>
-    nextTick(() => scrollToBottom()),
-  )
+  watch(logsString, () => nextTick(() => scrollToBottom()))
 })
 
 if (import.meta.client) {

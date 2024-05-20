@@ -6,7 +6,7 @@
       :on-back="$router.back"
     >
       <template #extra>
-        <ButtonIcon
+        <button-icon
           :icon="ICON_DELETE"
           secondary
           @click="deleteModalVisible = true"
@@ -19,7 +19,7 @@
         name="metadata"
         tab="Metadata"
       >
-        <ProjectMetadata
+        <project-metadata
           class="mt-4"
           :project="project"
         />
@@ -29,7 +29,7 @@
         name="variables"
         tab="Variables"
       >
-        <ProjectVariables
+        <project-variables
           class="mt-4"
           :project="project"
         />
@@ -39,7 +39,7 @@
         name="commands"
         tab="Commands"
       >
-        <ProjectCommands
+        <project-commands
           class="mt-4"
           :project="project"
         />
@@ -49,7 +49,7 @@
         name="devices"
         tab="Devices"
       >
-        <ProjectDevices
+        <project-devices
           class="mt-4"
           :project="project"
         />
@@ -59,7 +59,7 @@
         name="releases"
         tab="Releases"
       >
-        <ProjectReleases
+        <project-releases
           class="mt-4"
           :project="project"
         />
@@ -74,7 +74,7 @@
       :mask-closable="false"
       class="max-w-sm"
     >
-      <ProjectDelete
+      <project-delete
         :project="project"
         @cancel="deleteModalVisible = false"
         @done="onDelete"

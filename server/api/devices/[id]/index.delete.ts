@@ -1,23 +1,17 @@
 export default defineEventHandler(async (event) => {
   const { userId } = checkUser(event)
 
-  const id = event.context.params?.id
-
-  const schema = z.object({
-    id: z.string().regex(REGEX_ID),
-  })
-
-  schema.parse({ id })
+  const deviceId = validateId(event)
 
   const device = await event.context.prisma.device.delete({
     where: {
-      id,
+      id: deviceId,
       userId,
     },
     select: {
       id: true,
     },
-  }).catch((e) => { throw createPrismaError(e) })
+  }).catch((err) => { throw createPrismaError(err) })
 
   return device
 })

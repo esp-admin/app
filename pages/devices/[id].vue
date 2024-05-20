@@ -7,25 +7,25 @@
     >
       <template #extra>
         <div class="flex justify-between gap-2">
-          <ButtonIcon
+          <button-icon
             v-if="device.projectId"
             :icon="ICON_UNLINK"
             secondary
             @click="unlinkModalVisible = true"
           />
 
-          <NuxtLink
+          <nuxt-link
             v-if="device.projectId"
             :to="`/projects/${device.projectId}`"
           >
-            <ButtonIcon
+            <button-icon
               v-if="device.projectId"
               secondary
               :icon="ICON_PROJECT"
             />
-          </NuxtLink>
+          </nuxt-link>
 
-          <ButtonIcon
+          <button-icon
             :icon="ICON_DELETE"
             secondary
             @click="deleteModalVisible = true"
@@ -39,7 +39,7 @@
         name="metadata"
         tab="Metadata"
       >
-        <DeviceMetadata
+        <device-metadata
           class="mt-4"
           :device="device"
         />
@@ -49,7 +49,7 @@
         name="variables"
         tab="Variables"
       >
-        <DeviceVariables
+        <device-variables
           class="mt-4"
           :device="device"
         />
@@ -59,7 +59,7 @@
         name="realtime"
         tab="Realtime"
       >
-        <DeviceRealtime
+        <device-realtime
           class="mt-4"
           :device="device"
         />
@@ -69,7 +69,7 @@
         name="deployments"
         tab="Deployments"
       >
-        <DeviceDeployments
+        <device-deployments
           class="mt-4"
           :device="device"
         />
@@ -84,7 +84,7 @@
       :mask-closable="false"
       class="max-w-sm"
     >
-      <DeviceDelete
+      <device-delete
         :device="device"
         @cancel="deleteModalVisible = false"
         @done="onDelete"
@@ -99,7 +99,7 @@
       :mask-closable="false"
       class="max-w-sm"
     >
-      <DeviceUnlink
+      <device-unlink
         :device="device"
         @cancel="unlinkModalVisible = false"
         @done="onUnlink"

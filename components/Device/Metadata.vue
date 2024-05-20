@@ -24,7 +24,7 @@
       label="API key"
       path="apiKey"
     >
-      <FormKey v-model:value="model.apiKey" />
+      <form-key v-model:value="model.apiKey" />
     </n-form-item>
 
     <n-form-item
@@ -38,7 +38,7 @@
       />
     </n-form-item>
 
-    <FormButtons
+    <form-buttons
       :loading="pending"
       :disabled="!edited || pending"
       @reset="reset"
@@ -55,7 +55,8 @@ const model = ref({
   description: props.device.description,
 })
 
-const { apiErrors, formRef, onSubmit, pending, rules, edited, reset } = useNaiveForm(model)
+const { apiErrors, formRef, onSubmit, pending, rules, edited, reset }
+  = useNaiveForm(model)
 
 apiErrors.value = {
   nameAlreadyExists: false,
@@ -84,7 +85,9 @@ async function handleSubmit() {
   const { update } = useDevice()
 
   await update(props.device.id, model.value).catch((error) => {
-    apiErrors.value.nameAlreadyExists = error.data.message.includes('Unique constraint failed')
+    apiErrors.value.nameAlreadyExists = error.data.message.includes(
+      'Unique constraint failed',
+    )
   })
 }
 </script>

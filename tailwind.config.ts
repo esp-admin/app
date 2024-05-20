@@ -1,10 +1,10 @@
 import type { Config } from 'tailwindcss'
 
-export default <Partial<Config>>{
+export default {
   darkMode: 'class',
   theme: {
     fontFamily: {
       sans: ['Rubik'],
     },
   },
-}
+} satisfies Partial<Config>

@@ -14,7 +14,12 @@ export default function useReport() {
   function update(data: Partial<Report>) {
     return $auth.fetch('/api/report', {
       method: 'PATCH',
-      body: data,
+      body: {
+        webhookEnable: data.webhookEnable,
+        emailEnable: data.emailEnable,
+        webhookUrl: data.webhookUrl || null,
+        emailAddress: data.emailAddress || null,
+      },
 
       onResponse: ({ response }) => {
         if (response.ok) {
@@ -27,7 +32,12 @@ export default function useReport() {
   function add(data: Partial<Report>) {
     return $auth.fetch('/api/report', {
       method: 'POST',
-      body: data,
+      body: {
+        webhookEnable: data.webhookEnable,
+        emailEnable: data.emailEnable,
+        webhookUrl: data.webhookUrl || null,
+        emailAddress: data.emailAddress || null,
+      },
 
       onResponse: ({ response }) => {
         if (response.ok) {

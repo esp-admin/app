@@ -26,34 +26,27 @@
         <button-icon
           :icon="ICON_DELETE"
           secondary
-          @click="deleteModalVisible = true"
+          @click="onDelete"
         />
       </div>
     </template>
   </n-thing>
-
-  <n-modal
-    v-model:show="deleteModalVisible"
-    bordered
-    preset="card"
-    :closable="false"
-    :mask-closable="false"
-    class="max-w-sm"
-  >
-    <deployment-delete
-      :deployment="deployment"
-      @cancel="deleteModalVisible = false"
-      @done="onDelete"
-    />
-  </n-modal>
 </template>
 
 <script setup lang="ts">
-defineProps<{ deployment: Deployment }>()
+const props = defineProps<{ deployment: Deployment }>()
 
-const deleteModalVisible = ref(false)
+const dialog = useDialog()
 
 function onDelete() {
-  deleteModalVisible.value = false
+  dialog.warning({
+    title: 'Delete Deployment',
+    content: 'The deployment will be permanently deleted. This action is not reversible and can not be undone.',
+    positiveText: 'Confirm',
+    negativeText: 'Cancel',
+    onPositiveClick: async () => {
+      await useDeployment(props.deployment.deviceId).remove(props.deployment.id)
+    },
+  })
 }
 </script>

@@ -13,7 +13,12 @@ export default function useMqtt() {
   function update(data: Partial<Mqtt>) {
     return $auth.fetch('/api/mqtt', {
       method: 'PATCH',
-      body: data,
+      body: {
+        uriTCP: data.uriTCP,
+        uriWS: data.uriWS,
+        username: data.username,
+        password: data.password,
+      },
 
       onResponse: ({ response }) => {
         if (response.ok) {
@@ -26,7 +31,12 @@ export default function useMqtt() {
   function add(data: Partial<Mqtt>) {
     return $auth.fetch('/api/mqtt', {
       method: 'POST',
-      body: data,
+      body: {
+        uriTCP: data.uriTCP,
+        uriWS: data.uriWS,
+        username: data.username,
+        password: data.password,
+      },
 
       onResponse: ({ response }) => {
         if (response.ok) {

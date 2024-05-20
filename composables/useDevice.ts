@@ -39,7 +39,10 @@ export default function useDevice() {
   function add(data: Partial<Device>) {
     return $auth.fetch('/api/devices', {
       method: 'POST',
-      body: data,
+      body: {
+        name: data.name,
+        apiKey: data.apiKey,
+      },
 
       onResponse: ({ response }) => {
         if (response.ok && devices.data.value) {
@@ -108,7 +111,13 @@ export default function useDevice() {
 
     return $auth.fetch(`/api/devices/${id}`, {
       method: 'PATCH',
-      body: data,
+      body: {
+        name: data.name,
+        apiKey: data.apiKey,
+        description: data.description,
+        status: data.status,
+        variables: data.variables,
+      },
 
       onResponse: ({ response }) => {
         if (response.ok && devices.data.value) {

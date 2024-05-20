@@ -30,7 +30,11 @@ export default function useRelease(projectId: Project['id']) {
 
     return $auth.fetch('/api/releases', {
       method: 'POST',
-      body: data,
+      body: {
+        version: data.version,
+        projectId: data.projectId,
+        downloadPath: data.downloadPath,
+      },
 
       onResponse: ({ response }) => {
         if (response.ok && releases.data.value) {

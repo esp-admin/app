@@ -1,17 +1,15 @@
 export default defineEventHandler(async (event) => {
   const { userId } = checkUser(event)
 
-  const { name } = await readBody<Project>(event)
-
   const schema = z.object({
     name: z.string().min(1),
   })
 
-  schema.parse({ name })
+  const body = await validateBody(event, schema)
 
   const project = await event.context.prisma.project.create({
     data: {
-      name,
+      name: body.name,
       userId,
     },
     select: {

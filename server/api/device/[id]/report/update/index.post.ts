@@ -1,13 +1,13 @@
 export default defineEventHandler(async (event) => {
   const { id: deviceId } = await checkDevice(event)
 
-  const body = await readBody<ReportUpdateMessage>(event)
-
   const schema = z.object({
     status: z.enum(['started', 'failed', 'succeded']),
+    releaseId: z.string().regex(REGEX_ID).optional(),
+    deploymentId: z.string().regex(REGEX_ID).optional(),
   })
 
-  schema.parse({ status: body.status })
+  const body = await validateBody(event, schema)
 
   if (body.status === 'started') {
     const deployment = await event.context.prisma.deployment.create({

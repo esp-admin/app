@@ -1,11 +1,9 @@
 export default defineEventHandler(async (event) => {
   const { userId } = checkUser(event)
 
-  const id = event.context.params?.id
-  const { name, repository, description, variables, commands } = await readBody<Project>(event)
+  const projectId = validateId(event)
 
   const schema = z.object({
-    id: z.string().regex(REGEX_ID),
     name: z.string().min(1).optional(),
     repository: z.string().url().or(z.literal('')).nullable().optional(),
     description: z.string().nullable().optional(),
@@ -13,19 +11,19 @@ export default defineEventHandler(async (event) => {
     commands: z.string().optional().nullable(),
   })
 
-  schema.parse({ id, name, repository, description, variables, commands })
+  const body = await validateBody(event, schema)
 
   const project = await event.context.prisma.project.update({
     where: {
-      id,
+      id: projectId,
       userId,
     },
     data: {
-      name,
-      description,
-      repository,
-      commands,
-      variables,
+      name: body.name,
+      description: body.description,
+      repository: body.repository,
+      commands: body.commands,
+      variables: body.variables,
     },
   }).catch((e) => { throw createPrismaError(e) })
 

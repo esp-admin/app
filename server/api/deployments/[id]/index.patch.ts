@@ -1,23 +1,20 @@
 export default defineEventHandler(async (event) => {
   checkUser(event)
 
-  const id = event.context.params?.id
-
-  const { status } = await readBody<Deployment>(event)
+  const deploymentId = validateId(event)
 
   const schema = z.object({
-    id: z.string().regex(REGEX_ID),
-    status: z.enum(['started', 'failed', 'succeded']),
+    status: z.enum(['started', 'failed', 'succeded']).optional(),
   })
 
-  schema.parse({ id, status })
+  const body = await validateBody(event, schema)
 
   const deployment = await event.context.prisma.deployment.update({
     where: {
-      id,
+      id: deploymentId,
     },
     data: {
-      status,
+      status: body.status,
     },
     select: {
       id: true,

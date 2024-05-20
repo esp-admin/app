@@ -1,9 +1,6 @@
 export default defineEventHandler(async (event) => {
   const { userId } = checkUser(event)
 
-  const { webhookEnable, emailEnable, emailAddress, webhookUrl }
-      = await readBody<Report>(event)
-
   const schema = z.object({
     webhookEnable: z.boolean(),
     emailEnable: z.boolean(),
@@ -11,14 +8,14 @@ export default defineEventHandler(async (event) => {
     emailAddress: z.string().email().or(z.literal('')).nullable().optional(),
   })
 
-  schema.parse({ webhookEnable, emailEnable, webhookUrl, emailAddress })
+  const body = await validateBody(event, schema)
 
   const report = await event.context.prisma.report.create({
     data: {
-      webhookEnable,
-      webhookUrl,
-      emailAddress,
-      emailEnable,
+      webhookEnable: body.webhookEnable,
+      webhookUrl: body.webhookUrl,
+      emailAddress: body.emailAddress,
+      emailEnable: body.emailEnable,
       userId,
     },
     select: {

@@ -30,10 +30,15 @@ export function createPrismaError(error: PrismaError) {
 }
 
 export function createUnauthorizedError() {
-  const h3Error = createError({
+  return createError({
     message: 'unauthorized',
     statusCode: 401,
   })
+}
 
-  return h3Error
+export function createInvalidId() {
+  return createError({
+    message: 'Invalid ID',
+    statusCode: 400,
+  })
 }

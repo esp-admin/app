@@ -7,14 +7,14 @@
     >
       <n-thing>
         <template #avatar>
-          <DeviceStatus
+          <device-status
             :device="device"
             :size="23"
           />
         </template>
 
         <template #header>
-          <TitleDate
+          <title-date
             :title="device.name"
             :created-at="device.createdAt"
           />

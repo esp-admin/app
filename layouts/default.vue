@@ -8,13 +8,13 @@
         to="/"
         class="mx-auto my-2"
       >
-        <Logo :width="114" />
+        <logo :width="114" />
       </nuxt-link>
     </template>
 
     <template #end>
       <div class="flex flex-col gap-8 m-2 notMobileOrTablet">
-        <AccountInfo />
+        <account-info />
         <n-button
           secondary
           @click="logout"
@@ -25,7 +25,7 @@
     </template>
 
     <template #drawer-header>
-      <AccountInfo class="mx-2" />
+      <account-info class="mx-2" />
     </template>
 
     <template #drawer-footer>
@@ -42,7 +42,7 @@
       <slot />
     </div>
 
-    <Notification />
+    <notification />
   </naive-layout-sidebar>
 </template>
 

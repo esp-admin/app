@@ -13,14 +13,14 @@
         </n-button>
       </div>
 
-      <ButtonIcon
+      <button-icon
         :disabled="device.status !== 'connected'"
         :icon="ICON_RESET"
         secondary
         @click="handleRestart"
       />
 
-      <ButtonIcon
+      <button-icon
         :disabled="logs.length === 0"
         :icon="ICON_ERASE"
         secondary

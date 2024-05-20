@@ -17,14 +17,14 @@
         name="mqtt"
         tab="MQTT"
       >
-        <SettingsMqtt class="mt-4" />
+        <settings-mqtt class="mt-4" />
       </n-tab-pane>
 
       <n-tab-pane
         name="report"
         tab="Report"
       >
-        <SettingsReport class="mt-4" />
+        <settings-report class="mt-4" />
       </n-tab-pane>
     </n-tabs>
   </div>

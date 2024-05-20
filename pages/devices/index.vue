@@ -5,7 +5,7 @@
       title="No devices found"
     >
       <template #icon>
-        <ResultEmpty />
+        <result-empty />
       </template>
       <template #footer>
         <n-button
@@ -54,7 +54,7 @@
         </n-button>
       </div>
 
-      <DeviceItem
+      <device-item
         v-for="device of filteredDevices"
         :key="device.id"
         :device="device"
@@ -69,7 +69,7 @@
       :mask-closable="false"
       class="max-w-sm"
     >
-      <DeviceCreate
+      <device-create
         @cancel="createModalVisible = false"
         @done="onCreate"
       />

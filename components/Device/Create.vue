@@ -16,7 +16,7 @@
       label="API Key"
       path="apiKey"
     >
-      <FormKey v-model:value="model.apiKey" />
+      <form-key v-model:value="model.apiKey" />
     </n-form-item>
 
     <div class="flex gap-4">

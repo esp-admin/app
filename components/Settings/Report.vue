@@ -35,7 +35,7 @@
       <n-input v-model:value="model.emailAddress" />
     </n-form-item>
 
-    <FormButtons
+    <form-buttons
       :loading="pending"
       :disabled="!edited || pending"
       @reset="reset"
@@ -61,13 +61,14 @@ const model = ref<Partial<Report>>({
   emailAddress: report.value?.emailAddress,
 })
 
-const { formRef, onSubmit, pending, rules, edited, reset } = useNaiveForm(model)
+const { formRef, onSubmit, pending, rules, edited, reset }
+  = useNaiveForm(model)
 
 rules.value = {
   webhookUrl: [
     {
       message: ERROR_REQUIRED,
-      validator: (_, value) => model.value.webhookEnable ? !!value : true,
+      validator: (_, value) => (model.value.webhookEnable ? !!value : true),
     },
     {
       type: 'url',
@@ -81,7 +82,7 @@ rules.value = {
     },
     {
       message: ERROR_REQUIRED,
-      validator: (_, value) => model.value.emailEnable ? !!value : true,
+      validator: (_, value) => (model.value.emailEnable ? !!value : true),
     },
   ],
 }

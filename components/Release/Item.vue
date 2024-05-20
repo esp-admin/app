@@ -1,7 +1,7 @@
 <template>
   <n-thing>
     <template #header>
-      <TitleDate
+      <title-date
         :title="release.version"
         :created-at="release.createdAt"
       />
@@ -9,21 +9,21 @@
 
     <template #header-extra>
       <div class="flex gap-2">
-        <ButtonIcon
+        <button-icon
           :icon="collapsed ? ICON_EXPAND : ICON_COLLAPSE"
           :disabled="linkedDevices.length === 0"
           secondary
           @click="collapsed = !collapsed"
         />
 
-        <ButtonIcon
+        <button-icon
           icon="ic:baseline-bolt"
           :disabled="linkedDevices.length === 0"
           secondary
           @click="onTrigger"
         />
 
-        <ButtonIcon
+        <button-icon
           :icon="ICON_DELETE"
           secondary
           @click="deleteModalVisible = true"
@@ -32,7 +32,7 @@
     </template>
 
     <n-collapse-transition :show="!collapsed">
-      <LazyReleaseDevices :release="release" />
+      <lazy-release-devices :release="release" />
     </n-collapse-transition>
   </n-thing>
 
@@ -44,7 +44,7 @@
     :mask-closable="false"
     class="max-w-sm"
   >
-    <ReleaseDelete
+    <release-delete
       :release="release"
       @cancel="deleteModalVisible = false"
       @done="onDelete"
@@ -91,7 +91,7 @@ onMounted(() => {
   const createdAt = new Date(props.release.createdAt).getTime()
   const now = new Date().getTime()
 
-  if (now < (createdAt + delay)) {
+  if (now < createdAt + delay) {
     collapsed.value = false
   }
 })

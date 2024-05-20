@@ -6,7 +6,7 @@
       title="No projects found"
     >
       <template #icon>
-        <ResultEmpty />
+        <result-empty />
       </template>
       <template #footer>
         <n-button
@@ -55,7 +55,7 @@
         </n-button>
       </div>
 
-      <ProjectItem
+      <project-item
         v-for="project of filteredProjects"
         :key="project.id"
         :project="project"
@@ -70,7 +70,7 @@
       :mask-closable="false"
       class="max-w-sm"
     >
-      <ProjectCreate
+      <project-create
         @cancel="createModalVisible = false"
         @done="onCreate"
       />

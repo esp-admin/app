@@ -1,5 +1,5 @@
 <template>
   <n-notification-provider placement="bottom-right">
-    <NotificationNetwork />
+    <notification-network />
   </n-notification-provider>
 </template>

@@ -17,7 +17,7 @@
         name="profile"
         tab="Profile"
       >
-        <AccountProfile class="mt-4" />
+        <account-profile class="mt-4" />
       </n-tab-pane>
 
       <n-tab-pane
@@ -25,21 +25,21 @@
         name="security"
         tab="Security"
       >
-        <AccountPassword class="mt-4" />
+        <account-password class="mt-4" />
       </n-tab-pane>
 
       <n-tab-pane
         name="preferences"
         tab="Preferences"
       >
-        <AccountPreferences class="mt-4" />
+        <account-preferences class="mt-4" />
       </n-tab-pane>
 
       <n-tab-pane
         name="Sessions"
         tab="Sessions"
       >
-        <AccountSessions class="mt-4" />
+        <account-sessions class="mt-4" />
       </n-tab-pane>
     </n-tabs>
   </div>

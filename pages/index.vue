@@ -1,11 +1,11 @@
 <template>
   <div class="flex flex-col gap-6">
     <n-card size="small">
-      <DashboardSummary />
+      <dashboard-summary />
     </n-card>
 
     <n-card size="small">
-      <DashboardDevices class="mx-auto" />
+      <dashboard-devices class="mx-auto" />
     </n-card>
   </div>
 </template>

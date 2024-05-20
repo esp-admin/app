@@ -22,7 +22,7 @@
         </template>
 
         <template #header>
-          <TitleDate
+          <title-date
             :title=" [
               session.ua && UAParser.UAParser(session.ua).browser.name,
               session.ua && UAParser.UAParser(session.ua).os.name,
@@ -34,7 +34,7 @@
         </template>
 
         <template #header-extra>
-          <ButtonIcon
+          <button-icon
             :icon="ICON_DELETE"
             secondary
             :disabled="session.current"

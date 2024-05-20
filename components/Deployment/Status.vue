@@ -1,30 +1,24 @@
 <template>
   <naive-icon
-    v-if="!deployment?.status"
-    :name="ICON_UNKNOWN"
+    :name="icon.name"
     :size="size"
-    icon-color="#a3a3a3"
-  />
-  <naive-icon
-    v-else-if="deployment.status === 'started'"
-    :name="ICON_LOADING"
-    :size="size"
-    icon-color="#3b82f6"
-  />
-  <naive-icon
-    v-else-if="deployment.status === 'failed'"
-    :name="ICON_FAIL"
-    :size="size"
-    icon-color="#ef4444"
-  />
-  <naive-icon
-    v-else-if="deployment.status === 'succeded'"
-    :name="ICON_CHECK"
-    :size="size"
-    icon-color="#22c55e"
+    :icon-color="icon.color"
   />
 </template>
 
 <script setup lang="ts">
-defineProps<{ deployment?: Deployment, size?: number }>()
+const props = defineProps<{ deployment?: Deployment, size?: number }>()
+
+const icon = computed(() => {
+  switch (props.deployment?.status) {
+    case 'started':
+      return { name: ICON_LOADING, color: '#3b82f6' }
+    case 'succeded':
+      return { name: ICON_CHECK, color: '#22c55e' }
+    case 'failed':
+      return { name: ICON_FAIL, color: '#ef4444' }
+    default:
+      return { name: ICON_UNKNOWN, color: '#a3a3a3' }
+  }
+})
 </script>

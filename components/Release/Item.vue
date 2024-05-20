@@ -49,11 +49,12 @@ const { findLinked } = useDevice()
 const linkedDevices = await findLinked(props.release.projectId)
 
 function onDelete() {
-  dialog.warning({
+  dialog.error({
     title: 'Delete Release',
     content: 'The release will be permanently deleted, including its deployments. This action is not reversible and can not be undone.',
     positiveText: 'Confirm',
     negativeText: 'Cancel',
+    showIcon: false,
     onPositiveClick: async () => {
       await useRelease(props.release.projectId).remove(props.release.id)
       await useUpload().remove([props.release.downloadPath])

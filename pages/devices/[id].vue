@@ -96,11 +96,12 @@ const { findOne } = useDevice()
 const device = await findOne(id)
 
 function onDelete() {
-  dialog.warning({
+  dialog.error({
     title: 'Delete Device',
     content: 'The device will be permanently deleted, including its deployments. This action is not reversible and can not be undone.',
     positiveText: 'Confirm',
     negativeText: 'Cancel',
+    showIcon: false,
     onPositiveClick: async () => {
       await useDevice().remove(device.value.id)
       dialog.destroyAll()
@@ -115,6 +116,7 @@ function onUnlink() {
     content: 'The device will unlinked from the project.',
     positiveText: 'Confirm',
     negativeText: 'Cancel',
+    showIcon: false,
     onPositiveClick: async () => {
       await useDevice().unlink(device.value.id)
     },

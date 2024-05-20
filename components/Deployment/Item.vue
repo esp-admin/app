@@ -39,11 +39,12 @@ const props = defineProps<{ deployment: Deployment }>()
 const dialog = useDialog()
 
 function onDelete() {
-  dialog.warning({
+  dialog.error({
     title: 'Delete Deployment',
     content: 'The deployment will be permanently deleted. This action is not reversible and can not be undone.',
     positiveText: 'Confirm',
     negativeText: 'Cancel',
+    showIcon: false,
     onPositiveClick: async () => {
       await useDeployment(props.deployment.deviceId).remove(props.deployment.id)
     },

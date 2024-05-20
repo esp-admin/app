@@ -73,7 +73,7 @@ async function updateAccount() {
       model.value.picture = await upload(model.value.file, model.value.picture)
     }
   }
-  catch (e) {
+  catch (err) {
     apiErrors.value.uploadFailed = true
     return
   }

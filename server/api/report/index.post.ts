@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
       webhookEnable: true,
       webhookUrl: true,
     },
-  }).catch((e) => { throw createPrismaError(e) })
+  }).catch((err) => { throw createPrismaError(err) })
 
   return report
 })

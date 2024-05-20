@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
       commands: body.commands,
       variables: body.variables,
     },
-  }).catch((e) => { throw createPrismaError(e) })
+  }).catch((err) => { throw createPrismaError(err) })
 
   return project
 })

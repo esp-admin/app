@@ -17,7 +17,7 @@
       label="Firmware"
     >
       <n-upload
-        :custom-request="(e) => { model.file = e.file.file }"
+        :custom-request="onUpload"
         accept=".bin"
         :max="1"
       >
@@ -63,6 +63,8 @@
 </template>
 
 <script setup lang="ts">
+import type { UploadCustomRequestOptions } from 'naive-ui'
+
 const props = defineProps<{ project: Project }>()
 
 const emits = defineEmits(['cancel', 'done'])
@@ -109,13 +111,17 @@ rules.value = {
   ],
 }
 
+function onUpload(event: UploadCustomRequestOptions) {
+  model.value.file = event.file.file
+}
+
 async function handleSubmit() {
   const { upload } = useUpload()
 
   try {
     model.value.downloadPath = await upload(model.value.file!)
   }
-  catch (e) {
+  catch (err) {
     apiErrors.value.uploadFailed = true
     return
   }
@@ -151,7 +157,9 @@ async function handleSubmit() {
     emits('done')
   }
   catch (error) {
-    apiErrors.value.versionAlreadyExists = (error as FetchError).data.message.includes('Unique constraint failed')
+    apiErrors.value.versionAlreadyExists = (
+      error as FetchError
+    ).data.message.includes('Unique constraint failed')
   }
 }
 </script>

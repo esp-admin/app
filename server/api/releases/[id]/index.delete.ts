@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
     select: {
       id: true,
     },
-  }).catch((e) => { throw createPrismaError(e) })
+  }).catch((err) => { throw createPrismaError(err) })
 
   return release
 })

@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
       createdAt: true,
       projectId: true,
     },
-  }).catch((e) => { throw createPrismaError(e) })
+  }).catch((err) => { throw createPrismaError(err) })
 
   return release
 })

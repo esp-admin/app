@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
       username: true,
       password: true,
     },
-  }).catch((e) => { throw createPrismaError(e) })
+  }).catch((err) => { throw createPrismaError(err) })
 
   return mqtt
 })

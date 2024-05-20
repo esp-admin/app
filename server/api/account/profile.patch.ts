@@ -21,8 +21,8 @@ export default defineEventHandler(async (event) => {
         id: true,
       },
     })
-    .catch((e) => {
-      throw createPrismaError(e)
+    .catch((err) => {
+      throw createPrismaError(err)
     })
 
   return user

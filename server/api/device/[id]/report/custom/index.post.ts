@@ -27,8 +27,8 @@ export default defineEventHandler(async (event) => {
         webhookUrl: true,
       },
     })
-    .catch((e) => {
-      throw createPrismaError(e)
+    .catch((err) => {
+      throw createPrismaError(err)
     })
 
   const config = useRuntimeConfig()

@@ -11,7 +11,7 @@
             v-if="device.projectId"
             :icon="ICON_UNLINK"
             secondary
-            @click="unlinkModalVisible = true"
+            @click="onUnlink"
           />
 
           <nuxt-link
@@ -75,21 +75,6 @@
         />
       </n-tab-pane>
     </n-tabs>
-
-    <n-modal
-      v-model:show="unlinkModalVisible"
-      bordered
-      preset="card"
-      :closable="false"
-      :mask-closable="false"
-      class="max-w-sm"
-    >
-      <device-unlink
-        :device="device"
-        @cancel="unlinkModalVisible = false"
-        @done="onUnlink"
-      />
-    </n-modal>
   </div>
 </template>
 
@@ -100,8 +85,6 @@ definePageMeta({
     return REGEX_ID.test(params.id)
   },
 })
-
-const unlinkModalVisible = ref(false)
 
 const route = useRoute()
 const dialog = useDialog()
@@ -129,6 +112,16 @@ function onDelete() {
 }
 
 function onUnlink() {
-  unlinkModalVisible.value = false
+  const { unlink } = useDevice()
+
+  dialog.warning({
+    title: 'Unlink Device',
+    content: 'The device will unlinked from the project.',
+    positiveText: 'Confirm',
+    negativeText: 'Cancel',
+    onPositiveClick: async () => {
+      await unlink(device.value.id)
+    },
+  })
 }
 </script>

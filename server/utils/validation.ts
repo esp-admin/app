@@ -15,5 +15,5 @@ export function validateId(event: H3Event) {
 }
 
 export function validateBody<T extends Schema>(event: H3Event, schema: T) {
-  return readValidatedBody<Infer<T>>(event, body => schema.safeParse(body).success)
+  return readValidatedBody<Infer<T>>(event, schema.parse)
 }

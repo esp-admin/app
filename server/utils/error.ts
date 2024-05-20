@@ -36,7 +36,7 @@ export function createUnauthorizedError() {
   })
 }
 
-export function createInvalidId() {
+export function createInvalidIdError() {
   return createError({
     message: 'Invalid ID',
     statusCode: 400,

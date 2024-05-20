@@ -8,7 +8,7 @@ export function validateId(event: H3Event) {
   const id = event.context.params?.id
 
   if (!id || !REGEX_ID.test(id)) {
-    throw createInvalidId()
+    throw createInvalidIdError()
   }
 
   return id

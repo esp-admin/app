@@ -1,5 +1,37 @@
 # Changelog
 
+## v1.0.20
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.19...v1.0.20)
+
+### 🔥 Performance
+
+- Use naive Dialog for delete confirmation ([#7](https://github.com/esp-admin/app/pull/7))
+
+### 🩹 Fixes
+
+- Request email verfication on failed registration with `account-not-verified` error ([b09a078](https://github.com/esp-admin/app/commit/b09a078))
+
+### 💅 Refactors
+
+- Review code ([#6](https://github.com/esp-admin/app/pull/6))
+- Replace type warning with error on dialog components ([5b8ae7d](https://github.com/esp-admin/app/commit/5b8ae7d))
+- Show updatedAt instead of createdAt on Project & Device cards ([0f6db87](https://github.com/esp-admin/app/commit/0f6db87))
+- Return validation fail reason ([e3adb2f](https://github.com/esp-admin/app/commit/e3adb2f))
+
+### 🏡 Chore
+
+- **lint:** Migrate to `@nuxt/eslint` ([f8ea88f](https://github.com/esp-admin/app/commit/f8ea88f))
+- Refresh lockfile ([bf0c638](https://github.com/esp-admin/app/commit/bf0c638))
+- Refresh lockfile ([8485821](https://github.com/esp-admin/app/commit/8485821))
+- Refresh lockfile ([0ced79b](https://github.com/esp-admin/app/commit/0ced79b))
+- Refresh lockfile ([045ffeb](https://github.com/esp-admin/app/commit/045ffeb))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+
 ## v1.0.19
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.18...v1.0.19)

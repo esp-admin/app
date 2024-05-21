@@ -1,7 +1,7 @@
 import { parseURL, withoutTrailingSlash, joinURL } from 'ufo'
 import type { MultiPartData, H3Event } from 'h3'
 import mime from 'mime'
-import { normalizeKey } from '#s3'
+import { normalizeKey, verifySize, verifyType } from '#s3'
 
 function getKeyFromUrl(url: string) {
   const regex = /^\/api\/s3\/query\//
@@ -24,7 +24,10 @@ export async function uploadObject(event: H3Event, file: MultiPartData, url?: st
   const { userId } = checkUser(event)
 
   const ext = file.filename?.split('.').pop()
+
   z.string().min(3).parse(ext)
+  verifyType(file.type)
+  verifySize(file.data.length)
 
   const key = `${userId}/${new Date().getTime()}.${ext}`
 
@@ -33,6 +36,8 @@ export async function uploadObject(event: H3Event, file: MultiPartData, url?: st
       'Content-Type': file.type,
       'Content-Length': file.data.length,
     },
+  }).catch(() => {
+    throw createFailedUploadError()
   })
 
   if (url) {

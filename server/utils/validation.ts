@@ -1,6 +1,5 @@
 import type { H3Event } from 'h3'
 import type { Schema, infer as Infer } from 'zod'
-import { verifySize, verifyType } from '#s3'
 
 export const REGEX_ID = /(^[a-fA-F0-9]{24}$)|(^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$)/
 export const REGEX_VERSION = /^(\d+)\.(\d+)\.(\d+)(?:-([\w-.]+))?(?:\+([\w-.]+))?$/
@@ -31,11 +30,6 @@ export async function validateMultipartFormData<T extends Schema>(event: H3Event
   } as Infer<T>
 
   schema.parse(output)
-
-  if (file) {
-    verifyType(file.type)
-    verifySize(file.data.length)
-  }
 
   return output
 }

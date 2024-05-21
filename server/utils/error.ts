@@ -42,3 +42,10 @@ export function createInvalidIdError() {
     statusCode: 400,
   })
 }
+
+export function createFailedUploadError() {
+  return createError({
+    message: 'upload-failed',
+    statusCode: 500,
+  })
+}

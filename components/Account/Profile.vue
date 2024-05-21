@@ -1,19 +1,21 @@
 <template>
   <div>
-    <upload-image
-      ref="uploadRef"
-      class="mb-2 mx-auto shadow hover:shadow-lg border-blue-300 border-2"
-      :src="model.picture"
-      :width="160"
-      @select="(f) => model.file=f"
-    />
-
     <n-form
       ref="formRef"
       :rules="rules"
       :model="model"
       @submit.prevent="onSubmit(updateAccount)"
     >
+      <n-form-item path="picture">
+        <upload-image
+          ref="uploadRef"
+          class="mb-2 mx-auto shadow hover:shadow-lg border-blue-300 border-2"
+          :src="model.picture"
+          :width="160"
+          @select="(f) => model.file=f"
+        />
+      </n-form-item>
+
       <n-form-item
         label="Name"
         path="name"
@@ -41,13 +43,28 @@ const model = ref({
   file: null,
 })
 
-const { edited, formRef, pending, onSubmit, reset, rules } = useNaiveForm(model)
+const { edited, formRef, pending, onSubmit, reset, rules, apiErrors } = useNaiveForm(model)
+
+apiErrors.value = {
+  invalidSize: false,
+  uploadFailed: false,
+}
 
 rules.value = {
   name: [
     {
       required: true,
       message: ERROR_REQUIRED,
+    },
+  ],
+  picture: [
+    {
+      message: ERROR_UPLOAD_SIZE,
+      validator: () => !apiErrors.value.invalidSize,
+    },
+    {
+      message: ERROR_UPLOAD_FAILED,
+      validator: () => !apiErrors.value.uploadFailed,
     },
   ],
 }
@@ -73,10 +90,14 @@ async function updateAccount() {
     method: 'PATCH',
     body: formData,
   })
-
-  await useAuth().fetchUser()
-
-  model.value.picture = user.value?.picture
-  model.value.file = null
+    .then(async () => {
+      await useAuth().fetchUser()
+      model.value.picture = user.value?.picture
+      model.value.file = null
+    })
+    .catch((err) => {
+      apiErrors.value.invalidSize = err.data.message === 'invalid-size'
+      apiErrors.value.uploadFailed = err.data.message === 'upload-failed'
+    })
 }
 </script>

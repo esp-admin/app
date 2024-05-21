@@ -78,6 +78,8 @@ const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm(model)
 
 apiErrors.value = {
   versionAlreadyExists: false,
+  invalidSize: false,
+  uploadFailed: false,
 }
 
 rules.value = {
@@ -102,6 +104,14 @@ rules.value = {
       required: true,
       message: ERROR_REQUIRED,
     },
+    {
+      message: ERROR_UPLOAD_SIZE,
+      validator: () => !apiErrors.value.invalidSize,
+    },
+    {
+      message: ERROR_UPLOAD_FAILED,
+      validator: () => !apiErrors.value.uploadFailed,
+    },
   ],
 }
 
@@ -110,36 +120,36 @@ function onUpload(event: UploadCustomRequestOptions) {
 }
 
 async function handleSubmit() {
-  try {
-    const { add } = useRelease(props.project.id)
+  const { add } = useRelease(props.project.id)
 
-    const release = await add(model.value.version, model.value.file!)
+  await add(model.value.version, model.value.file!)
+    .then(async (release) => {
+      const { findLinked } = useDevice()
 
-    const { findLinked } = useDevice()
+      const linkedDevices = await findLinked(props.project.id)
 
-    const linkedDevices = await findLinked(props.project.id)
+      const { $mqtt } = useNuxtApp()
 
-    const { $mqtt } = useNuxtApp()
+      for (const device of linkedDevices.value) {
+        $mqtt.publish({
+          deviceId: device.id,
+          action: 'command',
+          type: 'update',
+          retain: true,
+          payload: JSON.stringify({
+            releaseId: release.id,
+            version: release.version,
+            downloadPath: release.downloadPath,
+          }),
+        })
+      }
 
-    for (const device of linkedDevices.value) {
-      $mqtt.publish({
-        deviceId: device.id,
-        action: 'command',
-        type: 'update',
-        retain: true,
-        payload: JSON.stringify({
-          releaseId: release.id,
-          version: release.version,
-          downloadPath: release.downloadPath,
-        }),
-      })
-    }
-
-    emits('done')
-  }
-  catch (err) {
-    apiErrors.value.versionAlreadyExists
-      = (err as FetchError).data.message.includes('Unique constraint failed')
-  }
+      emits('done')
+    })
+    .catch((err) => {
+      apiErrors.value.versionAlreadyExists = err.data.message.includes('Unique constraint failed')
+      apiErrors.value.invalidSize = err.data.message === 'invalid-size'
+      apiErrors.value.uploadFailed = err.data.message === 'upload-failed'
+    })
 }
 </script>

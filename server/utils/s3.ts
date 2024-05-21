@@ -61,5 +61,7 @@ export async function streamObject(event: H3Event) {
     setResponseHeader(event, 'Content-Type', mimeType)
   }
 
+  setResponseHeader(event, 'Cache-Control', 'public, max-age=2592000, immutable')
+
   return data
 }

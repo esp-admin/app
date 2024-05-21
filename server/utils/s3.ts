@@ -26,7 +26,7 @@ export async function uploadObject(event: H3Event, file: MultiPartData, url?: st
   const ext = file.filename?.split('.').pop()
   z.string().min(3).parse(ext)
 
-  const key = `${userId}/${crypto.randomUUID()}.${ext}`
+  const key = `${userId}/${new Date().getTime()}.${ext}`
 
   await useStorage('s3').setItemRaw(normalizeKey(key), file.data, {
     headers: {

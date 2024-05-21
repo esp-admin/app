@@ -91,9 +91,7 @@ const dialog = useDialog()
 
 const id = route.params.id as string
 
-const { findOne } = useDevice()
-
-const device = await findOne(id)
+const device = await useDevice().findOne(id)
 
 function onDelete() {
   dialog.error({

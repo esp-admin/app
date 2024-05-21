@@ -20,17 +20,13 @@ import { defu } from 'defu'
 
 const props = defineProps<{ release: Release }>()
 
-const { findDeployments } = useRelease(props.release.projectId)
-
-const { findLinked } = useDevice()
-
 const lb = useLoadingIndicator()
 
 lb.start()
 
-const linkedDevices = await findLinked(props.release.projectId)
+const linkedDevices = await useDevice().findLinked(props.release.projectId)
 
-const releaseDeployments = await findDeployments(props.release.id)
+const releaseDeployments = await useRelease(props.release.projectId).findDeployments(props.release.id)
 
 lb.finish()
 

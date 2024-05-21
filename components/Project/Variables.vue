@@ -74,9 +74,7 @@ rules.value = {
 }
 
 async function handleSubmit() {
-  const { update } = useProject()
-
-  await update(props.project.id, {
+  await useProject().update(props.project.id, {
     variables: JSON.stringify(model.value),
   })
 }

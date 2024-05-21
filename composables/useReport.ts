@@ -61,11 +61,9 @@ export default function useReport() {
   }
 
   async function handleStatus(message: ReportMessage) {
-    const { update, find } = useDevice()
-
     const { status } = destr<{ status: Device['status'] }>(message.payload)
 
-    const devices = await find()
+    const devices = await useDevice().find()
 
     if (devices.value) {
       const deviceIndex = devices.value.findIndex(device => device.id === message.deviceId)
@@ -75,7 +73,7 @@ export default function useReport() {
       }
     }
 
-    await update(message.deviceId, {
+    await useDevice().update(message.deviceId, {
       status,
     })
   }

@@ -7,9 +7,7 @@
 </template>
 
 <script setup lang="ts">
-const { find } = useDevice()
-
-const devices = await find()
+const devices = await useDevice().find()
 
 const chartOptions = computed<HighchartsOptions>(() => ({
   title: {

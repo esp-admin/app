@@ -6,7 +6,7 @@
       :model="model"
       @submit.prevent="onSubmit(updateAccount)"
     >
-      <n-form-item path="picture">
+      <n-form-item path="file">
         <upload-image
           ref="uploadRef"
           class="mb-2 mx-auto shadow hover:shadow-lg border-blue-300 border-2"
@@ -57,7 +57,7 @@ rules.value = {
       message: ERROR_REQUIRED,
     },
   ],
-  picture: [
+  file: [
     {
       message: ERROR_UPLOAD_SIZE,
       validator: () => !apiErrors.value.invalidSize,
@@ -84,9 +84,7 @@ async function updateAccount() {
 
   model.value.file && formData.append('file', model.value.file)
 
-  const { $auth } = useNuxtApp()
-
-  await $auth.fetch('/api/account/profile', {
+  await useNuxtApp().$auth.fetch('/api/account/profile', {
     method: 'PATCH',
     body: formData,
   })

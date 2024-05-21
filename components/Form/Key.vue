@@ -28,7 +28,6 @@
 
 <script setup lang="ts">
 const props = defineProps<{ value?: string }>()
-
 const emits = defineEmits(['update:value'])
 
 const placeholder = computed(() => {

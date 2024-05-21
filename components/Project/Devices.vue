@@ -74,7 +74,7 @@ const { findLinked } = useDevice()
 
 const linkedDevices = await findLinked(props.project.id)
 
-const nameSearch = ref('')
+const nameSearch = ref()
 
 const filteredDevices = filteredArrayByKey(linkedDevices, 'name', nameSearch)
 

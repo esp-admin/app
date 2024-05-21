@@ -44,13 +44,11 @@
 </template>
 
 <script setup lang="ts">
-const { find } = useReport()
-
 const lb = useLoadingIndicator()
 
 lb.start()
 
-const report = await find()
+const report = await useReport().find()
 
 lb.finish()
 
@@ -88,13 +86,11 @@ rules.value = {
 }
 
 async function handleSubmit() {
-  const { add, update } = useReport()
-
   if (report.value) {
-    await update(model.value)
+    await useReport().update(model.value)
   }
   else {
-    await add(model.value)
+    await useReport().add(model.value)
   }
 }
 </script>

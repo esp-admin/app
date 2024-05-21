@@ -80,10 +80,10 @@
 
 <script setup lang="ts">
 const createModalVisible = ref(false)
+
 const nameSearch = ref()
 
-const { find } = useProject()
-const projects = await find()
+const projects = await useProject().find()
 
 const filteredProjects = filteredArrayByKey(projects, 'name', nameSearch)
 

@@ -81,12 +81,11 @@ rules.value = {
 }
 
 async function handleSubmit() {
-  const { update } = useProject()
-
-  await update(props.project.id, model.value).catch((error) => {
-    apiErrors.value.nameAlreadyExists = error.data.message.includes(
-      'Unique constraint failed',
-    )
-  })
+  await useProject().update(props.project.id, model.value)
+    .catch((err) => {
+      apiErrors.value.nameAlreadyExists = err.data.message.includes(
+        'Unique constraint failed',
+      )
+    })
 }
 </script>

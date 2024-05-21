@@ -79,11 +79,10 @@
 
 <script setup lang="ts">
 const createModalVisible = ref(false)
-const nameSearch = ref('')
 
-const { find } = useDevice()
+const nameSearch = ref()
 
-const devices = await find()
+const devices = await useDevice().find()
 
 const filteredDevices = filteredArrayByKey(devices, 'name', nameSearch)
 

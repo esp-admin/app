@@ -25,7 +25,7 @@ export default function useRelease(projectId: Project['id']) {
     })
   }
 
-  function add(version: Release['version'], file: File) {
+  function add(version: Release['version'], firmware: File) {
     const formData = new FormData()
 
     formData.append('data', JSON.stringify({
@@ -33,7 +33,7 @@ export default function useRelease(projectId: Project['id']) {
       projectId,
     }))
 
-    formData.append('file', file)
+    formData.append('file', firmware)
 
     return $auth.fetch('/api/releases', {
       method: 'POST',

@@ -66,7 +66,6 @@
 import type { UploadCustomRequestOptions } from 'naive-ui'
 
 const props = defineProps<{ project: Project }>()
-
 const emits = defineEmits(['cancel', 'done'])
 
 const model = ref({
@@ -120,13 +119,9 @@ function onUpload(event: UploadCustomRequestOptions) {
 }
 
 async function handleSubmit() {
-  const { add } = useRelease(props.project.id)
-
-  await add(model.value.version, model.value.file!)
+  await useRelease(props.project.id).add(model.value.version, model.value.file!)
     .then(async (release) => {
-      const { findLinked } = useDevice()
-
-      const linkedDevices = await findLinked(props.project.id)
+      const linkedDevices = await useDevice().findLinked(props.project.id)
 
       const { $mqtt } = useNuxtApp()
 

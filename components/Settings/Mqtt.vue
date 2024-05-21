@@ -57,9 +57,7 @@
 </template>
 
 <script setup lang="ts">
-const { find } = useMqtt()
-
-const mqtt = await find()
+const mqtt = await useMqtt().find()
 
 const model = ref<Partial<Mqtt>>({
   password: mqtt.value?.password,
@@ -116,23 +114,18 @@ rules.value = {
 }
 
 async function handleSubmit() {
-  const { add, update } = useMqtt()
-
   if (mqtt.value) {
-    await update(model.value)
+    await useMqtt().update(model.value)
   }
   else {
-    await add(model.value)
+    await useMqtt().add(model.value)
   }
 
-  const { $mqtt } = useNuxtApp()
-
-  $mqtt
-    .connect({
-      password: model.value.password!,
-      uri: model.value.uriWS!,
-      username: model.value.username!,
-    })
+  useNuxtApp().$mqtt.connect({
+    password: model.value.password!,
+    uri: model.value.uriWS!,
+    username: model.value.username!,
+  })
     .catch(() => {})
 }
 </script>

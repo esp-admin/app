@@ -1,5 +1,6 @@
 import type { H3Event } from 'h3'
 import type { Schema, infer as Infer } from 'zod'
+import { destr } from 'destr'
 
 export const REGEX_ID = /(^[a-fA-F0-9]{24}$)|(^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$)/
 export const REGEX_VERSION = /^(\d+)\.(\d+)\.(\d+)(?:-([\w-.]+))?(?:\+([\w-.]+))?$/
@@ -25,7 +26,7 @@ export async function validateMultipartFormData<T extends Schema>(event: H3Event
   const file = multipartFormData?.find(e => e.name === 'file')
 
   const output = {
-    ...data && JSON.parse(data.data.toString()),
+    ...destr(data?.data.toString()),
     file,
   } as Infer<T>
 

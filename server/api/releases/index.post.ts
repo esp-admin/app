@@ -4,18 +4,20 @@ export default defineEventHandler(async (event) => {
   const schema = z.object({
     version: z.string().regex(REGEX_VERSION),
     projectId: z.string().regex(REGEX_ID),
-    downloadPath: z.string().min(1),
+    file: multipartSchema,
   })
 
-  const body = await validateBody(event, schema)
+  const multipart = await validateMultipartFormData(event, schema)
+
+  const downloadPath = await uploadObject(event, multipart.file)
 
   const release = await event.context.prisma.release.create({
     data: {
-      version: body.version,
-      downloadPath: body.downloadPath,
+      version: multipart.version,
+      downloadPath,
       project: {
         connect: {
-          id: body.projectId,
+          id: multipart.projectId,
         },
       },
     },

@@ -71,7 +71,6 @@ const emits = defineEmits(['cancel', 'done'])
 
 const model = ref({
   version: '',
-  downloadPath: '',
   file: null as File | null,
 })
 
@@ -79,7 +78,6 @@ const { apiErrors, formRef, onSubmit, pending, rules } = useNaiveForm(model)
 
 apiErrors.value = {
   versionAlreadyExists: false,
-  uploadFailed: false,
 }
 
 rules.value = {
@@ -104,10 +102,6 @@ rules.value = {
       required: true,
       message: ERROR_REQUIRED,
     },
-    {
-      message: ERROR_UPLOAD_FAILED,
-      validator: () => !apiErrors.value.uploadFailed,
-    },
   ],
 }
 
@@ -116,23 +110,10 @@ function onUpload(event: UploadCustomRequestOptions) {
 }
 
 async function handleSubmit() {
-  const { upload } = useUpload()
-
   try {
-    model.value.downloadPath = await upload(model.value.file!)
-  }
-  catch (err) {
-    apiErrors.value.uploadFailed = true
-    return
-  }
+    const { add } = useRelease(props.project.id)
 
-  const { add } = useRelease(props.project.id)
-
-  try {
-    const release = await add({
-      downloadPath: model.value.downloadPath,
-      version: model.value.version,
-    })
+    const release = await add(model.value.version, model.value.file!)
 
     const { findLinked } = useDevice()
 
@@ -156,10 +137,9 @@ async function handleSubmit() {
 
     emits('done')
   }
-  catch (error) {
-    apiErrors.value.versionAlreadyExists = (
-      error as FetchError
-    ).data.message.includes('Unique constraint failed')
+  catch (err) {
+    apiErrors.value.versionAlreadyExists
+      = (err as FetchError).data.message.includes('Unique constraint failed')
   }
 }
 </script>

@@ -57,7 +57,6 @@ function onDelete() {
     showIcon: false,
     onPositiveClick: async () => {
       await useRelease(props.release.projectId).remove(props.release.id)
-      await useUpload().remove([props.release.downloadPath])
     },
   })
 }

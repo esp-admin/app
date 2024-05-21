@@ -12,6 +12,14 @@ function getKeyFromUrl(url: string) {
   }
 }
 
+export async function deleteObject(url: string) {
+  const key = getKeyFromUrl(url)
+
+  if (key) {
+    await useStorage('s3').removeItem(normalizeKey(key), { removeMeta: true })
+  }
+}
+
 export async function uploadObject(event: H3Event, file: MultiPartData, url?: string) {
   const { userId } = checkUser(event)
 
@@ -27,12 +35,8 @@ export async function uploadObject(event: H3Event, file: MultiPartData, url?: st
     },
   })
 
-  const oldKey = url && getKeyFromUrl(url)
-
-  if (oldKey) {
-    await useStorage('s3').removeItem(normalizeKey(oldKey), {
-      removeMeta: true,
-    })
+  if (url) {
+    await deleteObject(url)
   }
 
   return joinURL('/api/s3/query', key)

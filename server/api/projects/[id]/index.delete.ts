@@ -10,8 +10,15 @@ export default defineEventHandler(async (event) => {
     },
     select: {
       id: true,
+      releases: {
+        select: {
+          downloadPath: true,
+        },
+      },
     },
   }).catch((err) => { throw createPrismaError(err) })
+
+  await Promise.all(project.releases.map(release => deleteObject(release.downloadPath)))
 
   return project
 })

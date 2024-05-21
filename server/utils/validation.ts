@@ -17,3 +17,28 @@ export function validateId(event: H3Event) {
 export function validateBody<T extends Schema>(event: H3Event, schema: T) {
   return readValidatedBody<Infer<T>>(event, schema.parse)
 }
+
+export async function validateMultipartFormData<T extends Schema>(event: H3Event, schema: T) {
+  const multipartFormData = await readMultipartFormData(event)
+
+  const data = multipartFormData?.find(e => e.name === 'data')
+  const file = multipartFormData?.find(e => e.name === 'file')
+
+  const output = {
+    ...data && JSON.parse(data.data.toString()),
+    file,
+  } as Infer<T>
+
+  schema.parse(output)
+
+  return output
+}
+
+export const multipartSchema = z.object({
+  filename: z.string().min(1).optional(),
+  name: z.string().min(1).optional(),
+  type: z.string().min(1).optional(),
+  data: z.custom<Buffer>(data => Buffer.isBuffer(data), {
+    message: 'Expected a Buffer',
+  }),
+})

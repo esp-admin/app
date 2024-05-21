@@ -4,9 +4,14 @@ export default defineEventHandler(async (event) => {
   const schema = z.object({
     name: z.string().min(1).optional(),
     picture: z.string().min(1).optional(),
+    file: multipartSchema.optional(),
   })
 
-  const body = await validateBody(event, schema)
+  const multipart = await validateMultipartFormData(event, schema)
+
+  if (multipart.file) {
+    multipart.picture = await uploadObject(event, multipart.file, multipart.picture)
+  }
 
   const user = await event.context.prisma.user
     .update({
@@ -14,8 +19,8 @@ export default defineEventHandler(async (event) => {
         id: userId,
       },
       data: {
-        name: body.name,
-        picture: body.picture,
+        name: multipart.name,
+        picture: multipart.picture,
       },
       select: {
         id: true,

@@ -71,11 +71,6 @@ export default function useRelease(projectId: Project['id']) {
   async function removeAll() {
     const releases = await find()
 
-    const urls = releases.value?.map(release => release.downloadPath) ?? []
-
-    // Remove all uploaded files
-    await useUpload().remove(urls)
-
     // Clear related deployments state
     releases.value?.forEach(release => removeDeployments(release.id))
 

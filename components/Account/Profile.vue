@@ -41,21 +41,13 @@ const model = ref({
   file: null,
 })
 
-const { edited, formRef, pending, onSubmit, reset, rules, apiErrors } = useNaiveForm(model)
-
-apiErrors.value = {
-  uploadFailed: false,
-}
+const { edited, formRef, pending, onSubmit, reset, rules } = useNaiveForm(model)
 
 rules.value = {
   name: [
     {
       required: true,
       message: ERROR_REQUIRED,
-    },
-    {
-      message: ERROR_UPLOAD_FAILED,
-      validator: () => !apiErrors.value.uploadFailed,
     },
   ],
 }
@@ -66,32 +58,25 @@ function handleReset() {
 }
 
 async function updateAccount() {
-  try {
-    const { upload } = useUpload()
+  const formData = new FormData()
 
-    if (model.value.file) {
-      model.value.picture = await upload(model.value.file, model.value.picture)
-    }
-  }
-  catch (err) {
-    apiErrors.value.uploadFailed = true
-    return
-  }
+  formData.append('data', JSON.stringify({
+    name: model.value.name,
+    picture: model.value.picture,
+  }))
+
+  model.value.file && formData.append('file', model.value.file)
 
   const { $auth } = useNuxtApp()
 
   await $auth.fetch('/api/account/profile', {
     method: 'PATCH',
-    body: {
-      name: model.value.name,
-      picture: model.value.picture,
-    },
+    body: formData,
   })
 
-  const { fetchUser } = useAuth()
+  await useAuth().fetchUser()
 
-  await fetchUser()
-
+  model.value.picture = user.value?.picture
   model.value.file = null
 }
 </script>

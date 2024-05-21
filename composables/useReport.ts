@@ -79,15 +79,13 @@ export default function useReport() {
   }
 
   async function handleUpdate(message: ReportMessage) {
-    const { updateStatus } = useDeployment(message.deviceId)
-
     const { deploymentId, status } = destr<{
       deploymentId: Deployment['id']
       status: Deployment['status']
     }>(message.payload)
 
     if (REGEX_ID.test(deploymentId)) {
-      await updateStatus(deploymentId, status)
+      await useDeployment(message.deviceId).updateStatus(deploymentId, status)
     }
   }
 

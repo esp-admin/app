@@ -32,9 +32,7 @@ export default defineNuxtPlugin({
      * This function updates all existant deployments with `failed` status after DEPLOYMENT_TIMEOUT_MS reached
      */
     async function updateDeployments() {
-      const { find } = useDevice()
-
-      const devices = await find()
+      const devices = await useDevice().find()
 
       for (const device of devices.value ?? []) {
         const { deployments, updateStatus } = useDeployment(device.id)

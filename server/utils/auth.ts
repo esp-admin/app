@@ -30,9 +30,7 @@ export async function checkDevice(event: H3Event) {
   return device
 }
 
-export async function checkProject(event: H3Event) {
-  const projectId = event.context.params?.id
-
+export async function checkProject(event: H3Event, projectId: Project['id']) {
   const apiKey = getHeader(event, 'Api-Key')
 
   if (!apiKey || !projectId || !REGEX_ID.test(projectId)) {

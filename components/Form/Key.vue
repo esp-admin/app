@@ -20,7 +20,6 @@
     <button-icon
       v-if="value"
       :icon="ICON_COPY"
-      :type="copied ? 'success' : 'default'"
       @click="copy"
     />
   </n-input-group>
@@ -32,7 +31,7 @@ const emits = defineEmits(['update:value'])
 
 const placeholder = computed(() => {
   if (props.value && copied.value) {
-    return 'Key copied to clipboard'
+    return 'Key copied to Clipboard'
   }
   else if (props.value && !copied.value) {
     return 'Make sure to copy the new key'
@@ -51,6 +50,7 @@ function copy() {
   if (props.value) {
     navigator.clipboard.writeText(props.value)
     copied.value = true
+    copiedToClipboard()
   }
 }
 

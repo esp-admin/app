@@ -16,5 +16,6 @@ const props = defineProps<{ value: string }>()
 
 function copy() {
   navigator.clipboard.writeText(props.value)
+  copiedToClipboard()
 }
 </script>

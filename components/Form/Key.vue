@@ -48,8 +48,10 @@ function refresh() {
 }
 
 function copy() {
-  navigator.clipboard.writeText(props.value!)
-  copied.value = true
+  if (props.value) {
+    navigator.clipboard.writeText(props.value)
+    copied.value = true
+  }
 }
 
 function cancel() {

@@ -7,10 +7,7 @@
     @submit.prevent="onSubmit(handleSubmit)"
   >
     <n-form-item label="Identifier">
-      <n-input
-        :value="device.id"
-        disabled
-      />
+      <form-id :value="device.id" />
     </n-form-item>
 
     <n-form-item

@@ -120,27 +120,7 @@ function onUpload(event: UploadCustomRequestOptions) {
 
 async function handleSubmit() {
   await useRelease(props.project.id).add(model.value.version, model.value.file!)
-    .then(async (release) => {
-      const linkedDevices = await useDevice().findLinked(props.project.id)
-
-      const { $mqtt } = useNuxtApp()
-
-      for (const device of linkedDevices.value) {
-        $mqtt.publish({
-          deviceId: device.id,
-          action: 'command',
-          type: 'update',
-          retain: true,
-          payload: JSON.stringify({
-            releaseId: release.id,
-            version: release.version,
-            downloadPath: release.downloadPath,
-          }),
-        })
-      }
-
-      emits('done')
-    })
+    .then(() => emits('done'))
     .catch((err) => {
       apiErrors.value.versionAlreadyExists = err.data.message.includes('Unique constraint failed')
       apiErrors.value.invalidSize = err.data.message === 'invalid-size'

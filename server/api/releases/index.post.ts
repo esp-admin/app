@@ -12,9 +12,9 @@ export default defineEventHandler(async (event) => {
 
   let userId = ''
 
-  const query = getQuery<{ ci: boolean }>(event)
+  const query = getQuery<{ ci: string }>(event)
 
-  if (query.ci === true) {
+  if (query.ci === 'true') {
     const project = await checkProject(event, multipart.projectId)
     userId = project.userId
   }
@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
     userId = checkUser(event).userId
   }
 
-  const downloadPath = await uploadObject(event, multipart.file)
+  const downloadPath = await uploadObject(multipart.file, userId)
 
   const [release, mqttSettings] = await event.context.prisma.$transaction([
     event.context.prisma.release.create({

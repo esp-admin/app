@@ -69,6 +69,7 @@ model Report {
 model Project {
     id          String    @id @default(uuid())
     name        String
+    apiKey      String?
     repository  String?
     description String?
     variables   String?

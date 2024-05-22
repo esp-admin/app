@@ -9,6 +9,7 @@ export default defineEventHandler(async (event) => {
     description: z.string().nullable().optional(),
     variables: z.string().optional().nullable(),
     commands: z.string().optional().nullable(),
+    apiKey: z.string().min(1).optional().nullable(),
   })
 
   const body = await validateBody(event, schema)
@@ -24,6 +25,17 @@ export default defineEventHandler(async (event) => {
       repository: body.repository,
       commands: body.commands,
       variables: body.variables,
+      apiKey: body.apiKey,
+    },
+    select: {
+      id: true,
+      name: true,
+      repository: true,
+      description: true,
+      commands: true,
+      variables: true,
+      createdAt: true,
+      updatedAt: true,
     },
   }).catch((err) => { throw createPrismaError(err) })
 

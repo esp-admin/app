@@ -63,6 +63,7 @@ export default function useProject() {
         description: data.description || null,
         variables: data.variables || null,
         commands: data.commands || null,
+        apiKey: data.apiKey || null,
       },
 
       onResponse: ({ response }) => {

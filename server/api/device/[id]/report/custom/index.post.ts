@@ -31,31 +31,37 @@ export default defineEventHandler(async (event) => {
   const baseUrl = config.public.auth.baseUrl
   const deviceUrl = joinURL(baseUrl, 'devices', deviceId)
 
+  const tasks = []
+
   if (report?.emailEnable && report.emailAddress) {
-    await sendMail({
-      subject: `${body.type} | ${body.subject}`,
-      to: report.emailAddress,
-      html: Mustache.render(reportTemplate, {
-        type: body.type,
-        body: body.body,
-        deviceName,
-        deviceUrl,
-      }),
-    })
+    tasks.push(
+      () => sendMail({
+        subject: `${body.type} | ${body.subject}`,
+        to: report.emailAddress!,
+        html: Mustache.render(reportTemplate, {
+          type: body.type,
+          body: body.body,
+          deviceName,
+          deviceUrl,
+        }),
+      }))
   }
 
   if (report?.webhookEnable && report.webhookUrl) {
-    await $fetch(report.webhookUrl, {
-      method: 'POST',
-      body: {
-        type: body.type,
-        subject: body.subject,
-        body: body.body,
-        deviceId,
-        projectId,
-      },
-    })
+    tasks.push(
+      () => $fetch(report.webhookUrl!, {
+        method: 'POST',
+        body: {
+          type: body.type,
+          subject: body.subject,
+          body: body.body,
+          deviceId,
+          projectId,
+        },
+      }))
   }
+
+  await Promise.all(tasks)
 
   return { status: 'ok' }
 })

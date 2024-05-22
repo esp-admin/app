@@ -65,6 +65,7 @@
     </template>
 
     <n-modal
+      v-if="createModalVisible"
       v-model:show="createModalVisible"
       bordered
       preset="card"

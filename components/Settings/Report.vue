@@ -6,33 +6,33 @@
     @submit.prevent="onSubmit(handleSubmit)"
   >
     <n-form-item
-      label="Report by webhook"
-      path="webhookEnable"
-      label-placement="left"
-    >
-      <n-checkbox v-model:checked="model.webhookEnable" />
-    </n-form-item>
-
-    <n-form-item
-      label="Webhook URL"
       path="webhookUrl"
     >
-      <n-input v-model:value="model.webhookUrl" />
+      <template #label>
+        Webhook <n-checkbox
+          v-model:checked="model.webhookEnable"
+          class="ml-2"
+        />
+      </template>
+      <n-input
+        v-model:value="model.webhookUrl"
+        placeholder="Webhook URL"
+      />
     </n-form-item>
 
     <n-form-item
-      label="Report by email"
-      path="emailEnable"
-      label-placement="left"
-    >
-      <n-checkbox v-model:checked="model.emailEnable" />
-    </n-form-item>
-
-    <n-form-item
-      label="Email"
       path="emailAddress"
     >
-      <n-input v-model:value="model.emailAddress" />
+      <template #label>
+        Email <n-checkbox
+          v-model:checked="model.emailEnable"
+          class="ml-2"
+        />
+      </template>
+      <n-input
+        v-model:value="model.emailAddress"
+        placeholder="Email address"
+      />
     </n-form-item>
 
     <form-buttons

@@ -43,7 +43,7 @@ const placeholder = computed(() => {
 const copied = ref(false)
 
 function refresh() {
-  const newValue = generateRandomString(20)
+  const newValue = generateRandomString(30)
   emits('update:value', newValue)
 }
 

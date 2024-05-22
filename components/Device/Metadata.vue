@@ -83,6 +83,7 @@ rules.value = {
 
 async function handleSubmit() {
   await useDevice().update(props.device.id, model.value)
+    .then(() => { model.value.apiKey = undefined })
     .catch((err) => {
       apiErrors.value.nameAlreadyExists = err.data.message.includes(
         'Unique constraint failed',

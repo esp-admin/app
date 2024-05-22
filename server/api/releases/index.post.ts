@@ -14,36 +14,37 @@ export default defineEventHandler(async (event) => {
 
   const downloadPath = await uploadObject(event, multipart.file)
 
-  const release = await event.context.prisma.release.create({
-    data: {
-      version: multipart.version,
-      downloadPath,
-      project: {
-        connect: {
-          id: multipart.projectId,
+  const [release, mqttSettings] = await event.context.prisma.$transaction([
+    event.context.prisma.release.create({
+      data: {
+        version: multipart.version,
+        downloadPath,
+        project: {
+          connect: {
+            id: multipart.projectId,
+          },
         },
       },
-    },
-    select: {
-      id: true,
-      version: true,
-      downloadPath: true,
-      createdAt: true,
-      projectId: true,
-    },
-  }).catch((err) => { throw createPrismaError(err) })
-
-  const mqttSettings = await event.context.prisma.mqtt.findUnique({
-    where: {
-      userId,
-    },
-    select: {
-      password: true,
-      username: true,
-      uriTCP: true,
-      uriWS: true,
-    },
-  })
+      select: {
+        id: true,
+        version: true,
+        downloadPath: true,
+        createdAt: true,
+        projectId: true,
+      },
+    }),
+    event.context.prisma.mqtt.findUnique({
+      where: {
+        userId,
+      },
+      select: {
+        password: true,
+        username: true,
+        uriTCP: true,
+        uriWS: true,
+      },
+    }),
+  ]).catch((err) => { throw createPrismaError(err) })
 
   let published = false
 

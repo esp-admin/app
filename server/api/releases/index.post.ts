@@ -1,4 +1,5 @@
 import mqtt from 'mqtt'
+import { consola } from 'consola'
 
 export default defineEventHandler(async (event) => {
   const { userId } = checkUser(event)
@@ -44,6 +45,8 @@ export default defineEventHandler(async (event) => {
     },
   })
 
+  let published = false
+
   if (mqttSettings) {
     const uri = mqttSettings.uriTCP ?? mqttSettings.uriWS
 
@@ -76,10 +79,14 @@ export default defineEventHandler(async (event) => {
           })
         }))
 
+        published = true
+
         await client.endAsync(true)
       })
-      .catch(() => { })
+      .catch((err) => {
+        consola.error(err)
+      })
   }
 
-  return release
+  return { ...release, published }
 })

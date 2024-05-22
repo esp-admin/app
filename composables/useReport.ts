@@ -1,4 +1,5 @@
 import { destr } from 'destr'
+import { NP, NText } from '#components'
 
 export default function useReport() {
   const key = 'report'
@@ -56,6 +57,7 @@ export default function useReport() {
         handleUpdate(message)
         break
       case 'custom':
+        handleCustom(message)
         break
     }
   }
@@ -87,6 +89,25 @@ export default function useReport() {
     if (REGEX_ID.test(deploymentId)) {
       await useDeployment(message.deviceId).updateStatus(deploymentId, status)
     }
+  }
+
+  async function handleCustom(message: ReportMessage) {
+    const { body, subject, type } = destr<{
+      type: 'error' | 'warn' | 'success' | 'info'
+      subject: string
+      body: string
+    }>(message.payload)
+
+    const device = await useDevice().findOne(message.deviceId)
+
+    useNaiveNotification().create({
+      title: device.value.name,
+      type: type === 'warn' ? 'warning' : type,
+      content: () => h('div', { }, [
+        h(NText, { strong: true }, subject),
+        h(NP, body),
+      ]),
+    })
   }
 
   return { find, add, update, handleReport }

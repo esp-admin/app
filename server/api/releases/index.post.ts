@@ -2,8 +2,6 @@ import mqtt from 'mqtt'
 import { consola } from 'consola'
 
 export default defineEventHandler(async (event) => {
-  const { userId } = checkUser(event)
-
   const schema = z.object({
     version: z.string().regex(REGEX_VERSION),
     projectId: z.string().regex(REGEX_ID),
@@ -12,7 +10,19 @@ export default defineEventHandler(async (event) => {
 
   const multipart = await validateMultipartFormData(event, schema)
 
-  const downloadPath = await uploadObject(event, multipart.file)
+  let userId = ''
+
+  const query = getQuery<{ ci: string }>(event)
+
+  if (query.ci === 'true') {
+    const project = await checkProject(event, multipart.projectId)
+    userId = project.userId
+  }
+  else {
+    userId = checkUser(event).userId
+  }
+
+  const downloadPath = await uploadObject(multipart.file, userId)
 
   const [release, mqttSettings] = await event.context.prisma.$transaction([
     event.context.prisma.release.create({

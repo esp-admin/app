@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
   const multipart = await validateMultipartFormData(event, schema)
 
   if (multipart.file) {
-    multipart.picture = await uploadObject(event, multipart.file, multipart.picture)
+    multipart.picture = await uploadObject(multipart.file, userId, multipart.picture)
   }
 
   const user = await event.context.prisma.user

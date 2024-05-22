@@ -77,11 +77,8 @@ function handleReset() {
 async function updateAccount() {
   const formData = new FormData()
 
-  formData.append('data', JSON.stringify({
-    name: model.value.name,
-    picture: model.value.picture,
-  }))
-
+  model.value.name && formData.append('name', model.value.name)
+  model.value.picture && formData.append('picture', model.value.picture)
   model.value.file && formData.append('file', model.value.file)
 
   await useNuxtApp().$auth.fetch('/api/account/profile', {

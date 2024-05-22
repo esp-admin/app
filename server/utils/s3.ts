@@ -20,9 +20,7 @@ export async function deleteObject(url: string) {
   }
 }
 
-export async function uploadObject(event: H3Event, file: MultiPartData, url?: string) {
-  const { userId } = checkUser(event)
-
+export async function uploadObject(file: MultiPartData, userId: string, url?: string) {
   const ext = file.filename?.split('.').pop()
 
   z.string().min(3).parse(ext)

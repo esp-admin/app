@@ -8,6 +8,16 @@ export default defineEventHandler(async (event) => {
       id: projectId,
       userId,
     },
+    select: {
+      id: true,
+      name: true,
+      repository: true,
+      description: true,
+      commands: true,
+      variables: true,
+      createdAt: true,
+      updatedAt: true,
+    },
   }).catch((err) => { throw createPrismaError(err) })
 
   return project

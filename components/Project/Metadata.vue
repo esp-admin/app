@@ -6,11 +6,25 @@
     :model="model"
     @submit.prevent="onSubmit(handleSubmit)"
   >
+    <n-form-item label="Identifier">
+      <n-input
+        :value="project.id"
+        disabled
+      />
+    </n-form-item>
+
     <n-form-item
       label="Name"
       path="name"
     >
       <n-input v-model:value="model.name" />
+    </n-form-item>
+
+    <n-form-item
+      label="API key"
+      path="apiKey"
+    >
+      <form-key v-model:value="model.apiKey" />
     </n-form-item>
 
     <n-form-item
@@ -46,6 +60,7 @@ const model = ref({
   name: props.project.name,
   repository: props.project.repository,
   description: props.project.description,
+  apiKey: undefined,
 })
 
 const { apiErrors, formRef, onSubmit, pending, rules, reset, edited }

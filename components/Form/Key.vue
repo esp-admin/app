@@ -35,9 +35,9 @@ const placeholder = computed(() => {
     return 'Key copied to clipboard'
   }
   else if (props.value && !copied.value) {
-    return 'Please copy the new Key'
+    return 'Make sure to copy the new key'
   }
-  return 'Key cannot be displayed'
+  return 'Secret Key'
 })
 
 const copied = ref(false)

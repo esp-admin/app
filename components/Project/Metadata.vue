@@ -38,7 +38,7 @@
       <n-input
         v-model:value="model.description"
         type="textarea"
-        :rows="2"
+        autosize
       />
     </n-form-item>
 

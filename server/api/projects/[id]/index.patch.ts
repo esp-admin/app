@@ -1,3 +1,5 @@
+import { hashSync } from '#auth'
+
 export default defineEventHandler(async (event) => {
   const { userId } = checkUser(event)
 
@@ -14,6 +16,12 @@ export default defineEventHandler(async (event) => {
 
   const body = await validateBody(event, schema)
 
+  let hashedApiKey = undefined
+
+  if (body.apiKey) {
+    hashedApiKey = hashSync(body.apiKey, 12)
+  }
+
   const project = await event.context.prisma.project.update({
     where: {
       id: projectId,
@@ -25,7 +33,7 @@ export default defineEventHandler(async (event) => {
       repository: body.repository,
       commands: body.commands,
       variables: body.variables,
-      apiKey: body.apiKey,
+      apiKey: hashedApiKey,
     },
     select: {
       id: true,

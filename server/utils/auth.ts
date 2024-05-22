@@ -1,6 +1,5 @@
 import type { H3Event } from 'h3'
 import { compareSync } from '#auth'
-import { getKey } from '#s3'
 
 export async function checkDevice(event: H3Event) {
   const deviceId = event.context.params?.id
@@ -36,16 +35,4 @@ export function checkUser(event: H3Event) {
     return event.context.auth
   }
   throw createUnauthorizedError()
-}
-
-export function checkUpload(event: H3Event) {
-  const { userId } = checkUser(event)
-
-  const key = getKey(event)
-
-  const userIdFromKey = key.split('/')[0]
-
-  if (userId !== userIdFromKey) {
-    throw createUnauthorizedError()
-  }
 }

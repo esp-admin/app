@@ -1,3 +1,5 @@
+import { consola } from 'consola'
+
 export { z } from 'zod'
 
 interface PrismaError {
@@ -9,7 +11,7 @@ interface PrismaError {
 }
 
 export function createPrismaError(error: PrismaError) {
-  const h3Error = createError('server-error')
+  const h3Error = createError({ statusCode: 500, message: 'server-error' })
 
   switch (error.code) {
     case 'P2002':
@@ -23,6 +25,9 @@ export function createPrismaError(error: PrismaError) {
     case 'P2025':
       h3Error.statusCode = 404
       h3Error.message = 'Not found'
+      break
+    default:
+      consola.error(error)
       break
   }
 
@@ -43,7 +48,8 @@ export function createInvalidIdError() {
   })
 }
 
-export function createFailedUploadError() {
+export function createFailedUploadError(err: Error) {
+  consola.error(err)
   return createError({
     message: 'upload-failed',
     statusCode: 500,

@@ -36,8 +36,8 @@ export async function uploadObject(event: H3Event, file: MultiPartData, url?: st
       'Content-Type': file.type,
       'Content-Length': file.data.length,
     },
-  }).catch(() => {
-    throw createFailedUploadError()
+  }).catch((err) => {
+    throw createFailedUploadError(err)
   })
 
   if (url) {

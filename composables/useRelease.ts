@@ -25,16 +25,16 @@ export default function useRelease(projectId: Project['id']) {
     })
   }
 
-  function add(data: Partial<Release>) {
-    data.projectId = projectId
+  function add(version: Release['version'], firmware: File) {
+    const formData = new FormData()
+
+    formData.append('version', version)
+    formData.append('projectId', projectId)
+    formData.append('file', firmware)
 
     return $auth.fetch('/api/releases', {
       method: 'POST',
-      body: {
-        version: data.version,
-        projectId: data.projectId,
-        downloadPath: data.downloadPath,
-      },
+      body: formData,
 
       onResponse: ({ response }) => {
         if (response.ok && releases.data.value) {
@@ -67,11 +67,6 @@ export default function useRelease(projectId: Project['id']) {
 
   async function removeAll() {
     const releases = await find()
-
-    const urls = releases.value?.map(release => release.downloadPath) ?? []
-
-    // Remove all uploaded files
-    await useUpload().remove(urls)
 
     // Clear related deployments state
     releases.value?.forEach(release => removeDeployments(release.id))

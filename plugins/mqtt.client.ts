@@ -94,10 +94,8 @@ export default defineNuxtPlugin({
     }
 
     nuxtApp.hook('auth:loggedIn', async (loggedIn) => {
-      const { find } = useMqtt()
-
       if (loggedIn) {
-        const mqtt = await find()
+        const mqtt = await useMqtt().find()
 
         if (mqtt.value) {
           // Do not wait for connection, UX optimization

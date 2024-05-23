@@ -46,7 +46,7 @@
     "highcharts": "^11.4.0",
     "highcharts-vue": "^2.0.1",
     "highlight.js": "^11.9.0",
-    "mqtt": "^5.5.0",
+    "mqtt": "^5.6.1",
     "mustache": "^4.2.0",
     "ua-parser-js": "^1.0.37",
     "zod": "^3.22.4"

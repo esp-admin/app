@@ -10,8 +10,6 @@ import type {
 
 import type { Options } from 'highcharts'
 
-import type { NuxtError } from '#app'
-
 declare global {
   interface HighchartsOptions extends Options {}
 
@@ -73,10 +71,6 @@ declare global {
     releaseId: Release['id']
     deploymentId: Deployment['id']
     status: Deployment['status']
-  }
-
-  interface FetchError {
-    data: NuxtError
   }
 }
 

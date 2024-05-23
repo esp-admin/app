@@ -15,51 +15,53 @@ export default defineEventHandler(async (event) => {
 
   const body = await validateBody(event, schema)
 
-  const report = await event.context.prisma.report
-    .findUniqueOrThrow({
-      where: {
-        userId,
-      },
-      select: {
-        emailAddress: true,
-        emailEnable: true,
-        webhookEnable: true,
-        webhookUrl: true,
-      },
-    })
-    .catch((err) => {
-      throw createPrismaError(err)
-    })
+  const report = await event.context.prisma.report.findUnique({
+    where: {
+      userId,
+    },
+    select: {
+      emailAddress: true,
+      emailEnable: true,
+      webhookEnable: true,
+      webhookUrl: true,
+    },
+  })
 
   const config = useRuntimeConfig()
   const baseUrl = config.public.auth.baseUrl
   const deviceUrl = joinURL(baseUrl, 'devices', deviceId)
 
-  if (report.emailEnable && report.emailAddress) {
-    await sendMail({
-      subject: `${body.type} | ${body.subject}`,
-      to: report.emailAddress,
-      html: Mustache.render(reportTemplate, {
-        type: body.type,
-        body: body.body,
-        deviceName,
-        deviceUrl,
-      }),
-    })
+  const tasks = []
+
+  if (report?.emailEnable && report.emailAddress) {
+    tasks.push(
+      () => sendMail({
+        subject: `${body.type} | ${body.subject}`,
+        to: report.emailAddress!,
+        html: Mustache.render(reportTemplate, {
+          type: body.type,
+          body: body.body,
+          deviceName,
+          deviceUrl,
+        }),
+      }))
   }
 
-  if (report.webhookEnable && report.webhookUrl) {
-    await $fetch(report.webhookUrl, {
-      method: 'POST',
-      body: {
-        type: body.type,
-        subject: body.subject,
-        body: body.body,
-        deviceId,
-        projectId,
-      },
-    })
+  if (report?.webhookEnable && report.webhookUrl) {
+    tasks.push(
+      () => $fetch(report.webhookUrl!, {
+        method: 'POST',
+        body: {
+          type: body.type,
+          subject: body.subject,
+          body: body.body,
+          deviceId,
+          projectId,
+        },
+      }))
   }
 
-  return 'ok'
+  await Promise.all(tasks)
+
+  return { status: 'ok' }
 })

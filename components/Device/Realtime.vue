@@ -126,14 +126,10 @@ onMounted(() => {
 })
 
 if (import.meta.client) {
-  window.onbeforeunload = () => {
-    disableLog()
-  }
+  window.onbeforeunload = () => disableLog()
 }
 
-onUnmounted(() => {
-  disableLog()
-})
+onUnmounted(() => disableLog())
 
 function scrollToBottom() {
   logInst.value?.scrollTo({ position: 'bottom' })

@@ -49,21 +49,19 @@
 <script setup lang="ts">
 import UAParser from 'ua-parser-js'
 
-const { getAllSessions } = useAuthSession()
-
 const lb = useLoadingIndicator()
 
 lb.start()
 
-const sessions = ref(await getAllSessions())
+const { data: sessions } = await useAsyncData('account-sessions',
+  () => useAuthSession().getAllSessions(),
+)
 
 lb.finish()
 
 async function handleSessionRevoke(id: string) {
-  const { revokeSession } = useAuthSession()
+  await useAuthSession().revokeSession(id)
 
-  await revokeSession(id)
-
-  removeArrayElByKey(sessions.value, 'id', id)
+  removeArrayElByKey(sessions.value ?? [], 'id', id)
 }
 </script>

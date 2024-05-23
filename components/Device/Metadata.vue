@@ -7,10 +7,7 @@
     @submit.prevent="onSubmit(handleSubmit)"
   >
     <n-form-item label="Identifier">
-      <n-input
-        :value="device.id"
-        disabled
-      />
+      <form-id :value="device.id" />
     </n-form-item>
 
     <n-form-item
@@ -34,7 +31,7 @@
       <n-input
         v-model:value="model.description"
         type="textarea"
-        :rows="2"
+        autosize
       />
     </n-form-item>
 
@@ -82,12 +79,12 @@ rules.value = {
 }
 
 async function handleSubmit() {
-  const { update } = useDevice()
-
-  await update(props.device.id, model.value).catch((error) => {
-    apiErrors.value.nameAlreadyExists = error.data.message.includes(
-      'Unique constraint failed',
-    )
-  })
+  await useDevice().update(props.device.id, model.value)
+    .then(() => { model.value.apiKey = undefined })
+    .catch((err) => {
+      apiErrors.value.nameAlreadyExists = err.data.message.includes(
+        'Unique constraint failed',
+      )
+    })
 }
 </script>

@@ -9,8 +9,11 @@ export default defineEventHandler(async (event) => {
     },
     select: {
       id: true,
+      downloadPath: true,
     },
   }).catch((err) => { throw createPrismaError(err) })
+
+  await deleteObject(release.downloadPath)
 
   return release
 })

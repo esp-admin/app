@@ -6,33 +6,33 @@
     @submit.prevent="onSubmit(handleSubmit)"
   >
     <n-form-item
-      label="Report by webhook"
-      path="webhookEnable"
-      label-placement="left"
-    >
-      <n-checkbox v-model:checked="model.webhookEnable" />
-    </n-form-item>
-
-    <n-form-item
-      label="Webhook URL"
       path="webhookUrl"
     >
-      <n-input v-model:value="model.webhookUrl" />
+      <template #label>
+        Webhook <n-checkbox
+          v-model:checked="model.webhookEnable"
+          class="ml-2"
+        />
+      </template>
+      <n-input
+        v-model:value="model.webhookUrl"
+        placeholder="Webhook URL"
+      />
     </n-form-item>
 
     <n-form-item
-      label="Report by email"
-      path="emailEnable"
-      label-placement="left"
-    >
-      <n-checkbox v-model:checked="model.emailEnable" />
-    </n-form-item>
-
-    <n-form-item
-      label="Email"
       path="emailAddress"
     >
-      <n-input v-model:value="model.emailAddress" />
+      <template #label>
+        Email <n-checkbox
+          v-model:checked="model.emailEnable"
+          class="ml-2"
+        />
+      </template>
+      <n-input
+        v-model:value="model.emailAddress"
+        placeholder="Email address"
+      />
     </n-form-item>
 
     <form-buttons
@@ -44,13 +44,11 @@
 </template>
 
 <script setup lang="ts">
-const { find } = useReport()
-
 const lb = useLoadingIndicator()
 
 lb.start()
 
-const report = await find()
+const report = await useReport().find()
 
 lb.finish()
 
@@ -88,13 +86,11 @@ rules.value = {
 }
 
 async function handleSubmit() {
-  const { add, update } = useReport()
-
   if (report.value) {
-    await update(model.value)
+    await useReport().update(model.value)
   }
   else {
-    await add(model.value)
+    await useReport().add(model.value)
   }
 }
 </script>

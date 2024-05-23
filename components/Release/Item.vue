@@ -44,9 +44,7 @@ const collapsed = ref(true)
 
 const dialog = useDialog()
 
-const { findLinked } = useDevice()
-
-const linkedDevices = await findLinked(props.release.projectId)
+const linkedDevices = await useDevice().findLinked(props.release.projectId)
 
 function onDelete() {
   dialog.error({
@@ -57,7 +55,6 @@ function onDelete() {
     showIcon: false,
     onPositiveClick: async () => {
       await useRelease(props.release.projectId).remove(props.release.id)
-      await useUpload().remove([props.release.downloadPath])
     },
   })
 }

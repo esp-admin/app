@@ -20,7 +20,6 @@
     <button-icon
       v-if="value"
       :icon="ICON_COPY"
-      :type="copied ? 'success' : 'default'"
       @click="copy"
     />
   </n-input-group>
@@ -28,29 +27,31 @@
 
 <script setup lang="ts">
 const props = defineProps<{ value?: string }>()
-
 const emits = defineEmits(['update:value'])
 
 const placeholder = computed(() => {
   if (props.value && copied.value) {
-    return 'Key copied to clipboard'
+    return 'Key copied to Clipboard'
   }
   else if (props.value && !copied.value) {
-    return 'Please copy the new Key'
+    return 'Make sure to copy the new key'
   }
-  return 'Key cannot be displayed'
+  return 'Secret Key'
 })
 
 const copied = ref(false)
 
 function refresh() {
-  const newValue = generateRandomString(20)
+  const newValue = generateRandomString(30)
   emits('update:value', newValue)
 }
 
 function copy() {
-  navigator.clipboard.writeText(props.value!)
-  copied.value = true
+  if (props.value) {
+    navigator.clipboard.writeText(props.value)
+    copied.value = true
+    copiedToClipboard()
+  }
 }
 
 function cancel() {

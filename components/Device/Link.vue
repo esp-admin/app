@@ -37,19 +37,16 @@
 <script setup lang="ts">
 import type { SelectOption } from 'naive-ui'
 
+const props = defineProps<{ project: Project }>()
+const emits = defineEmits(['cancel', 'done'])
+
 const model = ref({
   selectedDeviceId: '',
 })
 
 const { formRef, onSubmit, pending, edited } = useNaiveForm(model)
 
-const props = defineProps<{ project: Project }>()
-
-const emits = defineEmits(['cancel', 'done'])
-
-const { find } = useDevice()
-
-const devices = await find()
+const devices = await useDevice().find()
 
 const unlinkedDevices = computed(() => devices.value?.filter(device => device.projectId === null) ?? [])
 
@@ -59,9 +56,7 @@ const selectOptions = computed<SelectOption[]>(() => unlinkedDevices.value.map(d
 })))
 
 async function handleSubmit() {
-  const { link } = useDevice()
-
-  await link(model.value.selectedDeviceId, props.project.id)
+  await useDevice().link(model.value.selectedDeviceId, props.project.id)
     .then(device => emits('done', device))
 }
 </script>

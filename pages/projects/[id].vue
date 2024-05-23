@@ -82,13 +82,9 @@ const route = useRoute()
 
 const id = route.params.id as string
 
-const { findOne } = useProject()
+const project = await useProject().findOne(id)
 
-const project = await findOne(id)
-
-const { findLinked } = useDevice()
-
-const linkedDevices = await findLinked(project.value.id)
+const linkedDevices = await useDevice().findLinked(project.value.id)
 
 async function onDelete() {
   dialog.error({

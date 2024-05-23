@@ -39,13 +39,11 @@
 <script setup lang="ts">
 const props = defineProps<{ device: Device }>()
 
-const { find } = useDeployment(props.device.id)
-
 const lb = useLoadingIndicator()
 
 lb.start()
 
-const deployments = await find()
+const deployments = await useDeployment(props.device.id).find()
 
 lb.finish()
 

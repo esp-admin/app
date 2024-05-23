@@ -65,6 +65,7 @@
     </template>
 
     <n-modal
+      v-if="createModalVisible"
       v-model:show="createModalVisible"
       bordered
       preset="card"
@@ -86,15 +87,13 @@ const createModalVisible = ref(false)
 
 const props = defineProps<{ project: Project }>()
 
-const { find } = useRelease(props.project.id)
-
-const versionSearch = ref('')
+const versionSearch = ref()
 
 const lb = useLoadingIndicator()
 
 lb.start()
 
-const releases = await find()
+const releases = await useRelease(props.project.id).find()
 
 lb.finish()
 

@@ -8,9 +8,9 @@ export default defineEventHandler(async (event) => {
   const schema = z.object({
     name: z.string().min(1).optional(),
     apiKey: z.string().min(1).optional(),
-    description: z.string().nullable().optional(),
+    description: z.string().min(1).nullable().optional(),
     status: z.enum(['connected', 'disconnected', 'unregistered']).optional(),
-    variables: z.string().optional().nullable(),
+    variables: z.string().min(1).nullable().optional(),
   })
 
   const body = await validateBody(event, schema)

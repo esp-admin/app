@@ -6,11 +6,22 @@
     :model="model"
     @submit.prevent="onSubmit(handleSubmit)"
   >
+    <n-form-item label="Identifier">
+      <form-id :value="project.id" />
+    </n-form-item>
+
     <n-form-item
       label="Name"
       path="name"
     >
       <n-input v-model:value="model.name" />
+    </n-form-item>
+
+    <n-form-item
+      label="API key"
+      path="apiKey"
+    >
+      <form-key v-model:value="model.apiKey" />
     </n-form-item>
 
     <n-form-item
@@ -27,7 +38,7 @@
       <n-input
         v-model:value="model.description"
         type="textarea"
-        :rows="2"
+        autosize
       />
     </n-form-item>
 
@@ -46,6 +57,7 @@ const model = ref({
   name: props.project.name,
   repository: props.project.repository,
   description: props.project.description,
+  apiKey: undefined,
 })
 
 const { apiErrors, formRef, onSubmit, pending, rules, reset, edited }
@@ -81,12 +93,12 @@ rules.value = {
 }
 
 async function handleSubmit() {
-  const { update } = useProject()
-
-  await update(props.project.id, model.value).catch((error) => {
-    apiErrors.value.nameAlreadyExists = error.data.message.includes(
-      'Unique constraint failed',
-    )
-  })
+  await useProject().update(props.project.id, model.value)
+    .then(() => { model.value.apiKey = undefined })
+    .catch((err) => {
+      apiErrors.value.nameAlreadyExists = err.data.message.includes(
+        'Unique constraint failed',
+      )
+    })
 }
 </script>

@@ -46,8 +46,7 @@ const { formRef, onSubmit, pending, edited, reset } = useNaiveForm(model)
 const projectVariables = ref<{ key: string, value: string }[]>([])
 
 if (props.device.projectId) {
-  const { findOne } = useProject()
-  const project = await findOne(props.device.projectId)
+  const project = await useProject().findOne(props.device.projectId)
 
   projectVariables.value = destr<{ key: string, value: string }[]>(
     project.value?.variables,
@@ -65,20 +64,17 @@ if (props.device.projectId) {
 }
 
 async function handleSubmit() {
-  const { update } = useDevice()
-
-  await update(props.device.id, {
+  await useDevice().update(props.device.id, {
     variables: JSON.stringify(model.value),
-  }).then(() => {
-    const { $mqtt } = useNuxtApp()
-
-    $mqtt.publish({
-      deviceId: props.device.id,
-      action: 'command',
-      type: 'config',
-      payload: JSON.stringify(model.value),
-      retain: true,
-    })
   })
+    .then(() => {
+      useNuxtApp().$mqtt.publish({
+        deviceId: props.device.id,
+        action: 'command',
+        type: 'config',
+        payload: JSON.stringify(model.value),
+        retain: true,
+      })
+    })
 }
 </script>

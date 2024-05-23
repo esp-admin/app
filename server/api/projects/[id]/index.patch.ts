@@ -1,3 +1,5 @@
+import { hashSync } from '#auth'
+
 export default defineEventHandler(async (event) => {
   const { userId } = checkUser(event)
 
@@ -6,12 +8,19 @@ export default defineEventHandler(async (event) => {
   const schema = z.object({
     name: z.string().min(1).optional(),
     repository: z.string().url().nullable().optional(),
-    description: z.string().nullable().optional(),
-    variables: z.string().optional().nullable(),
-    commands: z.string().optional().nullable(),
+    description: z.string().min(1).nullable().optional(),
+    variables: z.string().min(1).nullable().optional(),
+    commands: z.string().min(1).nullable().optional(),
+    apiKey: z.string().min(1).nullable().optional(),
   })
 
   const body = await validateBody(event, schema)
+
+  let hashedApiKey = undefined
+
+  if (body.apiKey) {
+    hashedApiKey = hashSync(body.apiKey, 12)
+  }
 
   const project = await event.context.prisma.project.update({
     where: {
@@ -24,6 +33,17 @@ export default defineEventHandler(async (event) => {
       repository: body.repository,
       commands: body.commands,
       variables: body.variables,
+      apiKey: hashedApiKey,
+    },
+    select: {
+      id: true,
+      name: true,
+      repository: true,
+      description: true,
+      commands: true,
+      variables: true,
+      createdAt: true,
+      updatedAt: true,
     },
   }).catch((err) => { throw createPrismaError(err) })
 

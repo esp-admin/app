@@ -38,8 +38,6 @@
 </template>
 
 <script setup lang="ts">
-const { changePassword } = useAuth()
-
 const model = ref({
   currentPassword: '',
   newPassword: '',
@@ -79,7 +77,7 @@ rules.value = {
 }
 
 async function handleChangePassword() {
-  await changePassword(model.value)
+  await useAuth().changePassword(model.value)
     .catch((error) => {
       apiErrors.value.wrongPassword = error.data.message === 'wrong-password'
     })

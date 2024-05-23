@@ -1,19 +1,21 @@
 <template>
   <div>
-    <upload-image
-      ref="uploadRef"
-      class="mb-2 mx-auto shadow hover:shadow-lg border-blue-300 border-2"
-      :src="model.picture"
-      :width="160"
-      @select="(f) => model.file=f"
-    />
-
     <n-form
       ref="formRef"
       :rules="rules"
       :model="model"
       @submit.prevent="onSubmit(updateAccount)"
     >
+      <n-form-item path="file">
+        <upload-image
+          ref="uploadRef"
+          class="mb-2 mx-auto shadow hover:shadow-lg border-blue-300 border-2"
+          :src="model.picture"
+          :width="160"
+          @select="(f) => model.file=f"
+        />
+      </n-form-item>
+
       <n-form-item
         label="Name"
         path="name"
@@ -44,6 +46,7 @@ const model = ref({
 const { edited, formRef, pending, onSubmit, reset, rules, apiErrors } = useNaiveForm(model)
 
 apiErrors.value = {
+  invalidSize: false,
   uploadFailed: false,
 }
 
@@ -52,6 +55,12 @@ rules.value = {
     {
       required: true,
       message: ERROR_REQUIRED,
+    },
+  ],
+  file: [
+    {
+      message: ERROR_UPLOAD_SIZE,
+      validator: () => !apiErrors.value.invalidSize,
     },
     {
       message: ERROR_UPLOAD_FAILED,
@@ -66,32 +75,24 @@ function handleReset() {
 }
 
 async function updateAccount() {
-  try {
-    const { upload } = useUpload()
+  const formData = new FormData()
 
-    if (model.value.file) {
-      model.value.picture = await upload(model.value.file, model.value.picture)
-    }
-  }
-  catch (err) {
-    apiErrors.value.uploadFailed = true
-    return
-  }
+  model.value.name && formData.append('name', model.value.name)
+  model.value.picture && formData.append('picture', model.value.picture)
+  model.value.file && formData.append('file', model.value.file)
 
-  const { $auth } = useNuxtApp()
-
-  await $auth.fetch('/api/account/profile', {
+  await useNuxtApp().$auth.fetch('/api/account/profile', {
     method: 'PATCH',
-    body: {
-      name: model.value.name,
-      picture: model.value.picture,
-    },
+    body: formData,
   })
-
-  const { fetchUser } = useAuth()
-
-  await fetchUser()
-
-  model.value.file = null
+    .then(async () => {
+      await useAuth().fetchUser()
+      model.value.picture = user.value?.picture
+      model.value.file = null
+    })
+    .catch((err) => {
+      apiErrors.value.invalidSize = err.data.message === 'invalid-size'
+      apiErrors.value.uploadFailed = err.data.message === 'upload-failed'
+    })
 }
 </script>

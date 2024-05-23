@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
     apiKey: z.string().min(1).optional(),
     description: z.string().min(1).nullable().optional(),
     status: z.enum(['connected', 'disconnected', 'unregistered']).optional(),
-    variables: z.string().min(1).nullable().optional(),
+    variables: z.string().min(1).optional(),
   })
 
   const body = await validateBody(event, schema)

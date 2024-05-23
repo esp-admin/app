@@ -61,9 +61,9 @@ export default function useProject() {
         name: data.name,
         repository: data.repository || null,
         description: data.description || null,
-        variables: data.variables || null,
-        commands: data.commands || null,
-        apiKey: data.apiKey || null,
+        variables: data.variables,
+        commands: data.commands,
+        apiKey: data.apiKey,
       },
 
       onResponse: ({ response }) => {

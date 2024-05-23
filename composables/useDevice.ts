@@ -116,7 +116,7 @@ export default function useDevice() {
         apiKey: data.apiKey,
         description: data.description || null,
         status: data.status,
-        variables: data.variables || null,
+        variables: data.variables,
       },
 
       onResponse: ({ response }) => {

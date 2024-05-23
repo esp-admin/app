@@ -9,9 +9,9 @@ export default defineEventHandler(async (event) => {
     name: z.string().min(1).optional(),
     repository: z.string().url().nullable().optional(),
     description: z.string().min(1).nullable().optional(),
-    variables: z.string().min(1).nullable().optional(),
-    commands: z.string().min(1).nullable().optional(),
-    apiKey: z.string().min(1).nullable().optional(),
+    variables: z.string().min(1).optional(),
+    commands: z.string().min(1).optional(),
+    apiKey: z.string().min(1).optional(),
   })
 
   const body = await validateBody(event, schema)

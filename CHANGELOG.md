@@ -1,5 +1,52 @@
 # Changelog
 
+## v1.1.0
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.0.20...v1.1.0)
+
+### 🚀 Enhancements
+
+- **report:** Display app notification on custom report ([60af8b7](https://github.com/esp-admin/app/commit/60af8b7))
+- Allow create Release externally with project-scope API Key authorization ([#10](https://github.com/esp-admin/app/pull/10))
+- Add copy button on Id inputs ([d745714](https://github.com/esp-admin/app/commit/d745714))
+- Integration with GitHub actions for OTA update [docs](https://esp-admin.tn/sdk/usage#updates) ([6185790](https://github.com/esp-admin/app/commit/6185790))
+
+### 🔥 Performance
+
+- Group db queries on a single transaction ([a043ac8](https://github.com/esp-admin/app/commit/a043ac8))
+- Concurrently run report tasks ([13f67f8](https://github.com/esp-admin/app/commit/13f67f8))
+
+### 🩹 Fixes
+
+- Do not throw error when Report settings not set ([f707f32](https://github.com/esp-admin/app/commit/f707f32))
+- Fix missing device commands ([24a90ac](https://github.com/esp-admin/app/commit/24a90ac))
+
+### 💅 Refactors
+
+- No significant change ([f888b26](https://github.com/esp-admin/app/commit/f888b26))
+- Remove endpoints for upload/delete S3 objects ([#8](https://github.com/esp-admin/app/pull/8))
+- Code review ([252e9bb](https://github.com/esp-admin/app/commit/252e9bb))
+- No significcant chaange ([7caed56](https://github.com/esp-admin/app/commit/7caed56))
+- Publish new update mqtt message on server ([#9](https://github.com/esp-admin/app/pull/9))
+- Add `published` property on release create response ([1a60278](https://github.com/esp-admin/app/commit/1a60278))
+- Log server errors ([5371232](https://github.com/esp-admin/app/commit/5371232))
+- Increase API key length to 30 char ([4d8313c](https://github.com/esp-admin/app/commit/4d8313c))
+- Reset API key input on successful form submit ([e4c3558](https://github.com/esp-admin/app/commit/e4c3558))
+- Change FormKey placeholder ([f870223](https://github.com/esp-admin/app/commit/f870223))
+- Display notification on copied to Clipboard ([278c430](https://github.com/esp-admin/app/commit/278c430))
+- Autosize description inputs ([565d749](https://github.com/esp-admin/app/commit/565d749))
+- Improve layout of Report form ([33ff07f](https://github.com/esp-admin/app/commit/33ff07f))
+
+### 🏡 Chore
+
+- Change max size for upload to 3Mb ([5add387](https://github.com/esp-admin/app/commit/5add387))
+- Remove design folder ([fb1aaaa](https://github.com/esp-admin/app/commit/fb1aaaa))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+
 ## v1.0.20
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.19...v1.0.20)

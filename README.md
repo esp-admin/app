@@ -16,10 +16,10 @@ An open source platform to remotely manage ESP microcontrollers for IoT applicat
 - Remote software updates
 - File storage to S3 compatible storage provider
 - Serverless deployment
+- Integration with Github Actions for automated releases
 
 ## ⌛ Future features
 
-- Integration with Github Actions for automated releases
 - Integration with Node RED for handling apps logic
 - Reporting via Firebase Cloud Messaging
 - Support for _ESP8266_

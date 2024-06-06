@@ -1,4 +1,4 @@
-import { hashSync } from '#auth'
+import { hashSync } from '#auth_utils'
 
 export default defineEventHandler(async (event) => {
   const { userId } = checkUser(event)
@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
     hashedApiKey = hashSync(body.apiKey, 12)
   }
 
-  const project = await event.context.prisma.project.update({
+  const project = await event.context.auth.adapter.source.project.update({
     where: {
       id: projectId,
       userId,

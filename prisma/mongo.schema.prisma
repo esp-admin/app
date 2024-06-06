@@ -11,26 +11,26 @@ datasource db {
 }
 
 model User {
-  id                     String         @id @default(auto()) @map("_id") @db.ObjectId
+  id                     String    @id @default(auto()) @map("_id") @db.ObjectId
   name                   String
-  email                  String         @unique
+  email                  String    @unique
   picture                String
-  role                   String         @default("user")
-  provider               String         @default("default")
+  role                   String    @default("user")
+  provider               String    @default("default")
   password               String?
-  verified               Boolean        @default(false)
-  suspended              Boolean        @default(false)
-  requestedPasswordReset Boolean        @default(false)
-  createdAt              DateTime       @default(now())
-  updatedAt              DateTime       @updatedAt
-  refreshTokens          RefreshToken[]
+  verified               Boolean   @default(false)
+  suspended              Boolean   @default(false)
+  requestedPasswordReset Boolean   @default(false)
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+  sessions               Session[]
   projects               Project[]
   devices                Device[]
   mqtt                   Mqtt?
   report                 Report?
 }
 
-model RefreshToken {
+model Session {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   uid       String
   userId    String   @db.ObjectId

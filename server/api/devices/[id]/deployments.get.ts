@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
 
   const deviceId = validateId(event)
 
-  const deployments = await event.context.prisma.deployment.findMany({
+  const deployments = await event.context.auth.adapter.source.deployment.findMany({
     where: {
       deviceId,
     },

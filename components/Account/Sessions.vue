@@ -24,9 +24,9 @@
         <template #header>
           <title-date
             :title=" [
-              session.ua && UAParser.UAParser(session.ua).browser.name,
-              session.ua && UAParser.UAParser(session.ua).os.name,
-              session.ua && UAParser.UAParser(session.ua).device.model,
+              session.userAgent && UAParser.UAParser(session.userAgent).browser.name,
+              session.userAgent && UAParser.UAParser(session.userAgent).os.name,
+              session.userAgent && UAParser.UAParser(session.userAgent).device.model,
             ]
               .join(' ')"
             :updated-at="session.updatedAt"

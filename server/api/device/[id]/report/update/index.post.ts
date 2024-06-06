@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
   const body = await validateBody(event, schema)
 
   if (body.status === 'started') {
-    const deployment = await event.context.prisma.deployment.create({
+    const deployment = await event.context.auth.adapter.source.deployment.create({
       data: {
         device: {
           connect: {
@@ -31,7 +31,7 @@ export default defineEventHandler(async (event) => {
     return deployment.id
   }
 
-  const deployment = await event.context.prisma.deployment.update({
+  const deployment = await event.context.auth.adapter.source.deployment.update({
     where: {
       id: body.deploymentId,
     },

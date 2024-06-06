@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
 
   const releaseId = validateId(event)
 
-  const release = await event.context.prisma.release.delete({
+  const release = await event.context.auth.adapter.source.release.delete({
     where: {
       id: releaseId,
     },

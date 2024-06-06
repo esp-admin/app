@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
     multipart.picture = await uploadObject(multipart.file, userId, multipart.picture)
   }
 
-  const user = await event.context.prisma.user
+  const user = await event.context.auth.adapter.source.user
     .update({
       where: {
         id: userId,

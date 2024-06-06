@@ -1,7 +1,7 @@
 export default defineEventHandler(async (event) => {
   const { userId } = await checkDevice(event)
 
-  const mqtt = await event.context.prisma.mqtt.findUniqueOrThrow({
+  const mqtt = await event.context.auth.adapter.source.mqtt.findUniqueOrThrow({
     where: {
       userId,
     },

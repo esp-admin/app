@@ -1,4 +1,4 @@
-import { hashSync } from '#auth'
+import { hashSync } from '#auth_utils'
 
 export default defineEventHandler(async (event) => {
   const { userId } = checkUser(event)
@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
     hashedApiKey = hashSync(body.apiKey, 12)
   }
 
-  const device = await event.context.prisma.device.update({
+  const device = await event.context.auth.adapter.source.device.update({
     where: {
       id: deviceId,
       userId,

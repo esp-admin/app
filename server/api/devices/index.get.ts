@@ -1,7 +1,7 @@
 export default defineEventHandler(async (event) => {
   const { userId } = checkUser(event)
 
-  const devices = await event.context.prisma.device.findMany({
+  const devices = await event.context.auth.adapter.source.device.findMany({
     where: {
       userId,
     },

@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
 
   const projectId = validateId(event)
 
-  const project = await event.context.prisma.project.delete({
+  const project = await event.context.auth.adapter.source.project.delete({
     where: {
       id: projectId,
       userId,

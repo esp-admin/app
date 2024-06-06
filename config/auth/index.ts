@@ -3,8 +3,6 @@ import type { ModuleOptions } from '@bg-dev/nuxt-auth'
 export const auth: Partial<ModuleOptions> = {
   baseUrl: 'http://localhost:3000',
 
-  prisma: false,
-
   accessToken: {
     jwtSecret: '*',
   },
@@ -15,8 +13,8 @@ export const auth: Partial<ModuleOptions> = {
 
   oauth: {
     google: {
-      clientId: '',
-      clientSecret: '',
+      clientId: '*',
+      clientSecret: '*',
       scopes: 'email profile',
       authorizeUrl: 'https://accounts.google.com/o/oauth2/auth',
       tokenUrl: 'https://accounts.google.com/o/oauth2/token',
@@ -24,8 +22,8 @@ export const auth: Partial<ModuleOptions> = {
     },
 
     github: {
-      clientId: '',
-      clientSecret: '',
+      clientId: '*',
+      clientSecret: '*',
       scopes: 'user:email',
       authorizeUrl: 'https://github.com/login/oauth/authorize',
       tokenUrl: 'https://github.com/login/oauth/access_token',
@@ -45,16 +43,16 @@ export const auth: Partial<ModuleOptions> = {
   enableGlobalAuthMiddleware: true,
 
   registration: {
-    enable: true,
+    enabled: true,
     requireEmailVerification: true,
     defaultRole: 'user',
   },
 
   email: {
-    from: '',
+    from: '*',
     provider: {
       name: 'sendgrid',
-      apiKey: '',
+      apiKey: '*',
     },
     templates: {
       emailVerify: './config/auth/email-verify.html',

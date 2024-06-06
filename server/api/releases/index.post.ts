@@ -24,8 +24,8 @@ export default defineEventHandler(async (event) => {
 
   const downloadPath = await uploadObject(multipart.file, userId)
 
-  const [release, mqttSettings] = await event.context.prisma.$transaction([
-    event.context.prisma.release.create({
+  const [release, mqttSettings] = await event.context.auth.adapter.source.$transaction([
+    event.context.auth.adapter.source.release.create({
       data: {
         version: multipart.version,
         downloadPath,
@@ -43,7 +43,7 @@ export default defineEventHandler(async (event) => {
         projectId: true,
       },
     }),
-    event.context.prisma.mqtt.findUnique({
+    event.context.auth.adapter.source.mqtt.findUnique({
       where: {
         userId,
       },
@@ -66,7 +66,7 @@ export default defineEventHandler(async (event) => {
       password: mqttSettings.password,
     })
       .then(async (client) => {
-        const linkedDevices = await event.context.prisma.device.findMany({
+        const linkedDevices = await event.context.auth.adapter.source.device.findMany({
           where: {
             projectId: multipart.projectId,
           },

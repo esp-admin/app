@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
 
   const deploymentId = validateId(event)
 
-  const deployment = await event.context.prisma.deployment.findUniqueOrThrow({
+  const deployment = await event.context.auth.adapter.source.deployment.findUniqueOrThrow({
     where: {
       id: deploymentId,
     },

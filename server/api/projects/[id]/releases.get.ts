@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
 
   const projectId = validateId(event)
 
-  const releases = await event.context.prisma.release.findMany({
+  const releases = await event.context.auth.adapter.source.release.findMany({
     where: {
       projectId,
     },

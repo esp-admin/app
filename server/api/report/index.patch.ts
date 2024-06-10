@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
 
   const body = await validateBody(event, schema)
 
-  const report = await event.context.prisma.report.update({
+  const report = await event.context.auth.adapter.source.report.update({
     where: {
       userId,
     },

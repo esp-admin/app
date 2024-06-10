@@ -92,7 +92,7 @@ async function updateAccount() {
     })
     .catch((err) => {
       apiErrors.value.invalidSize = err.data.message === 'invalid-size'
-      apiErrors.value.uploadFailed = err.data.message === 'upload-failed'
+      apiErrors.value.uploadFailed = err.data.message === 'Upload failed'
     })
 }
 </script>

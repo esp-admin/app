@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
 
   const deviceId = validateId(event)
 
-  const device = await event.context.prisma.device.update({
+  const device = await event.context.auth.adapter.source.device.update({
     where: {
       id: deviceId,
       userId,

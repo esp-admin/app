@@ -124,7 +124,7 @@ async function handleSubmit() {
     .catch((err) => {
       apiErrors.value.versionAlreadyExists = err.data.message.includes('Unique constraint failed')
       apiErrors.value.invalidSize = err.data.message === 'invalid-size'
-      apiErrors.value.uploadFailed = err.data.message === 'upload-failed'
+      apiErrors.value.uploadFailed = err.data.message === 'Upload failed'
     })
 }
 </script>

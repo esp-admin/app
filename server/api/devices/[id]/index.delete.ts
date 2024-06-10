@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
 
   const deviceId = validateId(event)
 
-  const device = await event.context.prisma.device.delete({
+  const device = await event.context.auth.adapter.source.device.delete({
     where: {
       id: deviceId,
       userId,

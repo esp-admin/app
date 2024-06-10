@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
 
   const body = await validateBody(event, schema)
 
-  const project = await event.context.prisma.project.create({
+  const project = await event.context.auth.adapter.source.project.create({
     data: {
       name: body.name,
       userId,

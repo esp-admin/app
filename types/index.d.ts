@@ -10,6 +10,9 @@ import type {
 
 import type { Options } from 'highcharts'
 
+declare module '#build/types/auth_adapter' {
+}
+
 declare global {
   interface HighchartsOptions extends Options {}
 

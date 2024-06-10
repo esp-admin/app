@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
 
   const body = await validateBody(event, schema)
 
-  const mqtt = await event.context.prisma.mqtt.create({
+  const mqtt = await event.context.auth.adapter.source.mqtt.create({
     data: {
       uriTCP: body.uriTCP,
       uriWS: body.uriWS,

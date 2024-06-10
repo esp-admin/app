@@ -97,13 +97,24 @@ const logsString = computed(() =>
 
 const { $mqtt } = useNuxtApp()
 
+const dialog = useDialog()
+
 function handleRestart() {
-  $mqtt.publish({
-    deviceId: props.device.id,
-    action: 'command',
-    type: 'restart',
-    retain: false,
-    payload: '',
+  dialog.warning({
+    title: 'Restart Device',
+    content: 'The device will be reset.',
+    positiveText: 'Confirm',
+    negativeText: 'Cancel',
+    showIcon: false,
+    onPositiveClick: () => {
+      $mqtt.publish({
+        deviceId: props.device.id,
+        action: 'command',
+        type: 'restart',
+        retain: false,
+        payload: '',
+      })
+    },
   })
 }
 

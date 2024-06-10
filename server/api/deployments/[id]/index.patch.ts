@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
 
   const body = await validateBody(event, schema)
 
-  const deployment = await event.context.prisma.deployment.update({
+  const deployment = await event.context.auth.adapter.source.deployment.update({
     where: {
       id: deploymentId,
     },

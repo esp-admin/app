@@ -1,5 +1,5 @@
 import type { H3Event } from 'h3'
-import { compareSync } from '#auth'
+import { compareSync } from '#auth_utils'
 
 export async function checkDevice(event: H3Event) {
   const deviceId = event.context.params?.id
@@ -10,7 +10,7 @@ export async function checkDevice(event: H3Event) {
     throw createUnauthorizedError()
   }
 
-  const device = await event.context.prisma.device.findUniqueOrThrow({
+  const device = await event.context.auth.adapter.source.device.findUniqueOrThrow({
     where: {
       id: deviceId,
     },
@@ -37,7 +37,7 @@ export async function checkProject(event: H3Event, projectId: Project['id']) {
     throw createUnauthorizedError()
   }
 
-  const project = await event.context.prisma.project.findUniqueOrThrow({
+  const project = await event.context.auth.adapter.source.project.findUniqueOrThrow({
     where: {
       id: projectId,
     },
@@ -56,8 +56,8 @@ export async function checkProject(event: H3Event, projectId: Project['id']) {
 }
 
 export function checkUser(event: H3Event) {
-  if (event.context.auth) {
-    return event.context.auth
+  if (event.context.auth.data) {
+    return event.context.auth.data
   }
   throw createUnauthorizedError()
 }

@@ -11,7 +11,7 @@ interface PrismaError {
 }
 
 export function createPrismaError(error: PrismaError) {
-  const h3Error = createError({ statusCode: 500, message: 'server-error' })
+  const h3Error = createError({ statusCode: 500, message: 'Something went wrong' })
 
   switch (error.code) {
     case 'P2002':
@@ -36,7 +36,7 @@ export function createPrismaError(error: PrismaError) {
 
 export function createUnauthorizedError() {
   return createError({
-    message: 'unauthorized',
+    message: 'Unauthorized',
     statusCode: 401,
   })
 }
@@ -51,7 +51,7 @@ export function createInvalidIdError() {
 export function createFailedUploadError(err: Error) {
   consola.error(err)
   return createError({
-    message: 'upload-failed',
+    message: 'Upload failed',
     statusCode: 500,
   })
 }

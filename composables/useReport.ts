@@ -92,11 +92,7 @@ export default function useReport() {
   }
 
   async function handleCustom(message: ReportMessage) {
-    const { body, subject, type } = destr<{
-      type: 'error' | 'warn' | 'success' | 'info'
-      subject: string
-      body: string
-    }>(message.payload)
+    const { body, subject, type } = destr<ReportCustomMessage>(message.payload)
 
     const device = await useDevice().findOne(message.deviceId)
 

@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.1.1
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.1.0...v1.1.1)
+
+### 💅 Refactors
+
+- Migrate to `nuxt-auth` v3 ([62b20e8](https://github.com/esp-admin/app/commit/62b20e8))
+- Update `middleware` on auth pages ([f53be2b](https://github.com/esp-admin/app/commit/f53be2b))
+- Update server error messages ([b3dde55](https://github.com/esp-admin/app/commit/b3dde55))
+- Add confirmation on device reset ([8b11755](https://github.com/esp-admin/app/commit/8b11755))
+- Update route rules ([e561a46](https://github.com/esp-admin/app/commit/e561a46))
+- No change ([8ec5626](https://github.com/esp-admin/app/commit/8ec5626))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.1.0
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.0.20...v1.1.0)

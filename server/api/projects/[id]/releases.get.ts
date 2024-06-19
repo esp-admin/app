@@ -11,6 +11,7 @@ export default defineEventHandler(async (event) => {
       id: true,
       version: true,
       downloadPath: true,
+      downloadSize: true,
       createdAt: true,
       projectId: true,
     },

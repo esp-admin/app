@@ -71,6 +71,7 @@ function onTrigger() {
       payload: JSON.stringify({
         releaseId: props.release.id,
         downloadPath: props.release.downloadPath,
+        downloadSize: props.release.downloadSize,
         version: props.release.version,
       }),
     })

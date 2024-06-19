@@ -23,12 +23,14 @@ export default defineEventHandler(async (event) => {
   }
 
   const downloadPath = await uploadObject(multipart.file, userId)
+  const downloadSize = multipart.file.data.byteLength
 
   const [release, mqttSettings] = await event.context.auth.adapter.source.$transaction([
     event.context.auth.adapter.source.release.create({
       data: {
         version: multipart.version,
         downloadPath,
+        downloadSize,
         project: {
           connect: {
             id: multipart.projectId,
@@ -39,6 +41,7 @@ export default defineEventHandler(async (event) => {
         id: true,
         version: true,
         downloadPath: true,
+        downloadSize: true,
         createdAt: true,
         projectId: true,
       },
@@ -79,7 +82,7 @@ export default defineEventHandler(async (event) => {
           releaseId: release.id,
           version: release.version,
           downloadPath: release.downloadPath,
-          downloadSize: multipart.file.data.byteLength,
+          downloadSize: release.downloadSize,
         })
 
         await Promise.all(linkedDevices.map((device) => {

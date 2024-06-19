@@ -87,6 +87,7 @@ model Project {
 model Release {
     id           String       @id @default(uuid())
     downloadPath String
+    downloadSize Int          @default(-1)
     version      String
     createdAt    DateTime     @default(now())
     projectId    String

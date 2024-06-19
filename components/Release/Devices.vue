@@ -6,8 +6,13 @@
       :to="`/devices/${device.id}`"
     >
       <n-button quaternary>
-        {{ device.name }}
-        {{ device.deployment?.progress }}
+        <n-text>{{ device.name }}</n-text>
+        <n-text
+          v-if="device.deployment?.progress"
+          class="ml-2"
+        >
+          %{{ device.deployment.progress }}
+        </n-text>
         <template #icon>
           <deployment-status :deployment="device.deployment" />
         </template>

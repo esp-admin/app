@@ -75,14 +75,15 @@ export default defineEventHandler(async (event) => {
           },
         })
 
+        const message = JSON.stringify({
+          releaseId: release.id,
+          version: release.version,
+          downloadPath: release.downloadPath,
+          downloadSize: multipart.file.data.byteLength,
+        })
+
         await Promise.all(linkedDevices.map((device) => {
           const topic = `device/${device.id}/command/update`
-
-          const message = JSON.stringify({
-            releaseId: release.id,
-            version: release.version,
-            downloadPath: release.downloadPath,
-          })
 
           return client.publishAsync(topic, message, {
             retain: true,

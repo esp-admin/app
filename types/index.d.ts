@@ -49,7 +49,7 @@ declare global {
   interface ReportMessage {
     deviceId: Device['id']
     action: 'report'
-    type: 'status' | 'update' | 'custom'
+    type: 'status' | 'update' | 'custom' | 'update_progress'
     retain: boolean
     payload: string
   }

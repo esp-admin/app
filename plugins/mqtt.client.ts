@@ -53,6 +53,7 @@ export default defineNuxtPlugin({
         'device/+/report/update',
         'device/+/report/custom',
         'device/+/logs/+',
+        'device/+/report/update_progress',
       ])
     }
 

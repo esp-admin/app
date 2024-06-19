@@ -54,7 +54,10 @@ export default function useReport() {
         handleStatus(message)
         break
       case 'update':
-        handleUpdate(message)
+        handleUpdateStatus(message)
+        break
+      case 'update_progress':
+        handleUpdateProgress(message)
         break
       case 'custom':
         handleCustom(message)
@@ -80,7 +83,7 @@ export default function useReport() {
     })
   }
 
-  async function handleUpdate(message: ReportMessage) {
+  async function handleUpdateStatus(message: ReportMessage) {
     const { deploymentId, status } = destr<{
       deploymentId: Deployment['id']
       status: Deployment['status']
@@ -89,6 +92,16 @@ export default function useReport() {
     if (REGEX_ID.test(deploymentId)) {
       await useDeployment(message.deviceId).updateStatus(deploymentId, status)
     }
+  }
+
+  function handleUpdateProgress(message: ReportMessage) {
+    const { deploymentId, imageRead, releaseId } = destr<{
+      deploymentId: Deployment['id']
+      releaseId: Release['id']
+      imageRead: number
+    }>(message.payload)
+
+    console.log({ deploymentId, releaseId, imageRead })
   }
 
   async function handleCustom(message: ReportMessage) {

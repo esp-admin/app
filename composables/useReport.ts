@@ -53,7 +53,7 @@ export default function useReport() {
       case 'status':
         handleStatus(message)
         break
-      case 'update':
+      case 'update_status':
         handleUpdateStatus(message)
         break
       case 'update_progress':

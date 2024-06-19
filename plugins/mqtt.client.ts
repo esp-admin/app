@@ -50,10 +50,10 @@ export default defineNuxtPlugin({
     function subscribe() {
       mqttClient?.subscribe([
         'device/+/report/status',
-        'device/+/report/update',
+        'device/+/report/update_status',
+        'device/+/report/update_progress',
         'device/+/report/custom',
         'device/+/logs/+',
-        'device/+/report/update_progress',
       ])
     }
 

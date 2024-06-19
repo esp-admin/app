@@ -61,9 +61,20 @@ export default function useDeployment(deviceId: Device['id']) {
     }
   }
 
+  function updateProgress(id: Deployment['id'], progress: number) {
+    if (deployments.data.value) {
+      const deploymentIndex = deployments.data.value.findIndex(
+        deployment => deployment.id === id,
+      )
+      if (deploymentIndex >= 0) {
+        deployments.data.value[deploymentIndex].progress = progress
+      }
+    }
+  }
+
   function removeAll() {
     clearNuxtData(key)
   }
 
-  return { find, updateStatus, remove, removeAll, deployments }
+  return { find, updateStatus, updateProgress, remove, removeAll, deployments }
 }

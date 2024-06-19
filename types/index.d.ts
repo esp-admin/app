@@ -36,6 +36,7 @@ declare global {
   interface Deployment extends DeploymentRaw {
     release: ReleaseRaw
     status: 'started' | 'failed' | 'succeded'
+    progress?: number
   }
 
   interface CommandMessage {

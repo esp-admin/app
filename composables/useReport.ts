@@ -13,7 +13,7 @@ interface ReportMessagePayloadUpdateStatus {
 interface ReportMessagePayloadUpdateProgress {
   deploymentId: Deployment['id']
   releaseId: Release['id']
-  imageRead: number
+  progress: number
 }
 
 export default function useReport() {
@@ -108,7 +108,7 @@ export default function useReport() {
 
   function handleUpdateProgress(message: ReportMessage) {
     const payload = destr<ReportMessagePayloadUpdateProgress>(message.payload)
-    console.log(payload)
+    useDeployment(message.deviceId).updateProgress(payload.deploymentId, payload.progress)
   }
 
   async function handleCustom(message: ReportMessage) {

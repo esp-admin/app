@@ -7,6 +7,7 @@
     >
       <n-button quaternary>
         {{ device.name }}
+        {{ device.deployment?.progress }}
         <template #icon>
           <deployment-status :deployment="device.deployment" />
         </template>

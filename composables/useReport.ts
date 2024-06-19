@@ -1,6 +1,21 @@
 import { destr } from 'destr'
 import { NP, NText } from '#components'
 
+interface ReportMessagePayloadStatus {
+  status: Device['status']
+}
+
+interface ReportMessagePayloadUpdateStatus {
+  deploymentId: Deployment['id']
+  status: Deployment['status']
+}
+
+interface ReportMessagePayloadUpdateProgress {
+  deploymentId: Deployment['id']
+  releaseId: Release['id']
+  imageRead: number
+}
+
 export default function useReport() {
   const key = 'report'
   const report = useNuxtData<Report | undefined>(key)
@@ -66,55 +81,47 @@ export default function useReport() {
   }
 
   async function handleStatus(message: ReportMessage) {
-    const { status } = destr<{ status: Device['status'] }>(message.payload)
+    const payload = destr<ReportMessagePayloadStatus>(message.payload)
 
     const devices = await useDevice().find()
 
     if (devices.value) {
       const deviceIndex = devices.value.findIndex(device => device.id === message.deviceId)
 
-      if (deviceIndex >= 0 && devices.value[deviceIndex].status === status) {
+      if (deviceIndex >= 0 && devices.value[deviceIndex].status === payload.status) {
         return
       }
     }
 
     await useDevice().update(message.deviceId, {
-      status,
+      status: payload.status,
     })
   }
 
   async function handleUpdateStatus(message: ReportMessage) {
-    const { deploymentId, status } = destr<{
-      deploymentId: Deployment['id']
-      status: Deployment['status']
-    }>(message.payload)
+    const payload = destr<ReportMessagePayloadUpdateStatus>(message.payload)
 
-    if (REGEX_ID.test(deploymentId)) {
-      await useDeployment(message.deviceId).updateStatus(deploymentId, status)
+    if (REGEX_ID.test(payload.deploymentId)) {
+      await useDeployment(message.deviceId).updateStatus(payload.deploymentId, payload.status)
     }
   }
 
   function handleUpdateProgress(message: ReportMessage) {
-    const { deploymentId, imageRead, releaseId } = destr<{
-      deploymentId: Deployment['id']
-      releaseId: Release['id']
-      imageRead: number
-    }>(message.payload)
-
-    console.log({ deploymentId, releaseId, imageRead })
+    const payload = destr<ReportMessagePayloadUpdateProgress>(message.payload)
+    console.log(payload)
   }
 
   async function handleCustom(message: ReportMessage) {
-    const { body, subject, type } = destr<ReportCustomMessage>(message.payload)
+    const payload = destr<ReportCustomMessage>(message.payload)
 
     const device = await useDevice().findOne(message.deviceId)
 
     useNaiveNotification().create({
       title: device.value.name,
-      type: type === 'warn' ? 'warning' : type,
+      type: payload.type === 'warn' ? 'warning' : payload.type,
       content: () => h('div', { }, [
-        h(NText, { strong: true }, subject),
-        h(NP, body),
+        h(NText, { strong: true }, payload.subject),
+        h(NP, payload.body),
       ]),
     })
   }

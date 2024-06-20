@@ -42,7 +42,7 @@ declare global {
   interface CommandMessage {
     deviceId: Device['id']
     action: 'command'
-    type: 'config' | 'log' | 'restart' | 'update' | 'custom' | 'update_abort'
+    type: 'config' | 'log' | 'restart' | 'update_trigger' | 'update_abort' | 'custom'
     payload: string
     retain: boolean
   }

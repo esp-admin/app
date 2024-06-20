@@ -63,7 +63,7 @@ function onTrigger() {
     $mqtt.publish({
       deviceId: device.id,
       action: 'command',
-      type: 'update',
+      type: 'update_trigger',
       retain: true,
       payload: JSON.stringify({
         releaseId: props.release.id,

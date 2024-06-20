@@ -6,7 +6,7 @@
       size="small"
       class="h-full"
     >
-      <deployment-item-base
+      <deployment-release
         :device="device"
         :deployment="device.deployment"
       />

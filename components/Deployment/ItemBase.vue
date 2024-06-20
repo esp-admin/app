@@ -38,6 +38,8 @@ import type { ProgressProps } from 'naive-ui'
 
 const props = defineProps<{ device: Device, deployment?: Deployment }>()
 
+const dialog = useDialog()
+
 const progress = computed<ProgressProps>(() => {
   if (!props.deployment) {
     return {}
@@ -57,14 +59,23 @@ const progress = computed<ProgressProps>(() => {
 })
 
 function onAbort() {
-  useNuxtApp().$mqtt.publish({
-    deviceId: props.deployment!.deviceId,
-    action: 'command',
-    type: 'update_abort',
-    retain: false,
-    payload: JSON.stringify({
-      releaseId: props.deployment!.releaseId,
-    }),
+  dialog.warning({
+    title: 'Abort deployment',
+    content: 'This deployment will be aborted.',
+    positiveText: 'Confirm',
+    negativeText: 'Cancel',
+    showIcon: false,
+    onPositiveClick: () => {
+      useNuxtApp().$mqtt.publish({
+        deviceId: props.deployment!.deviceId,
+        action: 'command',
+        type: 'update_abort',
+        retain: false,
+        payload: JSON.stringify({
+          releaseId: props.deployment!.releaseId,
+        }),
+      })
+    },
   })
 }
 </script>

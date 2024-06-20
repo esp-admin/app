@@ -1,7 +1,8 @@
 <template>
-  <div class="flex justify-between">
+  <div class="flex gap-2">
     <title-date
-      :title="title"
+      class="flex-grow"
+      :title="device.name"
       :created-at="deployment?.createdAt"
     />
 
@@ -13,6 +14,14 @@
       @click="onAbort"
     >
       Abort
+    </n-button>
+
+    <n-button
+      quaternary
+      size="tiny"
+      @click="navigateTo(`/devices/${device.id}`)"
+    >
+      View
     </n-button>
   </div>
 
@@ -27,7 +36,7 @@
 <script setup lang="ts">
 import type { ProgressProps } from 'naive-ui'
 
-const props = defineProps<{ title: string, deployment?: Deployment }>()
+const props = defineProps<{ device: Device, deployment?: Deployment }>()
 
 const progress = computed<ProgressProps>(() => {
   if (!props.deployment) {

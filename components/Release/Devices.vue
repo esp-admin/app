@@ -1,22 +1,20 @@
 <template>
-  <div class="flex flex-wrap gap-2">
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
     <nuxt-link
       v-for="device of linkedDevicesWithDeployment"
       :key="device.id"
       :to="`/devices/${device.id}`"
     >
-      <n-button quaternary>
-        <n-text>{{ device.name }}</n-text>
-        <n-text
-          v-if="device.deployment?.progress"
-          class="ml-2"
-        >
-          %{{ device.deployment.progress }}
-        </n-text>
-        <template #icon>
-          <deployment-status :deployment="device.deployment" />
-        </template>
-      </n-button>
+      <n-card
+        size="small"
+        class="h-full"
+      >
+        <deployment-item-base
+
+          :title="device.name"
+          :deployment="device.deployment"
+        />
+      </n-card>
     </nuxt-link>
   </div>
 </template>

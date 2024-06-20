@@ -10,6 +10,8 @@ export default defineEventHandler(async (event) => {
     select: {
       status: true,
       deviceId: true,
+      createdAt: true,
+      updatedAt: true,
     },
     orderBy: {
       createdAt: 'desc',

@@ -19,7 +19,7 @@
         v-for="deployment of deploymentsPaginated"
         :key="deployment.id"
       >
-        <deployment-item :deployment="deployment" />
+        <deployment-device :deployment="deployment" />
       </n-list-item>
 
       <template

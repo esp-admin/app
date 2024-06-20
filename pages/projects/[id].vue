@@ -3,12 +3,11 @@
     <n-page-header
       :title="project.name"
       class="mb-8"
-      :on-back="$router.back"
     >
       <template #extra>
         <button-icon
-          :icon="ICON_DELETE"
           secondary
+          :icon="ICON_DELETE"
           :disabled="linkedDevices.length > 0"
           @click="onDelete"
         />
@@ -89,7 +88,7 @@ const linkedDevices = await useDevice().findLinked(project.value.id)
 async function onDelete() {
   dialog.error({
     title: 'Delete Project',
-    content: 'The project will be permanently deleted, including its releases and deployments. This action is not reversible and can not be undone.',
+    content: 'This project will be permanently deleted, including its releases and deployments. This action is not reversible and can not be undone.',
     positiveText: 'Confirm',
     negativeText: 'Cancel',
     showIcon: false,

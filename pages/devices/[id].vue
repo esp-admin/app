@@ -3,34 +3,27 @@
     <n-page-header
       :title="device.name"
       class="mb-8"
-      :on-back="$router.back"
     >
       <template #extra>
-        <div class="flex justify-between gap-2">
+        <n-button-group>
           <button-icon
             v-if="device.projectId"
-            :icon="ICON_UNLINK"
             secondary
+            :icon="ICON_UNLINK"
             @click="onUnlink"
           />
-
-          <nuxt-link
+          <button-icon
             v-if="device.projectId"
-            :to="`/projects/${device.projectId}`"
-          >
-            <button-icon
-              v-if="device.projectId"
-              secondary
-              :icon="ICON_PROJECT"
-            />
-          </nuxt-link>
-
+            secondary
+            :icon="ICON_PROJECT"
+            @click="navigateTo(`/projects/${device.projectId}`)"
+          />
           <button-icon
             :icon="ICON_DELETE"
             secondary
             @click="onDelete"
           />
-        </div>
+        </n-button-group>
       </template>
     </n-page-header>
 
@@ -96,7 +89,7 @@ const device = await useDevice().findOne(id)
 function onDelete() {
   dialog.error({
     title: 'Delete Device',
-    content: 'The device will be permanently deleted, including its deployments. This action is not reversible and can not be undone.',
+    content: 'This device will be permanently deleted, including its deployments. This action is not reversible and can not be undone.',
     positiveText: 'Confirm',
     negativeText: 'Cancel',
     showIcon: false,
@@ -109,9 +102,9 @@ function onDelete() {
 }
 
 function onUnlink() {
-  dialog.info({
+  dialog.warning({
     title: 'Unlink Device',
-    content: 'The device will unlinked from the project.',
+    content: 'This device will unlinked from the project.',
     positiveText: 'Confirm',
     negativeText: 'Cancel',
     showIcon: false,

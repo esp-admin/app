@@ -1,12 +1,12 @@
 export default function useRelease(projectId: Project['id']) {
   const key = `releases-project-${projectId}`
-  const releases = useNuxtData<Release[]>(key)
+  const releases = useState<Release[]>(key)
   const { $auth } = useNuxtApp()
 
   async function find() {
-    releases.data.value ||= await $auth.fetch<Release[]>(`/api/projects/${projectId}/releases`)
+    releases.value ||= await $auth.fetch<Release[]>(`/api/projects/${projectId}/releases`)
 
-    return releases.data
+    return releases
   }
 
   function remove(id: Release['id']) {
@@ -14,8 +14,8 @@ export default function useRelease(projectId: Project['id']) {
       method: 'DELETE',
 
       onResponse: async ({ response }) => {
-        if (response.ok && releases.data.value) {
-          removeArrayElByKey(releases.data.value, 'id', id)
+        if (response.ok && releases.value) {
+          removeArrayElByKey(releases.value, 'id', id)
         }
 
         if (response.ok) {
@@ -37,8 +37,8 @@ export default function useRelease(projectId: Project['id']) {
       body: formData,
 
       onResponse: ({ response }) => {
-        if (response.ok && releases.data.value) {
-          releases.data.value.unshift(response._data)
+        if (response.ok && releases.value) {
+          releases.value.unshift(response._data)
         }
       },
     })
@@ -47,11 +47,11 @@ export default function useRelease(projectId: Project['id']) {
   async function findDeployments(id: Release['id']) {
     const key = `deployments-release-${id}`
 
-    const deployments = useNuxtData<Deployment[]>(key)
+    const deployments = useState<Deployment[]>(key)
 
-    deployments.data.value ||= await $auth.fetch<Deployment[]>(`/api/releases/${id}/deployments`)
+    deployments.value ||= await $auth.fetch<Deployment[]>(`/api/releases/${id}/deployments`)
 
-    return deployments.data
+    return deployments
   }
 
   async function removeDeployments(id: Release['id']) {
@@ -59,8 +59,8 @@ export default function useRelease(projectId: Project['id']) {
 
     for (const device of devices.value ?? []) {
       const { deployments } = useDeployment(device.id)
-      if (deployments.data.value) {
-        removeArrayElByKey(deployments.data.value, 'releaseId', id)
+      if (deployments.value) {
+        removeArrayElByKey(deployments.value, 'releaseId', id)
       }
     }
   }

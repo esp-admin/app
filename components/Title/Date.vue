@@ -4,29 +4,27 @@
       {{ title }}
     </n-text>
 
-    <div :key="key">
-      <n-text
+    <n-text
+      :key="key"
+      depth="3"
+      class="text-base font-normal"
+    >
+      <n-time
         v-if="createdAt"
-        depth="3"
-        class="text-base font-normal"
-      >
-        <n-time
-          :time="new Date(createdAt)"
-          type="relative"
-        />
-      </n-text>
+        :time="new Date(createdAt)"
+        type="relative"
+      />
 
-      <n-text
+      <n-time
         v-else-if="updatedAt"
-        depth="3"
-        class="text-base font-normal"
-      >
-        <n-time
-          :time="new Date(updatedAt)"
-          type="relative"
-        />
-      </n-text>
-    </div>
+        :time="new Date(updatedAt)"
+        type="relative"
+      />
+
+      <template v-else>
+        N/A
+      </template>
+    </n-text>
   </div>
 </template>
 

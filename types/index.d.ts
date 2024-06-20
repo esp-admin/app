@@ -36,12 +36,13 @@ declare global {
   interface Deployment extends DeploymentRaw {
     release: ReleaseRaw
     status: 'started' | 'failed' | 'succeded'
+    progress?: number
   }
 
   interface CommandMessage {
     deviceId: Device['id']
     action: 'command'
-    type: 'config' | 'log' | 'restart' | 'update' | 'custom'
+    type: 'config' | 'log' | 'restart' | 'update_trigger' | 'update_abort' | 'custom'
     payload: string
     retain: boolean
   }
@@ -49,7 +50,7 @@ declare global {
   interface ReportMessage {
     deviceId: Device['id']
     action: 'report'
-    type: 'status' | 'update' | 'custom'
+    type: 'status' | 'update_status' | 'update_progress' | 'custom'
     retain: boolean
     payload: string
   }

@@ -16,18 +16,17 @@
 
     <template #header-extra>
       <div class="flex gap-2">
-        <nuxt-link :to="`/projects/${deployment.release.projectId}`">
+        <n-button-group>
           <button-icon
             :icon="ICON_PROJECT"
-            secondary
+            @click="navigateTo(`/projects/${deployment.release.projectId}`)"
           />
-        </nuxt-link>
 
-        <button-icon
-          :icon="ICON_DELETE"
-          secondary
-          @click="onDelete"
-        />
+          <button-icon
+            :icon="ICON_DELETE"
+            @click="onDelete"
+          />
+        </n-button-group>
       </div>
     </template>
   </n-thing>
@@ -41,7 +40,7 @@ const dialog = useDialog()
 function onDelete() {
   dialog.error({
     title: 'Delete Deployment',
-    content: 'The deployment will be permanently deleted. This action is not reversible and can not be undone.',
+    content: 'This deployment will be permanently deleted. This action is not reversible and can not be undone.',
     positiveText: 'Confirm',
     negativeText: 'Cancel',
     showIcon: false,

@@ -3,7 +3,7 @@ import { auth, naiveui, tailwindcss, s3, security, fonts } from './config'
 export default defineNuxtConfig({
   ssr: true,
 
-  devtools: { enabled: false },
+  devtools: { enabled: true },
 
   app: {
     head: {
@@ -49,6 +49,14 @@ export default defineNuxtConfig({
       oauth: {
         google: false,
         github: false,
+      },
+    },
+  },
+
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        module: 'ESNext',
       },
     },
   },

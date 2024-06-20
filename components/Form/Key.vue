@@ -31,10 +31,10 @@ const emits = defineEmits(['update:value'])
 
 const placeholder = computed(() => {
   if (props.value && copied.value) {
-    return 'Key copied to Clipboard'
+    return 'Key copied'
   }
   else if (props.value && !copied.value) {
-    return 'Make sure to copy the new key'
+    return 'Copy new key'
   }
   return 'Secret Key'
 })

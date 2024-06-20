@@ -1,13 +1,13 @@
 export default function useMqtt() {
   const key = 'mqtt'
-  const mqtt = useNuxtData<Mqtt | undefined>(key)
+  const mqtt = useState<Mqtt | undefined>(key)
   const connected = useState('mqtt_connected')
   const { $auth } = useNuxtApp()
 
   async function find() {
-    mqtt.data.value ||= await $auth.fetch<Mqtt>('/api/mqtt')
+    mqtt.value ||= await $auth.fetch<Mqtt>('/api/mqtt')
 
-    return mqtt.data
+    return mqtt
   }
 
   function update(data: Partial<Mqtt>) {
@@ -22,7 +22,7 @@ export default function useMqtt() {
 
       onResponse: ({ response }) => {
         if (response.ok) {
-          mqtt.data.value = response._data
+          mqtt.value = response._data
         }
       },
     })
@@ -40,7 +40,7 @@ export default function useMqtt() {
 
       onResponse: ({ response }) => {
         if (response.ok) {
-          mqtt.data.value = response._data
+          mqtt.value = response._data
         }
       },
     })

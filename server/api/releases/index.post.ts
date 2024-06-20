@@ -86,7 +86,7 @@ export default defineEventHandler(async (event) => {
         })
 
         await Promise.all(linkedDevices.map((device) => {
-          const topic = `device/${device.id}/command/update`
+          const topic = `device/${device.id}/command/update_trigger`
 
           return client.publishAsync(topic, message, {
             retain: true,

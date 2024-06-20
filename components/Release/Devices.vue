@@ -1,21 +1,16 @@
 <template>
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    <nuxt-link
+    <n-card
       v-for="device of linkedDevicesWithDeployment"
       :key="device.id"
-      :to="`/devices/${device.id}`"
+      size="small"
+      class="h-full"
     >
-      <n-card
-        size="small"
-        class="h-full"
-      >
-        <deployment-item-base
-
-          :title="device.name"
-          :deployment="device.deployment"
-        />
-      </n-card>
-    </nuxt-link>
+      <deployment-release
+        :device="device"
+        :deployment="device.deployment"
+      />
+    </n-card>
   </div>
 </template>
 
@@ -41,7 +36,7 @@ const linkedDevicesWithDeployment = computed(
 
       const initialDeployment = releaseDeployments.value?.find(deployment => deployment.deviceId === device.id)
 
-      const updatedDeployment = deviceDeployments.data.value?.find(deployment => deployment.releaseId === props.release.id)
+      const updatedDeployment = deviceDeployments.value?.find(deployment => deployment.releaseId === props.release.id)
 
       return defu(device, { deployment: updatedDeployment }, { deployment: initialDeployment })
     },

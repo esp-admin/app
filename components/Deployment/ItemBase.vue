@@ -7,6 +7,7 @@
 
     <n-button
       v-if="deployment?.status === 'started'"
+      quaternary
       size="tiny"
       type="error"
       @click="onAbort"

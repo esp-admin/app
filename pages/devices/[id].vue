@@ -6,31 +6,22 @@
       :on-back="$router.back"
     >
       <template #extra>
-        <div class="flex justify-between gap-2">
+        <n-button-group>
           <button-icon
             v-if="device.projectId"
             :icon="ICON_UNLINK"
-            secondary
             @click="onUnlink"
           />
-
-          <nuxt-link
+          <button-icon
             v-if="device.projectId"
-            :to="`/projects/${device.projectId}`"
-          >
-            <button-icon
-              v-if="device.projectId"
-              secondary
-              :icon="ICON_PROJECT"
-            />
-          </nuxt-link>
-
+            :icon="ICON_PROJECT"
+            @click="navigateTo(`/projects/${device.projectId}`)"
+          />
           <button-icon
             :icon="ICON_DELETE"
-            secondary
             @click="onDelete"
           />
-        </div>
+        </n-button-group>
       </template>
     </n-page-header>
 

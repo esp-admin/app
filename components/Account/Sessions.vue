@@ -36,7 +36,6 @@
         <template #header-extra>
           <button-icon
             :icon="ICON_DELETE"
-            secondary
             :disabled="session.current"
             @click="handleSessionRevoke(session.id)"
           />

@@ -5,7 +5,6 @@
         <n-button
           v-for="projectCommand of projectCommands"
           :key="projectCommand.key"
-          secondary
           :disabled="device.status !== 'connected'"
           @click="handleCommand(projectCommand)"
         >
@@ -13,19 +12,19 @@
         </n-button>
       </div>
 
-      <button-icon
-        :disabled="device.status !== 'connected'"
-        :icon="ICON_RESET"
-        secondary
-        @click="handleRestart"
-      />
+      <n-button-group>
+        <button-icon
+          :disabled="device.status !== 'connected'"
+          :icon="ICON_RESET"
+          @click="handleRestart"
+        />
 
-      <button-icon
-        :disabled="logs.length === 0"
-        :icon="ICON_ERASE"
-        secondary
-        @click="logs = []"
-      />
+        <button-icon
+          :disabled="logs.length === 0"
+          :icon="ICON_ERASE"
+          @click="logs = []"
+        />
+      </n-button-group>
     </div>
 
     <n-card

@@ -8,27 +8,24 @@
     </template>
 
     <template #header-extra>
-      <div class="flex gap-2">
+      <n-button-group>
         <button-icon
           :icon="collapsed ? ICON_EXPAND : ICON_COLLAPSE"
           :disabled="linkedDevices.length === 0"
-          secondary
           @click="collapsed = !collapsed"
         />
 
         <button-icon
           icon="ic:baseline-bolt"
           :disabled="linkedDevices.length === 0"
-          secondary
           @click="onTrigger"
         />
 
         <button-icon
           :icon="ICON_DELETE"
-          secondary
           @click="onDelete"
         />
-      </div>
+      </n-button-group>
     </template>
 
     <n-collapse-transition :show="!collapsed">

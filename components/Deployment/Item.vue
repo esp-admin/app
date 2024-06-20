@@ -16,18 +16,17 @@
 
     <template #header-extra>
       <div class="flex gap-2">
-        <nuxt-link :to="`/projects/${deployment.release.projectId}`">
+        <n-button-group>
           <button-icon
             :icon="ICON_PROJECT"
-            secondary
+            @click="navigateTo(`/projects/${deployment.release.projectId}`)"
           />
-        </nuxt-link>
 
-        <button-icon
-          :icon="ICON_DELETE"
-          secondary
-          @click="onDelete"
-        />
+          <button-icon
+            :icon="ICON_DELETE"
+            @click="onDelete"
+          />
+        </n-button-group>
       </div>
     </template>
   </n-thing>

@@ -8,7 +8,7 @@
 
     <n-button
       v-if="deployment?.status === 'started'"
-      quaternary
+      secondary
       size="tiny"
       type="error"
       @click="onAbort"
@@ -17,7 +17,8 @@
     </n-button>
 
     <n-button
-      quaternary
+      secondary
+      type="info"
       size="tiny"
       @click="navigateTo(`/devices/${device.id}`)"
     >

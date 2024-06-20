@@ -62,7 +62,7 @@ const progress = computed<ProgressProps>(() => {
 function onAbort() {
   dialog.warning({
     title: 'Abort deployment',
-    content: 'This deployment will be aborted. Note that it will automatically triggerd on device reset.',
+    content: 'This deployment will be aborted.',
     positiveText: 'Confirm',
     negativeText: 'Cancel',
     showIcon: false,

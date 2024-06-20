@@ -21,9 +21,9 @@
         type="relative"
       />
 
-      <p v-else>
+      <template v-else>
         N/A
-      </p>
+      </template>
     </n-text>
   </div>
 </template>

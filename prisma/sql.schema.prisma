@@ -11,7 +11,7 @@ datasource db {
 }
 
 model User {
-    id                     String    @id @default(uuid())
+    id                     String    @id @default(cuid())
     name                   String
     email                  String    @unique
     picture                String
@@ -31,7 +31,7 @@ model User {
 }
 
 model Session {
-    id        String   @id @default(uuid())
+    id        String   @id @default(cuid())
     uid       String
     userId    String
     user      User     @relation(fields: [userId], references: [id])
@@ -43,7 +43,7 @@ model Session {
 }
 
 model Mqtt {
-    id        String   @id @default(uuid())
+    id        String   @id @default(cuid())
     uriTCP    String?
     uriWS     String
     username  String
@@ -55,7 +55,7 @@ model Mqtt {
 }
 
 model Report {
-    id            String   @id @default(uuid())
+    id            String   @id @default(cuid())
     webhookEnable Boolean  @default(false)
     webhookUrl    String?
     emailEnable   Boolean  @default(false)
@@ -67,7 +67,7 @@ model Report {
 }
 
 model Project {
-    id          String    @id @default(uuid())
+    id          String    @id @default(cuid())
     name        String
     apiKey      String?
     repository  String?
@@ -85,7 +85,7 @@ model Project {
 }
 
 model Release {
-    id           String       @id @default(uuid())
+    id           String       @id @default(cuid())
     downloadPath String
     downloadSize Int          @default(-1)
     version      String
@@ -98,7 +98,7 @@ model Release {
 }
 
 model Device {
-    id          String       @id @default(uuid())
+    id          String       @id @default(cuid())
     name        String
     apiKey      String
     description String?
@@ -116,7 +116,7 @@ model Device {
 }
 
 model Deployment {
-    id        String   @id @default(uuid())
+    id        String   @id @default(cuid())
     status    String   @default("started")
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt

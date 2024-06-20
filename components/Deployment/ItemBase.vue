@@ -5,7 +5,14 @@
       :created-at="deployment?.createdAt"
     />
 
-    <slot name="action" />
+    <n-button
+      v-if="deployment?.status === 'started'"
+      size="tiny"
+      type="error"
+      @click="onAbort"
+    >
+      Abort
+    </n-button>
   </div>
 
   <n-progress
@@ -40,4 +47,16 @@ const progress = computed<ProgressProps>(() => {
     return { status: 'info', percentage: props.deployment.progress, processing: true }
   }
 })
+
+function onAbort() {
+  useNuxtApp().$mqtt.publish({
+    deviceId: props.deployment!.deviceId,
+    action: 'command',
+    type: 'update_abort',
+    retain: false,
+    payload: JSON.stringify({
+      releaseId: props.deployment!.releaseId,
+    }),
+  })
+}
 </script>

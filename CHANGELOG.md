@@ -1,5 +1,47 @@
 # Changelog
 
+## v1.2.0
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.1.1...v1.2.0)
+
+### 🚀 Enhancements
+
+- **useReport:** Add `handleUpdateProgress` to handle update progress ([8002d9a](https://github.com/esp-admin/app/commit/8002d9a))
+- Add update `progress` on Deployment state ([4da99a9](https://github.com/esp-admin/app/commit/4da99a9))
+- Show deployment progress on release page ([#12](https://github.com/esp-admin/app/pull/12))
+- Add option to abort active deployment ([#13](https://github.com/esp-admin/app/pull/13))
+
+### 🔥 Performance
+
+- Change ID format to `cuid` on SQL database ([e156459](https://github.com/esp-admin/app/commit/e156459))
+
+### 🩹 Fixes
+
+- Add missing `updatedAt` on Device and Project cards ([9bfbcf1](https://github.com/esp-admin/app/commit/9bfbcf1))
+
+### 💅 Refactors
+
+- **mqtt:** Change topic `device/+/report/update` to `device/+/report/update_status` ([21ebf39](https://github.com/esp-admin/app/commit/21ebf39))
+- **useReport:** No change ([b3df761](https://github.com/esp-admin/app/commit/b3df761))
+- Add `downloadSize` on update command ([3a7583e](https://github.com/esp-admin/app/commit/3a7583e))
+- Add `downloadSize` field on Release model ([3f3d2e4](https://github.com/esp-admin/app/commit/3f3d2e4))
+- No change ([bb7c935](https://github.com/esp-admin/app/commit/bb7c935))
+- Change type of icon buttons ([2b6a737](https://github.com/esp-admin/app/commit/2b6a737))
+- Remove router back button ([c3862ba](https://github.com/esp-admin/app/commit/c3862ba))
+- Remove extra ordering on used plugins ([f0f1934](https://github.com/esp-admin/app/commit/f0f1934))
+- Do not manually specify font weights ([e72b273](https://github.com/esp-admin/app/commit/e72b273))
+- Change messages of confirmation dialogs ([9377e59](https://github.com/esp-admin/app/commit/9377e59))
+- Change type of page header's bts ([7f4dbda](https://github.com/esp-admin/app/commit/7f4dbda))
+
+### 🏡 Chore
+
+- Hide node deprecation warnings on build ([b831c39](https://github.com/esp-admin/app/commit/b831c39))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+- Becem <becem.gharbi@live.com>
+
 ## v1.1.1
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.1.0...v1.1.1)

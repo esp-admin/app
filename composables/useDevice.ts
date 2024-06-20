@@ -1,22 +1,22 @@
 export default function useDevice() {
   const key = 'devices'
-  const devices = useNuxtData<Device[]>(key)
+  const devices = useState<Device[]>(key)
   const { $auth } = useNuxtApp()
 
   async function find() {
-    devices.data.value ||= await $auth.fetch<Device[]>('/api/devices')
+    devices.value ||= await $auth.fetch<Device[]>('/api/devices')
 
-    return devices.data
+    return devices
   }
 
   async function findOne(id: Device['id']) {
     const key = `device-${id}`
 
-    const device = useNuxtData<Device>(key)
+    const device = useState<Device>(key)
 
-    device.data.value ||= await $auth.fetch<Device>(`/api/devices/${id}`)
+    device.value ||= await $auth.fetch<Device>(`/api/devices/${id}`)
 
-    return device.data as Ref<Device>
+    return device as Ref<Device>
   }
 
   function remove(id: Device['id']) {
@@ -24,8 +24,8 @@ export default function useDevice() {
       method: 'DELETE',
 
       onResponse: ({ response }) => {
-        if (response.ok && devices.data.value) {
-          removeArrayElByKey(devices.data.value, 'id', id)
+        if (response.ok && devices.value) {
+          removeArrayElByKey(devices.value, 'id', id)
         }
 
         if (response.ok) {
@@ -45,8 +45,8 @@ export default function useDevice() {
       },
 
       onResponse: ({ response }) => {
-        if (response.ok && devices.data.value) {
-          devices.data.value.unshift(response._data)
+        if (response.ok && devices.value) {
+          devices.value.unshift(response._data)
         }
       },
     })
@@ -55,7 +55,7 @@ export default function useDevice() {
   function link(deviceId: Device['id'], projectId: Project['id']) {
     const key = `device-${deviceId}`
 
-    const device = useNuxtData<Device>(key)
+    const device = useState<Device>(key)
 
     return $auth.fetch(`/api/devices/${deviceId}/link`, {
       method: 'PATCH',
@@ -64,17 +64,17 @@ export default function useDevice() {
       },
 
       onResponse: ({ response }) => {
-        if (response.ok && devices.data.value) {
-          const deviceIndex = devices.data.value.findIndex(
+        if (response.ok && devices.value) {
+          const deviceIndex = devices.value.findIndex(
             device => device.id === deviceId,
           )
           if (deviceIndex >= 0) {
-            devices.data.value[deviceIndex].projectId = projectId
+            devices.value[deviceIndex].projectId = projectId
           }
         }
 
-        if (response.ok && device.data.value) {
-          device.data.value.projectId = projectId
+        if (response.ok && device.value) {
+          device.value.projectId = projectId
         }
       },
     })
@@ -83,23 +83,23 @@ export default function useDevice() {
   function unlink(id: Device['id']) {
     const key = `device-${id}`
 
-    const device = useNuxtData<Device>(key)
+    const device = useState<Device>(key)
 
     return $auth.fetch(`/api/devices/${id}/unlink`, {
       method: 'PATCH',
 
       onResponse: ({ response }) => {
-        if (response.ok && devices.data.value) {
-          const deviceIndex = devices.data.value.findIndex(
+        if (response.ok && devices.value) {
+          const deviceIndex = devices.value.findIndex(
             device => device.id === id,
           )
           if (deviceIndex >= 0) {
-            devices.data.value[deviceIndex].projectId = null
+            devices.value[deviceIndex].projectId = null
           }
         }
 
-        if (response.ok && device.data.value) {
-          device.data.value.projectId = null
+        if (response.ok && device.value) {
+          device.value.projectId = null
         }
       },
     })
@@ -107,7 +107,7 @@ export default function useDevice() {
 
   function update(id: Device['id'], data: Partial<Device>) {
     const key = `device-${id}`
-    const device = useNuxtData<Device>(key)
+    const device = useState<Device>(key)
 
     return $auth.fetch(`/api/devices/${id}`, {
       method: 'PATCH',
@@ -120,17 +120,17 @@ export default function useDevice() {
       },
 
       onResponse: ({ response }) => {
-        if (response.ok && devices.data.value) {
-          const deviceIndex = devices.data.value.findIndex(
+        if (response.ok && devices.value) {
+          const deviceIndex = devices.value.findIndex(
             device => device.id === id,
           )
           if (deviceIndex >= 0) {
-            devices.data.value[deviceIndex] = response._data
+            devices.value[deviceIndex] = response._data
           }
         }
 
-        if (response.ok && device.data.value) {
-          device.data.value = response._data
+        if (response.ok && device.value) {
+          device.value = response._data
         }
       },
     })

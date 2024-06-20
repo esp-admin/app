@@ -29,8 +29,6 @@ import type { ProgressProps } from 'naive-ui'
 const props = defineProps<{ title: string, deployment?: Deployment }>()
 
 const progress = computed<ProgressProps>(() => {
-  console.log(props.deployment?.status)
-
   if (!props.deployment) {
     return {}
   }

@@ -18,13 +18,13 @@ interface ReportMessagePayloadUpdateProgress {
 
 export default function useReport() {
   const key = 'report'
-  const report = useNuxtData<Report | undefined>(key)
+  const report = useState<Report | undefined>(key)
   const { $auth } = useNuxtApp()
 
   async function find() {
-    report.data.value ||= await $auth.fetch<Report>('/api/report')
+    report.value ||= await $auth.fetch<Report>('/api/report')
 
-    return report.data
+    return report
   }
 
   function update(data: Partial<Report>) {
@@ -39,7 +39,7 @@ export default function useReport() {
 
       onResponse: ({ response }) => {
         if (response.ok) {
-          report.data.value = response._data
+          report.value = response._data
         }
       },
     })
@@ -57,7 +57,7 @@ export default function useReport() {
 
       onResponse: ({ response }) => {
         if (response.ok) {
-          report.data.value = response._data
+          report.value = response._data
         }
       },
     })

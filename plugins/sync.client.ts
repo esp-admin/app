@@ -34,7 +34,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     for (const device of devices.value ?? []) {
       const { deployments, updateStatus } = useDeployment(device.id)
 
-      for (const deployment of deployments.data.value ?? []) {
+      for (const deployment of deployments.value ?? []) {
         if (deployment.status === 'started') {
           const deploymentStartTimestamp = new Date(deployment.createdAt).getTime()
           const maxDeploymentEndTimestamp = deploymentStartTimestamp + DEPLOYMENT_TIMEOUT_MS

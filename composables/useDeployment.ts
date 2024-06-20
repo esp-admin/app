@@ -1,22 +1,22 @@
 export default function useDeployment(deviceId: Device['id']) {
   const key = `deployments-device-${deviceId}`
-  const deployments = useNuxtData<Deployment[]>(key)
+  const deployments = useState<Deployment[]>(key)
   const { $auth } = useNuxtApp()
 
   async function find() {
-    deployments.data.value ||= await $auth.fetch<Deployment[]>(`/api/devices/${deviceId}/deployments`)
+    deployments.value ||= await $auth.fetch<Deployment[]>(`/api/devices/${deviceId}/deployments`)
 
-    return deployments.data
+    return deployments
   }
 
   async function findOne(id: Deployment['id']) {
     const key = `deployment-${id}`
 
-    const deployment = useNuxtData<Deployment>(key)
+    const deployment = useState<Deployment>(key)
 
-    deployment.data.value ||= await $auth.fetch<Deployment>(`/api/deployments/${id}`)
+    deployment.value ||= await $auth.fetch<Deployment>(`/api/deployments/${id}`)
 
-    return deployment.data
+    return deployment
   }
 
   async function remove(id: Deployment['id']) {
@@ -24,8 +24,8 @@ export default function useDeployment(deviceId: Device['id']) {
       method: 'DELETE',
 
       onResponse: ({ response }) => {
-        if (response.ok && deployments.data.value) {
-          removeArrayElByKey(deployments.data.value, 'id', id)
+        if (response.ok && deployments.value) {
+          removeArrayElByKey(deployments.value, 'id', id)
         }
       },
     })
@@ -43,31 +43,31 @@ export default function useDeployment(deviceId: Device['id']) {
 
     await find()
 
-    if (deployments.data.value) {
-      const deploymentIndex = deployments.data.value.findIndex(
+    if (deployments.value) {
+      const deploymentIndex = deployments.value.findIndex(
         deployment => deployment.id === id,
       )
 
       if (deploymentIndex >= 0) {
-        deployments.data.value[deploymentIndex].status = status
+        deployments.value[deploymentIndex].status = status
       }
       else {
         const deployment = await findOne(id)
 
         if (deployment.value) {
-          deployments.data.value.unshift(deployment.value)
+          deployments.value.unshift(deployment.value)
         }
       }
     }
   }
 
   function updateProgress(id: Deployment['id'], progress: number) {
-    if (deployments.data.value) {
-      const deploymentIndex = deployments.data.value.findIndex(
+    if (deployments.value) {
+      const deploymentIndex = deployments.value.findIndex(
         deployment => deployment.id === id,
       )
       if (deploymentIndex >= 0) {
-        deployments.data.value[deploymentIndex].progress = progress
+        deployments.value[deploymentIndex].progress = progress
       }
     }
   }

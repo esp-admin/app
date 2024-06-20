@@ -41,7 +41,7 @@ const linkedDevicesWithDeployment = computed(
 
       const initialDeployment = releaseDeployments.value?.find(deployment => deployment.deviceId === device.id)
 
-      const updatedDeployment = deviceDeployments.data.value?.find(deployment => deployment.releaseId === props.release.id)
+      const updatedDeployment = deviceDeployments.value?.find(deployment => deployment.releaseId === props.release.id)
 
       return defu(device, { deployment: updatedDeployment }, { deployment: initialDeployment })
     },

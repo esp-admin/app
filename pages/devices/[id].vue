@@ -3,7 +3,6 @@
     <n-page-header
       :title="device.name"
       class="mb-8"
-      :on-back="$router.back"
     >
       <template #extra>
         <n-button-group>

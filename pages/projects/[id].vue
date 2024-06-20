@@ -3,7 +3,6 @@
     <n-page-header
       :title="project.name"
       class="mb-8"
-      :on-back="$router.back"
     >
       <template #extra>
         <button-icon

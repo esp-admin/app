@@ -8,16 +8,19 @@
         <n-button-group>
           <button-icon
             v-if="device.projectId"
+            secondary
             :icon="ICON_UNLINK"
             @click="onUnlink"
           />
           <button-icon
             v-if="device.projectId"
+            secondary
             :icon="ICON_PROJECT"
             @click="navigateTo(`/projects/${device.projectId}`)"
           />
           <button-icon
             :icon="ICON_DELETE"
+            secondary
             @click="onDelete"
           />
         </n-button-group>

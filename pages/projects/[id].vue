@@ -6,6 +6,7 @@
     >
       <template #extra>
         <button-icon
+          secondary
           :icon="ICON_DELETE"
           :disabled="linkedDevices.length > 0"
           @click="onDelete"

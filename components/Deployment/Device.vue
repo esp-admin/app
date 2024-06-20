@@ -40,7 +40,7 @@ const dialog = useDialog()
 function onDelete() {
   dialog.error({
     title: 'Delete Deployment',
-    content: 'The deployment will be permanently deleted. This action is not reversible and can not be undone.',
+    content: 'This deployment will be permanently deleted. This action is not reversible and can not be undone.',
     positiveText: 'Confirm',
     negativeText: 'Cancel',
     showIcon: false,

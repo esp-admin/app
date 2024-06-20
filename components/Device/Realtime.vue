@@ -100,8 +100,8 @@ const dialog = useDialog()
 
 function handleRestart() {
   dialog.warning({
-    title: 'Restart Device',
-    content: 'The device will be reset.',
+    title: 'Reset Device',
+    content: 'This device will be reset immediately.',
     positiveText: 'Confirm',
     negativeText: 'Cancel',
     showIcon: false,

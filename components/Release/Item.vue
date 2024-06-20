@@ -46,7 +46,7 @@ const linkedDevices = await useDevice().findLinked(props.release.projectId)
 function onDelete() {
   dialog.error({
     title: 'Delete Release',
-    content: 'The release will be permanently deleted, including its deployments. This action is not reversible and can not be undone.',
+    content: 'This release will be permanently deleted, including its deployments. This action is not reversible and can not be undone.',
     positiveText: 'Confirm',
     negativeText: 'Cancel',
     showIcon: false,

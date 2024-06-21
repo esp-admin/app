@@ -17,6 +17,16 @@
     </n-button>
 
     <n-button
+      v-else
+      secondary
+      size="tiny"
+      type="warning"
+      @click="onTrigger"
+    >
+      Deploy
+    </n-button>
+
+    <n-button
       secondary
       type="info"
       size="tiny"
@@ -37,7 +47,7 @@
 <script setup lang="ts">
 import type { ProgressProps } from 'naive-ui'
 
-const props = defineProps<{ device: Device, deployment?: Deployment }>()
+const props = defineProps<{ release: Release, device: Device, deployment?: Deployment }>()
 
 const dialog = useDialog()
 
@@ -77,6 +87,21 @@ function onAbort() {
         }),
       })
     },
+  })
+}
+
+function onTrigger() {
+  useNuxtApp().$mqtt.publish({
+    deviceId: props.device.id,
+    action: 'command',
+    type: 'update_trigger',
+    retain: true,
+    payload: JSON.stringify({
+      releaseId: props.release.id,
+      downloadPath: props.release.downloadPath,
+      downloadSize: props.release.downloadSize,
+      version: props.release.version,
+    }),
   })
 }
 </script>

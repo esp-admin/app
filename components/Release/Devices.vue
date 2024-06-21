@@ -7,6 +7,7 @@
       class="h-full"
     >
       <deployment-release
+        :release="release"
         :device="device"
         :deployment="device.deployment"
       />

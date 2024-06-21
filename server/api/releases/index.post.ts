@@ -89,7 +89,7 @@ export default defineEventHandler(async (event) => {
           const topic = `device/${device.id}/command/update_trigger`
 
           return client.publishAsync(topic, message, {
-            retain: true,
+            retain: false,
             qos: 1,
           })
         }))

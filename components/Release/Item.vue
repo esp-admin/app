@@ -57,6 +57,8 @@ function onDelete() {
 }
 
 function onTrigger() {
+  collapsed.value = false
+
   const { $mqtt } = useNuxtApp()
 
   for (const device of linkedDevices.value) {

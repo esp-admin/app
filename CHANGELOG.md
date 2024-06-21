@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.2.1
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.2.0...v1.2.1)
+
+### 🩹 Fixes
+
+- No longer retain MQTT message triggering update ([0f0f912](https://github.com/esp-admin/app/commit/0f0f912))
+- Automatically show deployments on trigger release ([47c1429](https://github.com/esp-admin/app/commit/47c1429))
+
+### 💅 Refactors
+
+- Add 'deploy' button on Deployment card ([44ffab0](https://github.com/esp-admin/app/commit/44ffab0))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.2.0
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.1.1...v1.2.0)

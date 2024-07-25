@@ -3,7 +3,13 @@ import { auth, naiveui, tailwindcss, s3, security, fonts } from './config'
 export default defineNuxtConfig({
   ssr: true,
 
-  devtools: { enabled: true },
+  devtools: {
+    enabled: true
+  },
+
+  future: {
+    compatibilityVersion: 4
+  },
 
   app: {
     head: {
@@ -60,4 +66,6 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  compatibilityDate: '2024-07-25',
 })

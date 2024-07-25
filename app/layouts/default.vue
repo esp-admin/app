@@ -13,7 +13,7 @@
     </template>
 
     <template #end>
-      <div class="flex flex-col gap-8 m-2 notMobileOrTablet">
+      <div class="flex flex-col gap-8 m-2 naive-not-mobile-or-tablet">
         <account-info />
         <n-button
           secondary
@@ -57,26 +57,26 @@ const routes: MenuLinkRoute[] = [
   {
     label: 'Dashboard',
     icon: ICON_DASH,
-    path: '/',
+    to: '/',
   },
   {
     label: 'Projects',
     icon: ICON_PROJECT,
-    path: '/projects',
+    to: '/projects',
   },
   {
     label: 'Devices',
     icon: ICON_DEVICE,
-    path: '/devices',
+    to: '/devices',
   },
   {
     label: 'Settings',
     icon: ICON_SETTINGS,
-    path: '/settings',
+    to: '/settings',
   },
   {
     label: 'Account',
-    path: '/account',
+    to: '/account',
     icon: ICON_USER,
   },
 ]

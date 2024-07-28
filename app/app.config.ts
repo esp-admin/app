@@ -84,11 +84,6 @@ export default defineAppConfig({
           color: '#fafafa', // theme.colors.zinc[50]
           textColor: '#3f3f46', // theme.colors.zinc[700]
         },
-        Pagination: {
-          itemColorActiveHover: '#2563eb', // theme.colors.blue[600]
-          itemColorActive: '#2563eb', // theme.colors.blue[600]
-          itemTextColorActive: '#fff', // theme.colors.white
-        },
         Divider: {
           color: '#e4e4e7', // theme.colors.zinc[200]
         },
@@ -140,11 +135,6 @@ export default defineAppConfig({
         },
         List: {
           color: '#18181b', // theme.colors.zinc[900]
-        },
-        Pagination: {
-          itemColorActiveHover: '#60a5fa', // theme.colors.blue[400]
-          itemColorActive: '#60a5fa', // theme.colors.blue[400]
-          itemTextColorActive: '#18181b', // theme.colors.zinc[900]
         },
         Layout: {
           siderColor: '#18181b', // theme.colors.zinc[900]

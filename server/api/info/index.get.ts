@@ -1,4 +1,4 @@
-import { name, version, description, repository, homepage, author } from '~/package.json'
+import { name, version, description, repository, homepage, author } from '../../../package.json'
 
 export default defineEventHandler(() => ({
   name,

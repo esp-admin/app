@@ -19,7 +19,7 @@
           :rule="rules.key"
         >
           <n-input
-            v-model:value="model[index].key"
+            v-model:value="model[index]!.key"
             placeholder="Name"
             @keydown.enter.prevent
           />
@@ -32,7 +32,7 @@
           :rule="rules.value"
         >
           <n-input
-            v-model:value="model[index].value"
+            v-model:value="model[index]!.value"
             placeholder="Value"
             @keydown.enter.prevent
           />

@@ -69,7 +69,7 @@ export default function useDevice() {
             device => device.id === deviceId,
           )
           if (deviceIndex >= 0) {
-            devices.value[deviceIndex].projectId = projectId
+            devices.value[deviceIndex]!.projectId = projectId
           }
         }
 
@@ -94,7 +94,7 @@ export default function useDevice() {
             device => device.id === id,
           )
           if (deviceIndex >= 0) {
-            devices.value[deviceIndex].projectId = null
+            devices.value[deviceIndex]!.projectId = null
           }
         }
 

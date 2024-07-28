@@ -3,7 +3,7 @@
  */
 export function removeArrayElByKey<T>(array: Array<T>, key: keyof T, value: unknown) {
   for (let i = array.length - 1; i >= 0; i--) {
-    if (array[i][key] === value) {
+    if (array[i]![key] === value) {
       array.splice(i, 1)
     }
   }

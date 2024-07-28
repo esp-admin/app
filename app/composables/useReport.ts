@@ -88,7 +88,7 @@ export default function useReport() {
     if (devices.value) {
       const deviceIndex = devices.value.findIndex(device => device.id === message.deviceId)
 
-      if (deviceIndex >= 0 && devices.value[deviceIndex].status === payload.status) {
+      if (deviceIndex >= 0 && devices.value[deviceIndex]?.status === payload.status) {
         return
       }
     }

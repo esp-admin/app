@@ -49,7 +49,7 @@ export default function useDeployment(deviceId: Device['id']) {
       )
 
       if (deploymentIndex >= 0) {
-        deployments.value[deploymentIndex].status = status
+        deployments.value[deploymentIndex]!.status = status
       }
       else {
         const deployment = await findOne(id)
@@ -67,7 +67,7 @@ export default function useDeployment(deviceId: Device['id']) {
         deployment => deployment.id === id,
       )
       if (deploymentIndex >= 0) {
-        deployments.value[deploymentIndex].progress = progress
+        deployments.value[deploymentIndex]!.progress = progress
       }
     }
   }

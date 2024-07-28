@@ -1,5 +1,32 @@
 # Changelog
 
+## v1.2.2
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.2.1...v1.2.2)
+
+### 🩹 Fixes
+
+- Fix NAN date on device card ([4565cc9](https://github.com/esp-admin/app/commit/4565cc9))
+- Correctly resolve S3 driver at build ([5f6e3e3](https://github.com/esp-admin/app/commit/5f6e3e3))
+
+### 💅 Refactors
+
+- Change pagination style ([15a6c3f](https://github.com/esp-admin/app/commit/15a6c3f))
+
+### 🌊 Types
+
+- Solve typecheck issues ([4e03521](https://github.com/esp-admin/app/commit/4e03521))
+
+### 🏡 Chore
+
+- Use directory structure of `nuxt` v4 ([d607ad7](https://github.com/esp-admin/app/commit/d607ad7))
+- Upgrade `nuxt-naiveui` to v2 ([d1fe03e](https://github.com/esp-admin/app/commit/d1fe03e))
+- Sync lock ([741f073](https://github.com/esp-admin/app/commit/741f073))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.2.1
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.2.0...v1.2.1)

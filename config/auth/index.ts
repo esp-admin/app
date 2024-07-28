@@ -55,8 +55,8 @@ export const auth: Partial<ModuleOptions> = {
       apiKey: '*',
     },
     templates: {
-      emailVerify: './config/auth/email-verify.html',
-      passwordReset: './config/auth/password-reset.html',
+      emailVerify: '../config/auth/email-verify.html',
+      passwordReset: '../config/auth/password-reset.html',
     },
   },
 }

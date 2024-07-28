@@ -28,6 +28,7 @@
       >
         <n-pagination
           v-model:page="page"
+          simple
           :page-count="pageCount"
           class="my-1"
         />

@@ -53,7 +53,7 @@ const lb = useLoadingIndicator()
 lb.start()
 
 const { data: sessions } = await useAsyncData('account-sessions',
-  () => useAuthSession().getAllSessions(),
+  () => useAuthSession().getAllSessions(), { deep: true },
 )
 
 lb.finish()

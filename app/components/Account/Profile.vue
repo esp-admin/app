@@ -12,7 +12,7 @@
           class="mb-2 mx-auto shadow hover:shadow-lg border-blue-300 border-2"
           :src="model.picture"
           :width="160"
-          @select="(f) => model.file=f"
+          @select="(f:File) => model.file=f"
         />
       </n-form-item>
 
@@ -40,7 +40,7 @@ const uploadRef = ref()
 const model = ref({
   name: user.value?.name,
   picture: user.value?.picture,
-  file: null,
+  file: null as File | null,
 })
 
 const { edited, formRef, pending, onSubmit, reset, rules, apiErrors } = useNaiveForm(model)

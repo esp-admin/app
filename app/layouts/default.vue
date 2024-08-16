@@ -2,6 +2,7 @@
   <naive-layout-sidebar
     :routes="routes"
     :drawer-routes="routes"
+    drawer-width="80%"
   >
     <template #start>
       <nuxt-link

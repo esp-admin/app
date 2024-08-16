@@ -1,5 +1,34 @@
 # Changelog
 
+## v1.2.3
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.2.2...v1.2.3)
+
+### 🩹 Fixes
+
+- Update sessions list on delete ([7cb03f9](https://github.com/esp-admin/app/commit/7cb03f9))
+
+### 💅 Refactors
+
+- Change drawer width to 80% ([3570642](https://github.com/esp-admin/app/commit/3570642))
+
+### 🌊 Types
+
+- Solve typecheck issues ([9a70556](https://github.com/esp-admin/app/commit/9a70556))
+
+### 🏡 Chore
+
+- Sync lock ([b911f94](https://github.com/esp-admin/app/commit/b911f94))
+- **lint:** Disable `vue/multi-word-component-names` rule ([f1647ef](https://github.com/esp-admin/app/commit/f1647ef))
+
+### 🤖 CI
+
+- Allow manual ci trigger ([1f3067b](https://github.com/esp-admin/app/commit/1f3067b))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.2.2
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.2.1...v1.2.2)

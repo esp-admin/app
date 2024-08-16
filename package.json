@@ -49,6 +49,5 @@
     "mustache": "^4.2.0",
     "ua-parser-js": "^1.0.38",
     "zod": "^3.23.8"
-  },
-  "packageManager": "pnpm@8.7.0+sha1.4a6f863625170af87d027789f72662e0601ecb57"
+  }
 }

@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.2.4
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.2.3...v1.2.4)
+
+### 🔥 Performance
+
+- Generate theme config on build ([a311ab7](https://github.com/esp-admin/app/commit/a311ab7))
+
+### 💅 Refactors
+
+- Increase deployment timeout to 8min ([b5b40f7](https://github.com/esp-admin/app/commit/b5b40f7))
+- Show update progress in percentage ([907aebe](https://github.com/esp-admin/app/commit/907aebe))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.2.3
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.2.2...v1.2.3)

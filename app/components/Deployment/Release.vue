@@ -39,7 +39,6 @@
   <n-progress
     class="mt-2"
     type="line"
-    :show-indicator="false"
     v-bind="progress"
   />
 </template>
@@ -57,15 +56,15 @@ const progress = computed<ProgressProps>(() => {
   }
 
   else if (props.deployment.status === 'succeded') {
-    return { status: 'success', percentage: 100 }
+    return { status: 'success', percentage: 100, showIndicator: false }
   }
 
   else if (props.deployment.status === 'failed') {
-    return { status: 'error', percentage: 100 }
+    return { status: 'error', percentage: 100, showIndicator: false }
   }
 
   else {
-    return { status: 'info', percentage: props.deployment.progress, processing: true }
+    return { percentage: props.deployment.progress, processing: true }
   }
 })
 

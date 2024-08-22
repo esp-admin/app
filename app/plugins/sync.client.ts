@@ -3,7 +3,7 @@ This client-side plugin is intended for state update
 The routine handler `sync` runs every SYNC_INTERVAL_MS
 */
 
-const DEPLOYMENT_TIMEOUT_MS = 4 * 60 * 1000
+const DEPLOYMENT_TIMEOUT_MS = 8 * 60 * 1000
 const SYNC_INTERVAL_MS = 10 * 1000
 
 export default defineNuxtPlugin((nuxtApp) => {

@@ -37,11 +37,11 @@
     "eslint": "^8.57.0",
     "nuxt": "3.13.1",
     "nuxt-security": "^2.0.0",
-    "prisma": "^5.15.1",
+    "prisma": "^5.20.0",
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@prisma/client": "^5.15.1",
+    "@prisma/client": "^5.20.0",
     "highcharts": "^11.4.3",
     "highcharts-vue": "^2.0.1",
     "highlight.js": "^11.9.0",

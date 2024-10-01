@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.2.5
+
+[compare changes](https://github.com/esp-admin/app/compare/v1.2.4...v1.2.5)
+
+### 🌊 Types
+
+- Fix typecheck issues ([8b88bb8](https://github.com/esp-admin/app/commit/8b88bb8))
+
+### 🏡 Chore
+
+- Refresh lockfile ([2028277](https://github.com/esp-admin/app/commit/2028277))
+
+### ❤️ Contributors
+
+- Becem-gharbi <becem.gharbi@live.com>
+
 ## v1.2.4
 
 [compare changes](https://github.com/esp-admin/app/compare/v1.2.3...v1.2.4)

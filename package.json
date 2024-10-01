@@ -35,7 +35,7 @@
     "changelogen": "^0.5.5",
     "cross-env": "^7.0.3",
     "eslint": "^8.57.0",
-    "nuxt": "^3.12.4",
+    "nuxt": "3.13.1",
     "nuxt-security": "^2.0.0",
     "prisma": "^5.15.1",
     "typescript": "^5.5.4"

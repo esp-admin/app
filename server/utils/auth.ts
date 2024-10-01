@@ -48,7 +48,7 @@ export async function checkProject(event: H3Event, projectId: Project['id']) {
     },
   }).catch((err) => { throw createPrismaError(err) })
 
-  if (!compareSync(apiKey, project.apiKey)) {
+  if (!project.apiKey || !compareSync(apiKey, project.apiKey)) {
     throw createUnauthorizedError()
   }
 

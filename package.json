@@ -36,7 +36,7 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.57.0",
     "nuxt": "^3.12.4",
-    "nuxt-security": "^2.0.0-rc.9",
+    "nuxt-security": "^2.0.0",
     "prisma": "^5.15.1",
     "typescript": "^5.5.4"
   },
@@ -49,6 +49,5 @@
     "mustache": "^4.2.0",
     "ua-parser-js": "^1.0.38",
     "zod": "^3.23.8"
-  },
-  "packageManager": "pnpm@9.10.0+sha512.73a29afa36a0d092ece5271de5177ecbf8318d454ecd701343131b8ebc0c1a91c487da46ab77c8e596d6acf1461e3594ced4becedf8921b074fbd8653ed7051c"
+  }
 }
